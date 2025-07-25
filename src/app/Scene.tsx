@@ -71,19 +71,21 @@ function Helicopter({ scale, lerpFactor }: HelicopterProps) {
   const ref = useRef<Group>(null!)
   const { viewport } = useThree()
   const target = new Vector3()
+
   useFrame((state) => {
     if (ref.current) {
       target.set((state.mouse.x * viewport.width) / 2, (state.mouse.y * viewport.height) / 2, 0)
       ref.current.position.lerp(target, lerpFactor)
     }
   })
+
+  // The return statement must be inside the function.
   return (
     <group ref={ref}>
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <Image url="/heli.jpg" scale={scale} transparent />
+      <Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" />
     </group>
   )
-}
+} // <-- The brace now correctly closes the function AFTER the return.
   // #FIX: Added the required 'alt' prop for accessibility.
   return <group ref={ref}><Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" /></group>
 }
