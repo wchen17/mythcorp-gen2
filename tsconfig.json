@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true, // Helps with module compatibility
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // The key fix for this issue
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -20,8 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "types": ["./env.d.ts", "node"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
