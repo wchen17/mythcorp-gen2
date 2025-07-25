@@ -77,6 +77,13 @@ function Helicopter({ scale, lerpFactor }: HelicopterProps) {
       ref.current.position.lerp(target, lerpFactor)
     }
   })
+  return (
+    <group ref={ref}>
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <Image url="/heli.jpg" scale={scale} transparent />
+    </group>
+  )
+}
   // #FIX: Added the required 'alt' prop for accessibility.
   return <group ref={ref}><Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" /></group>
 }
