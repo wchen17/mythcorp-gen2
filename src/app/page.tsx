@@ -2,24 +2,23 @@
 'use client';
 
 import { useState, Suspense } from 'react';
-import Scene from './components/Scene'; // Assuming your original scene is here
+import Scene from './components/Scene'; 
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
 
 export default function HomePage() {
   const [appState, setAppState] = useState('landing'); // 'landing' or 'experience'
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // This component will render based on the appState
   const renderContent = () => {
     switch (appState) {
       case 'experience':
-        return <Scene />; // Your main 3D experience
+        return <Scene />; 
       case 'landing':
       default:
-        // We use Suspense to wait for the LandingPage assets to load
+        // #FIX: The LoadingScreen is now the fallback for Suspense.
+        // This allows it to track the loading progress of the LandingPage.
         return (
-          <Suspense fallback={null}>
+          <Suspense fallback={<LoadingScreen />}>
             <LandingPage onEnter={() => setAppState('experience')} />
           </Suspense>
         );
@@ -28,11 +27,7 @@ export default function HomePage() {
 
   return (
     <main className="h-screen w-screen bg-black">
-      {/* Show loading screen until assets are ready */}
-      {!isLoaded && <LoadingScreen onStarted={setIsLoaded} />}
-      
-      {/* Once loaded, show the main content */}
-      {isLoaded && renderContent()}
+      {renderContent()}
     </main>
   );
 }
