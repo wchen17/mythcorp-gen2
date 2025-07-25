@@ -4,11 +4,9 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useState, useRef } from 'react'
 import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
-// #FIX: Removed 'Color' as it was unused.
 import { Group, Vector3 } from 'three'
 
 // --- Prop Interfaces for Type Safety ---
-// #FIX: Added specific types for component props to replace 'any'.
 interface ModelProps {
   position: number[];
   rotationSpeed: number;
@@ -34,12 +32,6 @@ interface MainMenuProps {
     onSettings: () => void;
 }
 
-interface SettingsMenuProps {
-    defaults: typeof DEFAULTS;
-    onSave: (newDefaults: typeof DEFAULTS) => void;
-    onBack: () => void;
-}
-
 // --- Default Settings Object ---
 const DEFAULTS = {
     rotationSpeed: 0.2,
@@ -51,6 +43,12 @@ const DEFAULTS = {
     heliScale: 1.5,
     heliSmoothness: 0.1,
 };
+
+interface SettingsMenuProps {
+    defaults: typeof DEFAULTS;
+    onSave: (newDefaults: typeof DEFAULTS) => void;
+    onBack: () => void;
+}
 
 
 // --- Components for 3D Scene ---
@@ -82,12 +80,10 @@ function Helicopter({ scale, lerpFactor }: HelicopterProps) {
   // The return statement must be inside the function.
   return (
     <group ref={ref}>
-      <Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" />
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <Image url="/heli.jpg" scale={scale} transparent />
     </group>
   )
-} // <-- The brace now correctly closes the function AFTER the return.
-  // #FIX: Added the required 'alt' prop for accessibility.
-  return <group ref={ref}><Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" /></group>
 }
 
 // --- Components for UI & Menus ---
@@ -150,7 +146,6 @@ export default function Scene() {
 
   const resetToDefaults = () => setSettings(DEFAULTS);
   
-  // #FIX: Added specific types for the 'value' parameter.
   const handleSettingChange = (key: keyof typeof DEFAULTS, value: string | number | boolean) => {
     setSettings(prev => ({ ...prev, [key]: value }));
   };
