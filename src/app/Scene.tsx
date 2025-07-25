@@ -4,10 +4,57 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useState, useRef } from 'react'
 import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
-import { Group, Vector3, Color } from 'three'
+// #FIX: Removed 'Color' as it was unused.
+import { Group, Vector3 } from 'three'
+
+// --- Prop Interfaces for Type Safety ---
+// #FIX: Added specific types for component props to replace 'any'.
+interface ModelProps {
+  position: number[];
+  rotationSpeed: number;
+  color: string;
+}
+
+interface HelicopterProps {
+  scale: number;
+  lerpFactor: number;
+}
+
+interface CombinedInputProps {
+  label: string;
+  value: number;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  min: number;
+  max: number;
+  step: number;
+}
+
+interface MainMenuProps {
+    onStart: () => void;
+    onSettings: () => void;
+}
+
+interface SettingsMenuProps {
+    defaults: typeof DEFAULTS;
+    onSave: (newDefaults: typeof DEFAULTS) => void;
+    onBack: () => void;
+}
+
+// --- Default Settings Object ---
+const DEFAULTS = {
+    rotationSpeed: 0.2,
+    position: [0, 0, 0],
+    color: '#00ffff',
+    glowIntensity: 0.5,
+    stars: 1,
+    showHelicopter: false,
+    heliScale: 1.5,
+    heliSmoothness: 0.1,
+};
+
 
 // --- Components for 3D Scene ---
-function Model({ position, rotationSpeed, color }: { position: number[]; rotationSpeed: number, color: string }) {
+function Model({ position, rotationSpeed, color }: ModelProps) {
   const { scene } = useGLTF('/spectre.glb')
   const modelRef = useRef<Group>(null!)
   useFrame((state, delta) => {
@@ -20,7 +67,7 @@ function Model({ position, rotationSpeed, color }: { position: number[]; rotatio
   </primitive>
 }
 
-function Helicopter({ scale, lerpFactor }: { scale: number; lerpFactor: number }) {
+function Helicopter({ scale, lerpFactor }: HelicopterProps) {
   const ref = useRef<Group>(null!)
   const { viewport } = useThree()
   const target = new Vector3()
@@ -30,11 +77,12 @@ function Helicopter({ scale, lerpFactor }: { scale: number; lerpFactor: number }
       ref.current.position.lerp(target, lerpFactor)
     }
   })
-  return <group ref={ref}><Image url="/heli.jpg" scale={scale} transparent /></group>
+  // #FIX: Added the required 'alt' prop for accessibility.
+  return <group ref={ref}><Image url="/heli.jpg" scale={scale} transparent alt="Helicopter mouse tracker" /></group>
 }
 
 // --- Components for UI & Menus ---
-function CombinedInput({ label, value, onChange, min, max, step }: any) {
+function CombinedInput({ label, value, onChange, min, max, step }: CombinedInputProps) {
     return (
         <div style={inputGroupStyle}>
             <label>{label}</label>
@@ -46,8 +94,7 @@ function CombinedInput({ label, value, onChange, min, max, step }: any) {
     )
 }
 
-function MainMenu({ onStart, onSettings }: { onStart: () => void; onSettings: () => void }) {
-  // FIX: The animated background is now a separate div behind the content div.
+function MainMenu({ onStart, onSettings }: MainMenuProps) {
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <style>{`
@@ -67,7 +114,7 @@ function MainMenu({ onStart, onSettings }: { onStart: () => void; onSettings: ()
   )
 }
 
-function SettingsMenu({ defaults, onSave, onBack }: { defaults: any; onSave: (newDefaults: any) => void; onBack: () => void }) {
+function SettingsMenu({ defaults, onSave, onBack }: SettingsMenuProps) {
     const [localDefaults, setLocalDefaults] = useState(defaults);
     const handleSave = () => { onSave(localDefaults); onBack(); };
     return ( <div style={menuStyle}> <h2>Default Settings</h2> <div style={inputGroupStyle}> <label>Default Glow Color:</label> <input type="text" value={localDefaults.color} onChange={(e) => setLocalDefaults({...localDefaults, color: e.target.value})} /> </div> <button onClick={handleSave} style={buttonStyle}>Save & Back</button> </div> );
@@ -77,12 +124,6 @@ function SettingsMenu({ defaults, onSave, onBack }: { defaults: any; onSave: (ne
 export default function Scene() {
   const [appState, setAppState] = useState('menu');
   const [showAdvanced, setShowAdvanced] = useState(false);
-
-  const DEFAULTS = {
-    rotationSpeed: 0.2, position: [0, 0, 0], color: '#00ffff', glowIntensity: 0.5, stars: 1,
-    showHelicopter: false, heliScale: 1.5, heliSmoothness: 0.1,
-  };
-  
   const [settings, setSettings] = useState(DEFAULTS);
 
   const randomizeAll = () => {
@@ -100,8 +141,18 @@ export default function Scene() {
 
   const resetToDefaults = () => setSettings(DEFAULTS);
   
-  const handleSettingChange = (key: string, value: any) => setSettings(prev => ({ ...prev, [key]: value }));
-  const handlePositionChange = (axis: number, value: number) => { setSettings(prev => { const newPos = [...prev.position]; newPos[axis] = value; return { ...prev, position: newPos }; }); };
+  // #FIX: Added specific types for the 'value' parameter.
+  const handleSettingChange = (key: keyof typeof DEFAULTS, value: string | number | boolean) => {
+    setSettings(prev => ({ ...prev, [key]: value }));
+  };
+  
+  const handlePositionChange = (axis: number, value: number) => { 
+    setSettings(prev => { 
+      const newPos = [...prev.position]; 
+      newPos[axis] = value; 
+      return { ...prev, position: newPos }; 
+    }); 
+  };
 
   if (appState === 'menu') return <MainMenu onStart={() => setAppState('experience')} onSettings={() => setAppState('settings')} />
   if (appState === 'settings') return <SettingsMenu defaults={settings} onSave={setSettings} onBack={() => setAppState('menu')} />
@@ -112,7 +163,7 @@ export default function Scene() {
         <h3 style={{ marginTop: 0, borderBottom: '1px solid white', paddingBottom: '0.5rem' }}>Controls</h3>
         
         <div style={inputGroupStyle}> <label>Glow Color</label> <input type="text" value={settings.color} onChange={(e) => handleSettingChange('color', e.target.value)} /> </div>
-        <CombinedInput label="Glow Intensity" value={settings.glowIntensity} onChange={(e: any) => handleSettingChange('glowIntensity', parseFloat(e.target.value))} min={0} max={3} step={0.1}/>
+        <CombinedInput label="Glow Intensity" value={settings.glowIntensity} onChange={(e) => handleSettingChange('glowIntensity', parseFloat(e.target.value))} min={0} max={3} step={0.1}/>
         
         <div style={{...inputGroupStyle, borderTop: '1px solid #555', paddingTop: '1rem', marginTop: '1rem' }}>
           <input type="checkbox" checked={settings.showHelicopter} onChange={(e) => handleSettingChange('showHelicopter', e.target.checked)} />
@@ -123,13 +174,13 @@ export default function Scene() {
             <label onClick={() => setShowAdvanced(!showAdvanced)} style={{cursor: 'pointer'}}> {showAdvanced ? '▼' : '►'} Advanced Settings </label>
             {showAdvanced && (
                 <div style={{paddingLeft: '1rem', marginTop: '0.5rem'}}>
-                    <CombinedInput label="Rotation Speed" value={settings.rotationSpeed} onChange={(e: any) => handleSettingChange('rotationSpeed', parseFloat(e.target.value))} min={0} max={2} step={0.1}/>
-                    <CombinedInput label="Position X" value={settings.position[0]} onChange={(e: any) => handlePositionChange(0, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    <CombinedInput label="Position Y" value={settings.position[1]} onChange={(e: any) => handlePositionChange(1, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    <CombinedInput label="Position Z" value={settings.position[2]} onChange={(e: any) => handlePositionChange(2, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <CombinedInput label="Rotation Speed" value={settings.rotationSpeed} onChange={(e) => handleSettingChange('rotationSpeed', parseFloat(e.target.value))} min={0} max={2} step={0.1}/>
+                    <CombinedInput label="Position X" value={settings.position[0]} onChange={(e) => handlePositionChange(0, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <CombinedInput label="Position Y" value={settings.position[1]} onChange={(e) => handlePositionChange(1, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <CombinedInput label="Position Z" value={settings.position[2]} onChange={(e) => handlePositionChange(2, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
                     <h4 style={{marginBottom: '0.5rem', marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1rem'}}>Tracker Settings</h4>
-                    <CombinedInput label="Tracker Size" value={settings.heliScale} onChange={(e: any) => handleSettingChange('heliScale', parseFloat(e.target.value))} min={0.5} max={5} step={0.1}/>
-                    <CombinedInput label="Tracker Smoothness" value={settings.heliSmoothness} onChange={(e: any) => handleSettingChange('heliSmoothness', parseFloat(e.target.value))} min={0.01} max={0.2} step={0.01}/>
+                    <CombinedInput label="Tracker Size" value={settings.heliScale} onChange={(e) => handleSettingChange('heliScale', parseFloat(e.target.value))} min={0.5} max={5} step={0.1}/>
+                    <CombinedInput label="Tracker Smoothness" value={settings.heliSmoothness} onChange={(e) => handleSettingChange('heliSmoothness', parseFloat(e.target.value))} min={0.01} max={0.2} step={0.01}/>
                 </div>
             )}
         </div>
@@ -142,7 +193,6 @@ export default function Scene() {
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={60} />
         <color attach="background" args={['black']} />
-        {/* NEW: Dynamic, rotating starfield */}
         <Stars radius={100} depth={50} count={5000} factor={4 * settings.stars} saturation={0} fade speed={1} />
 
         <ambientLight intensity={0.5} />
