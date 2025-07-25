@@ -1,5 +1,5 @@
 // app/page.tsx
-import Scene from './components/Scene'; // Or './Scene' if not in a subfolder
+import Scene from './Scene';
 
 export default function Home() {
   return (
