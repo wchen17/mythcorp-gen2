@@ -1,3 +1,4 @@
+// src/app/components/Scene.tsx
 'use client'
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
