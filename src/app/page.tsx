@@ -1,33 +1,37 @@
 // src/app/page.tsx
 'use client';
 
+// We only need useState and Suspense for now.
 import { useState, Suspense } from 'react';
-import Scene from './components/Scene'; 
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
 
-export default function HomePage() {
-  const [appState, setAppState] = useState('landing'); // 'landing' or 'experience'
+// We are NOT importing Scene.tsx anymore to prevent interference.
+// import Scene from './components/Scene'; 
 
-  const renderContent = () => {
-    switch (appState) {
-      case 'experience':
-        return <Scene />; 
-      case 'landing':
-      default:
-        // #FIX: The LoadingScreen is now the fallback for Suspense.
-        // This allows it to track the loading progress of the LandingPage.
-        return (
-          <Suspense fallback={<LoadingScreen />}>
-            <LandingPage onEnter={() => setAppState('experience')} />
-          </Suspense>
-        );
-    }
+export default function HomePage() {
+  // This state will eventually control the transition, but for now, it does nothing.
+  const [isExperienceStarted, setExperienceStarted] = useState(false);
+
+  const handleEnter = () => {
+    console.log("Experience started! We'll build the transition next.");
+    setExperienceStarted(true);
+    // In the future, this is where we will trigger the transition to the Scene.
   };
 
   return (
     <main className="h-screen w-screen bg-black">
-      {renderContent()}
+      {/* We use Suspense to show the loading screen while LandingPage assets load. */}
+      <Suspense fallback={<LoadingScreen />}>
+        {/* This is now the ONLY component being rendered. 
+            There is no possibility of Scene.tsx interfering. */}
+        <LandingPage onEnter={handleEnter} />
+      </Suspense>
+
+      {/* We can add logic here later to show the Scene component
+          AFTER the landing page has animated out.
+          For example: {isExperienceStarted && <Scene />} 
+      */}
     </main>
   );
 }
