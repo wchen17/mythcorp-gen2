@@ -1,18 +1,21 @@
 // src/app/components/LandingPage.tsx
 'use client';
 
-import React, { useRef, Suspense } from 'react';
+// ADDED: useState and useEffect for handling the transition
+import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text3D, Center, PerspectiveCamera, Stars, useGLTF } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { Group } from 'three';
+// ADDED: The GSAP animation library
+import gsap from 'gsap';
 
 // A helper function for linear interpolation (smoothing).
 const lerp = (start: number, end: number, alpha: number) => {
   return start * (1 - alpha) + end * alpha;
 };
 
-// --- Spectre Model Component (Dialed In) ---
+// --- Spectre Model Component (Your positioning is preserved) ---
 function SpectreModel() {
   const { scene } = useGLTF('/spectre.glb');
   const groupRef = useRef<Group>(null!);
@@ -20,12 +23,9 @@ function SpectreModel() {
 
   useFrame((state, delta) => {
     if (groupRef.current) {
-      // We still rotate the parent group for the animation
       groupRef.current.rotation.y += delta * 0.2;
-
-      // --- Precise Positioning ---
-      // We're targeting the bottom-right corner as you suggested.
-      const margin = .05; // This is our distance from the edge.
+      // Your exact positioning code is here
+      const margin = .05; 
       const positionX = viewport.width / 2 - margin;
       const positionY = -viewport.height / 2 + margin;
       groupRef.current.position.set(positionX, positionY, -4);
@@ -33,23 +33,19 @@ function SpectreModel() {
   });
 
   return (
-    // This is our "invisible cube" that we position.
     <group ref={groupRef}>
-      {/* The model is the child. We apply corrections to it here. */}
       <primitive 
         object={scene} 
         scale={0.4}
         position={[0, 0, 0]} 
-        // --- THE ORIENTATION FIX ---
-        // This rotates the model INSIDE the group to make it "straight up".
-        // The values are [X, Y, Z] in radians. Try changing them!
-        // For example, [0, 0, 0] is its default, [0, Math.PI / 2, 0] is 90 degrees.
         rotation={[0, -0.5, 0]}
-      />
+      >
+        {/* ADDED: transparent prop to allow fading */}
+        <meshStandardMaterial color="#888888" emissive="#00ffff" emissiveIntensity={0.5} toneMapped={false} transparent opacity={1} />
+      </primitive>
     </group>
   );
 }
-
 
 // --- The Interactive Logo Component ---
 function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
@@ -63,7 +59,8 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
   });
 
   return (
-    <group ref={logoRef}>
+    // The onClick event is now on the group
+    <group ref={logoRef} onClick={onEnter}>
       <Center>
         <Text3D
           font="/fonts/Inter_Bold.json"
@@ -74,12 +71,11 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
           bevelThickness={0.01}
           bevelSize={0.01}
           bevelSegments={3}
-          onClick={onEnter}
           onPointerOver={() => (document.body.style.cursor = 'pointer')}
           onPointerOut={() => (document.body.style.cursor = 'auto')}
         >
           MYTHCORP
-          <meshBasicMaterial color="#00ffff" toneMapped={false} />
+          <meshBasicMaterial color="#00ffff" toneMapped={false} transparent opacity={1} />
         </Text3D>
       </Center>
     </group>
@@ -87,12 +83,54 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
 }
 
 
-// --- The Main Landing Page Component ---
-export function LandingPage({ onEnter }: { onEnter: () => void }) {
+// --- The Main Landing Page Component (with Transition Logic) ---
+export function LandingPage({ onTransitionComplete }: { onTransitionComplete: () => void }) {
+  // State to track if we are animating out
+  const [isExiting, setIsExiting] = useState(false);
+  // Refs to control the elements we want to animate
+  const contentRef = useRef<Group>(null!);
+  const backgroundRef = useRef<HTMLDivElement>(null!);
+
+  const handleEnter = () => {
+    setIsExiting(true);
+  };
+
+  // This effect hook runs the animation when isExiting becomes true
+  useEffect(() => {
+    if (isExiting && contentRef.current && backgroundRef.current) {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          // Tell the parent page the animation is done
+          if (onTransitionComplete) onTransitionComplete();
+        }
+      });
+
+      // Animate the background div fading to black
+      tl.to(backgroundRef.current, {
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power2.in',
+      }, 0);
+
+      // Go through every object in our 3D scene...
+      contentRef.current.traverse((child) => {
+        // ...and if it has a material, fade its opacity to 0
+        if ((child as any).material) {
+          tl.to((child as any).material, {
+            opacity: 0,
+            duration: 1,
+            ease: 'power2.in',
+          }, 0.2); // Start this fade slightly after the background fade begins
+        }
+      });
+    }
+  }, [isExiting, onTransitionComplete]);
+
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', background: '#000' }}>
       
       <div
+        ref={backgroundRef}
         style={{
           position: 'absolute',
           top: 0,
@@ -104,6 +142,7 @@ export function LandingPage({ onEnter }: { onEnter: () => void }) {
           backgroundPosition: 'center',
           filter: 'blur(8px) grayscale(0.7) brightness(0.5)',
           zIndex: 1,
+          opacity: 1,
         }}
       />
 
@@ -113,15 +152,18 @@ export function LandingPage({ onEnter }: { onEnter: () => void }) {
       >
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
         
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={0.5} />
+        {/* We wrap all the 3D content in a single group with a ref */}
+        <group ref={contentRef}>
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[10, 10, 5]} intensity={0.5} />
 
-        <Suspense fallback={null}>
-          <InteractiveLogo onEnter={onEnter} />
-          <SpectreModel />
-        </Suspense>
+          <Suspense fallback={null}>
+            <InteractiveLogo onEnter={handleEnter} />
+            <SpectreModel />
+          </Suspense>
 
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        </group>
 
         <EffectComposer>
           <Bloom 
