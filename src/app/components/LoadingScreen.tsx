@@ -239,6 +239,9 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   // Use useEffect to avoid hydration mismatch
   const [loadingVariant, setLoadingVariant] = useState(LOADING_VARIANTS.BINARY_SPHERE);
   const [loadingMessages, setLoadingMessages] = useState("SYNCHRONIZING");
+  const [displayProgress, setDisplayProgress] = useState(0);
+  const progressRef = useRef(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Set random variant after hydration
@@ -247,36 +250,48 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
     
     const messages = [
       "SYNCHRONIZING",
-      "INITIALIZING MATRIX",
+      "INITIALIZING MATRIX",  
       "LOADING NEURAL NETWORKS",
       "CONNECTING TO SERVERS",
       "DECRYPTING DATA STREAMS",
       "ESTABLISHING SECURE CONNECTION"
     ];
     setLoadingMessages(messages[Math.floor(Math.random() * messages.length)]);
-  }, []);
 
-  useEffect(() => {
-    const minDisplayTime = 4000; // 4 seconds
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        onFinished(); // Call the function when the time is up
-      }, minDisplayTime);
-      return () => clearTimeout(timer);
-    }
-  }, [progress, onFinished]);
+    // Start the progress simulation
+    intervalRef.current = setInterval(() => {
+      progressRef.current += Math.random() * 8 + 2; // Random increment between 2-10
+      if (progressRef.current >= 100) {
+        progressRef.current = 100;
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
+        // Transition after reaching 100%
+        setTimeout(() => {
+          onFinished();
+        }, 1000);
+      }
+      setDisplayProgress(Math.round(progressRef.current));
+    }, 200);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [onFinished]);
 
   // Render the appropriate loading variant
   const renderLoadingVariant = () => {
     switch (loadingVariant) {
       case LOADING_VARIANTS.MATRIX_RAIN:
-        return <MatrixRain progress={progress} />;
+        return <MatrixRain progress={displayProgress} />;
       case LOADING_VARIANTS.WAVE_GRID:
-        return <WaveGrid progress={progress} />;
+        return <WaveGrid progress={displayProgress} />;
       case LOADING_VARIANTS.SPIRAL_ZEROS:
-        return <SpiralZeros progress={progress} />;
+        return <SpiralZeros progress={displayProgress} />;
       default:
-        return <DataSphere progress={progress} />;
+        return <DataSphere progress={displayProgress} />;
     }
   };
 
@@ -310,7 +325,7 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
         animation: 'fadeIn 1s ease-out'
       }}>
         <h2 style={{ letterSpacing: '0.2rem', textTransform: 'uppercase', opacity: 0.7 }}>
-          {loadingMessages}... {Math.round(progress)}%
+          {loadingMessages}... {displayProgress}%
         </h2>
         <p style={{ marginTop: '1rem', fontSize: '0.8rem', opacity: 0.4 }}>
           Headphones Recommended for Optimal Experience
