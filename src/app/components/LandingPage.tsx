@@ -4,7 +4,7 @@
 // ADDED: useState and useEffect for handling the transition
 import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Text3D, Center, PerspectiveCamera, Stars, useGLTF } from '@react-three/drei';
+import { Text3D, Center, PerspectiveCamera, Stars, useGLTF, Text } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { Group } from 'three';
 // ADDED: The GSAP animation library
@@ -103,21 +103,22 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
     // The onClick event is now on the group
     <group ref={logoRef} onClick={onEnter}>
       <Center>
-        <Text3D
-          font="/fonts/Inter_Bold.json"
-          size={1.5}
-          height={0.05}
-          curveSegments={8}
-          bevelEnabled
-          bevelThickness={0.01}
-          bevelSize={0.01}
-          bevelSegments={3}
+        {/* Temporary simplified text version - remove Text3D to avoid font loading issues */}
+        <mesh>
+          <boxGeometry args={[4, 1, 0.2]} />
+          <meshBasicMaterial color="#00ffff" toneMapped={false} transparent opacity={0.8} />
+        </mesh>
+        <Text 
+          fontSize={0.3}
+          color="#000000"
+          anchorX="center"
+          anchorY="middle"
+          position={[0, 0, 0.11]}
           onPointerOver={() => (document.body.style.cursor = 'pointer')}
           onPointerOut={() => (document.body.style.cursor = 'auto')}
         >
           MYTHCORP
-          <meshBasicMaterial color="#00ffff" toneMapped={false} transparent opacity={1} />
-        </Text3D>
+        </Text>
       </Center>
       {/* Animated star positioned between the O in MYTHCORP */}
       <AnimatedStar position={[0.8, 0, 0.1]} />
