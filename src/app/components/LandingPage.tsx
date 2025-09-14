@@ -15,6 +15,47 @@ const lerp = (start: number, end: number, alpha: number) => {
   return start * (1 - alpha) + end * alpha;
 };
 
+// --- Animated Star Component for the MYTHCORP Logo ---
+function AnimatedStar({ position }: { position: [number, number, number] }) {
+  const starRef = useRef<Group>(null!);
+  const [hovered, setHovered] = useState(false);
+
+  useFrame((state, delta) => {
+    if (starRef.current) {
+      // Rotating animation
+      starRef.current.rotation.z += delta * 2;
+      
+      // Pulsing scale effect
+      const pulse = Math.sin(state.clock.elapsedTime * 3) * 0.2 + 1;
+      starRef.current.scale.setScalar(pulse * (hovered ? 1.5 : 1));
+      
+      // Floating motion
+      starRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 2) * 0.1;
+    }
+  });
+
+  return (
+    <group 
+      ref={starRef} 
+      position={position}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
+    >
+      {/* Star shape using multiple triangular faces */}
+      <mesh>
+        <cylinderGeometry args={[0, 0.1, 0.3, 5]} />
+        <meshBasicMaterial color="#ffff00" toneMapped={false} />
+      </mesh>
+      <mesh rotation={[0, 0, Math.PI]}>
+        <cylinderGeometry args={[0, 0.1, 0.3, 5]} />
+        <meshBasicMaterial color="#ffff00" toneMapped={false} />
+      </mesh>
+      {/* Glow effect */}
+      <pointLight color="#ffff00" intensity={hovered ? 2 : 1} distance={3} />
+    </group>
+  );
+}
+
 // --- Spectre Model Component (Your positioning is preserved) ---
 function SpectreModel() {
   const { scene } = useGLTF('/spectre.glb');
@@ -47,7 +88,7 @@ function SpectreModel() {
   );
 }
 
-// --- The Interactive Logo Component ---
+// --- The Interactive Logo Component with Animated Star ---
 function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
   const logoRef = useRef<Group>(null!);
 
@@ -78,6 +119,8 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
           <meshBasicMaterial color="#00ffff" toneMapped={false} transparent opacity={1} />
         </Text3D>
       </Center>
+      {/* Animated star positioned between the O in MYTHCORP */}
+      <AnimatedStar position={[0.8, 0, 0.1]} />
     </group>
   );
 }

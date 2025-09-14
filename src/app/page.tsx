@@ -5,6 +5,7 @@ import { useState, Suspense, useEffect } from 'react';
 import { useProgress } from "@react-three/drei";
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
+import { InteractiveExperience } from './components/InteractiveExperience';
 import Scene from './components/Scene';
 
 /**
@@ -24,23 +25,16 @@ function AppLoader({ children }: { children: React.ReactNode }) {
       // for a minimum amount of time.
       const timer = setTimeout(() => {
         setIsReady(true);
-      }, 4000); // 4-second minimum display time
+      }, 1000); // Reduced to 1 second since loading screen handles its own timing
 
       return () => clearTimeout(timer);
     }
   }, [progress]);
 
   return (
-    <>
-      <div style={{ display: isReady ? 'none' : 'block' }}>
-        {/* FIX APPLIED HERE: Added the required 'onFinished' prop. */}
-        <LoadingScreen onFinished={() => {}} />
-      </div>
-
-      <div style={{ visibility: isReady ? 'visible' : 'hidden', height: '100%', width: '100%' }}>
-        {children}
-      </div>
-    </>
+    <div style={{ height: '100%', width: '100%' }}>
+      {children}
+    </div>
   );
 }
 
@@ -50,23 +44,44 @@ function AppLoader({ children }: { children: React.ReactNode }) {
  * and render the AppLoader, which handles all the complex state.
  */
 export default function HomePage() {
-  const [appState, setAppState] = useState<'landing' | 'experience'>('landing');
+  const [appState, setAppState] = useState<'loading' | 'landing' | 'interactive' | 'experience'>('loading');
 
-  const handleTransitionComplete = () => {
+  const handleLoadingComplete = () => {
+    setAppState('landing');
+  };
+
+  const handleLandingTransition = () => {
+    setAppState('interactive');
+  };
+
+  const handleBackToLanding = () => {
+    setAppState('landing');
+  };
+
+  const handleEnterExperience = () => {
     setAppState('experience');
   };
 
   return (
     <main className="h-screen w-screen bg-black">
       <Suspense fallback={
-        /* FIX APPLIED HERE: Added the required 'onFinished' prop to the fallback as well. */
         <LoadingScreen onFinished={() => {}} />
       }>
         <AppLoader>
-          {/* The content that needs to be loaded goes here */}
-          {appState === 'landing' ? (
-            <LandingPage onTransitionComplete={handleTransitionComplete} />
-          ) : (
+          {/* Render different components based on app state */}
+          {appState === 'loading' && (
+            <LoadingScreen onFinished={handleLoadingComplete} />
+          )}
+          
+          {appState === 'landing' && (
+            <LandingPage onTransitionComplete={handleLandingTransition} />
+          )}
+          
+          {appState === 'interactive' && (
+            <InteractiveExperience onBack={handleBackToLanding} />
+          )}
+          
+          {appState === 'experience' && (
             <Scene />
           )}
         </AppLoader>
