@@ -127,54 +127,29 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
 }
 
 
-// --- The Main Landing Page Component (with Transition Logic) ---
+// --- The Main Landing Page Component (SIMPLIFIED FOR DEBUG) ---
 export function LandingPage({ onTransitionComplete }: { onTransitionComplete: () => void }) {
-  // State to track if we are animating out
-  const [isExiting, setIsExiting] = useState(false);
-  // Refs to control the elements we want to animate
-  const contentRef = useRef<Group>(null!);
-  const backgroundRef = useRef<HTMLDivElement>(null!);
-
+  console.log("LandingPage component rendering");
+  
   const handleEnter = () => {
-    setIsExiting(true);
+    console.log("Enter button clicked");
+    onTransitionComplete();
   };
 
-  // This effect hook runs the animation when isExiting becomes true
-  useEffect(() => {
-    if (isExiting && contentRef.current && backgroundRef.current) {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          // Tell the parent page the animation is done
-          if (onTransitionComplete) onTransitionComplete();
-        }
-      });
-
-      // Animate the background div fading to black
-      tl.to(backgroundRef.current, {
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.in',
-      }, 0);
-
-      // Go through every object in our 3D scene...
-      contentRef.current.traverse((child) => {
-        // ...and if it has a material, fade its opacity to 0
-        if ((child as any).material) {
-          tl.to((child as any).material, {
-            opacity: 0,
-            duration: 1,
-            ease: 'power2.in',
-          }, 0.2); // Start this fade slightly after the background fade begins
-        }
-      });
-    }
-  }, [isExiting, onTransitionComplete]);
-
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', background: '#000' }}>
+    <div style={{ 
+      position: 'relative', 
+      width: '100%', 
+      height: '100%', 
+      background: '#000',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column'
+    }}>
       
+      {/* Blurred Chicago Skyline Background */}
       <div
-        ref={backgroundRef}
         style={{
           position: 'absolute',
           top: 0,
@@ -190,34 +165,37 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
         }}
       />
 
+      {/* Simple HTML-based content for testing */}
+      <div style={{
+        position: 'relative',
+        zIndex: 3,
+        textAlign: 'center',
+        color: '#00ffff',
+        fontFamily: 'monospace'
+      }}>
+        <h1 style={{
+          fontSize: '4rem',
+          marginBottom: '2rem',
+          textShadow: '0 0 20px #00ffff, 0 0 40px #00ffff',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease'
+        }} onClick={handleEnter}>
+          MYTHC⭐RP
+        </h1>
+        <p style={{ fontSize: '1.2rem', opacity: 0.7 }}>
+          Click to Enter Experience
+        </p>
+      </div>
+
+      {/* 3D Canvas - removed temporarily for debug */}
+      {/*
       <Canvas
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 2 }}
         gl={{ alpha: true }}
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
-        
-        {/* We wrap all the 3D content in a single group with a ref */}
-        <group ref={contentRef}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={0.5} />
-
-          <Suspense fallback={null}>
-            <InteractiveLogo onEnter={handleEnter} />
-            <SpectreModel />
-          </Suspense>
-
-          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-        </group>
-
-        <EffectComposer>
-          <Bloom 
-            intensity={0.7}
-            luminanceThreshold={0.1}
-            luminanceSmoothing={0.2}
-            mipmapBlur
-          />
-        </EffectComposer>
+        ...3D content...
       </Canvas>
+      */}
     </div>
   );
 }

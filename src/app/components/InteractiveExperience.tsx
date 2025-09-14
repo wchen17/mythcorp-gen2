@@ -110,13 +110,12 @@ function FloatingLogo() {
   );
 }
 
-// --- Main Interactive Experience Component ---
+// --- Main Interactive Experience Component (SIMPLIFIED FOR DEBUG) ---
 export function InteractiveExperience({ onBack }: { onBack: () => void }) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleButtonClick = (option: string) => {
     setSelectedOption(option);
-    // Add haptic feedback or sound here if needed
     console.log(`Selected: ${option}`);
   };
 
@@ -152,66 +151,116 @@ export function InteractiveExperience({ onBack }: { onBack: () => void }) {
         }}
       />
 
-      <Canvas
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 3 }}
-        gl={{ alpha: true }}
-      >
-        <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
+      {/* Simplified HTML-based interface */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 3,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        fontFamily: 'monospace'
+      }}>
         
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[10, 10, 5]} intensity={0.8} />
+        {/* Floating Logo */}
+        <h1 style={{
+          fontSize: '3rem',
+          color: '#00ffff',
+          textShadow: '0 0 20px #00ffff',
+          marginBottom: '3rem',
+          animation: 'pulse 2s infinite'
+        }}>
+          MYTHCORP
+        </h1>
 
-        <Suspense fallback={null}>
-          <FloatingLogo />
-          
-          {/* Interactive Buttons */}
-          <InteractiveButton
-            text="ENTER MATRIX"
-            position={[-2, -1, 0]}
+        {/* Interactive Buttons Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '2rem',
+          marginBottom: '2rem'
+        }}>
+          <button
             onClick={() => handleButtonClick('matrix')}
-            color="#00ff00"
-          />
+            style={{
+              padding: '1rem 2rem',
+              background: selectedOption === 'matrix' ? '#00ff00' : 'rgba(0,255,0,0.2)',
+              border: '2px solid #00ff00',
+              color: selectedOption === 'matrix' ? '#000' : '#00ff00',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          >
+            ENTER MATRIX
+          </button>
           
-          <InteractiveButton
-            text="NEURAL LINK"
-            position={[2, -1, 0]}
+          <button
             onClick={() => handleButtonClick('neural')}
-            color="#ff00ff"
-          />
+            style={{
+              padding: '1rem 2rem',
+              background: selectedOption === 'neural' ? '#ff00ff' : 'rgba(255,0,255,0.2)',
+              border: '2px solid #ff00ff',
+              color: selectedOption === 'neural' ? '#000' : '#ff00ff',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          >
+            NEURAL LINK
+          </button>
           
-          <InteractiveButton
-            text="CYBER SPACE"
-            position={[-2, -2.5, 0]}
+          <button
             onClick={() => handleButtonClick('cyber')}
-            color="#ffff00"
-          />
+            style={{
+              padding: '1rem 2rem',
+              background: selectedOption === 'cyber' ? '#ffff00' : 'rgba(255,255,0,0.2)',
+              border: '2px solid #ffff00',
+              color: selectedOption === 'cyber' ? '#000' : '#ffff00',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          >
+            CYBER SPACE
+          </button>
           
-          <InteractiveButton
-            text="QUANTUM REALM"
-            position={[2, -2.5, 0]}
+          <button
             onClick={() => handleButtonClick('quantum')}
-            color="#ff0080"
-          />
-          
-          <InteractiveButton
-            text="BACK TO MENU"
-            position={[0, -4, 0]}
-            onClick={onBack}
-            color="#666666"
-          />
-        </Suspense>
+            style={{
+              padding: '1rem 2rem',
+              background: selectedOption === 'quantum' ? '#ff0080' : 'rgba(255,0,128,0.2)',
+              border: '2px solid #ff0080',
+              color: selectedOption === 'quantum' ? '#000' : '#ff0080',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          >
+            QUANTUM REALM
+          </button>
+        </div>
 
-        <Stars radius={100} depth={50} count={3000} factor={3} saturation={0} fade speed={0.5} />
-
-        <EffectComposer>
-          <Bloom 
-            intensity={0.5}
-            luminanceThreshold={0.1}
-            luminanceSmoothing={0.2}
-            mipmapBlur
-          />
-        </EffectComposer>
-      </Canvas>
+        <button
+          onClick={onBack}
+          style={{
+            padding: '0.8rem 1.5rem',
+            background: 'rgba(102,102,102,0.2)',
+            border: '2px solid #666666',
+            color: '#666666',
+            fontSize: '1rem',
+            cursor: 'pointer',
+            transition: 'all 0.3s'
+          }}
+        >
+          BACK TO MENU
+        </button>
+      </div>
 
       {/* Status Display */}
       {selectedOption && (
@@ -232,6 +281,13 @@ export function InteractiveExperience({ onBack }: { onBack: () => void }) {
           <div>Ready for initialization...</div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+      `}</style>
     </div>
   );
 }
