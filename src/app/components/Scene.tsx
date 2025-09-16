@@ -109,12 +109,12 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
           100% { background-position: 100% 50%; }
         }
       `}</style>
-      <div style={{...menuStyle, background: `url('/city-bg.jpg') no-repeat center center / cover`, animation: 'panBackground 40s linear infinite alternate', position: 'absolute', top: 0, left: 0, zIndex: 1}}></div>
-      <div style={{...menuStyle, background: 'rgba(0,0,0,0.5)', position: 'relative', zIndex: 2}}>
-        <h1 style={{ fontSize: '3rem', letterSpacing: '0.5rem' }}>MYTHCORP</h1>
-        <button onClick={onStart} style={buttonStyle}>Enter Experience</button>
-        <button onClick={onSettings} style={{...buttonStyle, marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem'}}>Settings</button>
-        <button style={{...buttonStyle, marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem', opacity: 0.5, cursor: 'not-allowed'}}>More Choices (Coming Soon)</button>
+      <div style={{...menuStyle, background: `url('/chicagoskyline.jpg') no-repeat center center / cover`, animation: 'panBackground 40s linear infinite alternate', position: 'absolute', top: 0, left: 0, zIndex: 1}}></div>
+      <div style={{...menuStyle, background: 'rgba(0,0,0,0.7)', position: 'relative', zIndex: 2}}>
+        <h1 style={{ fontSize: '3rem', letterSpacing: '0.5rem' }}>NEXUS</h1>
+        <button onClick={onStart} style={buttonStyle}>Enter</button>
+        <button onClick={onSettings} style={{...buttonStyle, marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem'}}>Config</button>
+        <button style={{...buttonStyle, marginTop: '1rem', fontSize: '0.8rem', padding: '0.5rem 1rem', opacity: 0.5, cursor: 'not-allowed'}}>More...</button>
       </div>
     </div>
   )
@@ -131,6 +131,18 @@ export default function Scene() {
   const [appState, setAppState] = useState('menu');
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [settings, setSettings] = useState(DEFAULTS);
+  const [theme, setTheme] = useState<'dark' | 'cyan'>('dark');
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'cyan' : 'dark');
+  };
+
+  const themeColors = {
+    dark: { primary: '#ffffff', accent: '#00ffff', bg: 'rgba(0, 0, 0, 0.5)' },
+    cyan: { primary: '#00ffff', accent: '#ffffff', bg: 'rgba(0, 40, 40, 0.7)' }
+  };
+
+  const currentTheme = themeColors[theme];
 
   const randomizeAll = () => {
     setSettings({
@@ -164,35 +176,40 @@ export default function Scene() {
 
   return (
     <main className='h-screen w-screen bg-black'>
-      <div style={uiPanelStyle}>
-        <h3 style={{ marginTop: 0, borderBottom: '1px solid white', paddingBottom: '0.5rem' }}>Controls</h3>
+      <div style={{...uiPanelStyle, background: currentTheme.bg, color: currentTheme.primary}}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ margin: 0, borderBottom: `1px solid ${currentTheme.accent}`, paddingBottom: '0.5rem' }}>NEXUS</h3>
+          <button onClick={toggleTheme} style={{...buttonStyle, padding: '0.25rem 0.5rem', fontSize: '0.8rem', marginTop: 0, color: currentTheme.accent}}>
+            {theme === 'dark' ? '◐' : '◑'}
+          </button>
+        </div>
         
-        <div style={inputGroupStyle}> <label>Glow Color</label> <input type="text" value={settings.color} onChange={(e) => handleSettingChange('color', e.target.value)} /> </div>
-        <CombinedInput label="Glow Intensity" value={settings.glowIntensity} onChange={(e) => handleSettingChange('glowIntensity', parseFloat(e.target.value))} min={0} max={3} step={0.1}/>
+        <div style={inputGroupStyle}> <label>Glow Color</label> <input type="text" value={settings.color} onChange={(e) => handleSettingChange('color', e.target.value)} style={{ background: '#333', border: '1px solid #555', color: currentTheme.primary }} /> </div>
+        <CombinedInput label="Intensity" value={settings.glowIntensity} onChange={(e) => handleSettingChange('glowIntensity', parseFloat(e.target.value))} min={0} max={3} step={0.1}/>
         
         <div style={{...inputGroupStyle, borderTop: '1px solid #555', paddingTop: '1rem', marginTop: '1rem' }}>
           <input type="checkbox" checked={settings.showHelicopter} onChange={(e) => handleSettingChange('showHelicopter', e.target.checked)} />
-          <label>Show Mouse Tracker</label>
+          <label>Tracker</label>
         </div>
 
         <div style={{...inputGroupStyle, borderTop: '1px solid #555', paddingTop: '1rem' }}>
-            <label onClick={() => setShowAdvanced(!showAdvanced)} style={{cursor: 'pointer'}}> {showAdvanced ? '▼' : '►'} Advanced Settings </label>
+            <label onClick={() => setShowAdvanced(!showAdvanced)} style={{cursor: 'pointer'}}> {showAdvanced ? '▼' : '►'} Advanced </label>
             {showAdvanced && (
                 <div style={{paddingLeft: '1rem', marginTop: '0.5rem'}}>
-                    <CombinedInput label="Rotation Speed" value={settings.rotationSpeed} onChange={(e) => handleSettingChange('rotationSpeed', parseFloat(e.target.value))} min={0} max={2} step={0.1}/>
-                    <CombinedInput label="Position X" value={settings.position[0]} onChange={(e) => handlePositionChange(0, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    <CombinedInput label="Position Y" value={settings.position[1]} onChange={(e) => handlePositionChange(1, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    <CombinedInput label="Position Z" value={settings.position[2]} onChange={(e) => handlePositionChange(2, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    <h4 style={{marginBottom: '0.5rem', marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1rem'}}>Tracker Settings</h4>
-                    <CombinedInput label="Tracker Size" value={settings.heliScale} onChange={(e) => handleSettingChange('heliScale', parseFloat(e.target.value))} min={0.5} max={5} step={0.1}/>
-                    <CombinedInput label="Tracker Smoothness" value={settings.heliSmoothness} onChange={(e) => handleSettingChange('heliSmoothness', parseFloat(e.target.value))} min={0.01} max={0.2} step={0.01}/>
+                    <CombinedInput label="Speed" value={settings.rotationSpeed} onChange={(e) => handleSettingChange('rotationSpeed', parseFloat(e.target.value))} min={0} max={2} step={0.1}/>
+                    <CombinedInput label="X" value={settings.position[0]} onChange={(e) => handlePositionChange(0, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <CombinedInput label="Y" value={settings.position[1]} onChange={(e) => handlePositionChange(1, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <CombinedInput label="Z" value={settings.position[2]} onChange={(e) => handlePositionChange(2, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
+                    <h4 style={{marginBottom: '0.5rem', marginTop: '1rem', borderTop: '1px solid #333', paddingTop: '1rem'}}>Tracker</h4>
+                    <CombinedInput label="Size" value={settings.heliScale} onChange={(e) => handleSettingChange('heliScale', parseFloat(e.target.value))} min={0.5} max={5} step={0.1}/>
+                    <CombinedInput label="Smooth" value={settings.heliSmoothness} onChange={(e) => handleSettingChange('heliSmoothness', parseFloat(e.target.value))} min={0.01} max={0.2} step={0.01}/>
                 </div>
             )}
         </div>
 
-        <button onClick={randomizeAll} style={{...buttonStyle, width: '100%', marginTop: '1rem', padding: '0.5rem'}}>Randomize All</button>
-        <button onClick={resetToDefaults} style={{...buttonStyle, width: '100%', marginTop: '0.5rem', padding: '0.5rem'}}>Reset to Defaults</button>
-        <button onClick={() => setAppState('menu')} style={{...buttonStyle, width: '100%', marginTop: '1rem', background: '#333', padding: '0.5rem' }}>Back to Menu</button>
+        <button onClick={randomizeAll} style={{...buttonStyle, width: '100%', marginTop: '1rem', padding: '0.5rem'}}>Randomize</button>
+        <button onClick={resetToDefaults} style={{...buttonStyle, width: '100%', marginTop: '0.5rem', padding: '0.5rem'}}>Reset</button>
+        <button onClick={() => setAppState('menu')} style={{...buttonStyle, width: '100%', marginTop: '1rem', background: '#333', padding: '0.5rem' }}>Menu</button>
       </div>
 
       <Canvas>

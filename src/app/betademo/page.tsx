@@ -23,45 +23,40 @@ const InteractiveExperience = dynamic(
 );
 
 /**
- * Beta Demo Page - The interactive 3D experience with the rotating spectre model
- * This page contains the main interactive experience with the 3D scene and UI controls
+ * NEXUS - Interactive experience
  */
 export default function BetaDemoPage() {
-  const handleBackToHome = () => {
-    // Navigation handled by Link component below
-  };
-
   return (
     <main className="h-screen w-screen bg-black relative">
-      {/* Navigation Back to Home */}
+      {/* Navigation */}
       <div className="absolute top-4 left-4 z-50">
         <Link 
           href="/"
           className="bg-gray-800/50 hover:bg-gray-700/50 border border-gray-600 text-gray-300 hover:text-white px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-sm"
         >
-          ← Back to Home
+          ← Return
         </Link>
       </div>
 
-      {/* Page Title Overlay */}
+      {/* Status */}
       <div className="absolute top-4 right-4 z-50">
         <div className="bg-black/50 border border-cyan-400/30 text-cyan-400 px-4 py-2 rounded-md backdrop-blur-sm">
-          <div className="text-sm font-mono">BETA EXPERIENCE</div>
+          <div className="text-sm font-mono">ACTIVE</div>
         </div>
       </div>
 
-      {/* Main Interactive Experience */}
+      {/* Experience */}
       <Suspense fallback={
         <div className="flex items-center justify-center h-screen bg-black text-cyan-400">
           <div className="text-center">
-            <div className="text-6xl mb-6">🌟</div>
-            <div className="text-3xl mb-4 font-mono">MYTHCORP</div>
-            <div className="text-lg mb-2">Loading Beta Experience...</div>
-            <div className="text-sm opacity-70">Please wait while we prepare the experience</div>
+            <div className="text-6xl mb-6">⚡</div>
+            <div className="text-3xl mb-4 font-mono">NEXUS</div>
+            <div className="text-lg mb-2">Initializing...</div>
+            <div className="text-sm opacity-70">Stand by</div>
           </div>
         </div>
       }>
-        <InteractiveExperience onBack={handleBackToHome} />
+        <InteractiveExperience onBack={() => {}} />
       </Suspense>
     </main>
   );
