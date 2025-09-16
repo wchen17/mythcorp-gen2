@@ -1,293 +1,236 @@
 // src/app/components/InteractiveExperience.tsx
 'use client';
 
-import React, { useRef, Suspense, useState, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Text3D, Center, PerspectiveCamera, Stars, useGLTF } from '@react-three/drei';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { Group } from 'three';
-import gsap from 'gsap';
+import React, { useState, useEffect, Suspense } from 'react';
+import { Enhanced3DScene } from './Enhanced3DScene';
 
-// --- Interactive Button Component ---
-function InteractiveButton({ 
-  text, 
-  position, 
-  onClick, 
-  color = "#00ffff" 
-}: { 
-  text: string; 
-  position: [number, number, number]; 
-  onClick: () => void;
-  color?: string;
-}) {
-  const buttonRef = useRef<Group>(null!);
-  const [hovered, setHovered] = useState(false);
+/**
+ * Control Panel Interface - Advanced UI for system interaction
+ */
+interface ControlPanelProps {
+  selectedModule: string | null;
+  onModuleSelect: (module: string) => void;
+  systemStatus: string;
+}
 
-  useFrame((state) => {
-    if (buttonRef.current) {
-      // Floating animation
-      buttonRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 2 + position[0]) * 0.05;
-      
-      // Scale on hover
-      const targetScale = hovered ? 1.1 : 1;
-      buttonRef.current.scale.lerp({ x: targetScale, y: targetScale, z: targetScale }, 0.1);
-    }
-  });
+function ControlPanel({ selectedModule, onModuleSelect, systemStatus }: ControlPanelProps) {
+  const [glitchCounter, setGlitchCounter] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitchCounter(prev => prev + 1);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const modules = [
+    { id: 'neural', name: 'NEURAL LINK', color: 'from-purple-500 to-pink-500', status: 'ACTIVE' },
+    { id: 'quantum', name: 'QUANTUM CORE', color: 'from-cyan-500 to-blue-500', status: 'STANDBY' },
+    { id: 'matrix', name: 'MATRIX ACCESS', color: 'from-green-500 to-emerald-500', status: 'READY' },
+    { id: 'cyber', name: 'CYBER SPACE', color: 'from-yellow-500 to-orange-500', status: 'ONLINE' }
+  ];
 
   return (
-    <group
-      ref={buttonRef}
-      position={position}
-      onClick={onClick}
-      onPointerEnter={() => {
-        setHovered(true);
-        document.body.style.cursor = 'pointer';
-      }}
-      onPointerLeave={() => {
-        setHovered(false);
-        document.body.style.cursor = 'auto';
-      }}
-    >
-      <mesh>
-        <boxGeometry args={[3, 0.8, 0.2]} />
-        <meshBasicMaterial 
-          color={hovered ? "#ffffff" : color} 
-          transparent 
-          opacity={hovered ? 0.9 : 0.7}
-          toneMapped={false}
-        />
-      </mesh>
-      <Center>
-        <Text3D
-          font="/fonts/Inter_Bold.json"
-          size={0.3}
-          height={0.02}
-          curveSegments={8}
-          bevelEnabled
-          bevelThickness={0.005}
-          bevelSize={0.005}
-          bevelSegments={2}
-        >
-          {text}
-          <meshBasicMaterial color={hovered ? "#000000" : color} toneMapped={false} />
-        </Text3D>
-      </Center>
-      {/* Glow effect */}
-      <pointLight color={color} intensity={hovered ? 1.5 : 0.8} distance={5} />
-    </group>
+    <div className="absolute top-4 left-4 z-40 bg-black/80 border border-cyan-400/30 rounded-lg p-6 backdrop-blur-md min-w-[300px]">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="text-cyan-400 font-mono text-lg">CONTROL PANEL</div>
+        <div className={`w-3 h-3 rounded-full ${systemStatus === 'online' ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+      </div>
+
+      {/* System Status */}
+      <div className="mb-6 p-3 bg-gray-900/50 rounded border border-gray-700">
+        <div className="text-xs text-gray-400 mb-1">SYSTEM STATUS</div>
+        <div className="text-green-400 font-mono">{systemStatus.toUpperCase()}</div>
+        <div className="text-xs text-gray-500 mt-1">
+          CYCLES: {glitchCounter.toString().padStart(6, '0')}
+        </div>
+      </div>
+
+      {/* Module Grid */}
+      <div className="space-y-2 mb-4">
+        <div className="text-xs text-gray-400 mb-3">AVAILABLE MODULES</div>
+        {modules.map((module) => (
+          <button
+            key={module.id}
+            onClick={() => onModuleSelect(module.id)}
+            className={`w-full p-3 rounded border transition-all duration-300 font-mono text-sm
+              ${selectedModule === module.id 
+                ? 'border-white bg-white/10 text-white' 
+                : 'border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white hover:bg-gray-800/50'
+              }`}
+          >
+            <div className="flex justify-between items-center">
+              <span>{module.name}</span>
+              <span className={`text-xs px-2 py-1 rounded ${
+                module.status === 'ACTIVE' ? 'bg-green-900/50 text-green-400' :
+                module.status === 'READY' ? 'bg-cyan-900/50 text-cyan-400' :
+                module.status === 'ONLINE' ? 'bg-yellow-900/50 text-yellow-400' :
+                'bg-gray-900/50 text-gray-400'
+              }`}>
+                {module.status}
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Selected Module Info */}
+      {selectedModule && (
+        <div className="p-3 bg-blue-900/20 border border-blue-500/30 rounded">
+          <div className="text-blue-400 text-sm font-mono mb-2">MODULE: {selectedModule.toUpperCase()}</div>
+          <div className="text-xs text-gray-300">
+            Ready for initialization. All systems nominal.
+          </div>
+          <div className="mt-2 h-1 bg-gray-800 rounded overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 animate-pulse"></div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
-// --- Floating Logo Component ---
-function FloatingLogo() {
-  const logoRef = useRef<Group>(null!);
+/**
+ * Data Stream Overlay - Shows flowing data streams
+ */
+function DataStreamOverlay() {
+  const [streams, setStreams] = useState<string[]>([]);
 
-  useFrame((state) => {
-    if (logoRef.current) {
-      logoRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
-      logoRef.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.3;
-    }
-  });
+  useEffect(() => {
+    const generateStream = () => {
+      const chars = '01ABCFabcdef';
+      return Array.from({ length: 40 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    };
+
+    const interval = setInterval(() => {
+      setStreams(prev => {
+        const newStreams = [...prev.slice(-4), generateStream()];
+        return newStreams;
+      });
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <group ref={logoRef} position={[0, 2, -2]}>
-      <Center>
-        <Text3D
-          font="/fonts/Inter_Bold.json"
-          size={0.8}
-          height={0.03}
-          curveSegments={8}
-          bevelEnabled
-          bevelThickness={0.005}
-          bevelSize={0.005}
-          bevelSegments={2}
-        >
-          MYTHCORP
-          <meshBasicMaterial color="#00ffff" toneMapped={false} transparent opacity={0.8} />
-        </Text3D>
-      </Center>
-    </group>
+    <div className="absolute top-0 right-0 bottom-0 w-64 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/90"></div>
+      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-2 font-mono text-xs">
+        {streams.map((stream, index) => (
+          <div
+            key={index}
+            className="text-green-400/60 opacity-70 animate-pulse"
+            style={{
+              animationDelay: `${index * 0.1}s`,
+              animationDuration: '2s'
+            }}
+          >
+            {stream}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
-// --- Main Interactive Experience Component (SIMPLIFIED FOR DEBUG) ---
-export function InteractiveExperience({ onBack }: { onBack: () => void }) {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+/**
+ * Enhanced Interactive Experience - The main beta demo component
+ * Features advanced 3D scene, control panel, and fluid animations
+ */
+interface InteractiveExperienceProps {
+  onBack: () => void;
+}
 
-  const handleButtonClick = (option: string) => {
-    setSelectedOption(option);
-    console.log(`Selected: ${option}`);
+export function InteractiveExperience({ onBack }: InteractiveExperienceProps) {
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [systemStatus] = useState('online');
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Simulate system initialization
+    const timer = setTimeout(() => {
+      setIsInitialized(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleModuleSelect = (moduleId: string) => {
+    setSelectedModule(moduleId);
+    // Add haptic feedback or sound effects here in the future
   };
 
+  if (!isInitialized) {
+    return (
+      <div className="h-full w-full bg-black flex items-center justify-center">
+        <div className="text-center text-cyan-400">
+          <div className="text-6xl mb-6 animate-spin">⭐</div>
+          <div className="text-2xl mb-4 font-mono">MYTHCORP</div>
+          <div className="text-lg mb-2">Initializing Systems...</div>
+          <div className="w-64 h-1 bg-gray-800 rounded overflow-hidden mx-auto">
+            <div className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', background: '#000' }}>
-      
-      {/* Blurred Chicago Skyline Background */}
+    <div className="relative h-full w-full bg-black overflow-hidden">
+      {/* Background with Chicago skyline */}
       <div
+        className="absolute inset-0 opacity-20"
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundImage: `url(/chicagoskyline.jpg)`,
+          backgroundImage: 'url(/chicagoskyline.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           filter: 'blur(12px) grayscale(0.8) brightness(0.3)',
-          zIndex: 1,
         }}
       />
 
-      {/* Overlay for better text readability */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,50,50,0.3))',
-          zIndex: 2,
-        }}
-      />
-
-      {/* Simplified HTML-based interface */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 3,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontFamily: 'monospace'
-      }}>
-        
-        {/* Floating Logo */}
-        <h1 style={{
-          fontSize: '3rem',
-          color: '#00ffff',
-          textShadow: '0 0 20px #00ffff',
-          marginBottom: '3rem',
-          animation: 'pulse 2s infinite'
-        }}>
-          MYTHCORP
-        </h1>
-
-        {/* Interactive Buttons Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
-          <button
-            onClick={() => handleButtonClick('matrix')}
-            style={{
-              padding: '1rem 2rem',
-              background: selectedOption === 'matrix' ? '#00ff00' : 'rgba(0,255,0,0.2)',
-              border: '2px solid #00ff00',
-              color: selectedOption === 'matrix' ? '#000' : '#00ff00',
-              fontSize: '1.2rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            ENTER MATRIX
-          </button>
-          
-          <button
-            onClick={() => handleButtonClick('neural')}
-            style={{
-              padding: '1rem 2rem',
-              background: selectedOption === 'neural' ? '#ff00ff' : 'rgba(255,0,255,0.2)',
-              border: '2px solid #ff00ff',
-              color: selectedOption === 'neural' ? '#000' : '#ff00ff',
-              fontSize: '1.2rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            NEURAL LINK
-          </button>
-          
-          <button
-            onClick={() => handleButtonClick('cyber')}
-            style={{
-              padding: '1rem 2rem',
-              background: selectedOption === 'cyber' ? '#ffff00' : 'rgba(255,255,0,0.2)',
-              border: '2px solid #ffff00',
-              color: selectedOption === 'cyber' ? '#000' : '#ffff00',
-              fontSize: '1.2rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            CYBER SPACE
-          </button>
-          
-          <button
-            onClick={() => handleButtonClick('quantum')}
-            style={{
-              padding: '1rem 2rem',
-              background: selectedOption === 'quantum' ? '#ff0080' : 'rgba(255,0,128,0.2)',
-              border: '2px solid #ff0080',
-              color: selectedOption === 'quantum' ? '#000' : '#ff0080',
-              fontSize: '1.2rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            QUANTUM REALM
-          </button>
-        </div>
-
-        <button
-          onClick={onBack}
-          style={{
-            padding: '0.8rem 1.5rem',
-            background: 'rgba(102,102,102,0.2)',
-            border: '2px solid #666666',
-            color: '#666666',
-            fontSize: '1rem',
-            cursor: 'pointer',
-            transition: 'all 0.3s'
-          }}
-        >
-          BACK TO MENU
-        </button>
+      {/* 3D Scene */}
+      <div className="absolute inset-0">
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-full text-cyan-400">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🌟</div>
+              <div className="text-xl">Loading 3D Environment...</div>
+            </div>
+          </div>
+        }>
+          <Enhanced3DScene />
+        </Suspense>
       </div>
 
-      {/* Status Display */}
-      {selectedOption && (
-        <div style={{
-          position: 'absolute',
-          top: '20px',
-          right: '20px',
-          zIndex: 4,
-          background: 'rgba(0,0,0,0.8)',
-          padding: '1rem',
-          borderRadius: '8px',
-          color: '#00ffff',
-          fontFamily: 'monospace',
-          border: '1px solid #00ffff'
-        }}>
-          <div>Status: ACTIVE</div>
-          <div>Module: {selectedOption.toUpperCase()}</div>
-          <div>Ready for initialization...</div>
-        </div>
-      )}
+      {/* Control Panel */}
+      <ControlPanel
+        selectedModule={selectedModule}
+        onModuleSelect={handleModuleSelect}
+        systemStatus={systemStatus}
+      />
 
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-      `}</style>
+      {/* Data Stream Overlay */}
+      <DataStreamOverlay />
+
+      {/* Bottom Status Bar */}
+      <div className="absolute bottom-4 left-4 right-4 z-40">
+        <div className="bg-black/80 border border-gray-700 rounded-lg p-4 backdrop-blur-md">
+          <div className="flex items-center justify-between text-sm font-mono">
+            <div className="flex items-center space-x-6">
+              <div className="text-gray-400">
+                STATUS: <span className="text-green-400">OPERATIONAL</span>
+              </div>
+              <div className="text-gray-400">
+                MODULE: <span className="text-cyan-400">{selectedModule?.toUpperCase() || 'NONE'}</span>
+              </div>
+            </div>
+            <div className="text-gray-500">
+              MYTHCORP BETA v2.1.0
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
