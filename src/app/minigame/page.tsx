@@ -5,33 +5,79 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 /**
- * Minigame Page - Placeholder for future gaming content
- * This page will eventually contain interactive mini-games
+ * Incremental Clicker Game - Simple but addictive
  */
 export default function MinigamePage() {
-  const [dots, setDots] = useState('');
+  const [points, setPoints] = useState(0);
+  const [clickPower, setClickPower] = useState(1);
+  const [autoClickers, setAutoClickers] = useState(0);
+  const [theme, setTheme] = useState<'dark' | 'neon'>('dark');
 
-  // Animated loading dots effect
+  // Auto-clicker effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.');
-    }, 500);
+    if (autoClickers > 0) {
+      const interval = setInterval(() => {
+        setPoints(prev => prev + autoClickers);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [autoClickers]);
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleClick = () => {
+    setPoints(prev => prev + clickPower);
+  };
+
+  const buyClickPower = () => {
+    const cost = clickPower * 10;
+    if (points >= cost) {
+      setPoints(prev => prev - cost);
+      setClickPower(prev => prev + 1);
+    }
+  };
+
+  const buyAutoClicker = () => {
+    const cost = (autoClickers + 1) * 50;
+    if (points >= cost) {
+      setPoints(prev => prev - cost);
+      setAutoClickers(prev => prev + 1);
+    }
+  };
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'neon' : 'dark');
+  };
+
+  const themeStyles = {
+    dark: {
+      bg: 'bg-black',
+      text: 'text-white',
+      accent: 'text-cyan-400',
+      button: 'bg-gray-800 hover:bg-gray-700 border-gray-600',
+      clickBtn: 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
+    },
+    neon: {
+      bg: 'bg-gray-900',
+      text: 'text-green-300',
+      accent: 'text-green-400',
+      button: 'bg-green-900 hover:bg-green-800 border-green-500',
+      clickBtn: 'bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600'
+    }
+  };
+
+  const currentTheme = themeStyles[theme];
 
   return (
-    <main className="h-screen w-screen bg-black relative overflow-hidden">
-      {/* Animated background grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="grid grid-cols-12 gap-px h-full">
-          {Array.from({ length: 144 }).map((_, i) => (
+    <main className={`h-screen w-screen ${currentTheme.bg} relative overflow-hidden`}>
+      {/* Animated background */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="grid grid-cols-8 gap-px h-full">
+          {Array.from({ length: 64 }).map((_, i) => (
             <div 
               key={i} 
-              className="bg-cyan-400/10 animate-pulse" 
+              className={`${currentTheme.accent.replace('text-', 'bg-')}/20 animate-pulse`}
               style={{ 
-                animationDelay: `${(i % 12) * 0.1}s`,
-                animationDuration: '2s'
+                animationDelay: `${(i % 8) * 0.2}s`,
+                animationDuration: '3s'
               }}
             />
           ))}
@@ -39,63 +85,82 @@ export default function MinigamePage() {
       </div>
 
       {/* Navigation */}
-      <div className="absolute top-4 left-4 z-50">
+      <div className="absolute top-4 left-4 z-50 flex gap-2">
         <Link 
           href="/"
-          className="bg-gray-800/50 hover:bg-gray-700/50 border border-gray-600 text-gray-300 hover:text-white px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-sm"
+          className={`${currentTheme.button} ${currentTheme.text} border px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-sm`}
         >
-          ← Back to Home
+          ← Return
         </Link>
+        <button
+          onClick={toggleTheme}
+          className={`${currentTheme.button} ${currentTheme.accent} border px-4 py-2 rounded-md transition-all duration-300 backdrop-blur-sm`}
+        >
+          {theme === 'dark' ? '⚡' : '🔮'} Theme
+        </button>
       </div>
 
-      {/* Main Content */}
+      {/* Game UI */}
       <div className="flex items-center justify-center h-full">
-        <div className="text-center max-w-2xl px-8">
-          {/* Main Title */}
-          <div className="mb-12">
-            <h1 className="text-6xl md:text-8xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 mb-4">
-              MINIGAMES
-            </h1>
-            <div className="h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 rounded-full mx-auto w-3/4"></div>
-          </div>
+        <div className="text-center max-w-4xl px-8">
+          {/* Title */}
+          <h1 className={`text-5xl md:text-7xl font-mono font-bold ${currentTheme.accent} mb-8`}>
+            NEXUS CLICKER
+          </h1>
 
-          {/* Coming Soon Message */}
-          <div className="bg-black/50 border border-purple-500/30 rounded-lg p-8 backdrop-blur-sm">
-            <div className="text-2xl md:text-3xl text-purple-400 font-mono mb-4">
-              Coming Soon{dots}
+          {/* Stats Display */}
+          <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-black/50 border border-gray-600 rounded-lg p-4 backdrop-blur-sm">
+              <div className={`text-2xl font-mono ${currentTheme.accent}`}>{points.toLocaleString()}</div>
+              <div className={`text-sm ${currentTheme.text} opacity-70`}>Points</div>
             </div>
-            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-              Prepare for an immersive gaming experience that will challenge your mind and reflexes. 
-              Our development team is crafting something extraordinary.
-            </p>
-            
-            {/* Feature Preview */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="bg-purple-900/20 border border-purple-500/20 rounded p-4">
-                <div className="text-purple-400 font-semibold mb-2">Neural Puzzles</div>
-                <p className="text-gray-400">Mind-bending challenges</p>
-              </div>
-              <div className="bg-cyan-900/20 border border-cyan-500/20 rounded p-4">
-                <div className="text-cyan-400 font-semibold mb-2">Cyber Racing</div>
-                <p className="text-gray-400">High-speed digital tracks</p>
-              </div>
-              <div className="bg-pink-900/20 border border-pink-500/20 rounded p-4">
-                <div className="text-pink-400 font-semibold mb-2">Reality Shifts</div>
-                <p className="text-gray-400">Dimension-hopping adventures</p>
-              </div>
+            <div className="bg-black/50 border border-gray-600 rounded-lg p-4 backdrop-blur-sm">
+              <div className={`text-2xl font-mono ${currentTheme.accent}`}>{clickPower}</div>
+              <div className={`text-sm ${currentTheme.text} opacity-70`}>Click Power</div>
+            </div>
+            <div className="bg-black/50 border border-gray-600 rounded-lg p-4 backdrop-blur-sm">
+              <div className={`text-2xl font-mono ${currentTheme.accent}`}>{autoClickers}</div>
+              <div className={`text-sm ${currentTheme.text} opacity-70`}>Auto/Sec</div>
             </div>
           </div>
 
-          {/* Status Indicator */}
-          <div className="mt-8 flex items-center justify-center space-x-2 text-yellow-400">
-            <div className="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
-            <span className="text-sm font-mono">Development in Progress</span>
+          {/* Main Click Button */}
+          <div className="mb-8">
+            <button
+              onClick={handleClick}
+              className={`${currentTheme.clickBtn} ${currentTheme.text} text-4xl font-mono px-12 py-8 rounded-full transition-all duration-150 hover:scale-105 active:scale-95 shadow-lg`}
+            >
+              CLICK
+            </button>
+          </div>
+
+          {/* Upgrades */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              onClick={buyClickPower}
+              disabled={points < clickPower * 10}
+              className={`${currentTheme.button} ${currentTheme.text} border px-6 py-4 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              <div className="text-lg font-mono">Power Up</div>
+              <div className="text-sm opacity-70">Cost: {(clickPower * 10).toLocaleString()}</div>
+            </button>
+            <button
+              onClick={buyAutoClicker}
+              disabled={points < (autoClickers + 1) * 50}
+              className={`${currentTheme.button} ${currentTheme.text} border px-6 py-4 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              <div className="text-lg font-mono">Auto Clicker</div>
+              <div className="text-sm opacity-70">Cost: {((autoClickers + 1) * 50).toLocaleString()}</div>
+            </button>
+          </div>
+
+          {/* Progress indicator */}
+          <div className={`mt-8 flex items-center justify-center space-x-2 ${currentTheme.accent}`}>
+            <div className={`w-2 h-2 ${currentTheme.accent.replace('text-', 'bg-')} rounded-full animate-ping`}></div>
+            <span className="text-sm font-mono">SYSTEM ACTIVE</span>
           </div>
         </div>
       </div>
-
-      {/* Bottom decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
     </main>
   );
 }
