@@ -96,22 +96,43 @@ export default function HomePage() {
         </div>
 
         {/* Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
           
+          {/* MYTHCORP Interactive Experience */}
+          <Link href="/mythcorp">
+            <div className="group bg-black/50 border border-cyan-400/30 hover:border-cyan-400/60 rounded-lg p-6 backdrop-blur-sm transition-all duration-300 hover:bg-cyan-400/5 cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  🏢
+                </div>
+                <h2 className="text-xl font-mono text-cyan-400 mb-3 group-hover:text-cyan-300">
+                  MYTHCORP
+                </h2>
+                <p className="text-gray-300 mb-4 leading-relaxed text-sm">
+                  Interactive 3D experience with navigation
+                </p>
+                <div className="inline-flex items-center text-cyan-400 group-hover:text-cyan-300 font-mono text-xs">
+                  Explore 
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
           {/* Mysterious Portal */}
           <Link href="/mysterious">
-            <div className="group bg-black/50 border border-cyan-400/30 hover:border-cyan-400/60 rounded-lg p-8 backdrop-blur-sm transition-all duration-300 hover:bg-cyan-400/5 cursor-pointer">
+            <div className="group bg-black/50 border border-green-400/30 hover:border-green-400/60 rounded-lg p-6 backdrop-blur-sm transition-all duration-300 hover:bg-green-400/5 cursor-pointer">
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   ⚡
                 </div>
-                <h2 className="text-2xl font-mono text-cyan-400 mb-4 group-hover:text-cyan-300">
+                <h2 className="text-xl font-mono text-green-400 mb-3 group-hover:text-green-300">
                   PORTAL
                 </h2>
-                <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                   Interactive experience awaits
                 </p>
-                <div className="inline-flex items-center text-cyan-400 group-hover:text-cyan-300 font-mono text-sm">
+                <div className="inline-flex items-center text-green-400 group-hover:text-green-300 font-mono text-xs">
                   Enter 
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
@@ -121,18 +142,18 @@ export default function HomePage() {
 
           {/* Experience */}
           <Link href="/betademo">
-            <div className="group bg-black/50 border border-purple-500/30 hover:border-purple-500/60 rounded-lg p-8 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500/5 cursor-pointer">
+            <div className="group bg-black/50 border border-purple-500/30 hover:border-purple-500/60 rounded-lg p-6 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500/5 cursor-pointer">
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   🌀
                 </div>
-                <h2 className="text-2xl font-mono text-purple-400 mb-4 group-hover:text-purple-300">
+                <h2 className="text-xl font-mono text-purple-400 mb-3 group-hover:text-purple-300">
                   NEXUS
                 </h2>
-                <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                   3D environment simulation
                 </p>
-                <div className="inline-flex items-center text-purple-400 group-hover:text-purple-300 font-mono text-sm">
+                <div className="inline-flex items-center text-purple-400 group-hover:text-purple-300 font-mono text-xs">
                   Access 
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
@@ -142,18 +163,18 @@ export default function HomePage() {
 
           {/* Games */}
           <Link href="/minigame">
-            <div className="group bg-black/50 border border-pink-500/30 hover:border-pink-500/60 rounded-lg p-8 backdrop-blur-sm transition-all duration-300 hover:bg-pink-500/5 cursor-pointer">
+            <div className="group bg-black/50 border border-pink-500/30 hover:border-pink-500/60 rounded-lg p-6 backdrop-blur-sm transition-all duration-300 hover:bg-pink-500/5 cursor-pointer">
               <div className="text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   🎯
                 </div>
-                <h2 className="text-2xl font-mono text-pink-400 mb-4 group-hover:text-pink-300">
+                <h2 className="text-xl font-mono text-pink-400 mb-3 group-hover:text-pink-300">
                   GAMES
                 </h2>
-                <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                   Incremental progression system
                 </p>
-                <div className="inline-flex items-center text-pink-400 group-hover:text-pink-300 font-mono text-sm">
+                <div className="inline-flex items-center text-pink-400 group-hover:text-pink-300 font-mono text-xs">
                   Start 
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
