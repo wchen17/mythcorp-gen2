@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import { ThemeType, getTheme, toggleTheme as toggleThemeUtil } from '../lib/themes';
 
 /**
  * Mysterious Page - Interactive experience with Chicago skyline background
@@ -10,7 +11,7 @@ import { useState, useEffect, useRef } from 'react';
  */
 export default function MysteriousPage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [theme, setTheme] = useState<'dark' | 'cyan'>('dark');
+  const [theme, setTheme] = useState<ThemeType>('cool');
   const [glitchText, setGlitchText] = useState('');
   const backgroundRef = useRef<HTMLDivElement>(null);
 
@@ -39,28 +40,11 @@ export default function MysteriousPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'cyan' : 'dark');
+  const handleToggleTheme = () => {
+    setTheme(prev => toggleThemeUtil(prev));
   };
 
-  const themeColors = {
-    dark: {
-      primary: '#ffffff',
-      secondary: '#666666',
-      accent: '#00ffff',
-      bg: 'rgba(0,0,0,0.8)',
-      border: 'rgba(255,255,255,0.2)'
-    },
-    cyan: {
-      primary: '#00ffff',
-      secondary: '#004444',
-      accent: '#ffffff',
-      bg: 'rgba(0,40,40,0.8)',
-      border: 'rgba(0,255,255,0.3)'
-    }
-  };
-
-  const currentTheme = themeColors[theme];
+  const currentTheme = getTheme(theme);
 
   return (
     <main className="h-screen w-screen relative overflow-hidden">
@@ -72,7 +56,7 @@ export default function MysteriousPage() {
           backgroundImage: `url('/chicagoskyline.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: `${mousePos.x}% ${mousePos.y}%`,
-          filter: `blur(${theme === 'dark' ? '3px' : '1px'}) brightness(${theme === 'dark' ? '0.4' : '0.6'}) contrast(${theme === 'dark' ? '1.2' : '1.5'})`,
+          filter: `blur(${theme === 'cool' ? '3px' : '1px'}) brightness(${theme === 'cool' ? '0.4' : '0.6'}) contrast(${theme === 'cool' ? '1.2' : '1.5'})`,
           transform: `scale(${1.1 + mousePos.x * 0.0005}) rotate(${(mousePos.x - 50) * 0.02}deg)`,
         }}
       />
@@ -81,7 +65,7 @@ export default function MysteriousPage() {
       <div 
         className="absolute inset-0 opacity-20"
         style={{
-          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, ${currentTheme.accent}22 0%, transparent 50%)`,
+          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, ${currentTheme.primary}22 0%, transparent 50%)`,
         }}
       />
 
@@ -91,9 +75,9 @@ export default function MysteriousPage() {
           href="/"
           className="backdrop-blur-md border transition-all duration-300 px-4 py-2 rounded-md"
           style={{
-            background: currentTheme.bg,
+            background: currentTheme.background,
             borderColor: currentTheme.border,
-            color: currentTheme.primary,
+            color: currentTheme.text,
           }}
         >
           ← Return
@@ -103,15 +87,15 @@ export default function MysteriousPage() {
       {/* Theme Switcher */}
       <div className="absolute top-4 right-4 z-50">
         <button
-          onClick={toggleTheme}
+          onClick={handleToggleTheme}
           className="backdrop-blur-md border transition-all duration-300 px-4 py-2 rounded-md"
           style={{
-            background: currentTheme.bg,
+            background: currentTheme.background,
             borderColor: currentTheme.border,
-            color: currentTheme.accent,
+            color: currentTheme.primary,
           }}
         >
-          {theme === 'dark' ? '◐' : '◑'} Theme
+          {theme === 'cool' ? '◐' : '◑'} {currentTheme.name}
         </button>
       </div>
 
@@ -120,7 +104,7 @@ export default function MysteriousPage() {
         <div 
           className="text-center max-w-4xl px-8 backdrop-blur-lg border rounded-lg p-12 transition-all duration-500"
           style={{
-            background: currentTheme.bg,
+            background: currentTheme.background,
             borderColor: currentTheme.border,
             transform: `translateY(${mousePos.y * 0.1 - 5}px) translateX(${mousePos.x * 0.05 - 2.5}px)`,
           }}
@@ -130,8 +114,8 @@ export default function MysteriousPage() {
             <h1 
               className="text-7xl md:text-9xl font-mono font-bold mb-4 transition-all duration-300"
               style={{ 
-                color: currentTheme.accent,
-                textShadow: `0 0 20px ${currentTheme.accent}66`,
+                color: currentTheme.primary,
+                textShadow: `0 0 20px ${currentTheme.primary}66`,
                 filter: `blur(${Math.sin(Date.now() * 0.005) * 0.5 + 0.5}px)`,
               }}
             >
@@ -139,7 +123,7 @@ export default function MysteriousPage() {
             </h1>
             <div 
               className="text-lg font-mono tracking-widest"
-              style={{ color: currentTheme.secondary }}
+              style={{ color: currentTheme.textSecondary }}
             >
               {glitchText}
             </div>
@@ -151,25 +135,25 @@ export default function MysteriousPage() {
               href="/minigame"
               className="group border rounded-lg p-6 transition-all duration-300 hover:scale-105"
               style={{
-                background: `${currentTheme.bg}80`,
+                background: `${currentTheme.background}80`,
                 borderColor: currentTheme.border,
               }}
             >
               <div 
                 className="text-2xl mb-2 transition-colors duration-300"
-                style={{ color: currentTheme.accent }}
+                style={{ color: currentTheme.primary }}
               >
                 ⚡
               </div>
               <div 
                 className="text-lg font-mono mb-2"
-                style={{ color: currentTheme.primary }}
+                style={{ color: currentTheme.text }}
               >
                 GAMES
               </div>
               <div 
                 className="text-sm opacity-70"
-                style={{ color: currentTheme.secondary }}
+                style={{ color: currentTheme.textSecondary }}
               >
                 Enter the matrix
               </div>
@@ -179,25 +163,25 @@ export default function MysteriousPage() {
               href="/betademo"
               className="group border rounded-lg p-6 transition-all duration-300 hover:scale-105"
               style={{
-                background: `${currentTheme.bg}80`,
+                background: `${currentTheme.background}80`,
                 borderColor: currentTheme.border,
               }}
             >
               <div 
                 className="text-2xl mb-2 transition-colors duration-300"
-                style={{ color: currentTheme.accent }}
+                style={{ color: currentTheme.primary }}
               >
                 🌀
               </div>
               <div 
                 className="text-lg font-mono mb-2"
-                style={{ color: currentTheme.primary }}
+                style={{ color: currentTheme.text }}
               >
                 EXPERIENCE
               </div>
               <div 
                 className="text-sm opacity-70"
-                style={{ color: currentTheme.secondary }}
+                style={{ color: currentTheme.textSecondary }}
               >
                 Immerse yourself
               </div>
@@ -206,25 +190,25 @@ export default function MysteriousPage() {
             <div 
               className="border rounded-lg p-6 transition-all duration-300 cursor-not-allowed opacity-50"
               style={{
-                background: `${currentTheme.bg}80`,
+                background: `${currentTheme.background}80`,
                 borderColor: currentTheme.border,
               }}
             >
               <div 
                 className="text-2xl mb-2"
-                style={{ color: currentTheme.accent }}
+                style={{ color: currentTheme.primary }}
               >
                 🔮
               </div>
               <div 
                 className="text-lg font-mono mb-2"
-                style={{ color: currentTheme.primary }}
+                style={{ color: currentTheme.text }}
               >
                 UNKNOWN
               </div>
               <div 
                 className="text-sm opacity-70"
-                style={{ color: currentTheme.secondary }}
+                style={{ color: currentTheme.textSecondary }}
               >
                 Coming soon...
               </div>
@@ -234,11 +218,11 @@ export default function MysteriousPage() {
           {/* Status Indicator */}
           <div 
             className="flex items-center justify-center space-x-2"
-            style={{ color: currentTheme.accent }}
+            style={{ color: currentTheme.primary }}
           >
             <div 
               className="w-2 h-2 rounded-full animate-pulse"
-              style={{ backgroundColor: currentTheme.accent }}
+              style={{ backgroundColor: currentTheme.primary }}
             ></div>
             <span className="text-sm font-mono">SYSTEM ONLINE</span>
           </div>
@@ -252,7 +236,7 @@ export default function MysteriousPage() {
             key={i}
             className="absolute w-1 h-1 rounded-full animate-pulse"
             style={{
-              backgroundColor: currentTheme.accent,
+              backgroundColor: currentTheme.primary,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${i * 0.2}s`,
