@@ -91,7 +91,7 @@ export function NewLandingPage() {
           <h1 className="text-6xl md:text-8xl font-bold mb-4">
             <span className="text-green-400">DISCOVER YOUR</span>
             <br />
-            <span className="text-yellow-400">POTENTIAL</span>
+            <span className="text-yellow-400 font-extrabold underline underline-offset-4">POTENTIAL</span>
           </h1>
           
           {/* Horizontal Line */}
