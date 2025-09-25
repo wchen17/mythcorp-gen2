@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export function NewLandingPage() {
   const [isHovering, setIsHovering] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -26,76 +27,161 @@ export function NewLandingPage() {
       <header className="relative z-10 fixed top-0 left-0 right-0">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Left: Menu */}
-          <div className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className="w-full h-0.5 bg-white"></div>
-              <div className="w-full h-0.5 bg-white"></div>
-              <div className="w-full h-0.5 bg-white"></div>
+          <div className="relative">
+            <div 
+              className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+                <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+                <div className={`w-full h-0.5 bg-white transition-opacity duration-300 ${showMenu ? 'opacity-0' : ''}`}></div>
+                <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+              </div>
+              <span className="text-sm font-medium text-white tracking-wide">MENU</span>
             </div>
-            <span className="text-sm font-medium text-white tracking-wide">MENU</span>
+            
+            {/* Dropdown Menu */}
+            {showMenu && (
+              <div className="absolute top-full left-0 mt-4 bg-black/90 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 min-w-64 z-20">
+                <div className="space-y-3">
+                  <Link href="/experience" className="block text-cyan-300 hover:text-cyan-200 transition-colors font-medium">
+                    🎮 3D SIMULATION LAB
+                  </Link>
+                  <Link href="/about" className="block text-white hover:text-cyan-300 transition-colors">
+                    📖 COMPANY INFO
+                  </Link>
+                  <Link href="/contact" className="block text-white hover:text-cyan-300 transition-colors">
+                    📧 CONTACT FORM
+                  </Link>
+                  <div className="border-t border-gray-600 pt-3 mt-3">
+                    <div className="text-orange-400 text-sm opacity-75 mb-2">🚧 IN DEVELOPMENT:</div>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• AI Training Modules</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Neural Interface</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Research Portal</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm">• Lab Access</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Center: Logo */}
           <div className="flex flex-col items-center">
             <Link 
               href="/" 
-              className="text-3xl font-bold text-white tracking-wide transition-opacity hover:opacity-80 font-serif"
+              className="text-4xl md:text-5xl font-bold text-white tracking-wide transition-all duration-300 hover:scale-105 font-serif relative"
             >
-              <span>MYTH</span>
               <span className="relative">
-                C
-                <span 
-                  className="relative inline-block"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  O
+                <span className="text-cyan-300">MYTH</span>
+                <span className="relative text-white">
+                  C
                   <span 
-                    className={`absolute inset-0 flex items-center justify-center text-yellow-400 transition-all duration-300 ${
-                      isHovering ? 'transform rotate-12 scale-110 drop-shadow-[0_0_8px_rgba(255,255,0,0.6)]' : ''
-                    }`}
-                    style={{ fontSize: '0.7em' }}
+                    className="relative inline-block"
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
-                    ⭐
+                    O
+                    <span 
+                      className={`absolute inset-0 flex items-center justify-center text-yellow-400 transition-all duration-500 ${
+                        isHovering ? 'transform rotate-[360deg] scale-150 drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : 'transform rotate-12 scale-125 drop-shadow-[0_0_12px_rgba(255,255,0,0.4)]'
+                      }`}
+                      style={{ fontSize: '0.8em' }}
+                    >
+                      ⭐
+                    </span>
                   </span>
+                  <span className="text-cyan-300">RP</span>
                 </span>
-                RP
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 blur-sm opacity-20 text-cyan-300 -z-10">
+                  MYTHC⭐RP
+                </div>
               </span>
             </Link>
-            <span className="text-xs font-sans tracking-wider text-white/70 mt-1">
+            <span className="text-sm font-sans tracking-widest text-white/80 mt-2 font-medium">
               FOUNDED IN CHICAGO
             </span>
           </div>
 
           {/* Right: Navigation */}
-          <div className="flex space-x-8">
+          <div className="flex space-x-6">
             <Link 
               href="/about" 
-              className="text-sm font-medium text-white hover:underline transition-all"
+              className="text-sm font-medium text-white hover:text-cyan-300 transition-all duration-300 hover:underline"
             >
               ABOUT US
             </Link>
             <Link 
               href="/contact" 
-              className="text-sm font-medium text-white hover:underline transition-all"
+              className="text-sm font-medium text-white hover:text-cyan-300 transition-all duration-300 hover:underline"
             >
               CONTACT
             </Link>
+            <button className="text-sm font-medium text-orange-400 cursor-not-allowed opacity-60 relative group">
+              RESEARCH
+              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                🚧 Coming Soon
+              </span>
+            </button>
+            <button className="text-sm font-medium text-orange-400 cursor-not-allowed opacity-60 relative group">
+              LABS
+              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                🚧 Under Construction
+              </span>
+            </button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <main className="relative z-10 h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4">
-            <span className="text-green-400">DISCOVER YOUR</span>
-            <br />
-            <span className="text-yellow-400 font-extrabold underline underline-offset-4">POTENTIAL</span>
-          </h1>
+        <div className="text-center max-w-6xl mx-auto px-4">
+          {/* Enhanced Title with animations */}
+          <div className="mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 leading-tight">
+              <div className="relative inline-block">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-400 to-emerald-400 animate-pulse font-extrabold tracking-wider">
+                  DISCOVER YOUR
+                </span>
+                <div className="absolute inset-0 blur-sm text-green-400 opacity-30 -z-10">
+                  DISCOVER YOUR
+                </div>
+              </div>
+              <div className="relative inline-block mt-2">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 font-black tracking-widest underline decoration-4 underline-offset-8 decoration-yellow-400/50">
+                  POTENTIAL
+                </span>
+                <div className="absolute inset-0 blur-lg text-yellow-400 opacity-40 -z-10">
+                  POTENTIAL
+                </div>
+                {/* Animated sparkles */}
+                <div className="absolute -top-4 -right-4 text-yellow-400 animate-bounce delay-1000">✨</div>
+                <div className="absolute -bottom-4 -left-4 text-green-400 animate-bounce delay-500">💫</div>
+              </div>
+            </h1>
+          </div>
           
-          {/* Horizontal Line */}
-          <div className="w-64 h-px bg-white mx-auto mt-8"></div>
+          {/* Enhanced Separator */}
+          <div className="flex items-center justify-center my-12">
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
+            <div className="mx-4 text-white/60 text-sm font-mono tracking-widest">EST. 2024</div>
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
+          </div>
+
+          {/* Call to Action Buttons */}
+          <div className="space-y-4 mt-12">
+            <Link 
+              href="/experience" 
+              className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 text-lg tracking-wide"
+            >
+              ENTER 3D EXPERIENCE
+            </Link>
+            <div className="block">
+              <button className="text-white/70 hover:text-white text-sm font-mono tracking-wider border border-white/30 hover:border-white/60 px-6 py-2 rounded-full transition-all duration-300">
+                LEARN MORE
+              </button>
+            </div>
+          </div>
         </div>
       </main>
     </div>
