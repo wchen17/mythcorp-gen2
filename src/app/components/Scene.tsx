@@ -288,7 +288,7 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
             borderColor: '#ffa500',
             color: '#ffa500'
           }}>
-            🚧 AI TRAINING MODULE
+            🚧 ADVANCED TRAINING
           </button>
           
           <button style={{
@@ -303,7 +303,7 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
             color: '#ffa500',
             animation: 'constructionBlink 2s infinite'
           }}>
-            🚧 NEURAL INTERFACE
+            🚧 MULTIPLAYER MODE
           </button>
           
           <button style={{
@@ -317,7 +317,7 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
             borderColor: '#ffa500',
             color: '#ffa500'
           }}>
-            🚧 QUANTUM PROCESSOR
+            🚧 DATA VISUALIZATION
           </button>
         </div>
         
