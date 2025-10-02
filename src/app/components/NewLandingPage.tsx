@@ -55,10 +55,10 @@ export function NewLandingPage() {
                   </Link>
                   <div className="border-t border-gray-600 pt-3 mt-3">
                     <div className="text-orange-400 text-sm opacity-75 mb-2">🚧 IN DEVELOPMENT:</div>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• AI Training Modules</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Neural Interface</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Research Portal</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm">• Lab Access</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Team Portal</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Project Dashboard</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Research Hub</button>
+                    <button className="block text-orange-400/60 cursor-not-allowed text-sm">• Analytics Suite</button>
                   </div>
                 </div>
               </div>
@@ -83,9 +83,9 @@ export function NewLandingPage() {
                     O
                     <span 
                       className={`absolute inset-0 flex items-center justify-center text-yellow-400 transition-all duration-500 ${
-                        isHovering ? 'transform rotate-[360deg] scale-150 drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : 'transform rotate-12 scale-125 drop-shadow-[0_0_12px_rgba(255,255,0,0.4)]'
+                        isHovering ? 'transform rotate-[360deg] scale-110 drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : 'drop-shadow-[0_0_8px_rgba(255,255,0,0.4)]'
                       }`}
-                      style={{ fontSize: '0.8em' }}
+                      style={{ fontSize: '0.5em' }}
                     >
                       ⭐
                     </span>
@@ -135,41 +135,30 @@ export function NewLandingPage() {
 
       {/* Hero Section */}
       <main className="relative z-10 h-screen flex items-center justify-center">
-        <div className="text-center max-w-6xl mx-auto px-4">
-          {/* Enhanced Title with animations */}
+        <div className="text-center max-w-4xl mx-auto px-4">
+          {/* Title matching reference design */}
           <div className="mb-8">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 leading-tight">
-              <div className="relative inline-block">
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-400 to-emerald-400 animate-pulse font-extrabold tracking-wider">
-                  DISCOVER YOUR
-                </span>
-                <div className="absolute inset-0 blur-sm text-green-400 opacity-30 -z-10">
-                  DISCOVER YOUR
-                </div>
-              </div>
-              <div className="relative inline-block mt-2">
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 font-black tracking-widest underline decoration-4 underline-offset-8 decoration-yellow-400/50">
-                  POTENTIAL
-                </span>
-                <div className="absolute inset-0 blur-lg text-yellow-400 opacity-40 -z-10">
-                  POTENTIAL
-                </div>
-                {/* Animated sparkles */}
-                <div className="absolute -top-4 -right-4 text-yellow-400 animate-bounce delay-1000">✨</div>
-                <div className="absolute -bottom-4 -left-4 text-green-400 animate-bounce delay-500">💫</div>
-              </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight relative">
+              <span className="inline-block border-b-2 border-white pb-2">
+                <span className="text-green-400">DISCOVER</span>{' '}
+                <span className="text-white">YOUR</span>
+              </span>
+              <br />
+              <span className="inline-block border-b-2 border-white pb-2 mt-2">
+                <span className="text-yellow-400 font-black tracking-wide">POTENTIAL</span>
+              </span>
             </h1>
           </div>
           
           {/* Enhanced Separator */}
-          <div className="flex items-center justify-center my-12">
-            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
+          <div className="flex items-center justify-center my-8">
+            <div className="w-32 h-0.5 bg-white/40"></div>
             <div className="mx-4 text-white/60 text-sm font-mono tracking-widest">EST. 2024</div>
-            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"></div>
+            <div className="w-32 h-0.5 bg-white/40"></div>
           </div>
 
           {/* Call to Action Buttons */}
-          <div className="space-y-4 mt-12">
+          <div className="space-y-4 mt-8">
             <Link 
               href="/experience" 
               className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 text-lg tracking-wide"
