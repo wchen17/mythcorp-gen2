@@ -84,23 +84,85 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-      backgroundColor: '#0a0a0a', zIndex: 1000,
+      background: 'radial-gradient(ellipse at center, #0a0a0a 0%, #000000 70%, #000008 100%)', 
+      zIndex: 1000,
     }}>
+      {/* Add some CSS animations */}
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.7; }
+          50% { opacity: 1; }
+        }
+        @keyframes glow {
+          0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+          50% { text-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.6); }
+        }
+      `}</style>
+      
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
+        <ambientLight intensity={0.2} />
+        <pointLight position={[5, 5, 5]} intensity={1} color="#00ffff" />
         <DataSphere progress={progress} />
       </Canvas>
+      
+      {/* Enhanced loading text */}
       <div style={{
-        position: 'absolute', bottom: '10%', width: '100%',
+        position: 'absolute', bottom: '15%', width: '100%',
         textAlign: 'center', color: '#00ffff', fontFamily: '"Roboto Mono", monospace',
         pointerEvents: 'none',
         animation: 'fadeIn 1s ease-out'
       }}>
-        <h2 style={{ letterSpacing: '0.2rem', textTransform: 'uppercase', opacity: 0.7 }}>
-          SYNCHRONIZING... {Math.round(progress)}%
+        <div style={{
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          letterSpacing: '0.3rem',
+          marginBottom: '1rem',
+          animation: 'glow 2s infinite'
+        }}>
+          MYTHCORP
+        </div>
+        
+        <h2 style={{ 
+          letterSpacing: '0.2rem', 
+          textTransform: 'uppercase', 
+          animation: 'pulse 2s infinite',
+          fontSize: '1.2rem',
+          marginBottom: '0.5rem'
+        }}>
+          INITIALIZING NEURAL INTERFACE... {Math.round(progress)}%
         </h2>
-        <p style={{ marginTop: '1rem', fontSize: '0.8rem', opacity: 0.4 }}>
-          Headphones Recommended for Optimal Experience
+        
+        {/* Progress bar */}
+        <div style={{
+          width: '300px',
+          height: '4px',
+          background: 'rgba(0, 255, 255, 0.2)',
+          margin: '1rem auto',
+          borderRadius: '2px',
+          overflow: 'hidden'
+        }}>
+          <div style={{
+            width: `${progress}%`,
+            height: '100%',
+            background: 'linear-gradient(90deg, #00ffff, #0080ff, #00ffff)',
+            borderRadius: '2px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+          }} />
+        </div>
+        
+        <p style={{ 
+          marginTop: '1.5rem', 
+          fontSize: '0.9rem', 
+          opacity: 0.6,
+          letterSpacing: '0.1rem'
+        }}>
+          QUANTUM PROCESSORS ONLINE • HEADPHONES RECOMMENDED
         </p>
       </div>
     </div>
