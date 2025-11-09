@@ -34,6 +34,7 @@ interface MainMenuProps {
 }
 
 // --- Default Settings Object ---
+// UPDATED: Added showAxis property for the XYZ axis helper feature
 const DEFAULTS = {
     rotationSpeed: 0.2,
     position: [0, 0, 0],
@@ -43,6 +44,7 @@ const DEFAULTS = {
     showHelicopter: false,
     heliScale: 1.5,
     heliSmoothness: 0.1,
+    showAxis: true, // New property for toggling XYZ axis helper
 };
 
 interface SettingsMenuProps {
@@ -359,6 +361,7 @@ export default function Scene() {
       showHelicopter: Math.random() > 0.5,
       heliScale: Math.random() * 4.5 + 0.5,
       heliSmoothness: Math.random() * 0.19 + 0.01,
+      showAxis: Math.random() > 0.5,  // ADDED: Include showAxis in randomization
     });
   };
 
@@ -433,6 +436,24 @@ export default function Scene() {
               style={{ accentColor: '#00ffff' }}
             />
             Enable Mouse Tracker
+          </label>
+        </div>
+
+        {/* ADDED: New checkbox for toggling XYZ Axis Helper */}
+        <div style={{...inputGroupStyle, marginTop: '0.5rem' }}>
+          <label style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem',
+            color: '#00ffff'
+          }}>
+            <input 
+              type="checkbox" 
+              checked={settings.showAxis} 
+              onChange={(e) => handleSettingChange('showAxis', e.target.checked)}
+              style={{ accentColor: '#00ffff' }}
+            />
+            Show XYZ Axis
           </label>
         </div>
 
@@ -543,6 +564,10 @@ export default function Scene() {
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#00ffff" />
         <Model rotationSpeed={settings.rotationSpeed} position={settings.position} color={settings.color} />
         {settings.showHelicopter && <Helicopter scale={settings.heliScale} lerpFactor={settings.heliSmoothness} />}
+        
+        {/* ADDED: Conditionally render XYZ Axis Helper when showAxis is true */}
+        {settings.showAxis && <axesHelper args={[5]} />}
+        
         <EffectComposer>
           <Bloom 
             intensity={settings.glowIntensity} 
@@ -560,20 +585,36 @@ export default function Scene() {
 // --- Reusable Styles ---
 const menuStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%', color: 'white', fontFamily: 'sans-serif', };
 const buttonStyle: React.CSSProperties = { background: 'none', border: '1px solid white', color: 'white', padding: '1rem 2rem', fontSize: '1rem', cursor: 'pointer', marginTop: '2rem', };
-const uiPanelStyle: React.CSSProperties = { position: 'absolute', top: '20px', left: '20px', zIndex: 10, background: 'rgba(0, 0, 0, 0.5)', padding: '1rem', borderRadius: '8px', color: 'white', fontFamily: 'sans-serif', width: '250px' };
+
+// UPDATED: Removed glassmorphism, added sharp debug-style appearance
+const uiPanelStyle: React.CSSProperties = { 
+  position: 'absolute', 
+  top: '20px', 
+  left: '20px', 
+  zIndex: 10, 
+  background: '#1a1a1a',  // Solid dark background instead of transparent
+  padding: '1rem', 
+  // borderRadius removed for sharper look
+  border: '1px solid #888',  // Sharp 1px solid border
+  color: 'white', 
+  fontFamily: 'sans-serif', 
+  width: '250px' 
+};
+
 const enhancedUiPanelStyle: React.CSSProperties = { 
   position: 'absolute', 
   top: '20px', 
   left: '20px', 
   zIndex: 10, 
-  background: 'rgba(0, 0, 0, 0.85)', 
-  backdropFilter: 'blur(10px)',
+  background: '#1a1a1a',  // Solid dark background for debug/dev feel
+  // backdropFilter removed - no glassmorphism
   padding: '1.5rem', 
-  borderRadius: '12px', 
+  // borderRadius removed for sharper look
+  border: '1px solid #888',  // Sharp 1px solid border
   color: 'white', 
   fontFamily: '"Roboto Mono", monospace', 
   width: '300px',
-  border: '1px solid rgba(0, 255, 255, 0.3)',
-  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+  // Simplified shadow - removed inset for cleaner debug look
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
 };
 const inputGroupStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', marginTop: '1rem' };
