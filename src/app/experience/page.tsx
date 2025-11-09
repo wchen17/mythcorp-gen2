@@ -1,16 +1,19 @@
 // src/app/experience/page.tsx
 'use client';
 
-import { Suspense } from 'react';
-import Scene from '../components/Scene';
+import { useState } from 'react';
 import { LoadingScreen } from '../components/LoadingScreen';
+import { Experience } from '../components/Experience';
 
 export default function ExperiencePage() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="w-full h-screen">
-      <Suspense fallback={<LoadingScreen onFinished={() => {}} />}>
-        <Scene />
-      </Suspense>
-    </div>
+    <>
+      {isLoading && (
+        <LoadingScreen onFinished={() => setIsLoading(false)} />
+      )}
+      {!isLoading && <Experience />}
+    </>
   );
 }

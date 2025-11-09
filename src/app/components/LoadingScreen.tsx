@@ -1,10 +1,9 @@
 // src/app/components/LoadingScreen.tsx
 'use client';
 
-import React, { useMemo, useRef, useEffect } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, PerspectiveCamera } from '@react-three/drei';
-import { useProgress } from "@react-three/drei";
 import * as THREE from 'three';
 
 // --- Configuration for the Sphere ---
@@ -66,20 +65,33 @@ function DataSphere({ progress }: { progress: number }) {
   );
 }
 
-// --- The Main Loading Screen (FIXED) ---
-// The component is now defined to accept the 'onFinished' prop.
+// --- The Main Loading Screen (Forced) ---
+// This component displays for a forced minimum time regardless of actual loading
 export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
-  const { progress } = useProgress();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const minDisplayTime = 4000; // 4 seconds
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        onFinished(); // Call the function when the time is up
-      }, minDisplayTime);
-      return () => clearTimeout(timer);
-    }
-  }, [progress, onFinished]);
+    // Simulate progress from 0 to 100 over 3 seconds
+    const duration = 3000;
+    const steps = 100;
+    const intervalTime = duration / steps;
+    
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+      currentProgress += 1;
+      setProgress(currentProgress);
+      
+      if (currentProgress >= 100) {
+        clearInterval(interval);
+        // Wait an additional second at 100% before finishing
+        setTimeout(() => {
+          onFinished();
+        }, 1000);
+      }
+    }, intervalTime);
+
+    return () => clearInterval(interval);
+  }, [onFinished]);
 
   return (
     <div style={{
