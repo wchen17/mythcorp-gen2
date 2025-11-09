@@ -127,12 +127,14 @@ function ParticleField() {
           count={particleCount}
           array={particles.positions}
           itemSize={3}
+          args={[particles.positions, 3]}
         />
         <bufferAttribute
           attach="attributes-color"
           count={particleCount}
           array={particles.colors}
           itemSize={3}
+          args={[particles.colors, 3]}
         />
       </bufferGeometry>
       <pointsMaterial size={0.05} vertexColors transparent opacity={0.6} />
