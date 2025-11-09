@@ -9,6 +9,8 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { Group } from 'three';
 // ADDED: The GSAP animation library
 import gsap from 'gsap';
+// ADDED: For navigation to newlandingpage
+import { useRouter } from 'next/navigation';
 
 // A helper function for linear interpolation (smoothing).
 const lerp = (start: number, end: number, alpha: number) => {
@@ -48,7 +50,8 @@ function SpectreModel() {
 }
 
 // --- The Interactive Logo Component ---
-function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
+// UPDATED: Added navigation to /newlandingpage when logo is clicked
+function InteractiveLogo({ onNavigate }: { onNavigate: () => void }) {
   const logoRef = useRef<Group>(null!);
 
   useFrame((state) => {
@@ -59,8 +62,8 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
   });
 
   return (
-    // The onClick event is now on the group
-    <group ref={logoRef} onClick={onEnter}>
+    // The onClick event is now on the group and navigates to /newlandingpage
+    <group ref={logoRef} onClick={onNavigate}>
       <Center>
         <Text3D
           font="/fonts/Inter_Bold.json"
@@ -85,11 +88,19 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
 
 // --- The Main Landing Page Component (with Transition Logic) ---
 export function LandingPage({ onTransitionComplete }: { onTransitionComplete: () => void }) {
+  // ADDED: Router for navigation to /newlandingpage
+  const router = useRouter();
+  
   // State to track if we are animating out
   const [isExiting, setIsExiting] = useState(false);
   // Refs to control the elements we want to animate
   const contentRef = useRef<Group>(null!);
   const backgroundRef = useRef<HTMLDivElement>(null!);
+
+  // UPDATED: Navigate to /newlandingpage instead of transitioning to experience
+  const handleLogoClick = () => {
+    router.push('/newlandingpage');
+  };
 
   const handleEnter = () => {
     setIsExiting(true);
@@ -158,7 +169,7 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
           <directionalLight position={[10, 10, 5]} intensity={0.5} />
 
           <Suspense fallback={null}>
-            <InteractiveLogo onEnter={handleEnter} />
+            <InteractiveLogo onNavigate={handleLogoClick} />
             <SpectreModel />
           </Suspense>
 
