@@ -11,10 +11,47 @@ interface NewLandingPageProps {
 export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLandingPageProps) {
   const [showMenu, setShowMenu] = useState(false);
   
+  // --- TYPE 2: State for the new pop-up banner ---
+  const [showBanner, setShowBanner] = useState(false);
+
+  // --- TYPE 3: Effect to show the banner after 3 seconds ---
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBanner(true);
+    }, 3000); // 3-second delay
+
+    // Clean up the timer if the component unmounts
+    return () => clearTimeout(timer);
+  }, []); // The empty array [] means this effect runs only once
+  
+  // Create floating particles effect
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    animationDelay: `${Math.random() * 5}s`,
+    animationDuration: `${15 + Math.random() * 10}s`,
+  }))
+
   return (
-    // Set a default sans-serif font for the whole component
-    <div className="min-h-screen relative overflow-hidden font-sans">
-      
+    <div className="min-h-screen relative overflow-hidden">
+      {/* --- This style tag adds the fade-in animation --- */}
+      <style>{`
+        @keyframes fadeInBottom {
+          from { opacity: 0; transform: translate(-50%, 20px); }
+          to { opacity: 1; transform: translate(-50%, 0); }
+        }
+        .animate-fade-in-bottom {
+          animation: fadeInBottom 0.5s ease-out;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+          50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+        }
+        .particle {
+          animation: float linear infinite;
+        }
+      `}</style>
+
       {/* Background Image with Blur and Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -26,8 +63,26 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         }}
       />
       
-      {/* Dark Overlay - Made slightly darker (30%) to increase contrast */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Ethereal Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-blue-900/20" />
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="particle absolute w-1 h-1 bg-cyan-400 rounded-full"
+            style={{
+              left: particle.left,
+              bottom: '-10px',
+              animationDelay: particle.animationDelay,
+              animationDuration: particle.animationDuration,
+              boxShadow: '0 0 4px rgba(0, 255, 255, 0.8)',
+            }}
+          />
+        ))}
+      </div>
 
       {/* Header Navigation */}
       <header className="relative z-10 fixed top-0 left-0 right-0">
@@ -47,47 +102,63 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
               <span className="text-sm font-normal text-white tracking-wide">MENU</span>
             </div>
             
-            {/* --- MODIFIED: Dropdown Menu --- */}
+            {/* Dropdown Menu */}
             {showMenu && (
-              <div className="absolute top-full left-0 mt-4 bg-black/90 backdrop-blur-sm 
-                            border border-cyan-400/30 rounded-lg p-4 min-w-64 z-20
-                            flex flex-col space-y-3">
-    
-                <span className="text-white/60 text-xs uppercase tracking-widest">Experience</span>
-                
-                {/* This button will trigger the load for scene.tsx */}
-                <button 
-                  onClick={() => {
-                    onEnterExperience();
-                    setShowMenu(false); // Close menu on click
-                  }}
-                  className="bg-cyan-400 text-black font-bold py-2 px-4 rounded
-                             hover:bg-cyan-300 transition-all text-sm tracking-wide w-full text-left"
-                >
-                  Enter 3D Scene
-                </button>
-                <button 
-                  onClick={() => {
-                    onEnterInteractive();
-                    setShowMenu(false); // Close menu on click
-                  }}
-                  className="bg-gray-700 text-white font-medium py-2 px-4 rounded
-                             hover:bg-gray-600 transition-all text-sm w-full text-left"
-                >
-                  View 3D Logo
-                </button>
-
-                {/* --- REMOVED --- */}
-                {/* Removed the divider and duplicate "Navigation" links */}
-                
+              <div className="absolute top-full left-0 mt-4 bg-black/95 border-2 border-cyan-500/50 min-w-64 z-20 shadow-[0_0_30px_rgba(0,255,255,0.3)]">
+                <div className="p-1">
+                  <Link 
+                    href="/experience" 
+                    className="block px-4 py-3 text-white font-medium tracking-wide hover:bg-cyan-500/20 border-b border-cyan-500/20 transition-all hover:shadow-[inset_0_0_10px_rgba(0,255,255,0.2)]"
+                  >
+                    3D EXPERIENCE
+                  </Link>
+                  <Link 
+                    href="/interactive" 
+                    className="block px-4 py-3 text-white font-medium tracking-wide hover:bg-cyan-500/20 border-b border-cyan-500/20 transition-all hover:shadow-[inset_0_0_10px_rgba(0,255,255,0.2)]"
+                  >
+                    INTERACTIVE LOGO
+                  </Link>
+                  <Link 
+                    href="/about" 
+                    className="block px-4 py-3 text-white font-medium tracking-wide hover:bg-cyan-500/20 border-b border-cyan-500/20 transition-all hover:shadow-[inset_0_0_10px_rgba(0,255,255,0.2)]"
+                  >
+                    ABOUT
+                  </Link>
+                  <Link 
+                    href="/contact" 
+                    className="block px-4 py-3 text-white font-medium tracking-wide hover:bg-cyan-500/20 border-b border-cyan-500/20 transition-all hover:shadow-[inset_0_0_10px_rgba(0,255,255,0.2)]"
+                  >
+                    CONTACT
+                  </Link>
+                  
+                  {/* Secret Menu */}
+                  <details className="border-t-2 border-cyan-500/30 mt-2">
+                    <summary className="px-4 py-3 text-cyan-400 font-mono text-xs tracking-widest cursor-pointer hover:bg-cyan-500/10 transition-all">
+                      🔒 SECRET MENU
+                    </summary>
+                    <div className="bg-black/50 border-t border-cyan-500/20">
+                      <Link 
+                        href="/animals" 
+                        className="block px-6 py-2 text-orange-400/70 font-mono text-sm hover:bg-orange-500/10 transition-all"
+                      >
+                        🚧 Animals [WIP]
+                      </Link>
+                      <Link 
+                        href="/chat" 
+                        className="block px-6 py-2 text-orange-400/70 font-mono text-sm hover:bg-orange-500/10 transition-all"
+                      >
+                        🚧 Chat [WIP]
+                      </Link>
+                    </div>
+                  </details>
+                </div>
               </div>
             )}
           </div>
 
           {/* Center: Logo */}
           <div className="flex flex-col items-center">
-            {/* font-serif is kept as you liked it */}
-            <a href="/" className="font-serif text-5xl font-medium text-white tracking-wider" onClick={(e) => e.preventDefault()}>
+            <Link href="/" className="font-serif text-5xl font-medium text-white tracking-wider drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
               MYTHCORP
             </a>
             <span className="text-sm font-serif tracking-widest text-white/80 mt-1">
@@ -100,16 +171,14 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
               {/* --- MODIFIED: Font weight set to normal --- */}
               <a 
                 href="/about" 
-                className="text-sm font-normal text-white hover:text-cyan-300 transition-all underline underline-offset-4"
-                onClick={(e) => e.preventDefault()}
+                className="text-sm font-serif font-medium text-white hover:text-cyan-300 transition-all underline underline-offset-4 tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
               >
                 ABOUT US
               </a>
               {/* --- MODIFIED: Font weight set to normal --- */}
               <a 
                 href="/contact" 
-                className="text-sm font-normal text-white hover:text-cyan-300 transition-all underline underline-offset-4"
-                onClick={(e) => e.preventDefault()}
+                className="text-sm font-serif font-medium text-white hover:text-cyan-300 transition-all underline underline-offset-4 tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
               >
                 CONTACT
               </a>
@@ -123,20 +192,12 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
           
           {/* --- MODIFIED: Title and Underline --- */}
           <div className="mb-8">
-            {/* 1. Wrapped H1 and Underline in an inline-block div. 
-                This makes the wrapper shrink to the H1's width.
-                The text-center on <main> will center this block. */}
-            <div className="inline-block">
-              {/* 2. Made all text extrabold and tight for a punchier, solid look */}
-              <h1 className="text-5xl md:text-7xl font-extrabold leading-tight whitespace-nowrap tracking-tight">
-                <span className="text-green-400">DISCOVER</span>{' '}
-                {/* 3. Fixed text-white-400 typo */}
-                <span className="text-white">YOUR</span>{' '}
-                <span className="text-yellow-400">POTENTIAL</span>
-              </h1>
-              {/* 4. Underline is now w-full (of the inline-block) and has a small top margin */}
-              <div className="w-full h-0.5 bg-white mt-2"></div>
-            </div>
+            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4 leading-tight tracking-wider">
+              <span className="text-green-400 drop-shadow-[0_0_20px_rgba(74,222,128,0.6)]">DISCOVER</span>{' '}
+              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">YOUR</span>{' '}
+              <span className="text-yellow-400 font-black tracking-wide drop-shadow-[0_0_25px_rgba(250,204,21,0.7)]">POTENTIAL</span>
+            </h1>
+            <div className="w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
           
           {/* Enhanced Separator (Unchanged) */}
