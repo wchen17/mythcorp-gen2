@@ -134,7 +134,7 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
           fontSize: '1.2rem',
           marginBottom: '0.5rem'
         }}>
-          INITIALIZING NEURAL INTERFACE... {Math.round(progress)}%
+          INITIALIZING GUINEA PIGS... {Math.round(progress)}%
         </h2>
         
         {/* Progress bar */}
@@ -162,7 +162,7 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
           opacity: 0.6,
           letterSpacing: '0.1rem'
         }}>
-          QUANTUM PROCESSORS ONLINE • HEADPHONES RECOMMENDED
+          • HEADPHONES RECOMMENDED FPR BEST EXPERIENCE(eventually)
         </p>
       </div>
     </div>
