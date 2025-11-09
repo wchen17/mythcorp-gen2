@@ -84,7 +84,7 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
         <torusGeometry args={[3, 0.02, 8, 100]} />
         <meshBasicMaterial color={color} transparent opacity={0.3} />
       </mesh>
-      <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+      <mesh rotation={[0, Math.PI / 2, 0]}>
         <torusGeometry args={[2.5, 0.015, 8, 100]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.2} />
       </mesh>
@@ -229,9 +229,46 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
           0%, 50% { opacity: 1; }
           51%, 100% { opacity: 0.3; }
         }
+        .secret-menu-details summary {
+          list-style: none;
+          cursor: pointer;
+          user-select: none;
+        }
+        .secret-menu-details summary::-webkit-details-marker {
+          display: none;
+        }
       `}</style>
       <div style={{...menuStyle, background: `url('/chicagoskyline.jpg') no-repeat center center / cover`, animation: 'panBackground 40s linear infinite alternate', position: 'absolute', top: 0, left: 0, zIndex: 1}}></div>
       <div style={{...menuStyle, background: 'rgba(0,0,0,0.7)', position: 'relative', zIndex: 2}}>
+        {/* Logo Area */}
+        <div style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
+          padding: '10px 20px',
+          border: '2px solid #00ffff',
+          background: 'rgba(0, 0, 0, 0.8)',
+          boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)'
+        }}>
+          <div style={{ 
+            fontFamily: 'serif', 
+            fontSize: '1.5rem', 
+            color: '#00ffff',
+            letterSpacing: '0.3rem',
+            textShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+          }}>
+            MYTHCORP
+          </div>
+          <div style={{ 
+            fontSize: '0.6rem', 
+            color: 'rgba(255, 255, 255, 0.6)',
+            letterSpacing: '0.1rem',
+            marginTop: '5px'
+          }}>
+            RESEARCH DIVISION
+          </div>
+        </div>
+        
         <h1 style={{ 
           fontSize: '4rem', 
           letterSpacing: '0.5rem', 
@@ -278,6 +315,61 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
         >
           CONFIGURATION
         </button>
+        
+        {/* Secret Menu */}
+        <details className="secret-menu-details" style={{ marginTop: '2rem' }}>
+          <summary style={{
+            padding: '0.75rem 1.5rem',
+            fontSize: '0.8rem',
+            color: '#00ffff',
+            fontFamily: 'monospace',
+            letterSpacing: '0.2rem',
+            border: '1px solid #00ffff40',
+            background: 'rgba(0, 255, 255, 0.05)',
+            cursor: 'pointer',
+            transition: 'all 0.3s'
+          }}>
+            🔒 SECRET MENU
+          </summary>
+          <div style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            background: 'rgba(0, 0, 0, 0.5)',
+            border: '1px solid #ffa50040'
+          }}>
+            <a 
+              href="/animals" 
+              style={{
+                display: 'block',
+                padding: '0.5rem',
+                color: '#ffa500',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontFamily: 'monospace',
+                opacity: 0.7,
+                transition: 'opacity 0.3s'
+              }}
+            >
+              🚧 ANIMALS [WIP]
+            </a>
+            <a 
+              href="/chat" 
+              style={{
+                display: 'block',
+                padding: '0.5rem',
+                color: '#ffa500',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontFamily: 'monospace',
+                opacity: 0.7,
+                marginTop: '0.5rem',
+                transition: 'opacity 0.3s'
+              }}
+            >
+              🚧 CHAT [WIP]
+            </a>
+          </div>
+        </details>
         
         {/* Under Construction Items */}
         <div style={{ marginTop: '2rem', opacity: 0.6 }}>
