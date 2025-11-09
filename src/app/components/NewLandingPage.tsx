@@ -136,15 +136,12 @@ export function NewLandingPage() {
       {/* Hero Section */}
       <main className="relative z-10 h-screen flex items-center justify-center">
         <div className="text-center max-w-4xl mx-auto px-4">
-          {/* Title matching reference design */}
+          {/* Title matching reference design - single line */}
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight relative">
               <span className="inline-block border-b-2 border-white pb-2">
                 <span className="text-green-400">DISCOVER</span>{' '}
-                <span className="text-white">YOUR</span>
-              </span>
-              <br />
-              <span className="inline-block border-b-2 border-white pb-2 mt-2">
+                <span className="text-white">YOUR</span>{' '}
                 <span className="text-yellow-400 font-black tracking-wide">POTENTIAL</span>
               </span>
             </h1>
@@ -157,19 +154,23 @@ export function NewLandingPage() {
             <div className="w-32 h-0.5 bg-white/40"></div>
           </div>
 
-          {/* Call to Action Buttons */}
-          <div className="space-y-4 mt-8">
+          {/* Call to Action Buttons - Updated theme */}
+          <div className="flex flex-col items-center gap-4 mt-8">
             <Link 
               href="/experience" 
-              className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 text-lg tracking-wide"
+              className="inline-block bg-black border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold py-4 px-10 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] text-lg tracking-widest"
             >
               ENTER 3D EXPERIENCE
             </Link>
-            <div className="block">
-              <button className="text-white/70 hover:text-white text-sm font-mono tracking-wider border border-white/30 hover:border-white/60 px-6 py-2 rounded-full transition-all duration-300">
-                LEARN MORE
-              </button>
-            </div>
+            <Link
+              href="/interactive"
+              className="inline-block bg-black border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold py-3 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] text-base tracking-widest"
+            >
+              INTERACTIVE MYTHCORP LOGO
+            </Link>
+            <button className="text-white/70 hover:text-cyan-300 text-sm font-mono tracking-wider border border-white/30 hover:border-cyan-400/60 px-6 py-2 transition-all duration-300">
+              LEARN MORE
+            </button>
           </div>
         </div>
       </main>
