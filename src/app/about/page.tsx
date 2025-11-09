@@ -46,12 +46,11 @@ export default function AboutPage() {
         <div className="text-center max-w-2xl px-6">
           <h1 className="text-4xl font-bold mb-6">ABOUT US</h1>
           <p className="text-lg leading-relaxed opacity-80 mb-8">
-            MYTHCORP was founded in Chicago with a vision to push the boundaries of innovation 
-            and technology. We believe in discovering potential and creating extraordinary 
-            experiences that shape the future.
+            MYTHCORP was founded in Chicago with a vision to ????. We believe in discovering potential and exploring extraordinary 
+             that shape the future.
           </p>
           <p className="text-base opacity-60">
-            This is a placeholder page. More content coming soon.
+            This is a placeholder page. More content coming soon........
           </p>
         </div>
       </main>
