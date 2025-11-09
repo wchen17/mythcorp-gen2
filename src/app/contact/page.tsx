@@ -50,7 +50,7 @@ export default function ContactPage() {
           </p>
           <div className="space-y-4 text-base opacity-70">
             <p>Email: info@mythcorp.com</p>
-            <p>Phone: (312) 555-0123</p>
+            <p>Phone: (676) 767-7676</p>
             <p>Chicago, IL</p>
           </div>
           <p className="text-sm opacity-50 mt-8">
