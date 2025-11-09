@@ -1,16 +1,26 @@
 // src/app/components/LoadingScreen.tsx
 'use client';
 
-import React, { useMemo, useRef, useEffect } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, PerspectiveCamera } from '@react-three/drei';
 import { useProgress } from "@react-three/drei";
 import * as THREE from 'three';
 
-// --- Configuration for the Sphere ---
-const sphereRadius = 2.2;
+// --- Configuration for the Shapes ---
+const shapeRadius = 2.2;
 const binaryFontSize = 0.1;
 const pointCount = 500;
+
+// Loading messages with glitching effect
+const loadingMessages = [
+  'LOADING GUINEA PIGS',
+  'LOADING ELEMENTS',
+  'INITIALIZING SYSTEMS',
+  'COMPILING REALITY',
+  'ASSEMBLING PARTICLES',
+  'BOOTSTRAPPING MATRIX',
+];
 
 // --- A single binary digit component ---
 function BinaryDigit({ startPosition, endPosition, progress }: { startPosition: THREE.Vector3, endPosition: THREE.Vector3, progress: number }) {
@@ -36,20 +46,57 @@ function BinaryDigit({ startPosition, endPosition, progress }: { startPosition: 
   );
 }
 
-// --- The Binary Sphere Component ---
-function DataSphere({ progress }: { progress: number }) {
+// --- The Binary Shape Component (Sphere, Cube, or other) ---
+// This component creates a 3D shape made of binary digits (0s and 1s)
+// The shape can be a sphere, cube, or torus - randomly selected on each load
+function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphere' | 'cube' | 'torus' }) {
   const groupRef = useRef<THREE.Group>(null!);
 
+  // Generate points based on the selected shape type
   const points = useMemo(() => {
     const temp = [];
     for (let i = 0; i < pointCount; i++) {
-      const endPos = new THREE.Vector3().randomDirection().multiplyScalar(sphereRadius);
+      let endPos: THREE.Vector3;
+      
+      if (shapeType === 'cube') {
+        // Cube distribution - place points on 6 faces of a cube
+        const side = Math.floor(Math.random() * 6);
+        const u = Math.random() - 0.5;
+        const v = Math.random() - 0.5;
+        const size = shapeRadius;
+        
+        switch(side) {
+          case 0: endPos = new THREE.Vector3(size, u * size * 2, v * size * 2); break;
+          case 1: endPos = new THREE.Vector3(-size, u * size * 2, v * size * 2); break;
+          case 2: endPos = new THREE.Vector3(u * size * 2, size, v * size * 2); break;
+          case 3: endPos = new THREE.Vector3(u * size * 2, -size, v * size * 2); break;
+          case 4: endPos = new THREE.Vector3(u * size * 2, v * size * 2, size); break;
+          default: endPos = new THREE.Vector3(u * size * 2, v * size * 2, -size); break;
+        }
+      } else if (shapeType === 'torus') {
+        // Torus distribution - place points on a donut shape
+        const angle = Math.random() * Math.PI * 2;
+        const radius = 1.5 + Math.random() * 0.7;
+        const tubeAngle = Math.random() * Math.PI * 2;
+        const tubeRadius = 0.6;
+        endPos = new THREE.Vector3(
+          (shapeRadius * 0.7 + tubeRadius * Math.cos(tubeAngle)) * Math.cos(angle),
+          tubeRadius * Math.sin(tubeAngle),
+          (shapeRadius * 0.7 + tubeRadius * Math.cos(tubeAngle)) * Math.sin(angle)
+        );
+      } else {
+        // Sphere distribution - place points randomly on a sphere surface
+        endPos = new THREE.Vector3().randomDirection().multiplyScalar(shapeRadius);
+      }
+      
+      // Start position is far away, then animates to the final position
       const startPos = endPos.clone().multiplyScalar(5); 
       temp.push({ start: startPos, end: endPos });
     }
     return temp;
-  }, []);
+  }, [shapeType]);
 
+  // Rotate the shape slowly over time
   useFrame((state, delta) => {
     if (groupRef.current) {
       groupRef.current.rotation.x -= delta / 20;
@@ -66,16 +113,36 @@ function DataSphere({ progress }: { progress: number }) {
   );
 }
 
-// --- The Main Loading Screen (FIXED) ---
-// The component is now defined to accept the 'onFinished' prop.
+// --- The Main Loading Screen ---
 export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   const { progress } = useProgress();
+  const [currentMessage, setCurrentMessage] = useState(0);
+  const [isGlitching, setIsGlitching] = useState(false);
+  const [shapeType] = useState<'sphere' | 'cube' | 'torus'>(() => {
+    const rand = Math.random();
+    if (rand < 0.4) return 'sphere';
+    if (rand < 0.7) return 'cube';
+    return 'torus';
+  });
+
+  // Glitching message effect
+  useEffect(() => {
+    const messageInterval = setInterval(() => {
+      setIsGlitching(true);
+      setTimeout(() => {
+        setCurrentMessage((prev) => (prev + 1) % loadingMessages.length);
+        setIsGlitching(false);
+      }, 150);
+    }, 2000);
+
+    return () => clearInterval(messageInterval);
+  }, []);
 
   useEffect(() => {
     const minDisplayTime = 4000; // 4 seconds
     if (progress === 100) {
       const timer = setTimeout(() => {
-        onFinished(); // Call the function when the time is up
+        onFinished();
       }, minDisplayTime);
       return () => clearTimeout(timer);
     }
@@ -101,13 +168,20 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
           0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
           50% { text-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.6); }
         }
+        @keyframes glitch {
+          0%, 100% { transform: translate(0); }
+          20% { transform: translate(-2px, 2px); }
+          40% { transform: translate(-2px, -2px); }
+          60% { transform: translate(2px, 2px); }
+          80% { transform: translate(2px, -2px); }
+        }
       `}</style>
       
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
         <ambientLight intensity={0.2} />
         <pointLight position={[5, 5, 5]} intensity={1} color="#00ffff" />
-        <DataSphere progress={progress} />
+        <DataShape progress={progress} shapeType={shapeType} />
       </Canvas>
       
       {/* Enhanced loading text */}
@@ -130,11 +204,13 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
         <h2 style={{ 
           letterSpacing: '0.2rem', 
           textTransform: 'uppercase', 
-          animation: 'pulse 2s infinite',
+          animation: isGlitching ? 'glitch 0.15s infinite' : 'pulse 2s infinite',
           fontSize: '1.2rem',
-          marginBottom: '0.5rem'
+          marginBottom: '0.5rem',
+          filter: isGlitching ? 'blur(1px)' : 'none',
+          color: isGlitching ? '#ff00ff' : '#00ffff',
         }}>
-          INITIALIZING GUINEA PIGS... {Math.round(progress)}%
+          {loadingMessages[currentMessage]}... {Math.round(progress)}%
         </h2>
         
         {/* Progress bar */}
@@ -162,7 +238,16 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
           opacity: 0.6,
           letterSpacing: '0.1rem'
         }}>
-          • HEADPHONES RECOMMENDED FPR BEST EXPERIENCE(eventually)
+          • HEADPHONES RECOMMENDED FOR BEST EXPERIENCE (eventually)
+        </p>
+        
+        <p style={{ 
+          marginTop: '0.5rem', 
+          fontSize: '0.7rem', 
+          opacity: 0.4,
+          letterSpacing: '0.05rem'
+        }}>
+          {shapeType === 'cube' ? '▣ CUBE MODE' : shapeType === 'torus' ? '◯ TORUS MODE' : '● SPHERE MODE'}
         </p>
       </div>
     </div>

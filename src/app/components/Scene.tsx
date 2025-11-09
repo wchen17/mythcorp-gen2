@@ -55,14 +55,17 @@ interface SettingsMenuProps {
 
 
 // --- Components for 3D Scene ---
+// The Model component loads and displays the 3D spectre.glb model
+// It rotates continuously and has a subtle floating animation
 function Model({ position, rotationSpeed, color }: ModelProps) {
   const { scene } = useGLTF('/spectre.glb')
   const modelRef = useRef<Group>(null!)
   
+  // This runs every frame to update the model's rotation and position
   useFrame((state, delta) => {
     if (modelRef.current) {
       modelRef.current.rotation.y += delta * rotationSpeed
-      // Add subtle floating motion
+      // Add subtle floating motion using a sine wave
       modelRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3
     }
   })
@@ -79,12 +82,12 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
           metalness={0.8}
         />
       </primitive>
-      {/* Add orbital rings */}
+      {/* Add orbital rings around the model */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[3, 0.02, 8, 100]} />
         <meshBasicMaterial color={color} transparent opacity={0.3} />
       </mesh>
-      <mesh rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+      <mesh rotation={[0, Math.PI / 2, 0]}>
         <torusGeometry args={[2.5, 0.015, 8, 100]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.2} />
       </mesh>
@@ -93,19 +96,24 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
 }
 
 // New particle system component
+// Creates a field of floating particles around the 3D model
+// This adds visual interest and depth to the scene
 function ParticleField() {
   const meshRef = useRef<any>(null!)
   const particleCount = 1000
   
+  // Generate random positions and colors for particles
   const particles = useMemo(() => {
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
     
     for (let i = 0; i < particleCount; i++) {
+      // Spread particles in a 20x20x20 cube around the origin
       positions[i * 3] = (Math.random() - 0.5) * 20
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20  
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20
       
+      // Give particles a blue-ish color
       colors[i * 3] = Math.random() * 0.5 + 0.5 // R
       colors[i * 3 + 1] = Math.random() * 0.5 + 0.5 // G  
       colors[i * 3 + 2] = 1 // B
@@ -114,6 +122,7 @@ function ParticleField() {
     return { positions, colors }
   }, [])
   
+  // Slowly rotate the entire particle field
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.1
@@ -229,9 +238,46 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
           0%, 50% { opacity: 1; }
           51%, 100% { opacity: 0.3; }
         }
+        .secret-menu-details summary {
+          list-style: none;
+          cursor: pointer;
+          user-select: none;
+        }
+        .secret-menu-details summary::-webkit-details-marker {
+          display: none;
+        }
       `}</style>
       <div style={{...menuStyle, background: `url('/chicagoskyline.jpg') no-repeat center center / cover`, animation: 'panBackground 40s linear infinite alternate', position: 'absolute', top: 0, left: 0, zIndex: 1}}></div>
       <div style={{...menuStyle, background: 'rgba(0,0,0,0.7)', position: 'relative', zIndex: 2}}>
+        {/* Logo Area */}
+        <div style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
+          padding: '10px 20px',
+          border: '2px solid #00ffff',
+          background: 'rgba(0, 0, 0, 0.8)',
+          boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)'
+        }}>
+          <div style={{ 
+            fontFamily: 'serif', 
+            fontSize: '1.5rem', 
+            color: '#00ffff',
+            letterSpacing: '0.3rem',
+            textShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+          }}>
+            MYTHCORP
+          </div>
+          <div style={{ 
+            fontSize: '0.6rem', 
+            color: 'rgba(255, 255, 255, 0.6)',
+            letterSpacing: '0.1rem',
+            marginTop: '5px'
+          }}>
+            RESEARCH DIVISION
+          </div>
+        </div>
+        
         <h1 style={{ 
           fontSize: '4rem', 
           letterSpacing: '0.5rem', 
@@ -278,6 +324,61 @@ function MainMenu({ onStart, onSettings }: MainMenuProps) {
         >
           CONFIGURATION
         </button>
+        
+        {/* Secret Menu */}
+        <details className="secret-menu-details" style={{ marginTop: '2rem' }}>
+          <summary style={{
+            padding: '0.75rem 1.5rem',
+            fontSize: '0.8rem',
+            color: '#00ffff',
+            fontFamily: 'monospace',
+            letterSpacing: '0.2rem',
+            border: '1px solid #00ffff40',
+            background: 'rgba(0, 255, 255, 0.05)',
+            cursor: 'pointer',
+            transition: 'all 0.3s'
+          }}>
+            🔒 SECRET MENU
+          </summary>
+          <div style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            background: 'rgba(0, 0, 0, 0.5)',
+            border: '1px solid #ffa50040'
+          }}>
+            <a 
+              href="/animals" 
+              style={{
+                display: 'block',
+                padding: '0.5rem',
+                color: '#ffa500',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontFamily: 'monospace',
+                opacity: 0.7,
+                transition: 'opacity 0.3s'
+              }}
+            >
+              🚧 ANIMALS [WIP]
+            </a>
+            <a 
+              href="/chat" 
+              style={{
+                display: 'block',
+                padding: '0.5rem',
+                color: '#ffa500',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontFamily: 'monospace',
+                opacity: 0.7,
+                marginTop: '0.5rem',
+                transition: 'opacity 0.3s'
+              }}
+            >
+              🚧 CHAT [WIP]
+            </a>
+          </div>
+        </details>
         
         {/* Under Construction Items */}
         <div style={{ marginTop: '2rem', opacity: 0.6 }}>
