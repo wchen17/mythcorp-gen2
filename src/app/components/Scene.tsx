@@ -55,14 +55,17 @@ interface SettingsMenuProps {
 
 
 // --- Components for 3D Scene ---
+// The Model component loads and displays the 3D spectre.glb model
+// It rotates continuously and has a subtle floating animation
 function Model({ position, rotationSpeed, color }: ModelProps) {
   const { scene } = useGLTF('/spectre.glb')
   const modelRef = useRef<Group>(null!)
   
+  // This runs every frame to update the model's rotation and position
   useFrame((state, delta) => {
     if (modelRef.current) {
       modelRef.current.rotation.y += delta * rotationSpeed
-      // Add subtle floating motion
+      // Add subtle floating motion using a sine wave
       modelRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3
     }
   })
@@ -79,7 +82,7 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
           metalness={0.8}
         />
       </primitive>
-      {/* Add orbital rings */}
+      {/* Add orbital rings around the model */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[3, 0.02, 8, 100]} />
         <meshBasicMaterial color={color} transparent opacity={0.3} />
@@ -93,19 +96,24 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
 }
 
 // New particle system component
+// Creates a field of floating particles around the 3D model
+// This adds visual interest and depth to the scene
 function ParticleField() {
   const meshRef = useRef<any>(null!)
   const particleCount = 1000
   
+  // Generate random positions and colors for particles
   const particles = useMemo(() => {
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
     
     for (let i = 0; i < particleCount; i++) {
+      // Spread particles in a 20x20x20 cube around the origin
       positions[i * 3] = (Math.random() - 0.5) * 20
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20  
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20
       
+      // Give particles a blue-ish color
       colors[i * 3] = Math.random() * 0.5 + 0.5 // R
       colors[i * 3 + 1] = Math.random() * 0.5 + 0.5 // G  
       colors[i * 3 + 2] = 1 // B
@@ -114,6 +122,7 @@ function ParticleField() {
     return { positions, colors }
   }, [])
   
+  // Slowly rotate the entire particle field
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.1

@@ -47,16 +47,19 @@ function BinaryDigit({ startPosition, endPosition, progress }: { startPosition: 
 }
 
 // --- The Binary Shape Component (Sphere, Cube, or other) ---
+// This component creates a 3D shape made of binary digits (0s and 1s)
+// The shape can be a sphere, cube, or torus - randomly selected on each load
 function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphere' | 'cube' | 'torus' }) {
   const groupRef = useRef<THREE.Group>(null!);
 
+  // Generate points based on the selected shape type
   const points = useMemo(() => {
     const temp = [];
     for (let i = 0; i < pointCount; i++) {
       let endPos: THREE.Vector3;
       
       if (shapeType === 'cube') {
-        // Cube distribution
+        // Cube distribution - place points on 6 faces of a cube
         const side = Math.floor(Math.random() * 6);
         const u = Math.random() - 0.5;
         const v = Math.random() - 0.5;
@@ -71,7 +74,7 @@ function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphe
           default: endPos = new THREE.Vector3(u * size * 2, v * size * 2, -size); break;
         }
       } else if (shapeType === 'torus') {
-        // Torus distribution
+        // Torus distribution - place points on a donut shape
         const angle = Math.random() * Math.PI * 2;
         const radius = 1.5 + Math.random() * 0.7;
         const tubeAngle = Math.random() * Math.PI * 2;
@@ -82,16 +85,18 @@ function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphe
           (shapeRadius * 0.7 + tubeRadius * Math.cos(tubeAngle)) * Math.sin(angle)
         );
       } else {
-        // Sphere distribution
+        // Sphere distribution - place points randomly on a sphere surface
         endPos = new THREE.Vector3().randomDirection().multiplyScalar(shapeRadius);
       }
       
+      // Start position is far away, then animates to the final position
       const startPos = endPos.clone().multiplyScalar(5); 
       temp.push({ start: startPos, end: endPos });
     }
     return temp;
   }, [shapeType]);
 
+  // Rotate the shape slowly over time
   useFrame((state, delta) => {
     if (groupRef.current) {
       groupRef.current.rotation.x -= delta / 20;

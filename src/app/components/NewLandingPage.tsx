@@ -25,6 +25,14 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
     // Clean up the timer if the component unmounts
     return () => clearTimeout(timer);
   }, []); // The empty array [] means this effect runs only once
+  
+  // Create floating particles effect
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    animationDelay: `${Math.random() * 5}s`,
+    animationDuration: `${15 + Math.random() * 10}s`,
+  }))
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -36,6 +44,13 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         }
         .animate-fade-in-bottom {
           animation: fadeInBottom 0.5s ease-out;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+          50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+        }
+        .particle {
+          animation: float linear infinite;
         }
       `}</style>
 
@@ -52,6 +67,23 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
       {/* Ethereal Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-black/70" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-blue-900/20" />
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="particle absolute w-1 h-1 bg-cyan-400 rounded-full"
+            style={{
+              left: particle.left,
+              bottom: '-10px',
+              animationDelay: particle.animationDelay,
+              animationDuration: particle.animationDuration,
+              boxShadow: '0 0 4px rgba(0, 255, 255, 0.8)',
+            }}
+          />
+        ))}
+      </div>
 
       {/* Header Navigation (Unchanged) */}
       <header className="relative z-10 fixed top-0 left-0 right-0">
