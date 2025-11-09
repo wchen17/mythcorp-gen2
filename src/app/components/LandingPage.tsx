@@ -97,9 +97,13 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
   const contentRef = useRef<Group>(null!);
   const backgroundRef = useRef<HTMLDivElement>(null!);
 
-  // UPDATED: Navigate to /newlandingpage instead of transitioning to experience
+  // UPDATED: Navigate to /newlandingpage with a dynamic transition
   const handleLogoClick = () => {
-    router.push('/newlandingpage');
+    setIsExiting(true);
+    // After animation completes, navigate
+    setTimeout(() => {
+      router.push('/newlandingpage');
+    }, 1500);
   };
 
   const handleEnter = () => {
