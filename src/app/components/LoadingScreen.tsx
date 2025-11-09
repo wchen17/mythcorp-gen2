@@ -13,7 +13,7 @@ const pointCount = 500;
 
 // --- A single binary digit component ---
 function BinaryDigit({ startPosition, endPosition, progress }: { startPosition: THREE.Vector3, endPosition: THREE.Vector3, progress: number }) {
-  const textRef = useRef<any>(null);
+  const textRef = useRef<THREE.Mesh>(null);
   const digit = useMemo(() => (Math.random() > 0.5 ? '1' : '0'), []);
 
   useFrame(() => {
