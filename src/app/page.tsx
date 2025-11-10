@@ -1,30 +1,27 @@
-// src/app/page.tsx
 'use client';
 
 import { useState, Suspense, useEffect } from 'react';
 import { useProgress } from "@react-three/drei";
+// --- NEW: Import useRouter ---
+import { useRouter } from 'next/navigation'; 
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
-import { NewLandingPage } from './components/NewLandingPage'; // <-- IMPORT NEW PAGE
-import Scene from './components/Scene';
+import { NewLandingPage } from './components/NewLandingPage';
+// --- REMOVED: No longer need Scene.tsx ---
+// import Scene from './components/Scene'; 
+
 /**
- * This component wraps the main application content.
- * It's responsible for managing the transition from the loading screen
- * to the interactive application after assets are loaded and the
- * minimum display time has passed.
+ * AppLoader component (No changes needed)
  */
 function AppLoader({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false);
   const { progress } = useProgress();
 
   useEffect(() => {
-    // This effect triggers once all assets are loaded.
     if (progress === 100) {
-      // We start a timer to ensure the loading screen is shown
-      // for a minimum amount of time.
       const timer = setTimeout(() => {
         setIsReady(true);
-      }, 4000); // 4-second minimum display time
+      }, 4000); 
 
       return () => clearTimeout(timer);
     }
@@ -33,12 +30,10 @@ function AppLoader({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div style={{ display: isReady ? 'none' : 'block' }}>
-        {/* The loading screen is visible until 'isReady' is true */}
         <LoadingScreen onFinished={() => {}} />
       </div>
 
       <div style={{ visibility: isReady ? 'visible' : 'hidden', height: '100%', width: '100%' }}>
-        {/* The main app content is hidden until 'isReady' is true */}
         {children}
       </div>
     </>
@@ -46,26 +41,25 @@ function AppLoader({ children }: { children: React.ReactNode }) {
 }
 
 
-
 /**
- * The main page component. Its only job is to set up the Suspense boundary
- * and render the AppLoader, which handles all the complex state.
+ * The main page component
  */
 export default function HomePage() {
-  // --- ADD 'interactive' to the possible states ---
-  const [appState, setAppState] = useState<'landing' | 'homepage' | 'experience'>('landing');
+  // --- NEW: Get the router instance ---
+  const router = useRouter();
 
-  // --- This function now leads to the homepage ---
+  // --- MODIFIED: Removed 'experience' from the state ---
+  const [appState, setAppState] = useState<'landing' | 'homepage'>('landing');
+
   const handleGoToHomepage = () => {
     setAppState('homepage');
   };
 
-  // --- This function leads to the experience ---
+  // --- MODIFIED: This now uses the router to navigate ---
   const handleGoToExperience = () => {
-    setAppState('experience');
+    router.push('/experience');
   };
   
-  // --- NEW: This function leads back to the 3D logo page ---
   const handleGoToLanding = () => {
     setAppState('landing');
   };
@@ -77,23 +71,20 @@ export default function HomePage() {
       }>
         <AppLoader>
           
-          {/* STEP 1: Shows 3D Logo Page (The interactive one) */}
+          {/* STEP 1: Shows 3D Logo Page */}
           {appState === 'landing' && (
             <LandingPage onTransitionComplete={handleGoToHomepage} />
           )}
           
-          {/* STEP 2: Shows Professional Homepage (The static image) */}
+          {/* STEP 2: Shows Professional Homepage */}
           {appState === 'homepage' && (
             <NewLandingPage 
               onEnterExperience={handleGoToExperience} 
-              onEnterInteractive={handleGoToLanding} // Pass both functions as props
+              onEnterInteractive={handleGoToLanding} 
             />
           )}
           
-          {/* STEP 3: Shows Final Scene */}
-          {appState === 'experience' && (
-            <Scene />
-          )}
+          {/* --- REMOVED: The 'experience' state is gone --- */}
           
         </AppLoader>
       </Suspense>

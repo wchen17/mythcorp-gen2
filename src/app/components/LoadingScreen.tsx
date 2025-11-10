@@ -139,7 +139,7 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   }, []);
 
   useEffect(() => {
-    const minDisplayTime = 4000; // 4 seconds
+    const minDisplayTime = 1; // 4 seconds
     if (progress === 100) {
       const timer = setTimeout(() => {
         onFinished();
