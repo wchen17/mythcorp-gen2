@@ -14,10 +14,12 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
   const [hasShownMenuNotice, setHasShownMenuNotice] = useState(false);
   const [showMisalignedPopup, setShowMisalignedPopup] = useState(false);
   const [showSecretPopup, setShowSecretPopup] = useState(false);
-
-  // --- NEW: State for the alignment line ---
   const [showAlignmentLine, setShowAlignmentLine] = useState(false);
 
+  // --- NEW: State for snarky click counter ---
+  const [secretClickCount, setSecretClickCount] = useState(0);
+
+  // Effect for the "Ready to see more?" banner
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowBanner(true);
@@ -25,31 +27,47 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
     return () => clearTimeout(timer);
   }, []);
 
+  // Handler for the main menu (with 4s delay for the notice)
   const handleMenuOpen = () => {
     const opening = !showMenu;
     setShowMenu(opening);
-
     if (opening && !hasShownMenuNotice) {
-      // --- MODIFIED: Delay changed to 4 seconds ---
       setTimeout(() => {
         setShowMenuNotice(true);
-      }, 4000); // 4 second delay
-      
+      }, 4000);
       setHasShownMenuNotice(true);
     }
   };
 
+  // --- MODIFIED: Secret Menu handler now counts clicks ---
   const handleSecretMenuClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowMenu(false);
-    setShowSecretPopup(true);
+    setSecretClickCount(prevCount => prevCount + 1); // Increment
+    setShowSecretPopup(true); // Show
   };
 
-  // --- NEW: Handler for the alignment line ---
+  // Handler for the alignment line (this is the toggle)
   const handleAlignmentClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowMenu(false);
-    setShowAlignmentLine(!showAlignmentLine); // Toggle the line
+    setShowAlignmentLine(!showAlignmentLine); // Toggles state
+  };
+  
+  // --- NEW: Helper to get snarky text ---
+  const getSnarkyText = () => {
+    switch (secretClickCount) {
+      case 1:
+        return "Did you think you could access the secret menu from the landing page? Please.";
+      case 2:
+        return "Still trying? Bold. It's 'secret' for a reason.";
+      case 3:
+        return "Okay, fine. A hint: it's not here. Try the... *experience*.";
+      case 4:
+        return "That's all the hints you get. Stop clicking.";
+      default:
+        return "Seriously. Stop.";
+    }
   };
 
   return (
@@ -59,35 +77,24 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
       <div className="min-h-screen relative overflow-hidden font-sans">
         
         <style>{`
-          /* ... (your @keyframes) ... */
           @keyframes fadeInBottom {
             from { opacity: 0; transform: translate(-50%, 20px); }
             to { opacity: 1; transform: translate(-50%, 0); }
           }
-          .animate-fade-in-bottom {
-            animation: fadeInBottom 0.5s ease-out;
-          }
+          .animate-fade-in-bottom { animation: fadeInBottom 0.5s ease-out; }
           @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
           }
-          .animate-fade-in-down {
-            animation: fadeInDown 0.3s ease-out;
-          }
-
-          /* --- NEW: Animation for the RGB line --- */
+          .animate-fade-in-down { animation: fadeInDown 0.3s ease-out; }
           @keyframes rgb-flash {
-            0% { background: red; }
-            33% { background: lime; }
-            66% { background: blue; }
-            100% { background: red; }
+            0% { background: red; } 33% { background: lime; }
+            66% { background: blue; } 100% { background: red; }
           }
-          .animate-rgb-flash {
-            animation: rgb-flash 0.5s linear infinite;
-          }
+          .animate-rgb-flash { animation: rgb-flash 0.5s linear infinite; }
         `}</style>
 
-        {/* ... (Backgrounds and Overlays) ... */}
+        {/* Background Image & Overlays */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -99,17 +106,16 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-blue-900/20" />
 
-        {/* Header */}
-        <header className="relative z-10 fixed top-0 left-0 right-0">
+        {/* Header (z-30) */}
+        <header className="relative z-30 fixed top-0 left-0 right-0">
           <div className="grid grid-cols-3 items-center px-6 py-4">
             
             {/* Left: Menu */}
             <div className="relative justify-self-start">
               <div 
                 className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={handleMenuOpen} // Uses handler with 4s delay
+                onClick={handleMenuOpen}
               >
-                {/* ... (hamburger icon) ... */}
                 <div className="w-6 h-6 flex flex-col justify-center space-y-1">
                   <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? 'rotate-45 translate-y-1.5' : ''}`}></div>
                   <div className={`w-full h-0.5 bg-white transition-opacity duration-300 ${showMenu ? 'opacity-0' : ''}`}></div>
@@ -118,23 +124,20 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
                 <span className="text-sm font-normal text-white tracking-wide">MENU</span>
               </div>
               
-              {/* Dropdown Menu */}
+              {/* Dropdown Menu (z-40) */}
               {showMenu && (
-                <div className="absolute top-full left-0 mt-4 min-w-64 z-20
+                <div className="absolute top-full left-0 mt-4 min-w-64 z-40
                                 bg-black/70 backdrop-blur-md border border-white/20 rounded-lg
                                 shadow-2xl animate-fade-in-down">
                   
                   <div className="p-2 flex flex-col space-y-1">
                     <span className="text-white/60 text-xs uppercase tracking-widest px-3 pt-2 pb-1">Navigation</span>
-                    
                     <a href="#" className="block px-3 py-2 text-white/90 font-serif rounded opacity-70 cursor-not-allowed" onClick={(e) => e.preventDefault()}>
                       About Us
                     </a>
                     <a href="#" className="block px-3 py-2 text-white/90 font-serif rounded opacity-70 cursor-not-allowed" onClick={(e) => e.preventDefault()}>
                       Contact
                     </a>
-
-                    {/* --- NEW: Alignment Line Button --- */}
                     <a 
                       href="#" 
                       className="block px-3 py-2 text-yellow-300/80 font-mono text-xs rounded hover:bg-white/10 transition-all"
@@ -142,7 +145,6 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
                     >
                       {showAlignmentLine ? 'Hide' : 'Show'} Me The Misalignment
                     </a>
-                    
                     <details className="border-t border-white/20 mt-2 pt-2">
                       <summary 
                         className="px-3 py-2 text-cyan-400 font-mono text-xs tracking-widest cursor-pointer hover:bg-white/10 rounded transition-all"
@@ -156,7 +158,7 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
               )}
             </div>
 
-            {/* ... (Center: Logo) ... */}
+            {/* Center: Logo */}
             <div className="flex flex-col items-center justify-self-center">
               <a href="/" className="font-serif text-5xl font-medium text-white tracking-wider drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]" onClick={(e) => e.preventDefault()}>
                 MYTHCORP
@@ -166,7 +168,7 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
               </span>
             </div>
 
-            {/* ... (Right: Navigation) ... */}
+            {/* Right: Navigation */}
             <div className="flex space-x-6 justify-self-end">
               <a href="/about" className="text-sm font-serif font-medium text-white hover:text-cyan-300 transition-all underline underline-offset-4 tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
                 ABOUT US
@@ -182,7 +184,6 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         <main className="relative z-10 h-screen flex items-center justify-center">
           <div className="text-center max-w-4xl mx-auto px-4">
             
-            {/* --- MODIFIED: onClick is now on the parent div --- */}
             <div 
               className="mb-8 cursor-pointer"
               onClick={() => setShowMisalignedPopup(true)}
@@ -205,7 +206,6 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
               </div>
             </div>
             
-            {/* ... (Separator) ... */}
             <div className="flex items-center justify-center my-8">
               <div className="w-32 h-0.5 bg-white/40"></div>
               <div className="mx-4 text-white/60 text-sm font-mono tracking-widest">EST. 2024</div>
@@ -214,18 +214,18 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
 
           </div>
         </main>
-      </div>
+      </div> {/* This closes the main min-h-screen div */}
 
       {/* ======================================================================
-      === POPUPS (MOVED OUTSIDE) ===
+      === POPUPS ===
       ======================================================================
       */}
       
-      {/* --- NEW: Alignment Line Visualizer --- */}
+      {/* Alignment Line (z-20) */}
       {showAlignmentLine && (
         <div 
-          className="fixed inset-0 z-[100] cursor-pointer"
-          onClick={() => setShowAlignmentLine(false)} // Click anywhere to close
+          className="fixed inset-0 z-20 cursor-pointer"
+          onClick={() => setShowAlignmentLine(false)}
         >
           <div className="absolute top-0 bottom-0 left-1/2 w-0.5 animate-rgb-flash"
                style={{ transform: 'translateX(-50%)' }}>
@@ -233,13 +233,12 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         </div>
       )}
 
-      {/* --- Pop-up Banner --- */}
+      {/* "Ready to see more?" Banner (z-50) */}
       {showBanner && (
         <div className="fixed bottom-10 left-1/2 z-50 
                           flex items-center gap-6 p-4
                           bg-black/70 backdrop-blur-md border border-white/20 rounded-lg
                           shadow-2xl animate-fade-in-bottom">
-          {/* ... (Banner buttons) ... */}
           <span className="text-white/90 text-sm font-medium">Ready to see more?</span>
           <button onClick={onEnterExperience} className="bg-cyan-400 text-black font-bold py-2 px-5 rounded hover:bg-cyan-300 transition-all transform hover:scale-105 text-sm tracking-wide">
             Enter 3D Experience
@@ -250,17 +249,16 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         </div>
       )}
 
-      {/* --- Snarky Menu Notice Modal (With 4s Delay) --- */}
+      {/* Snarky Menu Notice Modal (z-100) */}
       {showMenuNotice && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowMenuNotice(false)}>
           <div className="bg-black/80 border border-white/20 rounded-lg shadow-2xl
                         max-w-sm m-4 p-6
                         animate-fade-in-down flex flex-col"
+               onClick={(e) => e.stopPropagation()} /* Prevents click from closing it */
                style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
             
             <h3 className="text-xl font-serif font-bold text-cyan-300 mb-3">A Quick Heads-Up...</h3>
-            
-            {/* --- MODIFIED: Text updated and <strong> tag used --- */}
             <p className="text-white/80 mb-4 text-sm font-sans">
               Yeah, so the 'About Us' and 'Contact' links in this menu are kinda there to fill in space (and are on vacation).
               <br/><br/>
@@ -277,12 +275,13 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         </div>
       )}
 
-      {/* --- Misaligned Text Popup --- */}
+      {/* Misaligned Text Popup (z-100) */}
       {showMisalignedPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowMisalignedPopup(false)}>
           <div className="bg-black/80 border border-yellow-400/50 rounded-lg shadow-2xl
                         max-w-sm m-4 p-6 text-center
                         animate-fade-in-down flex flex-col items-center"
+               onClick={(e) => e.stopPropagation()}
                style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
             
             <div className="text-5xl mb-4">👀</div>
@@ -303,28 +302,28 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
         </div>
       )}
 
-      {/* --- Secret Menu Popup --- */}
+      {/* Secret Menu Popup (z-100) */}
       {showSecretPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          {/* ... (Secret Popup JSX) ... */}
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowSecretPopup(false)}>
           <div className="bg-black/80 border border-red-400/50 rounded-lg shadow-2xl
                         max-w-sm m-4 p-6 text-center
                         animate-fade-in-down flex flex-col items-center"
+               onClick={(e) => e.stopPropagation()}
                style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
             
             <div className="text-5xl mb-4">🔒</div>
-            <h3 className="text-xl font-serif font-bold text-red-400 mb-2">CLASSIFIED</h3>
+            <h3 className="text-xl font-serif font-bold text-red-400 mb-2">
+              {secretClickCount > 2 ? 'A HINT, THEN.' : 'ACCESS DENIED'}
+            </h3>
             <p className="text-white/80 mb-6">
-              C'mon, did you really think it would be that easy?
-              <br/><br/>
-              It's a <strong>secret</strong> menu for a reason.
+              {getSnarkyText()}
             </p>
             <button
               onClick={() => setShowSecretPopup(false)}
               className="bg-red-400 text-black font-bold py-2 px-6 rounded
                          hover:bg-red-300 transition-all transform hover:scale-105 text-sm tracking-wide"
             >
-              FINE, I'LL LEAVE
+              {secretClickCount > 3 ? '...' : 'FINE, I\'LL LEAVE'}
             </button>
           </div>
         </div>

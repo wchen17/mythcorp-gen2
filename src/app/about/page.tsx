@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* ... (Header - no changes from last time) ... */}
+      {/* ... (Header is the same) ... */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-2">
@@ -37,17 +37,13 @@ export default function AboutPage() {
         </div>
       </header>
 
-      {/* ======================================================================
-      === NEW PAGE CONTENT ===
-      ======================================================================
-      */}
+      {/* --- Main Content --- */}
       <main className="flex-1 flex flex-col items-center justify-center pt-20 px-6">
         <div className="text-center max-w-lg">
           
           <h1 className="text-4xl md:text-5xl font-bold font-serif text-white mb-6">
             JUST AN IDEA
           </h1>
-          {/* --- MODIFIED: Removed the "No grand promises..." line --- */}
           <p className="text-lg md:text-xl leading-relaxed text-white/90 mb-8 font-sans">
             Honestly? This is a passion project.
             <br/>
@@ -58,14 +54,15 @@ export default function AboutPage() {
         <div className="w-full max-w-xs h-px bg-white/20 my-10"></div>
 
         <div className="text-center max-w-lg">
-          {/* --- MODIFIED: Updated AI and 'goal' text --- */}
+          {/* --- MODIFIED: Text smoothed out --- */}
           <p className="text-md md:text-lg leading-relaxed text-white/80 font-mono">
             Made with &lt;3 in Chicago.
             <br/>
-            Powered by a creative partnership with AI, giving me a window into what is possible,
-            and to one day, able to do better.
+            Brought from mind to screen with AI as a creative partner,
+            opening a window to what's possible and sparking the ambition
+            to one day build it even better.
             <br/><br/>
-            Something cool eventually.......
+            Something cool, eventually...
             <br/>
             (Check back later)
           </p>
