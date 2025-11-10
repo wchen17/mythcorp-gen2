@@ -1,179 +1,334 @@
-// src/app/components/NewLandingPage.tsx
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
-export function NewLandingPage() {
-  const [isHovering, setIsHovering] = useState(false);
+interface NewLandingPageProps {
+  onEnterExperience: () => void;
+  onEnterInteractive: () => void;
+}
+
+export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLandingPageProps) {
   const [showMenu, setShowMenu] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+  const [showMenuNotice, setShowMenuNotice] = useState(false);
+  const [hasShownMenuNotice, setHasShownMenuNotice] = useState(false);
+  const [showMisalignedPopup, setShowMisalignedPopup] = useState(false);
+  const [showSecretPopup, setShowSecretPopup] = useState(false);
+  const [showAlignmentLine, setShowAlignmentLine] = useState(false);
+
+  // --- NEW: State for snarky click counter ---
+  const [secretClickCount, setSecretClickCount] = useState(0);
+
+  // Effect for the "Ready to see more?" banner
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBanner(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handler for the main menu (with 4s delay for the notice)
+  const handleMenuOpen = () => {
+    const opening = !showMenu;
+    setShowMenu(opening);
+    if (opening && !hasShownMenuNotice) {
+      setTimeout(() => {
+        setShowMenuNotice(true);
+      }, 4000);
+      setHasShownMenuNotice(true);
+    }
+  };
+
+  // --- MODIFIED: Secret Menu handler now counts clicks ---
+  const handleSecretMenuClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowMenu(false);
+    setSecretClickCount(prevCount => prevCount + 1); // Increment
+    setShowSecretPopup(true); // Show
+  };
+
+  // Handler for the alignment line (this is the toggle)
+  const handleAlignmentClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowMenu(false);
+    setShowAlignmentLine(!showAlignmentLine); // Toggles state
+  };
+  
+  // --- NEW: Helper to get snarky text ---
+  const getSnarkyText = () => {
+    switch (secretClickCount) {
+      case 1:
+        return "Did you think you could access the secret menu from the landing page? Please.";
+      case 2:
+        return "Still trying? Bold. It's 'secret' for a reason.";
+      case 3:
+        return "Okay, fine. A hint: it's not here. Try the... *experience*.";
+      case 4:
+        return "That's all the hints you get. Stop clicking.";
+      default:
+        return "Seriously. Stop.";
+    }
+  };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background Image with Blur and Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url(/chicagoskyline.jpg)',
-          filter: 'blur(4px)',
-          transform: 'scale(1.1)', // Prevent blur edge artifacts
-        }}
-      />
+    <React.Fragment>
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Main Page Container */}
+      <div className="min-h-screen relative overflow-hidden font-sans">
+        
+        <style>{`
+          @keyframes fadeInBottom {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+          }
+          .animate-fade-in-bottom { animation: fadeInBottom 0.5s ease-out; }
+          @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in-down { animation: fadeInDown 0.3s ease-out; }
+          @keyframes rgb-flash {
+            0% { background: red; } 33% { background: lime; }
+            66% { background: blue; } 100% { background: red; }
+          }
+          .animate-rgb-flash { animation: rgb-flash 0.5s linear infinite; }
+        `}</style>
 
-      {/* Header Navigation */}
-      <header className="relative z-10 fixed top-0 left-0 right-0">
-        <div className="flex items-center justify-between px-6 py-4">
-          {/* Left: Menu */}
-          <div className="relative">
-            <div 
-              className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
-              onClick={() => setShowMenu(!showMenu)}
-            >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-                <div className={`w-full h-0.5 bg-white transition-opacity duration-300 ${showMenu ? 'opacity-0' : ''}`}></div>
-                <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
-              </div>
-              <span className="text-sm font-medium text-white tracking-wide">MENU</span>
-            </div>
+        {/* Background Image & Overlays */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/chicagoskyline.jpg)',
+            filter: 'blur(4px)',
+            transform: 'scale(1.1)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-blue-900/20" />
+
+        {/* Header (z-30) */}
+        <header className="relative z-30 fixed top-0 left-0 right-0">
+          <div className="grid grid-cols-3 items-center px-6 py-4">
             
-            {/* Dropdown Menu */}
-            {showMenu && (
-              <div className="absolute top-full left-0 mt-4 bg-black/90 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 min-w-64 z-20">
-                <div className="space-y-3">
-                  <Link href="/experience" className="block text-cyan-300 hover:text-cyan-200 transition-colors font-medium">
-                    🎮 3D SIMULATION LAB
-                  </Link>
-                  <Link href="/about" className="block text-white hover:text-cyan-300 transition-colors">
-                    📖 COMPANY INFO
-                  </Link>
-                  <Link href="/contact" className="block text-white hover:text-cyan-300 transition-colors">
-                    📧 CONTACT FORM
-                  </Link>
-                  <div className="border-t border-gray-600 pt-3 mt-3">
-                    <div className="text-orange-400 text-sm opacity-75 mb-2">🚧 IN DEVELOPMENT:</div>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Team Portal</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Project Dashboard</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm mb-1">• Research Hub</button>
-                    <button className="block text-orange-400/60 cursor-not-allowed text-sm">• Analytics Suite</button>
+            {/* Left: Menu */}
+            <div className="relative justify-self-start">
+              <div 
+                className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={handleMenuOpen}
+              >
+                <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+                  <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+                  <div className={`w-full h-0.5 bg-white transition-opacity duration-300 ${showMenu ? 'opacity-0' : ''}`}></div>
+                  <div className={`w-full h-0.5 bg-white transition-transform duration-300 ${showMenu ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
+                </div>
+                <span className="text-sm font-normal text-white tracking-wide">MENU</span>
+              </div>
+              
+              {/* Dropdown Menu (z-40) */}
+              {showMenu && (
+                <div className="absolute top-full left-0 mt-4 min-w-64 z-40
+                                bg-black/70 backdrop-blur-md border border-white/20 rounded-lg
+                                shadow-2xl animate-fade-in-down">
+                  
+                  <div className="p-2 flex flex-col space-y-1">
+                    <span className="text-white/60 text-xs uppercase tracking-widest px-3 pt-2 pb-1">Navigation</span>
+                    <a href="#" className="block px-3 py-2 text-white/90 font-serif rounded opacity-70 cursor-not-allowed" onClick={(e) => e.preventDefault()}>
+                      About Us
+                    </a>
+                    <a href="#" className="block px-3 py-2 text-white/90 font-serif rounded opacity-70 cursor-not-allowed" onClick={(e) => e.preventDefault()}>
+                      Contact
+                    </a>
+                    <a 
+                      href="#" 
+                      className="block px-3 py-2 text-yellow-300/80 font-mono text-xs rounded hover:bg-white/10 transition-all"
+                      onClick={handleAlignmentClick}
+                    >
+                      {showAlignmentLine ? 'Hide' : 'Show'} Me The Misalignment
+                    </a>
+                    <details className="border-t border-white/20 mt-2 pt-2">
+                      <summary 
+                        className="px-3 py-2 text-cyan-400 font-mono text-xs tracking-widest cursor-pointer hover:bg-white/10 rounded transition-all"
+                        onClick={handleSecretMenuClick}
+                      >
+                        🔒 SECRET MENU
+                      </summary>
+                    </details>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* Center: Logo */}
-          <div className="flex flex-col items-center">
-            <Link 
-              href="/" 
-              className="text-4xl md:text-5xl font-bold text-white tracking-wide transition-all duration-300 hover:scale-105 font-serif relative"
+            {/* Center: Logo */}
+            <div className="flex flex-col items-center justify-self-center">
+              <a href="/" className="font-serif text-5xl font-medium text-white tracking-wider drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]" onClick={(e) => e.preventDefault()}>
+                MYTHCORP
+              </a>
+              <span className="text-sm font-serif tracking-widest text-white/80 mt-1">
+                FOUNDED IN CHICAGO
+              </span>
+            </div>
+
+            {/* Right: Navigation */}
+            <div className="flex space-x-6 justify-self-end">
+              <a href="/about" className="text-sm font-serif font-medium text-white hover:text-cyan-300 transition-all underline underline-offset-4 tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                ABOUT US
+              </a>
+              <a href="/contact" className="text-sm font-serif font-medium text-white hover:text-cyan-300 transition-all underline underline-offset-4 tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                CONTACT
+              </a>
+            </div>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <main className="relative z-10 h-screen flex items-center justify-center">
+          <div className="text-center max-w-4xl mx-auto px-4">
+            
+            <div 
+              className="mb-8 cursor-pointer"
+              onClick={() => setShowMisalignedPopup(true)}
             >
-              <span className="relative">
-                <span className="text-cyan-300">MYTH</span>
-                <span className="relative text-white">
-                  C
-                  <span 
-                    className="relative inline-block"
-                    onMouseEnter={() => setIsHovering(true)}
-                    onMouseLeave={() => setIsHovering(false)}
-                  >
-                    O
-                    <span 
-                      className={`absolute inset-0 flex items-center justify-center text-yellow-400 transition-all duration-500 ${
-                        isHovering ? 'transform rotate-[360deg] scale-110 drop-shadow-[0_0_20px_rgba(255,255,0,0.8)]' : 'drop-shadow-[0_0_8px_rgba(255,255,0,0.4)]'
-                      }`}
-                      style={{ fontSize: '0.5em' }}
-                    >
-                      ⭐
-                    </span>
+              <div className="inline-block">
+                <h1 className="text-5xl md:text-7xl font-serif font-extrabold leading-tight tracking-tight
+                              grid grid-cols-[1fr_auto_1fr] items-center gap-x-4 md:gap-x-6">
+                  
+                  <span className="text-green-400 drop-shadow-[0_0_20px_rgba(74,222,128,0.6)] text-right">
+                    DISCOVER
                   </span>
-                  <span className="text-cyan-300">RP</span>
-                </span>
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 blur-sm opacity-20 text-cyan-300 -z-10">
-                  MYTHC⭐RP
-                </div>
-              </span>
-            </Link>
-            <span className="text-sm font-sans tracking-widest text-white/80 mt-2 font-medium">
-              FOUNDED IN CHICAGO
-            </span>
-          </div>
+                  <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] text-center">
+                    YOUR
+                  </span>
+                  <span className="text-yellow-400 drop-shadow-[0_0_25px_rgba(250,204,21,0.7)] text-left">
+                    POTENTIAL
+                  </span>
+                </h1>
+                <div className="w-full h-0.5 bg-white mt-2 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-center my-8">
+              <div className="w-32 h-0.5 bg-white/40"></div>
+              <div className="mx-4 text-white/60 text-sm font-mono tracking-widest">EST. 2024</div>
+              <div className="w-32 h-0.5 bg-white/40"></div>
+            </div>
 
-          {/* Right: Navigation */}
-          <div className="flex space-x-6">
-            <Link 
-              href="/about" 
-              className="text-sm font-medium text-white hover:text-cyan-300 transition-all duration-300 hover:underline"
+          </div>
+        </main>
+      </div> {/* This closes the main min-h-screen div */}
+
+      {/* ======================================================================
+      === POPUPS ===
+      ======================================================================
+      */}
+      
+      {/* Alignment Line (z-20) */}
+      {showAlignmentLine && (
+        <div 
+          className="fixed inset-0 z-20 cursor-pointer"
+          onClick={() => setShowAlignmentLine(false)}
+        >
+          <div className="absolute top-0 bottom-0 left-1/2 w-0.5 animate-rgb-flash"
+               style={{ transform: 'translateX(-50%)' }}>
+          </div>
+        </div>
+      )}
+
+      {/* "Ready to see more?" Banner (z-50) */}
+      {showBanner && (
+        <div className="fixed bottom-10 left-1/2 z-50 
+                          flex items-center gap-6 p-4
+                          bg-black/70 backdrop-blur-md border border-white/20 rounded-lg
+                          shadow-2xl animate-fade-in-bottom">
+          <span className="text-white/90 text-sm font-medium">Ready to see more?</span>
+          <button onClick={onEnterExperience} className="bg-cyan-400 text-black font-bold py-2 px-5 rounded hover:bg-cyan-300 transition-all transform hover:scale-105 text-sm tracking-wide">
+            Enter 3D Experience
+          </button>
+          <button onClick={onEnterInteractive} className="bg-gray-700 text-white font-medium py-2 px-5 rounded hover:bg-gray-600 transition-all text-sm">
+            View 3D Logo
+          </button>
+        </div>
+      )}
+
+      {/* Snarky Menu Notice Modal (z-100) */}
+      {showMenuNotice && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowMenuNotice(false)}>
+          <div className="bg-black/80 border border-white/20 rounded-lg shadow-2xl
+                        max-w-sm m-4 p-6
+                        animate-fade-in-down flex flex-col"
+               onClick={(e) => e.stopPropagation()} /* Prevents click from closing it */
+               style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
+            
+            <h3 className="text-xl font-serif font-bold text-cyan-300 mb-3">A Quick Heads-Up...</h3>
+            <p className="text-white/80 mb-4 text-sm font-sans">
+              Yeah, so the 'About Us' and 'Contact' links in this menu are kinda there to fill in space (and are on vacation).
+              <br/><br/>
+              Please use the <strong>real ones on the top right</strong> of the page. They actually work (probably).
+            </p>
+            <button
+              onClick={() => setShowMenuNotice(false)}
+              className="bg-cyan-400 text-black font-bold py-2 px-6 rounded
+                         hover:bg-cyan-300 transition-all transform hover:scale-105 text-sm tracking-wide self-end"
             >
-              ABOUT US
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-sm font-medium text-white hover:text-cyan-300 transition-all duration-300 hover:underline"
-            >
-              CONTACT
-            </Link>
-            <button className="text-sm font-medium text-orange-400 cursor-not-allowed opacity-60 relative group">
-              RESEARCH
-              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                🚧 Coming Soon
-              </span>
-            </button>
-            <button className="text-sm font-medium text-orange-400 cursor-not-allowed opacity-60 relative group">
-              LABS
-              <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                🚧 Under Construction
-              </span>
+              Got It
             </button>
           </div>
         </div>
-      </header>
+      )}
 
-      {/* Hero Section */}
-      <main className="relative z-10 h-screen flex items-center justify-center">
-        <div className="text-center max-w-4xl mx-auto px-4">
-          {/* Title matching reference design - single line */}
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight relative">
-              <span className="inline-block border-b-2 border-white pb-2">
-                <span className="text-green-400">DISCOVER</span>{' '}
-                <span className="text-white">YOUR</span>{' '}
-                <span className="text-yellow-400 font-black tracking-wide">POTENTIAL</span>
-              </span>
-            </h1>
-          </div>
-          
-          {/* Enhanced Separator */}
-          <div className="flex items-center justify-center my-8">
-            <div className="w-32 h-0.5 bg-white/40"></div>
-            <div className="mx-4 text-white/60 text-sm font-mono tracking-widest">EST. 2024</div>
-            <div className="w-32 h-0.5 bg-white/40"></div>
-          </div>
-
-          {/* Call to Action Buttons - Updated theme */}
-          <div className="flex flex-col items-center gap-4 mt-8">
-            <Link 
-              href="/experience" 
-              className="inline-block bg-black border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold py-4 px-10 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] text-lg tracking-widest"
+      {/* Misaligned Text Popup (z-100) */}
+      {showMisalignedPopup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowMisalignedPopup(false)}>
+          <div className="bg-black/80 border border-yellow-400/50 rounded-lg shadow-2xl
+                        max-w-sm m-4 p-6 text-center
+                        animate-fade-in-down flex flex-col items-center"
+               onClick={(e) => e.stopPropagation()}
+               style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
+            
+            <div className="text-5xl mb-4">👀</div>
+            <h3 className="text-xl font-serif font-bold text-yellow-300 mb-2">Yep, We Know.</h3>
+            <p className="text-white/80 mb-6">
+              Yes, it's not aligned with the logo. It's... a work in progress.
+              <br/>
+              (We're trying to figure it out sooner or later.)
+            </p>
+            <button
+              onClick={() => setShowMisalignedPopup(false)}
+              className="bg-yellow-400 text-black font-bold py-2 px-6 rounded
+                         hover:bg-yellow-300 transition-all transform hover:scale-105 text-sm tracking-wide"
             >
-              ENTER 3D EXPERIENCE
-            </Link>
-            <Link
-              href="/interactive"
-              className="inline-block bg-black border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold py-3 px-8 transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] text-base tracking-widest"
-            >
-              INTERACTIVE MYTHCORP LOGO
-            </Link>
-            <button className="text-white/70 hover:text-cyan-300 text-sm font-mono tracking-wider border border-white/30 hover:border-cyan-400/60 px-6 py-2 transition-all duration-300">
-              LEARN MORE
+              WE BELIEVE IN YOU
             </button>
           </div>
         </div>
-      </main>
-    </div>
+      )}
+
+      {/* Secret Menu Popup (z-100) */}
+      {showSecretPopup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={() => setShowSecretPopup(false)}>
+          <div className="bg-black/80 border border-red-400/50 rounded-lg shadow-2xl
+                        max-w-sm m-4 p-6 text-center
+                        animate-fade-in-down flex flex-col items-center"
+               onClick={(e) => e.stopPropagation()}
+               style={{ animationName: 'fadeInDown', animationDuration: '0.3s' }}>
+            
+            <div className="text-5xl mb-4">🔒</div>
+            <h3 className="text-xl font-serif font-bold text-red-400 mb-2">
+              {secretClickCount > 2 ? 'A HINT, THEN.' : 'ACCESS DENIED'}
+            </h3>
+            <p className="text-white/80 mb-6">
+              {getSnarkyText()}
+            </p>
+            <button
+              onClick={() => setShowSecretPopup(false)}
+              className="bg-red-400 text-black font-bold py-2 px-6 rounded
+                         hover:bg-red-300 transition-all transform hover:scale-105 text-sm tracking-wide"
+            >
+              {secretClickCount > 3 ? '...' : 'FINE, I\'LL LEAVE'}
+            </button>
+          </div>
+        </div>
+      )}
+
+    </React.Fragment>
   );
 }

@@ -1,21 +1,19 @@
-// src/app/components/LandingPage.tsx
 'use client';
 
-// ADDED: useState and useEffect for handling the transition
 import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text3D, Center, PerspectiveCamera, Stars, useGLTF } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { Group } from 'three';
-// ADDED: The GSAP animation library
 import gsap from 'gsap';
+import { useRouter } from 'next/navigation';
 
-// A helper function for linear interpolation (smoothing).
+// ... (lerp function) ...
 const lerp = (start: number, end: number, alpha: number) => {
   return start * (1 - alpha) + end * alpha;
 };
 
-// --- Spectre Model Component (Your positioning is preserved) ---
+// ... (SpectreModel component) ...
 function SpectreModel() {
   const { scene } = useGLTF('/spectre.glb');
   const groupRef = useRef<Group>(null!);
@@ -24,7 +22,6 @@ function SpectreModel() {
   useFrame((state, delta) => {
     if (groupRef.current) {
       groupRef.current.rotation.y += delta * 0.2;
-      // Your exact positioning code is here
       const margin = .05; 
       const positionX = viewport.width / 2 - margin;
       const positionY = -viewport.height / 2 + margin;
@@ -40,15 +37,15 @@ function SpectreModel() {
         position={[0, 0, 0]} 
         rotation={[0, -0.5, 0]}
       >
-        {/* ADDED: transparent prop to allow fading */}
         <meshStandardMaterial color="#888888" emissive="#00ffff" emissiveIntensity={0.5} toneMapped={false} transparent opacity={1} />
       </primitive>
     </group>
   );
 }
 
-// --- The Interactive Logo Component ---
-function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
+
+// ... (InteractiveLogo component) ...
+function InteractiveLogo({ onNavigate }: { onNavigate: () => void }) {
   const logoRef = useRef<Group>(null!);
 
   useFrame((state) => {
@@ -59,8 +56,7 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
   });
 
   return (
-    // The onClick event is now on the group
-    <group ref={logoRef} onClick={onEnter}>
+    <group ref={logoRef} onClick={onNavigate}>
       <Center>
         <Text3D
           font="/fonts/Inter_Bold.json"
@@ -83,44 +79,56 @@ function InteractiveLogo({ onEnter }: { onEnter: () => void }) {
 }
 
 
-// --- The Main Landing Page Component (with Transition Logic) ---
+// --- Main Landing Page Component (with Transition Logic) ---
 export function LandingPage({ onTransitionComplete }: { onTransitionComplete: () => void }) {
-  // State to track if we are animating out
+  const router = useRouter();
   const [isExiting, setIsExiting] = useState(false);
-  // Refs to control the elements we want to animate
   const contentRef = useRef<Group>(null!);
   const backgroundRef = useRef<HTMLDivElement>(null!);
+  
+  // --- NEW: Ref for the text prompt ---
+  const promptRef = useRef<HTMLDivElement>(null!);
+
+  const handleLogoClick = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      router.push('/newlandingpage');
+    }, 1500);
+  };
 
   const handleEnter = () => {
     setIsExiting(true);
   };
 
-  // This effect hook runs the animation when isExiting becomes true
   useEffect(() => {
-    if (isExiting && contentRef.current && backgroundRef.current) {
+    // --- MODIFIED: Added promptRef.current to the check ---
+    if (isExiting && contentRef.current && backgroundRef.current && promptRef.current) {
       const tl = gsap.timeline({
         onComplete: () => {
-          // Tell the parent page the animation is done
           if (onTransitionComplete) onTransitionComplete();
         }
       });
 
-      // Animate the background div fading to black
       tl.to(backgroundRef.current, {
         opacity: 0,
         duration: 1.5,
         ease: 'power2.in',
       }, 0);
 
-      // Go through every object in our 3D scene...
+      // --- NEW: Animate the text prompt fading out ---
+      tl.to(promptRef.current, {
+        opacity: 0,
+        duration: 1.0,
+        ease: 'power2.in',
+      }, 0); // Fade it out at the same time
+
       contentRef.current.traverse((child) => {
-        // ...and if it has a material, fade its opacity to 0
         if ((child as any).material) {
           tl.to((child as any).material, {
             opacity: 0,
             duration: 1,
             ease: 'power2.in',
-          }, 0.2); // Start this fade slightly after the background fade begins
+          }, 0.2);
         }
       });
     }
@@ -129,20 +137,26 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', background: '#000' }}>
       
+      {/* --- NEW: Style tag for the pulse animation --- */}
+      <style>{`
+        @keyframes pulseFade {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.9; }
+        }
+        .animate-pulse-fade {
+          animation: pulseFade 3s ease-in-out infinite;
+        }
+      `}</style>
+
       <div
         ref={backgroundRef}
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
+          /* ... (background styles) ... */
+          position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
           backgroundImage: `url(/chicagoskyline.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: 'cover', backgroundPosition: 'center',
           filter: 'blur(8px) grayscale(0.7) brightness(0.5)',
-          zIndex: 1,
-          opacity: 1,
+          zIndex: 1, opacity: 1,
         }}
       />
 
@@ -150,30 +164,37 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 2 }}
         gl={{ alpha: true }}
       >
+        {/* ... (Canvas contents are the same) ... */}
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
-        
-        {/* We wrap all the 3D content in a single group with a ref */}
         <group ref={contentRef}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={0.5} />
-
           <Suspense fallback={null}>
-            <InteractiveLogo onEnter={handleEnter} />
+            <InteractiveLogo onNavigate={handleLogoClick} />
             <SpectreModel />
           </Suspense>
-
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         </group>
-
         <EffectComposer>
           <Bloom 
-            intensity={0.7}
-            luminanceThreshold={0.1}
-            luminanceSmoothing={0.2}
-            mipmapBlur
+            intensity={0.7} luminanceThreshold={0.1}
+            luminanceSmoothing={0.2} mipmapBlur
           />
         </EffectComposer>
       </Canvas>
+
+      {/* --- NEW: Clickable Text Prompt --- */}
+      <div
+        ref={promptRef}
+        onClick={handleLogoClick}
+        className="absolute z-10 left-1/2 -translate-x-1/2 text-center
+                   bottom-[30%] md:bottom-[25%]
+                   font-mono text-cyan-200 text-lg
+                   cursor-pointer animate-pulse-fade"
+        style={{ textShadow: '0 0 10px rgba(0,255,255,0.7)' }}
+      >
+        [ CLICK TO ENTER ]
+      </div>
     </div>
   );
 }
