@@ -20,7 +20,7 @@ A large refresh that addresses the brief: humanise/whimsical, showcase tech, cod
 
 ## Next up
 
-In rough priority order. Pick whichever fits the time you have. (These are also tracked as GitHub Issues — see the labels `next-up` / `polish` / `walkthrough` / `paper`.)
+In rough priority order. Pick whichever fits the time you have. (Pre-formatted Issue bodies live in `BACKLOG.md` — paste into GitHub Issues, or batch-create via `gh` once it's installed.)
 
 1. **Two more walkthroughs** in `/will/learn`: `landing-flow` (LoadingScreen→LandingPage→NewLandingPage handoff + GLB preload) and `3d-scene` (anatomy of `Simulation.tsx` — particles, bloom, settings).
 2. **Wire MDX** for `/will/papers` so the AI/cybercrime paper can live as a single `.mdx` file with embedded React/3D demos. `@next/mdx` + `remark-gfm` + `rehype-pretty-code` + `shiki`. Verify it works on Cloudflare Workers before committing.
