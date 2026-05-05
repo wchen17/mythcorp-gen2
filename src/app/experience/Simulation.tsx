@@ -348,7 +348,8 @@ export function Simulation({ onExit }: SimulationProps) {
         }}
         dpr={[1, 2]}
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={60} />
+        {/* Shared FOV with the boot LandingPage so the camera doesn't snap on route change. */}
+        <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={55} />
         <color attach="background" args={['#000008']} />
         <Stars
           radius={100}

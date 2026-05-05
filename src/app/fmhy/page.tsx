@@ -52,7 +52,7 @@ export default function FmhyPage() {
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
             [ /FMHY ]
           </p>
-          <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
+          <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
             FMHY backup
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-sm text-[color:var(--fg-muted)] sm:text-base">
@@ -70,10 +70,7 @@ export default function FmhyPage() {
                 href={`${FMHY_BASE}/${c.slug}`}
                 target="_blank"
                 rel="noreferrer"
-                className="group block rounded-xl border border-[color:var(--border)]
-                           bg-[color:var(--bg-elevated)] p-4 transition-all
-                           hover:-translate-y-0.5 hover:border-[color:var(--border-strong)]
-                           hover:shadow-[0_8px_30px_-15px_var(--accent-glow)]"
+                className="themed-surface themed-surface-interactive group block p-4"
               >
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">{c.emoji}</span>
@@ -114,10 +111,7 @@ export default function FmhyPage() {
                 href={FMHY_BASE}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-block rounded-md bg-[color:var(--accent)] px-5 py-2
-                           font-bold text-sm tracking-wide text-[color:var(--bg)]
-                           transition-all hover:scale-[1.03]
-                           hover:shadow-[0_0_24px_var(--accent-glow-strong)]"
+                className="themed-button mt-4 inline-block px-5 py-2 text-sm"
               >
                 OPEN FMHY.NET
               </a>

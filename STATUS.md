@@ -3,7 +3,7 @@
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
-2026-05-04, site refresh sweep on branch `claude/vigilant-golick-c8ff8d`. Pushed to GitHub (open the branch in `claude.ai/code` or pull locally).
+2026-05-04, second deep pass on branch `claude/vigilant-golick-c8ff8d`. Theme Tier 2, /wc/papers/ai-cybercrime with two interactive figures, Konami easter egg, camera FOV bridge. Pushed.
 
 ## Hard rules (saved to memory at ~/.claude/projects/<this-project>/memory/)
 
@@ -24,6 +24,23 @@ A large refresh that addresses the brief: humanise/whimsical, showcase tech, cod
 
 ## Recent rename
 `/will` -> `/wc` (initials handle). Internal references updated. Old paths are gone, not redirected.
+
+## Latest: theme Tier 2 + first real paper page
+
+Each theme now picks its own design language, not just its own palette:
+- **cyberpunk**: matte surfaces, sharp 1px neon-bordered cards, fast easing, no blur.
+- **luxury**: glass-morphism (`backdrop-filter: blur(22px)`), large rounded corners, gradient buttons, soft glows, slower easing.
+- **paper**: hard offset shadow like a physical card stamped on a desk, near-zero radius, subtle paper-grain noise (`body::before`), buttons that "press into" the page on hover.
+
+Driven by new tokens in `globals.css` (`--surface-style`, `--radius`, `--surface-shadow`, `--motion-ease`, `--button-bg`, etc) and three reusable utility classes: `.themed-surface`, `.themed-button`, `.themed-pill`. Plus `.themed-heading` for display type with theme-aware text-shadow.
+
+Migrated to the new utilities: Modal, ComingSoon, /wc index cards, /wc/papers cards, /og index cards, /fmhy category grid, /experience MainMenu (cards, CTA, pills).
+
+`/wc/papers/ai-cybercrime` is the first real paper page, with two interactive figures:
+- **`<BarrierToEntry />`** (`src/app/wc/papers/ai-cybercrime/_components/`): pre-AI vs post-AI toggle, animated bar chart of layperson capability across six attack types (Tables 1, 3, 5 in the source paper).
+- **`<CapabilityRamp />`**: year scrubber 2024-2047 with a 4-stage track (Stages 2-4 visually muted to mark them as projection, not observation). Selecting a stage shows hard requirements + an anchor reference (e.g. Grace et al. 2024 expert survey).
+
+Konami code (↑↑↓↓←→←→ b a) cycles theme + plays a confetti burst. Camera FOV unified at 55° between LandingPage and Simulation so route changes don't snap.
 
 ## Next up
 

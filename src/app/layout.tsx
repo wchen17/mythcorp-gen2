@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Cinzel } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { HelpDot } from "./components/HelpDot";
+import { KonamiEgg } from "./components/KonamiEgg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <HelpDot />
+          <KonamiEgg />
         </ThemeProvider>
       </body>
     </html>

@@ -33,7 +33,7 @@ export default function WillIndex() {
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
           [ /wc ]
         </p>
-        <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
+        <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
           A small back room
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
@@ -47,10 +47,7 @@ export default function WillIndex() {
             <Link
               key={s.href}
               href={s.href}
-              className="group block rounded-xl border border-[color:var(--border)]
-                         bg-[color:var(--bg-elevated)] p-5 transition-all
-                         hover:-translate-y-0.5 hover:border-[color:var(--border-strong)]
-                         hover:shadow-[0_8px_30px_-15px_var(--accent-glow)]"
+              className="themed-surface themed-surface-interactive group block p-5"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
                 {s.label}
