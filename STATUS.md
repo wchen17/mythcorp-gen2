@@ -3,7 +3,7 @@
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
-2026-05-04 — site refresh sweep on branch `claude/vigilant-golick-c8ff8d`.
+2026-05-04 — site refresh sweep on branch `claude/vigilant-golick-c8ff8d`. Pushed to GitHub (open the branch in `claude.ai/code` or pull locally).
 
 ## What just shipped
 A large refresh that addresses the brief: humanise/whimsical, showcase tech, codebase as a learning artefact, structure for cheap future iteration. Specifically:
@@ -20,15 +20,15 @@ A large refresh that addresses the brief: humanise/whimsical, showcase tech, cod
 
 ## Next up
 
-In rough priority order. Pick whichever fits the time you have.
+In rough priority order. Pick whichever fits the time you have. (These are also tracked as GitHub Issues — see the labels `next-up` / `polish` / `walkthrough` / `paper`.)
 
-1. **Confirm + delete dead routes**: `/newlandingpage` (redundant — `/` already uses the component), `/interactive` (just "WIP" text), `/fmhy` (dead `#` links), `/chat` (local-only demo). All four are listed in the plan; the user wanted explicit confirmation before deletion.
-2. **Two more walkthroughs** in `/will/learn`: `landing-flow` (LoadingScreen→LandingPage→NewLandingPage handoff + GLB preload) and `3d-scene` (anatomy of `Simulation.tsx` — particles, bloom, settings).
-3. **Wire MDX** for `/will/papers` so the AI/cybercrime paper can live as a single `.mdx` file with embedded React/3D demos. `@next/mdx` + `remark-gfm` + `rehype-pretty-code` + `shiki`. Verify it works on Cloudflare Workers before committing.
-4. **Camera FOV bridge**: LandingPage uses fov=50, Simulation uses fov=60 — consider a smoother handoff (single shared fov, or GSAP-tween across the route change with a transition animation).
-5. **Subset `Inter_Bold.json`**: it's 5.2MB but only one word is rendered. A subset font would shave ~5MB off the boot.
-6. **`/about` content**: still pretty short. A small "what I built and why" timeline might fit here once the project has more shipped pieces.
-7. **Pioneer Scholars paper draft** at `/will/papers/ai-cybercrime` — the actual content. Long-term project.
+1. **Two more walkthroughs** in `/will/learn`: `landing-flow` (LoadingScreen→LandingPage→NewLandingPage handoff + GLB preload) and `3d-scene` (anatomy of `Simulation.tsx` — particles, bloom, settings).
+2. **Wire MDX** for `/will/papers` so the AI/cybercrime paper can live as a single `.mdx` file with embedded React/3D demos. `@next/mdx` + `remark-gfm` + `rehype-pretty-code` + `shiki`. Verify it works on Cloudflare Workers before committing.
+3. **Camera FOV bridge**: LandingPage uses fov=50, Simulation uses fov=60 — consider a smoother handoff (single shared fov, or GSAP-tween across the route change with a transition animation).
+4. **Subset `Inter_Bold.json`**: it's 5.2MB but only one word is rendered. A subset font would shave ~5MB off the boot.
+5. **`/about` content**: still pretty short. A small "what I built and why" timeline might fit here once the project has more shipped pieces.
+6. **Pioneer Scholars paper draft** at `/will/papers/ai-cybercrime` — the actual content. Long-term project.
+7. **Promote a sketch out of `/og/`**: when one of `/og/chat`, `/og/fmhy`, `/og/interactive` matures, move the folder up out of `/og`, drop the `<DraftBanner />`, remove from `SKETCHES`. (See MAP.md "How to add X".)
 
 ## Decisions worth remembering
 
