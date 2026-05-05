@@ -9,13 +9,15 @@
 
 $ErrorActionPreference = 'Stop'
 
-# Sanity checks
+# Refresh PATH so gh is reachable even if installed in this session.
+$env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
+
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     Write-Error "gh CLI not found. Install with 'winget install GitHub.cli', then 'gh auth login'."
     exit 1
 }
 
-$authStatus = gh auth status 2>&1
+gh auth status 2>&1 | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Not logged into gh. Run 'gh auth login' first."
     exit 1
@@ -35,23 +37,22 @@ foreach ($t in $existing) { $existingSet[$t] = $true }
 
 # Parse BACKLOG.md
 $content = Get-Content -Path $backlogPath -Raw -Encoding UTF8
-# Each entry is delimited by '---' lines. Split and process those that start with '## #'.
 $entries = $content -split "(?ms)^---\s*$"
 
 $created = 0
 $skipped = 0
 $failed = 0
+$tempDir = Join-Path $env:TEMP "backlog-bodies"
+New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 
 foreach ($entry in $entries) {
     $entry = $entry.Trim()
     if (-not $entry.StartsWith('## #')) { continue }
 
-    # Title line: '## #N, <title>'
     $headingMatch = [regex]::Match($entry, '(?m)^## #\d+,\s*(.+?)\s*$')
     if (-not $headingMatch.Success) { continue }
     $title = $headingMatch.Groups[1].Value.Trim()
 
-    # Labels line: '**Labels:** `a`, `b`, `c`'
     $labels = @()
     $labelsMatch = [regex]::Match($entry, '(?m)^\*\*Labels:\*\*\s*(.+?)\s*$')
     if ($labelsMatch.Success) {
@@ -59,10 +60,8 @@ foreach ($entry in $entries) {
         $labels = [regex]::Matches($labelLine, '`([^`]+)`') | ForEach-Object { $_.Groups[1].Value }
     }
 
-    # Body: everything after the '**Body:**' line, trimmed.
     $bodyMatch = [regex]::Match($entry, '(?ms)^\*\*Body:\*\*\s*$\r?\n(.+)$')
-    $body = if ($bodyMatch.Success) { $bodyMatch.Groups[1].Value.Trim() } else { '' }
-    if (-not $body) { $body = '(see BACKLOG.md for full content)' }
+    $body = if ($bodyMatch.Success) { $bodyMatch.Groups[1].Value.Trim() } else { '(see BACKLOG.md for full content)' }
 
     if ($existingSet.ContainsKey($title)) {
         Write-Host "SKIP (already exists): $title" -ForegroundColor Yellow
@@ -70,30 +69,28 @@ foreach ($entry in $entries) {
         continue
     }
 
-    # Build the gh issue create command. Labels are passed individually.
-    $args = @('issue', 'create', '--title', $title, '--body', $body)
+    # Write body to a temp file so gh reads it via --body-file. This avoids
+    # every PowerShell argument-quoting issue with markdown bodies.
+    $bodyFile = Join-Path $tempDir ([Guid]::NewGuid().ToString() + '.md')
+    Set-Content -Path $bodyFile -Value $body -Encoding UTF8
+
+    $argList = @('issue', 'create', '--title', $title, '--body-file', $bodyFile)
     foreach ($label in $labels) {
-        $args += @('--label', $label)
+        $argList += @('--label', $label)
     }
 
     Write-Host "CREATE: $title" -ForegroundColor Green
-    try {
-        $url = gh @args
-        if ($LASTEXITCODE -eq 0) {
-            Write-Host "  -> $url"
-            $created++
-        } else {
-            Write-Host "  ! gh exited $LASTEXITCODE" -ForegroundColor Red
-            $failed++
-        }
-    } catch {
-        Write-Host "  ! $($_.Exception.Message)" -ForegroundColor Red
+    $url = & gh @argList 2>&1
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "  -> $url"
+        $created++
+    } else {
+        Write-Host "  ! gh exited $LASTEXITCODE" -ForegroundColor Red
+        Write-Host "    $url" -ForegroundColor DarkGray
         $failed++
     }
+    Remove-Item -Force $bodyFile -ErrorAction SilentlyContinue
 }
 
 Write-Host ''
 Write-Host "Done. Created: $created. Skipped (already exist): $skipped. Failed: $failed." -ForegroundColor Cyan
-if ($failed -gt 0) {
-    Write-Host 'Common cause of failures: a label does not exist on the repo yet. Create the missing labels in the GitHub Issues UI, then re-run; this script is safe to re-run.' -ForegroundColor Yellow
-}
