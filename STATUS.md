@@ -3,7 +3,7 @@
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
-2026-05-04, second deep pass on branch `claude/vigilant-golick-c8ff8d`. Theme Tier 2, /wc/papers/ai-cybercrime with two interactive figures, Konami easter egg, camera FOV bridge. Pushed.
+2026-05-05, planning pass on branch `claude/vigilant-golick-c8ff8d`. Refreshed `BACKLOG.md` with 22 categorized items + a script to post them all to GitHub Issues with one command.
 
 ## Hard rules (saved to memory at ~/.claude/projects/<this-project>/memory/)
 
@@ -44,16 +44,25 @@ Konami code (↑↑↓↓←→←→ b a) cycles theme + plays a confetti burst
 
 ## Next up
 
-In rough priority order. Pick whichever fits the time you have. (Pre-formatted Issue bodies live in `BACKLOG.md`, paste into GitHub Issues, or batch-create via `gh` once it's installed.)
+The full backlog is in `BACKLOG.md` (22 items, categorized by label). To post them all as GitHub Issues:
 
-1. **Two more walkthroughs** in `/wc/learn`: `landing-flow` (LoadingScreen to LandingPage to NewLandingPage handoff + GLB preload) and `3d-scene` (anatomy of `Simulation.tsx`).
-2. **Wire MDX** for `/wc/papers` so the AI/cybercrime paper can live as a single `.mdx` file with embedded React/3D demos.
-3. **Real FMHY backup beyond the iframe**: fetch the upstream markdown at build time so search works against the real catalog (BACKLOG #1).
-4. **Theme overhaul Tier 2** (BACKLOG #5) when ready: full design-language swap (glass / matte / paper surface variants).
-5. **Camera FOV bridge** between LandingPage (fov=50) and Simulation (fov=60).
-6. **Subset `Inter_Bold.json`** (5.2MB for one word).
-7. **Pioneer Scholars paper draft** at `/wc/papers/ai-cybercrime` (depends on MDX wiring).
-8. **Promote a sketch out of `/og/`** when one matures. `/og/fmhy` already graduated to `/fmhy`.
+```powershell
+gh auth login                          # one time
+./tools/post-backlog-to-issues.ps1     # creates one Issue per BACKLOG item, skips dupes
+```
+
+The highest-leverage items, in rough order:
+
+1. **#1: Theme-aware Simulation control panel** — the one place still using hardcoded colors. Migrating it propagates the Tier 2 design language everywhere.
+2. **#2: Build /wc/about** — currently 404, linked from /wc index.
+3. **#3 + #4: Two more walkthroughs** (`landing-flow`, `3d-scene`) — flesh out /wc/learn.
+4. **#5: More figures for the AI-cybercrime paper** — Expert Debate quadrant, attack-chain step-through, governance trilemma triangle, capability ladder infographic.
+5. **#6: Build-time FMHY catalog fetch** — turns the iframe placeholder into real searchable content.
+6. **#7: MDX wiring** — unlocks easier paper authoring for #14.
+7. **#8: Migrate /animals + /og/* to themed surfaces** — propagation cleanup.
+8. **#9: Mobile QA pass** — never actually verified on a real phone.
+
+Items 9-22 cover performance (font subset, 3D mobile fallback, accessibility), nice-to-haves (time-of-day theme, view transitions, RSS feed, custom domain), and speculative ideas (reading log, now-page, more easter eggs).
 
 ## Decisions worth remembering
 

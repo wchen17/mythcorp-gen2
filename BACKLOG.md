@@ -1,202 +1,346 @@
-﻿# BACKLOG
+# BACKLOG
 
-Pre-formatted issues, ready to paste into GitHub Issues (or batch-create via `gh issue create` once `gh` is installed: `winget install GitHub.cli`, then `gh auth login`).
+Pre-formatted issues for the next session (mobile or desktop, you or a fresh agent). Each item is independent. Pick any.
 
-Each item is independent. Pick any.
+To post all of these to GitHub Issues at once, run:
+
+```powershell
+gh auth login         # one time, opens a browser
+./tools/post-backlog-to-issues.ps1
+```
+
+That script reads every `## #N, ...` heading in this file and creates one Issue per heading on `wchen17/mythcorp-gen2`, applying the labels in the `**Labels:**` line.
 
 ---
 
-## #1, FMHY upgrade: build-time fetch of the real catalog
+## #1, Theme-aware Simulation control panel
 
-**Labels:** `feature`, `polish`
+**Labels:** `polish`, `design`, `next-up`
 
 **Body:**
 
-`/fmhy` already exists as a real route with a hand-curated category grid plus a live iframe of fmhy.net (which most browsers will block via X-Frame-Options, in which case we render a friendly "open fmhy.net" CTA instead).
+`src/app/experience/Simulation.tsx` is the one place that didn't get the theme tokens treatment. The control panel UI (lines ~233-330) still uses hard-coded `bg-black/70`, `text-white/90`, `border-white/20`, `accent-cyan-400`, etc. So the panel looks identical in cyberpunk / luxury / paper themes, breaking the design-language consistency the rest of the site has.
 
-The upgrade: fetch the FMHY upstream markdown from https://github.com/fmhy/edit at build time, parse into a `ContentItem` shape, render with theme-aware UI so search works against the real catalog. That makes the page genuinely useful even when the iframe is blocked.
+Migrate to:
+- `.themed-surface` for the panel container.
+- `.themed-button` for the randomize / reset / exit buttons.
+- `var(--accent)`, `var(--fg-muted)`, `var(--border)` etc. for individual elements.
+- Range inputs need `accent-color: var(--accent)` instead of `accent-cyan-400`.
+- Number inputs need `bg-[color:var(--bg)]` etc.
 
-Steps:
-1. Add a build-time script (`scripts/fetch-fmhy.ts`) that pulls the markdown via the GitHub raw API.
-2. Parse into typed entries (URL, name, category, blurb).
-3. Replace the hard-coded `CATEGORIES` array in `src/app/fmhy/page.tsx` with the parsed data.
-4. Add search + filter on top of the parsed catalog.
-5. Re-fetch nightly via Cloudflare cron (or just on each build).
+The 3D scene itself can stay neon (it predates themes), but the HTML overlay should track the theme.
 
 ---
 
-## #2, Walkthrough: `/wc/learn/landing-flow`
+## #2, /wc/about page (currently 404)
+
+**Labels:** `content`, `next-up`
+
+**Body:**
+
+`/wc` has a card linking to `/wc/about` but the route doesn't exist. Either:
+1. Build a real `/wc/about` page with a short bio + project history timeline.
+2. Or remove the card from `src/app/wc/page.tsx`'s `sections` array.
+
+Recommendation: build the page. Pattern after `/wc/papers` shape (eyebrow + heading + sections). Content: Will Chen (Weibao Chen), undergrad working on AI safety / cybersecurity adjacent stuff, why this site exists (sandbox + showcase), what's coming next.
+
+---
+
+## #3, Walkthrough: `/wc/learn/landing-flow`
 
 **Labels:** `walkthrough`, `next-up`
 
 **Body:**
 
-Write the second annotated walkthrough at `src/app/wc/learn/landing-flow/page.tsx`, explaining:
+Second annotated walkthrough at `src/app/wc/learn/landing-flow/page.tsx`. Subject: how the cinematic boot works.
 
+Cover:
 - `LoadingScreen` (cyberpunk binary digit shape) at `src/app/components/LoadingScreen.tsx`.
 - `LandingPage` (3D MYTHCORP logo + spectre model) at `src/app/components/LandingPage.tsx`.
 - `NewLandingPage` (luxury Chicago skyline reveal) at `src/app/components/NewLandingPage.tsx`.
-- The handoff: `useGLTF.preload('/spectre.glb')` at module top so the model is fetched once for the session, plus the mutually-exclusive Canvas mounting in `AppLoader` (only one `<Canvas>` alive at a time, otherwise R3F crashes under StrictMode).
-- The session-storage skip: the boot only runs on first visit per session; refreshes within the session jump straight to the landing.
+- The handoff: `useGLTF.preload('/spectre.glb')` at module top, plus mutually-exclusive Canvas mounting in `AppLoader` (only one `<Canvas>` alive at a time, otherwise R3F crashes under StrictMode).
+- The session-storage skip: boot only runs on first visit per session.
 
 Use the `Walkthrough`/`Section`/`Code`/`Aside` helpers from `src/app/wc/learn/_components/Walkthrough.tsx`. Add `landing-flow` to `WALKTHROUGHS` in `src/app/wc/learn/page.tsx` and flip its `status` from `soon` to `ready`.
 
 ---
 
-## #3, Walkthrough: `/wc/learn/3d-scene`
+## #4, Walkthrough: `/wc/learn/3d-scene`
 
 **Labels:** `walkthrough`, `next-up`
 
 **Body:**
 
-Write the third walkthrough at `src/app/wc/learn/3d-scene/page.tsx`. Subject: anatomy of `src/app/experience/Simulation.tsx`. Cover:
+Third walkthrough at `src/app/wc/learn/3d-scene/page.tsx`. Subject: anatomy of `src/app/experience/Simulation.tsx`.
 
+Cover:
 - `<Canvas>` + R3F basics
-- `ParticleField`: `BufferGeometry` + `Float32Array` for vertex positions and colours
-- `Stars` count clamped at `MAX_STARS = 12000` with `STARS_PER_UNIT = 1200` (and *why*: the original `5000 * settings.stars` could hit 25k particles)
+- `ParticleField`: `BufferGeometry` + `Float32Array` for vertex positions and colors
+- `Stars` count clamped at `MAX_STARS = 12000` with `STARS_PER_UNIT = 1200` (and *why*: original `5000 * settings.stars` could hit 25k particles)
 - `Bloom` post-processing tuning (`luminanceThreshold`, `mipmapBlur`)
 - The randomisable `DEFAULTS` settings object and `getRandomSettings()`
 
 ---
 
-## #4, Wire MDX for `/wc/papers`
+## #5, More figures for `/wc/papers/ai-cybercrime`
 
-**Labels:** `paper`, `infra`
-
-**Body:**
-
-Right now `src/app/wc/papers/page.tsx` renders from a hard-coded array. To make papers easy to write:
-
-- `npm install @next/mdx @mdx-js/react remark-gfm rehype-pretty-code shiki`
-- Update `next.config.ts` with `pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']` and the `withMDX` wrapper.
-- Create `src/app/wc/papers/mdx-components.tsx` exporting custom `<Figure>`, `<Aside>`, `<Sandbox>` so embedded React/3D demos are easy.
-- Verify it builds on Cloudflare Workers (`npm run preview`) before merging. Past us has been bitten by Node-only MDX plugins on the edge runtime.
-
----
-
-## #5, Theme overhaul Tier 2: full design-language swap
-
-**Labels:** `design`, `feature`
+**Labels:** `paper`, `feature`
 
 **Body:**
 
-Today the theme system swaps colours and fonts. The intent is bigger: each theme should change the whole *design language*. Concrete next moves:
+Two figures shipped (`<BarrierToEntry />`, `<CapabilityRamp />`). The paper has 4-6 more passages that map cleanly to interactive widgets:
 
-- Add `--surface-style: glass | matte | paper` and `--radius` and `--shadow-style` tokens.
-- Build component variants that read those tokens. Examples:
-  - `glass` (luxury): backdrop-blur, soft inner glow, rounded corners, no hard borders.
-  - `matte` (cyberpunk): sharp 1px borders, neon stroke, no blur, terminal vibe.
-  - `paper` (writing): warm textured background, serif body, drop-cap support, no shadows, ink-like accent.
-- Maybe theme-swap also changes the cursor, typography weights, motion easing.
-- Consider `view-transition-name` for cross-fade between themes that animates more than just colour.
+- **Expert Debate quadrant**: 2x2 grid (LeCun / Altman / Whittaker / Hinton) with offensive vs defensive impact bars per quadrant. From Tables 6 and 7. Click to focus a quadrant and see argument detail.
+- **Attack chain step-through**: a Stuxnet or Hong Kong CFO heist case study as a horizontal step diagram, with each step labeled "still requires human" / "AI does this now" / "AI will do this".
+- **Governance trilemma triangle**: open-source vs regulation vs antitrust as a triangle with a draggable point that shows which threat surface each policy blend leaves open.
+- **Stage-1-to-4 capability ladder**: vertical infographic of the technical hurdles (planning, error handling, memory, self-improvement, vulnerability discovery, cross-domain synthesis) as a ladder with current/projected positions marked.
 
-This is bigger than current Tier 1 but doable incrementally: start by giving 2 components the surface-variant treatment, see how it lands, then propagate.
+Each new figure goes in `src/app/wc/papers/ai-cybercrime/_components/` and gets a `<Section>` in the main page. Keep the projection-vs-evidence visual distinction the reviewer asked for.
 
 ---
 
-## #6, More entry loading screens, picker
+## #6, Build-time FMHY catalog fetch
 
 **Labels:** `feature`, `polish`
 
 **Body:**
 
-`LoadingScreen` already randomises between sphere/cube/torus shapes. Push further:
+`/fmhy` already exists with a hand-curated category grid + iframe (which most browsers will block via X-Frame-Options). The upgrade: fetch the FMHY upstream markdown from https://github.com/fmhy/edit at build time and parse into a real `ContentItem` shape, so search/filter works against the real catalog.
 
-- Add more shapes: tetrahedron, helix, tunnel, particle storm.
-- Optional "loading screen mood" picker in settings (lets user pick which mood the boot uses).
-- Theme-aware: if the user has `paper` theme, the boot screen should match (cream, soft serif, ink particles instead of cyberpunk binary).
+Steps:
+1. Add `scripts/fetch-fmhy.ts` that pulls markdown via the GitHub raw API.
+2. Parse into typed entries (URL, name, category, blurb).
+3. Replace the hard-coded `CATEGORIES` array in `src/app/fmhy/page.tsx`.
+4. Add real search + filter on top.
+5. Re-fetch on each build (or via a Cloudflare cron worker).
 
 ---
 
-## #7, Camera FOV bridge (LandingPage to Simulation)
+## #7, Wire MDX for `/wc/papers`
 
-**Labels:** `polish`, `3d`
+**Labels:** `paper`, `infra`
 
 **Body:**
 
-`src/app/components/LandingPage.tsx` uses `fov={50}`. `src/app/experience/Simulation.tsx` uses `fov={60}`. Route changes feel like a small zoom snap.
+The first paper (`/wc/papers/ai-cybercrime`) is a TSX page right now. That's fine for figure-heavy pages with custom React widgets, but adding MDX support would make future papers easier to author (write `.mdx`, embed React components inline).
 
-Two options:
-1. Pick one fov and use it everywhere (probably 55).
-2. GSAP-tween fov across the route change with a transition layer (fancier, bigger lift).
-
-Option 1 is one line in two files.
+Steps:
+- `npm install @next/mdx @mdx-js/react remark-gfm rehype-pretty-code shiki`
+- Update `next.config.ts` with `pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']` and the `withMDX` wrapper.
+- Create `src/app/wc/papers/mdx-components.tsx` exporting `<Figure>`, `<Aside>`, `<Sandbox>` so embedded React/3D demos are easy.
+- Verify it builds on Cloudflare Workers (`npm run preview`) before merging. Past us has been bitten by Node-only MDX plugins on the edge runtime.
 
 ---
 
-## #8, Subset `Inter_Bold.json`
+## #8, Migrate `/animals` and remaining `/og/*` to themed surfaces
+
+**Labels:** `polish`, `housekeeping`
+
+**Body:**
+
+Theme Tier 2 utilities (`themed-surface`, `themed-button`, `themed-pill`) now exist but `/animals`, `/og/chat`, and `/og/interactive` haven't been migrated. They still use hand-rolled `border border-[color:var(--border)] bg-[color:var(--bg-elevated)]` patterns.
+
+Replace those with the utility classes so all themes get their proper design language (paper gets the hard-offset shadow, luxury gets glass blur, etc.).
+
+---
+
+## #9, Mobile QA pass
+
+**Labels:** `polish`, `accessibility`
+
+**Body:**
+
+The site has been built with `sm:` breakpoints from day one, but never actually verified on a real phone. Open the deployed branch on iOS Safari and Chrome Android and check:
+
+- Boot flow doesn't break (LoadingScreen + LandingPage 3D)
+- Hamburger menu opens cleanly with one finger
+- Theme switcher reachable
+- `/wc/papers/ai-cybercrime` figures (BarrierToEntry, CapabilityRamp) work with touch
+- Hero "DISCOVER YOUR POTENTIAL" doesn't wrap weirdly
+- /experience MainMenu CTA is thumb-reachable
+- /fmhy iframe behaves on mobile (likely doesn't render at all)
+
+Document issues in a follow-up comment, fix in a follow-up PR.
+
+---
+
+## #10, 3D experience mobile fallback
+
+**Labels:** `feature`, `performance`
+
+**Body:**
+
+`/experience` and `/` both render heavy R3F scenes that target desktop GPUs. On a low-end Android, the fan spins up immediately. Add a check (UA sniff or `navigator.hardwareConcurrency < 4`) and either:
+
+1. Render a static screenshot of the scene with a "your device might not love this; tap to render anyway" overlay, or
+2. Drop particle counts and disable `<Bloom>` postprocessing on mobile.
+
+The MainMenu tease bar (`~12k particles`) becomes a knob, not just decoration.
+
+---
+
+## #11, Accessibility pass
+
+**Labels:** `accessibility`, `polish`
+
+**Body:**
+
+`prefers-reduced-motion` is already honored for the theme transition curtain. Extend to:
+- LoadingScreen 3D animation (skip the binary digit fly-in if reduce)
+- LandingPage 3D logo (static pose if reduce)
+- HelpDot panel entrance
+- Konami egg confetti
+- AnimatedHeading shadows
+- Banner pulse glow
+
+Also: keyboard navigation through the SiteHeader menu, focus rings everywhere, ARIA labels on the BarrierToEntry toggle and CapabilityRamp slider, alt text for the skyline image.
+
+---
+
+## #12, Subset `Inter_Bold.json`
 
 **Labels:** `polish`, `performance`
 
 **Body:**
 
-`public/fonts/Inter_Bold.json` is 5.2MB but `<Text3D>` only renders the word "MYTHCORP". Use `facetype.js` or similar to subset to just those characters and shave ~5MB off boot. Only `src/app/components/LandingPage.tsx` consumes it.
+`public/fonts/Inter_Bold.json` is 5.2MB but `<Text3D>` only renders the word "MYTHCORP" (8 unique characters). Use `facetype.js` to subset:
+
+```bash
+npx facetype.js Inter-Bold.ttf --chars MYTHCORP > public/fonts/Inter_Bold.json
+```
+
+Should drop ~5MB off the initial boot. Only `src/app/components/LandingPage.tsx` uses it.
 
 ---
 
-## #9, Better `/about` content
+## #13, Camera FOV polish: GSAP transition between routes
 
-**Labels:** `content`
+**Labels:** `polish`, `3d`
 
 **Body:**
 
-`src/app/about/page.tsx` is short and warm but light on substance. Once the project has more shipped pieces, add a small "what I built and why" timeline.
+LandingPage and Simulation now both use `fov={55}` so there's no zoom snap, but the route change is still a hard cut. A GSAP-tween across the transition (fade out + slight zoom in + fade in new scene) would feel more cinematic.
+
+Probably best wrapped in a `<RouteTransition>` HOC that uses Next.js's `useRouter` events.
 
 ---
 
-## #10, Pioneer Scholars paper draft at `/wc/papers/ai-cybercrime`
+## #14, Pioneer Scholars paper continuation
 
-**Labels:** `paper`
+**Labels:** `paper`, `content`
 
 **Body:**
 
-The actual content for the original Pioneer Scholars paper on AI's effect on a layman's cybercrime capability. Long-term, expand and post as an arXiv preprint when it stabilises. Depends on **#4** (wire MDX).
+`/wc/papers/ai-cybercrime` shipped sections 1, 2, "why this matters", "reviewer feedback", "where this goes next". The original paper has more chapters worth converting:
+
+- **Pre-AI baseline** (Section 3): Table 1 details + nation-state resource framing
+- **Present threat landscape** (Section 5): malware case studies (GoldFactory trojan, etc.) as small inline diagrams
+- **Future horizon 2025-2030** (Section 6): per-stage hard requirements as a checklist visualization
+- **Expert debate** (Section 7): tied to BACKLOG #5 expert-quadrant figure
+- **Countermeasures** (Section 8): governance trilemma figure (also #5)
+- **Conclusion**: short call-to-action paragraph
+
+Each lands as a new `<Section>` in `src/app/wc/papers/ai-cybercrime/page.tsx`. Tighten the prose vs the original PDF.
 
 ---
 
-## #11, Promote a sketch out of `/og/`
+## #15, Time-of-day auto theme
 
-**Labels:** `housekeeping`
+**Labels:** `feature`, `nice-to-have`
 
 **Body:**
 
-When one of `/og/chat`, `/og/fmhy`, `/og/interactive` matures into something real:
+Add an "auto" theme option that picks based on local time:
+- 06:00-11:00: `paper` (morning reading)
+- 11:00-19:00: `luxury` (afternoon warmth)
+- 19:00-06:00: `cyberpunk` (night)
 
-1. Move the folder up: e.g. `src/app/og/chat` to `src/app/chat`.
-2. Drop `<DraftBanner />` from the page.
-3. Remove the entry from `SKETCHES` in `src/app/og/page.tsx`.
-4. Add it to MAP.md's routes table.
-
-See MAP.md "How to add X" for the full recipe.
+Stored as `mythcorp-theme=auto` in localStorage. The ThemeSwitcher gets a fourth option "auto" with a sun/moon glyph that flips based on time.
 
 ---
 
-## #12, Cloudflare branch preview deploys
+## #16, View Transitions API for route changes
+
+**Labels:** `feature`, `nice-to-have`
+
+**Body:**
+
+Next.js 15 has experimental View Transitions support. Enable it for cross-fade between routes (e.g. `/` to `/wc` or `/wc/papers/ai-cybercrime`). Combined with `view-transition-name` on the SiteHeader logo, the logo would morph instead of re-rendering.
+
+Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition
+
+---
+
+## #17, RSS / Atom feed for `/wc/papers`
+
+**Labels:** `feature`, `nice-to-have`
+
+**Body:**
+
+Add `/wc/papers/feed.xml` (or `.atom`) so people can subscribe. Static generation: read the `PAPERS` array, emit the feed at build time. Once MDX is wired (BACKLOG #7), each paper has a date + title + summary that maps cleanly to feed entries.
+
+---
+
+## #18, Real WebSocket chat (promote `/og/chat`)
+
+**Labels:** `feature`, `nice-to-have`
+
+**Body:**
+
+`/og/chat` is a local-only chat sandbox. Wire a Cloudflare Durable Object (or Workers KV) backend so messages persist + sync across users. Then promote out of `/og`:
+
+1. Move `src/app/og/chat` to `src/app/chat`.
+2. Drop `<DraftBanner />` and the local-only label.
+3. Update MAP.md routes table.
+4. Remove from `SKETCHES` in `src/app/og/page.tsx`.
+
+---
+
+## #19, Visitor guestbook on `/wc/about`
+
+**Labels:** `feature`, `nice-to-have`
+
+**Body:**
+
+After #2 (build the about page), add a tiny KV-backed comment/guestbook box at the bottom. Cloudflare Workers KV is free at small scale. Moderation: simple word filter + manual review.
+
+---
+
+## #20, Custom domain
+
+**Labels:** `infra`, `nice-to-have`
+
+**Body:**
+
+The site is currently on a `workers.dev` subdomain. Buy a custom domain (mythcorp.dev? mythcorp.app? wc.dev if available?) and point it at the Cloudflare Workers deployment. Configure in Cloudflare dashboard.
+
+Bonus: set up `wc.<domain>` as an alias to `/wc/*` so the personal section has its own "subdomain" feel.
+
+---
+
+## #21, Cloudflare branch preview deploys
 
 **Labels:** `infra`
 
 **Body:**
 
-Right now Cloudflare deploys only when `npm run deploy` is run manually. If you want PRs to spin up preview URLs automatically, configure a Cloudflare Pages / Workers preview branch deploy. Out of scope for the refresh, but worth noting.
+Right now Cloudflare deploys only when `npm run deploy` is run manually. Configure Cloudflare Workers preview branch deploys so each PR gets its own URL. This makes mobile QA (BACKLOG #9) trivial: open the preview URL on a phone.
 
 ---
 
-## #13, Cool stuff to maybe add eventually
+## #22, Cool-stuff sticky-note (low priority, future)
 
 **Labels:** `nice-to-have`
 
 **Body:**
 
-Speculative ideas worth keeping on a sticky note:
+Speculative ideas worth keeping around:
 
-- **Time-of-day auto theme**: cyberpunk after dark, paper during the day, luxury at golden hour.
-- **Reading log**: a `/wc/reads` page listing books / papers the author has been through.
-- **Custom domain**: `mythcorp.dev` or similar instead of the workers.dev preview URL.
-- **Page-level search** with Pagefind or similar (works on static export).
-- **RSS / Atom feed** for `/wc/papers` (so people can subscribe).
-- **View Transitions API** for smooth route changes once Next.js has stable support.
-- **Real WebSocket chat** (promotes `/og/chat` to `/chat`).
-- **Visitor guestbook**: tiny KV-backed comment box at `/wc/about`.
-- **Konami code easter egg**: drops a 3D toy.
-- **Mobile-friendly 3D experience**: current scene targets desktop GPUs; mobile fallback would be nice.
-- **Accessibility pass**: `prefers-reduced-motion` is honoured for theme transitions but not for the 3D scene yet.
+- **Reading log**: a `/wc/reads` page listing books / papers the author has been through, with a one-line take on each.
+- **Page-level search** with Pagefind (works on static export, no backend).
+- **Now-page** (à la sive.rs/now): what the author is currently working on, updated monthly.
+- **3D scene presets** picker on /experience MainMenu (default / aurora / minimal / chaos).
+- **Boot screen variety**: more loading shapes (helix, tunnel, particle storm) + per-theme variants (paper boot uses ink particles instead of cyan binary).
+- **Spotify or Last.fm "now playing"** widget if the author has either.
+- **GitHub contributions chart** auto-pulled to /wc/about.
+- **Easter egg #2**: type "sudo" anywhere on the site, get a fake terminal overlay you can poke at.
