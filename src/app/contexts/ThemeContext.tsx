@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-// Walkthrough: /will/learn/theme-system
+// Walkthrough: /wc/learn/theme-system
 
 import {
   createContext,

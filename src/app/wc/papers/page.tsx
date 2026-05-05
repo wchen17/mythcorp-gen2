@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -20,7 +20,7 @@ export default function PapersIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /WILL/PAPERS ]
+          [ /wc/papers ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
           Papers
@@ -51,14 +51,14 @@ export default function PapersIndex() {
               </div>
               <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{p.blurb}</p>
               <p className="mt-4 text-xs text-[color:var(--fg-subtle)]">
-                Draft page coming soon at <code className="font-mono">/will/papers/{p.slug}</code>.
+                Draft page coming soon at <code className="font-mono">/wc/papers/{p.slug}</code>.
               </p>
             </li>
           ))}
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">
-          ← Back to <Link href="/will" className="text-[color:var(--accent)] underline underline-offset-4">/will</Link>
+          ← Back to <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4">/wc</Link>
         </p>
       </main>
     </div>

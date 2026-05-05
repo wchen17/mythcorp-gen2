@@ -1,6 +1,6 @@
 'use client';
 
-// Walkthrough: /will/learn/landing-flow
+// Walkthrough: /wc/learn/landing-flow
 
 import { useState, Suspense, useEffect } from 'react';
 import { useRouter } from 'next/navigation';

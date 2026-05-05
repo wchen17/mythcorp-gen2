@@ -6,7 +6,7 @@ import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
 export default function ThemeSystemWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /will/learn/theme-system ]"
+      eyebrow="[ /wc/learn/theme-system ]"
       title="A theme system from CSS variables"
       intro={
         <>

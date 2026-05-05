@@ -1,8 +1,8 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 /* ----------------------------------------------------------------
  * Theme tokens. Switching themes is `<html data-theme="...">`.
- * Walkthrough: /will/learn/theme-system
+ * Walkthrough: /wc/learn/theme-system
  * ---------------------------------------------------------------- */
 
 :root,

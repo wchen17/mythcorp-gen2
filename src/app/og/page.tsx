@@ -1,29 +1,38 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
 
-const SKETCHES = [
+type Sketch = {
+  href: string;
+  label: string;
+  title: string;
+  blurb: string;
+  status: 'sketch' | 'graduated';
+  external?: boolean;
+};
+
+const SKETCHES: ReadonlyArray<Sketch> = [
   {
     href: '/og/interactive',
     label: 'INTERACTIVE',
-    title: '"W I P" sideways text',
-    blurb:
-      'CSS-only isometric 3D type. Probably becomes the home for an actual interactive demo (R3F shader playground? scene picker?) later.',
+    title: '"W I P" sideways type',
+    blurb: 'CSS-only isometric 3D type. Placeholder for an actual interactive demo (R3F shader playground? scene picker?).',
+    status: 'sketch',
   },
   {
     href: '/og/chat',
     label: 'CHAT',
     title: 'Local-only chat sandbox',
-    blurb:
-      'A real UI with no real backend. Useful as a placeholder for the day a WebSocket layer makes sense.',
+    blurb: 'A real chat UI with no backend. Useful as a placeholder until a WebSocket layer makes sense.',
+    status: 'sketch',
   },
   {
-    href: '/og/fmhy',
+    href: '/fmhy',
     label: 'FMHY',
-    title: 'Backup archive sketch',
-    blurb:
-      'Searchable / filterable list with placeholder data. The intent is an FMHY-style backup hub, replace the dummy items when the real source is wired up.',
+    title: 'FMHY backup (graduated)',
+    blurb: 'Used to live here as a placeholder shell. Now a real backup mirror at /fmhy with category links and a live embed when it loads.',
+    status: 'graduated',
   },
 ];
 
@@ -40,32 +49,47 @@ export default function OgIndex() {
           Back-room sketches
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-          Pages that started as ideas but aren&rsquo;t finished. They&rsquo;re here on
-          purpose, kept around to come back to, not deleted. Each is harmless as-is
-          and could grow into something real.
+          Pages that started as ideas and aren&rsquo;t finished. They live here
+          on purpose, so they don&rsquo;t clutter the main map but don&rsquo;t
+          get lost either. A sketch graduates by getting a real implementation
+          and moving up out of <code className="font-mono text-[color:var(--accent-soft)]">/og</code>.
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-          {SKETCHES.map((s) => (
-            <li key={s.href}>
-              <Link
-                href={s.href}
-                className="group block rounded-xl border border-[color:var(--border)]
-                           bg-[color:var(--bg-elevated)] p-5 transition-all
-                           hover:-translate-y-0.5 hover:border-[color:var(--border-strong)]
-                           hover:shadow-[0_8px_30px_-15px_var(--accent-glow)]"
-              >
-                <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
-                  {s.label}
-                </p>
-                <h2 className="mt-2 font-serif text-lg font-semibold transition-colors
-                               group-hover:text-[color:var(--accent-soft)]">
-                  {s.title}
-                </h2>
-                <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{s.blurb}</p>
-              </Link>
-            </li>
-          ))}
+          {SKETCHES.map((s) => {
+            const graduated = s.status === 'graduated';
+            return (
+              <li key={s.href}>
+                <Link
+                  href={s.href}
+                  className="group block rounded-xl border border-[color:var(--border)]
+                             bg-[color:var(--bg-elevated)] p-5 transition-all
+                             hover:-translate-y-0.5 hover:border-[color:var(--border-strong)]
+                             hover:shadow-[0_8px_30px_-15px_var(--accent-glow)]"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
+                      {s.label}
+                    </p>
+                    <span
+                      className={
+                        graduated
+                          ? 'rounded-full border border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]'
+                          : 'rounded-full border border-[color:var(--border)] bg-[color:var(--bg-overlay)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]'
+                      }
+                    >
+                      {s.status}
+                    </span>
+                  </div>
+                  <h2 className="mt-2 font-serif text-lg font-semibold transition-colors
+                                 group-hover:text-[color:var(--accent-soft)]">
+                    {s.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{s.blurb}</p>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">

@@ -12,7 +12,7 @@ interface WalkthroughProps {
 }
 
 /**
- * Shared layout for /will/learn/* pages. Reading-room defaults: narrow
+ * Shared layout for /wc/learn/* pages. Reading-room defaults: narrow
  * column, tall line-height, theme-aware accents.
  */
 export function Walkthrough({ eyebrow, title, intro, children }: WalkthroughProps) {
@@ -36,7 +36,7 @@ export function Walkthrough({ eyebrow, title, intro, children }: WalkthroughProp
         </div>
 
         <div className="mt-16 border-t border-[color:var(--border)] pt-6 text-xs text-[color:var(--fg-subtle)]">
-          ← Back to <Link href="/will/learn" className="text-[color:var(--accent)] underline underline-offset-4">/will/learn</Link>
+          ← Back to <Link href="/wc/learn" className="text-[color:var(--accent)] underline underline-offset-4">/wc/learn</Link>
         </div>
       </article>
     </div>

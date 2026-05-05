@@ -11,19 +11,17 @@ Single-screen index of where things live. Read this first; grep second.
 | `/animals` | `src/app/animals/page.tsx` | Random animal GIFs (palate cleanser) |
 | `/about` | `src/app/about/page.tsx` | Short "what is this" page |
 | `/contact` | `src/app/contact/page.tsx` | ComingSoon stub (no real form yet) |
-| `/will` | `src/app/will/page.tsx` | Personal section index |
-| `/will/papers` | `src/app/will/papers/page.tsx` | Long-form / paper list (placeholder) |
-| `/will/learn` | `src/app/will/learn/page.tsx` | Walkthroughs index |
-| `/will/learn/theme-system` | `src/app/will/learn/theme-system/page.tsx` | First annotated walkthrough |
+| `/wc` | `src/app/wc/page.tsx` | Personal section index |
+| `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list (placeholder) |
+| `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
+| `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
+| `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup: category links + live iframe with fallback |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
-| `/og/fmhy` | `src/app/og/fmhy/page.tsx` | Backup-archive UI sketch (placeholder data) |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
 
-`/og/*` houses unfinished ideas kept on purpose. They're harmless as-is and labelled with `<DraftBanner />`. Promote one out of `/og` when it grows up.
-
-**Deleted in this refresh** (recoverable from git): `/newlandingpage` (was a redundant wrapper for the `NewLandingPage` component, which `/` already renders directly).
+`/og/*` houses unfinished ideas kept on purpose, labelled with `<DraftBanner />`. The `/og` index also lists graduated sketches (e.g. `/fmhy` used to live at `/og/fmhy` before getting a real implementation).
 
 ## Shared components
 
@@ -42,7 +40,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/LoadingScreen.tsx` | Boot sequence (page.tsx) |
 | `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
 | `src/app/components/NewLandingPage.tsx` | The luxury reveal (page.tsx) |
-| `src/app/will/learn/_components/Walkthrough.tsx` | Layout + helpers for `/will/learn/*` pages |
+| `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers for `/wc/learn/*` pages |
 
 ## 3D scene
 
@@ -64,7 +62,7 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/ThemeSwitcher.tsx` | UI |
 | `src/app/layout.tsx` | Pre-paint bootstrap script (no flash) |
 
-Walkthrough: `/will/learn/theme-system`.
+Walkthrough: `/wc/learn/theme-system`.
 
 ## Static assets
 
@@ -78,8 +76,8 @@ Walkthrough: `/will/learn/theme-system`.
 ## How to add X
 
 - **A new theme**: add `[data-theme="..."]` block in `globals.css`, append to `THEMES` in `ThemeContext.tsx`, update validator in `layout.tsx` bootstrap script.
-- **A new walkthrough**: create `src/app/will/learn/<slug>/page.tsx` using `Walkthrough` from `_components/`. Add to `WALKTHROUGHS` array in `src/app/will/learn/page.tsx`.
-- **A new paper**: add to `PAPERS` array in `src/app/will/papers/page.tsx`. Create `src/app/will/papers/<slug>/page.tsx` for the body.
+- **A new walkthrough**: create `src/app/wc/learn/<slug>/page.tsx` using `Walkthrough` from `_components/`. Add to `WALKTHROUGHS` array in `src/app/wc/learn/page.tsx`.
+- **A new paper**: add to `PAPERS` array in `src/app/wc/papers/page.tsx`. Create `src/app/wc/papers/<slug>/page.tsx` for the body.
 - **A new stub page**: use `<ComingSoon>` from `src/app/components/ComingSoon.tsx`.
 - **A new back-room sketch** (rough idea you want to keep): create `src/app/og/<slug>/page.tsx`, mount `<SiteHeader />` and `<DraftBanner />`, then add it to `SKETCHES` in `src/app/og/page.tsx`.
 - **Promote a sketch out of `/og/`**: move the folder up (e.g. `src/app/og/chat` → `src/app/chat`), remove `<DraftBanner />`, drop it from `/og/page.tsx`'s `SKETCHES`, add to MAP.md routes table.

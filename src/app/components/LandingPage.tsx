@@ -1,6 +1,6 @@
 ﻿'use client';
 
-// Walkthrough: /will/learn/landing-flow
+// Walkthrough: /wc/learn/landing-flow
 
 import { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
