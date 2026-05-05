@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { Modal, ModalButton } from '../Modal';
@@ -46,7 +46,7 @@ export function LandingModals({
         }
       >
         Some bits aren&rsquo;t pixel-perfect yet. Think of it as the seam where the
-        cyberpunk boot meets the warm reveal — we&rsquo;re still tuning it.
+        cyberpunk boot meets the warm reveal, we&rsquo;re still tuning it.
       </Modal>
 
       <Modal
@@ -71,7 +71,7 @@ export function LandingModals({
           </>
         }
       >
-        There isn&rsquo;t a hidden menu — the interesting stuff lives in{' '}
+        There isn&rsquo;t a hidden menu, the interesting stuff lives in{' '}
         <code className="font-mono text-[color:var(--accent-soft)]">/will/learn</code>,
         where the components on this page are annotated and you can read how they work.
       </Modal>

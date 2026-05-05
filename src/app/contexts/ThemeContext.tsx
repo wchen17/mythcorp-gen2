@@ -8,6 +8,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
@@ -21,11 +22,13 @@ export const THEMES: ReadonlyArray<{
 }> = [
   { name: 'cyberpunk', label: 'Cyberpunk', blurb: 'Neon, glow, the boot sequence.' },
   { name: 'luxury',    label: 'Luxury',    blurb: 'Warm midnight, cream, gold.' },
-  { name: 'paper',     label: 'Paper',     blurb: 'Reading-room cream + serif.' },
+  { name: 'paper',     label: 'Paper',     blurb: 'Reading-room cream, serif.' },
 ];
 
 const STORAGE_KEY = 'mythcorp-theme';
 const DEFAULT_THEME: ThemeName = 'cyberpunk';
+// Total duration of the transition curtain (each half = 250ms).
+const TRANSITION_HALF_MS = 260;
 
 type ThemeCtx = {
   theme: ThemeName;
@@ -47,9 +50,10 @@ export function ThemeProvider({
   children: ReactNode;
 }) {
   const [theme, setThemeState] = useState<ThemeName>(initialTheme);
+  // 'idle' | 'cover' (curtain at full opacity, theme swap moment) | 'reveal' (curtain fading away)
+  const [phase, setPhase] = useState<'idle' | 'cover' | 'reveal'>('idle');
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // On mount, restore from localStorage if present, then mark theme-ready
-  // (lets globals.css run its transition only after first paint).
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -67,36 +71,78 @@ export function ThemeProvider({
     });
   }, [initialTheme]);
 
-  const setTheme = useCallback((next: ThemeName) => {
-    setThemeState(next);
+  const applyTheme = useCallback((next: ThemeName) => {
     document.documentElement.dataset.theme = next;
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {
-      /* storage may be disabled; the in-memory state still works */
+      /* storage may be disabled; in-memory state still works */
     }
+    setThemeState(next);
   }, []);
 
-  const cycleTheme = useCallback(() => {
-    setThemeState((prev) => {
-      const idx = THEMES.findIndex((t) => t.name === prev);
-      const next = THEMES[(idx + 1) % THEMES.length].name;
-      document.documentElement.dataset.theme = next;
-      try {
-        window.localStorage.setItem(STORAGE_KEY, next);
-      } catch {
-        /* ignore */
-      }
-      return next;
-    });
+  // Theme swap with a brief darkening curtain so the user isn't flashbanged
+  // when going from a dark theme to the bright `paper` one (or back).
+  const swapWithCurtain = useCallback((next: ThemeName) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    const reduce = typeof window !== 'undefined'
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || theme === next) {
+      applyTheme(next);
+      return;
+    }
+
+    setPhase('cover');
+    timeoutRef.current = setTimeout(() => {
+      applyTheme(next);
+      setPhase('reveal');
+      timeoutRef.current = setTimeout(() => {
+        setPhase('idle');
+        timeoutRef.current = null;
+      }, TRANSITION_HALF_MS);
+    }, TRANSITION_HALF_MS);
+  }, [theme, applyTheme]);
+
+  useEffect(() => () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   }, []);
+
+  const setTheme = useCallback((next: ThemeName) => swapWithCurtain(next), [swapWithCurtain]);
+
+  const cycleTheme = useCallback(() => {
+    const idx = THEMES.findIndex((t) => t.name === theme);
+    const next = THEMES[(idx + 1) % THEMES.length].name;
+    swapWithCurtain(next);
+  }, [theme, swapWithCurtain]);
 
   const value = useMemo<ThemeCtx>(
     () => ({ theme, setTheme, cycleTheme }),
     [theme, setTheme, cycleTheme],
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={value}>
+      {children}
+      <ThemeCurtain phase={phase} />
+    </Ctx.Provider>
+  );
+}
+
+function ThemeCurtain({ phase }: { phase: 'idle' | 'cover' | 'reveal' }) {
+  if (phase === 'idle') return null;
+  return (
+    <div
+      aria-hidden
+      className="fixed inset-0 pointer-events-none z-[9998]"
+      style={{
+        background: '#000',
+        opacity: phase === 'cover' ? 0.78 : 0,
+        transition: `opacity ${TRANSITION_HALF_MS}ms ease`,
+      }}
+    />
+  );
 }
 
 export function useTheme(): ThemeCtx {

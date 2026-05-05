@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 // Walkthrough: /will/learn/3d-scene
 
@@ -8,7 +8,7 @@ import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Group, Vector3 } from 'three'
 
-// Preload once for the session — cached for both this scene and the
+// Preload once for the session, cached for both this scene and the
 // boot-time landing logo, so route changes don't refetch the model.
 useGLTF.preload('/spectre.glb');
 

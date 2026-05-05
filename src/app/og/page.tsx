@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
@@ -23,7 +23,7 @@ const SKETCHES = [
     label: 'FMHY',
     title: 'Backup archive sketch',
     blurb:
-      'Searchable / filterable list with placeholder data. The intent is an FMHY-style backup hub — replace the dummy items when the real source is wired up.',
+      'Searchable / filterable list with placeholder data. The intent is an FMHY-style backup hub, replace the dummy items when the real source is wired up.',
   },
 ];
 
@@ -41,7 +41,7 @@ export default function OgIndex() {
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
           Pages that started as ideas but aren&rsquo;t finished. They&rsquo;re here on
-          purpose — kept around to come back to, not deleted. Each is harmless as-is
+          purpose, kept around to come back to, not deleted. Each is harmless as-is
           and could grow into something real.
         </p>
 

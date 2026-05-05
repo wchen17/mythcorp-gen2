@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { type ReactNode } from 'react';
@@ -55,7 +55,7 @@ export function Section({ title, children }: { title: string; children: ReactNod
   );
 }
 
-/** Inline code block. Tiny, no syntax highlighting yet — just monospace + theme-aware. */
+/** Inline code block. Tiny, no syntax highlighting yet, just monospace + theme-aware. */
 export function Code({ children }: { children: ReactNode }) {
   return (
     <pre className="overflow-x-auto rounded-lg border border-[color:var(--border)]

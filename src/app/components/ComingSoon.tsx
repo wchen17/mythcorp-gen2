@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from './SiteHeader';
@@ -16,7 +16,7 @@ interface ComingSoonProps {
 
 export function ComingSoon({
   title,
-  blurb = "Not built yet — but it's on the list.",
+  blurb = "Not built yet, but it's on the list.",
   detail,
   backHref = '/',
   backLabel = '← BACK HOME',

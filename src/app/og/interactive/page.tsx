@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { CSSProperties } from 'react';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -32,7 +32,7 @@ export default function InteractiveSketch() {
       <SiteHeader />
 
       <main className="mx-auto max-w-6xl px-6 pt-24 pb-12">
-        <DraftBanner note="Isometric CSS-only 3D type — kept here as a warm-up for an actual interactive page (R3F shader playground? scene picker?)." />
+        <DraftBanner note="Isometric CSS-only 3D type, kept here as a warm-up for an actual interactive page (R3F shader playground? scene picker?)." />
       </main>
 
       <div className="pointer-events-none flex w-full justify-center pt-8 pb-20">

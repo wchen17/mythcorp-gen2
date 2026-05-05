@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SkylineBackdrop } from '../components/landing/SkylineBackdrop';
@@ -46,7 +46,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
           </button>
 
           <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
-            tweak the controls inside — there&rsquo;s a randomize button
+            tweak the controls inside, there&rsquo;s a randomize button
           </p>
 
           {/* Real working secondary links, replacing the dead SECRET ROUTES list */}
@@ -63,7 +63,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
                            text-[color:var(--accent-warm)] transition-colors
                            hover:bg-[color:var(--bg-elevated)]"
               >
-                /animals — palate cleanser
+                /animals, palate cleanser
               </Link>
               <Link
                 href="/will/learn"
@@ -71,7 +71,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
                            text-[color:var(--accent-soft)] transition-colors
                            hover:bg-[color:var(--bg-elevated)]"
               >
-                /will/learn — how this scene works
+                /will/learn, how this scene works
               </Link>
             </div>
           </details>

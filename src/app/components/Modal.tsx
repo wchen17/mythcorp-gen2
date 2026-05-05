@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, type ReactNode } from 'react';
 
@@ -10,7 +10,7 @@ interface ModalProps {
   title: string;
   icon?: ReactNode;
   children: ReactNode;
-  /** Footer area — pass a button (or buttons) styled however you like. */
+  /** Footer area, pass a button (or buttons) styled however you like. */
   footer?: ReactNode;
 }
 

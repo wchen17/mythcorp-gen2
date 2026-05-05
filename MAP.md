@@ -1,4 +1,4 @@
-# Repo Map
+﻿# Repo Map
 
 Single-screen index of where things live. Read this first; grep second.
 
@@ -29,11 +29,11 @@ Single-screen index of where things live. Read this first; grep second.
 
 | File | Used by |
 |---|---|
-| `src/app/components/SiteHeader.tsx` | Every page header — single source of truth |
+| `src/app/components/SiteHeader.tsx` | Every page header, single source of truth |
 | `src/app/components/ThemeSwitcher.tsx` | SiteHeader + ThemeSystem walkthrough |
 | `src/app/components/Modal.tsx` | LandingModals + any future modal needs |
 | `src/app/components/ComingSoon.tsx` | `/contact` and any future stub route |
-| `src/app/components/HelpDot.tsx` | Mounted globally in `layout.tsx` — floating "?" |
+| `src/app/components/HelpDot.tsx` | Mounted globally in `layout.tsx`, floating "?" |
 | `src/app/components/DraftBanner.tsx` | Used by `/og/*` pages to flag "this is a sketch" |
 | `src/app/components/landing/SkylineBackdrop.tsx` | NewLandingPage + experience MainMenu |
 | `src/app/components/landing/HeroTitle.tsx` | NewLandingPage |
@@ -69,10 +69,10 @@ Walkthrough: `/will/learn/theme-system`.
 ## Static assets
 
 `public/`:
-- `spectre.glb` (1.2MB) — main 3D model
-- `chicagoskyline.jpg` — landing backdrop
-- `heli.jpg` — Simulation helicopter image
-- `fonts/Inter_Bold.json` (5.2MB) — for `<Text3D>`. Preloaded in `layout.tsx`.
+- `spectre.glb` (1.2MB), main 3D model
+- `chicagoskyline.jpg`, landing backdrop
+- `heli.jpg`, Simulation helicopter image
+- `fonts/Inter_Bold.json` (5.2MB), for `<Text3D>`. Preloaded in `layout.tsx`.
 - `*.svg` icons (Next.js defaults, mostly unused)
 
 ## How to add X

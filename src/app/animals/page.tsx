@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -40,7 +40,7 @@ const ANIMAL_GIFS: ReadonlyArray<AnimalGif> = [
     url: 'https://media.giphy.com/media/3o6Zt0hNCfak3QCqsw/giphy.gif',
     title: 'Rabbit Chomping Vegetables',
     emoji: '🐇🥦',
-    description: 'Nom nom nom — broccoli is delicious!',
+    description: 'Nom nom nom, broccoli is delicious!',
   },
 ];
 
@@ -132,7 +132,7 @@ export default function AnimalsPage() {
             🌟 Did you know?
           </h3>
           <ul className="space-y-1.5 text-sm text-[color:var(--fg-muted)]">
-            <li>• Guinea pigs need fresh veggies daily — they can&rsquo;t produce their own Vitamin C.</li>
+            <li>• Guinea pigs need fresh veggies daily, they can&rsquo;t produce their own Vitamin C.</li>
             <li>• Rabbits can eat their weight in hay every week.</li>
             <li>• Hamsters store food in their cheek pouches for later.</li>
             <li>• Guinea pig teeth never stop growing, so they chew constantly.</li>

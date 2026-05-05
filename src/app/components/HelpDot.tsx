@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useState } from 'react';
@@ -54,7 +54,7 @@ export function HelpDot() {
             </p>
             <h3 className="mt-1.5 font-serif text-base font-semibold">A small site, made by Will.</h3>
             <p className="mt-2 text-sm leading-relaxed text-[color:var(--fg-muted)]">
-              MYTHCORP is the front — a stage to try things. The personal stuff lives in{' '}
+              MYTHCORP is the front, a stage to try things. The personal stuff lives in{' '}
               <Link href="/will" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/will</Link>.
               The components are explained in{' '}
               <Link href="/will/learn" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/will/learn</Link>.

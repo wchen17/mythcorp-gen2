@@ -8,36 +8,65 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
 import { NewLandingPage } from './components/NewLandingPage';
 
+const LOADING_DURATION_MS = 3500;
+const SESSION_BOOTED_KEY = 'mythcorp-booted';
+
 /**
  * Holds the LoadingScreen on top of the rest of the app for a fixed
  * window, then unmounts it and mounts the children. The two are
- * mutually exclusive so only one R3F Canvas exists at a time —
- * mounting both simultaneously caused intermittent
- * "addEventListener of null" / "gl.alpha of null" errors, especially
- * under React StrictMode's double-mount cycle in dev.
+ * mutually exclusive so only one R3F Canvas exists at a time.
+ *
+ * Boot sequence only runs on the first visit per browser session. If
+ * sessionStorage says you've already booted once, we skip straight to
+ * the children. Refreshing the page still re-runs boot only if you
+ * close the tab in between.
  *
  * useGLTF.preload('/spectre.glb') (declared at the top of LandingPage)
  * fetches the GLB during the loading window, so when LandingPage mounts
  * the model is already cached and there's no flash of empty scene.
  */
-const LOADING_DURATION_MS = 3500;
-
 function AppLoader({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false);
   const [showChildren, setShowChildren] = useState(false);
+  const [skipBoot, setSkipBoot] = useState<boolean | null>(null);
+
+  // First mount: check sessionStorage for the booted flag.
+  useEffect(() => {
+    let alreadyBooted = false;
+    try {
+      alreadyBooted = sessionStorage.getItem(SESSION_BOOTED_KEY) === '1';
+    } catch {
+      // sessionStorage may be unavailable (private mode, etc.); fall through.
+    }
+    setSkipBoot(alreadyBooted);
+    if (alreadyBooted) {
+      setIsReady(true);
+      setShowChildren(true);
+      return;
+    }
+    try {
+      sessionStorage.setItem(SESSION_BOOTED_KEY, '1');
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   // Fixed window for the boot sequence. After it elapses, fade out the
   // LoadingScreen, then swap to children once the fade completes.
   useEffect(() => {
+    if (skipBoot !== false) return;
     const fadeTimer = setTimeout(() => setIsReady(true), LOADING_DURATION_MS);
     return () => clearTimeout(fadeTimer);
-  }, []);
+  }, [skipBoot]);
 
   useEffect(() => {
-    if (!isReady) return;
+    if (!isReady || skipBoot === true) return;
     const swapTimer = setTimeout(() => setShowChildren(true), 600);
     return () => clearTimeout(swapTimer);
-  }, [isReady]);
+  }, [isReady, skipBoot]);
+
+  // Wait for sessionStorage check before rendering anything (avoids flash).
+  if (skipBoot === null) return null;
 
   if (showChildren) {
     return <>{children}</>;
@@ -59,9 +88,9 @@ function AppLoader({ children }: { children: React.ReactNode }) {
 
 /**
  * The cinematic entry: LoadingScreen (cyberpunk boot)
- *   → LandingPage (3D MYTHCORP logo, the "title card")
- *   → NewLandingPage (the warm reveal — DISCOVER YOUR POTENTIAL)
- *   → /experience (real route, full 3D scene)
+ *   to LandingPage (3D MYTHCORP logo, the "title card")
+ *   to NewLandingPage (the warm reveal, DISCOVER YOUR POTENTIAL)
+ *   to /experience (real route, full 3D scene)
  */
 export default function HomePage() {
   const router = useRouter();

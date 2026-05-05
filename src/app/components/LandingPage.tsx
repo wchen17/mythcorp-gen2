@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 // Walkthrough: /will/learn/landing-flow
 
@@ -9,7 +9,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { Group } from 'three';
 import gsap from 'gsap';
 
-// Preload the GLTF + font once for the whole session — lifts the asset
+// Preload the GLTF + font once for the whole session, lifts the asset
 // fetch out of the render path so the cinematic boot has nothing to wait on.
 useGLTF.preload('/spectre.glb');
 
