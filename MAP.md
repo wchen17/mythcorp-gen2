@@ -15,9 +15,15 @@ Single-screen index of where things live. Read this first; grep second.
 | `/will/papers` | `src/app/will/papers/page.tsx` | Long-form / paper list (placeholder) |
 | `/will/learn` | `src/app/will/learn/page.tsx` | Walkthroughs index |
 | `/will/learn/theme-system` | `src/app/will/learn/theme-system/page.tsx` | First annotated walkthrough |
+| `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
+| `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
+| `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
+| `/og/fmhy` | `src/app/og/fmhy/page.tsx` | Backup-archive UI sketch (placeholder data) |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
 
-**Routes pending deletion** (verify with user first): `/newlandingpage`, `/interactive`, `/fmhy`, `/chat`. They were stubs or dead wrappers; replaced by content elsewhere.
+`/og/*` houses unfinished ideas kept on purpose. They're harmless as-is and labelled with `<DraftBanner />`. Promote one out of `/og` when it grows up.
+
+**Deleted in this refresh** (recoverable from git): `/newlandingpage` (was a redundant wrapper for the `NewLandingPage` component, which `/` already renders directly).
 
 ## Shared components
 
@@ -28,6 +34,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/Modal.tsx` | LandingModals + any future modal needs |
 | `src/app/components/ComingSoon.tsx` | `/contact` and any future stub route |
 | `src/app/components/HelpDot.tsx` | Mounted globally in `layout.tsx` — floating "?" |
+| `src/app/components/DraftBanner.tsx` | Used by `/og/*` pages to flag "this is a sketch" |
 | `src/app/components/landing/SkylineBackdrop.tsx` | NewLandingPage + experience MainMenu |
 | `src/app/components/landing/HeroTitle.tsx` | NewLandingPage |
 | `src/app/components/landing/EnterBanner.tsx` | NewLandingPage |
@@ -74,6 +81,8 @@ Walkthrough: `/will/learn/theme-system`.
 - **A new walkthrough**: create `src/app/will/learn/<slug>/page.tsx` using `Walkthrough` from `_components/`. Add to `WALKTHROUGHS` array in `src/app/will/learn/page.tsx`.
 - **A new paper**: add to `PAPERS` array in `src/app/will/papers/page.tsx`. Create `src/app/will/papers/<slug>/page.tsx` for the body.
 - **A new stub page**: use `<ComingSoon>` from `src/app/components/ComingSoon.tsx`.
+- **A new back-room sketch** (rough idea you want to keep): create `src/app/og/<slug>/page.tsx`, mount `<SiteHeader />` and `<DraftBanner />`, then add it to `SKETCHES` in `src/app/og/page.tsx`.
+- **Promote a sketch out of `/og/`**: move the folder up (e.g. `src/app/og/chat` → `src/app/chat`), remove `<DraftBanner />`, drop it from `/og/page.tsx`'s `SKETCHES`, add to MAP.md routes table.
 - **A new themed page**: add `<SiteHeader />` at top, use `bg-[color:var(--bg)]` and `text-[color:var(--fg)]`. Done.
 
 ## Build / dev
