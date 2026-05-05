@@ -136,7 +136,8 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 2 }}
         gl={{ alpha: true }}
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
+        {/* Shared FOV with /experience Simulation so the route change feels continuous. */}
+        <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={55} />
         <group ref={contentRef}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={0.5} />

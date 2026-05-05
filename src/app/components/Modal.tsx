@@ -76,9 +76,8 @@ export function Modal({
       <div
         onClick={(e) => e.stopPropagation()}
         className={[
-          'modal-card flex max-w-sm flex-col items-center gap-3 rounded-xl',
-          'border bg-[color:var(--bg-elevated)] p-6 text-center',
-          'm-4',
+          'modal-card themed-surface flex max-w-sm flex-col items-center gap-3',
+          'p-6 text-center m-4',
           TONE_BORDER[tone],
           TONE_GLOW[tone],
         ].join(' ')}
@@ -128,9 +127,7 @@ export function ModalButton({
     <button
       type="button"
       onClick={onClick}
-      className="rounded bg-[color:var(--accent)] px-5 py-2 font-bold
-                 text-[color:var(--bg)] text-sm tracking-wide
-                 transition-all hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow-strong)]"
+      className="themed-button px-5 py-2 text-sm"
     >
       {children}
     </button>

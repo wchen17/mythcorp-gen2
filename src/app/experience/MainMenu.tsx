@@ -41,11 +41,8 @@ export function MainMenu({ onStart }: MainMenuProps) {
             [ ENTER ]
           </p>
 
-          <h1
-            className="mt-3 font-serif text-5xl font-extrabold leading-[0.95]
-                       tracking-tight text-[color:var(--fg)] sm:text-7xl"
-            style={{ textShadow: '0 0 36px var(--accent-glow-strong)' }}
-          >
+          <h1 className="themed-heading mt-3 text-5xl font-extrabold leading-[0.95]
+                         text-[color:var(--fg)] sm:text-7xl">
             <span className="text-[color:var(--accent-soft)]">3D</span>{' '}
             EXPERIENCE
           </h1>
@@ -66,9 +63,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
             {TEASES.map((t) => (
               <li
                 key={t.label}
-                className="rounded-lg border border-[color:var(--border)]
-                           bg-[color:var(--bg-overlay)] p-3 text-left
-                           backdrop-blur-md"
+                className="themed-surface p-3 text-left"
               >
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--fg-subtle)]">
                   {t.label}
@@ -87,18 +82,15 @@ export function MainMenu({ onStart }: MainMenuProps) {
           {/* Primary CTA: bigger, framed, with hover that mimics opening a door. */}
           <button
             onClick={onStart}
-            className="group relative mt-10 w-full max-w-sm overflow-hidden
-                       rounded-md border border-[color:var(--accent)]/60
-                       bg-[color:var(--accent)] py-4
-                       text-base font-bold tracking-[0.2em] text-[color:var(--bg)]
-                       transition-all hover:scale-[1.02]
-                       hover:shadow-[0_0_36px_var(--accent-glow-strong)]"
+            className="themed-button group relative mt-10 w-full max-w-sm overflow-hidden
+                       py-4 text-base tracking-[0.2em]"
           >
             <span className="relative z-10">ENTER SIMULATION</span>
             <span
               aria-hidden
               className="absolute inset-y-0 left-0 w-0 bg-[color:var(--accent-soft)]
                          transition-all duration-500 group-hover:w-full"
+              style={{ borderRadius: 'inherit' }}
             />
           </button>
 
@@ -118,30 +110,24 @@ export function MainMenu({ onStart }: MainMenuProps) {
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link
               href="/wc/learn"
-              className="rounded-full border border-[color:var(--border)]
-                         bg-[color:var(--bg-overlay)] px-4 py-1.5
+              className="themed-pill px-4 py-1.5
                          font-mono text-xs text-[color:var(--accent-soft)]
-                         transition-all hover:border-[color:var(--border-strong)]
                          hover:text-[color:var(--accent)]"
             >
               how the scene works
             </Link>
             <Link
               href="/animals"
-              className="rounded-full border border-[color:var(--border)]
-                         bg-[color:var(--bg-overlay)] px-4 py-1.5
-                         font-mono text-xs text-[color:var(--accent-warm)]
-                         transition-all hover:border-[color:var(--border-strong)]
+              className="themed-pill px-4 py-1.5 font-mono text-xs
+                         text-[color:var(--accent-warm)]
                          hover:text-[color:var(--accent)]"
             >
               palate cleanser
             </Link>
             <Link
               href="/fmhy"
-              className="rounded-full border border-[color:var(--border)]
-                         bg-[color:var(--bg-overlay)] px-4 py-1.5
-                         font-mono text-xs text-[color:var(--fg-muted)]
-                         transition-all hover:border-[color:var(--border-strong)]
+              className="themed-pill px-4 py-1.5 font-mono text-xs
+                         text-[color:var(--fg-muted)]
                          hover:text-[color:var(--accent)]"
             >
               fmhy backup
