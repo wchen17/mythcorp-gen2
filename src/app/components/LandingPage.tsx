@@ -134,10 +134,8 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
 
       <Canvas
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 2 }}
-        gl={{ alpha: false }}
+        gl={{ alpha: true }}
       >
-        {/* Match the LoadingScreen background to kill the boot→landing color flash. */}
-        <color attach="background" args={['#0a0a0a']} />
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
         <group ref={contentRef}>
           <ambientLight intensity={0.5} />
