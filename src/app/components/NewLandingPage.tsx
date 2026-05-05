@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-// Walkthrough: /will/learn/landing-flow
+// Walkthrough: /wc/learn/landing-flow
 
 import { useEffect, useState } from 'react';
 import { SiteHeader } from './SiteHeader';

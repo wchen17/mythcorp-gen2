@@ -5,19 +5,19 @@ import { SiteHeader } from '../components/SiteHeader';
 
 const sections = [
   {
-    href: '/will/learn',
+    href: '/wc/learn',
     label: 'LEARN',
     title: 'Annotated walkthroughs',
     blurb: 'Real components from this site, taken apart and explained.',
   },
   {
-    href: '/will/papers',
+    href: '/wc/papers',
     label: 'PAPERS',
     title: 'Long-form writing',
     blurb: 'Living papers and essays. The first one is on AI + cybercrime capability.',
   },
   {
-    href: '/will/about',
+    href: '/wc/about',
     label: 'ABOUT',
     title: 'Who, why',
     blurb: 'Coming soon.',
@@ -31,7 +31,7 @@ export default function WillIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /WILL ]
+          [ /wc ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
           A small back room
@@ -39,7 +39,7 @@ export default function WillIndex() {
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
           MYTHCORP is the front. This is where the personal stuff lives, papers,
           notes, walkthroughs of how the site itself works. If MYTHCORP is the
-          theatre, /will is the workshop behind it.
+          theatre, /wc is the workshop behind it.
         </p>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">

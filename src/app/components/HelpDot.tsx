@@ -6,7 +6,7 @@ import { useState } from 'react';
 /**
  * Floating "?" anywhere on the site. Click → tiny "what is this place"
  * panel that defuses the corporate-MYTHCORP feel and points the curious
- * to /will/learn. Theme-aware, keyboard-friendly.
+ * to /wc/learn. Theme-aware, keyboard-friendly.
  */
 export function HelpDot() {
   const [open, setOpen] = useState(false);
@@ -55,9 +55,9 @@ export function HelpDot() {
             <h3 className="mt-1.5 font-serif text-base font-semibold">A small site, made by Will.</h3>
             <p className="mt-2 text-sm leading-relaxed text-[color:var(--fg-muted)]">
               MYTHCORP is the front, a stage to try things. The personal stuff lives in{' '}
-              <Link href="/will" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/will</Link>.
+              <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/wc</Link>.
               The components are explained in{' '}
-              <Link href="/will/learn" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/will/learn</Link>.
+              <Link href="/wc/learn" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/wc/learn</Link>.
             </p>
             <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
               The theme switcher is in the top-right.

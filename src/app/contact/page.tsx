@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
@@ -18,7 +18,7 @@ export default function ContactPage() {
         </h1>
         <p className="text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
           There&rsquo;s no real form here yet. Until there is, the actually
-          useful links live in <Link href="/will" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/will</Link>.
+          useful links live in <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">/wc</Link>.
         </p>
 
         <div className="my-10 h-px w-32 bg-[color:var(--border)]" />

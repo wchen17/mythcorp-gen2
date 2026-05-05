@@ -1,6 +1,6 @@
 ﻿'use client';
 
-// Walkthrough: /will/learn/3d-scene
+// Walkthrough: /wc/learn/3d-scene
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useState, useRef, useMemo } from 'react'

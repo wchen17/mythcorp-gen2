@@ -32,7 +32,7 @@ export function LandingModals({
         footer={
           <>
             <Link
-              href="/will/learn"
+              href="/wc/learn"
               className="rounded border border-[color:var(--border)]
                          px-5 py-2 font-mono text-xs uppercase tracking-widest
                          text-[color:var(--fg-muted)] transition-all
@@ -58,7 +58,7 @@ export function LandingModals({
         footer={
           <>
             <Link
-              href="/will/learn"
+              href="/wc/learn"
               className="rounded border border-[color:var(--border)]
                          px-5 py-2 font-mono text-xs uppercase tracking-widest
                          text-[color:var(--fg-muted)] transition-all
@@ -72,7 +72,7 @@ export function LandingModals({
         }
       >
         There isn&rsquo;t a hidden menu, the interesting stuff lives in{' '}
-        <code className="font-mono text-[color:var(--accent-soft)]">/will/learn</code>,
+        <code className="font-mono text-[color:var(--accent-soft)]">/wc/learn</code>,
         where the components on this page are annotated and you can read how they work.
       </Modal>
     </>

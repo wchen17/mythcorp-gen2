@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { SkylineBackdrop } from '../components/landing/SkylineBackdrop';
@@ -8,73 +8,145 @@ interface MainMenuProps {
   onStart: () => void;
 }
 
+const TEASES = [
+  { label: 'particles', count: '~12k', note: 'a star field with bloom' },
+  { label: 'spectre', count: '1', note: 'a glowing rotating model' },
+  { label: 'controls', count: '9', note: 'sliders + a randomize button' },
+];
+
 export function MainMenu({ onStart }: MainMenuProps) {
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center
+    <div className="relative flex min-h-screen w-full flex-col
                     overflow-hidden font-sans text-[color:var(--fg)]">
-      <SkylineBackdrop parallax={false} />
+      <SkylineBackdrop parallax />
 
       <SiteHeader tagline="SIMULATION LAB" />
 
-      <main className="relative z-10 flex flex-col items-center px-4 pt-24 text-center">
-        <div className="w-full max-w-md rounded-xl border border-[color:var(--border)]
-                        bg-[color:var(--bg-overlay)] p-6 backdrop-blur-md sm:p-8
-                        shadow-[0_0_60px_-20px_var(--accent-glow)]">
+      {/* Soft accent glow centred behind the hero, theme-aware. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            'radial-gradient(ellipse at center 60%, var(--accent-glow) 0%, transparent 45%)',
+          opacity: 0.22,
+        }}
+      />
 
-          <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
+      <main className="relative z-10 flex flex-1 flex-col items-center
+                       justify-center px-4 pt-24 pb-12">
+        <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
+
+          <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-[color:var(--accent)]">
             [ ENTER ]
           </p>
-          <h1 className="mt-3 font-serif text-4xl font-extrabold leading-tight
-                         tracking-tight text-[color:var(--accent-soft)] sm:text-5xl"
-              style={{ textShadow: '0 0 24px var(--accent-glow-strong)' }}>
-            3D EXPERIENCE
-          </h1>
-          <div className="mx-auto mt-3 h-px w-1/2 bg-[color:var(--border-strong)]" />
 
-          <p className="mt-4 font-mono text-xs tracking-widest text-[color:var(--fg-muted)]">
-            a small interactive scene you can poke at
+          <h1
+            className="mt-3 font-serif text-5xl font-extrabold leading-[0.95]
+                       tracking-tight text-[color:var(--fg)] sm:text-7xl"
+            style={{ textShadow: '0 0 36px var(--accent-glow-strong)' }}
+          >
+            <span className="text-[color:var(--accent-soft)]">3D</span>{' '}
+            EXPERIENCE
+          </h1>
+
+          <div
+            aria-hidden
+            className="mt-5 h-px w-40 bg-[color:var(--border-strong)]"
+            style={{ boxShadow: '0 0 14px var(--accent-glow)' }}
+          />
+
+          <p className="mt-5 max-w-md text-base text-[color:var(--fg-muted)] sm:text-lg">
+            A small interactive scene you can poke at. Bring headphones if
+            you&rsquo;ve got them. Bring a fast machine if you don&rsquo;t.
           </p>
 
+          {/* Tease bar: tells the user what's inside without spoiling it. */}
+          <ul className="mt-10 grid w-full grid-cols-3 gap-3">
+            {TEASES.map((t) => (
+              <li
+                key={t.label}
+                className="rounded-lg border border-[color:var(--border)]
+                           bg-[color:var(--bg-overlay)] p-3 text-left
+                           backdrop-blur-md"
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--fg-subtle)]">
+                  {t.label}
+                </p>
+                <p className="mt-1 font-serif text-2xl font-semibold text-[color:var(--accent-soft)]"
+                   style={{ textShadow: '0 0 12px var(--accent-glow)' }}>
+                  {t.count}
+                </p>
+                <p className="mt-0.5 text-[11px] text-[color:var(--fg-muted)]">
+                  {t.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          {/* Primary CTA: bigger, framed, with hover that mimics opening a door. */}
           <button
             onClick={onStart}
-            className="mt-8 w-full rounded-md bg-[color:var(--accent)] py-3
-                       text-sm font-bold tracking-wide text-[color:var(--bg)]
+            className="group relative mt-10 w-full max-w-sm overflow-hidden
+                       rounded-md border border-[color:var(--accent)]/60
+                       bg-[color:var(--accent)] py-4
+                       text-base font-bold tracking-[0.2em] text-[color:var(--bg)]
                        transition-all hover:scale-[1.02]
-                       hover:shadow-[0_0_28px_var(--accent-glow-strong)]"
+                       hover:shadow-[0_0_36px_var(--accent-glow-strong)]"
           >
-            ENTER SIMULATION
+            <span className="relative z-10">ENTER SIMULATION</span>
+            <span
+              aria-hidden
+              className="absolute inset-y-0 left-0 w-0 bg-[color:var(--accent-soft)]
+                         transition-all duration-500 group-hover:w-full"
+            />
           </button>
 
           <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
-            tweak the controls inside, there&rsquo;s a randomize button
+            randomized on entry. tweak it inside, or hit reset for the defaults.
           </p>
 
-          {/* Real working secondary links, replacing the dead SECRET ROUTES list */}
-          <details className="mt-6 border-t border-[color:var(--border)] pt-4 text-left">
-            <summary className="cursor-pointer rounded px-2 py-1 font-mono text-xs
-                                tracking-widest text-[color:var(--accent)]
-                                transition-colors hover:bg-[color:var(--bg-elevated)]">
-              ✦ ELSEWHERE
-            </summary>
-            <div className="mt-2 flex flex-col">
-              <Link
-                href="/animals"
-                className="rounded px-3 py-2 font-mono text-sm
-                           text-[color:var(--accent-warm)] transition-colors
-                           hover:bg-[color:var(--bg-elevated)]"
-              >
-                /animals, palate cleanser
-              </Link>
-              <Link
-                href="/will/learn"
-                className="rounded px-3 py-2 font-mono text-sm
-                           text-[color:var(--accent-soft)] transition-colors
-                           hover:bg-[color:var(--bg-elevated)]"
-              >
-                /will/learn, how this scene works
-              </Link>
-            </div>
-          </details>
+          <div className="mt-12 flex w-full items-center gap-4
+                          text-[color:var(--fg-subtle)]">
+            <span className="block h-px flex-1 bg-[color:var(--border)]" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.4em]">
+              ELSEWHERE
+            </span>
+            <span className="block h-px flex-1 bg-[color:var(--border)]" />
+          </div>
+
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/wc/learn"
+              className="rounded-full border border-[color:var(--border)]
+                         bg-[color:var(--bg-overlay)] px-4 py-1.5
+                         font-mono text-xs text-[color:var(--accent-soft)]
+                         transition-all hover:border-[color:var(--border-strong)]
+                         hover:text-[color:var(--accent)]"
+            >
+              how the scene works
+            </Link>
+            <Link
+              href="/animals"
+              className="rounded-full border border-[color:var(--border)]
+                         bg-[color:var(--bg-overlay)] px-4 py-1.5
+                         font-mono text-xs text-[color:var(--accent-warm)]
+                         transition-all hover:border-[color:var(--border-strong)]
+                         hover:text-[color:var(--accent)]"
+            >
+              palate cleanser
+            </Link>
+            <Link
+              href="/fmhy"
+              className="rounded-full border border-[color:var(--border)]
+                         bg-[color:var(--bg-overlay)] px-4 py-1.5
+                         font-mono text-xs text-[color:var(--fg-muted)]
+                         transition-all hover:border-[color:var(--border-strong)]
+                         hover:text-[color:var(--accent)]"
+            >
+              fmhy backup
+            </Link>
+          </div>
         </div>
       </main>
     </div>

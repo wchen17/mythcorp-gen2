@@ -12,7 +12,7 @@ Read **`MAP.md`** first for the file index. This file explains *how* to make cha
 
 ## Style
 
-- **No inline tutorial comments.** A single `// Walkthrough: /will/learn/<slug>` pointer at the top of an interesting file is the only allowed teaching comment. Real explanations live on `/will/learn/*` pages where they can include the live demo.
+- **No inline tutorial comments.** A single `// Walkthrough: /wc/learn/<slug>` pointer at the top of an interesting file is the only allowed teaching comment. Real explanations live on `/wc/learn/*` pages where they can include the live demo.
 - **Files ≤ ~250 lines.** If a `.tsx` is climbing past 250, it's time to split into a folder with siblings (see `src/app/components/landing/` for the pattern).
 - **Co-locate.** A feature lives in one folder. Sibling helpers and types stay next to the component.
 - **Greppable names.** Avoid generic `Container`, `Wrapper`, `Card`. Prefer `EnterBanner`, `LandingModals`, `WalkthroughSection`. Reduces grep noise; one search returns the consumer, not a dozen barrels.
@@ -33,11 +33,11 @@ Hard-coded colours block theme switches. Always reach for variables:
 
 Available tokens: `--bg`, `--bg-elevated`, `--bg-overlay`, `--fg`, `--fg-muted`, `--fg-subtle`, `--accent`, `--accent-soft`, `--accent-warm`, `--accent-glow`, `--accent-glow-strong`, `--border`, `--border-strong`, `--font-display`, `--font-body`, `--font-mono`, plus `--skyline-tint-a` / `--skyline-tint-b` / `--skyline-blur` for landing backdrops.
 
-Walkthrough: `/will/learn/theme-system`.
+Walkthrough: `/wc/learn/theme-system`.
 
 ## Adding a page
 
-1. New route under `src/app/<route>/page.tsx` (or `src/app/will/<route>/page.tsx` for personal stuff).
+1. New route under `src/app/<route>/page.tsx` (or `src/app/wc/<route>/page.tsx` for personal stuff).
 2. Wrap in `<div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">`.
 3. Mount `<SiteHeader />` from `src/app/components/SiteHeader.tsx`, never hand-roll a header.
 4. If the page is a stub, use `<ComingSoon>` instead.
@@ -45,10 +45,10 @@ Walkthrough: `/will/learn/theme-system`.
 
 ## Adding a walkthrough
 
-1. Create `src/app/will/learn/<slug>/page.tsx`.
-2. Use `Walkthrough`, `Section`, `Code`, `Aside` from `src/app/will/learn/_components/Walkthrough.tsx`.
-3. Add the slug + status to `WALKTHROUGHS` in `src/app/will/learn/page.tsx`.
-4. Drop a `// Walkthrough: /will/learn/<slug>` pointer at the top of the source file the walkthrough explains.
+1. Create `src/app/wc/learn/<slug>/page.tsx`.
+2. Use `Walkthrough`, `Section`, `Code`, `Aside` from `src/app/wc/learn/_components/Walkthrough.tsx`.
+3. Add the slug + status to `WALKTHROUGHS` in `src/app/wc/learn/page.tsx`.
+4. Drop a `// Walkthrough: /wc/learn/<slug>` pointer at the top of the source file the walkthrough explains.
 
 ## Working with the 3D scene
 
@@ -83,4 +83,4 @@ If you add a new tool, dependency, or architectural pattern that isn't obvious, 
 npm run check
 ```
 
-Must be green. If you can, also `npm run dev` and visit `/`, `/experience`, `/will`, `/will/learn/theme-system`, and trigger a 404, confirm theme switcher works on each.
+Must be green. If you can, also `npm run dev` and visit `/`, `/experience`, `/wc`, `/wc/learn/theme-system`, and trigger a 404, confirm theme switcher works on each.

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,15 +10,15 @@ type NavItem = { href: string; label: string };
 const DEFAULT_NAV: ReadonlyArray<NavItem> = [
   { href: '/about', label: 'ABOUT' },
   { href: '/contact', label: 'CONTACT' },
-  { href: '/will', label: 'WILL' },
+  { href: '/wc', label: 'WC' },
 ];
 
 const MENU_LINKS: ReadonlyArray<NavItem> = [
   { href: '/', label: 'Home' },
   { href: '/experience', label: '3D experience' },
-  { href: '/will', label: 'The back room' },
-  { href: '/will/learn', label: 'Walkthroughs' },
-  { href: '/will/papers', label: 'Papers' },
+  { href: '/wc', label: 'The back room' },
+  { href: '/wc/learn', label: 'Walkthroughs' },
+  { href: '/wc/papers', label: 'Papers' },
   { href: '/animals', label: 'Animals (intermission)' },
   { href: '/og', label: 'Sketches' },
   { href: '/about', label: 'About' },

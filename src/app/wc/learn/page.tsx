@@ -34,7 +34,7 @@ export default function LearnIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /WILL/LEARN ]
+          [ /wc/learn ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
           Walkthroughs
@@ -74,7 +74,7 @@ export default function LearnIndex() {
             return (
               <li key={w.slug}>
                 {ready ? (
-                  <Link href={`/will/learn/${w.slug}`} className={`${cardClass} ${interactive}`}>
+                  <Link href={`/wc/learn/${w.slug}`} className={`${cardClass} ${interactive}`}>
                     {inner}
                   </Link>
                 ) : (
@@ -86,7 +86,7 @@ export default function LearnIndex() {
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">
-          ← Back to <Link href="/will" className="text-[color:var(--accent)] underline underline-offset-4">/will</Link>
+          ← Back to <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4">/wc</Link>
         </p>
       </main>
     </div>

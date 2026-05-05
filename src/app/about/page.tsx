@@ -29,11 +29,11 @@ export default function AboutPage() {
           Made in Chicago, with AI as a creative partner. The codebase is annotated for
           anyone who wants to learn from it, see{' '}
           <Link
-            href="/will/learn"
+            href="/wc/learn"
             className="text-[color:var(--accent)] underline underline-offset-4
                        hover:text-[color:var(--accent-soft)]"
           >
-            /will/learn
+            /wc/learn
           </Link>{' '}
           for walkthroughs of the trickier components.
         </p>

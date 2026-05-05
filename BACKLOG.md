@@ -1,4 +1,4 @@
-# BACKLOG
+﻿# BACKLOG
 
 Pre-formatted issues, ready to paste into GitHub Issues (or batch-create via `gh issue create` once `gh` is installed: `winget install GitHub.cli`, then `gh auth login`).
 
@@ -6,30 +6,32 @@ Each item is independent. Pick any.
 
 ---
 
-## #1, Real FMHY backup at `/fmhy` (or `/og/fmhy` promoted)
+## #1, FMHY upgrade: build-time fetch of the real catalog
 
-**Labels:** `feature`, `next-up`
+**Labels:** `feature`, `polish`
 
 **Body:**
 
-The original intent of `/fmhy` was a self-hosted backup of [r/freemediaheckyeah](https://fmhy.net/). Right now the page is a UI shell with placeholder data. To make it real:
+`/fmhy` already exists as a real route with a hand-curated category grid plus a live iframe of fmhy.net (which most browsers will block via X-Frame-Options, in which case we render a friendly "open fmhy.net" CTA instead).
 
-- The FMHY content is open source on GitHub: https://github.com/fmhy/edit (markdown wiki) and the self-hosting guide is at https://fmhy.net/other/selfhosting.
-- Two viable approaches:
-  1. **Static fetch**: pull the markdown from the GitHub repo at build time, parse into the same `ContentItem` shape, render with the existing UI.
-  2. **Iframe / mirror**: embed an existing FMHY mirror inside the page with a thin chrome.
-- Option 1 is more work but means the page is genuinely useful and theme-aware.
-- When ready, promote `/og/fmhy` out of `/og/` (see MAP.md "How to add X") and rename to `/fmhy`.
+The upgrade: fetch the FMHY upstream markdown from https://github.com/fmhy/edit at build time, parse into a `ContentItem` shape, render with theme-aware UI so search works against the real catalog. That makes the page genuinely useful even when the iframe is blocked.
+
+Steps:
+1. Add a build-time script (`scripts/fetch-fmhy.ts`) that pulls the markdown via the GitHub raw API.
+2. Parse into typed entries (URL, name, category, blurb).
+3. Replace the hard-coded `CATEGORIES` array in `src/app/fmhy/page.tsx` with the parsed data.
+4. Add search + filter on top of the parsed catalog.
+5. Re-fetch nightly via Cloudflare cron (or just on each build).
 
 ---
 
-## #2, Walkthrough: `/will/learn/landing-flow`
+## #2, Walkthrough: `/wc/learn/landing-flow`
 
 **Labels:** `walkthrough`, `next-up`
 
 **Body:**
 
-Write the second annotated walkthrough at `src/app/will/learn/landing-flow/page.tsx`, explaining:
+Write the second annotated walkthrough at `src/app/wc/learn/landing-flow/page.tsx`, explaining:
 
 - `LoadingScreen` (cyberpunk binary digit shape) at `src/app/components/LoadingScreen.tsx`.
 - `LandingPage` (3D MYTHCORP logo + spectre model) at `src/app/components/LandingPage.tsx`.
@@ -37,17 +39,17 @@ Write the second annotated walkthrough at `src/app/will/learn/landing-flow/page.
 - The handoff: `useGLTF.preload('/spectre.glb')` at module top so the model is fetched once for the session, plus the mutually-exclusive Canvas mounting in `AppLoader` (only one `<Canvas>` alive at a time, otherwise R3F crashes under StrictMode).
 - The session-storage skip: the boot only runs on first visit per session; refreshes within the session jump straight to the landing.
 
-Use the `Walkthrough`/`Section`/`Code`/`Aside` helpers from `src/app/will/learn/_components/Walkthrough.tsx`. Add `landing-flow` to `WALKTHROUGHS` in `src/app/will/learn/page.tsx` and flip its `status` from `soon` to `ready`.
+Use the `Walkthrough`/`Section`/`Code`/`Aside` helpers from `src/app/wc/learn/_components/Walkthrough.tsx`. Add `landing-flow` to `WALKTHROUGHS` in `src/app/wc/learn/page.tsx` and flip its `status` from `soon` to `ready`.
 
 ---
 
-## #3, Walkthrough: `/will/learn/3d-scene`
+## #3, Walkthrough: `/wc/learn/3d-scene`
 
 **Labels:** `walkthrough`, `next-up`
 
 **Body:**
 
-Write the third walkthrough at `src/app/will/learn/3d-scene/page.tsx`. Subject: anatomy of `src/app/experience/Simulation.tsx`. Cover:
+Write the third walkthrough at `src/app/wc/learn/3d-scene/page.tsx`. Subject: anatomy of `src/app/experience/Simulation.tsx`. Cover:
 
 - `<Canvas>` + R3F basics
 - `ParticleField`: `BufferGeometry` + `Float32Array` for vertex positions and colours
@@ -57,17 +59,17 @@ Write the third walkthrough at `src/app/will/learn/3d-scene/page.tsx`. Subject: 
 
 ---
 
-## #4, Wire MDX for `/will/papers`
+## #4, Wire MDX for `/wc/papers`
 
 **Labels:** `paper`, `infra`
 
 **Body:**
 
-Right now `src/app/will/papers/page.tsx` renders from a hard-coded array. To make papers easy to write:
+Right now `src/app/wc/papers/page.tsx` renders from a hard-coded array. To make papers easy to write:
 
 - `npm install @next/mdx @mdx-js/react remark-gfm rehype-pretty-code shiki`
 - Update `next.config.ts` with `pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']` and the `withMDX` wrapper.
-- Create `src/app/will/papers/mdx-components.tsx` exporting custom `<Figure>`, `<Aside>`, `<Sandbox>` so embedded React/3D demos are easy.
+- Create `src/app/wc/papers/mdx-components.tsx` exporting custom `<Figure>`, `<Aside>`, `<Sandbox>` so embedded React/3D demos are easy.
 - Verify it builds on Cloudflare Workers (`npm run preview`) before merging. Past us has been bitten by Node-only MDX plugins on the edge runtime.
 
 ---
@@ -142,7 +144,7 @@ Option 1 is one line in two files.
 
 ---
 
-## #10, Pioneer Scholars paper draft at `/will/papers/ai-cybercrime`
+## #10, Pioneer Scholars paper draft at `/wc/papers/ai-cybercrime`
 
 **Labels:** `paper`
 
@@ -188,13 +190,13 @@ Right now Cloudflare deploys only when `npm run deploy` is run manually. If you 
 Speculative ideas worth keeping on a sticky note:
 
 - **Time-of-day auto theme**: cyberpunk after dark, paper during the day, luxury at golden hour.
-- **Reading log**: a `/will/reads` page listing books / papers the author has been through.
+- **Reading log**: a `/wc/reads` page listing books / papers the author has been through.
 - **Custom domain**: `mythcorp.dev` or similar instead of the workers.dev preview URL.
 - **Page-level search** with Pagefind or similar (works on static export).
-- **RSS / Atom feed** for `/will/papers` (so people can subscribe).
+- **RSS / Atom feed** for `/wc/papers` (so people can subscribe).
 - **View Transitions API** for smooth route changes once Next.js has stable support.
 - **Real WebSocket chat** (promotes `/og/chat` to `/chat`).
-- **Visitor guestbook**: tiny KV-backed comment box at `/will/about`.
+- **Visitor guestbook**: tiny KV-backed comment box at `/wc/about`.
 - **Konami code easter egg**: drops a 3D toy.
 - **Mobile-friendly 3D experience**: current scene targets desktop GPUs; mobile fallback would be nice.
 - **Accessibility pass**: `prefers-reduced-motion` is honoured for theme transitions but not for the 3D scene yet.
