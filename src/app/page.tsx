@@ -3,36 +3,57 @@
 // Walkthrough: /will/learn/landing-flow
 
 import { useState, Suspense, useEffect } from 'react';
-import { useProgress } from '@react-three/drei';
 import { useRouter } from 'next/navigation';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
 import { NewLandingPage } from './components/NewLandingPage';
 
 /**
- * Holds the LoadingScreen on top of the rest of the app until R3F's
- * useProgress reports 100%, then waits a beat so the boot sequence
- * doesn't feel rushed before revealing the landing.
+ * Holds the LoadingScreen on top of the rest of the app for a fixed
+ * window, then unmounts it and mounts the children. The two are
+ * mutually exclusive so only one R3F Canvas exists at a time —
+ * mounting both simultaneously caused intermittent
+ * "addEventListener of null" / "gl.alpha of null" errors, especially
+ * under React StrictMode's double-mount cycle in dev.
+ *
+ * useGLTF.preload('/spectre.glb') (declared at the top of LandingPage)
+ * fetches the GLB during the loading window, so when LandingPage mounts
+ * the model is already cached and there's no flash of empty scene.
  */
+const LOADING_DURATION_MS = 3500;
+
 function AppLoader({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false);
-  const { progress } = useProgress();
+  const [showChildren, setShowChildren] = useState(false);
+
+  // Fixed window for the boot sequence. After it elapses, fade out the
+  // LoadingScreen, then swap to children once the fade completes.
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setIsReady(true), LOADING_DURATION_MS);
+    return () => clearTimeout(fadeTimer);
+  }, []);
 
   useEffect(() => {
-    if (progress < 100) return;
-    const timer = setTimeout(() => setIsReady(true), 4000);
-    return () => clearTimeout(timer);
-  }, [progress]);
+    if (!isReady) return;
+    const swapTimer = setTimeout(() => setShowChildren(true), 600);
+    return () => clearTimeout(swapTimer);
+  }, [isReady]);
+
+  if (showChildren) {
+    return <>{children}</>;
+  }
 
   return (
-    <>
-      <div style={{ display: isReady ? 'none' : 'block' }}>
-        <LoadingScreen onFinished={() => {}} />
-      </div>
-      <div style={{ visibility: isReady ? 'visible' : 'hidden', height: '100%', width: '100%' }}>
-        {children}
-      </div>
-    </>
+    <div
+      style={{
+        opacity: isReady ? 0 : 1,
+        transition: 'opacity 600ms ease',
+        height: '100%',
+        width: '100%',
+      }}
+    >
+      <LoadingScreen onFinished={() => {}} />
+    </div>
   );
 }
 
