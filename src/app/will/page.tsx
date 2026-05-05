@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
@@ -37,7 +37,7 @@ export default function WillIndex() {
           A small back room
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-          MYTHCORP is the front. This is where the personal stuff lives — papers,
+          MYTHCORP is the front. This is where the personal stuff lives, papers,
           notes, walkthroughs of how the site itself works. If MYTHCORP is the
           theatre, /will is the workshop behind it.
         </p>
@@ -65,7 +65,7 @@ export default function WillIndex() {
         </div>
 
         <p className="mt-12 text-xs text-[color:var(--fg-subtle)]">
-          Tip: this section reads better in the <em>paper</em> theme — the switcher is in the top-right.
+          Tip: this section reads better in the <em>paper</em> theme, the switcher is in the top-right.
         </p>
       </main>
     </div>

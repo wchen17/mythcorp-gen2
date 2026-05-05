@@ -1,4 +1,4 @@
-# CLAUDE.md — conventions for agents working on this repo
+﻿# CLAUDE.md, conventions for agents working on this repo
 
 Read **`MAP.md`** first for the file index. This file explains *how* to make changes once you know where to make them.
 
@@ -8,7 +8,7 @@ Read **`MAP.md`** first for the file index. This file explains *how* to make cha
 - 3D: `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`, `three`.
 - Animation: `gsap`.
 - Deployed to Cloudflare Workers via `@opennextjs/cloudflare`.
-- `npm run dev` for local. `npm run check` is build + tsc — must stay green before commit.
+- `npm run dev` for local. `npm run check` is build + tsc, must stay green before commit.
 
 ## Style
 
@@ -39,7 +39,7 @@ Walkthrough: `/will/learn/theme-system`.
 
 1. New route under `src/app/<route>/page.tsx` (or `src/app/will/<route>/page.tsx` for personal stuff).
 2. Wrap in `<div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">`.
-3. Mount `<SiteHeader />` from `src/app/components/SiteHeader.tsx` — never hand-roll a header.
+3. Mount `<SiteHeader />` from `src/app/components/SiteHeader.tsx`, never hand-roll a header.
 4. If the page is a stub, use `<ComingSoon>` instead.
 5. Add it to **MAP.md**'s routes table.
 
@@ -53,14 +53,14 @@ Walkthrough: `/will/learn/theme-system`.
 ## Working with the 3D scene
 
 - Anything heavy (GLTF, custom fonts, big textures) → call `useGLTF.preload(...)` at module top, plus a `<link rel="preload" ...>` in `layout.tsx` head if it's session-critical.
-- The Simulation uses a `STARS_PER_UNIT * settings.stars` count clamped at `MAX_STARS = 12000`. Don't remove the clamp — it's the only thing keeping mid-tier GPUs at 60fps when randomized.
+- The Simulation uses a `STARS_PER_UNIT * settings.stars` count clamped at `MAX_STARS = 12000`. Don't remove the clamp, it's the only thing keeping mid-tier GPUs at 60fps when randomized.
 - Match Canvas background to the page background with `<color attach="background" args={[...]} />` to kill flash-of-black during route changes.
 
 ## Cross-session continuity
 
-- **`MAP.md`** — repo navigation. Update when structure shifts.
-- **`CLAUDE.md`** — this file. Conventions and recipes.
-- **`STATUS.md`** — what was last shipped, what's next. Update at the end of every session.
+- **`MAP.md`**, repo navigation. Update when structure shifts.
+- **`CLAUDE.md`**, this file. Conventions and recipes.
+- **`STATUS.md`**, what was last shipped, what's next. Update at the end of every session.
 
 If you add a new tool, dependency, or architectural pattern that isn't obvious, write a short "decision" in `STATUS.md` so the next session doesn't re-litigate it.
 
@@ -72,10 +72,10 @@ If you add a new tool, dependency, or architectural pattern that isn't obvious, 
 
 ## Things to avoid
 
-- Inline `<style>` blocks defining new global keyframes — keep keyframes scoped or in `globals.css`.
+- Inline `<style>` blocks defining new global keyframes, keep keyframes scoped or in `globals.css`.
 - Adding state machines for pages with two states (use `useState<'a' | 'b'>` directly).
 - Long snarky microcopy. Whimsical and warm > snarky.
-- New fonts. We have three (Geist, Geist Mono, Cinzel) and `Inter_Bold.json` for 3D — that's enough.
+- New fonts. We have three (Geist, Geist Mono, Cinzel) and `Inter_Bold.json` for 3D, that's enough.
 
 ## Quick verification before commit
 
@@ -83,4 +83,4 @@ If you add a new tool, dependency, or architectural pattern that isn't obvious, 
 npm run check
 ```
 
-Must be green. If you can, also `npm run dev` and visit `/`, `/experience`, `/will`, `/will/learn/theme-system`, and trigger a 404 — confirm theme switcher works on each.
+Must be green. If you can, also `npm run dev` and visit `/`, `/experience`, `/will`, `/will/learn/theme-system`, and trigger a 404, confirm theme switcher works on each.

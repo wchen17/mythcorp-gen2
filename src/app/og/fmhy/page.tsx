@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -76,7 +76,7 @@ export default function FmhySketch() {
       <SiteHeader />
 
       <main className="mx-auto max-w-4xl px-4 pt-24 pb-12 sm:px-6">
-        <DraftBanner note="The eventual goal: an FMHY-style backup hub. Right now it's a UI shell with placeholder data — wire a real source to make it useful." />
+        <DraftBanner note="The eventual goal: an FMHY-style backup hub. Right now it's a UI shell with placeholder data, wire a real source to make it useful." />
 
         <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
           Backup content archive

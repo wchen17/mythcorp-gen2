@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { ThemeSwitcher } from '../../../components/ThemeSwitcher';
 import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
@@ -10,8 +10,8 @@ export default function ThemeSystemWalkthrough() {
       title="A theme system from CSS variables"
       intro={
         <>
-          The site has three themes — <em>cyberpunk</em>, <em>luxury</em>, and{' '}
-          <em>paper</em> — and you can switch between them at any time. The
+          The site has three themes, <em>cyberpunk</em>, <em>luxury</em>, and{' '}
+          <em>paper</em>, and you can switch between them at any time. The
           switcher is built into the header, but here&rsquo;s a copy you can
           poke at while you read:
           <div className="mt-4 inline-block rounded-lg border border-[color:var(--border)]
@@ -32,7 +32,7 @@ export default function ThemeSystemWalkthrough() {
         </p>
         <p>
           Every component reads the tokens via <code className="font-mono">var(--accent)</code>,{' '}
-          <code className="font-mono">var(--bg)</code>, etc. — so a single attribute change cascades through
+          <code className="font-mono">var(--bg)</code>, etc., so a single attribute change cascades through
           the entire tree without a re-render.
         </p>
       </Section>
@@ -62,7 +62,7 @@ export default function ThemeSystemWalkthrough() {
 }`}</Code>
         <Aside>
           The same variable names exist in every theme block, just with different
-          values. Components never have to know what theme is active — they
+          values. Components never have to know what theme is active, they
           always reach for <code className="font-mono">--accent</code> and trust the
           right colour will be in scope.
         </Aside>
@@ -74,10 +74,10 @@ export default function ThemeSystemWalkthrough() {
           <code className="font-mono">[color:var(--name)]</code> escape, so theme migration is mostly
           search-and-replace:
         </p>
-        <Code>{`// Before — hardcoded:
+        <Code>{`// Before, hardcoded:
 <button className="bg-cyan-400 text-black hover:bg-cyan-300">
 
-// After — theme-aware:
+// After, theme-aware:
 <button
   className="bg-[color:var(--accent)] text-[color:var(--bg)]
              hover:shadow-[0_0_20px_var(--accent-glow-strong)]"
@@ -120,10 +120,10 @@ export default function ThemeSystemWalkthrough() {
       <Section title="Where to look">
         <p>The whole system is four files:</p>
         <ul className="list-inside list-disc space-y-1 font-mono text-sm">
-          <li><code>src/app/globals.css</code> — token definitions</li>
-          <li><code>src/app/contexts/ThemeContext.tsx</code> — provider + hook</li>
-          <li><code>src/app/components/ThemeSwitcher.tsx</code> — UI</li>
-          <li><code>src/app/layout.tsx</code> — pre-paint bootstrap script</li>
+          <li><code>src/app/globals.css</code>, token definitions</li>
+          <li><code>src/app/contexts/ThemeContext.tsx</code>, provider + hook</li>
+          <li><code>src/app/components/ThemeSwitcher.tsx</code>, UI</li>
+          <li><code>src/app/layout.tsx</code>, pre-paint bootstrap script</li>
         </ul>
         <Aside>
           Want to add a new theme? Add a fourth <code className="font-mono">[data-theme=&quot;...&quot;]</code> block

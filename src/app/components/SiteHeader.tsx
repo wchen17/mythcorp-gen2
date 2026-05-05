@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 type NavItem = { href: string; label: string };
@@ -12,12 +13,21 @@ const DEFAULT_NAV: ReadonlyArray<NavItem> = [
   { href: '/will', label: 'WILL' },
 ];
 
+const MENU_LINKS: ReadonlyArray<NavItem> = [
+  { href: '/', label: 'Home' },
+  { href: '/experience', label: '3D experience' },
+  { href: '/will', label: 'The back room' },
+  { href: '/will/learn', label: 'Walkthroughs' },
+  { href: '/will/papers', label: 'Papers' },
+  { href: '/animals', label: 'Animals (intermission)' },
+  { href: '/og', label: 'Sketches' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
 interface SiteHeaderProps {
-  /** Override the default nav (e.g., experience page wants HOME on the left). */
   nav?: ReadonlyArray<NavItem>;
-  /** Tagline shown under the logo. Defaults to FOUNDED IN CHICAGO. */
   tagline?: string;
-  /** Hide the logo's link to "/" (when you're already on home). */
   logoIsLink?: boolean;
 }
 
@@ -27,6 +37,33 @@ export function SiteHeader({
   logoIsLink = true,
 }: SiteHeaderProps) {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close on outside click + ESC.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onClick);
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
+
+  // Close on route change.
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   const Logo = logoIsLink ? Link : 'span';
   const logoProps = logoIsLink ? { href: '/' } : {};
 
@@ -35,23 +72,71 @@ export function SiteHeader({
                        border-b border-[color:var(--border)]
                        bg-[color:var(--bg-overlay)] backdrop-blur-md">
       <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
-        {/* Left: Home link (icon hamburger style, kept from original) */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 transition-opacity hover:opacity-80"
-          aria-label="Go home"
-        >
-          <span aria-hidden className="flex h-6 w-6 flex-col justify-center gap-1">
-            <span className="h-0.5 w-full bg-[color:var(--fg)]" />
-            <span className="h-0.5 w-1/2 bg-[color:var(--fg)]" />
-            <span className="h-0.5 w-full bg-[color:var(--fg)]" />
-          </span>
-          <span className="hidden text-sm font-medium tracking-wide text-[color:var(--fg)] sm:inline">
-            HOME
-          </span>
-        </Link>
+        {/* Left: real hamburger menu (now a working dropdown) */}
+        <div ref={menuRef} className="relative">
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={menuOpen}
+            aria-label="Open menu"
+            className="flex items-center gap-2 rounded px-1.5 py-1
+                       transition-opacity hover:opacity-80"
+          >
+            <span aria-hidden className="flex h-6 w-6 flex-col justify-center gap-1">
+              <span className={`h-0.5 bg-[color:var(--fg)] transition-all duration-200 ${menuOpen ? 'w-full translate-y-1.5 rotate-45' : 'w-full'}`} />
+              <span className={`h-0.5 bg-[color:var(--fg)] transition-all duration-200 ${menuOpen ? 'w-full opacity-0' : 'w-1/2'}`} />
+              <span className={`h-0.5 bg-[color:var(--fg)] transition-all duration-200 ${menuOpen ? 'w-full -translate-y-1.5 -rotate-45' : 'w-full'}`} />
+            </span>
+            <span className="hidden text-sm font-medium tracking-wide text-[color:var(--fg)] sm:inline">
+              {menuOpen ? 'CLOSE' : 'MENU'}
+            </span>
+          </button>
 
-        {/* Center: Logo */}
+          {menuOpen && (
+            <div
+              role="menu"
+              className="absolute left-0 top-full mt-3 w-64 overflow-hidden
+                         rounded-xl border border-[color:var(--border-strong)]
+                         bg-[color:var(--bg-overlay)] shadow-2xl backdrop-blur-md
+                         site-menu-in"
+            >
+              <style>{`
+                @keyframes siteMenuIn {
+                  from { opacity: 0; transform: translateY(-6px); }
+                  to   { opacity: 1; transform: translateY(0); }
+                }
+                .site-menu-in { animation: siteMenuIn 0.18s ease-out; }
+              `}</style>
+              <ul className="py-2">
+                {MENU_LINKS.map((item) => {
+                  const active = pathname === item.href;
+                  return (
+                    <li key={item.href} role="none">
+                      <Link
+                        role="menuitem"
+                        href={item.href}
+                        className={[
+                          'flex items-center justify-between gap-3 px-4 py-2 text-sm transition-colors',
+                          active
+                            ? 'bg-[color:var(--accent)]/10 text-[color:var(--accent)]'
+                            : 'text-[color:var(--fg)] hover:bg-[color:var(--bg-elevated)] hover:text-[color:var(--accent-soft)]',
+                        ].join(' ')}
+                      >
+                        <span>{item.label}</span>
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
+                          {item.href}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Center: logo */}
         <div className="flex flex-col items-center text-center">
           <Logo
             {...logoProps as any}
@@ -68,7 +153,7 @@ export function SiteHeader({
           )}
         </div>
 
-        {/* Right: Nav + theme switcher */}
+        {/* Right: nav links + theme switcher */}
         <nav className="flex items-center gap-2 sm:gap-4">
           <ul className="hidden items-center gap-4 sm:flex">
             {nav.map((item) => {

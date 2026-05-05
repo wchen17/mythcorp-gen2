@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -18,7 +18,7 @@ export default function ChatSketch() {
       id: 1,
       sender: 'system',
       content:
-        "Welcome to the chat sketch. Messages live in your browser's memory only — refresh and they're gone.",
+        "Welcome to the chat sketch. Messages live in your browser's memory only, refresh and they're gone.",
       timestamp: new Date().toLocaleTimeString(),
       type: 'text',
     },

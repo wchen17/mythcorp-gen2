@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -22,7 +22,7 @@ const WALKTHROUGHS = [
     slug: '3d-scene',
     title: 'Anatomy of the 3D experience',
     blurb:
-      'Particle field via BufferGeometry, post-processing bloom, and a randomizable settings object — what every piece does.',
+      'Particle field via BufferGeometry, post-processing bloom, and a randomizable settings object, what every piece does.',
     status: 'soon',
   },
 ];
@@ -43,7 +43,7 @@ export default function LearnIndex() {
           Each walkthrough takes a real, live component from this site, shows
           you the code that powers it, and explains why it&rsquo;s built that
           way. The components on the page <em>are</em> the components you&rsquo;re
-          reading about — change the theme and the examples change with you.
+          reading about, change the theme and the examples change with you.
         </p>
 
         <ul className="mt-10 flex flex-col gap-4">

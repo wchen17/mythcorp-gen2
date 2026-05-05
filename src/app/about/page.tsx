@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
@@ -17,9 +17,9 @@ export default function AboutPage() {
           Just an idea
         </h1>
         <p className="text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-          MYTHCORP is a passion project — a place to build, learn, and see what&rsquo;s
+          MYTHCORP is a passion project, a place to build, learn, and see what&rsquo;s
           possible when you treat a personal site like a sandbox instead of a résumé.
-          The 3D scene, the cinematic boot, the theme switcher — everything here is an
+          The 3D scene, the cinematic boot, the theme switcher, everything here is an
           excuse to try something.
         </p>
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
 
         <p className="max-w-md text-sm leading-relaxed text-[color:var(--fg-subtle)]">
           Made in Chicago, with AI as a creative partner. The codebase is annotated for
-          anyone who wants to learn from it — see{' '}
+          anyone who wants to learn from it, see{' '}
           <Link
             href="/will/learn"
             className="text-[color:var(--accent)] underline underline-offset-4

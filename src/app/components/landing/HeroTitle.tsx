@@ -1,12 +1,12 @@
-'use client';
+﻿'use client';
 
 interface HeroTitleProps {
-  /** Click handler — used to trigger the playful "yep we know" easter egg. */
+  /** Click handler, used to trigger the playful "yep we know" easter egg. */
   onClick?: () => void;
 }
 
 /**
- * "DISCOVER YOUR POTENTIAL" — the original aspirational hero.
+ * "DISCOVER YOUR POTENTIAL", the original aspirational hero.
  * Three stacked colored words, responsive, theme-aware glow via CSS vars.
  *
  * The colored words deliberately pull from the WHOLE palette (not just
