@@ -1,10 +1,21 @@
 'use client';
 
+// Walkthrough: /will/learn/3d-scene
+
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useState, useRef, useMemo } from 'react'
 import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Group, Vector3 } from 'three'
+
+// Preload once for the session — cached for both this scene and the
+// boot-time landing logo, so route changes don't refetch the model.
+useGLTF.preload('/spectre.glb');
+
+// Hard ceiling on particle count to keep mid-tier GPUs at 60fps even when
+// the user randomizes "stars" up to its max value.
+const MAX_STARS = 12000;
+const STARS_PER_UNIT = 1200;
 
 // --- Prop Interfaces ---
 interface ModelProps {
@@ -339,7 +350,15 @@ export function Simulation({ onExit }: SimulationProps) {
       >
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={60} />
         <color attach="background" args={['#000008']} />
-        <Stars radius={100} depth={50} count={5000} factor={4 * settings.stars} saturation={0} fade speed={1} />
+        <Stars
+          radius={100}
+          depth={50}
+          count={Math.min(Math.round(STARS_PER_UNIT * settings.stars), MAX_STARS)}
+          factor={4 * settings.stars}
+          saturation={0}
+          fade
+          speed={1}
+        />
         <ParticleField />
 
         <ambientLight intensity={0.3} />

@@ -1,30 +1,27 @@
 'use client';
 
+// Walkthrough: /will/learn/landing-flow
+
 import { useState, Suspense, useEffect } from 'react';
-import { useProgress } from "@react-three/drei";
-// --- NEW: Import useRouter ---
-import { useRouter } from 'next/navigation'; 
+import { useProgress } from '@react-three/drei';
+import { useRouter } from 'next/navigation';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LandingPage } from './components/LandingPage';
 import { NewLandingPage } from './components/NewLandingPage';
-// --- REMOVED: No longer need Scene.tsx ---
-// import Scene from './components/Scene'; 
 
 /**
- * AppLoader component (No changes needed)
+ * Holds the LoadingScreen on top of the rest of the app until R3F's
+ * useProgress reports 100%, then waits a beat so the boot sequence
+ * doesn't feel rushed before revealing the landing.
  */
 function AppLoader({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false);
   const { progress } = useProgress();
 
   useEffect(() => {
-    if (progress === 100) {
-      const timer = setTimeout(() => {
-        setIsReady(true);
-      }, 4000); 
-
-      return () => clearTimeout(timer);
-    }
+    if (progress < 100) return;
+    const timer = setTimeout(() => setIsReady(true), 4000);
+    return () => clearTimeout(timer);
   }, [progress]);
 
   return (
@@ -32,7 +29,6 @@ function AppLoader({ children }: { children: React.ReactNode }) {
       <div style={{ display: isReady ? 'none' : 'block' }}>
         <LoadingScreen onFinished={() => {}} />
       </div>
-
       <div style={{ visibility: isReady ? 'visible' : 'hidden', height: '100%', width: '100%' }}>
         {children}
       </div>
@@ -40,52 +36,29 @@ function AppLoader({ children }: { children: React.ReactNode }) {
   );
 }
 
-
 /**
- * The main page component
+ * The cinematic entry: LoadingScreen (cyberpunk boot)
+ *   → LandingPage (3D MYTHCORP logo, the "title card")
+ *   → NewLandingPage (the warm reveal — DISCOVER YOUR POTENTIAL)
+ *   → /experience (real route, full 3D scene)
  */
 export default function HomePage() {
-  // --- NEW: Get the router instance ---
   const router = useRouter();
-
-  // --- MODIFIED: Removed 'experience' from the state ---
   const [appState, setAppState] = useState<'landing' | 'homepage'>('landing');
 
-  const handleGoToHomepage = () => {
-    setAppState('homepage');
-  };
-
-  // --- MODIFIED: This now uses the router to navigate ---
-  const handleGoToExperience = () => {
-    router.push('/experience');
-  };
-  
-  const handleGoToLanding = () => {
-    setAppState('landing');
-  };
-
   return (
-    <main className="h-screen w-screen bg-black">
-      <Suspense fallback={
-        <LoadingScreen onFinished={() => {}} />
-      }>
+    <main className="h-screen w-screen bg-[color:var(--bg)]">
+      <Suspense fallback={<LoadingScreen onFinished={() => {}} />}>
         <AppLoader>
-          
-          {/* STEP 1: Shows 3D Logo Page */}
           {appState === 'landing' && (
-            <LandingPage onTransitionComplete={handleGoToHomepage} />
+            <LandingPage onTransitionComplete={() => setAppState('homepage')} />
           )}
-          
-          {/* STEP 2: Shows Professional Homepage */}
           {appState === 'homepage' && (
-            <NewLandingPage 
-              onEnterExperience={handleGoToExperience} 
-              onEnterInteractive={handleGoToLanding} 
+            <NewLandingPage
+              onEnterExperience={() => router.push('/experience')}
+              onEnterInteractive={() => setAppState('landing')}
             />
           )}
-          
-          {/* --- REMOVED: The 'experience' state is gone --- */}
-          
         </AppLoader>
       </Suspense>
     </main>
