@@ -1,98 +1,138 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
+import { SkylineBackdrop } from '../components/landing/SkylineBackdrop';
+import { SiteHeader } from '../components/SiteHeader';
 
 interface MainMenuProps {
   onStart: () => void;
-  onSettings: () => void;
 }
 
-export function MainMenu({ onStart, onSettings }: MainMenuProps) {
+const TEASES = [
+  { label: 'particles', count: '~12k', note: 'a star field with bloom' },
+  { label: 'spectre', count: '1', note: 'a glowing rotating model' },
+  { label: 'controls', count: '9', note: 'sliders + a randomize button' },
+];
+
+export function MainMenu({ onStart }: MainMenuProps) {
   return (
-    <div className="min-h-screen w-full relative flex items-center justify-center font-sans overflow-hidden">
-      
-      {/* Backgrounds (Same as NewLandingPage) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
+    <div className="relative flex min-h-screen w-full flex-col
+                    overflow-hidden font-sans text-[color:var(--fg)]">
+      <SkylineBackdrop parallax />
+
+      <SiteHeader tagline="SIMULATION LAB" />
+
+      {/* Soft accent glow centred behind the hero, theme-aware. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(/chicagoskyline.jpg)',
-          filter: 'blur(4px)',
-          transform: 'scale(1.1)',
+          background:
+            'radial-gradient(ellipse at center 60%, var(--accent-glow) 0%, transparent 45%)',
+          opacity: 0.22,
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-purple-900/20 to-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-blue-900/20" />
 
-      {/* Header (Links back to home) */}
-      <header className="absolute z-30 top-0 left-0 right-0">
-        <div className="flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className="w-full h-0.5 bg-white"></div>
-              <div className="w-1/2 h-0.5 bg-white"></div>
-              <div className="w-full h-0.5 bg-white"></div>
-            </div>
-            <span className="text-sm font-medium text-white">HOME</span>
-          </Link>
-          <div className="flex flex-col items-center">
-            <span className="font-serif text-2xl font-medium text-white tracking-wider drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
-              MYTHCORP
-            </span>
-            <span className="text-sm font-serif tracking-widest text-white/80 mt-1">
-              SIMULATION
-            </span>
-          </div>
-          <div className="w-20"></div> {/* Spacer */}
-        </div>
-      </header>
+      <main className="relative z-10 flex flex-1 flex-col items-center
+                       justify-center px-4 pt-24 pb-12">
+        <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
 
-      {/* Main Content Box */}
-      <main className="relative z-10 flex flex-col items-center text-center text-white p-4">
-        <div className="bg-black/70 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl p-8 max-w-md w-full">
-
-          <h1 className="text-5xl font-serif font-extrabold leading-tight tracking-tight text-green-400 drop-shadow-[0_0_20px_rgba(74,222,128,0.6)]">
-            3D EXPERIENCE
-          </h1>
-          <div className="w-1/2 h-0.5 bg-white/50 mt-2 mx-auto shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
-          
-          <p className="font-mono text-white/70 tracking-widest mt-4 mb-10 text-sm">
-            [ SIMULATION LABORATORY ]
+          <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-[color:var(--accent)]">
+            [ ENTER ]
           </p>
 
-          <div className="flex flex-col gap-4 w-64 mx-auto">
-            <button 
-              onClick={onStart}
-              className="bg-cyan-400 text-black font-bold py-3 px-6 rounded
-                         hover:bg-cyan-300 transition-all transform hover:scale-105 tracking-wide text-sm"
-            >
-              ENTER SIMULATION
-            </button>
-            
-            <button 
-              onClick={onSettings}
-              className="bg-gray-700 text-white font-medium py-3 px-6 rounded
-                         hover:bg-gray-600 transition-all text-sm opacity-70 cursor-not-allowed"
-            >
-              SETTINGS (WIP)
-            </button>
-          </div>
-        
-          {/* Secret Menu Tab */}
-          <details className="border-t border-white/20 mt-8 pt-6">
-            <summary className="px-3 py-2 text-cyan-400 font-mono text-xs tracking-widest cursor-pointer hover:bg-white/10 rounded transition-all">
-              🔒 SECRET ROUTES
-            </summary>
-            <div className="bg-black/50 rounded-b-md overflow-hidden text-left p-2">
-              <Link href="#" onClick={(e) => e.preventDefault()} className="block px-5 py-2 text-orange-400/70 font-mono text-sm hover:bg-orange-500/10 transition-all cursor-not-allowed">
-                /bin/animals [WIP]
-              </Link>
-              <Link href="#" onClick={(e) => e.preventDefault()} className="block px-5 py-2 text-orange-400/70 font-mono text-sm hover:bg-orange-500/10 transition-all cursor-not-allowed">
-                /dev/chat [WIP]
-              </Link>
-            </div>
-          </details>
+          <h1 className="themed-heading mt-3 text-5xl font-extrabold leading-[0.95]
+                         text-[color:var(--fg)] sm:text-7xl">
+            <span className="text-[color:var(--accent-soft)]">3D</span>{' '}
+            EXPERIENCE
+          </h1>
 
+          <div
+            aria-hidden
+            className="mt-5 h-px w-40 bg-[color:var(--border-strong)]"
+            style={{ boxShadow: '0 0 14px var(--accent-glow)' }}
+          />
+
+          <p className="mt-5 max-w-md text-base text-[color:var(--fg-muted)] sm:text-lg">
+            A small interactive scene you can poke at. Bring headphones if
+            you&rsquo;ve got them. Bring a fast machine if you don&rsquo;t.
+          </p>
+
+          {/* Tease bar: tells the user what's inside without spoiling it. */}
+          <ul className="mt-10 grid w-full grid-cols-3 gap-3">
+            {TEASES.map((t) => (
+              <li
+                key={t.label}
+                className="themed-surface p-3 text-left"
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--fg-subtle)]">
+                  {t.label}
+                </p>
+                <p className="mt-1 font-serif text-2xl font-semibold text-[color:var(--accent-soft)]"
+                   style={{ textShadow: '0 0 12px var(--accent-glow)' }}>
+                  {t.count}
+                </p>
+                <p className="mt-0.5 text-[11px] text-[color:var(--fg-muted)]">
+                  {t.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          {/* Primary CTA: bigger, framed, with hover that mimics opening a door. */}
+          <button
+            onClick={onStart}
+            className="themed-button group relative mt-10 w-full max-w-sm overflow-hidden
+                       py-4 text-base tracking-[0.2em]"
+          >
+            <span className="relative z-10">ENTER SIMULATION</span>
+            <span
+              aria-hidden
+              className="absolute inset-y-0 left-0 w-0 bg-[color:var(--accent-soft)]
+                         transition-all duration-500 group-hover:w-full"
+              style={{ borderRadius: 'inherit' }}
+            />
+          </button>
+
+          <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
+            randomized on entry. tweak it inside, or hit reset for the defaults.
+          </p>
+
+          <div className="mt-12 flex w-full items-center gap-4
+                          text-[color:var(--fg-subtle)]">
+            <span className="block h-px flex-1 bg-[color:var(--border)]" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.4em]">
+              ELSEWHERE
+            </span>
+            <span className="block h-px flex-1 bg-[color:var(--border)]" />
+          </div>
+
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/wc/learn"
+              className="themed-pill px-4 py-1.5
+                         font-mono text-xs text-[color:var(--accent-soft)]
+                         hover:text-[color:var(--accent)]"
+            >
+              how the scene works
+            </Link>
+            <Link
+              href="/animals"
+              className="themed-pill px-4 py-1.5 font-mono text-xs
+                         text-[color:var(--accent-warm)]
+                         hover:text-[color:var(--accent)]"
+            >
+              palate cleanser
+            </Link>
+            <Link
+              href="/fmhy"
+              className="themed-pill px-4 py-1.5 font-mono text-xs
+                         text-[color:var(--fg-muted)]
+                         hover:text-[color:var(--accent)]"
+            >
+              fmhy backup
+            </Link>
+          </div>
         </div>
       </main>
     </div>

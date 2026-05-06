@@ -1,27 +1,305 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ----------------------------------------------------------------
+ * Theme tokens. Switching themes is `<html data-theme="...">`.
+ * Walkthrough: /wc/learn/theme-system
+ *
+ * Tier 1: colors + fonts.
+ * Tier 2: surface style (matte / glass / paper), border treatment,
+ *         shadow style, corner radius, motion easing. Each theme
+ *         picks its own design language, not just its own palette.
+ * ---------------------------------------------------------------- */
+
+:root,
+[data-theme="cyberpunk"] {
+  --bg: #0a0a0a;
+  --bg-elevated: #141420;
+  --bg-overlay: rgba(10, 10, 15, 0.7);
+  --fg: #ededed;
+  --fg-muted: rgba(237, 237, 237, 0.7);
+  --fg-subtle: rgba(237, 237, 237, 0.45);
+  --accent: #00ffff;
+  --accent-soft: #79e8f0;
+  --accent-warm: #ffaa00;
+  --accent-glow: rgba(0, 255, 255, 0.5);
+  --accent-glow-strong: rgba(0, 255, 255, 0.8);
+  --border: rgba(255, 255, 255, 0.18);
+  --border-strong: rgba(255, 255, 255, 0.32);
+  --skyline-tint-a: rgba(8, 24, 40, 0.55);
+  --skyline-tint-b: rgba(60, 0, 80, 0.30);
+  --skyline-blur: 4px;
+  --font-display: var(--font-cinzel);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  color-scheme: dark;
+
+  /* Tier 2: design language ============================ */
+  --radius-sm: 2px;
+  --radius:    4px;
+  --radius-lg: 6px;
+  --surface-blur: 0px;
+  --surface-bg: var(--bg-elevated);
+  --surface-border: 1px solid var(--accent);
+  --surface-shadow:
+    inset 0 0 0 1px rgba(0, 255, 255, 0.08),
+    0 0 24px -8px var(--accent-glow);
+  --surface-shadow-hover:
+    inset 0 0 0 1px rgba(0, 255, 255, 0.18),
+    0 0 38px -8px var(--accent-glow-strong);
+  --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --button-bg: var(--accent);
+  --button-fg: var(--bg);
+  --button-shadow: 0 0 20px var(--accent-glow);
+  --button-radius: 4px;
+  --pill-radius: 4px;
+  --noise-opacity: 0;
+}
+
+[data-theme="luxury"] {
+  --bg: #0d0a14;
+  --bg-elevated: rgba(40, 28, 56, 0.55);
+  --bg-overlay: rgba(20, 14, 32, 0.55);
+  --fg: #f5e6c8;
+  --fg-muted: rgba(245, 230, 200, 0.78);
+  --fg-subtle: rgba(245, 230, 200, 0.5);
+  --accent: #d4a574;
+  --accent-soft: #e8c89a;
+  --accent-warm: #e89e6c;
+  --accent-glow: rgba(212, 165, 116, 0.45);
+  --accent-glow-strong: rgba(212, 165, 116, 0.7);
+  --border: rgba(212, 165, 116, 0.22);
+  --border-strong: rgba(212, 165, 116, 0.45);
+  --skyline-tint-a: rgba(20, 14, 34, 0.4);
+  --skyline-tint-b: rgba(40, 20, 10, 0.25);
+  --skyline-blur: 3px;
+  --font-display: var(--font-cinzel);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  color-scheme: dark;
+
+  /* Tier 2: glass-morphism design language ============ */
+  --radius-sm: 10px;
+  --radius:    18px;
+  --radius-lg: 28px;
+  --surface-blur: 22px;
+  --surface-bg: rgba(40, 28, 56, 0.45);
+  --surface-border: 1px solid rgba(212, 165, 116, 0.35);
+  --surface-shadow:
+    inset 0 1px 0 rgba(255, 240, 210, 0.08),
+    0 30px 60px -25px rgba(0, 0, 0, 0.7),
+    0 0 60px -25px var(--accent-glow);
+  --surface-shadow-hover:
+    inset 0 1px 0 rgba(255, 240, 210, 0.16),
+    0 40px 80px -25px rgba(0, 0, 0, 0.8),
+    0 0 80px -20px var(--accent-glow-strong);
+  --motion-ease: cubic-bezier(0.34, 1.2, 0.4, 1);
+  --motion-fast: 220ms;
+  --motion-base: 380ms;
+  --button-bg: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+  --button-fg: #1a0e08;
+  --button-shadow: 0 16px 30px -10px var(--accent-glow);
+  --button-radius: 999px;
+  --pill-radius: 999px;
+  --noise-opacity: 0;
+}
+
+[data-theme="paper"] {
+  --bg: #f3ebdb;
+  --bg-elevated: #fdf8ed;
+  --bg-overlay: rgba(253, 248, 237, 0.92);
+  --fg: #2a2520;
+  --fg-muted: rgba(42, 37, 32, 0.72);
+  --fg-subtle: rgba(42, 37, 32, 0.5);
+  --accent: #b85c38;
+  --accent-soft: #d18162;
+  --accent-warm: #c79a55;
+  --accent-glow: rgba(184, 92, 56, 0.18);
+  --accent-glow-strong: rgba(184, 92, 56, 0.32);
+  --border: rgba(42, 37, 32, 0.18);
+  --border-strong: rgba(42, 37, 32, 0.36);
+  --skyline-tint-a: rgba(245, 239, 230, 0.65);
+  --skyline-tint-b: rgba(184, 92, 56, 0.12);
+  --skyline-blur: 2px;
+  --font-display: var(--font-cinzel);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  color-scheme: light;
+
+  /* Tier 2: paper design language ===================== */
+  --radius-sm: 1px;
+  --radius:    3px;
+  --radius-lg: 5px;
+  --surface-blur: 0px;
+  --surface-bg: var(--bg-elevated);
+  --surface-border: 1px solid var(--border-strong);
+  /* Hard offset "stamped on a desk" shadow. No softness. */
+  --surface-shadow:
+    3px 3px 0 var(--border-strong);
+  --surface-shadow-hover:
+    5px 5px 0 var(--border-strong);
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-fast: 160ms;
+  --motion-base: 280ms;
+  --button-bg: var(--accent);
+  --button-fg: #fdf8ed;
+  --button-shadow: 3px 3px 0 var(--fg);
+  --button-radius: 3px;
+  --pill-radius: 999px;
+  --noise-opacity: 0.04;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-cinzel);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-warm: var(--accent-warm);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+/* Subtle paper-grain texture, only visible in paper theme. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--noise-opacity);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px, 7px 7px;
+  mix-blend-mode: multiply;
+}
+
+html.theme-ready,
+html.theme-ready body {
+  transition: background-color 400ms ease, color 400ms ease;
+}
+html:not(.theme-ready),
+html:not(.theme-ready) body {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    transition: none !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+ * Themed surface utilities. Use instead of hand-rolling
+ * border/background/shadow combinations in components, so the
+ * surface picks up the active theme's design language.
+ * ============================================================ */
+
+.themed-surface {
+  background: var(--surface-bg);
+  border: var(--surface-border);
+  border-radius: var(--radius);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(var(--surface-blur));
+  -webkit-backdrop-filter: blur(var(--surface-blur));
+  transition:
+    background var(--motion-base) var(--motion-ease),
+    border-color var(--motion-base) var(--motion-ease),
+    box-shadow var(--motion-base) var(--motion-ease),
+    transform var(--motion-base) var(--motion-ease);
+}
+
+.themed-surface-interactive:hover {
+  box-shadow: var(--surface-shadow-hover);
+  border-color: var(--border-strong);
+}
+
+[data-theme="paper"] .themed-surface-interactive:hover {
+  /* Paper "lifts" off the desk on hover. */
+  transform: translate(-2px, -2px);
+}
+
+[data-theme="cyberpunk"] .themed-surface-interactive:hover {
+  border-color: var(--accent);
+}
+
+[data-theme="luxury"] .themed-surface-interactive:hover {
+  transform: translateY(-2px);
+}
+
+.themed-button {
+  background: var(--button-bg);
+  color: var(--button-fg);
+  border-radius: var(--button-radius);
+  box-shadow: var(--button-shadow);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition:
+    transform var(--motion-base) var(--motion-ease),
+    box-shadow var(--motion-base) var(--motion-ease),
+    filter var(--motion-fast) var(--motion-ease);
+}
+
+.themed-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+[data-theme="paper"] .themed-button:hover {
+  /* Paper buttons "press into" the page. */
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--fg);
+}
+
+[data-theme="cyberpunk"] .themed-button:hover {
+  box-shadow: 0 0 32px var(--accent-glow-strong);
+  transform: scale(1.02);
+}
+
+.themed-pill {
+  background: var(--surface-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--pill-radius);
+  backdrop-filter: blur(calc(var(--surface-blur) * 0.5));
+  -webkit-backdrop-filter: blur(calc(var(--surface-blur) * 0.5));
+  transition:
+    border-color var(--motion-base) var(--motion-ease),
+    background var(--motion-base) var(--motion-ease),
+    color var(--motion-base) var(--motion-ease);
+}
+
+.themed-pill:hover {
+  border-color: var(--border-strong);
+}
+
+/* Display headings get a subtle theme treatment. */
+.themed-heading {
+  font-family: var(--font-display), serif;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="cyberpunk"] .themed-heading {
+  text-shadow: 0 0 22px var(--accent-glow);
+}
+[data-theme="luxury"] .themed-heading {
+  text-shadow: 0 0 28px var(--accent-glow-strong);
+  letter-spacing: 0;
+}
+[data-theme="paper"] .themed-heading {
+  text-shadow: none;
 }
