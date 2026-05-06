@@ -149,11 +149,16 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   }, [progress, onFinished]);
 
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-      background: 'radial-gradient(ellipse at center, #0a0a0a 0%, #000000 70%, #000008 100%)', 
-      zIndex: 1000,
-    }}>
+    <div
+      // suppressHydrationWarning: extensions like Dark Reader rewrite
+      // this inline style (turning `background` shorthand into longhand
+      // properties), which would otherwise trigger React's hydration warning.
+      suppressHydrationWarning
+      style={{
+        position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+        background: 'radial-gradient(ellipse at center, #0a0a0a 0%, #000000 70%, #000008 100%)',
+        zIndex: 1000,
+      }}>
       {/* Add some CSS animations */}
       <style>{`
         @keyframes fadeIn {

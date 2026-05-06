@@ -1,72 +1,42 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
+import { SiteHeader } from '../components/SiteHeader';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* ... (Header is the same) ... */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
-        <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center space-x-2">
-            <Link href="/" className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                <div className={`w-full h-0.5 bg-white transition-all`}></div>
-                <div className={`w-1/2 h-0.5 bg-white transition-all`}></div>
-                <div className={`w-full h-0.5 bg-white transition-all`}></div>
-              </div>
-              <span className="text-sm font-medium">HOME</span>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center absolute left-1/2 -translate-x-1/2">
-            <Link href="/" className="text-2xl font-bold font-serif tracking-wide">
-              MYTHCORP
-            </Link>
-            <span className="text-xs font-sans tracking-wider opacity-70">
-              FOUNDED IN CHICAGO
-            </span>
-          </div>
-          <div className="flex space-x-8">
-            <Link href="/about" className="text-sm font-medium text-cyan-300 underline underline-offset-4">
-              ABOUT US
-            </Link>
-            <Link href="/contact" className="text-sm font-medium text-white hover:text-cyan-300 hover:underline underline-offset-4 transition-all">
-              CONTACT
-            </Link>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
+      <SiteHeader />
 
-      {/* --- Main Content --- */}
-      <main className="flex-1 flex flex-col items-center justify-center pt-20 px-6">
-        <div className="text-center max-w-lg">
-          
-          <h1 className="text-4xl md:text-5xl font-bold font-serif text-white mb-6">
-            JUST AN IDEA
-          </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-white/90 mb-8 font-sans">
-            Honestly? This is a passion project.
-            <br/>
-            It's a space to build, to learn, and to see what's possible.
-          </p>
-        </div>
-        
-        <div className="w-full max-w-xs h-px bg-white/20 my-10"></div>
+      <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center
+                       justify-center px-6 pt-24 pb-16 text-center">
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
+          [ ABOUT ]
+        </p>
+        <h1 className="mb-6 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
+          Just an idea
+        </h1>
+        <p className="text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
+          MYTHCORP is a passion project, a place to build, learn, and see what&rsquo;s
+          possible when you treat a personal site like a sandbox instead of a résumé.
+          The 3D scene, the cinematic boot, the theme switcher, everything here is an
+          excuse to try something.
+        </p>
 
-        <div className="text-center max-w-lg">
-          {/* --- MODIFIED: Text smoothed out --- */}
-          <p className="text-md md:text-lg leading-relaxed text-white/80 font-mono">
-            Made with &lt;3 in Chicago.
-            <br/>
-            Brought from mind to screen with AI as a creative partner,
-            opening a window to what's possible and sparking the ambition
-            to one day build it even better.
-            <br/><br/>
-            Something cool, eventually...
-            <br/>
-            (Check back later)
-          </p>
-        </div>
+        <div className="my-10 h-px w-32 bg-[color:var(--border)]" />
+
+        <p className="max-w-md text-sm leading-relaxed text-[color:var(--fg-subtle)]">
+          Made in Chicago, with AI as a creative partner. The codebase is annotated for
+          anyone who wants to learn from it, see{' '}
+          <Link
+            href="/wc/learn"
+            className="text-[color:var(--accent)] underline underline-offset-4
+                       hover:text-[color:var(--accent-soft)]"
+          >
+            /wc/learn
+          </Link>{' '}
+          for walkthroughs of the trickier components.
+        </p>
       </main>
     </div>
   );
