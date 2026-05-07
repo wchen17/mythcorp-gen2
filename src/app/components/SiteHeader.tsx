@@ -64,8 +64,17 @@ export function SiteHeader({
     setMenuOpen(false);
   }, [pathname]);
 
+  // Mark VT capability on <html> so we can gate CSS / behaviour without SSR mismatch.
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const supports =
+      typeof (document as Document & { startViewTransition?: unknown }).startViewTransition === 'function';
+    if (supports) document.documentElement.dataset.vtSupported = 'true';
+  }, []);
+
   const Logo = logoIsLink ? Link : 'span';
   const logoProps = logoIsLink ? { href: '/' } : {};
+  const logoStyle = { viewTransitionName: 'site-logo' } as React.CSSProperties;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-30
@@ -140,6 +149,7 @@ export function SiteHeader({
         <div className="flex flex-col items-center text-center">
           <Logo
             {...logoProps as any}
+            style={logoStyle}
             className="font-serif text-xl font-semibold tracking-wider text-[color:var(--fg)]
                        drop-shadow-[0_0_12px_var(--accent-glow)] sm:text-2xl"
           >

@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { SiteHeader } from '../../../components/SiteHeader';
 import { BarrierToEntry } from './_components/BarrierToEntry';
 import { CapabilityRamp } from './_components/CapabilityRamp';
+import { ExpertQuadrant } from './_components/ExpertQuadrant';
+import { AttackChain } from './_components/AttackChain';
+import { GovernanceTrilemma } from './_components/GovernanceTrilemma';
+import { CapabilityLadder } from './_components/CapabilityLadder';
 
 // Walkthrough source: Pioneer Scholars 2025 final paper by Weibao Chen.
 // This page is the living web version, paraphrased and annotated.
@@ -75,6 +79,43 @@ export default function AiCybercrimePaper() {
             could realistically do at that level.
           </p>
           <CapabilityRamp />
+        </Section>
+
+        <Section eyebrow="[ FIGURE 3 ]" title="Stage hurdles, side by side">
+          <p>
+            Same taxonomy, different cut: each stage paired with the technical
+            hurdles a model has to clear to operate at that level. Bottom rungs
+            are observed evidence, top rungs are projection (the diagonal
+            hatching marks them as such).
+          </p>
+          <CapabilityLadder />
+        </Section>
+
+        <Section eyebrow="[ FIGURE 4 ]" title="Where AI did the work">
+          <p>
+            A real-world heist (Hong Kong CFO case, Feb 2024, 25M USD) walked
+            through one step at a time. Each step is tagged by where AI did the
+            work: human-only, AI-assisted, or AI end-to-end.
+          </p>
+          <AttackChain />
+        </Section>
+
+        <Section eyebrow="[ FIGURE 5 ]" title="The expert debate">
+          <p>
+            Where do leading voices fall on AI&rsquo;s effect on offence vs
+            defence? Click any quadrant for the argument summary. Stances are
+            paraphrased from public statements, not verbatim quotes.
+          </p>
+          <ExpertQuadrant />
+        </Section>
+
+        <Section eyebrow="[ FIGURE 6 ]" title="Governance trilemma">
+          <p>
+            Three policy levers as a triangle: open-source access, regulation,
+            and antitrust. Drag the point inside to mix the three. The verdict
+            reads off which threat surface stays exposed at that blend.
+          </p>
+          <GovernanceTrilemma />
         </Section>
 
         <Section eyebrow="[ THE SHAPE ]" title="Why this matters">

@@ -1,10 +1,13 @@
 /**
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
- */ {
+ */
+{
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mythcorp-gen2",
-  "main": ".open-next/worker.js",
+  // Custom wrapper at src/worker.ts intercepts /api/chat WebSocket
+  // upgrades before falling through to the OpenNext bundle.
+  "main": "src/worker.ts",
   "compatibility_date": "2025-04-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -14,5 +17,13 @@
   "observability": {
     "enabled": true
   },
-  "upload_source_maps": true
+  "upload_source_maps": true,
+  "durable_objects": {
+    "bindings": [
+      { "name": "CHAT_ROOM", "class_name": "ChatRoom" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["ChatRoom"] }
+  ]
 }

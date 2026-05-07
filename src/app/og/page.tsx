@@ -21,11 +21,11 @@ const SKETCHES: ReadonlyArray<Sketch> = [
     status: 'sketch',
   },
   {
-    href: '/og/chat',
+    href: '/chat',
     label: 'CHAT',
-    title: 'Local-only chat sandbox',
-    blurb: 'A real chat UI with no backend. Useful as a placeholder until a WebSocket layer makes sense.',
-    status: 'sketch',
+    title: 'Global chat (graduated)',
+    blurb: 'Sketch turned real. Now a live WebSocket room backed by a Cloudflare Durable Object at /chat.',
+    status: 'graduated',
   },
   {
     href: '/fmhy',

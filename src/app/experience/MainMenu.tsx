@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { SkylineBackdrop } from '../components/landing/SkylineBackdrop';
 import { SiteHeader } from '../components/SiteHeader';
+import { SCENE_PRESETS, type ScenePreset } from './scenePresets';
 
 interface MainMenuProps {
-  onStart: () => void;
+  onStart: (preset: ScenePreset) => void;
 }
 
 const TEASES = [
@@ -15,6 +17,9 @@ const TEASES = [
 ];
 
 export function MainMenu({ onStart }: MainMenuProps) {
+  const [presetId, setPresetId] = useState<ScenePreset['id']>('random');
+  const selected = SCENE_PRESETS.find((p) => p.id === presetId) ?? SCENE_PRESETS[0];
+
   return (
     <div className="relative flex min-h-screen w-full flex-col
                     overflow-hidden font-sans text-[color:var(--fg)]">
@@ -79,10 +84,38 @@ export function MainMenu({ onStart }: MainMenuProps) {
             ))}
           </ul>
 
+          {/* Scene preset picker. Each preset is a Partial<SceneSettings> patch. */}
+          <fieldset className="mt-10 w-full max-w-sm">
+            <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--fg-subtle)]">
+              preset
+            </legend>
+            <div className="flex flex-wrap justify-center gap-2">
+              {SCENE_PRESETS.map((p) => {
+                const active = p.id === presetId;
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => setPresetId(p.id)}
+                    aria-pressed={active}
+                    className={[
+                      'themed-pill px-3 py-1.5 font-mono text-[11px] tracking-widest transition-colors',
+                      active
+                        ? 'border-[color:var(--accent)] text-[color:var(--accent)]'
+                        : 'text-[color:var(--fg-muted)] hover:text-[color:var(--fg)]',
+                    ].join(' ')}
+                  >
+                    {p.label}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
           {/* Primary CTA: bigger, framed, with hover that mimics opening a door. */}
           <button
-            onClick={onStart}
-            className="themed-button group relative mt-10 w-full max-w-sm overflow-hidden
+            onClick={() => onStart(selected)}
+            className="themed-button group relative mt-6 w-full max-w-sm overflow-hidden
                        py-4 text-base tracking-[0.2em]"
           >
             <span className="relative z-10">ENTER SIMULATION</span>
@@ -95,7 +128,9 @@ export function MainMenu({ onStart }: MainMenuProps) {
           </button>
 
           <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
-            randomized on entry. tweak it inside, or hit reset for the defaults.
+            {selected.id === 'random'
+              ? 'randomized on entry. tweak it inside, or hit reset for the defaults.'
+              : `preset: ${selected.label}, ${selected.blurb}. tweak it inside.`}
           </p>
 
           <div className="mt-12 flex w-full items-center gap-4

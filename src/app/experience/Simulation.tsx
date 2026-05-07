@@ -7,6 +7,7 @@ import { useState, useRef, useMemo } from 'react'
 import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Group, Vector3 } from 'three'
+import type { ScenePreset } from './scenePresets'
 
 // Preload once for the session, cached for both this scene and the
 // boot-time landing logo, so route changes don't refetch the model.
@@ -37,6 +38,8 @@ interface CombinedInputProps {
 }
 interface SimulationProps {
   onExit: () => void;
+  /** Optional preset that seeds the initial settings. Random if absent. */
+  preset?: ScenePreset;
 }
 
 // --- SETTINGS MOVED OUTSIDE COMPONENT ---
@@ -171,31 +174,30 @@ function Helicopter({ scale, lerpFactor }: HelicopterProps) {
 // === UI COMPONENTS ===
 // ===================================================================
 
-// --- MODIFIED: CombinedInput now uses Tailwind and matches the glassy style ---
 function CombinedInput({ label, value, onChange, min, max, step }: CombinedInputProps) {
     return (
       <div className="flex flex-col mt-4">
-        <label className="text-white/90 text-sm mb-2 font-sans">
+        <label className="text-[color:var(--fg-muted)] text-sm mb-2 font-sans">
           {label}
         </label>
         <div className="flex items-center gap-3">
-          <input 
-            type="range" 
-            min={min} 
-            max={max} 
-            step={step} 
-            value={value} 
-            onChange={onChange} 
-            className="w-full h-1 bg-black/30 rounded-lg appearance-none cursor-pointer
-                       accent-cyan-400"
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={onChange}
+            style={{ accentColor: 'var(--accent)' }}
+            className="w-full h-1 bg-[color:var(--border)] rounded-lg appearance-none cursor-pointer"
           />
-          <input 
-            type="number" 
-            step={step} 
-            value={value.toFixed ? value.toFixed(2) : value} 
-            onChange={onChange} 
-            className="w-20 bg-black/50 border border-white/20 text-white
-                       p-1.5 text-sm text-center rounded-md font-mono"
+          <input
+            type="number"
+            step={step}
+            value={value.toFixed ? value.toFixed(2) : value}
+            onChange={onChange}
+            className="w-20 bg-[color:var(--bg)] border border-[color:var(--border)]
+                       text-[color:var(--fg)] p-1.5 text-sm text-center rounded-md font-mono"
           />
         </div>
       </div>
@@ -205,11 +207,16 @@ function CombinedInput({ label, value, onChange, min, max, step }: CombinedInput
 // ===================================================================
 // === MAIN SIMULATION COMPONENT ===
 // ===================================================================
-export function Simulation({ onExit }: SimulationProps) {
+export function Simulation({ onExit, preset }: SimulationProps) {
   const [showAdvanced, setShowAdvanced] = useState(false);
-  
-  // --- State now starts randomized! ---
-  const [settings, setSettings] = useState(() => getRandomSettings());
+
+  // Seed from the chosen preset, or randomize if 'random' (no settings).
+  const [settings, setSettings] = useState(() => {
+    if (preset && preset.settings) {
+      return { ...DEFAULTS, ...preset.settings };
+    }
+    return getRandomSettings();
+  });
 
   const randomizeAll = () => setSettings(getRandomSettings());
   const resetToDefaults = () => setSettings(DEFAULTS);
@@ -230,81 +237,76 @@ export function Simulation({ onExit }: SimulationProps) {
     // Switched to font-sans as the base for the UI
     <main className='h-screen w-screen bg-black font-sans'>
       
-      {/* --- MODIFIED: UI Panel rebuilt with glassy/blur style --- */}
-      <div className="absolute top-4 left-4 z-10 bg-black/70 backdrop-blur-md
-                      border border-white/20 rounded-lg shadow-2xl text-white
+      <div className="themed-surface absolute top-4 left-4 z-10 text-[color:var(--fg)]
                       w-80 max-h-[calc(100vh-32px)] overflow-y-auto">
-        
+
         <div className="p-4">
-          {/* Header */}
-          <h3 className="text-center text-cyan-400 font-mono tracking-widest text-lg
-                         border-b border-white/20 pb-3">
+          <h3 className="text-center text-[color:var(--accent)] font-mono tracking-widest text-lg
+                         border-b border-[color:var(--border)] pb-3">
             [ SIM_CONTROLS ]
           </h3>
-          
-          {/* Basic Controls */}
+
           <div className="flex flex-col mt-4">
-            <label className="text-white/90 text-sm mb-1 font-sans">
+            <label className="text-[color:var(--fg-muted)] text-sm mb-1 font-sans">
               Primary Color
-            </label> 
-            <input 
-              type="text" 
-              value={settings.color} 
+            </label>
+            <input
+              type="text"
+              value={settings.color}
               onChange={(e) => handleSettingChange('color', e.target.value)}
-              className="mt-1 bg-black/50 border border-white/20
-                         text-white p-2 text-sm rounded-md font-mono"
-            /> 
+              className="mt-1 bg-[color:var(--bg)] border border-[color:var(--border)]
+                         text-[color:var(--fg)] p-2 text-sm rounded-md font-mono"
+            />
           </div>
-          
-          <CombinedInput 
-            label="Emission Intensity" 
-            value={settings.glowIntensity} 
-            onChange={(e) => handleSettingChange('glowIntensity', parseFloat(e.target.value))} 
-            min={0} 
-            max={3} 
+
+          <CombinedInput
+            label="Emission Intensity"
+            value={settings.glowIntensity}
+            onChange={(e) => handleSettingChange('glowIntensity', parseFloat(e.target.value))}
+            min={0}
+            max={3}
             step={0.1}
           />
-          
-          <div className="border-t border-white/20 pt-4 mt-4 space-y-2">
-            <label className="flex items-center gap-3 text-white/90 cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={settings.showHelicopter} 
+
+          <div className="border-t border-[color:var(--border)] pt-4 mt-4 space-y-2">
+            <label className="flex items-center gap-3 text-[color:var(--fg-muted)] cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.showHelicopter}
                 onChange={(e) => handleSettingChange('showHelicopter', e.target.checked)}
-                className="w-4 h-4 bg-black/50 border-white/30 text-cyan-400 accent-cyan-400
-                           rounded focus:ring-cyan-500"
+                style={{ accentColor: 'var(--accent)' }}
+                className="w-4 h-4 rounded"
               />
               Enable Mouse Tracker
             </label>
-            <label className="flex items-center gap-3 text-white/90 cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={settings.showAxis} 
+            <label className="flex items-center gap-3 text-[color:var(--fg-muted)] cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.showAxis}
                 onChange={(e) => handleSettingChange('showAxis', e.target.checked)}
-                className="w-4 h-4 bg-black/50 border-white/30 text-cyan-400 accent-cyan-400
-                           rounded focus:ring-cyan-500"
+                style={{ accentColor: 'var(--accent)' }}
+                className="w-4 h-4 rounded"
               />
               Show XYZ Axis
             </label>
           </div>
 
-          {/* Advanced Section */}
-          <div className="border-t border-white/20 pt-4 mt-4">
-              <label 
-                onClick={() => setShowAdvanced(!showAdvanced)} 
-                className="flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider cursor-pointer"
-              > 
+          <div className="border-t border-[color:var(--border)] pt-4 mt-4">
+              <label
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                className="flex items-center gap-2 text-[color:var(--accent)] font-mono text-sm tracking-wider cursor-pointer"
+              >
                 <span>{showAdvanced ? '▼' : '▶'}</span>
                 ADVANCED PARAMETERS
               </label>
               {showAdvanced && (
-                <div className="pl-5 mt-4 border-l-2 border-white/20">
+                <div className="pl-5 mt-4 border-l-2 border-[color:var(--border)]">
                     <CombinedInput label="Rotation Velocity" value={settings.rotationSpeed} onChange={(e) => handleSettingChange('rotationSpeed', parseFloat(e.target.value))} min={0} max={2} step={0.1}/>
                     <CombinedInput label="Position X" value={settings.position[0]} onChange={(e) => handlePositionChange(0, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
                     <CombinedInput label="Position Y" value={settings.position[1]} onChange={(e) => handlePositionChange(1, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
                     <CombinedInput label="Position Z" value={settings.position[2]} onChange={(e) => handlePositionChange(2, parseFloat(e.target.value))} min={-5} max={5} step={0.1}/>
-                    
-                    <h4 className="mt-6 mb-2 pt-4 border-t border-white/20 text-cyan-400 font-mono text-sm tracking-wider">
+
+                    <h4 className="mt-6 mb-2 pt-4 border-t border-[color:var(--border)] text-[color:var(--accent)] font-mono text-sm tracking-wider">
                       TRACKER CONFIG
                     </h4>
                     <CombinedInput label="Scale Factor" value={settings.heliScale} onChange={(e) => handleSettingChange('heliScale', parseFloat(e.target.value))} min={0.5} max={5} step={0.1}/>
@@ -313,26 +315,29 @@ export function Simulation({ onExit }: SimulationProps) {
               )}
           </div>
 
-          {/* System Buttons */}
-          <div className="mt-6 border-t border-white/20 pt-4 flex flex-col gap-2">
-            <button 
-              onClick={randomizeAll} 
-              className="w-full py-2 bg-orange-500 text-black font-bold text-sm
-                         hover:bg-orange-400 transition-all rounded"
+          <div className="mt-6 border-t border-[color:var(--border)] pt-4 flex flex-col gap-2">
+            <button
+              onClick={randomizeAll}
+              className="themed-button w-full py-2 text-sm"
             >
               [ 🎲 RANDOMIZE ALL ]
             </button>
-            <button 
-              onClick={resetToDefaults} 
-              className="w-full py-2 bg-gray-700 text-white font-medium text-sm
-                         hover:bg-gray-600 transition-all rounded"
+            <button
+              onClick={resetToDefaults}
+              className="w-full py-2 bg-[color:var(--bg-elevated)] text-[color:var(--fg)]
+                         border border-[color:var(--border)] font-medium text-sm
+                         hover:border-[color:var(--border-strong)] transition-all rounded"
+              style={{ borderRadius: 'var(--button-radius)' }}
             >
               [ 🔄 RESET DEFAULTS ]
             </button>
-            <button 
+            <button
               onClick={onExit}
-              className="w-full py-2 bg-red-800/80 text-red-300 border border-red-500/50
-                         hover:bg-red-700 hover:text-white transition-all rounded mt-2 text-sm"
+              className="w-full py-2 bg-transparent text-[color:var(--fg-muted)]
+                         border border-[color:var(--border)]
+                         hover:text-[color:var(--fg)] hover:border-[color:var(--border-strong)]
+                         transition-all rounded mt-2 text-sm"
+              style={{ borderRadius: 'var(--button-radius)' }}
             >
               [ ← EXIT SIMULATION ]
             </button>

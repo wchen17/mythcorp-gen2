@@ -14,25 +14,32 @@ import {
 } from 'react';
 
 export type ThemeName = 'cyberpunk' | 'luxury' | 'paper';
+export type ThemePreference = ThemeName | 'auto';
 
 export const THEMES: ReadonlyArray<{
-  name: ThemeName;
+  name: ThemePreference;
   label: string;
   blurb: string;
 }> = [
   { name: 'cyberpunk', label: 'Cyberpunk', blurb: 'Neon, glow, the boot sequence.' },
   { name: 'luxury',    label: 'Luxury',    blurb: 'Warm midnight, cream, gold.' },
   { name: 'paper',     label: 'Paper',     blurb: 'Reading-room cream, serif.' },
+  { name: 'auto',      label: 'Auto',      blurb: 'Follows the local time of day.' },
 ];
 
 const STORAGE_KEY = 'mythcorp-theme';
-const DEFAULT_THEME: ThemeName = 'cyberpunk';
-// Total duration of the transition curtain (each half = 250ms).
+const DEFAULT_PREFERENCE: ThemePreference = 'cyberpunk';
 const TRANSITION_HALF_MS = 260;
+// Re-resolve `auto` once a minute so the user crosses time-of-day boundaries
+// without a refresh.
+const AUTO_TICK_MS = 60_000;
 
 type ThemeCtx = {
+  /** The currently rendered theme. Always one of the three concrete names. */
   theme: ThemeName;
-  setTheme: (next: ThemeName) => void;
+  /** What the user picked. Includes 'auto'. */
+  preference: ThemePreference;
+  setTheme: (next: ThemePreference) => void;
   cycleTheme: () => void;
 };
 
@@ -42,84 +49,118 @@ function isThemeName(value: unknown): value is ThemeName {
   return value === 'cyberpunk' || value === 'luxury' || value === 'paper';
 }
 
+function isPreference(value: unknown): value is ThemePreference {
+  return isThemeName(value) || value === 'auto';
+}
+
+/** Time-of-day -> concrete theme. 06-11 paper, 11-19 luxury, 19-06 cyberpunk. */
+export function resolveAuto(now: Date = new Date()): ThemeName {
+  const h = now.getHours();
+  if (h >= 6 && h < 11) return 'paper';
+  if (h >= 11 && h < 19) return 'luxury';
+  return 'cyberpunk';
+}
+
+function resolve(pref: ThemePreference, now?: Date): ThemeName {
+  return pref === 'auto' ? resolveAuto(now) : pref;
+}
+
 export function ThemeProvider({
-  initialTheme = DEFAULT_THEME,
+  initialTheme = DEFAULT_PREFERENCE,
   children,
 }: {
-  initialTheme?: ThemeName;
+  initialTheme?: ThemePreference;
   children: ReactNode;
 }) {
-  const [theme, setThemeState] = useState<ThemeName>(initialTheme);
-  // 'idle' | 'cover' (curtain at full opacity, theme swap moment) | 'reveal' (curtain fading away)
+  const [preference, setPreference] = useState<ThemePreference>(initialTheme);
+  const [theme, setThemeState] = useState<ThemeName>(() => resolve(initialTheme));
   const [phase, setPhase] = useState<'idle' | 'cover' | 'reveal'>('idle');
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (isThemeName(stored)) {
-        setThemeState(stored);
-        document.documentElement.dataset.theme = stored;
-      } else {
-        document.documentElement.dataset.theme = initialTheme;
-      }
+      const initialPref: ThemePreference = isPreference(stored) ? stored : initialTheme;
+      const resolved = resolve(initialPref);
+      setPreference(initialPref);
+      setThemeState(resolved);
+      document.documentElement.dataset.theme = resolved;
     } catch {
-      document.documentElement.dataset.theme = initialTheme;
+      document.documentElement.dataset.theme = resolve(initialTheme);
     }
     requestAnimationFrame(() => {
       document.documentElement.classList.add('theme-ready');
     });
   }, [initialTheme]);
 
-  const applyTheme = useCallback((next: ThemeName) => {
-    document.documentElement.dataset.theme = next;
+  // While preference is 'auto', re-resolve once a minute.
+  useEffect(() => {
+    if (preference !== 'auto') return;
+    const tick = () => {
+      const next = resolveAuto();
+      setThemeState((prev) => {
+        if (prev === next) return prev;
+        document.documentElement.dataset.theme = next;
+        return next;
+      });
+    };
+    tick();
+    const id = setInterval(tick, AUTO_TICK_MS);
+    return () => clearInterval(id);
+  }, [preference]);
+
+  const applyPreference = useCallback((next: ThemePreference) => {
+    const resolved = resolve(next);
+    document.documentElement.dataset.theme = resolved;
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {
       /* storage may be disabled; in-memory state still works */
     }
-    setThemeState(next);
+    setPreference(next);
+    setThemeState(resolved);
   }, []);
 
-  // Theme swap with a brief darkening curtain so the user isn't flashbanged
-  // when going from a dark theme to the bright `paper` one (or back).
-  const swapWithCurtain = useCallback((next: ThemeName) => {
+  // Swap with a brief darkening curtain so the user isn't flashbanged when
+  // going from a dark theme to the bright `paper` one (or back).
+  const swapWithCurtain = useCallback((next: ThemePreference) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     const reduce = typeof window !== 'undefined'
       && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (reduce || theme === next) {
-      applyTheme(next);
+    const resolvedNext = resolve(next);
+    if (reduce || theme === resolvedNext) {
+      applyPreference(next);
       return;
     }
 
     setPhase('cover');
     timeoutRef.current = setTimeout(() => {
-      applyTheme(next);
+      applyPreference(next);
       setPhase('reveal');
       timeoutRef.current = setTimeout(() => {
         setPhase('idle');
         timeoutRef.current = null;
       }, TRANSITION_HALF_MS);
     }, TRANSITION_HALF_MS);
-  }, [theme, applyTheme]);
+  }, [theme, applyPreference]);
 
   useEffect(() => () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   }, []);
 
-  const setTheme = useCallback((next: ThemeName) => swapWithCurtain(next), [swapWithCurtain]);
+  const setTheme = useCallback((next: ThemePreference) => swapWithCurtain(next), [swapWithCurtain]);
 
   const cycleTheme = useCallback(() => {
-    const idx = THEMES.findIndex((t) => t.name === theme);
+    const idx = THEMES.findIndex((t) => t.name === preference);
     const next = THEMES[(idx + 1) % THEMES.length].name;
     swapWithCurtain(next);
-  }, [theme, swapWithCurtain]);
+  }, [preference, swapWithCurtain]);
 
   const value = useMemo<ThemeCtx>(
-    () => ({ theme, setTheme, cycleTheme }),
-    [theme, setTheme, cycleTheme],
+    () => ({ theme, preference, setTheme, cycleTheme }),
+    [theme, preference, setTheme, cycleTheme],
   );
 
   return (

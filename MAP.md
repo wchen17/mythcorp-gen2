@@ -18,7 +18,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup: category links + live iframe with fallback |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
-| `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
+| `/chat` | `src/app/chat/page.tsx` | Global chat backed by `ChatRoom` Durable Object |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
 
 `/og/*` houses unfinished ideas kept on purpose, labelled with `<DraftBanner />`. The `/og` index also lists graduated sketches (e.g. `/fmhy` used to live at `/og/fmhy` before getting a real implementation).

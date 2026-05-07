@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { HelpDot } from "./components/HelpDot";
 import { KonamiEgg } from "./components/KonamiEgg";
+import { RouteTransition } from "./components/RouteTransition";
+import { SudoTerminal } from "./components/SudoTerminal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
 };
 
 // Inline so it runs before paint and avoids a flash of the wrong theme.
-const themeBootstrap = `(function(){try{var t=localStorage.getItem('mythcorp-theme');if(t==='cyberpunk'||t==='luxury'||t==='paper'){document.documentElement.dataset.theme=t;}else{document.documentElement.dataset.theme='cyberpunk';}}catch(e){document.documentElement.dataset.theme='cyberpunk';}})();`;
+// `auto` resolves to paper (06-11), luxury (11-19), cyberpunk (19-06).
+const themeBootstrap = `(function(){try{var t=localStorage.getItem('mythcorp-theme');var r='cyberpunk';if(t==='auto'){var h=new Date().getHours();r=(h>=6&&h<11)?'paper':(h>=11&&h<19)?'luxury':'cyberpunk';}else if(t==='cyberpunk'||t==='luxury'||t==='paper'){r=t;}document.documentElement.dataset.theme=r;}catch(e){document.documentElement.dataset.theme='cyberpunk';}})();`;
 
 export default function RootLayout({
   children,
@@ -51,6 +54,8 @@ export default function RootLayout({
           {children}
           <HelpDot />
           <KonamiEgg />
+          <SudoTerminal />
+          <RouteTransition />
         </ThemeProvider>
       </body>
     </html>

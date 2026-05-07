@@ -1,16 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import { THEMES, useTheme, type ThemeName } from '../contexts/ThemeContext';
+import { THEMES, useTheme, type ThemePreference } from '../contexts/ThemeContext';
 
-const THEME_GLYPH: Record<ThemeName, string> = {
+const THEME_GLYPH: Record<Exclude<ThemePreference, 'auto'>, string> = {
   cyberpunk: '◢',
   luxury: '◆',
   paper: '◯',
 };
 
+// Auto picks a sun (daytime) or moon (night) glyph based on the resolved theme.
+function autoGlyph(resolved: 'cyberpunk' | 'luxury' | 'paper'): string {
+  return resolved === 'cyberpunk' ? '☾' : '☀';
+}
+
+function glyphFor(pref: ThemePreference, resolved: 'cyberpunk' | 'luxury' | 'paper'): string {
+  return pref === 'auto' ? autoGlyph(resolved) : THEME_GLYPH[pref];
+}
+
 export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {
-  const { theme, setTheme, cycleTheme } = useTheme();
+  const { theme, preference, setTheme, cycleTheme } = useTheme();
   const [open, setOpen] = useState(false);
 
   if (compact) {
@@ -18,14 +27,14 @@ export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {
       <button
         type="button"
         onClick={cycleTheme}
-        title={`Theme: ${theme}. Click to cycle.`}
-        aria-label={`Switch theme (current: ${theme})`}
+        title={`Theme: ${preference}${preference === 'auto' ? ` (${theme})` : ''}. Click to cycle.`}
+        aria-label={`Switch theme (current: ${preference})`}
         className="inline-flex h-8 w-8 items-center justify-center rounded
                    border border-[color:var(--border)] bg-[color:var(--bg-overlay)]
                    text-[color:var(--accent)] transition-all hover:scale-105
                    hover:border-[color:var(--border-strong)]"
       >
-        <span aria-hidden className="text-base leading-none">{THEME_GLYPH[theme]}</span>
+        <span aria-hidden className="text-base leading-none">{glyphFor(preference, theme)}</span>
       </button>
     );
   }
@@ -42,8 +51,8 @@ export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {
                    tracking-widest text-[color:var(--fg-muted)] transition-all
                    hover:border-[color:var(--border-strong)] hover:text-[color:var(--fg)]"
       >
-        <span aria-hidden className="text-[color:var(--accent)]">{THEME_GLYPH[theme]}</span>
-        <span>{theme}</span>
+        <span aria-hidden className="text-[color:var(--accent)]">{glyphFor(preference, theme)}</span>
+        <span>{preference}</span>
       </button>
 
       {open && (
@@ -54,7 +63,8 @@ export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {
                      bg-[color:var(--bg-overlay)] shadow-2xl backdrop-blur-md"
         >
           {THEMES.map((t) => {
-            const active = t.name === theme;
+            const active = t.name === preference;
+            const glyph = t.name === 'auto' ? autoGlyph(theme) : THEME_GLYPH[t.name];
             return (
               <li key={t.name} role="option" aria-selected={active}>
                 <button
@@ -71,7 +81,7 @@ export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {
                   ].join(' ')}
                 >
                   <span aria-hidden className="mt-0.5 text-[color:var(--accent)]">
-                    {THEME_GLYPH[t.name]}
+                    {glyph}
                   </span>
                   <span className="flex flex-col">
                     <span className="font-serif text-sm">{t.label}</span>

@@ -303,3 +303,34 @@ html:not(.theme-ready) body {
 [data-theme="paper"] .themed-heading {
   text-shadow: none;
 }
+
+/* ============================================================
+ * View Transitions API. Browsers that support it morph the logo
+ * between routes via the shared `view-transition-name`. Fallback
+ * for everyone else: a GSAP overlay fade in <RouteTransition>.
+ * ============================================================ */
+
+::view-transition-old(site-logo),
+::view-transition-new(site-logo) {
+  animation-duration: 360ms;
+  animation-timing-function: var(--motion-ease);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 240ms;
+  animation-timing-function: var(--motion-ease);
+}
+
+/* Honour the user's motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 1ms !important;
+  }
+}
+
+/* r3f canvases shouldn't be snapshotted (would freeze to black). */
+canvas {
+  view-transition-name: none;
+}
