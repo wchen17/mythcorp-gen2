@@ -1,0 +1,3573 @@
+{
+  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "categories": [
+    {
+      "slug": "file-tools",
+      "sourceFile": "file-tools.md",
+      "sections": [
+        {
+          "heading": "▷ Download Managers",
+          "entries": [
+            {
+              "name": "AB Download Manager",
+              "url": "https://abdownloadmanager.com/",
+              "blurb": "Download Manager / Windows, Mac, Linux, Android / Telegram / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/abdownloadmanager_discussion"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/amir1376/ab-download-manager"
+                }
+              ]
+            },
+            {
+              "name": "JDownloader",
+              "url": "https://jdownloader.org/jdownloader2",
+              "blurb": "Download Manager / Windows, Mac, Linux / **Warning**",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/jdownloader-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "IDM",
+              "url": "https://rentry.co/FMHYB64#idm",
+              "blurb": ", 2, 3 (search) - Download Manager / Firefox / Chrome / Windows",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/download#wiki_.25BA_software_sites"
+                },
+                {
+                  "text": "3",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/games#wiki_.25BA_download_games"
+                },
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/tonec-idm-integration-module/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chromewebstore.google.com/detail/idm-integration-module/ngpampappnmepgilojfohadhhmbhlaek"
+                }
+              ]
+            },
+            {
+              "name": "Go Speed",
+              "url": "https://gopeed.com/",
+              "blurb": "Download Manager / All Platforms / Extension / Plugins / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extension",
+                  "url": "https://github.com/GopeedLab/browser-extension"
+                },
+                {
+                  "text": "Plugins",
+                  "url": "https://github.com/search?q=topic%3Agopeed-extension&type=repositories"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/GopeedLab/gopeed"
+                }
+              ]
+            },
+            {
+              "name": "⁠Brisk",
+              "url": "https://github.com/BrisklyDev/brisk",
+              "blurb": "Download Manager / Extension / Windows, Mac, Linux / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extension",
+                  "url": "https://github.com/BrisklyDev/brisk-browser-extension"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/hGBDWNDHG3"
+                }
+              ]
+            },
+            {
+              "name": "FDM",
+              "url": "https://www.freedownloadmanager.org/",
+              "blurb": "Download Manager / YTDL Addon / Firefox / Chrome / Windows, Mac, Linux, Android",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "YTDL Addon",
+                  "url": "https://github.com/meowcateatrat/elephant"
+                },
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/free-download-manager-addon/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chrome.google.com/webstore/detail/free-download-manager-chr/ahmpjcflkgiildlgicmcieglgoilbfdp/RK%3D2/RS%3DfQzscgKGm9aMezJJ7Gf2Fcc.JSo-"
+                }
+              ]
+            },
+            {
+              "name": "aria2",
+              "url": "https://aria2.github.io/",
+              "blurb": "Terminal Download Manager / Download Bot / WebUI, 2 / Windows, Mac, Android / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Download Bot",
+                  "url": "https://github.com/gaowanliang/DownloadBot"
+                },
+                {
+                  "text": "WebUI",
+                  "url": "https://github.com/ziahamza/webui-aria2"
+                },
+                {
+                  "text": "2",
+                  "url": "https://ariang.mayswind.net/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/aria2/aria2"
+                }
+              ]
+            },
+            {
+              "name": "Persepolis",
+              "url": "https://persepolisdm.github.io/",
+              "blurb": "Download Manager / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/persepolisdm/persepolis"
+                }
+              ]
+            },
+            {
+              "name": "pyLoad",
+              "url": "https://pyload.net/",
+              "blurb": "Lightweight Download Manager / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/pyload/pyload"
+                }
+              ]
+            },
+            {
+              "name": "ArrowDL",
+              "url": "https://www.arrow-dl.com/",
+              "blurb": "Download Manager / Firefox / Chrome / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/arrow-dl/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chrome.google.com/webstore/detail/arrow-dl/modofbhnhlagjmejdbalnijgncppjeio"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/setvisible/ArrowDL"
+                }
+              ]
+            },
+            {
+              "name": "Varia",
+              "url": "https://github.com/giantpinkrobots/varia",
+              "blurb": "Download Manager / Firefox / Chrome / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/firefox/addon/varia-integrator/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chrome.google.com/webstore/detail/dacakhfljjhgdfdlgjpabkkjhbpcmiff"
+                }
+              ]
+            },
+            {
+              "name": "⁠Surge",
+              "url": "https://github.com/surge-downloader/surge",
+              "blurb": "TUI Download Manager / Firefox / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/surge/"
+                }
+              ]
+            },
+            {
+              "name": "DownThemAll",
+              "url": "https://www.downthemall.org/",
+              "blurb": "Download Management Extension / Firefox / Chrome / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/addon/downthemall/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chrome.google.com/webstore/detail/downthemall/nljkibfhlpcnanjgbnlnbjecgicbjkge"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/downthemall/downthemall"
+                }
+              ]
+            },
+            {
+              "name": "HTTP Downloader",
+              "url": "https://erickutcher.github.io/",
+              "blurb": "Download Manager for HTTP / FTP / SFTP / Firefox / Chrome / Windows / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/http-downloader/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://github.com/erickutcher/httpdownloader/releases/download/CE_v1.0.2.8/HTTP_Downloader_Chrome_Extension.crx"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/erickutcher/httpdownloader"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Archiving / Compression",
+          "entries": [
+            {
+              "name": "SuperCompression",
+              "url": "https://supercompression.org/",
+              "blurb": "File Compression Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "NanaZip",
+              "url": "https://github.com/M2Team/NanaZip",
+              "blurb": "or **7-Zip** - File Archiver",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "7-Zip",
+                  "url": "https://www.7-zip.org/"
+                }
+              ]
+            },
+            {
+              "name": "PeaZip",
+              "url": "https://peazip.github.io/",
+              "blurb": "Cross-Platform File Archiver / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/peazip/PeaZip/"
+                }
+              ]
+            },
+            {
+              "name": "CompactGUI",
+              "url": "https://github.com/IridiumIO/CompactGUI",
+              "blurb": "Transparent Compression",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fileforums",
+              "url": "https://fileforums.com/",
+              "blurb": "or Encode - Data Compression Forums",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Encode",
+                  "url": "https://encode.su/"
+                }
+              ]
+            },
+            {
+              "name": "TurboBench",
+              "url": "https://github.com/powturbo/TurboBench",
+              "blurb": "Compression Benchmark",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Efficient Compression Tool",
+              "url": "https://github.com/fhanau/Efficient-Compression-Tool",
+              "blurb": "or Minuimus - File Archivers / Optimizers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Minuimus",
+                  "url": "https://birds-are-nice.me/software/minuimus.html"
+                }
+              ]
+            },
+            {
+              "name": "ezyZip",
+              "url": "https://www.ezyzip.com/",
+              "blurb": "Zip Files Online",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "unzip-online",
+              "url": "https://unzip-online.com/en",
+              "blurb": "Unzip Files Online",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Unrar online",
+              "url": "https://unrar.online/",
+              "blurb": "Unrar Files Online",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WinRAR",
+              "url": "https://www.win-rar.com/",
+              "blurb": ", 2 - File Archiver / Hide Popups / Update (Important)",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://www.rarlab.com"
+                },
+                {
+                  "text": "Hide Popups",
+                  "url": "https://rentry.co/FMHYB64#winrar"
+                },
+                {
+                  "text": "Update (Important)",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/winrar.md"
+                }
+              ]
+            },
+            {
+              "name": "ouch",
+              "url": "https://crates.io/crates/ouch",
+              "blurb": "Archiving / Compression CLI / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ouch-org/ouch"
+                }
+              ]
+            },
+            {
+              "name": "UPX",
+              "url": "https://upx.github.io/",
+              "blurb": "Executable File Compressor / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/upx/upx"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Converters",
+          "entries": [
+            {
+              "name": "File Converter",
+              "url": "https://file-converter.io/",
+              "blurb": "Offline / Convert & Compress Files / Windows / GitHub / Warning",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Tichau/FileConverter"
+                },
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/file-converter-note.md"
+                }
+              ]
+            },
+            {
+              "name": "VERT",
+              "url": "https://vert.sh/",
+              "blurb": "Online for Videos / Offline for Other Formats / Web / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/8XXZ7TFFrK"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/VERT-sh/VERT"
+                }
+              ]
+            },
+            {
+              "name": "Convert to it!",
+              "url": "https://p2r3.github.io/convert/",
+              "blurb": "Offline / File Converter / Web / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/p2r3/convert"
+                }
+              ]
+            },
+            {
+              "name": "Aconvert",
+              "url": "https://www.aconvert.com/",
+              "blurb": "Online / Various Converters / 40MB / Web",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Docling",
+              "url": "https://docling-project.github.io/docling/",
+              "blurb": "/ GitHub or Pandoc - Document / PDF File Converters",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/docling-project/docling"
+                },
+                {
+                  "text": "Pandoc",
+                  "url": "https://pandoc.org/"
+                }
+              ]
+            },
+            {
+              "name": "ConvertCSV",
+              "url": "https://www.convertcsv.com/",
+              "blurb": "Online CSV Data Conversion / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Encoding Converter",
+              "url": "https://encoding-converter.netlify.app/",
+              "blurb": "Online File Encoding Converter / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Deark",
+              "url": "https://entropymine.com/deark/",
+              "blurb": "Decode and Convert Files / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/jsummers/deark"
+                }
+              ]
+            },
+            {
+              "name": "text2img",
+              "url": "https://master.ayra.ch/text2img/",
+              "blurb": "Local NFO Files to Image Converter / Web / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/AyrA/text2img"
+                }
+              ]
+            },
+            {
+              "name": "Shutter Encoder",
+              "url": "https://www.shutterencoder.com/",
+              "blurb": "File Converter / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/paulpacifico/shutter-encoder"
+                }
+              ]
+            },
+            {
+              "name": "videoutils",
+              "url": "https://www.videoutils.com/",
+              "blurb": "Online / File Converter / 500MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Xconvert",
+              "url": "https://www.xconvert.com",
+              "blurb": "Online / File Converter / 400MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FreeConvert",
+              "url": "https://www.freeconvert.com/",
+              "blurb": "Online / Unlimited / Clear Cookies / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ConvertFiles",
+              "url": "https://www.convertfiles.com/",
+              "blurb": "Online / File Converter / 250MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Convertio",
+              "url": "https://convertio.co/",
+              "blurb": "Online / File Converter / 100MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AnyConvert",
+              "url": "https://anyconv.com/",
+              "blurb": "Online / File Converter / 100MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MiConv",
+              "url": "https://miconv.com/",
+              "blurb": "Online / File Converter / 75MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Docpose",
+              "url": "https://docpose.cloud/convert",
+              "blurb": "Online / File Converter / 25MB / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠ConvertX",
+              "url": "https://github.com/C4illin/ConvertX",
+              "blurb": "or Transmute / GitHub - Self-Hosted File Converters",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Transmute",
+                  "url": "https://transmute.sh/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/transmute-app/transmute"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Managers",
+          "entries": [
+            {
+              "name": "Directory Opus",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/download#wiki_.25BA_software_sites",
+              "blurb": "(search) - Windows File Manager",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "DoubleCMD",
+              "url": "https://doublecmd.sourceforge.io/",
+              "blurb": "/ GitHub or muCommander - Cross-Platform File Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/doublecmd/doublecmd"
+                },
+                {
+                  "text": "muCommander",
+                  "url": "https://www.mucommander.com/"
+                }
+              ]
+            },
+            {
+              "name": "Sigma",
+              "url": "https://sigma-file-manager.vercel.app",
+              "blurb": "Modern File Manager / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/aleksey-hoffman/sigma-file-manager"
+                }
+              ]
+            },
+            {
+              "name": "ChromaFiler",
+              "url": "https://chroma.zone/chromafiler/",
+              "blurb": "Column-Based File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Yazi",
+              "url": "https://yazi-rs.github.io/",
+              "blurb": "Terminal File Manager / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/sxyazi/yazi"
+                }
+              ]
+            },
+            {
+              "name": "One Commander",
+              "url": "https://www.onecommander.com/",
+              "blurb": "File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Free Commander",
+              "url": "https://freecommander.com/",
+              "blurb": "File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Q-Dir",
+              "url": "https://www.softwareok.com/?seite=Freeware/Q-Dir",
+              "blurb": "File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Files",
+              "url": "https://files.community/",
+              "blurb": "Customizable File Manager / Use Classic Installer / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/files"
+                }
+              ]
+            },
+            {
+              "name": "Explorer++",
+              "url": "https://explorerplusplus.com/",
+              "blurb": "Lightweight Windows File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Far Manager",
+              "url": "https://www.farmanager.com/",
+              "blurb": "File / Archive Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Total Commander",
+              "url": "https://www.ghisler.com/",
+              "blurb": "Shareware File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TablacusExplorer",
+              "url": "https://tablacus.github.io/explorer_en.html",
+              "blurb": "or Multi Commander - Tab File Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Multi Commander",
+                  "url": "https://multicommander.com/"
+                }
+              ]
+            },
+            {
+              "name": "Vifm",
+              "url": "https://vifm.info/",
+              "blurb": "Vim-Based File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "eza",
+              "url": "https://eza.rocks/",
+              "blurb": "or lsd - Modern `ls` Replacements",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "lsd",
+                  "url": "https://github.com/lsd-rs/lsd"
+                }
+              ]
+            },
+            {
+              "name": "superfile",
+              "url": "https://superfile.netlify.app/",
+              "blurb": "Terminal File Manager / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/yorukot/superfile"
+                }
+              ]
+            },
+            {
+              "name": "FileBrowser Quantum",
+              "url": "https://filebrowserquantum.com/",
+              "blurb": "Self-Hosted Web File Manager / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/gtsteffaniak/filebrowser"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Searching",
+          "entries": [
+            {
+              "name": "Everything",
+              "url": "https://voidtools.com/",
+              "blurb": "File Search Engine / Alpha / Date Searching",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Alpha",
+                  "url": "https://www.voidtools.com/everything-1.5a/"
+                },
+                {
+                  "text": "Date Searching",
+                  "url": "https://rentry.co/etfd"
+                }
+              ]
+            },
+            {
+              "name": "Recoll",
+              "url": "https://www.recoll.org/",
+              "blurb": "/ Addon, DocFetcher or Orange - Cross-Platform Search Engines",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Addon",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/recoll-we/"
+                },
+                {
+                  "text": "DocFetcher",
+                  "url": "https://docfetcher.sourceforge.io/"
+                },
+                {
+                  "text": "Orange",
+                  "url": "https://0-range.github.io/"
+                }
+              ]
+            },
+            {
+              "name": "AnyTXT",
+              "url": "https://anytxt.net/",
+              "blurb": ", WizFile or FluentSearch - Windows Search Engines",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WizFile",
+                  "url": "https://antibody-software.com/wizfile/"
+                },
+                {
+                  "text": "FluentSearch",
+                  "url": "https://fluentsearch.net/"
+                }
+              ]
+            },
+            {
+              "name": "AstroGrep",
+              "url": "https://sourceforge.net/projects/astrogrep/",
+              "blurb": ", grepWin or dnGrep - Windows GUI Grep Utilities",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "grepWin",
+                  "url": "https://github.com/stefankueng/grepWin"
+                },
+                {
+                  "text": "dnGrep",
+                  "url": "https://dngrep.github.io/"
+                }
+              ]
+            },
+            {
+              "name": "fselect",
+              "url": "https://github.com/jhspetersson/fselect",
+              "blurb": "SQL-like Search Engine",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "fd",
+              "url": "https://github.com/sharkdp/fd",
+              "blurb": "User Friendly \"find\" Alternative",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "sist2",
+              "url": "https://github.com/simon987/sist2",
+              "blurb": "Simple Incremental Search Tool",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Encryption",
+          "entries": [
+            {
+              "name": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "blurb": "/ GitHub or Tahoe-LAFS / GitHub - Cloud File Encryption",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/cryptomator/cryptomator"
+                },
+                {
+                  "text": "Tahoe-LAFS",
+                  "url": "https://tahoe-lafs.org/trac/tahoe-lafs"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/tahoe-lafs/tahoe-lafs"
+                }
+              ]
+            },
+            {
+              "name": "VeraCrypt",
+              "url": "https://www.veracrypt.fr/en/Home.html",
+              "blurb": "Disk Encryptor / Use w/ External Drives",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "age",
+              "url": "https://github.com/FiloSottile/age",
+              "blurb": "File Encryptor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "REM",
+              "url": "https://github.com/liriliri/rem",
+              "blurb": "File Encryptor / Rclone GUI",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Picocrypt-NG",
+              "url": "https://github.com/Picocrypt-NG/Picocrypt-NG",
+              "blurb": "File Encryptor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "gocryptfs",
+              "url": "https://github.com/bailey27/cppcryptfs",
+              "blurb": "File Encryptor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Kryptor",
+              "url": "https://www.kryptor.co.uk/",
+              "blurb": "File Encryptor",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Sync",
+          "entries": [
+            {
+              "name": "SyncThing",
+              "url": "https://syncthing.net/",
+              "blurb": "Cross-Platform File Sync / Android / Tray Support / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Android",
+                  "url": "https://github.com/chenxiaolong/BasicSync"
+                },
+                {
+                  "text": "Tray Support",
+                  "url": "https://martchus.github.io/syncthingtray/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/syncthing/syncthing"
+                }
+              ]
+            },
+            {
+              "name": "FreeFileSync",
+              "url": "https://freefilesync.org/",
+              "blurb": "Open-Source File Sync",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "MyPhoneExplorer",
+              "url": "https://www.fjsoft.at/",
+              "blurb": "or SyncFolder - Phone and Desktop Sync",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "SyncFolder",
+                  "url": "https://apps.microsoft.com/detail/9nc73mjwhsww?rtc=1&hl=en-us&gl=US"
+                }
+              ]
+            },
+            {
+              "name": "allwaysync",
+              "url": "https://allwaysync.com/",
+              "blurb": "File Sync Utility",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Resilio",
+              "url": "https://www.resilio.com/individuals/",
+              "blurb": "P2P File Sync",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠TangoShare",
+              "url": "https://tangoshare.com/",
+              "blurb": "P2P File Sync",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠SpectrShare",
+              "url": "https://spectrshare.com/",
+              "blurb": "P2P File Sync",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SmartFTP",
+              "url": "https://www.smartftp.com/",
+              "blurb": "FTP File Sync",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "rsync",
+              "url": "https://rsync.samba.org",
+              "blurb": "Command-line File Sync / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/RsyncProject/rsync"
+                }
+              ]
+            },
+            {
+              "name": "Unison",
+              "url": "https://github.com/bcpierce00/unison",
+              "blurb": "Bidirectional File Sync",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Backup",
+          "entries": [
+            {
+              "name": "restic",
+              "url": "https://restic.net/",
+              "blurb": "Secure File Backup / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/restic/restic"
+                }
+              ]
+            },
+            {
+              "name": "Kopia",
+              "url": "https://kopia.io/",
+              "blurb": "Encrypted File Backup / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/kopia/kopia/"
+                }
+              ]
+            },
+            {
+              "name": "Rescuezilla",
+              "url": "https://rescuezilla.com/",
+              "blurb": "/ GitHub or CloneZilla - Disk Image Backup",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/rescuezilla/rescuezilla"
+                },
+                {
+                  "text": "CloneZilla",
+                  "url": "https://clonezilla.org/"
+                }
+              ]
+            },
+            {
+              "name": "FolderClone",
+              "url": "https://www.folderclone.com/",
+              "blurb": "or Echosync - Folder Clone / Backup",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Echosync",
+                  "url": "https://www.luminescence-software.org/en/echosync/about/"
+                }
+              ]
+            },
+            {
+              "name": "BackupPC",
+              "url": "https://backuppc.github.io/backuppc/",
+              "blurb": "Networked File Backup",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TeraCopy",
+              "url": "https://www.codesector.com/teracopy",
+              "blurb": "Copy Files Quickly / More Securely",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "UrBackup",
+              "url": "https://www.urbackup.org/",
+              "blurb": "Client / Server File Backup",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "duplicity",
+              "url": "https://duplicity.gitlab.io/",
+              "blurb": "File Backup",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Duplicati",
+              "url": "https://www.duplicati.com/",
+              "blurb": "File Backup",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AOMEI Backupper",
+              "url": "https://www.ubackup.com/",
+              "blurb": "File Backup",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Borg",
+              "url": "https://www.borgbackup.org/",
+              "blurb": "De-duplicating File Backup / WebUI",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WebUI",
+                  "url": "https://github.com/karanhudia/borg-ui"
+                }
+              ]
+            },
+            {
+              "name": "USBImager",
+              "url": "https://bztsrc.gitlab.io/usbimager/",
+              "blurb": "USB Image Backup",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Recovery",
+          "entries": [
+            {
+              "name": "Data Recovery",
+              "url": "https://igwiki.lyci.de/wiki/Data_recovery",
+              "blurb": "Data Recovery Tool Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "TestDisk",
+              "url": "https://www.cgsecurity.org/wiki/TestDisk",
+              "blurb": "File Recovery",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "PhotoRec",
+              "url": "https://www.cgsecurity.org/wiki/PhotoRec",
+              "blurb": "File Recovery",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DMDE",
+              "url": "https://dmde.com/download.html",
+              "blurb": "File Recovery",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Windows File Recovery",
+              "url": "https://apps.microsoft.com/detail/9n26s50ln705",
+              "blurb": "File Recovery",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MultiPar",
+              "url": "https://github.com/Yutaka-Sawada/MultiPar",
+              "blurb": "Prevent File Corruption / Guide",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://youtu.be/5TsExiAsCXA"
+                }
+              ]
+            },
+            {
+              "name": "ShadowExplorer",
+              "url": "https://www.shadowexplorer.com/",
+              "blurb": "or ShadowCopyView - Shadow Copy Explorers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "ShadowCopyView",
+                  "url": "https://www.nirsoft.net/utils/shadow_copy_view.html/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ File Info / Metadata",
+          "entries": [
+            {
+              "name": "Image Metadata Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/image-tools#wiki_.25B7_photo_forensics_.2F_metadata",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Audio Metadata Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/audio#wiki_.25B7_audio_metadata",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fileinfo",
+              "url": "https://fileinfo.com/",
+              "blurb": ", Filext or OpenMyFiles - File Extension Libraries",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Filext",
+                  "url": "https://filext.com/"
+                },
+                {
+                  "text": "OpenMyFiles",
+                  "url": "https://www.openmyfiles.com/"
+                }
+              ]
+            },
+            {
+              "name": "Phockup",
+              "url": "https://github.com/ivandokov/phockup",
+              "blurb": "Organize Photos / Videos by EXIF Date",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "MediaInfo",
+              "url": "https://mediaarea.net/en/MediaInfo",
+              "blurb": "Media File Analysis / Metadata Viewer / Online",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Online",
+                  "url": "https://mediaarea.net/MediaInfoOnline"
+                }
+              ]
+            },
+            {
+              "name": "MediaPeek",
+              "url": "https://mediapeek.plnk.workers.dev/",
+              "blurb": "Online Media File Analysis / Metadata Viewer / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/luminalreason/mediapeek"
+                }
+              ]
+            },
+            {
+              "name": "ExtractMetadata",
+              "url": "https://www.extractmetadata.com/",
+              "blurb": ", ⁠FilesMD or Metadata2Go - Metadata Viewers / Editors",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "⁠FilesMD",
+                  "url": "https://www.filesmd.com/"
+                },
+                {
+                  "text": "Metadata2Go",
+                  "url": "https://www.metadata2go.com/"
+                }
+              ]
+            },
+            {
+              "name": "⁠PrivMeta",
+              "url": "https://www.privmeta.com/",
+              "blurb": "/ GitHub or mat2 / Web Version - Remove Metadata from Files",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/DScaife/privmeta/"
+                },
+                {
+                  "text": "mat2",
+                  "url": "https://github.com/jvoisin/mat2"
+                },
+                {
+                  "text": "Web Version",
+                  "url": "https://0xacab.org/jvoisin/mat2-web"
+                }
+              ]
+            },
+            {
+              "name": "Attribute Changer",
+              "url": "https://www.petges.lu/",
+              "blurb": "Edit File & Folder Properties",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WhatsLink",
+              "url": "https://whatslink.info/",
+              "blurb": "View File Download Web Metadata",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Magika",
+              "url": "https://github.com/google/magika",
+              "blurb": "or TridUI - File Type Detection Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "TridUI",
+                  "url": "https://github.com/JMcrafter26/TridUI"
+                }
+              ]
+            },
+            {
+              "name": "OpenHashTab",
+              "url": "https://github.com/namazso/OpenHashTab",
+              "blurb": "Compare / Display File Hashes",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TagSpaces",
+              "url": "https://www.tagspaces.org/",
+              "blurb": "or Tagging for Windows - Tag-Based File Systems",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Tagging for Windows",
+                  "url": "https://tagging.connectpaste.com/"
+                }
+              ]
+            },
+            {
+              "name": "SKTimeStamp",
+              "url": "https://tools.stefankueng.com/SKTimeStamp.html",
+              "blurb": "Change File Created / Modified Time",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Formatting / Deletion",
+          "entries": [
+            {
+              "name": "SDelete",
+              "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete",
+              "blurb": "File Deletion CLI",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Eraser",
+              "url": "https://eraser.heidi.ie/",
+              "blurb": ", File Shredder, Alternate File Shredder, Permadelete or Delapp - File Shredding",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "File Shredder",
+                  "url": "https://fileshredder.org/"
+                },
+                {
+                  "text": "Alternate File Shredder",
+                  "url": "https://www.alternate-tools.com/pages/c_fileshredder.php?lang=ENG"
+                },
+                {
+                  "text": "Permadelete",
+                  "url": "https://developerstree.github.io/permadelete/"
+                },
+                {
+                  "text": "Delapp",
+                  "url": "https://github.com/differentrain/Delapp"
+                }
+              ]
+            },
+            {
+              "name": "Parted Magic",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/download#wiki_.25BA_software_sites",
+              "blurb": "(search) - Disk Partitioning / Data Recovery",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SSuite File Shredder and Burner",
+              "url": "https://www.ssuiteoffice.com/software/ssuitefileshredder.htm",
+              "blurb": "File Shredder with Disk Burning",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Low Level Format",
+              "url": "https://www.lowlevelformat.info/",
+              "blurb": ", nwipe or ShredOS - Complete Hard Drive Erasers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "nwipe",
+                  "url": "https://github.com/martijnvanbrummelen/nwipe"
+                },
+                {
+                  "text": "ShredOS",
+                  "url": "https://github.com/PartialVolume/shredos.x86_64"
+                }
+              ]
+            },
+            {
+              "name": "RED",
+              "url": "https://www.jonasjohn.de/red.htm",
+              "blurb": "Remove Empty Directories",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Data Automation",
+          "entries": [
+            {
+              "name": "Advanced Renamer",
+              "url": "https://www.advancedrenamer.com/",
+              "blurb": ", PowerRename, Szyszka, F2, Ant Renamer, Flut Renamer or Bulk Rename Utility - Bulk Renamers",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "PowerRename",
+                  "url": "https://learn.microsoft.com/en-us/windows/powertoys/powerrename"
+                },
+                {
+                  "text": "Szyszka",
+                  "url": "https://github.com/qarmin/szyszka"
+                },
+                {
+                  "text": "F2",
+                  "url": "https://github.com/ayoisaiah/f2"
+                },
+                {
+                  "text": "Ant Renamer",
+                  "url": "https://www.antp.be/software/renamer"
+                },
+                {
+                  "text": "Flut Renamer",
+                  "url": "https://github.com/sun-jiao/flut-renamer"
+                },
+                {
+                  "text": "Bulk Rename Utility",
+                  "url": "https://www.bulkrenameutility.co.uk/"
+                }
+              ]
+            },
+            {
+              "name": "FoliCon",
+              "url": "https://dineshsolanki.github.io/FoliCon/",
+              "blurb": "Automatic Custom Media Icons / Folders / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/DineshSolanki/FoliCon"
+                }
+              ]
+            },
+            {
+              "name": "MediaMonkey",
+              "url": "https://www.mediamonkey.com/",
+              "blurb": "Media Organizer",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "tinyMediaManager",
+              "url": "https://www.tinymediamanager.org/",
+              "blurb": "or MediaElch - Media Collection Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "MediaElch",
+                  "url": "https://www.kvibes.de/mediaelch/"
+                }
+              ]
+            },
+            {
+              "name": "FileBot",
+              "url": "https://www.filebot.net/",
+              "blurb": "Media File Renaming",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TVRename",
+              "url": "https://www.tvrename.com/",
+              "blurb": "or ⁠Rename My TV Series - TV File Data Automation",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "⁠Rename My TV Series",
+                  "url": "https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/"
+                }
+              ]
+            },
+            {
+              "name": "Shoko",
+              "url": "https://github.com/shokoanime",
+              "blurb": "Anime File Data Automation",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDFGrep",
+              "url": "https://pdfgrep.org/",
+              "blurb": "or OCRmyPDF - PDF Text Search",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "OCRmyPDF",
+                  "url": "https://github.com/ocrmypdf/OCRmyPDF"
+                }
+              ]
+            },
+            {
+              "name": "PDFEncrypt",
+              "url": "https://pdfencrypt.net/",
+              "blurb": "PDF File Encryption",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GraphPaper",
+              "url": "https://incompetech.com/graphpaper/",
+              "blurb": "PDF Graphs",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDF Bookmark Editor",
+              "url": "https://mrfragger.github.io/pdf-bookmark-editor/",
+              "blurb": "PDF Bookmark Editor / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mrfragger/pdf-bookmark-editor"
+                }
+              ]
+            },
+            {
+              "name": "PDF Fixer",
+              "url": "https://pdffixer.com/",
+              "blurb": "Repair Damaged PDFs",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenSign",
+              "url": "https://github.com/OpenSignLabs/OpenSign",
+              "blurb": ", Signature PDF / GitHub, FalsiScan, JustSignPDF or Adobe Sign - PDF Signature Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Signature PDF",
+                  "url": "https://pdf.24eme.fr/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/24eme/signaturepdf"
+                },
+                {
+                  "text": "FalsiScan",
+                  "url": "https://gitlab.com/edouardklein/falsisign"
+                },
+                {
+                  "text": "JustSignPDF",
+                  "url": "https://justsignpdf.com/"
+                },
+                {
+                  "text": "Adobe Sign",
+                  "url": "https://www.adobe.com/acrobat/online/sign-pdf.html"
+                }
+              ]
+            },
+            {
+              "name": "Google Drive PDF Downloader",
+              "url": "https://github.com/zeltox/Google-Drive-PDF-Downloader",
+              "blurb": "Download Protected Google Drive PDFs",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDFCoffee",
+              "url": "https://pdfcoffee.com/",
+              "blurb": "Upload PDF, Word or PowerPoint Files",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PrintFriendly",
+              "url": "https://www.printfriendly.com/",
+              "blurb": "Printer Formatting Tools",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Online PDF Toolkits",
+          "entries": [
+            {
+              "name": "BentoPDF",
+              "url": "https://bentopdf.com/",
+              "blurb": "or File PDF - Client-Side / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "File PDF",
+                  "url": "https://filepdf.net/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/alam00000/bentopdf"
+                }
+              ]
+            },
+            {
+              "name": "⁠ihatepdf",
+              "url": "https://www.ihatepdf.cv/",
+              "blurb": "Client-Side",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDFCraft",
+              "url": "https://pdfcraft.devtoolcafe.com/",
+              "blurb": "Client-Side / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/PDFCraftTool/pdfcraft"
+                }
+              ]
+            },
+            {
+              "name": "BreezePDF",
+              "url": "https://breezepdf.com/",
+              "blurb": "Client-Side",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠itinypdf",
+              "url": "https://itinypdf.com/",
+              "blurb": "Client-Side",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDFClear",
+              "url": "https://www.pdfclear.com/",
+              "blurb": "Client-Side",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DigiPDF",
+              "url": "https://digipdf.app/?lang=en_US",
+              "blurb": "Client-Side",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sejda",
+              "url": "https://www.sejda.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ILovePDF",
+              "url": "https://www.ilovepdf.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠PDRResizer",
+              "url": "https://pdfresizer.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDF2Go",
+              "url": "https://www.pdf2go.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DPDF",
+              "url": "https://dpdf.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Digiparser",
+              "url": "https://www.digiparser.com/free-tools/pdf",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Offline PDF Toolkits",
+          "entries": [
+            {
+              "name": "Stirling-PDF",
+              "url": "https://www.stirlingpdf.com/",
+              "blurb": "/ Requires Sign-Up / Windows, Mac, Linux / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+                }
+              ]
+            },
+            {
+              "name": "PDF24",
+              "url": "https://www.pdf24.org/",
+              "blurb": "/ Web-Based / Windows",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠PDF4QT",
+              "url": "https://jakubmelka.github.io/",
+              "blurb": "/ Windows, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/JakubMelka/PDF4QT"
+                }
+              ]
+            },
+            {
+              "name": "Foxit",
+              "url": "https://www.foxit.com/pdf-reader/",
+              "blurb": "/ All Platforms / Features (search) / Warning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Features",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/download#wiki_.25BA_software_sites"
+                },
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/foxit-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "xPDFReader",
+              "url": "https://www.xpdfreader.com/",
+              "blurb": "/ Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDF Arranger",
+              "url": "https://github.com/pdfarranger/pdfarranger",
+              "blurb": "/ Windows, Linux",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ PDF Conversion Tools",
+          "entries": [
+            {
+              "name": "Rare2PDF",
+              "url": "https://rare2pdf.com/",
+              "blurb": ", online2pdf or 2PDFConverter - File to PDF Conversion",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "online2pdf",
+                  "url": "https://online2pdf.com/"
+                },
+                {
+                  "text": "2PDFConverter",
+                  "url": "https://www.2pdfconverter.com/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Tideflow",
+              "url": "https://github.com/BDenizKoca/Tideflow-md-to-pdf",
+              "blurb": "or MD2PDF - Markdown to PDF Converters",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "MD2PDF",
+                  "url": "https://md2pdf.netlify.app/"
+                }
+              ]
+            },
+            {
+              "name": "PDFconvert",
+              "url": "https://docupub.com/pdfconvert/",
+              "blurb": "PDF File Converters",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Marker",
+              "url": "https://github.com/VikParuchuri/marker",
+              "blurb": "PDF to Markdown",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PDFCrowd",
+              "url": "https://pdfcrowd.com/",
+              "blurb": ", TailWindPDF or wkhtmltopdf - HTML to PDF / Image Converter",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "TailWindPDF",
+                  "url": "https://tailwindpdf.com/"
+                },
+                {
+                  "text": "wkhtmltopdf",
+                  "url": "https://wkhtmltopdf.org/"
+                }
+              ]
+            },
+            {
+              "name": "Issuu",
+              "url": "https://issuu.com/",
+              "blurb": "Convert PDF Files to Webpages, Flipbooks, Brochures & More / Downloader",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Downloader",
+                  "url": "https://docdownloader.com/"
+                }
+              ]
+            },
+            {
+              "name": "WebToPDF",
+              "url": "https://webtopdf.com/",
+              "blurb": "or Percollate - Webpage to PDF Converters",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Percollate",
+                  "url": "https://github.com/danburzo/percollate"
+                }
+              ]
+            },
+            {
+              "name": "Dangerzone",
+              "url": "https://dangerzone.rocks/",
+              "blurb": "Convert Malicious PDFs to Safe Files / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/freedomofpress/dangerzone"
+                }
+              ]
+            },
+            {
+              "name": "LocalSend",
+              "url": "https://localsend.org/",
+              "blurb": "Local / All Platforms / Discord / Subreddit / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/GSRWmQNP87"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/localsend/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/localsend/localsend"
+                }
+              ]
+            },
+            {
+              "name": "Blip",
+              "url": "https://blip.net/",
+              "blurb": "Hybrid / Turn \"Searchable by Name\" Off in Settings / Windows, Mac, Android, iOS",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Photon",
+              "url": "https://photondev.netlify.app/",
+              "blurb": "Local / Windows, Mac, Linux, Android / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/abhi16180/photon"
+                }
+              ]
+            },
+            {
+              "name": "KDE Connect",
+              "url": "https://kdeconnect.kde.org/",
+              "blurb": "Local / All Platforms / Source",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Source",
+                  "url": "https://kdeconnect.kde.org/get-involved.html"
+                }
+              ]
+            },
+            {
+              "name": "Wormhole",
+              "url": "https://wormhole.app/",
+              "blurb": "Online / Web / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/de6FscsK5Z"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/webtorrent/wormhole-crypto"
+                }
+              ]
+            },
+            {
+              "name": "Warpinator",
+              "url": "https://github.com/linuxmint/warpinator",
+              "blurb": "Local / Windows, Linux, Android",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Phone Link",
+              "url": "https://www.microsoft.com/windows/sync-across-your-devices",
+              "blurb": "Hybrid / Windows, Android, iOS",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sefirah",
+              "url": "https://github.com/shrimqy/Sefirah",
+              "blurb": "Local / Windows, Android",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "QRServ",
+              "url": "https://play.google.com/store/apps/details?id=dev.uint.qrserv",
+              "blurb": "Local / Android / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/uintdev/qrserv"
+                }
+              ]
+            },
+            {
+              "name": "Magic Wormhole",
+              "url": "https://github.com/magic-wormhole/magic-wormhole",
+              "blurb": "Online / Windows, Mac, Linux, Android",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "croc",
+              "url": "https://github.com/schollz/croc",
+              "blurb": "Online / Windows, Mac, Linux, Android / GUI",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GUI",
+                  "url": "https://github.com/howeyc/crocgui"
+                }
+              ]
+            },
+            {
+              "name": "LANDrop",
+              "url": "https://landrop.app/",
+              "blurb": "Local / All Platforms / Discord / X",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/5adm6sPugT"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/LANDropApp"
+                }
+              ]
+            },
+            {
+              "name": "NahrajSoubor",
+              "url": "https://new.nahrajsoubor.cz/",
+              "blurb": "Online / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "IPFS",
+              "url": "https://ipfs.tech/",
+              "blurb": "Desktop / Mobile Transfer / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/vj7qWuAyHY"
+                }
+              ]
+            },
+            {
+              "name": "aQRoss",
+              "url": "https://aqross.app/",
+              "blurb": "/ Web or qrcp / Share Files Using QR Codes / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "qrcp",
+                  "url": "https://qrcp.sh/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/claudiodangelis/qrcp"
+                }
+              ]
+            },
+            {
+              "name": "OnionShare",
+              "url": "https://onionshare.org/",
+              "blurb": "Share Files Over Tor Network / Windows, Mac, Linux, Android, iOS / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/onionshare/onionshare"
+                }
+              ]
+            },
+            {
+              "name": "FileZilla",
+              "url": "https://filezilla-project.org/download.php?show_all=1",
+              "blurb": "FTP Client / Windows, Mac, Linux / Warning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/filezilla-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "⁠Sendme",
+              "url": "https://www.iroh.computer/sendme",
+              "blurb": "P2P File Transfer CLI / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/n0-computer/sendme"
+                }
+              ]
+            },
+            {
+              "name": "WinSCP",
+              "url": "https://winscp.net/eng/index.php",
+              "blurb": "FTP Client / Windows",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠robocopy",
+              "url": "https://learn.microsoft.com/windows-server/administration/windows-commands/robocopy",
+              "blurb": "Windows Built-In File Transfer Guide / WebUI",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WebUI",
+                  "url": "https://ar-puuk.github.io/robocopy-gui/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ P2P Transfer",
+          "entries": [
+            {
+              "name": "PairDrop",
+              "url": "https://pairdrop.net/",
+              "blurb": "/ GitHub or ⁠Snapdrop - Web",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/schlagmichdoch/pairdrop"
+                },
+                {
+                  "text": "⁠Snapdrop",
+                  "url": "https://node-snapdrop.onrender.com/"
+                }
+              ]
+            },
+            {
+              "name": "JustBeamIt",
+              "url": "https://justbeamit.com/",
+              "blurb": "Web",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Surge",
+              "url": "https://getsurge.io/",
+              "blurb": "P2P App / Windows, Mac / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/rule110-io/surge"
+                }
+              ]
+            },
+            {
+              "name": "ToffeeShare",
+              "url": "https://toffeeshare.com/",
+              "blurb": "Web / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ToffeeShare"
+                }
+              ]
+            },
+            {
+              "name": "⁠Station307",
+              "url": "https://www.station307.com/",
+              "blurb": "Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "new.space",
+              "url": "https://new.space/",
+              "blurb": "Web, iOS",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WebWormhole",
+              "url": "https://webwormhole.io/",
+              "blurb": "Chrome / Firefox / Web, Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Chrome",
+                  "url": "https://chromewebstore.google.com/detail/webwormhole/jhombkhjanncdalcbcahinpjoacaiidn"
+                },
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/webwormhole/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/saljam/webwormhole"
+                }
+              ]
+            },
+            {
+              "name": "⁠Clip Fish",
+              "url": "https://clip.fish/",
+              "blurb": "Web / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/clip-fish/web"
+                }
+              ]
+            },
+            {
+              "name": "Awesome File Hosts",
+              "url": "https://fhhy.vercel.app/",
+              "blurb": "/ GitHub or **PolyUpload File Hosts** - File Host Indexes",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/FahadBinHussain/awesome-file-hosts"
+                },
+                {
+                  "text": "PolyUpload File Hosts",
+                  "url": "https://github.com/spel987/PolyUploader?tab=readme-ov-file#-hosts"
+                }
+              ]
+            },
+            {
+              "name": "Video File Hosts",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video-tools#wiki_.25B7_video_file_hosts",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Image File Hosts",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/image-tools#wiki_.25B7_image_hosts",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Gofile",
+              "url": "https://gofile.io/",
+              "blurb": "100GB Monthly / Unlimited / 10 Days After Last Download / Manager Export",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Manager Export",
+                  "url": "https://greasyfork.org/en/scripts/515250"
+                }
+              ]
+            },
+            {
+              "name": "Pixeldrain",
+              "url": "https://pixeldrain.com/",
+              "blurb": "10GB / 60 Days After Last Download (10% min) / Mirrors / Speedtest / Bypass",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Mirrors",
+                  "url": "https://docs.pixeldrain.com/questions_and_answers/#alternative-domain-names"
+                },
+                {
+                  "text": "Speedtest",
+                  "url": "https://pixeldrain.com/speedtest"
+                },
+                {
+                  "text": "Bypass",
+                  "url": "https://pixeldrain-bypass.gamedrive.org/"
+                }
+              ]
+            },
+            {
+              "name": "VikingFile",
+              "url": "https://vikingfile.com/",
+              "blurb": "Unlimited / 15 Days After Last Download / Use Adblocker / Discord / Warning",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/EPEFC6KkpF"
+                },
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/buzzheavier-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Buzzheavier",
+              "url": "https://buzzheavier.com/",
+              "blurb": ", 2, 3 - Unlimited / 7 Day Expiry / +1 Hour Per DDL / File Expiry / Discord / Warning",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://fuckingfast.net/"
+                },
+                {
+                  "text": "3",
+                  "url": "https://bzzhr.co/"
+                },
+                {
+                  "text": "File Expiry",
+                  "url": "https://buzzheavier.com/help"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/ttQjgC28WP"
+                },
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/buzzheavier-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "⁠ZeroFS",
+              "url": "https://zerofs.link/",
+              "blurb": "Unlimited / 15 Days After Last Download / CLI / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "CLI",
+                  "url": "https://github.com/kirmola/zerofs-cli"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/PJWsgUt7XM"
+                }
+              ]
+            },
+            {
+              "name": "⁠Rootz",
+              "url": "https://rootz.so/",
+              "blurb": "25GB / 15 Days After Last Download / Account Required / Unlimited for Backstage Users / Use Adblocker / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/rtz"
+                }
+              ]
+            },
+            {
+              "name": "Catbox",
+              "url": "https://catbox.moe/",
+              "blurb": "200MB / Forever / Proxy",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Proxy",
+                  "url": "https://fatbox.moe/"
+                }
+              ]
+            },
+            {
+              "name": "Pillowcase",
+              "url": "https://pillows.su/",
+              "blurb": "Audio File Host / 200MB (500MB w/ Account) / Forever",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileQ",
+              "url": "https://fileq.net/",
+              "blurb": "50GB / 20GB / 3 Days After Last Download / Has Unlimited Plans / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/zc2r9pZzF"
+                }
+              ]
+            },
+            {
+              "name": "FileMirage",
+              "url": "https://filemirage.com/",
+              "blurb": "50GB / 30 Days After Last View",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Send.now",
+              "url": "https://send.now/",
+              "blurb": "100GB / 15 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠storage.to",
+              "url": "https://storage.to/",
+              "blurb": "25GB / 7 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Litterbox",
+              "url": "https://litterbox.catbox.moe/",
+              "blurb": "1GB / 3 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Transfer.it",
+              "url": "https://transfer.it/",
+              "blurb": "Unlimited / 90 Days / Owned by MEGA.nz",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MediaFire",
+              "url": "https://www.mediafire.com/",
+              "blurb": "4GB / Forever",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Filester",
+              "url": "https://filester.me/",
+              "blurb": "10GB / 45 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DesiUpload",
+              "url": "https://desiupload.co/",
+              "blurb": "15 Days (2GB per file / 30 Days w/ Account)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileDitch",
+              "url": "https://new.fileditch.com/",
+              "blurb": "/ Discord or SendGB - 25GB / 90 Days",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/gACnap5kKx"
+                },
+                {
+                  "text": "SendGB",
+                  "url": "https://www.sendgb.com/"
+                }
+              ]
+            },
+            {
+              "name": "hostb",
+              "url": "https://hostb.org/",
+              "blurb": "Unlimited / 30 Days After Last Download / Source Code",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Source Code",
+                  "url": "https://r-w-x.org/r/hostb.git"
+                }
+              ]
+            },
+            {
+              "name": "MixDrop",
+              "url": "https://mixdrop.ag/",
+              "blurb": "Unlimited / 60 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Ranoz",
+              "url": "https://ranoz.gg/",
+              "blurb": "20GB / 30 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fast File",
+              "url": "https://fast-file.com/",
+              "blurb": "10GB / 20 Days After Last Download / Status",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Status",
+                  "url": "https://status.fast-file.com/"
+                }
+              ]
+            },
+            {
+              "name": "1fichier.com",
+              "url": "https://1fichier.com/",
+              "blurb": "300GB / 15 Days (30 Days w/ Account)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Filebin",
+              "url": "https://filebin.net/",
+              "blurb": "Unlimited / 6 Days / Warning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/filebin-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "file.kiwi",
+              "url": "https://file.kiwi/",
+              "blurb": "Unlimited / 90 Hours / File Expiry",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "File Expiry",
+                  "url": "https://file.kiwi/en/price"
+                }
+              ]
+            },
+            {
+              "name": "⁠UpZur",
+              "url": "https://upzur.com/",
+              "blurb": "5GB / 1.95TB / 120 Days After Last Download / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠UploadHive",
+              "url": "https://uploadhive.com/",
+              "blurb": "Unlimited / 50 Days After Last Download / Use Adblock",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FireLoad",
+              "url": "https://www.fireload.com/",
+              "blurb": "Unlimited / 60 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FEX.NET",
+              "url": "https://fex.net/",
+              "blurb": "100GB / 7 Days / Telegram",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/FEXNETWORK"
+                }
+              ]
+            },
+            {
+              "name": "DropMeFiles",
+              "url": "https://dropmefiles.com/",
+              "blurb": "50GB / 14 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠MixLoads",
+              "url": "https://mixloads.to/",
+              "blurb": "25.6GB / 2TB / 60 Days After Last Download / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠CryptFiles",
+              "url": "https://cryptfiles.cloud/",
+              "blurb": "10GB / Unlimited / 1 Year",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GigaFile",
+              "url": "https://gigafile.nu/",
+              "blurb": "300GB / 100 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "UploadNow",
+              "url": "https://uploadnow.io/",
+              "blurb": "100GB / 7 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "eDisk",
+              "url": "https://www.edisk.cz/",
+              "blurb": "20GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Drop Download",
+              "url": "https://drop.download/",
+              "blurb": "25GB / 90 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SwissTransfer",
+              "url": "https://www.swisstransfer.com/",
+              "blurb": "50GB / 30 Days / 250 Downloads",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Dfiles",
+              "url": "https://dfiles.com/",
+              "blurb": "10GB / 90 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "BowFile",
+              "url": "https://bowfile.com/",
+              "blurb": "20GB / 20 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠TheUserCloud",
+              "url": "https://theuser.cloud/",
+              "blurb": "10GB / 60 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Hexupload",
+              "url": "https://hexload.com/",
+              "blurb": "or AnonTransfer - 15GB / 30 Days",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "AnonTransfer",
+                  "url": "https://anontransfer.com/"
+                }
+              ]
+            },
+            {
+              "name": "Tempcloud",
+              "url": "https://temp.kotol.cloud/",
+              "blurb": "10GB / 3 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GrosFichiers",
+              "url": "https://www.grosfichiers.com/",
+              "blurb": "10GB / 14 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileFast",
+              "url": "https://file.fast/",
+              "blurb": "5GB / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Akira Box",
+              "url": "https://akirabox.com/",
+              "blurb": ", 2 - 20GB Free / 30 Days After Last Download",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://akirabox.to/"
+                }
+              ]
+            },
+            {
+              "name": "Imagenetz",
+              "url": "https://www.imagenetz.de/?setLang=en",
+              "blurb": "5GB / 30 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Nerushare",
+              "url": "https://nerushare.ovh/",
+              "blurb": "5GB / Forever",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FilePort",
+              "url": "https://fileport.io/",
+              "blurb": "5GB / 7 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MegaUp",
+              "url": "https://megaup.net/",
+              "blurb": "5GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠DataVaults",
+              "url": "https://datavaults.co/",
+              "blurb": "5GB / 15GB / 7 Days After Last Download / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Filegoat",
+              "url": "https://filego.at/",
+              "blurb": "5GB / 90 Days After Last View",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Bestfile",
+              "url": "https://bestfile.io/",
+              "blurb": "5GB / 80 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ufile.io",
+              "url": "https://ufile.io/",
+              "blurb": "5GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Internxt Send",
+              "url": "https://send.internxt.com/",
+              "blurb": "5GB / 15 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠JuiceBox",
+              "url": "https://box.juicey.dev/",
+              "blurb": "15GB / 14 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "UserDrive",
+              "url": "https://usersdrive.com/",
+              "blurb": "5GB / 65 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "pCloud Transfer",
+              "url": "https://transfer.pcloud.com/",
+              "blurb": "or Tresorit Send - 5GB / 7 Days / Requires Email",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Tresorit Send",
+                  "url": "https://send.tresorit.com/"
+                }
+              ]
+            },
+            {
+              "name": "Temp.sh",
+              "url": "https://temp.sh/",
+              "blurb": "4GB / 3 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Mega4Upload",
+              "url": "https://mega4upload.net/",
+              "blurb": "3GB / 183GB / 150 Days After Last Download",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Workupload",
+              "url": "https://workupload.com/",
+              "blurb": "2GB / 90 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Send",
+              "url": "https://send.vis.ee/",
+              "blurb": "2.5GB / 3 Days / 10 Downloads / CLI / Instances",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "CLI",
+                  "url": "https://github.com/timvisee/ffsend"
+                },
+                {
+                  "text": "Instances",
+                  "url": "https://gitlab.com/timvisee/send-instances"
+                }
+              ]
+            },
+            {
+              "name": "JUMBOmail",
+              "url": "https://www.jumbomail.me/",
+              "blurb": "2GB / 7 Days / Requires Email",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TransferSize",
+              "url": "https://www.transfersize.com/",
+              "blurb": "50GB / 7 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "KrakenFiles",
+              "url": "https://krakenfiles.com/",
+              "blurb": "1GB / 3 Months on Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DropMB",
+              "url": "https://dropmb.com/",
+              "blurb": "512MB / 5 Years",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Lufi",
+              "url": "https://upload.adminforge.de/",
+              "blurb": "2GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileGo",
+              "url": "https://filego.app/",
+              "blurb": "2GB / 30 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Lufi",
+              "url": "https://upload.disroot.org/",
+              "blurb": "2GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FilesPayouts",
+              "url": "https://filespayouts.com/",
+              "blurb": "10GB / Forever / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DooDrive",
+              "url": "https://doodrive.com/",
+              "blurb": "2GB / 30 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Clicknupload",
+              "url": "https://clicknupload.click",
+              "blurb": "10GB / 8 Days / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Smash",
+              "url": "https://fromsmash.com/",
+              "blurb": "2GB / 7 Days / Requires Email",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MultiUp.io",
+              "url": "https://multiup.io/",
+              "blurb": "/ Extract / Upload / Discord or Mirrored.to - Multi Host Uploaders",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extract / Upload",
+                  "url": "https://github.com/Reddiepoint/MultiUp-Direct"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/2yUEQPxTTU"
+                },
+                {
+                  "text": "Mirrored.to",
+                  "url": "https://www.mirrored.to/"
+                }
+              ]
+            },
+            {
+              "name": "⁠PolyUploader",
+              "url": "https://polyuploader.vercel.app/",
+              "blurb": "/ GitHub or Z-o-o-m - Multi-Host Upload Desktop Apps",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/spel987/PolyUploader"
+                },
+                {
+                  "text": "Z-o-o-m",
+                  "url": "https://z-o-o-m.eu/"
+                }
+              ]
+            },
+            {
+              "name": "DataNodes",
+              "url": "https://datanodes.to/",
+              "blurb": "Webmasters Only File Host / Use Adblocker / Discord / Warning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/mKyBMyeKvh"
+                },
+                {
+                  "text": "Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/buzzheavier-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Limited Upload Hosts",
+              "url": "https://rentry.org/xc48kg",
+              "blurb": "More Hosts / 1GB or Below",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Pearcrypt",
+              "url": "https://pearcrypt.lol/",
+              "blurb": "File Link Containers / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/QrrryWKA6X"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Cloud Storage",
+          "entries": [
+            {
+              "name": "Eylenburg Comparisons",
+              "url": "https://eylenburg.github.io/cloud_comparison.htm",
+              "blurb": "or ComparisonTabl.es - Compare Cloud Storage Sites",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "ComparisonTabl.es",
+                  "url": "https://comparisontabl.es/cloud-storage/"
+                }
+              ]
+            },
+            {
+              "name": "Self-Hosted Cloud Storage",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/linux#wiki_.25B7_server_.2F_selfhosting",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google Drive",
+              "url": "https://drive.google.com/",
+              "blurb": "15GB / 2 Years / ~$3.33 (5TB Google AI Pro)",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "MEGA",
+              "url": "https://mega.io/",
+              "blurb": "20GB / 3 Months / ~$1.72 (20TB Pro III) / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/meganz"
+                }
+              ]
+            },
+            {
+              "name": "disk.yandex",
+              "url": "https://disk.yandex.com/",
+              "blurb": "5GB / 2 Years / ~$2.61 (4TB Personal)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Filen",
+              "url": "https://filen.io/",
+              "blurb": "10GB / 3 Months / ~$3.84 (10TB Pro X) / Requires Sign-Up for Sharing",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Dropbox",
+              "url": "https://www.dropbox.com/",
+              "blurb": "1 or 2GB / 12 Months / ~$4.15 (15TB Advanced) / Client",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Client",
+                  "url": "https://github.com/SamSchott/maestral"
+                }
+              ]
+            },
+            {
+              "name": "MediaFire",
+              "url": "https://www.mediafire.com/",
+              "blurb": "10GB / 8 Months / ~$5.83 (1TB Pro)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "icedrive",
+              "url": "https://icedrive.net/",
+              "blurb": "10GB / 3 Months / ~$2.07 (6TB Pro Max)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "pCloud",
+              "url": "https://www.pcloud.com/",
+              "blurb": "10GB / 1 Year / ~$2.88 (10TB Ultra)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FEB",
+              "url": "https://www.febbox.com/",
+              "blurb": "10GB / 1 Month / ~$2.20 (1TB Personal)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Keybase",
+              "url": "https://keybase.io/",
+              "blurb": "250GB / Forever / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/keybase/client"
+                }
+              ]
+            },
+            {
+              "name": "Proton Drive",
+              "url": "https://proton.me/drive",
+              "blurb": "5GB / 1 Year / ~$6.66 (3TB Workspace Premium) / Discord / Note",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/proton"
+                },
+                {
+                  "text": "Note",
+                  "url": "https://proton.me/support/more-free-storage-existing-users"
+                }
+              ]
+            },
+            {
+              "name": "⁠InfiniCLOUD",
+              "url": "https://infini-cloud.net/en/",
+              "blurb": "20GB / 1 Year / ~$3.66 for 3TB",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠CryptFiles",
+              "url": "https://cryptfiles.cloud/",
+              "blurb": "10GB / 1 Year / ~$9.24 (1-100TB Flexible)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "JumpShare",
+              "url": "https://jumpshare.com/",
+              "blurb": "2GB / 1 Year / $5.33 (3TB Business)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileLu",
+              "url": "https://filelu.com/",
+              "blurb": "10GB / Forever / ~$3.13 for 40TB / **Expiry Warning**",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Expiry Warning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/filelu-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "CyberFile",
+              "url": "https://cyberfile.me/",
+              "blurb": "10GB",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MrOwl",
+              "url": "https://www.mrowl.com/",
+              "blurb": "10GB / ~$16.67 (1TB Premium Plus)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Blomp",
+              "url": "https://www.blomp.com/",
+              "blurb": "40GB / 1 Month / ~$1 for 10TB+",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Backblaze B2",
+              "url": "https://www.backblaze.com/cloud-storage/",
+              "blurb": "10GB / ~$6",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cloudflare R2",
+              "url": "https://www.cloudflare.com/developer-platform/products/r2/",
+              "blurb": "10GB / Forever / ~$15",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Tresorit",
+              "url": "https://tresorit.com/",
+              "blurb": "3GB / Forever / 500 Per File / ~$6.94 (4TB Personal Pro)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "1Cloud File",
+              "url": "https://1cloudfile.com/",
+              "blurb": "10GB",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fix-OneDrive-Zip",
+              "url": "https://github.com/pmqs/Fix-OneDrive-Zip",
+              "blurb": "Fix OneDrive Zip Files >4GB",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Cloud Managers",
+          "entries": [
+            {
+              "name": "Rclone",
+              "url": "https://rclone.org/",
+              "blurb": "Cloud Storage Manager / Guide / GUI / Colab / Transfer Tool / Telegram",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://rentry.co/simple-rclone-usage"
+                },
+                {
+                  "text": "GUI",
+                  "url": "https://github.com/liriliri/rem"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/szyha/RcloneLabArchive/blob/master/RcloneLab.ipynb"
+                },
+                {
+                  "text": "Transfer Tool",
+                  "url": "https://github.com/TheCaduceus/Multi-Cloud-Transfer-Tool"
+                },
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/rclonexbot"
+                }
+              ]
+            },
+            {
+              "name": "gclone",
+              "url": "https://github.com/dogbutcat/gclone",
+              "blurb": "Cloud Storage Manager",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Air Explorer",
+              "url": "https://airexplorer.net/en/",
+              "blurb": "Cloud Storage Manager",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "RaiDrive",
+              "url": "https://www.raidrive.com/",
+              "blurb": "Cloud Storage Manager",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cyberduck",
+              "url": "https://cyberduck.io/",
+              "blurb": "Libre Server / Cloud Storage Browser / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/iterate-ch/cyberduck"
+                }
+              ]
+            },
+            {
+              "name": "SpaceDrive",
+              "url": "https://www.spacedrive.com/",
+              "blurb": "Cloud Storage Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenList",
+              "url": "https://github.com/OpenListTeam/OpenList",
+              "blurb": "Cloud Storage Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MultCloud",
+              "url": "https://www.multcloud.com/",
+              "blurb": "Cloud Storage Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "xpipe",
+              "url": "https://xpipe.io",
+              "blurb": "Remote File Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileStash",
+              "url": "https://www.filestash.app/",
+              "blurb": "File Manager / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mickael-kerjean/filestash"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Google Drive Tools",
+          "entries": [
+            {
+              "name": "OneClickRun",
+              "url": "https://colab.research.google.com/github/biplobsd/OneClickRun/blob/master/OneClickRun.ipynb",
+              "blurb": "Google Drive Tools / Use Throwaway Google Account / Features",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Features",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/oneclick-note.md"
+                }
+              ]
+            },
+            {
+              "name": "DriveUploader",
+              "url": "https://driveuploader.com/",
+              "blurb": "Receive Files via Google Drive",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ZIP Extractor",
+              "url": "https://zipextractor.app/",
+              "blurb": "Google Drive / Gmail File Archiver",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google Drive CLI",
+              "url": "https://github.com/glotlabs/gdrive",
+              "blurb": "Google Drive CLI Client",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "goodls",
+              "url": "https://github.com/tanaikech/goodls",
+              "blurb": "Google Drive Downloader",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "gdrivedl",
+              "url": "https://github.com/matthuisman/gdrivedl",
+              "blurb": "Google Drive Python Download Script",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ISAAC",
+              "url": "https://rentry.co/FMHYB64#gservice-gen",
+              "blurb": "Google Service Account Generators",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "goindex-extended",
+              "url": "https://github.com/menukaonline/goindex-extended",
+              "blurb": "/ Themes or Google-Drive-Index - Google Drive Indexers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Themes",
+                  "url": "https://install.kenci.workers.dev/"
+                },
+                {
+                  "text": "Google-Drive-Index",
+                  "url": "https://gitlab.com/GoogleDriveIndex/Google-Drive-Index"
+                }
+              ]
+            },
+            {
+              "name": "gdurl",
+              "url": "https://gdurl.com/",
+              "blurb": ", GDrive Link Generator, Direct.GDrive, Maulvi or GDriveWebAppPublic - GDrive Link Generators / Host Direct Links",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GDrive Link Generator",
+                  "url": "https://www.wonderplugin.com/online-tools/google-drive-direct-link-generator/"
+                },
+                {
+                  "text": "Direct.GDrive",
+                  "url": "https://direct.gdrive.vip/en/"
+                },
+                {
+                  "text": "Maulvi",
+                  "url": "https://maulvi.github.io/"
+                },
+                {
+                  "text": "GDriveWebAppPublic",
+                  "url": "https://github.com/CloudflareHackers/GDriveWebAppPublic"
+                }
+              ]
+            },
+            {
+              "name": "Google Drive Clone Bot",
+              "url": "https://jsmsj.github.io/GdriveCloneBot/",
+              "blurb": "Copy Google Drives / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/jsmsj/GdriveCloneBot"
+                }
+              ]
+            },
+            {
+              "name": "GD-EFC Link Encryptor",
+              "url": "https://rekulous.github.io/gd-efc-encryptor/",
+              "blurb": "Google Drive Link Encryptor for GD-EFC",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DriveRename",
+              "url": "https://driverename.iblogbox.com/",
+              "blurb": "Bulk Google Drive File Rename",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sharer",
+              "url": "https://sharer.pw",
+              "blurb": "Google Drive File Sharing",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ MEGA Tools",
+          "entries": [
+            {
+              "name": "Megabasterd",
+              "url": "https://github.com/tonikelope/megabasterd",
+              "blurb": "Download Quota Bypass / Note",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/megabasterd-note.md"
+                }
+              ]
+            },
+            {
+              "name": "MEGA Account Generators",
+              "url": "https://rentry.co/FMHYB64#mega-gen",
+              "blurb": "Account Gen / Unlimited Upload Size / Fix",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Fix",
+                  "url": "https://rentry.co/mega_account_generator"
+                }
+              ]
+            },
+            {
+              "name": "MEGA Desktop",
+              "url": "https://mega.io/desktop",
+              "blurb": "Official GUI App / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/meganz/MEGAsync"
+                }
+              ]
+            },
+            {
+              "name": "MEGA CMD",
+              "url": "https://mega.io/cmd",
+              "blurb": "Official CLI App / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/meganz/MEGAcmd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

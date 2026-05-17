@@ -1,0 +1,1186 @@
+{
+  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "categories": [
+    {
+      "slug": "downloadpiracyguide",
+      "sourceFile": "downloading.md",
+      "sections": [
+        {
+          "heading": "▷ Search Sites",
+          "entries": [
+            {
+              "name": "Download CSE",
+              "url": "https://cse.google.com/cse?cx=006516753008110874046:1ugcdt3vo7z",
+              "blurb": "/ CSE 2 - Multi-Site Search",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "CSE 2",
+                  "url": "https://cse.google.com/cse?cx=006516753008110874046:reodoskmj7h"
+                }
+              ]
+            },
+            {
+              "name": "4Shared",
+              "url": "https://www.4shared.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "File Host Search",
+              "url": "https://cse.google.com/cse?cx=90a35b59cee2a42e1",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Linktury",
+              "url": "https://www.ddlspot.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MediafireTrend",
+              "url": "https://mediafiretrend.com/",
+              "blurb": "Mediafire Search",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WarezOmen",
+              "url": "https://warezomen.com/",
+              "blurb": "Indexer / Search Engine",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SunXDCC",
+              "url": "https://sunxdcc.com/",
+              "blurb": "or XDCC.EU - XDCC / Search Engine",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "XDCC.EU",
+                  "url": "https://www.xdcc.eu/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ [Audio Sites](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/audiowiki_.25B7_download_sites)",
+          "entries": [
+            {
+              "name": "Adobe Alternatives",
+              "url": "https://github.com/KenneyNL/Adobe-Alternatives",
+              "blurb": "Adobe Software Alternative Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Editing Software",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/torrent/#wiki_.25BA_torrent_sites",
+              "blurb": "or Satvrn - Editing Software",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Satvrn",
+                  "url": "https://rentry.co/FMHYB64#satvrn"
+                }
+              ]
+            },
+            {
+              "name": "Virgil Software Search",
+              "url": "https://virgil.samidy.com/Software/",
+              "blurb": ", 2 / GitHub or Software CSE - Multi-Site Software Search",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://virgil-search.pages.dev/Software/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/SamidyFR/Virgil"
+                },
+                {
+                  "text": "Software CSE",
+                  "url": "https://cse.google.com/cse?cx=ae17d0c72fa6cbcd4"
+                }
+              ]
+            },
+            {
+              "name": "CracksURL",
+              "url": "https://cracksurl.com/",
+              "blurb": "/ Download Guide / Telegram",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Download Guide",
+                  "url": "https://cracksurl.com/how-to-download/"
+                },
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/cracksurldotcom"
+                }
+              ]
+            },
+            {
+              "name": "LRepacks",
+              "url": "https://lrepacks.net/",
+              "blurb": "Use Translator",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Translator",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/text-tools/#wiki_.25B7_translators"
+                }
+              ]
+            },
+            {
+              "name": "Mobilism",
+              "url": "https://forum.mobilism.org/",
+              "blurb": "Requires Sign-Up / User Ranks",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "User Ranks",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/mobilism-ranks.md"
+                }
+              ]
+            },
+            {
+              "name": "Nsane Forums",
+              "url": "https://www.nsaneforums.com/",
+              "blurb": "Requires Sign-Up",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "AlternativeTo",
+              "url": "https://alternativeto.net/",
+              "blurb": "or European Alternatives - Crowdsourced Recommendations",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "European Alternatives",
+                  "url": "https://european-alternatives.eu/"
+                }
+              ]
+            },
+            {
+              "name": "AIOWares",
+              "url": "https://www.aiowares.com/",
+              "blurb": "Software Forum",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Moum",
+              "url": "https://moum.top/en/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "RetroSystemRevival",
+              "url": "https://retrosystemsrevival.blogspot.com/",
+              "blurb": "Oldschool Software",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Libreware",
+              "url": "https://t.me/Libreware",
+              "blurb": "Telegram Channels",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Rarewares",
+              "url": "https://www.rarewares.org/",
+              "blurb": "Rare Software",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Software Heritage",
+              "url": "https://www.softwareheritage.org/",
+              "blurb": "Software Source Code Archive",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ZXPInstaller",
+              "url": "https://zxpinstaller.com/",
+              "blurb": "Adobe Extension Installer",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ FOSS Sites",
+          "entries": [
+            {
+              "name": "Awesome Open Source",
+              "url": "https://awesomeopensource.com/",
+              "blurb": ", ⁠definitive-opensource, Awesome Useful Projects or Awesome OSS - FOSS Indexes",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "⁠definitive-opensource",
+                  "url": "https://github.com/mustbeperfect/definitive-opensource"
+                },
+                {
+                  "text": "Awesome Useful Projects",
+                  "url": "https://github.com/Furthir/awesome-useful-projects"
+                },
+                {
+                  "text": "Awesome OSS",
+                  "url": "https://github.com/RunaCapital/awesome-oss-alternatives"
+                }
+              ]
+            },
+            {
+              "name": "Git Project Indexes",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/storage#wiki_git_projects",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "new(releases)",
+              "url": "https://newreleases.io/",
+              "blurb": "Software Release Notifications / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/newreleasesio"
+                }
+              ]
+            },
+            {
+              "name": "Is It Really FOSS",
+              "url": "https://isitreallyfoss.com",
+              "blurb": "Determine if Software is FOSS / Source Code",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Source Code",
+                  "url": "https://codeberg.org/danb/isitreallyfoss"
+                }
+              ]
+            },
+            {
+              "name": "SourceForge",
+              "url": "https://sourceforge.net/",
+              "blurb": "FOSS Repositories",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OSSSoftware",
+              "url": "https://osssoftware.org/",
+              "blurb": "FOSS Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fossies",
+              "url": "https://fossies.org/",
+              "blurb": "FOSS Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Gadgeteer",
+              "url": "https://gadgeteer.co.za/opensourcesoftware/",
+              "blurb": "FOSS Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FossHub",
+              "url": "https://www.fosshub.com/",
+              "blurb": "FOSS Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OSS Gallery",
+              "url": "https://oss.gallery/",
+              "blurb": "FOSS Directory / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/dubinc/oss-gallery"
+                }
+              ]
+            },
+            {
+              "name": "Opensource Builders",
+              "url": "https://opensource.builders/",
+              "blurb": "FOSS Alt Directory / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/junaid33/opensource.builders"
+                }
+              ]
+            },
+            {
+              "name": "OpenAlternative",
+              "url": "https://openalternative.co/",
+              "blurb": "FOSS Alt Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "opensourcealternative.to",
+              "url": "https://www.opensourcealternative.to/",
+              "blurb": "FOSS Alt Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awesome CLI Apps",
+              "url": "https://github.com/toolleeo/awesome-cli-apps-in-a-csv",
+              "blurb": "or CLI Club / GitHub - FOSS CLI Apps / Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "CLI Club",
+                  "url": "https://cli.club/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/cli-club/cli-club.github.io"
+                }
+              ]
+            },
+            {
+              "name": "Free Software Directory",
+              "url": "https://directory.fsf.org/wiki/Main_Page",
+              "blurb": "FOSS Wikis",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FOSS Wiki",
+              "url": "https://wikipedia.org/wiki/Portal:Free_and_open-source_software/Categories",
+              "blurb": "FOSS Wikis",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Freeware Sites",
+          "entries": [
+            {
+              "name": "Awesome Free Software",
+              "url": "https://github.com/Axorax/awesome-free-apps",
+              "blurb": ", Awesome Free Apps, Windows Ultimate Collection or Free Lunch - Freeware Indexes",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Awesome Free Apps",
+                  "url": "https://github.com/1337Core/awesome-free-apps"
+                },
+                {
+                  "text": "Windows Ultimate Collection",
+                  "url": "https://xdaforums.com/t/windows-ultimate-collection-guides.4507867/"
+                },
+                {
+                  "text": "Free Lunch",
+                  "url": "https://github.com/auctors/free-lunch"
+                }
+              ]
+            },
+            {
+              "name": "Awesome Python Applications",
+              "url": "https://github.com/mahmoud/awesome-python-applications",
+              "blurb": "Python App Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Software Package Managers",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/system-tools#wiki_.25B7_package_managers",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "FluentStore",
+              "url": "https://github.com/yoshiask/FluentStore",
+              "blurb": "Alt Microsoft Store App / Windows",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "DanStore",
+              "url": "https://danstore-ms.vercel.app/",
+              "blurb": ", **store.rg** or StoreWeb / GitHub - Microsoft Store WebUIs / Guide",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "store.rg",
+                  "url": "https://store.rg-adguard.net/"
+                },
+                {
+                  "text": "StoreWeb",
+                  "url": "https://msft-store.tplant.com.au/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/StoreDev"
+                },
+                {
+                  "text": "Guide",
+                  "url": "https://rentry.co/paidAppsMsStore"
+                }
+              ]
+            },
+            {
+              "name": "MajorGeeks",
+              "url": "https://www.majorgeeks.com/",
+              "blurb": "Freeware Downloads",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Softpedia",
+              "url": "https://www.softpedia.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Realityripple",
+              "url": "https://realityripple.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OlderGeeks",
+              "url": "https://oldergeeks.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FilePuma",
+              "url": "https://www.filepuma.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FileEagle",
+              "url": "https://www.fileeagle.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LO4D",
+              "url": "https://www.lo4d.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SoftwareOK",
+              "url": "https://www.softwareok.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GRC",
+              "url": "https://www.grc.com/freepopular.htm",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Uwe Sieber",
+              "url": "https://www.uwe-sieber.de/english.html",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Software Informer",
+              "url": "https://software.informer.com/",
+              "blurb": "Freeware Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PortableApps.com",
+              "url": "https://portableapps.com/",
+              "blurb": ", PortableFreeware, Portapps or PortableAppZ - Portable Apps",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "PortableFreeware",
+                  "url": "https://www.portablefreeware.com/"
+                },
+                {
+                  "text": "Portapps",
+                  "url": "https://portapps.io/"
+                },
+                {
+                  "text": "PortableAppZ",
+                  "url": "https://portableappz.blogspot.com/"
+                }
+              ]
+            },
+            {
+              "name": "Nirsoft",
+              "url": "https://www.nirsoft.net/",
+              "blurb": ", Windows-Utilities, OS Vault or WinTools - Windows Software",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Windows-Utilities",
+                  "url": "https://orga.cat/windows-utilities"
+                },
+                {
+                  "text": "OS Vault",
+                  "url": "https://osvault.weebly.com/directory.html"
+                },
+                {
+                  "text": "WinTools",
+                  "url": "https://www.wintools.info/"
+                }
+              ]
+            },
+            {
+              "name": "Suckless",
+              "url": "https://suckless.org/",
+              "blurb": "Minimalist Software Ecosystem",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "VETUSWARE",
+              "url": "https://vetusware.com/",
+              "blurb": "Abandonware / Operating Systems / Games",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OldVersion",
+              "url": "http://www.oldversion.com/",
+              "blurb": "Old Versions of Software",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Vintage Software Collection",
+              "url": "https://rentry.co/FMHYB64#the-vintage-software-collection",
+              "blurb": "or SCiZE's Classic Warez - Retro Software",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "SCiZE's Classic Warez",
+                  "url": "https://scenelist.org/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Commodore Software",
+              "url": "https://commodore.software/search/",
+              "blurb": "Commodore 64 / Commodore 128 / VIC-20 Software",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ IRC Tools",
+          "entries": [
+            {
+              "name": "Awesome IRC",
+              "url": "https://github.com/davisonio/awesome-irc",
+              "blurb": "IRC Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "IRC Client Comparisons",
+              "url": "https://wikipedia.org/wiki/Comparison_of_IRC_clients",
+              "blurb": "",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "IRC Guide",
+              "url": "https://rentry.org/ircfmhyguide",
+              "blurb": ", Libera Guides, New Blood or Simple Wiki Guide - IRC Guides",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Libera Guides",
+                  "url": "https://libera.chat/guides/"
+                },
+                {
+                  "text": "New Blood",
+                  "url": "https://anonops.com/newblood/"
+                },
+                {
+                  "text": "Simple Wiki Guide",
+                  "url": "https://wikipedia.org/wiki/Wikipedia:IRC/Tutorial"
+                }
+              ]
+            },
+            {
+              "name": "AdiIRC",
+              "url": "https://adiirc.com/",
+              "blurb": ", KVIrc, or Halloy - IRC Clients / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "KVIrc",
+                  "url": "https://github.com/kvirc/KVIrc"
+                },
+                {
+                  "text": "Halloy",
+                  "url": "https://github.com/squidowl/halloy"
+                }
+              ]
+            },
+            {
+              "name": "Konversation",
+              "url": "https://konversation.kde.org/",
+              "blurb": "IRC Client / Windows, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/KDE/konversation"
+                }
+              ]
+            },
+            {
+              "name": "Convos",
+              "url": "https://convos.chat/",
+              "blurb": "/ GitHub or TheLounge / GitHub - Self-hosted IRC Client / Web",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/convos-chat/convos/"
+                },
+                {
+                  "text": "TheLounge",
+                  "url": "https://thelounge.chat/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/thelounge"
+                }
+              ]
+            },
+            {
+              "name": "Libera",
+              "url": "https://libera.chat/",
+              "blurb": ", tilde, AnonOps or Rizon - IRC Networks",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "tilde",
+                  "url": "https://tilde.chat/"
+                },
+                {
+                  "text": "AnonOps",
+                  "url": "https://anonops.com/"
+                },
+                {
+                  "text": "Rizon",
+                  "url": "https://rizon.net/"
+                }
+              ]
+            },
+            {
+              "name": "Usenet-Uploaders",
+              "url": "https://github.com/animetosho/Nyuu/wiki/Usenet-Uploaders",
+              "blurb": "",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Usenet Guide / Automation Setup",
+              "url": "https://docs.google.com/document/d/1TwUrRj982WlWUhrxvMadq6gdH0mPW0CGtHsTOFWprCo/mobilebasic",
+              "blurb": "/ 2 / 3 / 4 / 5 / 6",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://redd.it/4x2mc9"
+                },
+                {
+                  "text": "3",
+                  "url": "https://www.iitk.ac.in/LDP/HOWTO/Usenet-News-HOWTO/x27.html"
+                },
+                {
+                  "text": "4",
+                  "url": "https://graph.org/EVERYTHING-YOU-NEED-TO-KNOW-ABOUT-USENET-09-04"
+                },
+                {
+                  "text": "5",
+                  "url": "https://www.reddit.com/r/usenet/wiki/index/"
+                },
+                {
+                  "text": "6",
+                  "url": "https://blog.decryption.net.au/t/a-fully-automated-usenet-piracy-machine-with-plex-sabnzbd-and-sonarr/130"
+                }
+              ]
+            },
+            {
+              "name": "r/usenet",
+              "url": "https://reddit.com/r/usenet",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Indexers",
+          "entries": [
+            {
+              "name": "Indexer List",
+              "url": "https://www.reddit.com/r/usenet/wiki/indexers/",
+              "blurb": "Indexer List",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "r/UsenetInvites",
+              "url": "https://reddit.com/r/UsenetInvites",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NZBHydra2",
+              "url": "https://github.com/theotherp/nzbhydra2",
+              "blurb": "NZB Meta search",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SceneNZBs",
+              "url": "https://scenenzbs.com",
+              "blurb": "Multinational Indexer",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NzbPlanet",
+              "url": "https://nzbplanet.net/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Orion",
+              "url": "https://orionoid.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "binsearch",
+              "url": "https://binsearch.info/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NZB King",
+              "url": "https://nzbking.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NZB Index",
+              "url": "https://www.nzbindex.com/",
+              "blurb": ", 2",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://www.nzbindex.nl/"
+                }
+              ]
+            },
+            {
+              "name": "Newznab",
+              "url": "https://www.newznab.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NZBStars",
+              "url": "https://nzbstars.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "usenet-crawler",
+              "url": "https://www.usenet-crawler.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GingaDaddy",
+              "url": "https://www.gingadaddy.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NZBFinder",
+              "url": "https://nzbfinder.ws/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OldUSe",
+              "url": "https://article.olduse.net/",
+              "blurb": "Search Usenet Articles",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "altHUB",
+              "url": "https://althub.co.za",
+              "blurb": "Unlimited Free Trials",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Spotweb",
+              "url": "https://github.com/spotweb/spotweb",
+              "blurb": "Spotnet Client",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Providers",
+          "entries": [
+            {
+              "name": "r/usenet Providers",
+              "url": "https://www.reddit.com/r/usenet/wiki/providers",
+              "blurb": "Provider Lists",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "r/usenet Deals",
+              "url": "https://www.reddit.com/r/usenet/wiki/providerdeals",
+              "blurb": "Provider Deals",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Usenet Provider Deals",
+              "url": "https://usenet.rexum.space/deals",
+              "blurb": "",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Usenet Providers Map",
+              "url": "https://usenet.rexum.space/tree",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Free Trials",
+              "url": "https://www.ngprovider.com/free-usenet-trials.php",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Downloaders",
+          "entries": [
+            {
+              "name": "sabnzbd",
+              "url": "https://sabnzbd.org/",
+              "blurb": "/ Windows, Mac, Linux / Grabber",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Grabber",
+                  "url": "https://github.com/lem6ns/sabgrab"
+                }
+              ]
+            },
+            {
+              "name": "NZBUnity",
+              "url": "https://github.com/tumblfeed/nzbunity",
+              "blurb": "Send NZBs to Client / Firefox / Chrome",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/nzb-unity/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chromewebstore.google.com/detail/nzb-unity/mpejfoghnejnbfkpbiafklkmlhebkapb"
+                }
+              ]
+            },
+            {
+              "name": "NZBGet",
+              "url": "https://nzbget.com/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/nzbgetcom/nzbget"
+                }
+              ]
+            },
+            {
+              "name": "⁠magicNZB",
+              "url": "https://magicnzb.com/",
+              "blurb": "30 Day Trial (reset w/ temp mail)",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Usenet File Hashes",
+              "url": "https://gist.github.com/4chenz/de3a3490aff19fd72e4fdd9b7dafc8f4",
+              "blurb": "Link File Hashes",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Debrid Services Comparison",
+              "url": "https://debridcompare.pages.dev/",
+              "blurb": "/ GitHub",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/fynks/debrid-services-comparison"
+                }
+              ]
+            },
+            {
+              "name": "Debrid Compatible Apps",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video#wiki_.25BA_torrent_apps",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "TorBox",
+              "url": "https://torbox.app/",
+              "blurb": "Paid / Requires Sign-Up / Unofficial Mobile Client / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Unofficial Mobile Client",
+                  "url": "https://github.com/93Pd9s8Jt/atba"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/TorBoxApp/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/torbox"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/TorBox-App"
+                }
+              ]
+            },
+            {
+              "name": "Real-Debrid",
+              "url": "https://real-debrid.com/",
+              "blurb": "Paid / Android Client / Torrent Client / DDL Client",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Android Client",
+                  "url": "https://github.com/LivingWithHippos/unchained-android"
+                },
+                {
+                  "text": "Torrent Client",
+                  "url": "https://github.com/rogerfar/rdt-client"
+                },
+                {
+                  "text": "DDL Client",
+                  "url": "https://github.com/ItsYeBoi20/TorrentDownloaderRD"
+                }
+              ]
+            },
+            {
+              "name": "⁠Cocoleech",
+              "url": "https://cocoleech.com/premium-link-generator",
+              "blurb": ", DownloaderNow, ⁠Downloader Zone or ⁠MixDebrid (use shortlink bypass) - Bypass Premium Link Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "DownloaderNow",
+                  "url": "https://downloader.now/"
+                },
+                {
+                  "text": "⁠Downloader Zone",
+                  "url": "https://debrid.downloader.zone/"
+                },
+                {
+                  "text": "⁠MixDebrid",
+                  "url": "https://mixdebrid.com/"
+                }
+              ]
+            },
+            {
+              "name": "PixelDrain Bypass",
+              "url": "https://pixeldrain-bypass.gamedrive.org/",
+              "blurb": ", 2 - Bypass PixelDrain Link Speed Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://pixeldrain-bypass.gamedrive.to/"
+                }
+              ]
+            },
+            {
+              "name": "iTeraPlay",
+              "url": "https://iteraplay.com/",
+              "blurb": ", ⁠TeraBox Gen or 1024TeraDL - ⁠TeraBox Video Downloaders",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "⁠TeraBox Gen",
+                  "url": "https://terabox.hnn.workers.dev/"
+                },
+                {
+                  "text": "1024TeraDL",
+                  "url": "https://1024teradl.com/"
+                }
+              ]
+            },
+            {
+              "name": "Multi-OCH Helper",
+              "url": "https://greasyfork.org/en/scripts/13884-multi-och-helper",
+              "blurb": "Quickly Send DDL Links to Premiumize & NoPremium",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Debrid Media Manager",
+              "url": "https://debridmediamanager.com/",
+              "blurb": "or Debrid Vault + Eclipse - ⁠Debrid Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Debrid Vault + Eclipse",
+                  "url": "https://discord.gg/B3QKzPRjhM"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

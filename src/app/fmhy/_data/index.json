@@ -1,0 +1,635 @@
+{
+  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "categories": [
+    {
+      "slug": "beginners-guide",
+      "sourceFile": "beginners-guide.md",
+      "sectionCount": 0,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "adblockvpnguide",
+      "sourceFile": "privacy.md",
+      "sectionCount": 22,
+      "entryCount": 320,
+      "highlights": [
+        {
+          "name": "LegitimateURLShortener",
+          "url": "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt",
+          "blurb": "Query Parameter Cleaning Rules / Use w/ AdGuard URL Tracking Protection"
+        },
+        {
+          "name": "Hagezi Blocklists",
+          "url": "https://github.com/hagezi/dns-blocklists",
+          "blurb": "Blocklist Collection / Use Mini Edition / Note"
+        },
+        {
+          "name": "Pi-Hole",
+          "url": "https://pi-hole.net/",
+          "blurb": "Self-Hosted DNS Adblocking / X / Subreddit / GitHub"
+        },
+        {
+          "name": "AdGuard Home",
+          "url": "https://adguard.com/en/adguard-home/overview.html",
+          "blurb": "Self-Hosted DNS Adblocking / Balena-AdGuard / X / Subreddit / Telegram / GitHub"
+        }
+      ]
+    },
+    {
+      "slug": "storage",
+      "sourceFile": "storage.md",
+      "sectionCount": 31,
+      "entryCount": 210,
+      "highlights": [
+        {
+          "name": "Tailwind CSS",
+          "url": "https://tailwindcss.com/",
+          "blurb": ", ⁠Panda CSS / GitHub, Bulma or UnoCSS - CSS Frameworks"
+        },
+        {
+          "name": "RAWGraphs",
+          "url": "https://app.rawgraphs.io/",
+          "blurb": "/ GitHub"
+        },
+        {
+          "name": "draw.io",
+          "url": "https://www.drawio.com/",
+          "blurb": "/ GitHub"
+        },
+        {
+          "name": "Kroki",
+          "url": "https://kroki.io/#try",
+          "blurb": "Text to Diagrams / CLI"
+        }
+      ]
+    },
+    {
+      "slug": "video",
+      "sourceFile": "video.md",
+      "sectionCount": 26,
+      "entryCount": 847,
+      "highlights": [
+        {
+          "name": "NEPU",
+          "url": "https://nepu.to/",
+          "blurb": "Movies / TV / Anime / Auto-Next / 4K / Status / Discord"
+        },
+        {
+          "name": "EE3",
+          "url": "https://ee3.me/",
+          "blurb": "or RIPS - Movies / Invite Codes: `mpgh` or `1hack` / Requires Sign-Up"
+        },
+        {
+          "name": "yFlix",
+          "url": "https://yflix.to/",
+          "blurb": "or 1Movies - Movies / TV / Anime / Auto-Next / Clones"
+        },
+        {
+          "name": "Flixer",
+          "url": "https://flixer.su",
+          "blurb": "or Hexa / Discord - Movies / TV / Anime / Auto-Next"
+        }
+      ]
+    },
+    {
+      "slug": "video-tools",
+      "sourceFile": "video-tools.md",
+      "sectionCount": 21,
+      "entryCount": 384,
+      "highlights": [
+        {
+          "name": "DoodStream",
+          "url": "https://doodstream.com/",
+          "blurb": "5GB / 60 Days / Requires Sign-Up"
+        },
+        {
+          "name": "Litterbox",
+          "url": "https://litterbox.catbox.moe/",
+          "blurb": "1GB / 3 Days"
+        },
+        {
+          "name": "Catbox",
+          "url": "https://catbox.moe/",
+          "blurb": "200MB / Forever / Allows Hotlinking"
+        },
+        {
+          "name": "Gofile",
+          "url": "https://gofile.io/",
+          "blurb": "100GB Monthly / 10 Days"
+        }
+      ]
+    },
+    {
+      "slug": "audio",
+      "sourceFile": "audio.md",
+      "sectionCount": 36,
+      "entryCount": 797,
+      "highlights": [
+        {
+          "name": "Pear Desktop",
+          "url": "https://github.com/pear-devs/pear-desktop",
+          "blurb": "YouTube Music Client w/ Adblock"
+        },
+        {
+          "name": "YouTube Music",
+          "url": "https://music.youtube.com/",
+          "blurb": "YouTube Music WebUIs / Tools"
+        },
+        {
+          "name": "Monochrome",
+          "url": "https://monochrome.tf/",
+          "blurb": ", 2, 3, 4 - Browser Music / Discord / GitHub"
+        },
+        {
+          "name": "DAB Music Player",
+          "url": "https://dabmusic.xyz/",
+          "blurb": "Browser Music / Lossless / Telegram / Discord"
+        }
+      ]
+    },
+    {
+      "slug": "gamingpiracyguide",
+      "sourceFile": "gaming.md",
+      "sectionCount": 35,
+      "entryCount": 817,
+      "highlights": [
+        {
+          "name": "FitGirl Repacks",
+          "url": "https://fitgirl-repacks.site/",
+          "blurb": "Download / Torrent / ROM Repacks / Unofficial Launcher"
+        },
+        {
+          "name": "KaOsKrew",
+          "url": "https://kaoskrew.org/",
+          "blurb": "Download / Redirect Bypass / Discord"
+        },
+        {
+          "name": "ARMGDDN Browser",
+          "url": "https://github.com/KaladinDMP/AGBrowser",
+          "blurb": ", 2 - Download / Avoid Software / Telegram / Discord"
+        },
+        {
+          "name": "Gnarly Repacks",
+          "url": "https://rentry.co/FMHYB64#gnarly",
+          "blurb": "Download / PW: `gnarly`"
+        }
+      ]
+    },
+    {
+      "slug": "edu",
+      "sourceFile": "educational.md",
+      "sectionCount": 52,
+      "entryCount": 1402,
+      "highlights": [
+        {
+          "name": "edX",
+          "url": "https://www.edx.org/",
+          "blurb": "Courses / Downloader"
+        },
+        {
+          "name": "MitOpenCourseWare",
+          "url": "https://ocw.mit.edu/",
+          "blurb": "Courses"
+        },
+        {
+          "name": "Khan Academy",
+          "url": "https://www.khanacademy.org/",
+          "blurb": "Courses / Downloader"
+        },
+        {
+          "name": "Class Central",
+          "url": "https://www.classcentral.com/",
+          "blurb": "Search for Courses"
+        }
+      ]
+    },
+    {
+      "slug": "reading",
+      "sourceFile": "reading.md",
+      "sectionCount": 26,
+      "entryCount": 795,
+      "highlights": [
+        {
+          "name": "Project Gutenberg",
+          "url": "https://www.gutenberg.org/",
+          "blurb": "or Lex - Historical Fiction / Nonfiction / Australia / Canada / Nordic"
+        },
+        {
+          "name": "Unglue.it",
+          "url": "https://unglue.it/",
+          "blurb": ""
+        },
+        {
+          "name": "OceanOfPDF",
+          "url": "https://oceanofpdf.com/",
+          "blurb": "Books / Comics"
+        },
+        {
+          "name": "Ebook-Translator",
+          "url": "https://translator.bookfere.com",
+          "blurb": "Calibre Translators"
+        }
+      ]
+    },
+    {
+      "slug": "downloadpiracyguide",
+      "sourceFile": "downloading.md",
+      "sectionCount": 8,
+      "entryCount": 107,
+      "highlights": [
+        {
+          "name": "Download CSE",
+          "url": "https://cse.google.com/cse?cx=006516753008110874046:1ugcdt3vo7z",
+          "blurb": "/ CSE 2 - Multi-Site Search"
+        },
+        {
+          "name": "4Shared",
+          "url": "https://www.4shared.com/",
+          "blurb": ""
+        },
+        {
+          "name": "Virgil Software Search",
+          "url": "https://virgil.samidy.com/Software/",
+          "blurb": ", 2 / GitHub or Software CSE - Multi-Site Software Search"
+        },
+        {
+          "name": "CracksURL",
+          "url": "https://cracksurl.com/",
+          "blurb": "/ Download Guide / Telegram"
+        }
+      ]
+    },
+    {
+      "slug": "torrenting",
+      "sourceFile": "torrenting.md",
+      "sectionCount": 5,
+      "entryCount": 88,
+      "highlights": [
+        {
+          "name": "ExT",
+          "url": "https://ext.to/",
+          "blurb": ", 2 / Proxy"
+        },
+        {
+          "name": "BTDigg",
+          "url": "https://btdig.com/",
+          "blurb": "DHT-Based / .onion"
+        },
+        {
+          "name": "Knaben",
+          "url": "https://knaben.org/",
+          "blurb": ""
+        },
+        {
+          "name": "qBittorrent",
+          "url": "https://www.qbittorrent.org/",
+          "blurb": "or qBittorrent Enhanced - Torrent Client / Windows, Mac, Linux / Tools"
+        }
+      ]
+    },
+    {
+      "slug": "android-iosguide",
+      "sourceFile": "mobile.md",
+      "sectionCount": 56,
+      "entryCount": 1049,
+      "highlights": [
+        {
+          "name": "Mobilism",
+          "url": "https://forum.mobilism.org/viewforum.php?f=398",
+          "blurb": ", 2 - Requires Sign-Up / User Ranks"
+        },
+        {
+          "name": "4PDA",
+          "url": "https://4pda.to/forum/",
+          "blurb": "Use Translator / App / Telegram / Captcha Note"
+        },
+        {
+          "name": "RockMods",
+          "url": "https://www.rockmods.net/",
+          "blurb": "/ Telegram"
+        },
+        {
+          "name": "PlatinMods",
+          "url": "https://platinmods.com/",
+          "blurb": "/ Requires Sign-Up"
+        }
+      ]
+    },
+    {
+      "slug": "social-media-tools",
+      "sourceFile": "social-media-tools.md",
+      "sectionCount": 30,
+      "entryCount": 497,
+      "highlights": [
+        {
+          "name": "Vencord",
+          "url": "https://vencord.dev/",
+          "blurb": "/ Discord / GitHub or Vesktop / GitHub - Discord Client Mod"
+        },
+        {
+          "name": "WebCord",
+          "url": "https://github.com/SpacingBat3/WebCord",
+          "blurb": "Privacy-Hardened Client / Discord"
+        },
+        {
+          "name": "Discohook",
+          "url": "https://discohook.app/",
+          "blurb": ", Embed Creator or Embed Generator - Embed Generators"
+        },
+        {
+          "name": "CustomRP",
+          "url": "https://www.customrp.xyz/",
+          "blurb": "/ GitHub or geetRPCS / GitHub - Customizable Rich Presence"
+        }
+      ]
+    },
+    {
+      "slug": "ai",
+      "sourceFile": "ai.md",
+      "sectionCount": 16,
+      "entryCount": 352,
+      "highlights": [
+        {
+          "name": "DeepSeek",
+          "url": "https://chat.deepseek.com/",
+          "blurb": "V4-Pro (Expert) / V4-Flash (Instant) / Sign-Up / Unlimited / Subreddit / Discord / GitHub"
+        },
+        {
+          "name": "Google AI Studio",
+          "url": "https://aistudio.google.com/app/prompts/new_chat",
+          "blurb": "Gemini 3.1 Pro / Google Sign-Up / Add Features / Subreddit / Discord"
+        },
+        {
+          "name": "⁠Z.ai",
+          "url": "https://chat.z.ai/",
+          "blurb": "GLM-5.1 / GLM-5-Turbo / Slides / Discord"
+        },
+        {
+          "name": "Qwen",
+          "url": "https://chat.qwen.ai/",
+          "blurb": "Qwen3.6-Plus / Qwen3.5-Plus / Sign-Up / Subreddit / Discord / GitHub"
+        }
+      ]
+    },
+    {
+      "slug": "devtools",
+      "sourceFile": "developer-tools.md",
+      "sectionCount": 43,
+      "entryCount": 884,
+      "highlights": [
+        {
+          "name": "AppDevTools",
+          "url": "https://appdevtools.com/",
+          "blurb": ""
+        },
+        {
+          "name": "Every-programmer-should-know",
+          "url": "https://github.com/mtdvio/every-programmer-should-know",
+          "blurb": "or bookmarks - Software Development Tools"
+        },
+        {
+          "name": "Android Developer Roadmap",
+          "url": "https://github.com/skydoves/android-developer-roadmap",
+          "blurb": ""
+        },
+        {
+          "name": "DB Browser",
+          "url": "https://sqlitebrowser.org/",
+          "blurb": ", SQLook or SQL Lite Studio - SQLite Browsers"
+        }
+      ]
+    },
+    {
+      "slug": "img-tools",
+      "sourceFile": "image-tools.md",
+      "sectionCount": 37,
+      "entryCount": 676,
+      "highlights": [
+        {
+          "name": "GIMP",
+          "url": "https://www.gimp.org/",
+          "blurb": "/ Windows, Mac, Linux / Photoshop UI / Texture Synthesizer / Discord / Subreddit / GitLab"
+        },
+        {
+          "name": "ImageMagick",
+          "url": "https://imagemagick.org/index.php",
+          "blurb": "/ Windows, Mac, Linux, iOS / Scripts / GitHub"
+        },
+        {
+          "name": "Pixlr",
+          "url": "https://pixlr.com/",
+          "blurb": "Simple Editor / Hide Premium / Unlimited Saves, 2"
+        },
+        {
+          "name": "Lunapic",
+          "url": "https://lunapic.com/",
+          "blurb": "Multi-Tool"
+        }
+      ]
+    },
+    {
+      "slug": "system-tools",
+      "sourceFile": "system-tools.md",
+      "sectionCount": 22,
+      "entryCount": 327,
+      "highlights": [
+        {
+          "name": "Windhawk",
+          "url": "https://windhawk.net/",
+          "blurb": "/ Discord / GitHub, MajorGeeks Windows Tweaks or Winaero / 2 - System Tweaking Tools / **Warning**"
+        },
+        {
+          "name": "StartAllBack",
+          "url": "https://www.startallback.com/",
+          "blurb": "Tweaked Start Menu & Taskbar / Windows 11 / Fix"
+        },
+        {
+          "name": "EverythingToolbar",
+          "url": "https://github.com/srwi/EverythingToolbar",
+          "blurb": "Everything Search in Taskbar"
+        },
+        {
+          "name": "Open Shell",
+          "url": "https://open-shell.github.io/Open-Shell-Menu/",
+          "blurb": "/ Customizable Skin or StartIsBack / Fix - Classic Start Menus"
+        }
+      ]
+    },
+    {
+      "slug": "linux-macos",
+      "sourceFile": "linux-macos.md",
+      "sectionCount": 27,
+      "entryCount": 660,
+      "highlights": [
+        {
+          "name": "Linux Command Library",
+          "url": "https://linuxcommandlibrary.com/",
+          "blurb": "Searchable Linux Command Index / GitHub"
+        },
+        {
+          "name": "DistroChooser",
+          "url": "https://distrochooser.de/",
+          "blurb": "/ Beta - Quiz-Based Distro Selector / Discord / GitHub"
+        },
+        {
+          "name": "Bottles",
+          "url": "https://usebottles.com/",
+          "blurb": "Manage Wine containers / Discord / GitHub"
+        },
+        {
+          "name": "WineHQ",
+          "url": "https://appdb.winehq.org/",
+          "blurb": "Wine Compatibility Database"
+        }
+      ]
+    },
+    {
+      "slug": "text-tools",
+      "sourceFile": "text-tools.md",
+      "sectionCount": 24,
+      "entryCount": 444,
+      "highlights": [
+        {
+          "name": "GitHub Gists",
+          "url": "https://gist.github.com/",
+          "blurb": "or GitLab Snippets - Multi-Syntax / Requires Sign-Up"
+        },
+        {
+          "name": "pastes.dev",
+          "url": "https://pastes.dev/",
+          "blurb": "Multi-Syntax / Markdown Support / GitHub"
+        },
+        {
+          "name": "PrivateBin",
+          "url": "https://privatebin.net/",
+          "blurb": ", NoteBin or ⁠ZeroBin - Markdown Support / Syntax Highlighting / Instances / GitHub"
+        },
+        {
+          "name": "Rentry",
+          "url": "https://rentry.co/",
+          "blurb": ", 2 - Markdown Support / Custom URLs / CLI / Styling"
+        }
+      ]
+    },
+    {
+      "slug": "file-tools",
+      "sourceFile": "file-tools.md",
+      "sectionCount": 20,
+      "entryCount": 329,
+      "highlights": [
+        {
+          "name": "AB Download Manager",
+          "url": "https://abdownloadmanager.com/",
+          "blurb": "Download Manager / Windows, Mac, Linux, Android / Telegram / GitHub"
+        },
+        {
+          "name": "JDownloader",
+          "url": "https://jdownloader.org/jdownloader2",
+          "blurb": "Download Manager / Windows, Mac, Linux / **Warning**"
+        },
+        {
+          "name": "IDM",
+          "url": "https://rentry.co/FMHYB64#idm",
+          "blurb": ", 2, 3 (search) - Download Manager / Firefox / Chrome / Windows"
+        },
+        {
+          "name": "NanaZip",
+          "url": "https://github.com/M2Team/NanaZip",
+          "blurb": "or **7-Zip** - File Archiver"
+        }
+      ]
+    },
+    {
+      "slug": "internet-tools",
+      "sourceFile": "internet-tools.md",
+      "sectionCount": 31,
+      "entryCount": 698,
+      "highlights": [
+        {
+          "name": "fast",
+          "url": "https://fast.com/",
+          "blurb": "/ Blur Info / CLI, **Cloudflare Speed Test** / CLI, **OpenSpeedTest** / GitHub or **LibreSpeed** - Speed Tests"
+        },
+        {
+          "name": "Safing Portmaster",
+          "url": "https://safing.io/",
+          "blurb": "Network Monitor / DNS Resolver / Firewall / Discord / GitHub"
+        },
+        {
+          "name": "Bitwarden",
+          "url": "https://bitwarden.com/",
+          "blurb": "/ Alt Client / X / Subreddit / GitHub"
+        },
+        {
+          "name": "KeePass",
+          "url": "https://keepass.info/",
+          "blurb": "/ Forks / Plugins / Read-Only or **KeePassXC**"
+        }
+      ]
+    },
+    {
+      "slug": "misc",
+      "sourceFile": "misc.md",
+      "sectionCount": 48,
+      "entryCount": 1397,
+      "highlights": [
+        {
+          "name": "Ripped",
+          "url": "https://ripped.guide/",
+          "blurb": "Piracy Index"
+        },
+        {
+          "name": "r/PiratedGames Megathread",
+          "url": "https://rentry.org/pgames",
+          "blurb": "Game Piracy Index / Discord"
+        },
+        {
+          "name": "CS.RIN Mega",
+          "url": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=95461",
+          "blurb": ", 2 - Game Piracy Index"
+        },
+        {
+          "name": "privateersclub",
+          "url": "https://megathread.pages.dev/",
+          "blurb": "Game Piracy Index / Discord"
+        }
+      ]
+    },
+    {
+      "slug": "non-english",
+      "sourceFile": "non-english.md",
+      "sectionCount": 93,
+      "entryCount": 1432,
+      "highlights": [
+        {
+          "name": "Cimaleek",
+          "url": "https://cimaleek.ws/",
+          "blurb": "Movies / TV"
+        },
+        {
+          "name": "FaselHD",
+          "url": "https://www.faselhds.biz/",
+          "blurb": "Movies / TV / Anime / Sub / 1080p / Use Adblock"
+        },
+        {
+          "name": "Anime3rb",
+          "url": "https://anime3rb.com/",
+          "blurb": "Anime / Sub / 1080p"
+        },
+        {
+          "name": "Avro Keyboard",
+          "url": "https://www.omicronlab.com/avro-keyboard.html",
+          "blurb": "Bangla Typing Tool / Spellcheck / WebUI"
+        }
+      ]
+    },
+    {
+      "slug": "sandbox",
+      "sourceFile": "sandbox.md",
+      "sectionCount": 0,
+      "entryCount": 0,
+      "highlights": []
+    }
+  ]
+}
