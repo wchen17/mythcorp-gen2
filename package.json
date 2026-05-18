@@ -36,7 +36,7 @@
     "tailwindcss": "4.1.1",
     "tsx": "^4.21.0",
     "typescript": "5.8.3",
-    "wrangler": "4.21.x"
+    "wrangler": "^4.92.0"
   },
   "private": true,
   "scripts": {
