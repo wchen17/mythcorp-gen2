@@ -1,0 +1,11 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "Internet-Archive",
+    "namespace": "posts",
+    "sourceFile": "posts/Internet-Archive.md",
+    "title": "Internet Archive Breach",
+    "description": "Internet Archive was hacked",
+    "html": "<Post authors=\"nbats\" /><h4>Internet Archive was hacked today, all 31 million accounts have had their details leaked. If you have an account its <em>highly</em> recommended to change your password on the site, as well as anywhere else you are using the same login details.</h4>\n<ul>\n<li><p><a href=\"https://www.bleepingcomputer.com/news/security/internet-archive-hacked-data-breach-impacts-31-million-users/\">https://www.bleepingcomputer.com/news/security/internet-archive-hacked-data-breach-impacts-31-million-users/</a></p>\n</li>\n<li><p><a href=\"https://haveibeenpwned.com/\">https://haveibeenpwned.com/</a></p>\n</li>\n</ul>\n"
+  }
+}

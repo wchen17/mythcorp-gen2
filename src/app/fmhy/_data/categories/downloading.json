@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "downloadpiracyguide",
+      "slug": "downloading",
+      "namespace": "root",
       "sourceFile": "downloading.md",
       "sections": [
         {
@@ -124,7 +125,7 @@
             {
               "name": "CracksURL",
               "url": "https://cracksurl.com/",
-              "blurb": "/ Download Guide / Telegram",
+              "blurb": "/ Download Guide",
               "badges": [
                 "⭐"
               ],
@@ -132,10 +133,6 @@
                 {
                   "text": "Download Guide",
                   "url": "https://cracksurl.com/how-to-download/"
-                },
-                {
-                  "text": "Telegram",
-                  "url": "https://t.me/cracksurldotcom"
                 }
               ]
             },
@@ -421,7 +418,7 @@
               "resourceLinks": [
                 {
                   "text": "Awesome Free Apps",
-                  "url": "https://github.com/1337Core/awesome-free-apps"
+                  "url": "https://github.com/Axorax/awesome-free-apps"
                 },
                 {
                   "text": "Windows Ultimate Collection",
@@ -1093,9 +1090,7 @@
               "name": "Real-Debrid",
               "url": "https://real-debrid.com/",
               "blurb": "Paid / Android Client / Torrent Client / DDL Client",
-              "badges": [
-                "⭐"
-              ],
+              "badges": [],
               "resourceLinks": [
                 {
                   "text": "Android Client",
@@ -1114,13 +1109,9 @@
             {
               "name": "⁠Cocoleech",
               "url": "https://cocoleech.com/premium-link-generator",
-              "blurb": ", DownloaderNow, ⁠Downloader Zone or ⁠MixDebrid (use shortlink bypass) - Bypass Premium Link Limits",
+              "blurb": ", ⁠Downloader Zone or ⁠MixDebrid (use shortlink bypass) - Bypass Premium Link Limits",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "DownloaderNow",
-                  "url": "https://downloader.now/"
-                },
                 {
                   "text": "⁠Downloader Zone",
                   "url": "https://debrid.downloader.zone/"

@@ -3,32 +3,27 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { SiteHeader } from '../components/SiteHeader';
-import { CATEGORIES } from './_data/categories';
-import indexData from './_data/index.json';
+import {
+  FETCHED_AT,
+  OTHER_DOCS,
+  POSTS,
+  ROOT_CATEGORIES,
+} from './_data/categories';
 import { CategoryNav } from './_components/CategoryNav';
 import { SearchBox } from './_components/SearchBox';
+import type { IndexCategory, Namespace } from './_lib/types';
 
-type IndexEntry = {
-  slug: string;
-  sourceFile: string;
-  sectionCount: number;
-  entryCount: number;
-  highlights: { name: string; url: string; blurb: string }[];
-};
+const ROOT_CATALOGS = ROOT_CATEGORIES.filter((c) => c.kind === 'catalog' && c.entryCount > 0);
+const ROOT_GUIDES = ROOT_CATEGORIES.filter((c) => c.kind === 'prose');
 
-const INDEX = indexData as { fetchedAt: string; categories: IndexEntry[] };
-
-const FETCHED_AT = new Date(INDEX.fetchedAt).toLocaleDateString('en-US', {
+const FETCHED_DATE = new Date(FETCHED_AT).toLocaleDateString('en-US', {
   year: 'numeric', month: 'short', day: 'numeric',
 });
 
-const ENRICHED = CATEGORIES
-  .map((meta) => {
-    const idx = INDEX.categories.find((c) => c.slug === meta.slug);
-    if (!idx || idx.entryCount === 0) return null;
-    return { ...meta, ...idx };
-  })
-  .filter((c): c is NonNullable<typeof c> => c !== null);
+function hrefFor(c: IndexCategory): string {
+  if (c.namespace === 'root') return `/fmhy/${c.slug}`;
+  return `/fmhy/${c.namespace}/${c.slug}`;
+}
 
 export default function FmhyPage() {
   const [query, setQuery] = useState('');
@@ -36,7 +31,7 @@ export default function FmhyPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return ENRICHED.filter((c) => {
+    return ROOT_CATALOGS.filter((c) => {
       if (activeSlug && c.slug !== activeSlug) return false;
       if (!q) return true;
       if (c.name.toLowerCase().includes(q)) return true;
@@ -47,7 +42,8 @@ export default function FmhyPage() {
     });
   }, [query, activeSlug]);
 
-  const totalEntries = ENRICHED.reduce((n, c) => n + c.entryCount, 0);
+  const totalEntries = ROOT_CATALOGS.reduce((n, c) => n + c.entryCount, 0);
+  const totalDocs = ROOT_CATALOGS.length + OTHER_DOCS.length + POSTS.length;
 
   return (
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
@@ -59,17 +55,17 @@ export default function FmhyPage() {
             [ /FMHY ]
           </p>
           <h1 className="themed-heading mt-3 text-4xl font-semibold sm:text-5xl">
-            FMHY backup
+            FMHY mirror
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[color:var(--fg-muted)] sm:text-base">
-            A local mirror of <a href="https://fmhy.net" target="_blank" rel="noreferrer"
+            A full mirror of <a href="https://fmhy.net" target="_blank" rel="noreferrer"
               className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">fmhy.net</a>.
-            {' '}{totalEntries.toLocaleString()} entries across {ENRICHED.length} categories,
-            fetched fresh from{' '}
+            {' '}{totalEntries.toLocaleString()} link entries across {ROOT_CATALOGS.length} categories,
+            plus {OTHER_DOCS.length} guides and {POSTS.length} posts, auto-discovered from{' '}
             <a href="https://github.com/fmhy/edit" target="_blank" rel="noreferrer"
               className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">
               github.com/fmhy/edit
-            </a>. Snapshot {FETCHED_AT}.
+            </a>. Snapshot {FETCHED_DATE}, {totalDocs} docs total.
           </p>
         </div>
 
@@ -78,9 +74,9 @@ export default function FmhyPage() {
             value={query}
             onChange={setQuery}
             placeholder="Search across all categories..."
-            resultsLabel={`${filtered.length} / ${ENRICHED.length}`}
+            resultsLabel={`${filtered.length} / ${ROOT_CATALOGS.length}`}
           />
-          <CategoryNav categories={ENRICHED} activeSlug={activeSlug} onSelect={setActiveSlug} />
+          <CategoryNav categories={ROOT_CATALOGS} activeSlug={activeSlug} onSelect={setActiveSlug} />
         </div>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -93,7 +89,7 @@ export default function FmhyPage() {
           {filtered.map((c) => (
             <li key={c.slug}>
               <Link
-                href={`/fmhy/${c.slug}`}
+                href={hrefFor(c)}
                 className="themed-surface themed-surface-interactive block h-full p-5"
               >
                 <div className="flex items-start gap-3">
@@ -130,11 +126,75 @@ export default function FmhyPage() {
           ))}
         </ul>
 
+        <DocGroup
+          title="Guides"
+          subtitle="Long-form root docs (intro, sandbox, unsafe sites, ...)"
+          namespace="root"
+          docs={ROOT_GUIDES}
+        />
+
+        <DocGroup
+          title="Other docs"
+          subtitle="Guides and reference material from docs/other/"
+          namespace="other"
+          docs={OTHER_DOCS}
+        />
+
+        <DocGroup
+          title="Posts"
+          subtitle="Monthly changelogs and announcements from docs/posts/"
+          namespace="posts"
+          docs={POSTS}
+        />
+
         <p className="mt-12 text-center text-xs text-[color:var(--fg-subtle)]">
-          FMHY is community-maintained. This page mirrors a snapshot, refreshed by
-          {' '}<code className="font-mono text-[color:var(--accent-soft)]">npm run fetch:fmhy</code>.
+          FMHY is community-maintained. This mirror auto-discovers the upstream tree on every refresh,
+          run via <code className="font-mono text-[color:var(--accent-soft)]">npm run fetch:fmhy</code>.
         </p>
       </main>
     </div>
+  );
+}
+
+function DocGroup({
+  title,
+  subtitle,
+  namespace,
+  docs,
+}: {
+  title: string;
+  subtitle: string;
+  namespace: Namespace;
+  docs: ReadonlyArray<IndexCategory>;
+}) {
+  if (docs.length === 0) return null;
+  return (
+    <section className="mt-16">
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="themed-heading text-2xl font-semibold">{title}</h2>
+        <span className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
+          {docs.length} docs
+        </span>
+      </div>
+      <p className="mt-1 text-sm text-[color:var(--fg-muted)]">{subtitle}</p>
+      <ul className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {docs.map((d) => (
+          <li key={d.slug}>
+            <Link
+              href={namespace === 'root' ? `/fmhy/${d.slug}` : `/fmhy/${namespace}/${d.slug}`}
+              className="themed-surface themed-surface-interactive flex items-center gap-3 p-3"
+            >
+              <span aria-hidden className="text-lg">{d.emoji}</span>
+              <div className="min-w-0 flex-1">
+                <div className="truncate text-sm font-medium text-[color:var(--fg)]">{d.name}</div>
+                {d.blurb && (
+                  <div className="truncate text-[11px] text-[color:var(--fg-subtle)]">{d.blurb}</div>
+                )}
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

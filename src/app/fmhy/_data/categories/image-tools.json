@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "img-tools",
+      "slug": "image-tools",
+      "namespace": "root",
       "sourceFile": "image-tools.md",
       "sections": [
         {
@@ -608,13 +609,6 @@
               "name": "QualityScaler",
               "url": "https://github.com/Djdefrag/QualityScaler",
               "blurb": "Image Upscaling / Video Upscaling / Denoising / Self-Hosted",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Waifu2x",
-              "url": "https://www.waifu2x.net/",
-              "blurb": "Anime Image Upscaling / Online",
               "badges": [],
               "resourceLinks": []
             },
@@ -1705,11 +1699,15 @@
             {
               "name": "ImgFlip",
               "url": "https://imgflip.com/memegenerator",
-              "blurb": "/ Remove Watermarks, Meme Generator, Meme Town, MemeBetter, meme-generator, Classic Memes or Emacs Meme Generator - Meme Creators",
+              "blurb": "/ Remove Watermarks, 2, Meme Generator, Meme Town, MemeBetter, meme-generator, Classic Memes or Emacs Meme Generator - Meme Creators",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Remove Watermarks",
+                  "url": "https://greasyfork.org/en/scripts/485073"
+                },
+                {
+                  "text": "2",
                   "url": "https://greasyfork.org/scripts/470387"
                 },
                 {
@@ -2125,6 +2123,26 @@
               ]
             },
             {
+              "name": "Worldvectorlogo",
+              "url": "https://worldvectorlogo.com/",
+              "blurb": ", Brands of the World, seeklogo or SuperTinyIcons - Logo Search / Designs",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Brands of the World",
+                  "url": "https://www.brandsoftheworld.com/"
+                },
+                {
+                  "text": "seeklogo",
+                  "url": "https://seeklogo.com/"
+                },
+                {
+                  "text": "SuperTinyIcons",
+                  "url": "https://edent.github.io/SuperTinyIcons/"
+                }
+              ]
+            },
+            {
               "name": "Logo Fast",
               "url": "https://logofa.st/",
               "blurb": "or LogoFreeway - Simple Logo Creators Based on Premade Icons",
@@ -2333,7 +2351,7 @@
             {
               "name": "DoodDad",
               "url": "https://doodad.dev/pattern-generator",
-              "blurb": ", Repeater, PatternPad, patternico, Repeater, more.graphics, Valentina or Haikei - Pattern Generators",
+              "blurb": ", Repeater, PatternPad, patternico, Repeater, more.graphics or Haikei - Pattern Generators",
               "badges": [],
               "resourceLinks": [
                 {
@@ -2355,10 +2373,6 @@
                 {
                   "text": "more.graphics",
                   "url": "https://more.graphics/"
-                },
-                {
-                  "text": "Valentina",
-                  "url": "https://gitlab.com/smart-pattern/valentina"
                 },
                 {
                   "text": "Haikei",
@@ -2803,26 +2817,6 @@
               "blurb": "Image Templates",
               "badges": [],
               "resourceLinks": []
-            },
-            {
-              "name": "Worldvectorlogo",
-              "url": "https://worldvectorlogo.com/",
-              "blurb": ", Brands of the World, seeklogo or SuperTinyIcons - Logo Search / Designs",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Brands of the World",
-                  "url": "https://www.brandsoftheworld.com/"
-                },
-                {
-                  "text": "seeklogo",
-                  "url": "https://seeklogo.com/"
-                },
-                {
-                  "text": "SuperTinyIcons",
-                  "url": "https://edent.github.io/SuperTinyIcons/"
-                }
-              ]
             },
             {
               "name": "MariaLetta",
@@ -4108,11 +4102,16 @@
             {
               "name": "Blender",
               "url": "https://www.blender.org/",
-              "blurb": "FOSS 3D Modeling App",
+              "blurb": "FOSS 3D Modeling App / Source Code",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Source Code",
+                  "url": "https://projects.blender.org/blender/blender"
+                }
+              ]
             },
             {
               "name": "MCprep",
@@ -4358,6 +4357,13 @@
               ]
             },
             {
+              "name": "⁠Kiri:Moto",
+              "url": "https://grid.space/kiri/",
+              "blurb": "Web-Based 3D Model Slicer",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "3D Transformer",
               "url": "https://www.3dtransformer.com/",
               "blurb": "Rotate 3D Images",
@@ -4485,6 +4491,13 @@
               "name": "⁠SpoolScout",
               "url": "https://www.spoolscout.com/",
               "blurb": "Search / Compare 3D Printing Filament Prices",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠step.parts",
+              "url": "https://www.step.parts/",
+              "blurb": "3D Printing Step Files",
               "badges": [],
               "resourceLinks": []
             },
@@ -5640,12 +5653,16 @@
             {
               "name": "Immich",
               "url": "https://immich.app/",
-              "blurb": "/ Storage Server / GitHub",
+              "blurb": "/ Storage Server / Bulk Uploader / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Storage Server",
                   "url": "https://pixelunion.eu/"
+                },
+                {
+                  "text": "Bulk Uploader",
+                  "url": "https://github.com/simulot/immich-go"
                 },
                 {
                   "text": "GitHub",
@@ -5697,7 +5714,7 @@
             },
             {
               "name": "Ente",
-              "url": "https://help.ente.io/self-hosting/",
+              "url": "https://help.ente.com/self-hosting/",
               "blurb": "",
               "badges": [],
               "resourceLinks": []
@@ -5863,7 +5880,7 @@
             },
             {
               "name": "Ente",
-              "url": "https://ente.io/",
+              "url": "https://ente.com/",
               "blurb": "Unlimited / 10GB Cloud",
               "badges": [],
               "resourceLinks": []
@@ -5899,12 +5916,16 @@
             {
               "name": "Google Takeout",
               "url": "https://takeout.google.com/",
-              "blurb": "Export from Google Photos / Script",
+              "blurb": "Export from Google Photos / Script / Migration Tool",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Script",
                   "url": "https://github.com/Xentraxx/GooglePhotosTakeoutHelper"
+                },
+                {
+                  "text": "Migration Tool",
+                  "url": "https://github.com/garzj/google-photos-migrate"
                 }
               ]
             },

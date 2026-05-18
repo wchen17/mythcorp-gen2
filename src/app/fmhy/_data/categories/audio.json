@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "audio",
+      "namespace": "root",
       "sourceFile": "audio.md",
       "sections": [
         {
@@ -253,33 +254,6 @@
               ]
             },
             {
-              "name": "DAB Music Player",
-              "url": "https://dabmusic.xyz/",
-              "blurb": "Browser Music / Lossless / Telegram / Discord",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Telegram",
-                  "url": "https://t.me/+RnrXmKyOPNY0ZGY9"
-                },
-                {
-                  "text": "Discord",
-                  "url": "https://discord.com/invite/rmzH6ttgcC"
-                }
-              ]
-            },
-            {
-              "name": "Reddit Music Player",
-              "url": "https://reddit.musicplayer.io/",
-              "blurb": "Subreddit Music Player",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": []
-            },
-            {
               "name": "SoundCloud",
               "url": "https://soundcloud.com/",
               "blurb": "User-Made & User-Uploaded Songs",
@@ -374,13 +348,6 @@
               ]
             },
             {
-              "name": "⁠Anixtv Music",
-              "url": "https://anixtv.us.cc/music",
-              "blurb": "Browser Music",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "Mixupload",
               "url": "https://mixupload.com/",
               "blurb": "Browser Music",
@@ -406,17 +373,9 @@
             {
               "name": "jiosaavn",
               "url": "https://www.jiosaavn.com/",
-              "blurb": ", Saavn Web / GitHub or Hayasaka - Browser Music / API",
+              "blurb": "or Hayasaka - Browser Music / API",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "Saavn Web",
-                  "url": "https://saavn-web-ui.vercel.app/"
-                },
-                {
-                  "text": "GitHub",
-                  "url": "https://github.com/wiz64/saavn-web-ui"
-                },
                 {
                   "text": "Hayasaka",
                   "url": "https://hayasaka.vercel.app/"
@@ -846,6 +805,15 @@
               ]
             },
             {
+              "name": "setlist.fm",
+              "url": "https://www.setlist.fm/",
+              "blurb": "Setlist Database",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "r/MusicalBootlegs",
               "url": "https://www.reddit.com/r/MusicalBootlegs",
               "blurb": ", OperaVision or \"Slime Tutorials\" - Broadway Show Recordings / Opera",
@@ -1063,13 +1031,6 @@
                   "url": "https://discord.gg/KZWFsNN"
                 }
               ]
-            },
-            {
-              "name": "setlist.fm",
-              "url": "https://www.setlist.fm/",
-              "blurb": "Setlist Database",
-              "badges": [],
-              "resourceLinks": []
             }
           ]
         },
@@ -1808,6 +1769,13 @@
               "resourceLinks": []
             },
             {
+              "name": "Radio.dubbeh",
+              "url": "https://radio.dubbeh.net/",
+              "blurb": "Online Radio Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "My Radio",
               "url": "https://junguler.github.io/m3u-player-web/",
               "blurb": "Online Radio Directory",
@@ -1943,13 +1911,6 @@
             {
               "name": "⁠WFMU",
               "url": "https://wfmu.org/",
-              "blurb": "Independent Internet Radio",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Radio.dubbeh",
-              "url": "https://radio.dubbeh.net/",
               "blurb": "Independent Internet Radio",
               "badges": [],
               "resourceLinks": []
@@ -2479,13 +2440,31 @@
               ]
             },
             {
-              "name": "Spicetify",
-              "url": "https://spicetify.app/",
-              "blurb": "Spotify Themes & Plugins / Discord / GitHub / Notes",
+              "name": "SpotX",
+              "url": "https://github.com/SpotX-Official/SpotX",
+              "blurb": "Ad-Free Spotify Patcher / Telegram",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/SpotxCommunity"
+                }
+              ]
+            },
+            {
+              "name": "Spicetify",
+              "url": "https://spicetify.app/",
+              "blurb": "Spotify Themes & Plugins / Improved Lyrics / Discord / GitHub / Notes",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Improved Lyrics",
+                  "url": "https://spicylyrics.org/"
+                },
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/VnevqPp2Rr"
@@ -2497,20 +2476,6 @@
                 {
                   "text": "Notes",
                   "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/spicetify-note.md"
-                }
-              ]
-            },
-            {
-              "name": "SpotX",
-              "url": "https://github.com/SpotX-Official/SpotX",
-              "blurb": "Ad-Free Spotify Patcher / Telegram",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Telegram",
-                  "url": "https://t.me/SpotxCommunity"
                 }
               ]
             },
@@ -2795,18 +2760,6 @@
               ]
             },
             {
-              "name": "PlaylistProxy",
-              "url": "https://playlistproxy.net/",
-              "blurb": "Share Playlists Anonymously / GitHub",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "GitHub",
-                  "url": "https://github.com/okanten/playlistproxy.net"
-                }
-              ]
-            },
-            {
               "name": "Spotify Playlist Archive",
               "url": "https://spotifyplaylistarchive.com/",
               "blurb": "Public Spotify Playlists Archive / GitHub, 2",
@@ -2899,28 +2852,6 @@
               ]
             },
             {
-              "name": "DAB Music Player",
-              "url": "https://dabmusic.xyz",
-              "blurb": "FLAC / Download CLI / Telegram / Discord",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Download CLI",
-                  "url": "https://github.com/PrathxmOp/dab-downloader"
-                },
-                {
-                  "text": "Telegram",
-                  "url": "https://t.me/+RnrXmKyOPNY0ZGY9"
-                },
-                {
-                  "text": "Discord",
-                  "url": "https://discord.com/invite/rmzH6ttgcC"
-                }
-              ]
-            },
-            {
               "name": "Jumo-DL",
               "url": "https://jumo-dl.pages.dev/",
               "blurb": "FLAC / MP3",
@@ -2935,11 +2866,16 @@
               "resourceLinks": []
             },
             {
-              "name": "⁠am-dl",
-              "url": "https://am-dl.pages.dev/",
-              "blurb": "Apple Music / AAC-M4A / ALAC / Atmos",
+              "name": "Antra Web",
+              "url": "https://antra.hoshi.cfd/",
+              "blurb": "Multi-Site / FLAC / ALAC / AAC / MP3 / Telegram",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/antraaverse"
+                }
+              ]
             },
             {
               "name": "⁠ARCOD",
@@ -3089,9 +3025,14 @@
             {
               "name": "⁠Antra",
               "url": "https://github.com/anandprtp/Antra",
-              "blurb": "Qobuz / Tidal / Amazon Music / Soulseek / Converts from Multiple Sites",
+              "blurb": "Qobuz / Tidal / Amazon Music / Soulseek / Converts from Multiple Sites / Telegram",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/antraaverse"
+                }
+              ]
             },
             {
               "name": "Votify",
@@ -3120,16 +3061,12 @@
             {
               "name": "OrpheusDL",
               "url": "https://github.com/OrfiTeam/OrpheusDL",
-              "blurb": "Deezer / Qobuz / 128kb Free / FLAC / Use Firehawk52 / Deezer Mod / Qobuz Mod",
+              "blurb": "Deezer / Qobuz / 128kb Free / FLAC / Use Firehawk52 / Deezer Mod",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Deezer Mod",
                   "url": "https://github.com/uhwot/orpheusdl-deezer"
-                },
-                {
-                  "text": "Qobuz Mod",
-                  "url": "https://github.com/OrfiDev/orpheusdl-qobuz"
                 }
               ]
             },
@@ -4497,7 +4434,7 @@
             {
               "name": "Sitting on Clouds",
               "url": "https://www.sittingonclouds.net/",
-              "blurb": ", 2 - Anime / Game Soundtracks / Forum / .onion / Discord",
+              "blurb": ", 2 - Anime / Game Soundtracks / Forum, 2 / .onion / Discord",
               "badges": [
                 "⭐"
               ],
@@ -4509,6 +4446,10 @@
                 {
                   "text": "Forum",
                   "url": "https://squid-board.org/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://discord.gg/hfjBQXpXJq"
                 },
                 {
                   "text": ".onion",
@@ -4639,20 +4580,11 @@
             {
               "name": "Khinsider",
               "url": "https://downloads.khinsider.com/",
-              "blurb": "Game Soundtracks / MP3 / FLAC / ALAC / Downloader, 2",
+              "blurb": "Game Soundtracks / MP3 / FLAC / ALAC",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": [
-                {
-                  "text": "Downloader",
-                  "url": "https://github.com/killshott3r/khinsider"
-                },
-                {
-                  "text": "2",
-                  "url": "https://github.com/weespin/KhinsiderDownloader"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "RetroTracks",
@@ -4844,7 +4776,7 @@
             {
               "name": "Last.fm",
               "url": "https://www.last.fm/home",
-              "blurb": "/ Tools or ListenBrainz - Track Listening Habits / Songs",
+              "blurb": "/ Tools, Libre.fm or ListenBrainz - Track Listening Habits / Songs",
               "badges": [
                 "⭐"
               ],
@@ -4852,6 +4784,10 @@
                 {
                   "text": "Tools",
                   "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/audio/#wiki_.25B7_last.fm_tools"
+                },
+                {
+                  "text": "Libre.fm",
+                  "url": "https://libre.fm/"
                 },
                 {
                   "text": "ListenBrainz",
@@ -5048,6 +4984,13 @@
               "name": "Metal Archives",
               "url": "https://www.metal-archives.com/",
               "blurb": "Metal Band Archive",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Six Degrees of Hip-Hop",
+              "url": "https://www.sixdegreesofhiphop.com/",
+              "blurb": "Hip-Hop Connections Map",
               "badges": [],
               "resourceLinks": []
             },
@@ -5327,15 +5270,11 @@
               ]
             },
             {
-              "name": "Music-Map",
-              "url": "https://www.music-map.com/",
-              "blurb": ", Musicroamer, Music Galaxy, Unchartify / Telegram, SAGE, LivePlasma or GNOD - Artist Discovery Tools",
+              "name": "Musicroamer",
+              "url": "https://www.musicroamer.com/",
+              "blurb": ", Music Galaxy, Unchartify / Telegram, SAGE, LivePlasma or GNOD - Artist Discovery Tools",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "Musicroamer",
-                  "url": "https://www.musicroamer.com/"
-                },
                 {
                   "text": "Music Galaxy",
                   "url": "https://galaxy.spotifytrack.net/"
@@ -6482,11 +6421,15 @@
             {
               "name": "Cover Search Engine",
               "url": "https://covers.musichoarders.xyz",
-              "blurb": ", Albumart.Digital or bigpictures - Album Art Search Engines",
+              "blurb": ", CoverAtlas, Albumart.Digital or bigpictures - Album Art Search Engines",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "CoverAtlas",
+                  "url": "https://www.coveratlas.com/"
+                },
                 {
                   "text": "Albumart.Digital",
                   "url": "https://albumart.digital/"
@@ -7227,11 +7170,27 @@
               "resourceLinks": []
             },
             {
-              "name": "⁠OpenUtau",
-              "url": "https://www.openutau.com/",
-              "blurb": "Vocal Synth / Singing Platform / GitHub",
+              "name": "⁠Beat Battle",
+              "url": "https://beat-battle.net/",
+              "blurb": "Browser Beat Battle Game / Discord",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/beatbattle"
+                }
+              ]
+            },
+            {
+              "name": "⁠OpenUtau",
+              "url": "https://www.openutau.com/",
+              "blurb": "Vocal Synth / Singing Platform / Guides / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Guides",
+                  "url": "https://utauguides.carrd.co/"
+                },
                 {
                   "text": "GitHub",
                   "url": "https://github.com/stakira/OpenUtau"
@@ -7780,11 +7739,24 @@
               ]
             },
             {
-              "name": "OnlineSequencer",
-              "url": "https://onlinesequencer.net/",
-              "blurb": "MIDI Editors",
+              "name": "⁠Signal",
+              "url": "https://signalmidi.app/edit",
+              "blurb": "/ Discord / GitHub or OnlineSequencer - MIDI Editors",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/XQxzNdDJse"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ryohey/signal/"
+                },
+                {
+                  "text": "OnlineSequencer",
+                  "url": "https://onlinesequencer.net/"
+                }
+              ]
             },
             {
               "name": "WebSynths",
@@ -8282,12 +8254,16 @@
             {
               "name": "MyInstants",
               "url": "https://www.myinstants.com/index/us/",
-              "blurb": ", 101soundboards or Soundboard.com - Online Soundboards",
+              "blurb": ", 101soundboards, SoundboardGuys or Soundboard.com - Online Soundboards",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "101soundboards",
                   "url": "https://www.101soundboards.com/"
+                },
+                {
+                  "text": "SoundboardGuys",
+                  "url": "https://soundboardguys.com/"
                 },
                 {
                   "text": "Soundboard.com",

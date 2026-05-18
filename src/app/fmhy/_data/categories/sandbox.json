@@ -1,10 +1,10 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
-  "categories": [
-    {
-      "slug": "sandbox",
-      "sourceFile": "sandbox.md",
-      "sections": []
-    }
-  ]
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "sandbox",
+    "namespace": "root",
+    "sourceFile": "sandbox.md",
+    "title": "Sandbox",
+    "html": "<h3>Sandbox</h3>\n<blockquote>\n<p><strong>INFO</strong>\nTesting info</p>\n</blockquote>\n<blockquote>\n<p><strong>TIP</strong>\nTesting tip</p>\n</blockquote>\n<blockquote>\n<p><strong>WARNING</strong>\nTesting warning</p>\n</blockquote>\n<blockquote>\n<p><strong>DANGER</strong>\nTesting danger</p>\n</blockquote>\n<blockquote>\n<p><strong>DETAILS</strong>\nTesting details</p>\n</blockquote>\n"
+  }
 }

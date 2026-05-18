@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "file-tools",
+      "namespace": "root",
       "sourceFile": "file-tools.md",
       "sections": [
         {
@@ -99,6 +100,18 @@
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/hGBDWNDHG3"
+                }
+              ]
+            },
+            {
+              "name": "imFile",
+              "url": "https://imfile.org/",
+              "blurb": "/ Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/imfile-io/imfile-desktop"
                 }
               ]
             },
@@ -1375,13 +1388,6 @@
               ]
             },
             {
-              "name": "OpenHashTab",
-              "url": "https://github.com/namazso/OpenHashTab",
-              "blurb": "Compare / Display File Hashes",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "TagSpaces",
               "url": "https://www.tagspaces.org/",
               "blurb": "or Tagging for Windows - Tag-Based File Systems",
@@ -2095,6 +2101,13 @@
               "resourceLinks": []
             },
             {
+              "name": "FilePizza",
+              "url": "https://file.pizza/",
+              "blurb": "Online / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "IPFS",
               "url": "https://ipfs.tech/",
               "blurb": "Desktop / Mobile Transfer / Discord",
@@ -2476,7 +2489,7 @@
             {
               "name": "Send.now",
               "url": "https://send.now/",
-              "blurb": "100GB / 15 Days After Last Download",
+              "blurb": "100GB / 30 Days After Last Download (w/ Account)",
               "badges": [],
               "resourceLinks": []
             },
@@ -2770,13 +2783,6 @@
               "resourceLinks": []
             },
             {
-              "name": "⁠Nerushare",
-              "url": "https://nerushare.ovh/",
-              "blurb": "5GB / Forever",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "FilePort",
               "url": "https://fileport.io/",
               "blurb": "5GB / 7 Days",
@@ -2787,6 +2793,13 @@
               "name": "MegaUp",
               "url": "https://megaup.net/",
               "blurb": "5GB / 30 Days",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "uDrop",
+              "url": "https://www.udrop.com/",
+              "blurb": "5GB / Forever",
               "badges": [],
               "resourceLinks": []
             },
@@ -3067,7 +3080,7 @@
             {
               "name": "Google Drive",
               "url": "https://drive.google.com/",
-              "blurb": "15GB / 2 Years / ~$3.33 (5TB Google AI Pro)",
+              "blurb": "5GB (15GB w/ Phone) / 2 Years / ~$3.33 (5TB Google AI Pro)",
               "badges": [
                 "⭐"
               ],

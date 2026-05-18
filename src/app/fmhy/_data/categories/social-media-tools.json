@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "social-media-tools",
+      "namespace": "root",
       "sourceFile": "social-media-tools.md",
       "sections": [
         {
@@ -2413,16 +2414,11 @@
               ]
             },
             {
-              "name": "Ytfzf",
-              "url": "https://github.com/pystardust/ytfzf",
-              "blurb": "or YewTube - Terminal YouTube Players",
+              "name": "YewTube",
+              "url": "https://github.com/mps-youtube/yewtube",
+              "blurb": "Terminal YouTube Players",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "YewTube",
-                  "url": "https://github.com/mps-youtube/yewtube"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "VacuumTube",
@@ -2731,20 +2727,12 @@
             {
               "name": "yt-dlp-gui",
               "url": "https://github.com/kannagi0303/yt-dlp-gui",
-              "blurb": "/ Easy Installer, ⁠Social Saver / GitHub, ytdlp-interface or Vividl - YT-DLP GUIs",
+              "blurb": "/ Easy Installer, ytdlp-interface or Vividl - YT-DLP GUIs",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Easy Installer",
                   "url": "https://github.com/kazukikasama/youtube-dlp-gui-installer"
-                },
-                {
-                  "text": "⁠Social Saver",
-                  "url": "https://socialsaver.site/"
-                },
-                {
-                  "text": "GitHub",
-                  "url": "https://github.com/VishalKaleria/social-saver/"
                 },
                 {
                   "text": "ytdlp-interface",
@@ -2884,11 +2872,15 @@
               "resourceLinks": []
             },
             {
-              "name": "YT Subtitle Downloader",
-              "url": "https://addons.mozilla.org/firefox/addon/youtube-subtitle-downloader/",
-              "blurb": "Download Video Subtitles / GitHub",
+              "name": "⁠ytsubdl",
+              "url": "https://ytsubdl.com/",
+              "blurb": "or YT Subtitle Downloader / GitHub - Extract Subtitles from YouTube Videos",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "YT Subtitle Downloader",
+                  "url": "https://addons.mozilla.org/firefox/addon/youtube-subtitle-downloader/"
+                },
                 {
                   "text": "GitHub",
                   "url": "https://github.com/lockex1987/youtube-subtitle-downloader"
@@ -3045,6 +3037,13 @@
               "name": "Tokin",
               "url": "https://tokin.tv/",
               "blurb": "Find Trending / Hidden Gem Videos",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Unlisted Videos",
+              "url": "https://unlistedvideos.com/",
+              "blurb": "Search / Watch Unlisted YouTube Videos",
               "badges": [],
               "resourceLinks": []
             },
@@ -3294,11 +3293,15 @@
             {
               "name": "TwitchNoSub",
               "url": "https://github.com/besuper/TwitchNoSub",
-              "blurb": ", Sub-Vod or twitchnosub - Watch Sub Only Twitch Videos",
+              "blurb": "/ Note, Sub-Vod or twitchnosub - Watch Sub Only Twitch Videos",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/twitchnosub.md"
+                },
                 {
                   "text": "Sub-Vod",
                   "url": "https://www.sub-vod.fr/"
@@ -4296,16 +4299,11 @@
               ]
             },
             {
-              "name": "otzberg",
-              "url": "https://www.otzberg.net/iguserid/index.php",
-              "blurb": "or Find-User-ID - ID Finder",
+              "name": "Find-User-ID",
+              "url": "https://codeofaninja.com/tools/find-instagram-user-id/",
+              "blurb": "ID Finder",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Find-User-ID",
-                  "url": "https://codeofaninja.com/tools/find-instagram-user-id/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "Image Counter",

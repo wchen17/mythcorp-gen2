@@ -1,0 +1,11 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "wallpapers",
+    "namespace": "other",
+    "sourceFile": "other/wallpapers.md",
+    "title": "Wallpapers",
+    "description": "Elevate yourself to the next level with our beautiful wallpapers.",
+    "html": "<script setup>\nimport WallpaperCard from '../.vitepress/theme/components/WallpaperCard.vue'\n</script><h1>Wallpapers</h1>\n<p>Elevate yourself to the next level with our beautiful wallpapers.</p>\n<p>All of these wallpapers were made by <a href=\"https://github.com/taskylizard\">taskylizard</a>.</p>\n<p><WallpaperCard\n  title=\"Arc\"\n  description=\"A rounded arc design with a pleasing fade.\"\n  mobile=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/arc_mobile.png\"\n  desktop=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/arc_desktop.png\"\n/></p>\n<hr>\n<p><WallpaperCard\n  title=\"Rays\"\n  description=\"A gradient background with a soft, rounded arc.\"\n  mobile=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/rays_mobile.png\"\n  desktop=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/rays_desktop.png\"\n/></p>\n<hr>\n<p><WallpaperCard\n  title=\"Tinted Rays\"\n  description=\"A gradient background with a soft, rounded arc. Tinted white at the bottom corner.\"\n  mobile=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/tinted_rays_mobile.png\"\n  desktop=\"https://cdn.jsdelivr.net/gh/fmhy/design-system/branding/tinted_rays_desktop.png\"\n/></p>\n"
+  }
+}

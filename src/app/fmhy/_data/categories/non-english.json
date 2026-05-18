@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "non-english",
+      "namespace": "root",
       "sourceFile": "non-english.md",
       "sections": [
         {
@@ -108,11 +109,16 @@
             {
               "name": "Anime3rb",
               "url": "https://anime3rb.com/",
-              "blurb": "Anime / Sub / 1080p",
+              "blurb": "Anime / Sub / 1080p / Use Adblock",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Adblock",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/adblock-vpn-privacy/#wiki_.25BA_adblocking"
+                }
+              ]
             },
             {
               "name": "ArabLionz",
@@ -179,7 +185,7 @@
             },
             {
               "name": "witanime",
-              "url": "https://witanime.cyou/",
+              "url": "https://witanime.you/",
               "blurb": "Anime / Sub / 1080p",
               "badges": [],
               "resourceLinks": []
@@ -192,22 +198,8 @@
               "resourceLinks": []
             },
             {
-              "name": "witanime",
-              "url": "https://witanime.red/",
-              "blurb": "Anime",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "Kawaii Anime",
               "url": "https://kawaii-anime.com/",
-              "blurb": "Anime",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "anslayerweb",
-              "url": "https://anslayerweb.com/",
               "blurb": "Anime",
               "badges": [],
               "resourceLinks": []
@@ -643,7 +635,7 @@
             },
             {
               "name": "jadoocinema",
-              "url": "https://www.jadoocinema.com/",
+              "url": "https://jadoocinema.net/",
               "blurb": "Movies / TV / Sub / Dub / 1080p",
               "badges": [],
               "resourceLinks": []
@@ -2177,14 +2169,9 @@
             {
               "name": "uschovna",
               "url": "https://www.uschovna.cz/",
-              "blurb": "or posilej - Czech File Hosts",
+              "blurb": "Czech File Hosts",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "posilej",
-                  "url": "https://posilej.cz/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "FuckCards",
@@ -3439,7 +3426,7 @@
             {
               "name": "S.TO",
               "url": "https://s.to/",
-              "blurb": ", 2 - TV / Anime / Dub / 720p",
+              "blurb": ", 2, 3 - TV / Anime / Dub / 720p",
               "badges": [
                 "⭐"
               ],
@@ -3447,6 +3434,10 @@
                 {
                   "text": "2",
                   "url": "https://serienstream.to/"
+                },
+                {
+                  "text": "3",
+                  "url": "https://serien.domains/"
                 }
               ]
             },
@@ -3579,11 +3570,36 @@
               "resourceLinks": []
             },
             {
+              "name": "Anime-Base",
+              "url": "https://anime-base.net/",
+              "blurb": "Anime / Dub / 1080p / Improvement Extension / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Improvement Extension",
+                  "url": "https://berni-92.github.io/anime-base-autoplayer/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/sj6mDujvMD"
+                }
+              ]
+            },
+            {
               "name": "Aniworld",
               "url": "https://aniworld.to",
-              "blurb": "Anime / Sub / Dub / 720p",
+              "blurb": "Anime / Sub / Dub / 720p / Status / Discord",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Status",
+                  "url": "https://aniworld.domains/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/xTkw6292Uj"
+                }
+              ]
             },
             {
               "name": "⁠TOGGO",
@@ -4197,7 +4213,7 @@
           "entries": [
             {
               "name": "VegaMovies",
-              "url": "https://vegamovies.vodka/",
+              "url": "https://vegamovies.market/",
               "blurb": ", 2 - Movies / TV / Anime / 4K / 1080p / Telegram",
               "badges": [
                 "⭐"
@@ -4224,7 +4240,7 @@
             },
             {
               "name": "HDHub4u",
-              "url": "https://hdhub4u.hn/",
+              "url": "https://hdhub4u.glass",
               "blurb": "Movies / TV / 1080p",
               "badges": [
                 "⭐"
@@ -4512,7 +4528,7 @@
             },
             {
               "name": "ToonStream",
-              "url": "https://toonstream.one/",
+              "url": "https://toonstream.vip/",
               "blurb": "Cartoons / Anime / 1080p / Telegram",
               "badges": [
                 "⭐"
@@ -4801,6 +4817,18 @@
               "blurb": "Anime",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "Kartoons",
+              "url": "https://kartoons.me/",
+              "blurb": "Cartoons / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/5fKH3TYVmE"
+                }
+              ]
             },
             {
               "name": "mxplayer",
@@ -5765,15 +5793,8 @@
               "resourceLinks": []
             },
             {
-              "name": "utako",
-              "url": "https://web.utako.moe/",
-              "blurb": "Live TV",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "iptv-jp",
-              "url": "https://rentry.co/fmhyb64#iptv-playlists",
+              "url": "https://rentry.co/FMHYB64#iptv-playlists",
               "blurb": "Japanese IPTV Resources",
               "badges": [],
               "resourceLinks": []
@@ -6954,7 +6975,7 @@
             {
               "name": "Naikamu",
               "url": "https://github.com/FezMLG/Naikamu",
-              "blurb": ") - Anime Streaming App / Android, iOS",
+              "blurb": "Anime Streaming App / Android, iOS",
               "badges": [],
               "resourceLinks": []
             },
@@ -8263,6 +8284,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Riper.AM",
+              "url": "https://riper.online/",
+              "blurb": "Video / Audio / Books",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Korsars",
               "url": "http://korsars.pro/",
               "blurb": "Video / Audio / Books",
@@ -8389,7 +8417,7 @@
             },
             {
               "name": "yummyani",
-              "url": "https://site.yummyani.me/",
+              "url": "https://yummyani.me/",
               "blurb": "Anime / Sub / 1080p",
               "badges": [
                 "⭐"
@@ -10009,7 +10037,7 @@
             },
             {
               "name": "Listas-IPTV",
-              "url": "https://rentry.co/fmhyb64#iptv-playlists",
+              "url": "https://rentry.co/FMHYB64#iptv-playlists",
               "blurb": "Spanish IPTV Resources",
               "badges": [],
               "resourceLinks": []
@@ -10814,7 +10842,7 @@
               "resourceLinks": [
                 {
                   "text": "2",
-                  "url": "https://dizipalx61.com/"
+                  "url": "https://dizipal1552.com/"
                 }
               ]
             },
@@ -11418,15 +11446,8 @@
               "resourceLinks": []
             },
             {
-              "name": "onflix",
-              "url": "https://onflix.me/",
-              "blurb": "Movies / TV / Anime",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "rophim",
-              "url": "https://rophim.gg/",
+              "url": "https://rophim1.vip/",
               "blurb": "Movies / TV / Anime",
               "badges": [],
               "resourceLinks": []
@@ -11465,6 +11486,13 @@
               "name": "TokuVN",
               "url": "https://tokuvn.com/",
               "blurb": "Tokusatsu / Sub / 480p",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "vnepg",
+              "url": "https://rentry.co/FMHYB64#iptv-playlists",
+              "blurb": "Vietnamese IPTV Resources",
               "badges": [],
               "resourceLinks": []
             },
@@ -11622,13 +11650,6 @@
             {
               "name": "GacSach",
               "url": "https://gacsach.org/",
-              "blurb": "Books",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "DocSach24",
-              "url": "https://docsach24.co/",
               "blurb": "Books",
               "badges": [],
               "resourceLinks": []
@@ -12056,7 +12077,7 @@
             },
             {
               "name": "iptv-ch",
-              "url": "https://rentry.co/fmhyb64#iptv-playlists",
+              "url": "https://rentry.co/FMHYB64#iptv-playlists",
               "blurb": "Swiss / IPTV Resources",
               "badges": [],
               "resourceLinks": []

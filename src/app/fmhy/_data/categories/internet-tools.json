@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "internet-tools",
+      "namespace": "root",
       "sourceFile": "internet-tools.md",
       "sections": [
         {
@@ -11,7 +12,7 @@
             {
               "name": "fast",
               "url": "https://fast.com/",
-              "blurb": "/ Blur Info / CLI, **Cloudflare Speed Test** / CLI, **OpenSpeedTest** / GitHub or **LibreSpeed** - Speed Tests",
+              "blurb": "/ Blur Info / CLI, **Cloudflare Speed Test** / CLI, **OpenSpeedTest** / GitHub or **LibreSpeed** / GitHub - Speed Tests",
               "badges": [
                 "⭐"
               ],
@@ -43,6 +44,10 @@
                 {
                   "text": "LibreSpeed",
                   "url": "https://librespeed.org/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/librespeed/speedtest"
                 }
               ]
             },
@@ -248,6 +253,36 @@
               "resourceLinks": []
             },
             {
+              "name": "KeePassXC",
+              "url": "https://keepassxc.org/",
+              "blurb": "or **KeePass** / Forks / Plugins / Resources / Read-Only - Local Manager",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "KeePass",
+                  "url": "https://keepass.info/"
+                },
+                {
+                  "text": "Forks",
+                  "url": "https://keepass.info/download.html"
+                },
+                {
+                  "text": "Plugins",
+                  "url": "https://keepass.info/plugins.html"
+                },
+                {
+                  "text": "Resources",
+                  "url": "https://github.com/lgg/awesome-keepass"
+                },
+                {
+                  "text": "Read-Only",
+                  "url": "https://tusk.subdavis.com/"
+                }
+              ]
+            },
+            {
               "name": "Bitwarden",
               "url": "https://bitwarden.com/",
               "blurb": "/ Alt Client / X / Subreddit / GitHub",
@@ -270,32 +305,6 @@
                 {
                   "text": "GitHub",
                   "url": "https://github.com/bitwarden"
-                }
-              ]
-            },
-            {
-              "name": "KeePass",
-              "url": "https://keepass.info/",
-              "blurb": "/ Forks / Plugins / Read-Only or **KeePassXC**",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Forks",
-                  "url": "https://keepass.info/download.html"
-                },
-                {
-                  "text": "Plugins",
-                  "url": "https://keepass.info/plugins.html"
-                },
-                {
-                  "text": "Read-Only",
-                  "url": "https://tusk.subdavis.com/"
-                },
-                {
-                  "text": "KeePassXC",
-                  "url": "https://keepassxc.org/"
                 }
               ]
             },
@@ -420,13 +429,6 @@
                   "url": "https://github.com/everywall/ladder"
                 }
               ]
-            },
-            {
-              "name": "PaywallBuster",
-              "url": "https://paywallbuster.com/",
-              "blurb": "Paywall Bypass Tool",
-              "badges": [],
-              "resourceLinks": []
             },
             {
               "name": "ByeByePaywall",
@@ -1356,6 +1358,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠RSS Lookup",
+              "url": "https://www.rsslookup.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "RuSShdown",
               "url": "https://chaiaeran.github.io/RuSShdown/",
               "blurb": "",
@@ -1413,7 +1422,7 @@
             {
               "name": "SimilarSiteSearch",
               "url": "https://www.similarsitesearch.com/",
-              "blurb": ", SimilarWeb, SitesLikes, TopSimilarSites, SimilarSites, OpenDirectory or SiteLike.org - Similar Site Searches",
+              "blurb": ", SimilarWeb, SitesLikes, TopSimilarSites, SimilarSites or OpenDirectory - Similar Site Searches",
               "badges": [],
               "resourceLinks": [
                 {
@@ -1435,10 +1444,6 @@
                 {
                   "text": "OpenDirectory",
                   "url": "https://odir.us/"
-                },
-                {
-                  "text": "SiteLike.org",
-                  "url": "https://www.sitelike.org/"
                 }
               ]
             },
@@ -2123,7 +2128,7 @@
             {
               "name": "Virgil Game Search",
               "url": "https://virgil.samidy.com/Games/",
-              "blurb": "/ GitHub, Rezi Search, ⁠HizSearch, Game Download CSE or r/PiratedGames CSE - Multi-Site Search Engines",
+              "blurb": "/ GitHub, ⁠HizSearch, Game Download CSE or r/PiratedGames CSE - Multi-Site Search Engines",
               "badges": [
                 "⭐"
               ],
@@ -2131,10 +2136,6 @@
                 {
                   "text": "GitHub",
                   "url": "https://github.com/SamidyFR/Virgil"
-                },
-                {
-                  "text": "Rezi Search",
-                  "url": "https://rezi.one/"
                 },
                 {
                   "text": "⁠HizSearch",

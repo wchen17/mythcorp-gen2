@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "gamingpiracyguide",
+      "slug": "gaming",
+      "namespace": "root",
       "sourceFile": "gaming.md",
       "sections": [
         {
@@ -2175,6 +2176,18 @@
               "resourceLinks": []
             },
             {
+              "name": "CloudRetro",
+              "url": "https://cloudretro.io/",
+              "blurb": "Cloud Gaming Service for Emulators / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/giongto35/cloud-game"
+                }
+              ]
+            },
+            {
               "name": "Two-Torial",
               "url": "https://two-torial.maimaidxprism.plus/",
               "blurb": "Arcade Game Emulation Guides",
@@ -3041,20 +3054,15 @@
               "resourceLinks": []
             },
             {
-              "name": "ROMSim",
-              "url": "https://romsim.com/",
-              "blurb": "ROMs / Switch / Discord",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Discord",
-                  "url": "https://discord.gg/Zgdhq7xDcd"
-                }
-              ]
-            },
-            {
               "name": "ROMSLAB",
               "url": "https://romslab.com/",
+              "blurb": "ROMs / Switch",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NXbrew",
+              "url": "https://nxbrew.net/",
               "blurb": "ROMs / Switch",
               "badges": [],
               "resourceLinks": []
@@ -3563,6 +3571,29 @@
               "resourceLinks": []
             },
             {
+              "name": "PlayGames",
+              "url": "https://playgames.onl/",
+              "blurb": "Retro Consoles",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Retro Online",
+              "url": "https://retroonline.net/",
+              "blurb": "Retro Consoles / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/5CBvdysSnZ"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://t.me/RetroOnlineNet"
+                }
+              ]
+            },
+            {
               "name": "Aurora",
               "url": "https://skitty.xyz/aurora/",
               "blurb": "Retro Consoles / Discord",
@@ -3872,6 +3903,18 @@
               "blurb": "Virtual Escape Rooms",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "⁠Murdoku",
+              "url": "https://murdoku.com/play/",
+              "blurb": "Weekly Murder Mystery Puzzles / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/frYbdPpkSH"
+                }
+              ]
             },
             {
               "name": "Murdle",
@@ -4472,9 +4515,14 @@
             {
               "name": "Squaredle",
               "url": "https://squaredle.app/",
-              "blurb": "Daily Word Puzzle",
+              "blurb": "Daily Word Puzzle / Discord",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/aredl"
+                }
+              ]
             },
             {
               "name": "⁠Glyph",
@@ -4783,6 +4831,13 @@
               ]
             },
             {
+              "name": "⁠Mahjong Solitaire",
+              "url": "https://mahjong-solitaire.app/",
+              "blurb": "Mahjong Solitaire",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "lishogi.org",
               "url": "https://lishogi.org/",
               "blurb": "Shogi / Discord / GitHub",
@@ -5089,6 +5144,18 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Cardlike",
+              "url": "https://cardlike.io/",
+              "blurb": ", 2 - Balatro-Style Game",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://channa.itch.io/cardlike"
+                }
+              ]
+            },
+            {
               "name": "OCTGN",
               "url": "https://www.octgn.net/",
               "blurb": "Virtual Multiplayer Card Games / Tabletop App / Discord / GitHub",
@@ -5155,6 +5222,18 @@
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/2sev8HA9sd"
+                }
+              ]
+            },
+            {
+              "name": "TCG ONE",
+              "url": "https://tcgone.net/",
+              "blurb": "Online Pokémon Card Game / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/MTBGxVE"
                 }
               ]
             },
@@ -5825,6 +5904,15 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠GamesFrog",
+              "url": "https://gamesfrog.com/",
+              "blurb": "Browser Game Aggregator",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "Flashpoint",
               "url": "https://flashpointarchive.org/",
               "blurb": "Flash Game Archive App / Play Online / Discord",
@@ -5894,13 +5982,6 @@
               "resourceLinks": []
             },
             {
-              "name": "⁠Gamesfrog",
-              "url": "https://gamesfrog.com/",
-              "blurb": "Browser Game Aggregator",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "Miniplay",
               "url": "https://www.miniplay.com/",
               "blurb": "Browser Game Aggregator",
@@ -5910,6 +5991,13 @@
             {
               "name": "Poki",
               "url": "https://poki.com/",
+              "blurb": "Browser Game Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Quenq",
+              "url": "https://quenq.com/arcade/",
               "blurb": "Browser Game Aggregator",
               "badges": [],
               "resourceLinks": []
@@ -6143,6 +6231,15 @@
               "resourceLinks": []
             },
             {
+              "name": "Armor Games",
+              "url": "https://armorgames.com/",
+              "blurb": "Indie Games / Official Publisher",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "Nitrome",
               "url": "https://www.nitrome.com/",
               "blurb": "Indie Games / In-House Dev Team",
@@ -6164,15 +6261,6 @@
                   "url": "https://discord.gg/qDaYeXPsRK"
                 }
               ]
-            },
-            {
-              "name": "Armor Games",
-              "url": "https://armorgames.com/",
-              "blurb": "Indie Games / Official Publisher",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": []
             },
             {
               "name": "Js13kGames",
@@ -6602,9 +6690,21 @@
             {
               "name": "⁠Splatoon.io",
               "url": "https://splatoon.io/",
-              "blurb": "Multiplayer ⁠Splatoon Style Game",
+              "blurb": "⁠Splatoon Style Game",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "⁠RocketGoal",
+              "url": "https://rocketgoal.io/",
+              "blurb": "Rocket-League Style Game / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/MjHEyuhMuG"
+                }
+              ]
             },
             {
               "name": "Slither.io",
@@ -7025,6 +7125,13 @@
             {
               "name": "LolShot",
               "url": "https://lolshot.io/",
+              "blurb": "PvP FPS",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Kirka.io",
+              "url": "https://kirka.io/",
               "blurb": "PvP FPS",
               "badges": [],
               "resourceLinks": []
@@ -7505,6 +7612,48 @@
           "heading": "▷ Strategy",
           "entries": [
             {
+              "name": "OpenFront",
+              "url": "https://openfront.io/",
+              "blurb": "/ Wiki / Subreddit / Discord / GitHub, ⁠LANDS.io / Discord or Territorial.io / Discord - Conquest / War Style Games",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Wiki",
+                  "url": "https://openfront.wiki/"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/OpenFront/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/k22YrnAzGp"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/openfrontio/openfrontio"
+                },
+                {
+                  "text": "⁠LANDS.io",
+                  "url": "https://lands.io/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/landsio"
+                },
+                {
+                  "text": "Territorial.io",
+                  "url": "https://territorial.io/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pthqvpTXmh"
+                }
+              ]
+            },
+            {
               "name": "Super Auto Pets",
               "url": "https://teamwood.itch.io/super-auto-pets",
               "blurb": "Pet Battle Game / Resources",
@@ -7545,24 +7694,8 @@
               "resourceLinks": []
             },
             {
-              "name": "OpenFront",
-              "url": "https://openfront.io/",
-              "blurb": "/ Discord or Territorial - Conquest / War Style Games",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Discord",
-                  "url": "https://discord.gg/k22YrnAzGp"
-                },
-                {
-                  "text": "Territorial",
-                  "url": "https://territorial.io/"
-                }
-              ]
-            },
-            {
-              "name": "Warzone",
-              "url": "https://www.warzone.com/",
+              "name": "War.app",
+              "url": "https://war.app/",
               "blurb": "RISK Clone",
               "badges": [],
               "resourceLinks": []
@@ -7619,6 +7752,26 @@
                 {
                   "text": "2",
                   "url": "https://orteil.dashnet.org/experiments/cookie/"
+                }
+              ]
+            },
+            {
+              "name": "⁠PokéClicker",
+              "url": "https://www.pokeclicker.com",
+              "blurb": "Incremental Pokémon Game / Wiki / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Wiki",
+                  "url": "https://wiki.pokeclicker.com"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/a6DFe4p"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/pokeclicker/pokeclicker"
                 }
               ]
             },
@@ -7974,7 +8127,7 @@
             },
             {
               "name": "⁠Toon Tone",
-              "url": "https://toon-tone.vercel.app/",
+              "url": "https://toontone.games/",
               "blurb": "Cartoon Character Color Tone Guessing Game",
               "badges": [],
               "resourceLinks": []
@@ -8103,6 +8256,13 @@
               "name": "English Sandwich",
               "url": "https://englishsandwich.github.io/",
               "blurb": "Guess Where Dishes are From",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GunGuesser",
+              "url": "https://gunguesser.com/",
+              "blurb": "Guess Where Historical Guns are From",
               "badges": [],
               "resourceLinks": []
             },
@@ -8417,6 +8577,150 @@
               "blurb": "Tetris Field Editor",
               "badges": [],
               "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Pokemon",
+          "entries": [
+            {
+              "name": "Pokémon Resources / Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/game-tools#wiki_.25B7_pokemon_tools",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "PokéRogue",
+              "url": "https://pokerogue.net/",
+              "blurb": "Pokémon Roguelike / Wiki / Mobile / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Wiki",
+                  "url": "https://wiki.pokerogue.net/start"
+                },
+                {
+                  "text": "Mobile",
+                  "url": "https://github.com/Admiral-Billy/Pokerogue-App"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://reddit.com/r/pokerogue/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/uWpTfdKG49"
+                }
+              ]
+            },
+            {
+              "name": "PokeMMO",
+              "url": "https://pokemmo.com/",
+              "blurb": "Pokémon MMO",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pokémon Showdown",
+              "url": "https://pokemonshowdown.com/",
+              "blurb": "Online Pokémon Battles",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "DelugeRPG",
+              "url": "https://www.delugerpg.com/",
+              "blurb": "Pokémon MMO",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pokemon Blaze Online",
+              "url": "https://pokemonblazeonline.com/",
+              "blurb": "Pokémon MMO / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/b3ZnXuf5fk"
+                }
+              ]
+            },
+            {
+              "name": "Pokémon Revolution Online",
+              "url": "https://pokemonrevolution.net/",
+              "blurb": "Pokémon MMO",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠PokéClicker",
+              "url": "https://www.pokeclicker.com",
+              "blurb": "Incremental Pokémon Game / Wiki / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Wiki",
+                  "url": "https://wiki.pokeclicker.com"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/a6DFe4p"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/pokeclicker/pokeclicker"
+                }
+              ]
+            },
+            {
+              "name": "⁠Pokelike",
+              "url": "https://pokelike.xyz/",
+              "blurb": "Pokémon Roguelike / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/YsakfWStYq"
+                }
+              ]
+            },
+            {
+              "name": "Pokemon Auto Chess",
+              "url": "https://pokemon-auto-chess.com/",
+              "blurb": "Pokemon Style Teamfight Tactics / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/6JMS7tr"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/keldaanCommunity/pokemonAutoChess"
+                }
+              ]
+            },
+            {
+              "name": "TCG ONE",
+              "url": "https://tcgone.net/",
+              "blurb": "Online Pokémon Card Game / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/MTBGxVE"
+                }
+              ]
             }
           ]
         },

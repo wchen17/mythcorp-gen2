@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "text-tools",
+      "namespace": "root",
       "sourceFile": "text-tools.md",
       "sections": [
         {
@@ -792,6 +793,13 @@
               ]
             },
             {
+              "name": "SearchDecode",
+              "url": "https://github.com/bewf/SearchDecode",
+              "blurb": "⁠Base64 Search Decoder",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "quipqiup",
               "url": "https://www.quipqiup.com/",
               "blurb": "or dCode - Cryptogram Solvers",
@@ -1019,6 +1027,18 @@
                 "⭐"
               ],
               "resourceLinks": []
+            },
+            {
+              "name": "Unicode Explorer",
+              "url": "https://unicode-explorer.com/",
+              "blurb": "or Compart - Unicode Character Identification",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Compart",
+                  "url": "https://www.compart.com/en/unicode"
+                }
+              ]
             },
             {
               "name": "CopyChar",
@@ -2954,6 +2974,15 @@
               "resourceLinks": []
             },
             {
+              "name": "Calendars / Events",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/misc#wiki_.25B7_calendars_.2F_events",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "Goblin.tools",
               "url": "https://goblin.tools/ToDo",
               "blurb": "Automatic Task Breakdown",
@@ -4164,18 +4193,6 @@
                 {
                   "text": "WhatFont",
                   "url": "https://whatfonttool.com/"
-                }
-              ]
-            },
-            {
-              "name": "Unicode Explorer",
-              "url": "https://unicode-explorer.com/",
-              "blurb": "or Compart - Unicode Character Identification",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Compart",
-                  "url": "https://www.compart.com/en/unicode"
                 }
               ]
             },

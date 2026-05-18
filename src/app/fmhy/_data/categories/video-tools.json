@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "video-tools",
+      "namespace": "root",
       "sourceFile": "video-tools.md",
       "sections": [
         {
@@ -144,7 +145,7 @@
             {
               "name": "Send.now",
               "url": "https://send.now/",
-              "blurb": "Unlimited / 30 Days",
+              "blurb": "Unlimited / 30 Days After Last View (w/ Account)",
               "badges": [
                 "⭐"
               ],
@@ -336,6 +337,34 @@
                 {
                   "text": "GitHub",
                   "url": "https://github.com/obsproject/obs-studio"
+                }
+              ]
+            },
+            {
+              "name": "SteelSeries Moments",
+              "url": "https://steelseries.com/gg/moments",
+              "blurb": ", Medal / Watermark Remover, Segra / GitHub or RePlays - Game Recording Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Medal",
+                  "url": "https://medal.tv/"
+                },
+                {
+                  "text": "Watermark Remover",
+                  "url": "https://rentry.co/FMHYB64#medel"
+                },
+                {
+                  "text": "Segra",
+                  "url": "https://segra.tv/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Segergren/Segra"
+                },
+                {
+                  "text": "RePlays",
+                  "url": "https://github.com/lulzsun/RePlays"
                 }
               ]
             },
@@ -1336,15 +1365,11 @@
             {
               "name": "FastStream",
               "url": "https://faststream.online/",
-              "blurb": "Fragmentation Streaming Extension / Android / Firefox Note / GitHub",
+              "blurb": "Fragmentation Streaming Extension / Firefox Note / GitHub",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
-                {
-                  "text": "Android",
-                  "url": "https://github.com/WyvrnRes/FastStream-for-Mobile/"
-                },
                 {
                   "text": "Firefox Note",
                   "url": "https://github.com/Andrews54757/FastStream?tab=readme-ov-file#notice-for-firefox-extension-store-users"
@@ -2767,6 +2792,18 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠YT-DLP Online",
+              "url": "https://ytdlp.online/",
+              "blurb": ", 2 - Multi-Site / Online",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://ytdlp.wiki/"
+                }
+              ]
+            },
+            {
               "name": "⁠imov.life",
               "url": "https://imov.life/",
               "blurb": "Multi-Site / Online",
@@ -2978,7 +3015,7 @@
             {
               "name": "DaVinci Resolve",
               "url": "https://www.blackmagicdesign.com/products/davinciresolve",
-              "blurb": "Video Editor / Requires Sign-Up (Fake Info Works) / Guides / Subtitle Generator / Green Screen Extract / Discord",
+              "blurb": "Video Editor / Requires Sign-Up (Fake Info Works) / Guides / Subtitle Generator / Green Screen Extract / Windows, Mac, Linux / Discord",
               "badges": [
                 "⭐"
               ],
@@ -3004,7 +3041,7 @@
             {
               "name": "Kdenlive",
               "url": "https://kdenlive.org/en/",
-              "blurb": "Video Editor / GitHub",
+              "blurb": "Video Editor / Windows, Mac, Linux / GitHub",
               "badges": [
                 "⭐"
               ],
@@ -3018,7 +3055,7 @@
             {
               "name": "LosslessCut",
               "url": "https://github.com/mifi/lossless-cut",
-              "blurb": "Single Video Editor",
+              "blurb": "Single Video Editor / Windows, Mac, Linux",
               "badges": [
                 "⭐"
               ],
@@ -3027,7 +3064,7 @@
             {
               "name": "Shotcut",
               "url": "https://shotcut.org/",
-              "blurb": "Video Editor / GitHub",
+              "blurb": "Video Editor / Windows, Mac, Linux / GitHub",
               "badges": [
                 "⭐"
               ],
@@ -3042,6 +3079,20 @@
               "name": "Satvrn",
               "url": "https://rentry.co/FMHYB64#satvrn",
               "blurb": "Video Editors / Plugins",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenShot",
+              "url": "https://www.openshot.org/",
+              "blurb": "Video Editor / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "VSDC",
+              "url": "https://www.videosoftdev.com/",
+              "blurb": "Video Editor / Windows, Mac",
               "badges": [],
               "resourceLinks": []
             },
@@ -3062,26 +3113,28 @@
             {
               "name": "Webm Generator",
               "url": "https://github.com/dfaker/WebmGenerator",
-              "blurb": "Webm Editor",
+              "blurb": "Webm Editor / Windows",
               "badges": [],
               "resourceLinks": []
             },
             {
               "name": "avisynth",
               "url": "http://avisynth.nl/index.php/Main_Page",
-              "blurb": "or VapourSynth - Video Processors",
+              "blurb": "Video Processor / Windows, Mac, Linux",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "VapourSynth",
-                  "url": "https://www.vapoursynth.com/"
-                }
-              ]
+              "resourceLinks": []
+            },
+            {
+              "name": "VapourSynth",
+              "url": "https://www.vapoursynth.com/",
+              "blurb": "Video Processor / Windows, Linux",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Source Filmmaker",
               "url": "https://store.steampowered.com/app/1840/Source_Filmmaker/",
-              "blurb": "Steam Movie-Making Tool / Resources",
+              "blurb": "Steam Movie-Making Tool / Resources / Windows",
               "badges": [],
               "resourceLinks": [
                 {
@@ -3093,112 +3146,37 @@
             {
               "name": "OpenRV",
               "url": "https://github.com/AcademySoftwareFoundation/OpenRV",
-              "blurb": "Image / Sequence Playback Review",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Remotion",
-              "url": "https://www.remotion.dev/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Olive",
-              "url": "https://www.olivevideoeditor.org/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "OpenShot",
-              "url": "https://www.openshot.org/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Lightworks",
-              "url": "https://lwks.com/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "VSDC",
-              "url": "https://www.videosoftdev.com/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Pitivi",
-              "url": "https://www.pitivi.org/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Visla",
-              "url": "https://www.visla.us/",
-              "blurb": "Video Editor",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Windows Movie Maker",
-              "url": "https://www.majorgeeks.com/files/details/windows_movie_maker.html",
-              "blurb": ", 2, 3 - Video Editor",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "2",
-                  "url": "https://archive.org/details/mm26enu_202002"
-                },
-                {
-                  "text": "3",
-                  "url": "https://archive.org/details/MM2.1And2.6_201903"
-                }
-              ]
-            },
-            {
-              "name": "Avidemux",
-              "url": "http://fixounet.free.fr/avidemux/",
-              "blurb": "Cut / Filter / Encode",
+              "blurb": "Image / Sequence Playback Review / Windows, Mac, Linux",
               "badges": [],
               "resourceLinks": []
             },
             {
               "name": "suckless-cut",
               "url": "https://github.com/couleur-tweak-tips/suckless-cut",
-              "blurb": "or vidcutter - Cut / Trim Videos",
+              "blurb": "Cut & Trim Videos / Windows, Mac, Linux",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "vidcutter",
-                  "url": "https://github.com/ozmartian/vidcutter"
-                }
-              ]
+              "resourceLinks": []
             },
             {
-              "name": "Opus",
-              "url": "https://www.opus.pro/",
-              "blurb": "Clip Creator",
+              "name": "vidcutter",
+              "url": "https://github.com/ozmartian/vidcutter",
+              "blurb": "Cut & Trim Videos / Script",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FreeMoCap",
+              "url": "https://freemocap.org/",
+              "blurb": "Motion Tracking / Windows, Mac, Linux",
               "badges": [],
               "resourceLinks": []
             },
             {
               "name": "Kurku",
               "url": "https://app.kurku.tech/",
-              "blurb": "or FreeMoCap - Motion Tracking Tools",
+              "blurb": "Motion Tracking / Web",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "FreeMoCap",
-                  "url": "https://freemocap.org/"
-                }
-              ]
+              "resourceLinks": []
             }
           ]
         },
@@ -3403,7 +3381,7 @@
             {
               "name": "Video Enhance AI",
               "url": "https://lrepacks.net/repaki-programm-dlya-grafiki/",
-              "blurb": "Video Enhancement Tool / Search \"Topaz\" on LR",
+              "blurb": "Video Enhancement Tool / Search \"Topaz\" or \"UniFab\" on LR",
               "badges": [],
               "resourceLinks": []
             },
@@ -3925,9 +3903,13 @@
             {
               "name": "LibreSprite",
               "url": "https://libresprite.github.io/",
-              "blurb": ", GraphicsGale, Poxil / GitHub, JPixel, Aseprite / Guide, SpriteSheep / Discord, KPix or SpookyGhost - Pixel Art Animation Tools",
+              "blurb": "/ GitHub, GraphicsGale, Poxil / GitHub, JPixel, Aseprite / Guide, SpriteSheep / Discord, KPix or SpookyGhost - Pixel Art Animation Tools",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/LibreSprite/LibreSprite"
+                },
                 {
                   "text": "GraphicsGale",
                   "url": "https://graphicsgale.com/us/"

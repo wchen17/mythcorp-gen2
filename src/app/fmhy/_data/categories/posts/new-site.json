@@ -1,0 +1,11 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "new-site",
+    "namespace": "posts",
+    "sourceFile": "posts/new-site.md",
+    "title": "New Website",
+    "description": "Our brand new site (which you're on currently)",
+    "html": "<Post authors=\"taskylizard\" /><h3>New URL: <a href=\"https://fmhy.net/\">https://fmhy.net/</a></h3>\n<p>Hey everyone, just wanted to let you all know that we&#39;re finally done with the\nnew website, and are officially launching it today! I know a lot of different\nversions of FMHY have been made over the years, but we&#39;ve put a ton of effort\ninto this one, and honestly feel like its the best version to date.</p>\n<p>We really hope you enjoy it, and if you have any issues or suggestions feel free\nto leave them in the comments here, or by using the new feedback system built\ninto the site.</p>\n<hr>\n<h3>Site Features</h3>\n<ul>\n<li>Star Only Toggle</li>\n<li>Dark / Light Modes</li>\n<li>Feedback System</li>\n<li>Improved UI + Site Speed</li>\n<li>Improved Search Functionality</li>\n<li>Automatic Updates</li>\n<li>Table of Content Sidebars</li>\n<li>Storage URLs Direct to Site Rather than Reddit</li>\n<li>NSFW Section</li>\n</ul>\n"
+  }
+}

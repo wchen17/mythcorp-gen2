@@ -1,0 +1,11 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "search",
+    "namespace": "posts",
+    "sourceFile": "posts/search.md",
+    "title": "How-to Search FMHY",
+    "description": "Various tools to help you query FMHY.",
+    "html": "<Post authors=\"nbats\" /><h3><a href=\"https://fmhy-search.streamlit.app/\">Streamlit Search</a></h3>\n<p>Search engine hosted on Streamlit</p>\n<hr>\n<h3><a href=\"https://fmhy.net/\">FMHY.net Search</a></h3>\n<p>Search engine hosted on FMHY.net</p>\n<hr>\n<h3><a href=\"https://github.com/search?q=repo%3Afmhy%2FFMHY+&type=wikis\">GitHub Search</a></h3>\n<p>GitHub page search engine</p>\n<hr>\n<h3><a href=\"https://github.com/fmhy/bookmarks\">Bookmark HTML</a></h3>\n<p>Turn FMHY into browser bookmarks</p>\n<hr>\n<h3><a href=\"https://github.com/fmhy/bookmarks#goggle\">FMHY Goggles</a></h3>\n<p>Search FMHY using Brave Goggles</p>\n<hr>\n<h3><a href=\"https://github.com/Rust1667/a-FMHY-search-engine\">Python Script</a></h3>\n<p>Search the Markdown via a Python script</p>\n<hr>\n<h3><a href=\"https://api.fmhy.net/single-page\">Raw Markdown</a></h3>\n<p>Search the Markdown manually (Ctrl+F)</p>\n<hr>\n<h3><a href=\"https://github.com/fmhy/dupe-checker\">Dupe Checker</a></h3>\n<p>FMHY Dupe Check Tool</p>\n<hr>\n<h3>Search Page Backups</h3>\n<p><a href=\"https://fmhy.net/posts/search\">FMHY.net</a> / <a href=\"https://redd.it/105xraz\">Reddit</a></p>\n"
+  }
+}

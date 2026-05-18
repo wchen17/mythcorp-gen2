@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "devtools",
+      "slug": "developer-tools",
+      "namespace": "root",
       "sourceFile": "developer-tools.md",
       "sections": [
         {
@@ -179,13 +180,6 @@
               "name": "up-for-grabs",
               "url": "https://up-for-grabs.net/",
               "blurb": "Curated List of Tasks for New Contributes",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "dnSpyEx",
-              "url": "https://github.com/dnSpyEx/dnSpy",
-              "blurb": ".NET Debugger and Assembly Editor",
               "badges": [],
               "resourceLinks": []
             },
@@ -1596,7 +1590,7 @@
             {
               "name": "Shizuku",
               "url": "https://shizuku.rikka.app/",
-              "blurb": "/ Tools / GitHub, Shizuku Fork or Dhizuku - Let Apps Use System API (Android)",
+              "blurb": "/ Tools / GitHub, **Shizuku Fork** or Dhizuku - Let Apps Use System API (Android)",
               "badges": [
                 "⭐"
               ],
@@ -1727,7 +1721,7 @@
             {
               "name": "Mockable",
               "url": "https://www.mockable.io/",
-              "blurb": ", {JSON} Placeholder, jsoning or MockLab - Mock APIs",
+              "blurb": ", {JSON} Placeholder, jsoning or WireMmock Cloud - Mock APIs",
               "badges": [],
               "resourceLinks": [
                 {
@@ -1739,7 +1733,7 @@
                   "url": "https://jsoning.com/api/"
                 },
                 {
-                  "text": "MockLab",
+                  "text": "WireMmock Cloud",
                   "url": "https://www.wiremock.io/"
                 }
               ]
@@ -1818,13 +1812,6 @@
                   "url": "https://github.com/codebam/cf-workers-telegram-bot"
                 }
               ]
-            },
-            {
-              "name": "Perspective API",
-              "url": "https://www.perspectiveapi.com/",
-              "blurb": "Toxicity Reduction API",
-              "badges": [],
-              "resourceLinks": []
             },
             {
               "name": "Plaid",
@@ -1986,6 +1973,22 @@
               "blurb": "Merge Minecraft Mod Loaders",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "PyGames",
+              "url": "https://www.pygame.org/",
+              "blurb": "Python Game Dev Resources / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/uEKeRSqr2Y"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/pygame/pygame"
+                }
+              ]
             }
           ]
         },
@@ -2781,13 +2784,6 @@
               "resourceLinks": []
             },
             {
-              "name": "Arduino",
-              "url": "https://cloud.arduino.cc/",
-              "blurb": "Cloud IDE for Arduino",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "Shell Cloud",
               "url": "https://shell.cloud.google.com/",
               "blurb": "Google Cloud Shell Environment",
@@ -3506,6 +3502,13 @@
               ]
             },
             {
+              "name": "VSCode Web",
+              "url": "https://code.visualstudio.com/docs/setup/vscode-web",
+              "blurb": "VSCode Web Version / Guide",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "github-vscode-icons",
               "url": "https://github.com/dderevjanik/github-vscode-icons",
               "blurb": "VSCode Icons",
@@ -3605,6 +3608,28 @@
           "heading": "▷ Coding Agents / Extensions",
           "entries": [
             {
+              "name": "OpenCode",
+              "url": "https://opencode.ai/",
+              "blurb": "Coding AI / GPT-5 nano / Minimax-M2.5 / Resources / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Resources",
+                  "url": "https://github.com/awesome-opencode/awesome-opencode"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/opencode"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/anomalyco/opencode"
+                }
+              ]
+            },
+            {
               "name": "Aider",
               "url": "https://aider.chat/",
               "blurb": "Terminal Coding AI / Discord / GitHub",
@@ -3619,26 +3644,6 @@
                 {
                   "text": "GitHub",
                   "url": "https://github.com/Aider-AI/aider"
-                }
-              ]
-            },
-            {
-              "name": "OpenCode",
-              "url": "https://opencode.ai/",
-              "blurb": "Coding AI / GPT-5 nano / Minimax-M2.5 / Resources / Discord / GitHub",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Resources",
-                  "url": "https://github.com/awesome-opencode/awesome-opencode"
-                },
-                {
-                  "text": "Discord",
-                  "url": "https://discord.com/invite/opencode"
-                },
-                {
-                  "text": "GitHub",
-                  "url": "https://github.com/anomalyco/opencode"
                 }
               ]
             },
@@ -3841,7 +3846,7 @@
             {
               "name": "Arena",
               "url": "https://arena.ai/code",
-              "blurb": "Multiple Coding AI / Multiple Models / Sign-Up (Direct mode) / Reset Limits w/ Temp Mail / OpenAI Bridge / X / Discord",
+              "blurb": "Multiple Coding AI / Multiple Models / Sign-Up (Direct mode) / OpenAI Bridge / X / Discord",
               "badges": [],
               "resourceLinks": [
                 {
@@ -4046,20 +4051,6 @@
         {
           "heading": "▷ Developer Utilities",
           "entries": [
-            {
-              "name": "Awesome AI Agents",
-              "url": "https://github.com/e2b-dev/awesome-ai-agents",
-              "blurb": "Coding / Programming AIs / Discord",
-              "badges": [
-                "🌐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Discord",
-                  "url": "https://discord.gg/U7KEcGErtQ"
-                }
-              ]
-            },
             {
               "name": "Free LLM API Resources",
               "url": "https://github.com/cheahjs/free-llm-api-resources",
@@ -5065,13 +5056,6 @@
               "resourceLinks": []
             },
             {
-              "name": "Codux",
-              "url": "https://www.codux.com/",
-              "blurb": "Visual IDE for React",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "Puck",
               "url": "https://puckeditor.com/",
               "blurb": "Create Simplified Visual Editors for Non-Devs / GitHub",
@@ -5082,6 +5066,13 @@
                   "url": "https://github.com/puckeditor/puck/"
                 }
               ]
+            },
+            {
+              "name": "Remotion",
+              "url": "https://www.remotion.dev/",
+              "blurb": "React Video Editor",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "React SVG",
@@ -6981,7 +6972,7 @@
             },
             {
               "name": "LocalWP",
-              "url": "https://localwp.com",
+              "url": "https://localwp.com/releases/",
               "blurb": "WordPress Site Deployment Tools",
               "badges": [],
               "resourceLinks": []
@@ -7371,6 +7362,13 @@
                   "url": "https://www.svgviewer.dev/"
                 }
               ]
+            },
+            {
+              "name": "⁠3DSVG",
+              "url": "https://3dsvg.design/",
+              "blurb": "3D SVG Editor",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "SVGFilters",
@@ -9458,6 +9456,13 @@
               "name": "REMnux",
               "url": "https://remnux.org/",
               "blurb": "Reverse Engineering / Malware Analysis",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "dnSpyEx",
+              "url": "https://github.com/dnSpyEx/dnSpy",
+              "blurb": ".NET Debugger and Assembly Editor",
               "badges": [],
               "resourceLinks": []
             },

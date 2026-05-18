@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "adblockvpnguide",
+      "slug": "privacy",
+      "namespace": "root",
       "sourceFile": "privacy.md",
       "sections": [
         {
@@ -355,7 +356,7 @@
             {
               "name": "Hagezi Blocklists",
               "url": "https://github.com/hagezi/dns-blocklists",
-              "blurb": "Use Full Edition / Note",
+              "blurb": "Multi-Source Domain Blocklist / Use Full Edition / Note",
               "badges": [
                 "⭐"
               ],
@@ -369,7 +370,7 @@
             {
               "name": "OISD",
               "url": "https://oisd.nl/",
-              "blurb": "",
+              "blurb": "Multi-Source Domain Blocklist",
               "badges": [
                 "⭐"
               ],
@@ -420,9 +421,18 @@
             {
               "name": "1Hosts",
               "url": "https://o0.pages.dev/",
-              "blurb": "",
+              "blurb": "/ 2 / GitHub",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://badmojr.github.io/1Hosts/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/badmojr/1Hosts"
+                }
+              ]
             }
           ]
         },
@@ -473,11 +483,23 @@
             {
               "name": "Triage",
               "url": "https://tria.ge/",
-              "blurb": "or Cuckoo / 2 - Online Sandboxes",
+              "blurb": ", ANY.RUN / DIscord / Note or Cuckoo / 2 - Online Sandboxes",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "ANY.RUN",
+                  "url": "https://any.run/"
+                },
+                {
+                  "text": "DIscord",
+                  "url": "https://discord.gg/anyrun"
+                },
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/anyrun-note.md"
+                },
                 {
                   "text": "Cuckoo",
                   "url": "https://cuckoo.cert.ee/"
@@ -530,6 +552,13 @@
                   "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/malware-removal-forums.md"
                 }
               ]
+            },
+            {
+              "name": "⁠rifteyy",
+              "url": "https://rifteyy.org/",
+              "blurb": "Malware Removal Guides / Blog",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Sandboxie Plus",
@@ -639,7 +668,7 @@
             {
               "name": "⁠Threat Insights Portal",
               "url": "https://www.threat.rip/",
-              "blurb": "Online File Scanner / Discord",
+              "blurb": "Online File Scanner / Sign-Up Required / Discord",
               "badges": [],
               "resourceLinks": [
                 {
@@ -1491,6 +1520,13 @@
               ]
             },
             {
+              "name": "⁠RustNet",
+              "url": "https://github.com/domcyrus/rustnet",
+              "blurb": "Network Monitor TUI",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Simplewall",
               "url": "https://github.com/henrypp/simplewall",
               "blurb": "Firewall",
@@ -1824,6 +1860,13 @@
               "blurb": "Cloudflare Browser Check",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "⁠Disable JavaScript",
+              "url": "https://disable-javascript.org/",
+              "blurb": "JavaScript Disabling Guide / Can Break Sites / Whitelisting Required",
+              "badges": [],
+              "resourceLinks": []
             }
           ]
         },
@@ -1855,7 +1898,7 @@
             },
             {
               "name": "Ente Auth",
-              "url": "https://ente.io/auth/",
+              "url": "https://ente.com/auth/",
               "blurb": "2FA / All Platforms / Discord / GitHub",
               "badges": [
                 "⭐"
@@ -1957,7 +2000,7 @@
             {
               "name": "KeePassXC",
               "url": "https://keepassxc.org/",
-              "blurb": "2FA / Windows, Mac, Linux / Guide / GitHub",
+              "blurb": "2FA / Local / Windows, Mac, Linux Guide / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
@@ -2621,7 +2664,7 @@
             {
               "name": "CreepJS",
               "url": "https://abrahamjuliot.github.io/creepjs",
-              "blurb": ", webkay, browserrecon, TZP, Cover Your Tracks or PersonalData - Tracking / Fingerprinting Tests",
+              "blurb": ", webkay, browserrecon, TZP, Cover Your Tracks, ⁠BrowserScan or PersonalData - Tracking / Fingerprinting Tests",
               "badges": [
                 "⭐"
               ],
@@ -2641,6 +2684,10 @@
                 {
                   "text": "Cover Your Tracks",
                   "url": "https://coveryourtracks.eff.org/"
+                },
+                {
+                  "text": "⁠BrowserScan",
+                  "url": "https://www.browserscan.net/"
                 },
                 {
                   "text": "PersonalData",
@@ -2941,7 +2988,7 @@
               "resourceLinks": [
                 {
                   "text": "Docs",
-                  "url": "https://fccview.github.io/degoog/"
+                  "url": "https://degoog-org.github.io/degoog/"
                 },
                 {
                   "text": "GitHub",
@@ -3219,7 +3266,7 @@
             {
               "name": "Amnezia",
               "url": "https://amnezia.org/",
-              "blurb": ", 2 - VPN Server / Subreddit / Telegram / GitHub",
+              "blurb": ", 2 - VPN Server / Subreddit / Discord / Telegram / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
@@ -3229,6 +3276,10 @@
                 {
                   "text": "Subreddit",
                   "url": "https://www.reddit.com/r/AmneziaVPN/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/JfrKFScw6N"
                 },
                 {
                   "text": "Telegram",
@@ -3662,7 +3713,7 @@
             {
               "name": "Amnezia",
               "url": "https://amnezia.org/self-hosted",
-              "blurb": ", 2 - Multi Protocol Server / Subreddit / Telegram / GitHub",
+              "blurb": ", 2 - Multi Protocol Server / Subreddit / Discord / Telegram / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
@@ -3672,6 +3723,10 @@
                 {
                   "text": "Subreddit",
                   "url": "https://www.reddit.com/r/AmneziaVPN/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/JfrKFScw6N"
                 },
                 {
                   "text": "Telegram",
@@ -3825,7 +3880,7 @@
             {
               "name": "Amnezia",
               "url": "https://amnezia.org/",
-              "blurb": ", 2 - Proxy Client / All Platforms / Subreddit / Telegram / GitHub",
+              "blurb": ", 2 - Proxy Client / All Platforms / Subreddit / Discord / Telegram / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
@@ -3835,6 +3890,10 @@
                 {
                   "text": "Subreddit",
                   "url": "https://www.reddit.com/r/AmneziaVPN/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/JfrKFScw6N"
                 },
                 {
                   "text": "Telegram",
@@ -3927,6 +3986,13 @@
             {
               "name": "husi",
               "url": "https://github.com/xchacha20-poly1305/husi",
+              "blurb": "Proxy Client / Android",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Exclave",
+              "url": "https://github.com/dyhkwong/Exclave",
               "blurb": "Proxy Client / Android",
               "badges": [],
               "resourceLinks": []
