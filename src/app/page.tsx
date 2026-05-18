@@ -96,8 +96,29 @@ export default function HomePage() {
         </div>
 
         {/* Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
           
+          {/* Professional Hub - NEW */}
+          <Link href="/professional">
+            <div className="group bg-black/50 border border-blue-500/30 hover:border-blue-500/60 rounded-lg p-8 backdrop-blur-sm transition-all duration-300 hover:bg-blue-500/5 cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  🏢
+                </div>
+                <h2 className="text-2xl font-mono text-blue-400 mb-4 group-hover:text-blue-300">
+                  PROFESSIONAL
+                </h2>
+                <p className="text-gray-300 mb-6 leading-relaxed text-sm">
+                  Interactive control center
+                </p>
+                <div className="inline-flex items-center text-blue-400 group-hover:text-blue-300 font-mono text-sm">
+                  Access 
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
           {/* Mysterious Portal */}
           <Link href="/mysterious">
             <div className="group bg-black/50 border border-cyan-400/30 hover:border-cyan-400/60 rounded-lg p-8 backdrop-blur-sm transition-all duration-300 hover:bg-cyan-400/5 cursor-pointer">
