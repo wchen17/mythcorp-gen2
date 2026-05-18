@@ -114,8 +114,18 @@ function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphe
 }
 
 // --- The Main Loading Screen ---
-export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
-  const { progress } = useProgress();
+export function LoadingScreen({
+  onFinished,
+  progressOverride,
+}: {
+  onFinished: () => void;
+  // When defined, the binary-digit lerp is driven by this 0-100 value
+  // instead of the live drei asset-loader progress. Lets /boot replay
+  // the sequence in "museum mode" without any real loading work.
+  progressOverride?: number;
+}) {
+  const { progress: liveProgress } = useProgress();
+  const progress = progressOverride ?? liveProgress;
   const [currentMessage, setCurrentMessage] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const [shapeType] = useState<'sphere' | 'cube' | 'torus'>(() => {
@@ -139,7 +149,9 @@ export function LoadingScreen({ onFinished }: { onFinished: () => void }) {
   }, []);
 
   useEffect(() => {
-    const minDisplayTime = 1; // 4 seconds
+    // Minimum time the screen stays visible after assets finish loading,
+    // so a fast Suspense resolution doesn't pop the cinematic offscreen.
+    const minDisplayTime = 1500;
     if (progress === 100) {
       const timer = setTimeout(() => {
         onFinished();

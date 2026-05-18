@@ -15,6 +15,9 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list (placeholder) |
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
+| `/wc/learn/landing-flow` | `src/app/wc/learn/landing-flow/page.tsx` | Walkthrough: cinematic boot pipeline |
+| `/wc/learn/3d-scene` | `src/app/wc/learn/3d-scene/page.tsx` | Walkthrough: anatomy of the Simulation |
+| `/boot` | `src/app/boot/page.tsx` | Boot museum, replays LoadingScreen on demand then bounces to / |
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY mirror: searchable category index from build-time markdown snapshot |
 | `/fmhy/[category]` | `src/app/fmhy/[category]/page.tsx` | Per-category deep dive, all entries grouped by section |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |

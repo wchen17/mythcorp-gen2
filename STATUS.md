@@ -3,6 +3,20 @@
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
+2026-05-18, two walkthroughs + boot-replay surface landed on branch `claude/remove-workflow-fix-issues-WcSqw`. Closes Issue #15 (landing-flow walkthrough) and Issue #16 (3d-scene walkthrough).
+
+## What just shipped (PR 3: walkthroughs + boot museum)
+
+- Removed `.github/workflows/refresh-fmhy.yml`. The weekly cron was producing churny PRs (link-rotation noise in an upstream catalog that's itself a catalog of mirrors). The `npm run fetch:fmhy` script is kept for on-demand local snapshots; `check.yml` (build + tsc) stays as the only CI signal.
+- New `/boot` route at `src/app/boot/page.tsx`, a permanent boot museum. Animates a fake 0-to-100 progress driver so the binary-digit lerp completes its assembly into the random sphere/cube/torus, marks the session as booted, then routes to `/`.
+- `LoadingScreen.tsx` accepts an optional `progressOverride` prop so `/boot` can drive its own progress without faking drei's `useProgress`. Also fixed the `minDisplayTime = 1` (ms) bug, the comment claimed 4 seconds; bumped to 1500ms.
+- `HelpDot` panel now includes a `↻ replay the boot intro` link to `/boot`. Discoverable from every page, doesn't penalise first-time visitors.
+- `/wc/learn/landing-flow` shipped (Issue #15). Covers the three-stage pipeline, the "only one Canvas at a time" constraint, the fixed 3500ms window, the triple `useGLTF.preload` cache hit, the sessionStorage skip-on-second-visit, and the flash-of-black design-outs. Includes a replay-boot link in the intro and aside.
+- `/wc/learn/3d-scene` shipped (Issue #16). Covers the Canvas props, the Float32Array particle field, the `MAX_STARS = 12000` clamp rationale, the Bloom knob tour, and the randomizable `DEFAULTS` object.
+- Statuses on both new walkthroughs flipped from `soon` to `ready` in `WALKTHROUGHS` (`src/app/wc/learn/page.tsx`).
+- MAP.md updated with the three new routes.
+
+## Last updated (previous)
 2026-05-06, FMHY mirror + /experience continuity polish landed on branch `claude/vigilant-golick-c8ff8d`. Closes Issue #18 (FMHY) and Issue #13 (Simulation theming).
 
 Previous: 2026-05-05, planning pass. Refreshed `BACKLOG.md` with 22 categorized items + a script to post them all to GitHub Issues with one command.

@@ -15,15 +15,15 @@ const WALKTHROUGHS = [
     slug: 'landing-flow',
     title: 'The cinematic boot → reveal',
     blurb:
-      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a color flash, and why the GLB is preloaded.',
-    status: 'soon',
+      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a color flash, and why the GLB is preloaded. Includes a replay button.',
+    status: 'ready',
   },
   {
     slug: '3d-scene',
     title: 'Anatomy of the 3D experience',
     blurb:
       'Particle field via BufferGeometry, post-processing bloom, and a randomizable settings object, what every piece does.',
-    status: 'soon',
+    status: 'ready',
   },
 ];
 

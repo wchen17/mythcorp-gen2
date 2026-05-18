@@ -62,6 +62,15 @@ export function HelpDot() {
             <p className="mt-3 text-xs text-[color:var(--fg-subtle)]">
               The theme switcher is in the top-right.
             </p>
+            <Link
+              href="/boot"
+              onClick={() => setOpen(false)}
+              className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px]
+                         uppercase tracking-[0.3em] text-[color:var(--accent-soft)]
+                         transition-colors hover:text-[color:var(--accent)]"
+            >
+              <span aria-hidden>↻</span> replay the boot intro
+            </Link>
           </div>
         </>
       )}
