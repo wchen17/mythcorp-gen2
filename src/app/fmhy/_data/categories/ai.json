@@ -1,0 +1,4608 @@
+{
+  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "categories": [
+    {
+      "slug": "ai",
+      "sourceFile": "ai.md",
+      "sections": [
+        {
+          "heading": "▷ Official Model Sites",
+          "entries": [
+            {
+              "name": "DeepSeek",
+              "url": "https://chat.deepseek.com/",
+              "blurb": "V4-Pro (Expert) / V4-Flash (Instant) / Sign-Up / Unlimited / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/DeepSeek/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/Tc7c45Zzu5"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/deepseek-ai"
+                }
+              ]
+            },
+            {
+              "name": "Google AI Studio",
+              "url": "https://aistudio.google.com/app/prompts/new_chat",
+              "blurb": "Gemini 3.1 Pro / Google Sign-Up / Add Features / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Add Features",
+                  "url": "https://github.com/Nagi-ovo/gemini-voyager"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Bard/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/gemini"
+                }
+              ]
+            },
+            {
+              "name": "⁠Z.ai",
+              "url": "https://chat.z.ai/",
+              "blurb": "GLM-5.1 / GLM-5-Turbo / Slides / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/QR7SARHRxK"
+                }
+              ]
+            },
+            {
+              "name": "Qwen",
+              "url": "https://chat.qwen.ai/",
+              "blurb": "Qwen3.6-Plus / Qwen3.5-Plus / Sign-Up / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Qwen_AI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/CV4E9rpNSD"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/QwenLM"
+                }
+              ]
+            },
+            {
+              "name": "Gemini",
+              "url": "https://gemini.google.com/",
+              "blurb": "Gemini 3.1 Pro Preview (5 daily) / Gemini 3 Flash (unlimited) / Add Features / Limits / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Add Features",
+                  "url": "https://github.com/Nagi-ovo/gemini-voyager"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://support.google.com/gemini/answer/16275805"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Bard/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/gemini"
+                }
+              ]
+            },
+            {
+              "name": "Kimi",
+              "url": "https://www.kimi.com/",
+              "blurb": "Kimi K2.6 (Thinking) / Slides / Google Login or Phone # Required / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/kimi/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/TYU2fdJykW"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/MoonshotAI"
+                }
+              ]
+            },
+            {
+              "name": "Meta AI",
+              "url": "https://www.meta.ai/",
+              "blurb": "Muse Spark / Meta Sign-Up / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Ernie",
+              "url": "https://ernie.baidu.com/",
+              "blurb": "Ernie 5.1 Preview / ERNIE 5.0",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ChatGPT",
+              "url": "https://chatgpt.com/",
+              "blurb": "GPT-5.3 Instant / r/OpenAI / r/ChatGPT / Discord / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "r/OpenAI",
+                  "url": "https://www.reddit.com/r/OpenAI/"
+                },
+                {
+                  "text": "r/ChatGPT",
+                  "url": "https://www.reddit.com/r/ChatGPT/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/openai"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/chatgpt-limits.md"
+                }
+              ]
+            },
+            {
+              "name": "⁠MiMo Studio",
+              "url": "https://aistudio.xiaomimimo.com/",
+              "blurb": "MiMo-V2.5-Pro / MiMo-V2.5 / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Grok",
+              "url": "https://grok.com/",
+              "blurb": "Grok 4.2 Fast-Non-Reasoning / Grok 4.2 Fast-Reasoning / Traffic Based / Rate Display, 2 / Subreddit / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Rate Display",
+                  "url": "https://greasyfork.org/en/scripts/558017"
+                },
+                {
+                  "text": "2",
+                  "url": "https://chromewebstore.google.com/detail/grok-rate-limit-display/fcoijmefliggikpeofhojmkpoooocifk"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/grok/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/kqCc86jM55"
+                }
+              ]
+            },
+            {
+              "name": "Microsoft Copilot",
+              "url": "https://copilot.microsoft.com",
+              "blurb": "GPT-5.1 / Unlimited / Reasoning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Reasoning",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/better-reasoning.md"
+                }
+              ]
+            },
+            {
+              "name": "Claude",
+              "url": "https://claude.ai/",
+              "blurb": "Claude Sonnet 4.6 / Require Sign-Up + Phone # / Resources / Learning, 2 / Usage Tracker / Subreddit / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Resources",
+                  "url": "https://awesomeclaude.ai/"
+                },
+                {
+                  "text": "Learning",
+                  "url": "https://github.com/ComposioHQ/awesome-claude-skills"
+                },
+                {
+                  "text": "2",
+                  "url": "https://github.com/BehiSecc/awesome-claude-skills"
+                },
+                {
+                  "text": "Usage Tracker",
+                  "url": "https://github.com/lugia19/Claude-Usage-Extension"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/ClaudeAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/6PPFFzqPDZ"
+                }
+              ]
+            },
+            {
+              "name": "MiniMax AI",
+              "url": "https://agent.minimax.io/",
+              "blurb": "MiniMax-M2.7 / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/MiniMax-AI/"
+                }
+              ]
+            },
+            {
+              "name": "Mistral",
+              "url": "https://chat.mistral.ai",
+              "blurb": "or Mistral (console) - Mistral Large 3 / Subreddit / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Mistral (console)",
+                  "url": "https://console.mistral.ai/home"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/MistralAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/mistralai"
+                }
+              ]
+            },
+            {
+              "name": "⁠Ai2 Playground",
+              "url": "https://playground.allenai.org/",
+              "blurb": "Olmo 3.1 32B (Think) / No Sign-Up / Unlimited / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/NE5xPufNwu"
+                }
+              ]
+            },
+            {
+              "name": "⁠LongCat",
+              "url": "https://longcat.chat/",
+              "blurb": "LongCat Flash Reasoning / Sign-Up / Unlimited / X",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/Meituan_LongCat"
+                }
+              ]
+            },
+            {
+              "name": "⁠Cohere",
+              "url": "https://dashboard.cohere.com/playground/chat",
+              "blurb": "Command A Reasoning / 1000 Monthly / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/co-mmunity"
+                }
+              ]
+            },
+            {
+              "name": "⁠Solar",
+              "url": "https://console.upstage.ai/playground/chat",
+              "blurb": "Solar Pro 3 / No Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/Cge9FYjV4h"
+                }
+              ]
+            },
+            {
+              "name": "⁠StepFun",
+              "url": "https://stepfun.ai/",
+              "blurb": "Step 3.5 Flash / DeepSeek R1",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sarvam",
+              "url": "https://dashboard.sarvam.ai/chat",
+              "blurb": "Sarvam-105b / Sarvam-30b / Unlimited / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Apertus",
+              "url": "https://publicai.co/chat",
+              "blurb": ", 2 - Apertus 70B",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://chat.publicai.co/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Hy3-preview",
+              "url": "https://huggingface.co/spaces/tencent/Hy3-preview",
+              "blurb": "⁠Hy3-preview / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Reka",
+              "url": "https://www.reka.ai/",
+              "blurb": "Reka Flash 3.1 / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/jtjNSD52mf"
+                }
+              ]
+            },
+            {
+              "name": "⁠K2Think",
+              "url": "https://www.k2think.ai/",
+              "blurb": "LLM360 / MBZUAI (not Kimi) / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Inception Chat",
+              "url": "https://chat.inceptionlabs.ai/",
+              "blurb": "Mercury 2 / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Multiple Model Sites",
+          "entries": [
+            {
+              "name": "⁠ISH",
+              "url": "https://beta.ish.chat/",
+              "blurb": "Claude Opus 4.6 / Claude Sonnet 4.6 / Multiple Models / Sign-Up (GitHub) / Subreddit / Discord / Token Note",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Ishchat/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/cwDTVKyKJz"
+                },
+                {
+                  "text": "Token Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/ish.md"
+                }
+              ]
+            },
+            {
+              "name": "⁠Woozlit",
+              "url": "https://woozlit.com/",
+              "blurb": "Opus 4.7 / Sonnet 4.6/ Gemini 3.1 Pro / DeepSeek-v4-Pro / Multiple Models / ≈2000 Monthly / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/rdBN6TYf66"
+                }
+              ]
+            },
+            {
+              "name": "Arena",
+              "url": "https://arena.ai/text/direct",
+              "blurb": ", 2 - Multiple Models / Sign-Up / Reset Limits w/ Temp Mail / OpenAI Bridge / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://canaryarena.ai/text/direct"
+                },
+                {
+                  "text": "OpenAI Bridge",
+                  "url": "https://github.com/CloudWaddie/LMArenaBridge"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/arena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/lmarena"
+                }
+              ]
+            },
+            {
+              "name": "Pollinations Chat",
+              "url": "https://pollinations.ai/play",
+              "blurb": ", 2, 3 - Grok 4.20 Non-Reasoning / GLM-5.1 / GPT-5.4 / Multiple Models / Limits and Models / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://ai-studio.puter.site/index.html"
+                },
+                {
+                  "text": "3",
+                  "url": "https://hey-hi.space/unified"
+                },
+                {
+                  "text": "Limits and Models",
+                  "url": "https://enter.pollinations.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pollinations-ai-885844321461485618"
+                }
+              ]
+            },
+            {
+              "name": "NVIDIA NIM",
+              "url": "https://build.nvidia.com/models",
+              "blurb": "GLM-5.1 / Deepseek-v4-Pro / Kimi K2.6 / Multiple Models / No Sign-Up / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Together.ai",
+              "url": "https://chat.together.ai/",
+              "blurb": "GLM-5.1 / Kimi K2.6 / Deepseek-V4 / Multiple Models / Up To 110 Daily / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/9Rk6sSeWEG"
+                }
+              ]
+            },
+            {
+              "name": "⁠Element Flash",
+              "url": "https://flash.kernal.bid/",
+              "blurb": "Multiple Models / Queue (if traffic is high) / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/RwNb8YrHQX"
+                }
+              ]
+            },
+            {
+              "name": "⁠Indic LLM Arena",
+              "url": "https://arena.ai4bharat.org/#/chat",
+              "blurb": "Multiple Models / Unlimited / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/HqJXnJNDaq"
+                }
+              ]
+            },
+            {
+              "name": "AI Assistant",
+              "url": "https://aiassistantbot.pages.dev/",
+              "blurb": "Deepseek V3.2 / GLM-4.7 / Kimi K2.5 / Multiple Models / No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cerebras Chat",
+              "url": "https://chat.cerebras.ai/",
+              "blurb": "GLM-4.7 / Qwen3-235B / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Groq",
+              "url": "https://console.groq.com/playground",
+              "blurb": "Kimi K2-0905 / GPT-OSS-120B / Sign-Up / Limits / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits",
+                  "url": "https://console.groq.com/docs/rate-limits"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/e6cj7aA4Ts"
+                }
+              ]
+            },
+            {
+              "name": "Dolphin Chat",
+              "url": "https://chat.dphn.ai/",
+              "blurb": "Dolphin 24B / Unrestricted / No Sign Up / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Specialized Chatbots",
+          "entries": [
+            {
+              "name": "Awesome AI Web Search",
+              "url": "https://github.com/felladrin/awesome-ai-web-search",
+              "blurb": ", 2** - AI Search Engine Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://huggingface.co/spaces/Felladrin/awesome-ai-web-search"
+                }
+              ]
+            },
+            {
+              "name": "NotebookLM",
+              "url": "https://notebooklm.google.com/",
+              "blurb": "Document Chatbot / Note-Taking / Slides / Anki Export / X / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Anki Export",
+                  "url": "https://chromewebstore.google.com/detail/ankinlm/ecoealfdeebafjpmhjdlbdgpgegjeaem"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/NotebookLM"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/notebooklm/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/notebooklm"
+                }
+              ]
+            },
+            {
+              "name": "Google AI Mode",
+              "url": "https://google.com/aimode",
+              "blurb": "AI Search Engine / Pro (Google Signup) / Fast (No Signup)",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Ask Brave",
+              "url": "https://search.brave.com/ask",
+              "blurb": "AI Search Engine",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Perplexity",
+              "url": "https://www.perplexity.ai/",
+              "blurb": "AI Search Engine / Enhancements / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Enhancements",
+                  "url": "https://www.cplx.app/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/perplexity-ai"
+                }
+              ]
+            },
+            {
+              "name": "Arena",
+              "url": "https://arena.ai/?mode=direct&chat-modality=search",
+              "blurb": ", 2 - AI Search Engine / Sign-Up / Reset Limits w/ Temp Mail / OpenAI Bridge / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://canaryarena.ai/search/direct"
+                },
+                {
+                  "text": "OpenAI Bridge",
+                  "url": "https://github.com/CloudWaddie/LMArenaBridge"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/arena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/lmarena"
+                }
+              ]
+            },
+            {
+              "name": "⁠iAsk AI",
+              "url": "https://iask.ai/",
+              "blurb": "Research Chatbot",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Exa",
+              "url": "https://exa.ai/search",
+              "blurb": "AI Search Engine",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Alphaxiv",
+              "url": "https://www.alphaxiv.org/",
+              "blurb": "Research Chatbot",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Vane",
+              "url": "https://github.com/ItzCrazyKns/Vane",
+              "blurb": "FOSS AI Search Engine / Self-Hosted / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/26aArMy8tT"
+                }
+              ]
+            },
+            {
+              "name": "Learn About",
+              "url": "https://learning.google.com/experiments/learn-about",
+              "blurb": "or Learning Coach - Google's Educational Search AIs / Add Features",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Learning Coach",
+                  "url": "https://gemini.google.com/gem/learning-coach"
+                },
+                {
+                  "text": "Add Features",
+                  "url": "https://github.com/Nagi-ovo/gemini-voyager"
+                }
+              ]
+            },
+            {
+              "name": "⁠Sci-Bot",
+              "url": "https://sci-bot.ru/",
+              "blurb": "Sci-Hub Research Chatbot",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SciSpace",
+              "url": "https://scispace.com/",
+              "blurb": "Research Chatbot / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/cR3r8wP92C"
+                }
+              ]
+            },
+            {
+              "name": "Scinito",
+              "url": "https://ekb.scinito.ai/ai/chat",
+              "blurb": "Research Chatbot",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Elicit",
+              "url": "https://elicit.com/",
+              "blurb": "Research Chatbot / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/elicit"
+                }
+              ]
+            },
+            {
+              "name": "PrivateGPT",
+              "url": "https://privategpt.dev/",
+              "blurb": "Document Chatbot / Note-Taking / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/bK6mRVpErU"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/zylon-ai/private-gpt"
+                }
+              ]
+            },
+            {
+              "name": "Onyx",
+              "url": "https://www.onyx.app/",
+              "blurb": "Document Chatbot / Note-Taking / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/jDnRGhWhg4"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/onyx-dot-app/onyx"
+                }
+              ]
+            },
+            {
+              "name": "DocsGPT",
+              "url": "https://www.docsgpt.cloud/",
+              "blurb": "Document Chatbot / Note-Taking / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/n5BX8dh8rU"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/arc53/DocsGPT"
+                }
+              ]
+            },
+            {
+              "name": "⁠Anara",
+              "url": "https://anara.com/",
+              "blurb": "Document Chatbot",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Paper2Gal",
+              "url": "https://paper2gal.com/",
+              "blurb": "Turn Academic Papers into Visual Novels via AI",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Hyperspace",
+              "url": "https://hyper.space/",
+              "blurb": "P2P AI Network / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/hyperspaceai"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Local AI Frontends",
+          "entries": [
+            {
+              "name": "SillyTavern",
+              "url": "https://docs.sillytavern.app/",
+              "blurb": "Desktop App / Presets / Themes / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Presets / Themes",
+                  "url": "https://discord.gg/MU5FKZvuT7"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/SillyTavernAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/sillytavern"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/SillyTavern/SillyTavern"
+                }
+              ]
+            },
+            {
+              "name": "Open WebUI",
+              "url": "https://openwebui.com/",
+              "blurb": "Web UI / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/5rJgQTnV4s"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/open-webui/open-webui"
+                }
+              ]
+            },
+            {
+              "name": "Jan",
+              "url": "https://jan.ai/",
+              "blurb": "Desktop App / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/FTk2MvZwJH"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/menloresearch/jan"
+                }
+              ]
+            },
+            {
+              "name": "LM Studio",
+              "url": "https://lmstudio.ai/",
+              "blurb": "Desktop App / Self-Hosted Models Only / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/aPQfnNkxGC"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lmstudio-ai"
+                }
+              ]
+            },
+            {
+              "name": "oobabooga",
+              "url": "https://github.com/oobabooga/textgen",
+              "blurb": "Web UI / Self-Hosted Models Only / Colab / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/pcrii/Philo-Colab-Collection/blob/main/4bit_TextGen_Gdrive.ipynb"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Oobabooga/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/jwZCF2dPQN"
+                }
+              ]
+            },
+            {
+              "name": "GPT4Free",
+              "url": "https://github.com/xtekky/gpt4free",
+              "blurb": "Desktop App / Web / Telegram / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Web",
+                  "url": "https://g4f.dev/chat/"
+                },
+                {
+                  "text": "Telegram",
+                  "url": "https://telegram.me/g4f_channel"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/qXA4Wf4Fsm"
+                }
+              ]
+            },
+            {
+              "name": "Msty",
+              "url": "https://msty.app/",
+              "blurb": "Desktop App / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/2QBw6XxkCC"
+                }
+              ]
+            },
+            {
+              "name": "Cherry Studio",
+              "url": "https://www.cherry-ai.com/",
+              "blurb": "Desktop App / Mobile / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Mobile",
+                  "url": "https://github.com/CherryHQ/cherry-studio-app"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/wez8HtpxqQ"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/CherryHQ/cherry-studio"
+                }
+              ]
+            },
+            {
+              "name": "Chatbox",
+              "url": "https://chatboxai.app/",
+              "blurb": "Desktop App / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/chatboxai/chatbox"
+                }
+              ]
+            },
+            {
+              "name": "LobeHub",
+              "url": "https://lobechat.com/chat",
+              "blurb": "Desktop App / Requires Sign-Up / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/AYFPHvv2jT"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lobehub/lobe-chat"
+                }
+              ]
+            },
+            {
+              "name": "Noi",
+              "url": "https://noib.app/",
+              "blurb": "Desktop App / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/kq2HXcpJSQ"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lencx/Noi"
+                }
+              ]
+            },
+            {
+              "name": "LibreChat",
+              "url": "https://librechat.ai/",
+              "blurb": "Web UI / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/CEe6vDg9Ky"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/danny-avila/LibreChat"
+                }
+              ]
+            },
+            {
+              "name": "LoLLMs",
+              "url": "https://lollms.com/",
+              "blurb": "Web UI / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ParisNeo/lollms-webui"
+                }
+              ]
+            },
+            {
+              "name": "AnythingLLM",
+              "url": "https://anythingllm.com/",
+              "blurb": "Desktop App / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/YCtUYD5vBf"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Mintplex-Labs/anything-llm"
+                }
+              ]
+            },
+            {
+              "name": "GPT4All",
+              "url": "https://www.nomic.ai/gpt4all",
+              "blurb": "Self-Hosted / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/myY5YDR8z8"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/nomic-ai/gpt4all"
+                }
+              ]
+            },
+            {
+              "name": "tgpt",
+              "url": "https://github.com/aandrew-me/tgpt",
+              "blurb": "Command-Line Interface",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠ch.at",
+              "url": "https://github.com/Deep-ai-inc/ch.at",
+              "blurb": "Language Model Bridge / Lightweight / Minimal",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Self-Hosting Tools",
+          "entries": [
+            {
+              "name": "Awesome Local LLM",
+              "url": "https://github.com/rafska/awesome-local-llm/",
+              "blurb": "Local LLM Platforms / Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "llama.cpp",
+              "url": "https://github.com/ggerganov/llama.cpp",
+              "blurb": "Self-Hosted Transformer-Based LLMs",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "KoboldCpp",
+              "url": "https://github.com/LostRuins/koboldcpp",
+              "blurb": "llama.cpp with API + GUI / ROCm / Colab",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "ROCm",
+                  "url": "https://github.com/YellowRoseCx/koboldcpp-rocm"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/LostRuins/koboldcpp/blob/concedo/colab.ipynb"
+                }
+              ]
+            },
+            {
+              "name": "Aphrodite Engine",
+              "url": "https://aphrodite.pygmalion.chat/",
+              "blurb": "Serve LLMs at Scale with Kobold & OpenAI APIs / Colab / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/AlpinDale/misc-scripts/blob/main/Aphrodite.ipynb"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/PygmalionAI/aphrodite-engine"
+                }
+              ]
+            },
+            {
+              "name": "Petals",
+              "url": "https://petals.dev/",
+              "blurb": "Self-Hosted / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/D9MwApKgWa"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/bigscience-workshop/petals"
+                }
+              ]
+            },
+            {
+              "name": "Leon",
+              "url": "https://getleon.ai/",
+              "blurb": "Self-Hosted / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/MNQqqKg"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/leon-ai/leon"
+                }
+              ]
+            },
+            {
+              "name": "Ollama",
+              "url": "https://ollama.com/",
+              "blurb": "Self-Hosted / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ollama"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ollama/ollama"
+                }
+              ]
+            },
+            {
+              "name": "llamafile",
+              "url": "https://github.com/Mozilla-Ocho/llamafile",
+              "blurb": "Run LLM with Single Files / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/YuMNeuKStr"
+                }
+              ]
+            },
+            {
+              "name": "LLM-API-Key-Proxy",
+              "url": "https://github.com/Mirrowel/LLM-API-Key-Proxy",
+              "blurb": "LLM API Key Proxy",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Can I Run AI Locally",
+              "url": "https://www.canirun.ai/",
+              "blurb": "or What Models? - Determine Which AI Models You Can Run Locally",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "What Models?",
+                  "url": "https://whatmodelscanirun.com/"
+                }
+              ]
+            },
+            {
+              "name": "⁠LocalAI",
+              "url": "https://localai.io/",
+              "blurb": "Self-Hosted Models / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mudler/LocalAI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Roleplaying Chatbots",
+          "entries": [
+            {
+              "name": "Sukino-Findings",
+              "url": "https://rentry.org/Sukino-Findings",
+              "blurb": "AI Roleplay Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Perchance",
+              "url": "https://perchance.org/ai-character-chat",
+              "blurb": "/2 or Custom Api- Roleplaying + Images / No Sign-Up / Unlimited / Some NSFW / Resources / Lemmy / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://perchance.org/urv-ai-chat"
+                },
+                {
+                  "text": "Custom Api",
+                  "url": "https://perchance.org/amoled-chat"
+                },
+                {
+                  "text": "Resources",
+                  "url": "https://perchance.org/perlist"
+                },
+                {
+                  "text": "Lemmy",
+                  "url": "https://lemmy.world/u/perchance"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/perchance/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/43qAQEVV9a"
+                }
+              ]
+            },
+            {
+              "name": "SillyTavern",
+              "url": "https://docs.sillytavern.app/",
+              "blurb": "Self-Hosted Roleplaying Models / Presets /Themes / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Presets /Themes",
+                  "url": "https://discord.gg/MU5FKZvuT7"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/SillyTavernAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/sillytavern"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/SillyTavern/SillyTavern"
+                }
+              ]
+            },
+            {
+              "name": "PygmalionAI",
+              "url": "https://pygmalion.chat/",
+              "blurb": "Roleplaying Chatbots / Unlimited (Free Models) / Sign-Up / Guide / Resources, 2 / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://wikia.schneedc.com/bot-creation/intro"
+                },
+                {
+                  "text": "Resources",
+                  "url": "https://claraiscute.neocities.org/Guides/PygmalionLinks/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://claraiscute.pages.dev/Guides/PygmalionLinks/"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/PygmalionAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pygmalionai"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/PygmalionAI"
+                }
+              ]
+            },
+            {
+              "name": "FlowGPT",
+              "url": "https://flowgpt.com",
+              "blurb": "Roleplaying Chatbots / Unlimited (Model-Ares) / Some NSFW / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/tWZGzcpTkf"
+                }
+              ]
+            },
+            {
+              "name": "Chub",
+              "url": "https://chub.ai/",
+              "blurb": "Roleplaying Chatbots / Sign-Up / Some NSFW / Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/Chub_AI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/chubai"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/CharHubAI"
+                }
+              ]
+            },
+            {
+              "name": "HammerAI",
+              "url": "https://www.hammerai.com/characters",
+              "blurb": ", Local , / Discord/ Subreddit / X or Agnai / Discord - Chatbot Builders + Roleplaying + Images / Unlimited / Some NSFW",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Local",
+                  "url": "https://www.hammerai.com/desktop"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/kXuK7m7aa9"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/HammerAI/"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/HammerAIDotCom"
+                },
+                {
+                  "text": "Agnai",
+                  "url": "https://agnai.chat/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/DAn38sA8Qj"
+                }
+              ]
+            },
+            {
+              "name": "Miku",
+              "url": "https://docs.miku.gg/",
+              "blurb": ",Live Demo / Open-Source / Roleplaying / Some NSFW / Discord /",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Live Demo",
+                  "url": "https://bots.miku.gg/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/3XPdpUdGgV"
+                }
+              ]
+            },
+            {
+              "name": "4thWall AI",
+              "url": "https://beta.4wall.ai/",
+              "blurb": "Subreddit / Discord or WyvernChat - Roleplaying Chatbots / No Sign-Up",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/4WallAI/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/4wallai"
+                },
+                {
+                  "text": "WyvernChat",
+                  "url": "https://app.wyvern.chat/"
+                }
+              ]
+            },
+            {
+              "name": "AI Dungeon",
+              "url": "https://aidungeon.com/",
+              "blurb": "/ Subreddit / Discord or Spellbound or FictionLab / Discord - Roleplaying + Story Chatbot / No Sign-Up /",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/AIDungeon/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/HB2YBZYjyf"
+                },
+                {
+                  "text": "Spellbound",
+                  "url": "https://www.tryspellbound.com/"
+                },
+                {
+                  "text": "FictionLab",
+                  "url": "https://fictionlab.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/SKcb2C7HjH"
+                }
+              ]
+            },
+            {
+              "name": "KoboldAI Web",
+              "url": "https://lite.koboldai.net/",
+              "blurb": "Roleplaying + Images / No Sign-Up / Unlimited / Some NSFW / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/XuQWadgU9k"
+                }
+              ]
+            },
+            {
+              "name": "TavernAI",
+              "url": "https://tavernai.net/",
+              "blurb": "Roleplaying / Story Chatbot / Colab / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/vrihatgan/TavernAI/blob/main/colab/colab.ipynb"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/zmK2gmr45t"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/TavernAI/TavernAI"
+                }
+              ]
+            },
+            {
+              "name": "KoboldAI",
+              "url": "https://koboldai.com/",
+              "blurb": "GUI for Roleplaying Chatbots / No Sign-Up / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/XuQWadgU9k"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/henk717/KoboldAI"
+                }
+              ]
+            },
+            {
+              "name": "Crossing the Uncanny Valley",
+              "url": "https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo",
+              "blurb": "Realistic AI Voice Chatlooks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠your ai slop bores me",
+              "url": "https://youraislopbores.me/",
+              "blurb": "Interactive Human AI Roleplaying / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/aislop"
+                }
+              ]
+            },
+            {
+              "name": "Toolbaz",
+              "url": "https://toolbaz.com/",
+              "blurb": "Online AI Text Tools",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "TextFX",
+              "url": "https://textfx.withgoogle.com/",
+              "blurb": "/ GitHub or Rytr - AI Creative Writing Tools / No Sign-Up",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/google/generative-ai-docs/tree/main/demos/palm/web/textfx"
+                },
+                {
+                  "text": "Rytr",
+                  "url": "https://rytr.me/"
+                }
+              ]
+            },
+            {
+              "name": "Quarkle",
+              "url": "https://quarkle.ai/",
+              "blurb": "AI Writing Assistant",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ [Grammar Check](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/text-toolswiki_.25B7_grammar_check)",
+          "entries": [
+            {
+              "name": "VBench",
+              "url": "https://huggingface.co/spaces/Vchitect/VBench_Leaderboard",
+              "blurb": "Video Generation Model Leaderboard",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠GeminiGen AI",
+              "url": "https://geminigen.ai/app/video-gen",
+              "blurb": "Veo 3.1 / Sora 2 / Grok / Meta (Image to Video) / Login required / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/vJnYe86T8F"
+                }
+              ]
+            },
+            {
+              "name": "Arena",
+              "url": "https://arena.ai/?chat-modality=video",
+              "blurb": ", 2 - 2 Daily / Sign-Up / Random Models / Reset Limits w/ Temp Mail / End-Watermark / X / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://canaryarena.ai/video"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/arena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/lmarena"
+                }
+              ]
+            },
+            {
+              "name": "Design Arena",
+              "url": "https://www.designarena.ai/",
+              "blurb": "Multiple Models / Video Editing / Random Models / Reset Limits / w Temp Mail / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/designarena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/Bw9Ajcb3pR"
+                }
+              ]
+            },
+            {
+              "name": "Google Flow",
+              "url": "https://labs.google/fx/tools/flow",
+              "blurb": "Veo 3.1 / Veo 3.1 Lite / 50 Credits Daily / Google Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/googlelabs"
+                }
+              ]
+            },
+            {
+              "name": "Bing Create",
+              "url": "https://www.bing.com/images/create/ai-video-generator",
+              "blurb": "Sora 1 (10 Fast, Unlimited Slow- Per Day) / Image to Video / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Wan AI",
+              "url": "https://create.wan.video/explore/video/generate?model=wan2.7",
+              "blurb": "Wan 2.7 / Image to Video / 10 Credits Daily (Fast Credit Based, Slow Unlimited) / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Wan-Video/Wan2.1"
+                }
+              ]
+            },
+            {
+              "name": "⁠HunyuanVideo",
+              "url": "https://aistudio.tencent.com/modelSquare/home/play?modelId=303&from=/visual",
+              "blurb": "Unlimited / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pollinations Chat",
+              "url": "https://pollinations.ai/play",
+              "blurb": "LTX-2.3 / Limits / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits",
+                  "url": "https://enter.pollinations.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pollinations-ai-885844321461485618"
+                }
+              ]
+            },
+            {
+              "name": "Meta AI",
+              "url": "https://www.meta.ai/",
+              "blurb": "Unlimited / Meta Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Klipy",
+              "url": "https://klipy.com/create/gif-maker/",
+              "blurb": "Veo 3 / GIF Only / 4s-5s / 4 Daily / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Qwen",
+              "url": "https://chat.qwen.ai/",
+              "blurb": "5/12 Per Hour / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/CV4E9rpNSD"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/QwenLM"
+                }
+              ]
+            },
+            {
+              "name": "AIFreeVideo",
+              "url": "https://aifreevideo.com/",
+              "blurb": "Unlimited / MiniMax Video-01 / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ModelScope Video",
+              "url": "https://modelscope.ai/civision/videoGeneration",
+              "blurb": "Wan 2.2 14B / 3 Daily / Note",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/modelscope.md"
+                }
+              ]
+            },
+            {
+              "name": "Dreamina",
+              "url": "https://dreamina.capcut.com/ai-tool/home?type=video&workspace=0",
+              "blurb": "/ 120 Credits Daily",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PixVerse",
+              "url": "https://pixverse.ai/",
+              "blurb": "3 Daily / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/MXHErdJHMg"
+                }
+              ]
+            },
+            {
+              "name": "Genmo",
+              "url": "https://www.genmo.ai/",
+              "blurb": "30 Monthly / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/genmoai/mochi"
+                }
+              ]
+            },
+            {
+              "name": "FramePack",
+              "url": "https://github.com/colinurbs/FramePack-Studio",
+              "blurb": "Desktop App / Local Models / Requires NVIDIA GPU",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Eggnog",
+              "url": "https://www.eggnog.ai/",
+              "blurb": "AI Character Video Remixer + Editor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Pinokio",
+              "url": "https://pinokio.co/",
+              "blurb": "Plugin-Based / Self-Hosted / NVIDIA Required",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Arena Text to Image",
+              "url": "https://arena.ai/leaderboard/text-to-image",
+              "blurb": "or **Arena Editing** - Image Gen Benchmarks / Leaderboards",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Arena Editing",
+                  "url": "https://arena.ai/leaderboard/image-edit"
+                }
+              ]
+            },
+            {
+              "name": "Google Flow",
+              "url": "https://labs.google/fx/tools/flow",
+              "blurb": "Nano Banana Pro / 20+ Per Day / Varies / Nano Banana 2 / Unlimited / Google Login / Discord / Remove Watermarks",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/googlelabs"
+                },
+                {
+                  "text": "Remove Watermarks",
+                  "url": "https://banana.ovo.re/"
+                }
+              ]
+            },
+            {
+              "name": "Google AI Mode",
+              "url": "https://google.com/aimode",
+              "blurb": "/ Discord or **Gemini** / Discord - Nano Banana 2 / 20 Per Day / Google Login / Remove Watermarks / Add Features",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/googlelabs"
+                },
+                {
+                  "text": "Gemini",
+                  "url": "https://gemini.google.com/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/gemini"
+                },
+                {
+                  "text": "Remove Watermarks",
+                  "url": "https://banana.ovo.re/"
+                },
+                {
+                  "text": "Add Features",
+                  "url": "https://github.com/Nagi-ovo/gemini-voyager"
+                }
+              ]
+            },
+            {
+              "name": "⁠GeminiGen AI",
+              "url": "https://geminigen.ai/app/imagen",
+              "blurb": "Nano Banana Pro / Nano Banana 2 / Grok Imagine / Sign-up / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/vJnYe86T8F"
+                }
+              ]
+            },
+            {
+              "name": "Arena",
+              "url": "https://arena.ai/?mode=direct&chat-modality=image",
+              "blurb": ", 2 - Multiple Generators / Editing / Sign-Up / Reset Limits w/ Temp Mail / OpenAI Bridge / X / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://canaryarena.ai/image/direct"
+                },
+                {
+                  "text": "OpenAI Bridge",
+                  "url": "https://github.com/CloudWaddie/LMArenaBridge"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/arena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/lmarena"
+                }
+              ]
+            },
+            {
+              "name": "⁠Hunyuan Image Generation",
+              "url": "https://aistudio.tencent.com/chat/HunyuanDefault?modelId=Hunyuan-Image-3.0-Instruct",
+              "blurb": "Generating / Editing / 3D / Sign-Up / Unlimited",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Design Arena",
+              "url": "https://www.designarena.ai/",
+              "blurb": "Multiple Generators / Editing / Sign-up / Random Models / Reset Limits / w Temp Mail / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/Bw9Ajcb3pR"
+                }
+              ]
+            },
+            {
+              "name": "Bing Create",
+              "url": "https://www.bing.com/images/create",
+              "blurb": "Unlimited / GPT Image 1 / Editing / Generating / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google AI Studio",
+              "url": "https://aistudio.google.com/generate-image",
+              "blurb": "Nano Banana / Google Login / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/gemini"
+                }
+              ]
+            },
+            {
+              "name": "Pollinations Chat",
+              "url": "https://pollinations.ai/play",
+              "blurb": "GPT Image 1.5 / Wan 2.7 Image / Qwen Image Plus / Limits and models / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits and models",
+                  "url": "https://enter.pollinations.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pollinations-ai-885844321461485618"
+                }
+              ]
+            },
+            {
+              "name": "Perchance",
+              "url": "https://perchance.org/ai-photo-generator",
+              "blurb": "/ 2 - Chroma-Based / Unlimited / Resources / Lemmy / Subreddit / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://perchance.org/ai-text-to-image-generator"
+                },
+                {
+                  "text": "Resources",
+                  "url": "https://perchance.org/perlist"
+                },
+                {
+                  "text": "Lemmy",
+                  "url": "https://lemmy.world/u/perchance"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/perchance/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/43qAQEVV9a"
+                }
+              ]
+            },
+            {
+              "name": "Dreamina",
+              "url": "https://dreamina.capcut.com/ai-tool/home?type=image&workspace=0",
+              "blurb": "120 Credits Daily / Seedream 5.0 lite / Nano Banana / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Qwen",
+              "url": "https://chat.qwen.ai/",
+              "blurb": "30 Per 24 Hours / Editing / Sign-Up / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/CV4E9rpNSD"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/QwenLM"
+                }
+              ]
+            },
+            {
+              "name": "Wan AI Image",
+              "url": "https://create.wan.video/explore/image/generate?model=wan2.7-pro",
+              "blurb": "Wan 2.7 Pro / Wan 2.6 / 10 Credits Daily (Fast Credit Based, Slow Unlimited) / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenSourceGen",
+              "url": "https://opensourcegen.com/",
+              "blurb": "Hunyuan Image 3.0 / Z-Image Turbo / 1500 Credits Per Day / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/W4Svx2QhHb"
+                }
+              ]
+            },
+            {
+              "name": "Recraft",
+              "url": "https://www.recraft.ai/",
+              "blurb": "30 Daily / Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/recraft"
+                }
+              ]
+            },
+            {
+              "name": "Reve Image",
+              "url": "https://app.reve.com",
+              "blurb": "20 Daily / Editing / Sign-Up / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/reve"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/Nedxp9fYUZ"
+                }
+              ]
+            },
+            {
+              "name": "TheresAnAIForThat",
+              "url": "https://theresanaiforthat.com/@taaft/image-to-image-generator/",
+              "blurb": "or ⁠Vheer / X / Discord - Editing / Unlimited / Flux Kontext Dev",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "⁠Vheer",
+                  "url": "https://vheer.com/dashboard/tools/image-to-image"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/VheerAI"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/33qfQRCp5j"
+                }
+              ]
+            },
+            {
+              "name": "⁠ZonerAI",
+              "url": "https://zonerai.com/en/image-editor",
+              "blurb": "Editing (sign up) + Generating (no sign up) / Unlimited",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Meta AI",
+              "url": "https://www.meta.ai/",
+              "blurb": "Generating + Editing / Unlimited / Meta Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ModelScope Images",
+              "url": "https://modelscope.ai/civision/imageGeneration",
+              "blurb": "Qwen Image Edit / Z-Image Turbo / 100 Credits Daily / Model Cost Varies / Note",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/modelscope.md"
+                }
+              ]
+            },
+            {
+              "name": "Z-GEN TURBO",
+              "url": "https://z-gen-turbo.vercel.app/",
+              "blurb": "or Freegen or AIGazou / Discord or AIFreeForever - Z-Image Turbo",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Freegen",
+                  "url": "https://freegen.app/"
+                },
+                {
+                  "text": "AIGazou",
+                  "url": "https://muryou-aigazou.com/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/v6KzUbPeKh"
+                },
+                {
+                  "text": "AIFreeForever",
+                  "url": "https://aifreeforever.com/image-generators"
+                }
+              ]
+            },
+            {
+              "name": "⁠Ernie",
+              "url": "https://ernie.baidu.com/",
+              "blurb": "or ERNIE (HF) / 2 - Unlimited / Editing / Sign-Up",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "ERNIE (HF)",
+                  "url": "https://huggingface.co/spaces/baidu/ERNIE-Image-Turbo"
+                },
+                {
+                  "text": "2",
+                  "url": "https://huggingface.co/spaces/akhaliq/ERNIE-Image-Turbo"
+                }
+              ]
+            },
+            {
+              "name": "LongCat AI",
+              "url": "https://longcat.chat/",
+              "blurb": "100 Daily / Editing",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠MAI Playground",
+              "url": "https://playground.microsoft.ai/chat",
+              "blurb": "MAI-Image-2 / 10 Daily / Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mage",
+              "url": "https://www.mage.space/",
+              "blurb": "/ Discord, ⁠Tater AI, Loras / X / GitHub, AI Gallery / Telegram, AIFreeForever or Art Genie - Flux Schnell",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/GT9bPgxyFP"
+                },
+                {
+                  "text": "⁠Tater AI",
+                  "url": "https://taterai.github.io/Text2Image-Generator.html"
+                },
+                {
+                  "text": "Loras",
+                  "url": "https://www.loras.dev/"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/tater_ai"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Nutlope/loras-dev"
+                },
+                {
+                  "text": "AI Gallery",
+                  "url": "https://aigallery.app/"
+                },
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/aigalleryapp"
+                },
+                {
+                  "text": "AIFreeForever",
+                  "url": "https://aifreeforever.com/image-generators"
+                },
+                {
+                  "text": "Art Genie",
+                  "url": "https://artgenie.pages.dev/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Coze",
+              "url": "https://space.coze.cn/",
+              "blurb": "Seadream 4.0 / 50 Daily / Sign-Up with Phone / US Select CA",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "imgsys",
+              "url": "https://imgsys.org/",
+              "blurb": "Compare Generators / Unlimited / No Direct Mode",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Diffusers Image Outpaint",
+              "url": "https://huggingface.co/spaces/fffiloni/diffusers-image-outpaint",
+              "blurb": "AI Image Extender / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Genie",
+              "url": "https://lumalabs.ai/genie",
+              "blurb": "/ Discord, Shap-e, Stable Dreamfusion or threestudio / Colab / Discord - 3D Image Generators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ASbS3EykXm"
+                },
+                {
+                  "text": "Shap-e",
+                  "url": "https://github.com/openai/shap-e"
+                },
+                {
+                  "text": "Stable Dreamfusion",
+                  "url": "https://github.com/ashawkey/stable-dreamfusion"
+                },
+                {
+                  "text": "threestudio",
+                  "url": "https://github.com/threestudio-project/threestudio"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/threestudio-project/threestudio/blob/main/threestudio.ipynb"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/ejer2MAB8N"
+                }
+              ]
+            },
+            {
+              "name": "Interactive Scenes",
+              "url": "https://lumalabs.ai/interactive-scenes",
+              "blurb": "Generate Interactive Scenes / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ASbS3EykXm"
+                }
+              ]
+            },
+            {
+              "name": "Illusion Diffusion",
+              "url": "https://huggingface.co/spaces/AP123/IllusionDiffusion",
+              "blurb": "Illusion Artwork Generator / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Local Frontends",
+          "entries": [
+            {
+              "name": "Stability Matrix",
+              "url": "https://lykos.ai/",
+              "blurb": "/ Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/TUrgfECxHz"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/LykosAI/StabilityMatrix"
+                }
+              ]
+            },
+            {
+              "name": "Invoke",
+              "url": "https://invoke-ai.github.io/InvokeAI/",
+              "blurb": "/ Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ZmtBAhwWhy"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/invoke-ai/InvokeAI"
+                }
+              ]
+            },
+            {
+              "name": "ComfyUI",
+              "url": "https://www.comfy.org/",
+              "blurb": "/ Subreddit / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/comfyui/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/comfyorg"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/comfyanonymous/ComfyUI"
+                }
+              ]
+            },
+            {
+              "name": "Fooocus",
+              "url": "https://github.com/lllyasviel/Fooocus",
+              "blurb": ", 2 / Colab",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://github.com/MoonRide303/Fooocus-MRE"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/lllyasviel/Fooocus/blob/main/fooocus_colab.ipynb"
+                }
+              ]
+            },
+            {
+              "name": "Mochi Diffusion",
+              "url": "https://github.com/MochiDiffusion/MochiDiffusion",
+              "blurb": "Stable Diffusion for Mac / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/x2kartzxGv"
+                }
+              ]
+            },
+            {
+              "name": "DiffusionBee",
+              "url": "https://diffusionbee.com/",
+              "blurb": "Stable Diffusion for Mac / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/t6rC5RaJQn"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/divamgupta/diffusionbee-stable-diffusion-ui"
+                }
+              ]
+            },
+            {
+              "name": "Automatic1111",
+              "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+              "blurb": "/ Fork, 2 / Colab / Photoshop / Templates / Upscaling, 2",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Fork",
+                  "url": "https://github.com/anapnoe/stable-diffusion-webui-ux"
+                },
+                {
+                  "text": "2",
+                  "url": "https://github.com/vladmandic/sdnext"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Online-Services#google-colab"
+                },
+                {
+                  "text": "Photoshop",
+                  "url": "https://github.com/AbdullahAlfaraj/Auto-Photoshop-StableDiffusion-Plugin"
+                },
+                {
+                  "text": "Templates",
+                  "url": "https://github.com/ThereforeGames/unprompted"
+                },
+                {
+                  "text": "Upscaling",
+                  "url": "https://github.com/Coyote-A/ultimate-upscale-for-automatic1111"
+                },
+                {
+                  "text": "2",
+                  "url": "https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111"
+                }
+              ]
+            },
+            {
+              "name": "StableStudio",
+              "url": "https://github.com/Stability-AI/StableStudio",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Easy Diffusion",
+              "url": "https://easydiffusion.github.io/",
+              "blurb": "/ Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/u9yhsFmEkB"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/easydiffusion/easydiffusion"
+                }
+              ]
+            },
+            {
+              "name": "Makeayo",
+              "url": "https://makeayo.com",
+              "blurb": "/ Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/FbdSxdeV8m"
+                }
+              ]
+            },
+            {
+              "name": "biniou",
+              "url": "https://github.com/Woolverine94/biniou",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Dione",
+              "url": "https://github.com/dioneapp/dioneapp",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sygil WebUI",
+              "url": "https://sygil-dev.github.io/sygil-webui/",
+              "blurb": "/ Colab / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/Sygil-Dev/sygil-webui/blob/main/Web_based_UI_for_Stable_Diffusion_colab.ipynb"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ttM8Tm6wge"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Sygil-Dev/sygil-webui"
+                }
+              ]
+            },
+            {
+              "name": "Radiata",
+              "url": "https://ddpn08.github.io/Radiata/en/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SD WebUI Forge",
+              "url": "https://github.com/lllyasviel/stable-diffusion-webui-forge",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ComfyUI-Zluda",
+              "url": "https://github.com/patientx/ComfyUI-Zluda",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Pinokio",
+              "url": "https://pinokio.co/",
+              "blurb": "Plugin-Based / Self-Hosted / NVIDIA Required",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Diffuse",
+              "url": "https://huggingface.co/TensorStack/Diffuse",
+              "blurb": "Stable Diffusion for AMD Systems / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/ptgMMv36Xu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Guides / Tools",
+          "entries": [
+            {
+              "name": "Paper2GUI",
+              "url": "https://github.com/Baiyuetribe/paper2gui/blob/main/README_en.md",
+              "blurb": ", sdg-link, LocalModelsLinks or SDTools - AI Image Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "sdg-link",
+                  "url": "https://rentry.co/sdg-link"
+                },
+                {
+                  "text": "LocalModelsLinks",
+                  "url": "https://rentry.org/LocalModelsLinks"
+                },
+                {
+                  "text": "SDTools",
+                  "url": "https://sdtools.org"
+                }
+              ]
+            },
+            {
+              "name": "Civitai",
+              "url": "https://civitai.com/",
+              "blurb": "SD Model Index / Archive / Subreddit / Discord / GitHub",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Archive",
+                  "url": "https://civarchive.com/"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/civitai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/UwX5wKwm6c"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/civitai/civitai"
+                }
+              ]
+            },
+            {
+              "name": "⁠Prompy",
+              "url": "https://www.prompy.me/",
+              "blurb": "or promptoMANIA - Prompt Indexes",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "promptoMANIA",
+                  "url": "https://promptomania.com/"
+                }
+              ]
+            },
+            {
+              "name": "A Traveler's Guide to the Latent Space",
+              "url": "https://sweet-hall-e72.notion.site/A-Traveler-s-Guide-to-the-Latent-Space-85efba7e5e6a40e5bd3cae980f30235f",
+              "blurb": "AI Art Guide",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠ImagePromptGuru",
+              "url": "https://imagepromptguru.net/",
+              "blurb": "or CLIP Interrogator / Colab, 2 - Determine Image Prompts",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "CLIP Interrogator",
+                  "url": "https://huggingface.co/spaces/fffiloni/CLIP-Interrogator-2"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb"
+                },
+                {
+                  "text": "2",
+                  "url": "https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/open-clip/clip_interrogator.ipynb"
+                }
+              ]
+            },
+            {
+              "name": "SD Dynamic Prompts",
+              "url": "https://github.com/adieyal/sd-dynamic-prompts",
+              "blurb": "Extension for Automatic1111",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI Horde",
+              "url": "https://stablehorde.net/",
+              "blurb": "Stable Diffusion GPU Hoarde / Interface, 2, 3 / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Interface",
+                  "url": "https://aqualxx.github.io/stable-ui/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://tinybots.net/artbot"
+                },
+                {
+                  "text": "3",
+                  "url": "https://artificial-art.eu/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/3DxrhksKzn"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Haidra-Org/AI-Horde"
+                }
+              ]
+            },
+            {
+              "name": "IOPaint",
+              "url": "https://www.iopaint.com/",
+              "blurb": "Image Fill / Item Removal / Colab",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/1TKVlDZiE3MIZnAUMpv2t_S4hLr6TUY1d?usp=sharing"
+                }
+              ]
+            },
+            {
+              "name": "Generative AI for Beginners",
+              "url": "https://microsoft.github.io/generative-ai-for-beginners/",
+              "blurb": "Generative AI Guides",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ [Image Restoration](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/image-toolswiki_.25B7_upscale_.2F_restore)",
+          "entries": [
+            {
+              "name": "Suno",
+              "url": "https://suno.com/",
+              "blurb": "10 Daily / Guide / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://sunoaiwiki.com/en"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/suno"
+                }
+              ]
+            },
+            {
+              "name": "Sonauto",
+              "url": "https://sonauto.ai/",
+              "blurb": "/ Unlimited / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/pfXar3ChH8"
+                }
+              ]
+            },
+            {
+              "name": "Pollinations Chat",
+              "url": "https://pollinations.ai/play",
+              "blurb": "ACE-Step 1.5 Turbo / Limits and Models / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits and Models",
+                  "url": "https://enter.pollinations.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pollinations-ai-885844321461485618"
+                }
+              ]
+            },
+            {
+              "name": "MusicFX",
+              "url": "https://labs.google/fx/tools/music-fx",
+              "blurb": "/ Region-Based",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WolframTones",
+              "url": "https://tones.wolfram.com/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Stable Audio",
+              "url": "https://www.stableaudio.com/",
+              "blurb": "/ 10 Monthly / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/stablediffusion"
+                }
+              ]
+            },
+            {
+              "name": "MusicGen",
+              "url": "https://github.com/facebookresearch/audiocraft/blob/main/docs/MUSICGEN.md",
+              "blurb": "/ No Sign-Up / Colab / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/1ECmNEoXk8kvnLEMBMF2LY82E7XmIG4yu"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Waveformer",
+              "url": "https://github.com/fofr/waveformer",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SOUNDRAW",
+              "url": "https://soundraw.io/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google Flow Music",
+              "url": "https://www.flowmusic.app/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mubert",
+              "url": "https://mubert.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠ACE-Step 1.5",
+              "url": "https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5",
+              "blurb": "/ No Sign-Up / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ace-step/ACE-Step-1.5"
+                }
+              ]
+            },
+            {
+              "name": "AIVA",
+              "url": "https://aiva.ai/",
+              "blurb": "/ Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ypDnFXN"
+                }
+              ]
+            },
+            {
+              "name": "Boomy",
+              "url": "https://boomy.com/",
+              "blurb": "/ Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/DNHQXeJegp"
+                }
+              ]
+            },
+            {
+              "name": "⁠MusicGPT",
+              "url": "https://musicgpt.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI Jukebox",
+              "url": "https://huggingface.co/spaces/enzostvs/ai-jukebox",
+              "blurb": "/ No Sign-Up / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Eapy",
+              "url": "https://home.eapy.io/",
+              "blurb": "MIDI Sample Generator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pack Generator",
+              "url": "https://output.com/products/pack-generator",
+              "blurb": "Sample Pack Generator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MMAudio",
+              "url": "https://hkchengrex.com/MMAudio/",
+              "blurb": "Generate Audio for Silent Videos / Demo / Colab / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Demo",
+                  "url": "https://huggingface.co/spaces/hkchengrex/MMAudio"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/1TAaXCY2-kPk4xE4PwKB3EqFbSnkUuzZ8?usp=sharing"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/hkchengrex/MMAudio"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Text to Speech",
+          "entries": [
+            {
+              "name": "Arena TTS",
+              "url": "https://arena.ai4bharat.org/#/tts",
+              "blurb": "Text to Speech Model Benchmarks / Leaderboards",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "TTS Online",
+              "url": "https://www.text-to-speech.online/",
+              "blurb": "/ No Sign-Up",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Audiblez",
+              "url": "https://github.com/santinic/audiblez",
+              "blurb": ", Ebook2Audiobook / 2, ElevenReader, ⁠Paper2Audio or ReadWise (reset trial) - Convert Books / Documents to Audiobooks",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Ebook2Audiobook",
+                  "url": "https://github.com/DrewThomasson/ebook2audiobook"
+                },
+                {
+                  "text": "2",
+                  "url": "https://huggingface.co/spaces/drewThomasson/ebook2audiobook"
+                },
+                {
+                  "text": "ElevenReader",
+                  "url": "https://elevenreader.io/"
+                },
+                {
+                  "text": "⁠Paper2Audio",
+                  "url": "https://www.paper2audio.com/"
+                },
+                {
+                  "text": "ReadWise",
+                  "url": "https://readwise.io/read"
+                }
+              ]
+            },
+            {
+              "name": "Google Illuminate",
+              "url": "https://illuminate.google.com/",
+              "blurb": "Generate AI Conversations",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ElevenLabs",
+              "url": "https://elevenlabs.io/",
+              "blurb": "/ No Sign-Up / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/elevenlabs"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/elevenlabs"
+                }
+              ]
+            },
+            {
+              "name": "Pollinations Chat",
+              "url": "https://pollinations.ai/play",
+              "blurb": "Whisper Large V3/ AssemblyAI Universal-2 / Qwen3-TTS Flash / Limits and Models / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Limits and Models",
+                  "url": "https://enter.pollinations.ai/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/pollinations-ai-885844321461485618"
+                }
+              ]
+            },
+            {
+              "name": "Google Speech Gen",
+              "url": "https://aistudio.google.com/generate-speech",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TTS-WebUI",
+              "url": "https://ttswebui.com/",
+              "blurb": "/ No Sign-Up / Colab / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/rsxdalv/tts-webui/blob/main/notebooks/google_colab.ipynb"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/V8BKTVRtJ9"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/rsxdalv/TTS-WebUI"
+                }
+              ]
+            },
+            {
+              "name": "FakeYou",
+              "url": "https://fakeyou.com/",
+              "blurb": "/ No Sign-Up / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/fakeyou"
+                }
+              ]
+            },
+            {
+              "name": "Tortoise TTS",
+              "url": "https://github.com/neonbjb/tortoise-tts",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Bark",
+              "url": "https://github.com/suno-ai/bark",
+              "blurb": "/ No Sign-Up / Colab / Discord / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/1eJfA2XUa-mXwdMy7DoYKVYHI1iTd9Vkt?usp=sharing"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/J2B2vsjKuE"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "TTSOpenAI",
+              "url": "https://ttsopenai.com/",
+              "blurb": "or OpenAI.fm / No Sign-Up / OpenAI's Bot",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "OpenAI.fm",
+                  "url": "https://www.openai.fm/"
+                }
+              ]
+            },
+            {
+              "name": "⁠GPT-SoVITS",
+              "url": "https://github.com/RVC-Boss/GPT-SoVITS",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Kyutai TTS",
+              "url": "https://kyutai.org/next/tts",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AudioArena",
+              "url": "https://audioarena.ai/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LazyPy",
+              "url": "https://lazypy.ro/tts/",
+              "blurb": "/ No Sign-Up / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/chrisjp/tts"
+                }
+              ]
+            },
+            {
+              "name": "Kokoro TTS",
+              "url": "https://huggingface.co/spaces/hexgrad/Kokoro-TTS",
+              "blurb": "/ No Sign-Up / Discord / GitHub / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/QuGxSWBfQy"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/hexgrad/kokoro"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "Ondoku",
+              "url": "https://ondoku3.com/en/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Speechma",
+              "url": "https://speechma.com/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Kokoro-82M",
+              "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Chatterbox",
+              "url": "https://huggingface.co/spaces/ResembleAI/Chatterbox",
+              "blurb": "/ No Sign-Up / GitHub / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/resemble-ai/chatterbox"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            },
+            {
+              "name": "⁠Audio.Z.AI",
+              "url": "https://audio.z.ai/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AnyVoiceLab",
+              "url": "https://anyvoicelab.com/long-form-text-to-speech-converter/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "VoiceCraft",
+              "url": "https://github.com/jasonppy/VoiceCraft",
+              "blurb": "/ Colab",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/1IOjpglQyMTO2C3Y94LD9FY0Ocn-RJRg6?usp=sharing"
+                }
+              ]
+            },
+            {
+              "name": "EmotiVoice",
+              "url": "https://github.com/netease-youdao/EmotiVoice",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Cartesia",
+              "url": "https://play.cartesia.ai/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fish Audio",
+              "url": "https://fish.audio/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/fishaudio"
+                }
+              ]
+            },
+            {
+              "name": "Audio-WebUI",
+              "url": "https://github.com/gitmylo/audio-webui",
+              "blurb": "/ No Sign-Up / Colab / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/gitmylo/audio-webui/blob/master/audio_webui_colab.ipynb"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/NB86C3Szkg"
+                }
+              ]
+            },
+            {
+              "name": "VanillaVoice",
+              "url": "https://www.vanillavoice.com/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LOVO",
+              "url": "https://lovo.ai/",
+              "blurb": "/ Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/vWHw5ZKEmk"
+                }
+              ]
+            },
+            {
+              "name": "SoundofText",
+              "url": "https://soundoftext.com/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FreeTTS",
+              "url": "https://freetts.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Hume",
+              "url": "https://www.hume.ai/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NaturalReaders",
+              "url": "https://www.naturalreaders.com/online/",
+              "blurb": "/ No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AIVocal",
+              "url": "https://aivocal.io/",
+              "blurb": "/ Requires Google Account",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Moe TTS",
+              "url": "https://huggingface.co/spaces/skytnt/moe-tts",
+              "blurb": "/ No Sign-Up / Colab / Limits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/drive/14Pb8lpmwZL-JI5Ub6jpG4sz2-8KS0kbS?usp=sharing"
+                },
+                {
+                  "text": "Limits",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/hugging-face-warning.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Voice Change / Clone",
+          "entries": [
+            {
+              "name": "Applio",
+              "url": "https://applio.org/",
+              "blurb": "Voice Cloning / No Sign-Up / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/urxFjYmYYh"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/IAHispano/Applio"
+                }
+              ]
+            },
+            {
+              "name": "RVC V2",
+              "url": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/docs/en/README.en.md",
+              "blurb": "RVC V2 Voice Cloning (Locally) / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/HcsmBBGyVk"
+                }
+              ]
+            },
+            {
+              "name": "Voice Changer",
+              "url": "https://github.com/w-okada/voice-changer/blob/master/docs_i18n/README_en.md",
+              "blurb": "Real-Time Voice Changer (W-Okada) / Guide / Colab",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://rentry.co/VoiceChangerGuide"
+                },
+                {
+                  "text": "Colab",
+                  "url": "https://colab.research.google.com/github/w-okada/voice-changer/blob/master/Realtime_Voice_Changer_on_Colab.ipynb"
+                }
+              ]
+            },
+            {
+              "name": "Voice Models",
+              "url": "https://voice-models.com/",
+              "blurb": "AI Voice Models and Guides / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/3WJ8r6Bf5A"
+                }
+              ]
+            },
+            {
+              "name": "AnyVoiceLab",
+              "url": "https://anyvoicelab.com/voice-cloning/",
+              "blurb": "Voice Cloning / No Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AllVoiceLab",
+              "url": "https://www.allvoicelab.com/",
+              "blurb": "Voice Cloning",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Zyphra",
+              "url": "https://playground.zyphra.com/audio",
+              "blurb": "Voice Cloning / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Zyphra/Zonos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Voice Removal / Separation",
+          "entries": [
+            {
+              "name": "MultiSong Leaderboard",
+              "url": "https://mvsep.com/quality_checker/multisong_leaderboard",
+              "blurb": "Music & Voice Separation AI Leaderboards",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "MVSEP",
+              "url": "https://mvsep.com/",
+              "blurb": "50 Daily / Decrease Queue Time",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Decrease Queue Time",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/mvsep-note.md"
+                }
+              ]
+            },
+            {
+              "name": "Splitter",
+              "url": "https://www.bandlab.com/splitter",
+              "blurb": "/ Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MDX23",
+              "url": "https://github.com/jarredou/MVSEP-MDX23-Colab_v2",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Music-Source-Separation",
+              "url": "https://github.com/jarredou/Music-Source-Separation-Training-Colab-Inference",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "VocalRemover",
+              "url": "https://vocalremover.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Audacity Effects",
+              "url": "https://www.audacityteam.org/download/openvino/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/intel/openvino-plugins-ai-audacity"
+                }
+              ]
+            },
+            {
+              "name": "Ultimate Vocal Remover",
+              "url": "https://colab.research.google.com/github/NaJeongMo/Colaboratory-Notebook-for-Ultimate-Vocal-Remover/blob/main/Vocal%20Remover%205_arch.ipynb",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Remove Vocals",
+              "url": "https://www.remove-vocals.com/",
+              "blurb": ", 2",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://www.acapella-extractor.com/"
+                }
+              ]
+            },
+            {
+              "name": "Vocali.se",
+              "url": "https://vocali.se/en",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mazmazika",
+              "url": "https://www.mazmazika.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Ezstems",
+              "url": "https://ezstems.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI Price Compare",
+              "url": "https://countless.dev/",
+              "blurb": ", **LLM Pricing** / GitHub or **PricePerToken** - AI / LLM API Price Comparisons",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "LLM Pricing",
+                  "url": "https://www.llm-prices.com/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/simonw/llm-prices"
+                },
+                {
+                  "text": "PricePerToken",
+                  "url": "https://pricepertoken.com/"
+                }
+              ]
+            },
+            {
+              "name": "sindresorhus's Awesome ChatGPT",
+              "url": "https://github.com/sindresorhus/awesome-chatgpt",
+              "blurb": "or Awesome ChatGPT - AI Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Awesome ChatGPT",
+                  "url": "https://github.com/uhub/awesome-chatgpt"
+                }
+              ]
+            },
+            {
+              "name": "Every ChatGPT GUI",
+              "url": "https://github.com/billmei/every-chatgpt-gui",
+              "blurb": "ChatGPT GUI Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI API Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/dev-tools/#wiki_.25B7_api_tools",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "tldraw computer",
+              "url": "https://computer.tldraw.com/",
+              "blurb": "Create Component Workflows to Generate or Transform Data / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/SBBEVCA4PG"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/tldraw/tldraw"
+                }
+              ]
+            },
+            {
+              "name": "⁠Page Assist",
+              "url": "https://github.com/n4ze3m/page-assist",
+              "blurb": ", ChatGPT Box or KeepChatGPT - Extensions",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "ChatGPT Box",
+                  "url": "https://github.com/josStorer/chatGPTBox"
+                },
+                {
+                  "text": "KeepChatGPT",
+                  "url": "https://github.com/xcanwin/KeepChatGPT/blob/main/docs/README_EN.md"
+                }
+              ]
+            },
+            {
+              "name": "LLM",
+              "url": "https://llm.datasette.io/",
+              "blurb": "LLM CLI / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/RKAH4b8TvE"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/simonw/llm"
+                }
+              ]
+            },
+            {
+              "name": "⁠LightSession",
+              "url": "https://github.com/11me/light-session",
+              "blurb": "Fix ChatGPT Lag",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Privatiser",
+              "url": "https://privatiser.net/",
+              "blurb": "Anonymize Sensitive Data for AI",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ChatGPT DeMod",
+              "url": "https://github.com/4as/ChatGPT-DeMod",
+              "blurb": "Block ChatGPT Moderation Checks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Agent Reach",
+              "url": "https://github.com/Panniantong/Agent-Reach",
+              "blurb": "Connect AI Agents to Popular Internet Platforms",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MassiveMark",
+              "url": "https://www.bibcit.com/en/massivemark",
+              "blurb": "Convert LLM Chats to DOCX / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/fPtQAQYmqq"
+                }
+              ]
+            },
+            {
+              "name": "ChatGPT Widescreen",
+              "url": "https://chatgptevo.com/widescreen/",
+              "blurb": "ChatGPT Widescreen / Fullscreen / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/adamlui/chatgpt-widescreen"
+                }
+              ]
+            },
+            {
+              "name": "screenpipe",
+              "url": "https://screenpi.pe/",
+              "blurb": "AI Screen Recorder / No Sign-Up / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/dU9EBuw7Uq"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mediar-ai/screenpipe"
+                }
+              ]
+            },
+            {
+              "name": "ChatGPT Exporter",
+              "url": "https://greasyfork.org/en/scripts/456055",
+              "blurb": "Export Chats / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/pionxzh/chatgpt-exporter"
+                }
+              ]
+            },
+            {
+              "name": "GPThemes",
+              "url": "https://github.com/itsmartashub/GPThemes",
+              "blurb": "ChatGPT Themes",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LLM Model VRAM Calculator",
+              "url": "https://huggingface.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator",
+              "blurb": "LLM Requirement Calculators",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ AI Prompts",
+          "entries": [
+            {
+              "name": "L1B3RT4S",
+              "url": "https://github.com/elder-plinius/L1B3RT4S",
+              "blurb": "Jailbreak Prompts / X / Discord",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/elder_plinius"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/basi"
+                }
+              ]
+            },
+            {
+              "name": "BlackFriday GPTs Prompts",
+              "url": "https://github.com/friuns2/BlackFriday-GPTs-Prompts",
+              "blurb": "Prompt Directory",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Leaked Prompts",
+              "url": "https://github.com/linexjlin/GPTs",
+              "blurb": "Prompt Directory",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Prompt Engineering Guide",
+              "url": "https://www.promptingguide.ai",
+              "blurb": "/ Discord / GitHub, Google Whitepaper, Prompt_Engineering, LearnPrompting, OpenAI Guide or Claude Prompts / Discord - Prompting Guides",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/FUyz9vPAwf"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/dair-ai/Prompt-Engineering-Guide"
+                },
+                {
+                  "text": "Google Whitepaper",
+                  "url": "https://www.kaggle.com/whitepaper-prompt-engineering"
+                },
+                {
+                  "text": "Prompt_Engineering",
+                  "url": "https://github.com/NirDiamant/Prompt_Engineering"
+                },
+                {
+                  "text": "LearnPrompting",
+                  "url": "https://learnprompting.org/docs/introduction"
+                },
+                {
+                  "text": "OpenAI Guide",
+                  "url": "https://platform.openai.com/docs/guides/prompt-engineering"
+                },
+                {
+                  "text": "Claude Prompts",
+                  "url": "https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/6PPFFzqPDZ"
+                }
+              ]
+            },
+            {
+              "name": "ChatGPT System Prompt",
+              "url": "https://github.com/LouisShark/chatgpt_system_prompt",
+              "blurb": "Prompt Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "The Big Prompt Library",
+              "url": "https://github.com/0xeb/TheBigPromptLibrary",
+              "blurb": "Prompt Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Jailbreak Listings",
+              "url": "https://rentry.org/jb-listing",
+              "blurb": "Prompt Directory / Jailbreaks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "InjectPrompt Companion",
+              "url": "https://companion.injectprompt.com/",
+              "blurb": "AI Jailbreak Prompt Assistant",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Heretic",
+              "url": "https://github.com/p-e-w/heretic",
+              "blurb": "AI Jailbreak / Anti-Censorship Tool / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/gdXc48gSyT"
+                }
+              ]
+            },
+            {
+              "name": "promptfoo",
+              "url": "https://www.promptfoo.dev/",
+              "blurb": "Prompt Playgrounds / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/gHPS9jjfbs"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/promptfoo/promptfoo"
+                }
+              ]
+            },
+            {
+              "name": "Tensor Trust",
+              "url": "https://tensortrust.ai/",
+              "blurb": "/ GitHub or Gandalf / GitHub - Prompting Skill Games",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/HumanCompatibleAI/tensor-trust"
+                },
+                {
+                  "text": "Gandalf",
+                  "url": "https://gandalf.lakera.ai/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lakeraai"
+                }
+              ]
+            },
+            {
+              "name": "Gobble Bot",
+              "url": "https://gobble.bot/",
+              "blurb": "Generate Text Files for Chatbots",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠LLM Explorer",
+              "url": "https://llm-explorer.com/",
+              "blurb": "or LifeArchitect - LLM Databases / Indexes",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "LifeArchitect",
+                  "url": "https://lifearchitect.ai/models-table/"
+                }
+              ]
+            },
+            {
+              "name": "FutureTools",
+              "url": "https://www.futuretools.io/?pricing-model=free",
+              "blurb": "AI Directory / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/WBk4ZDW6A9"
+                }
+              ]
+            },
+            {
+              "name": "Google Labs",
+              "url": "https://labs.google/",
+              "blurb": "or Google Labs FX - Google AI Experiments / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Google Labs FX",
+                  "url": "https://labs.google/fx"
+                },
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/labsdotgoogle/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/googlelabs"
+                }
+              ]
+            },
+            {
+              "name": "Models.dev",
+              "url": "https://models.dev/",
+              "blurb": "AI Model Database / Pricing / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/anomalyco/models.dev"
+                }
+              ]
+            },
+            {
+              "name": "AI Leaks",
+              "url": "https://discord.gg/MFCU6sKSNs",
+              "blurb": "AI Leaks / Feature News Server",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "YP for AI",
+              "url": "https://www.ypforai.com",
+              "blurb": "AI Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LLM Resources Hub",
+              "url": "https://llmresourceshub.vercel.app/",
+              "blurb": "AI Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awesome AI Tools",
+              "url": "https://github.com/mahseema/awesome-ai-tools",
+              "blurb": "AI Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "It's Better With AI",
+              "url": "https://itsbetterwithai.com/",
+              "blurb": "AI Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GPT Demo",
+              "url": "https://www.gptdemo.net/gpt/search?lg=en&cate=&keywords=&tags=free,&sort=popular",
+              "blurb": "AI Directory",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ArtificialStudio",
+              "url": "https://app.artificialstudio.ai/tools",
+              "blurb": "Multi-Tool Browser AIs / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/EdNztJJH6z"
+                }
+              ]
+            },
+            {
+              "name": "⁠LM Council",
+              "url": "https://lmcouncil.ai/benchmarks",
+              "blurb": "AI Benchmark Index / Comparisons",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Artificial Analysis",
+              "url": "https://artificialanalysis.ai/",
+              "blurb": "Chatbot, Image, and Video Benchmarks / X / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/ArtificialAnlys"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/aAvvUqxGjM"
+                }
+              ]
+            },
+            {
+              "name": "⁠Kaggle Benchmarks",
+              "url": "https://www.kaggle.com/benchmarks",
+              "blurb": "Chatbot Leaderboards / Benchmarks",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Arena",
+              "url": "https://arena.ai/leaderboard",
+              "blurb": ", 2 - Chatbot Leaderboards / Benchmarks / X / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://canaryarena.ai/"
+                },
+                {
+                  "text": "X",
+                  "url": "https://x.com/arena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/lmarena"
+                }
+              ]
+            },
+            {
+              "name": "OpenRouter",
+              "url": "https://openrouter.ai/rankings",
+              "blurb": "Chatbot Popularity Rankings / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/fVyRaUDgxW"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/OpenRouterTeam"
+                }
+              ]
+            },
+            {
+              "name": "SEAL LLM Leaderboards",
+              "url": "https://scale.com/leaderboard",
+              "blurb": "Chatbot Leaderboards",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Context Arena",
+              "url": "https://contextarena.ai/",
+              "blurb": "Chatbot Leaderboards / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠RankedAGI",
+              "url": "https://rankedagi.com/",
+              "blurb": "Chatbot Leaderboards / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LLM Stats",
+              "url": "https://llm-stats.com/",
+              "blurb": "Chatbot Leaderboard / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/LlmStats"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/RxGUBvE42d"
+                }
+              ]
+            },
+            {
+              "name": "OpenLM Arena",
+              "url": "https://openlm.ai/chatbot-arena/",
+              "blurb": "Chatbot Leaderboard",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Wolfram LLM Benchmarking Project",
+              "url": "https://www.wolfram.com/llm-benchmarking-project/",
+              "blurb": "Chatbot Leaderboards / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Epoch AI",
+              "url": "https://epoch.ai/benchmarks/eci",
+              "blurb": "Combines Multiple AI Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Specialized Benchmarks",
+          "entries": [
+            {
+              "name": "Open VLM Leaderboard",
+              "url": "https://huggingface.co/spaces/opencompass/open_vlm_leaderboard",
+              "blurb": "VLM Benchmark Leaderboard Aggregator",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠AI Roundtable",
+              "url": "https://opper.ai/ai-roundtable",
+              "blurb": "Run Multi-Model Debates on Any Question",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠DesignArena",
+              "url": "https://www.designarena.ai/leaderboard/",
+              "blurb": "AI Design Benchmarks / X / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/designarena"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/Bw9Ajcb3pR"
+                }
+              ]
+            },
+            {
+              "name": "⁠EQ-Bench",
+              "url": "https://eqbench.com/",
+              "blurb": "AI Emotional Intelligence Benchmarks / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/EQ-bench/eqbench3"
+                }
+              ]
+            },
+            {
+              "name": "⁠IUMB",
+              "url": "https://pellaml.github.io/iumb/",
+              "blurb": "AI Mathematics Benchmarks / Leaderboard",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MathArena",
+              "url": "https://matharena.ai/",
+              "blurb": "AI Mathematics Benchmarks / Competitions",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Vals AI",
+              "url": "https://www.vals.ai/",
+              "blurb": "AI Finance / Tax / Law Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Simple Bench",
+              "url": "https://simple-bench.com/",
+              "blurb": "AI Human Reasoning Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠VPCT",
+              "url": "https://cbrower.dev/vpct",
+              "blurb": "AI Visual Physics Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠SpeechMap.AI",
+              "url": "https://speechmap.ai/",
+              "blurb": "AI Free Speech Benchmarks / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/xlr8harder/llm-compliance"
+                }
+              ]
+            },
+            {
+              "name": "⁠LLMs Bullshit Benchmark",
+              "url": "https://petergpt.github.io/bullshit-benchmark/viewer/index.html",
+              "blurb": "Broken Premise Detection Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI Elo",
+              "url": "https://aielo.co/",
+              "blurb": "AI Game Competitions / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ChessArena",
+              "url": "https://www.chessarena.ai/",
+              "blurb": "AI Chess Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠VoxelBench",
+              "url": "https://voxelbench.ai/",
+              "blurb": "Minecraft AI Generation Benchmark",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Coding Benchmarks",
+          "entries": [
+            {
+              "name": "SWEBench",
+              "url": "https://www.swebench.com/",
+              "blurb": "Software Engineering AI Leaderboard / Benchmarks / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/princeton-nlp/SWE-bench"
+                }
+              ]
+            },
+            {
+              "name": "⁠AIBenchmarks",
+              "url": "https://aibenchmarks.net/",
+              "blurb": "Coding AI Leaderboard / Benchmarks / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/panilya/awesome-ai-benchmarks"
+                }
+              ]
+            },
+            {
+              "name": "WebDev Arena",
+              "url": "https://arena.ai/leaderboard/webdev",
+              "blurb": "Coding AI Leaderboard / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Aider LLM Leaderboards",
+              "url": "https://aider.chat/docs/leaderboards/",
+              "blurb": "Coding AI Leaderboard / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Vals AI",
+              "url": "https://www.vals.ai/",
+              "blurb": "Coding AI Leaderboard / Benchmarks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awesome Machine Learning",
+              "url": "https://github.com/josephmisiti/awesome-machine-learning",
+              "blurb": "Machine Learning Framework Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awesome ML",
+              "url": "https://github.com/underlines/awesome-ml",
+              "blurb": ", ⁠Awesome LLM Resources or ML Resources - Machine Learning / LLM Resources",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "⁠Awesome LLM Resources",
+                  "url": "https://github.com/ilsilfverskiold/Awesome-LLM-Resources-List/"
+                },
+                {
+                  "text": "ML Resources",
+                  "url": "https://ml-resources.vercel.app/"
+                }
+              ]
+            },
+            {
+              "name": "Hugging Face",
+              "url": "https://huggingface.co/",
+              "blurb": ", ModelScope, LLM Papers or OpenML - Machine Learning Datasets / Papers",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "ModelScope",
+                  "url": "https://www.modelscope.ai/"
+                },
+                {
+                  "text": "LLM Papers",
+                  "url": "https://potent-twister-29f.notion.site/b0fc32542854456cbde923e0adb48845?v=e2d14d2ef0c848f5a1d5b71f9977d7c5"
+                },
+                {
+                  "text": "OpenML",
+                  "url": "https://www.openml.org/"
+                }
+              ]
+            },
+            {
+              "name": "Deep playground",
+              "url": "https://playground.tensorflow.org/",
+              "blurb": "Neural Networks Playground",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awesome Generative AI Guide",
+              "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide",
+              "blurb": "LLM Research Resources",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠aman.ai",
+              "url": "https://aman.ai/",
+              "blurb": "Artificial Intelligence / Deep Learning Stanford Notes",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LLM Visualization",
+              "url": "https://bbycroft.net/llm",
+              "blurb": ", KO MicroGPT / GitHub, Machine Learning Roadmap, SAAYN, machine-learning-zoomcamp, ML Engineering, udlbook / GitHub, mlsysbook, Everything AI/ML / GitHub, ML Visualized / GitHub or LLM Course - Learn Machine Learning",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "KO MicroGPT",
+                  "url": "https://ko-microgpt.vercel.app/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/woduq1414/ko-microgpt"
+                },
+                {
+                  "text": "Machine Learning Roadmap",
+                  "url": "https://rentry.org/machine-learning-roadmap"
+                },
+                {
+                  "text": "SAAYN",
+                  "url": "https://spreadsheets-are-all-you-need.ai/"
+                },
+                {
+                  "text": "machine-learning-zoomcamp",
+                  "url": "https://github.com/DataTalksClub/machine-learning-zoomcamp"
+                },
+                {
+                  "text": "ML Engineering",
+                  "url": "https://github.com/stas00/ml-engineering"
+                },
+                {
+                  "text": "udlbook",
+                  "url": "https://udlbook.github.io/udlbook/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/udlbook/udlbook/"
+                },
+                {
+                  "text": "mlsysbook",
+                  "url": "https://www.mlsysbook.ai/"
+                },
+                {
+                  "text": "Everything AI/ML",
+                  "url": "https://viveknaskar.github.io/everything-ai-ml/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/viveknaskar/everything-ai-ml"
+                },
+                {
+                  "text": "ML Visualized",
+                  "url": "https://ml-visualized.com/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/gavinkhung/machine-learning-visualized"
+                },
+                {
+                  "text": "LLM Course",
+                  "url": "https://github.com/mlabonne/llm-course"
+                }
+              ]
+            },
+            {
+              "name": "⁠Transformer Explainer",
+              "url": "https://poloclub.github.io/transformer-explainer/",
+              "blurb": "⁠Transformer Visualization",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Approaching (Almost) Any Machine Learning Problem",
+              "url": "https://github.com/abhishekkrthakur/approachingalmost/blob/master/AAAMLP.pdf",
+              "blurb": "Machine Learning Problem-Solving Book",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Deep ML",
+              "url": "https://www.deep-ml.com/",
+              "blurb": "Solve Machine Learning Problems",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AI-For-Beginners",
+              "url": "https://github.com/microsoft/AI-For-Beginners",
+              "blurb": ", Beginner Guides or HF Learn - Machine Learning Guides",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Beginner Guides",
+                  "url": "https://microsoft.github.io/generative-ai-for-beginners/"
+                },
+                {
+                  "text": "HF Learn",
+                  "url": "https://huggingface.co/learn"
+                }
+              ]
+            },
+            {
+              "name": "ML Course Notes",
+              "url": "https://github.com/dair-ai/ML-Course-Notes",
+              "blurb": "Machine Learning Course Notes",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "100-Days-Of-ML-Code",
+              "url": "https://github.com/Avik-Jain/100-Days-Of-ML-Code",
+              "blurb": ", DeepLearningWizard, DeepCourse, UFLDL, IAILab, Handson ML3, DeepLearning.ai or Practical Deep Learning - Machine / Deep Learning Courses",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "DeepLearningWizard",
+                  "url": "https://www.deeplearningwizard.com/"
+                },
+                {
+                  "text": "DeepCourse",
+                  "url": "https://arthurdouillard.com/deepcourse/"
+                },
+                {
+                  "text": "UFLDL",
+                  "url": "http://ufldl.stanford.edu/tutorial/"
+                },
+                {
+                  "text": "IAILab",
+                  "url": "https://iailab.kaist.ac.kr/teaching/deep-learning"
+                },
+                {
+                  "text": "Handson ML3",
+                  "url": "https://github.com/ageron/handson-ml3"
+                },
+                {
+                  "text": "DeepLearning.ai",
+                  "url": "https://www.deeplearning.ai/"
+                },
+                {
+                  "text": "Practical Deep Learning",
+                  "url": "https://course.fast.ai/"
+                }
+              ]
+            },
+            {
+              "name": "minitorch",
+              "url": "https://github.com/minitorch/minitorch",
+              "blurb": "Machine Learning Engineering Course Code",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ML YouTube Courses",
+              "url": "https://github.com/dair-ai/ML-YouTube-Courses",
+              "blurb": "or Deep Learning Drizzle - Machine Learning Courses on YouTube",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Deep Learning Drizzle",
+                  "url": "https://deep-learning-drizzle.github.io/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Unsloth",
+              "url": "https://unsloth.ai/docs/new/studio",
+              "blurb": "LLM Finetuning / Text Completion / Notebooks / Guide / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Notebooks",
+                  "url": "https://github.com/unslothai/notebooks"
+                },
+                {
+                  "text": "Guide",
+                  "url": "https://docs.unsloth.ai/get-started/fine-tuning-guide"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/unslothai/unsloth"
+                }
+              ]
+            },
+            {
+              "name": "ModelScope Finetuning",
+              "url": "https://modelscope.ai/civision/modelTraining",
+              "blurb": "Image Gen Model Finetuning / Up to 100 Images Per LoRA",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Markdown Web Browser",
+              "url": "https://github.com/Dicklesworthstone/markdown_web_browser",
+              "blurb": "Webpage > Markdown Converter",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DeepSpeed",
+              "url": "https://www.deepspeed.ai/",
+              "blurb": "Deep Learning Optimization Library",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Netron",
+              "url": "https://github.com/lutzroeder/netron",
+              "blurb": "Visualizer for Neural Network, Deep Learning, and Machine Learning Models",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MMDeploy",
+              "url": "https://mmdeploy.readthedocs.io/en/latest/",
+              "blurb": "Deep Learning Model Deployment Toolset / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/open-mmlab/mmdeploy"
+                }
+              ]
+            },
+            {
+              "name": "ChatGPT-Next-Web",
+              "url": "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web",
+              "blurb": "Cross-Platform ChatGPT / Gemini UI",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Nixified",
+              "url": "https://nixified.ai/",
+              "blurb": "Nix Flake for AI Projects",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

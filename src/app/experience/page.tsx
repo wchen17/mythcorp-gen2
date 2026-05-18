@@ -1,17 +1,62 @@
-﻿'use client';
+'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { SiteHeader } from '../components/SiteHeader';
 import { MainMenu } from './MainMenu';
 import { Simulation } from './Simulation';
 
-export default function ExperiencePage() {
-  // Two-state machine: menu shows the entry card, simulation runs the 3D
-  // scene. The old "settings" stub was removed, Simulation already exposes
-  // a full controls panel inline, so a duplicate settings page added nothing.
-  const [view, setView] = useState<'menu' | 'simulation'>('menu');
+type View = 'menu' | 'simulation';
 
-  if (view === 'simulation') {
-    return <Simulation onExit={() => setView('menu')} />;
-  }
-  return <MainMenu onStart={() => setView('simulation')} />;
+const FADE_MS = 420;
+
+export default function ExperiencePage() {
+  const [view, setView] = useState<View>('menu');
+  const [mounted, setMounted] = useState<View>('menu');
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (mounted === view) return;
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setMounted(view);
+      timer.current = null;
+    }, FADE_MS);
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, [view, mounted]);
+
+  const showMenu = view === 'menu' && mounted === 'menu';
+  const showSim = view === 'simulation' && mounted === 'simulation';
+
+  return (
+    <div className="relative min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
+      <SiteHeader tagline="SIMULATION LAB" />
+
+      <div className="relative">
+        {mounted === 'menu' ? (
+          <FadeBox visible={showMenu}>
+            <MainMenu onStart={() => setView('simulation')} />
+          </FadeBox>
+        ) : (
+          <FadeBox visible={showSim}>
+            <Simulation onExit={() => setView('menu')} />
+          </FadeBox>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FadeBox({ visible, children }: { visible: boolean; children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        opacity: visible ? 1 : 0,
+        transition: `opacity ${FADE_MS}ms var(--motion-ease)`,
+      }}
+    >
+      {children}
+    </div>
+  );
 }

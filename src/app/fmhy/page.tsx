@@ -1,140 +1,138 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { SiteHeader } from '../components/SiteHeader';
+import { CATEGORIES } from './_data/categories';
+import indexData from './_data/index.json';
+import { CategoryNav } from './_components/CategoryNav';
+import { SearchBox } from './_components/SearchBox';
 
-type Category = {
+type IndexEntry = {
   slug: string;
-  name: string;
-  emoji: string;
-  blurb: string;
+  sourceFile: string;
+  sectionCount: number;
+  entryCount: number;
+  highlights: { name: string; url: string; blurb: string }[];
 };
 
-// FMHY's top-level categories. Source of truth: https://fmhy.net
-const CATEGORIES: ReadonlyArray<Category> = [
-  { slug: 'adblockvpnguide',     name: 'Adblockers / Privacy', emoji: '🛡', blurb: 'Adblockers, anti-tracking, VPN guides.' },
-  { slug: 'storage',             name: 'Storage',              emoji: '📦', blurb: 'Hosting, file storage, transfer.' },
-  { slug: 'video',               name: 'Streaming',            emoji: '🎬', blurb: 'Movies, TV, anime, sports.' },
-  { slug: 'audio',               name: 'Audio / Music',        emoji: '🎧', blurb: 'Streaming, downloads, podcasts.' },
-  { slug: 'gamingpiracyguide',   name: 'Gaming',               emoji: '🎮', blurb: 'Game tools, ROMs, emulation.' },
-  { slug: 'edu',                 name: 'Reading / Education',  emoji: '📚', blurb: 'Books, courses, learning resources.' },
-  { slug: 'downloadpiracyguide', name: 'Downloads',            emoji: '⬇️', blurb: 'Direct downloads, torrent guides.' },
-  { slug: 'android-iosguide',    name: 'Android / iOS',        emoji: '📱', blurb: 'Mobile tweaks, modded apps.' },
-  { slug: 'social-media-tools',  name: 'Social Media Tools',   emoji: '💬', blurb: 'Twitter, Reddit, Discord helpers.' },
-  { slug: 'ai',                  name: 'AI Tools',             emoji: '✦', blurb: 'Free / open-source AI services.' },
-  { slug: 'devtools',            name: 'Developer Tools',      emoji: '⌬', blurb: 'IDEs, APIs, dev resources.' },
-  { slug: 'img-tools',           name: 'Image Tools',          emoji: '🖼', blurb: 'Editing, compression, search.' },
-  { slug: 'system-tools',        name: 'System Tools',         emoji: '⚙', blurb: 'Windows, Linux, macOS utilities.' },
-  { slug: 'beginners-guide',     name: 'Beginners Guide',      emoji: '◎', blurb: "Start here if you're new." },
-];
+const INDEX = indexData as { fetchedAt: string; categories: IndexEntry[] };
 
-const FMHY_BASE = 'https://fmhy.net';
+const FETCHED_AT = new Date(INDEX.fetchedAt).toLocaleDateString('en-US', {
+  year: 'numeric', month: 'short', day: 'numeric',
+});
+
+const ENRICHED = CATEGORIES
+  .map((meta) => {
+    const idx = INDEX.categories.find((c) => c.slug === meta.slug);
+    if (!idx || idx.entryCount === 0) return null;
+    return { ...meta, ...idx };
+  })
+  .filter((c): c is NonNullable<typeof c> => c !== null);
 
 export default function FmhyPage() {
-  const [iframeBlocked, setIframeBlocked] = useState(false);
-  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [query, setQuery] = useState('');
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  // If the iframe never reports `onLoad` within 5s we assume X-Frame-Options
-  // blocked it (common) and stop trying to render it.
-  useEffect(() => {
-    const t = setTimeout(() => {
-      if (!iframeLoaded) setIframeBlocked(true);
-    }, 5000);
-    return () => clearTimeout(t);
-  }, [iframeLoaded]);
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return ENRICHED.filter((c) => {
+      if (activeSlug && c.slug !== activeSlug) return false;
+      if (!q) return true;
+      if (c.name.toLowerCase().includes(q)) return true;
+      if (c.blurb.toLowerCase().includes(q)) return true;
+      return c.highlights.some(
+        (h) => h.name.toLowerCase().includes(q) || h.blurb.toLowerCase().includes(q),
+      );
+    });
+  }, [query, activeSlug]);
+
+  const totalEntries = ENRICHED.reduce((n, c) => n + c.entryCount, 0);
 
   return (
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
-      <SiteHeader />
+      <SiteHeader tagline="FMHY MIRROR" />
 
       <main className="mx-auto max-w-5xl px-4 pt-24 pb-16 sm:px-6">
         <div className="text-center">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
             [ /FMHY ]
           </p>
-          <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
+          <h1 className="themed-heading mt-3 text-4xl font-semibold sm:text-5xl">
             FMHY backup
           </h1>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-[color:var(--fg-muted)] sm:text-base">
-            A mirror of <a href={FMHY_BASE} target="_blank" rel="noreferrer" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">fmhy.net</a>, the
-            community-curated index of free media tools. The link grid below
-            always works. The full embed below it loads if your browser allows it.
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[color:var(--fg-muted)] sm:text-base">
+            A local mirror of <a href="https://fmhy.net" target="_blank" rel="noreferrer"
+              className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">fmhy.net</a>.
+            {' '}{totalEntries.toLocaleString()} entries across {ENRICHED.length} categories,
+            fetched fresh from{' '}
+            <a href="https://github.com/fmhy/edit" target="_blank" rel="noreferrer"
+              className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">
+              github.com/fmhy/edit
+            </a>. Snapshot {FETCHED_AT}.
           </p>
         </div>
 
-        {/* Category grid: always works, no JS dependency on iframe loading. */}
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
+        <div className="mt-10 space-y-4">
+          <SearchBox
+            value={query}
+            onChange={setQuery}
+            placeholder="Search across all categories..."
+            resultsLabel={`${filtered.length} / ${ENRICHED.length}`}
+          />
+          <CategoryNav categories={ENRICHED} activeSlug={activeSlug} onSelect={setActiveSlug} />
+        </div>
+
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+          {filtered.length === 0 && (
+            <li className="col-span-full rounded-[var(--radius)] border border-dashed border-[color:var(--border)]
+                           bg-[color:var(--bg-elevated)] p-8 text-center text-sm text-[color:var(--fg-muted)]">
+              No matches. Try a shorter query or clear the category filter.
+            </li>
+          )}
+          {filtered.map((c) => (
             <li key={c.slug}>
-              <a
-                href={`${FMHY_BASE}/${c.slug}`}
-                target="_blank"
-                rel="noreferrer"
-                className="themed-surface themed-surface-interactive group block p-4"
+              <Link
+                href={`/fmhy/${c.slug}`}
+                className="themed-surface themed-surface-interactive block h-full p-5"
               >
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl">{c.emoji}</span>
+                  <span aria-hidden className="text-2xl">{c.emoji}</span>
                   <div className="flex-1">
-                    <h2 className="font-serif text-lg font-semibold transition-colors
-                                   group-hover:text-[color:var(--accent-soft)]">
-                      {c.name}
-                    </h2>
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h2 className="font-serif text-lg font-semibold text-[color:var(--fg)]">
+                        {c.name}
+                      </h2>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
+                        {c.entryCount} entries
+                      </span>
+                    </div>
                     <p className="mt-1 text-xs text-[color:var(--fg-muted)]">{c.blurb}</p>
                   </div>
-                  <span aria-hidden className="text-[color:var(--fg-subtle)] transition-colors
-                                              group-hover:text-[color:var(--accent)]">↗</span>
                 </div>
-              </a>
+
+                {c.highlights.length > 0 && (
+                  <ul className="mt-4 space-y-1.5 border-t border-[color:var(--border)] pt-3">
+                    {c.highlights.map((h, i) => (
+                      <li key={i} className="text-xs text-[color:var(--fg-muted)]">
+                        <span className="font-medium text-[color:var(--fg)]">{h.name}</span>
+                        {h.blurb && <span className="text-[color:var(--fg-subtle)]">, {h.blurb}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <p className="mt-3 text-right font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]">
+                  see all {c.entryCount} →
+                </p>
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Live embed: a bonus when the upstream allows iframing. */}
-        <section className="mt-12">
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <h2 className="font-serif text-xl font-semibold">Live embed</h2>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
-              {iframeBlocked ? 'BLOCKED BY UPSTREAM' : iframeLoaded ? 'LOADED' : 'LOADING…'}
-            </span>
-          </div>
-
-          {iframeBlocked ? (
-            <div className="rounded-xl border border-dashed border-[color:var(--border)]
-                            bg-[color:var(--bg-elevated)] p-8 text-center
-                            text-sm text-[color:var(--fg-muted)]">
-              <p>
-                fmhy.net refused to load inside this page. Most likely it sets
-                <code className="mx-1 font-mono text-[color:var(--accent-soft)]">X-Frame-Options</code>
-                or a strict CSP, which is fair.
-              </p>
-              <a
-                href={FMHY_BASE}
-                target="_blank"
-                rel="noreferrer"
-                className="themed-button mt-4 inline-block px-5 py-2 text-sm"
-              >
-                OPEN FMHY.NET
-              </a>
-            </div>
-          ) : (
-            <div className="overflow-hidden rounded-xl border border-[color:var(--border)]
-                            bg-[color:var(--bg-elevated)]">
-              <iframe
-                src={FMHY_BASE}
-                title="fmhy.net (live embed)"
-                className="h-[70vh] w-full"
-                onLoad={() => setIframeLoaded(true)}
-                referrerPolicy="no-referrer"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms"
-              />
-            </div>
-          )}
-        </section>
-
-        <p className="mt-10 text-center text-xs text-[color:var(--fg-subtle)]">
-          FMHY is community-maintained. This page just points at it.
-          The next upgrade is fetching the upstream markdown at build time so
-          search works against the real catalog (see BACKLOG #1).
+        <p className="mt-12 text-center text-xs text-[color:var(--fg-subtle)]">
+          FMHY is community-maintained. This page mirrors a snapshot, refreshed by
+          {' '}<code className="font-mono text-[color:var(--accent-soft)]">npm run fetch:fmhy</code>.
         </p>
       </main>
     </div>
