@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { SiteHeader } from '../components/SiteHeader';
 import {
@@ -11,7 +10,7 @@ import {
 } from './_data/categories';
 import { CategoryNav } from './_components/CategoryNav';
 import { SearchBox } from './_components/SearchBox';
-import type { IndexCategory, Namespace } from './_lib/types';
+import type { IndexCategory } from './_lib/types';
 
 const ROOT_CATALOGS = ROOT_CATEGORIES.filter((c) => c.kind === 'catalog' && c.entryCount > 0);
 const ROOT_GUIDES = ROOT_CATEGORIES.filter((c) => c.kind === 'prose');
@@ -20,10 +19,18 @@ const FETCHED_DATE = new Date(FETCHED_AT).toLocaleDateString('en-US', {
   year: 'numeric', month: 'short', day: 'numeric',
 });
 
-function hrefFor(c: IndexCategory): string {
-  if (c.namespace === 'root') return `/fmhy/${c.slug}`;
-  return `/fmhy/${c.namespace}/${c.slug}`;
+const FMHY_BASE = 'https://fmhy.net';
+
+function upstreamHref(c: IndexCategory): string {
+  if (c.namespace === 'root') return `${FMHY_BASE}/${c.slug}`;
+  return `${FMHY_BASE}/${c.namespace}/${c.slug}`;
 }
+
+const OFFICIAL_MIRRORS: { name: string; url: string; note: string }[] = [
+  { name: 'fmhy.net',            url: 'https://fmhy.net',                             note: 'Canonical site.' },
+  { name: 'Official backups',    url: 'https://fmhy.net/other/backups',               note: 'Rentry, Codeberg, archive.org and other community mirrors.' },
+  { name: 'Source repository',   url: 'https://github.com/fmhy/edit',                 note: 'Edit history and contribution flow.' },
+];
 
 export default function FmhyPage() {
   const [query, setQuery] = useState('');
@@ -47,7 +54,7 @@ export default function FmhyPage() {
 
   return (
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
-      <SiteHeader tagline="FMHY MIRROR" />
+      <SiteHeader tagline="FMHY DIRECTORY" />
 
       <main className="mx-auto max-w-5xl px-4 pt-24 pb-16 sm:px-6">
         <div className="text-center">
@@ -55,19 +62,39 @@ export default function FmhyPage() {
             [ /FMHY ]
           </p>
           <h1 className="themed-heading mt-3 text-4xl font-semibold sm:text-5xl">
-            FMHY mirror
+            FMHY directory
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[color:var(--fg-muted)] sm:text-base">
-            A full mirror of <a href="https://fmhy.net" target="_blank" rel="noreferrer"
-              className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">fmhy.net</a>.
+            A themed map of <a href="https://fmhy.net" target="_blank" rel="noreferrer"
+              className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">fmhy.net</a>:
             {' '}{totalEntries.toLocaleString()} link entries across {ROOT_CATALOGS.length} categories,
             plus {OTHER_DOCS.length} guides and {POSTS.length} posts, auto-discovered from{' '}
             <a href="https://github.com/fmhy/edit" target="_blank" rel="noreferrer"
               className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">
               github.com/fmhy/edit
-            </a>. Snapshot {FETCHED_DATE}, {totalDocs} docs total.
+            </a>. Every link opens the canonical page upstream. Snapshot {FETCHED_DATE}, {totalDocs} docs total.
           </p>
         </div>
+
+        <section className="mt-8">
+          <ul className="grid gap-2 sm:grid-cols-3">
+            {OFFICIAL_MIRRORS.map((m) => (
+              <li key={m.url}>
+                <a
+                  href={m.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="themed-surface themed-surface-interactive block h-full p-3"
+                >
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]">
+                    {m.name} ↗
+                  </div>
+                  <div className="mt-1 text-xs text-[color:var(--fg-muted)]">{m.note}</div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div className="mt-10 space-y-4">
           <SearchBox
@@ -88,8 +115,10 @@ export default function FmhyPage() {
           )}
           {filtered.map((c) => (
             <li key={c.slug}>
-              <Link
-                href={hrefFor(c)}
+              <a
+                href={upstreamHref(c)}
+                target="_blank"
+                rel="noreferrer"
                 className="themed-surface themed-surface-interactive block h-full p-5"
               >
                 <div className="flex items-start gap-3">
@@ -119,9 +148,9 @@ export default function FmhyPage() {
                 )}
 
                 <p className="mt-3 text-right font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]">
-                  see all {c.entryCount} →
+                  open on fmhy.net ↗
                 </p>
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -129,22 +158,20 @@ export default function FmhyPage() {
         <DocGroup
           title="Guides"
           subtitle="Long-form root docs (intro, sandbox, unsafe sites, ...)"
-          namespace="root"
           docs={ROOT_GUIDES}
         />
 
         <DocGroup
           title="Other docs"
           subtitle="Guides and reference material from docs/other/"
-          namespace="other"
           docs={OTHER_DOCS}
         />
 
         <PostsByYear posts={POSTS} />
 
         <p className="mt-12 text-center text-xs text-[color:var(--fg-subtle)]">
-          FMHY is community-maintained. This mirror auto-discovers the upstream tree on every refresh,
-          run via <code className="font-mono text-[color:var(--accent-soft)]">npm run fetch:fmhy</code>.
+          FMHY is community-maintained. This directory is a stylized index, the real content lives upstream.
+          Index refreshed via <code className="font-mono text-[color:var(--accent-soft)]">npm run fetch:fmhy</code>.
         </p>
       </main>
     </div>
@@ -191,7 +218,7 @@ function PostsByYear({ posts }: { posts: ReadonlyArray<IndexCategory> }) {
         </span>
       </div>
       <p className="mt-1 text-sm text-[color:var(--fg-muted)]">
-        Monthly changelogs and announcements from docs/posts/.
+        Monthly changelogs and announcements from docs/posts/. Opens on fmhy.net.
       </p>
 
       {undated.length > 0 && (
@@ -226,13 +253,15 @@ function PostsByYear({ posts }: { posts: ReadonlyArray<IndexCategory> }) {
 function PostLink({ doc }: { doc: IndexCategory }) {
   return (
     <li>
-      <Link
-        href={`/fmhy/posts/${doc.slug}`}
+      <a
+        href={upstreamHref(doc)}
+        target="_blank"
+        rel="noreferrer"
         className="themed-surface themed-surface-interactive flex items-center gap-2 p-2.5"
       >
         <span aria-hidden className="text-base">{doc.emoji}</span>
         <span className="truncate text-xs font-medium text-[color:var(--fg)]">{doc.name}</span>
-      </Link>
+      </a>
     </li>
   );
 }
@@ -240,12 +269,10 @@ function PostLink({ doc }: { doc: IndexCategory }) {
 function DocGroup({
   title,
   subtitle,
-  namespace,
   docs,
 }: {
   title: string;
   subtitle: string;
-  namespace: Namespace;
   docs: ReadonlyArray<IndexCategory>;
 }) {
   if (docs.length === 0) return null;
@@ -261,8 +288,10 @@ function DocGroup({
       <ul className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {docs.map((d) => (
           <li key={d.slug}>
-            <Link
-              href={namespace === 'root' ? `/fmhy/${d.slug}` : `/fmhy/${namespace}/${d.slug}`}
+            <a
+              href={upstreamHref(d)}
+              target="_blank"
+              rel="noreferrer"
               className="themed-surface themed-surface-interactive flex items-center gap-3 p-3"
             >
               <span aria-hidden className="text-lg">{d.emoji}</span>
@@ -272,7 +301,7 @@ function DocGroup({
                   <div className="truncate text-[11px] text-[color:var(--fg-subtle)]">{d.blurb}</div>
                 )}
               </div>
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
