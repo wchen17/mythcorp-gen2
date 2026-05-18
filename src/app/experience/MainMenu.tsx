@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { SkylineBackdrop } from '../components/landing/SkylineBackdrop';
-import { SiteHeader } from '../components/SiteHeader';
 
 interface MainMenuProps {
   onStart: () => void;
@@ -19,8 +18,6 @@ export function MainMenu({ onStart }: MainMenuProps) {
     <div className="relative flex min-h-screen w-full flex-col
                     overflow-hidden font-sans text-[color:var(--fg)]">
       <SkylineBackdrop parallax />
-
-      <SiteHeader tagline="SIMULATION LAB" />
 
       {/* Soft accent glow centred behind the hero, theme-aware. */}
       <div

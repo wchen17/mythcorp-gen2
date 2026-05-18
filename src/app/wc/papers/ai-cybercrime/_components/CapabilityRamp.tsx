@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Stages anchored to Grace et al. 2024 expert survey timelines.
 // "Forecast" stages are explicitly muted in color so the user can
@@ -76,8 +76,22 @@ const STAGES: ReadonlyArray<Stage> = [
 const TIMELINE_START = 2024;
 const TIMELINE_END = 2047;
 
-export function CapabilityRamp() {
+export const CAPABILITY_STAGES = STAGES;
+
+interface CapabilityRampProps {
+  activeStageNum?: 1 | 2 | 3 | 4;
+}
+
+export function CapabilityRamp({ activeStageNum }: CapabilityRampProps = {}) {
   const [year, setYear] = useState(2025);
+
+  // External control via activeStageNum overrides the slider until the user
+  // touches it. When the prop changes, snap the year to that stage's mid year.
+  useEffect(() => {
+    if (activeStageNum == null) return;
+    const stage = STAGES.find((s) => s.num === activeStageNum);
+    if (stage) setYear(stage.yearMid);
+  }, [activeStageNum]);
 
   const activeStage =
     STAGES.find((s) => year >= s.yearStart && year < s.yearEnd) ?? STAGES[STAGES.length - 1];

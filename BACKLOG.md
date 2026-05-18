@@ -13,25 +13,6 @@ That script reads every `## #N, ...` heading in this file and creates one Issue 
 
 ---
 
-## #1, Theme-aware Simulation control panel
-
-**Labels:** `polish`, `design`, `next-up`
-
-**Body:**
-
-`src/app/experience/Simulation.tsx` is the one place that didn't get the theme tokens treatment. The control panel UI (lines ~233-330) still uses hard-coded `bg-black/70`, `text-white/90`, `border-white/20`, `accent-cyan-400`, etc. So the panel looks identical in cyberpunk / luxury / paper themes, breaking the design-language consistency the rest of the site has.
-
-Migrate to:
-- `.themed-surface` for the panel container.
-- `.themed-button` for the randomize / reset / exit buttons.
-- `var(--accent)`, `var(--fg-muted)`, `var(--border)` etc. for individual elements.
-- Range inputs need `accent-color: var(--accent)` instead of `accent-cyan-400`.
-- Number inputs need `bg-[color:var(--bg)]` etc.
-
-The 3D scene itself can stay neon (it predates themes), but the HTML overlay should track the theme.
-
----
-
 ## #2, /wc/about page (currently 404)
 
 **Labels:** `content`, `next-up`
@@ -96,23 +77,6 @@ Two figures shipped (`<BarrierToEntry />`, `<CapabilityRamp />`). The paper has 
 - **Stage-1-to-4 capability ladder**: vertical infographic of the technical hurdles (planning, error handling, memory, self-improvement, vulnerability discovery, cross-domain synthesis) as a ladder with current/projected positions marked.
 
 Each new figure goes in `src/app/wc/papers/ai-cybercrime/_components/` and gets a `<Section>` in the main page. Keep the projection-vs-evidence visual distinction the reviewer asked for.
-
----
-
-## #6, Build-time FMHY catalog fetch
-
-**Labels:** `feature`, `polish`
-
-**Body:**
-
-`/fmhy` already exists with a hand-curated category grid + iframe (which most browsers will block via X-Frame-Options). The upgrade: fetch the FMHY upstream markdown from https://github.com/fmhy/edit at build time and parse into a real `ContentItem` shape, so search/filter works against the real catalog.
-
-Steps:
-1. Add `scripts/fetch-fmhy.ts` that pulls markdown via the GitHub raw API.
-2. Parse into typed entries (URL, name, category, blurb).
-3. Replace the hard-coded `CATEGORIES` array in `src/app/fmhy/page.tsx`.
-4. Add real search + filter on top.
-5. Re-fetch on each build (or via a Cloudflare cron worker).
 
 ---
 
@@ -343,4 +307,160 @@ Speculative ideas worth keeping around:
 - **Boot screen variety**: more loading shapes (helix, tunnel, particle storm) + per-theme variants (paper boot uses ink particles instead of cyan binary).
 - **Spotify or Last.fm "now playing"** widget if the author has either.
 - **GitHub contributions chart** auto-pulled to /wc/about.
-- **Easter egg #2**: type "sudo" anywhere on the site, get a fake terminal overlay you can poke at.
+
+---
+
+## #23, Chomik: Digital Pet Hamster (standalone project or site feature)
+
+**Labels:** `feature`, `fun`, `new-project`
+
+**Body:**
+
+A digital hamster (guinea pig? hamster? both?) that lives on the page and eats UI elements. Inspired by Desktop Goose, Shimeji, and the classic "neko" cat cursor chaser.
+
+**Core concept:**
+- A small animated sprite (pixel art or SVG) that roams around the viewport
+- "Eats" UI elements it collides with: buttons, icons, nav items shrink/crumble/get chomped
+- Gets fatter/happier as it eats more
+- Poops little pellets after eating
+- Falls asleep if idle, wakes up when the user interacts
+- Has a small hunger meter; if not fed (no clicks/interaction) it starts nibbling on its own
+
+**Scope options:**
+1. **Site-wide overlay on mythcorp** -- toggled from a button in the footer or via easter egg (type "chomik"). Lives as a `<PetOverlay />` component that floats above all content with `pointer-events: none` except on the pet itself.
+2. **Standalone GitHub repo** (`wchen17/chomik`) -- a tiny JS library anyone can drop onto a page. `<script src="chomik.js"></script>` and it just works. Has its own GitHub Pages demo site.
+3. **Both** -- build standalone first, then embed it on mythcorp as a dependency.
+
+**Technical approach (standalone):**
+- Single `<canvas>` overlay, fixed position, full viewport
+- Sprite sheet animation (walk, eat, sleep, poop, idle)
+- Simple physics: gravity, ground = bottom of viewport, can climb on DOM elements
+- DOM collision detection via `document.elementsFromPoint()` to find "edible" elements
+- When eating: shrinks the target element with a CSS transition, plays chomp animation
+- State machine: idle -> walking -> found-food -> eating -> satisfied -> walking -> sleepy -> sleeping
+- Configurable: speed, appetite, which selectors are "edible", sprite theme
+
+**For the GitHub Pages demo:**
+- Landing page showing Chomik in action on a fake UI
+- "Add to your site" instructions
+- Configuration playground
+
+---
+
+## #24, Fake Terminal Overlay (press `/` anywhere)
+
+**Labels:** `feature`, `easter-egg`
+
+**Body:**
+
+Press `/` anywhere on the site to open a translucent terminal overlay. It looks real but is purely cosmetic/fun -- no actual shell access.
+
+**Behavior:**
+- Slides down from top (or fades in) as a full-width panel, ~60% viewport height
+- Monospace font, green-on-black or theme-appropriate (paper theme gets sepia terminal)
+- Shows a fake prompt: `visitor@mythcorp ~ $`
+- User can type anything. Responses are canned/funny:
+  - `ls` -> lists the site routes
+  - `cd /experience` -> actually navigates there
+  - `whoami` -> "a curious visitor"
+  - `sudo rm -rf /` -> "nice try. chomik has been alerted."
+  - `help` -> lists available fake commands
+  - `cat README` -> shows a short blurb about the site
+  - `exit` or `Esc` -> closes the overlay
+  - Anything else -> "command not found: <input>. try 'help'"
+- History with up/down arrow keys
+- Closes on `Esc` or clicking outside
+
+**Implementation:**
+- `src/app/components/TerminalOverlay.tsx` -- client component
+- Mounted in the root layout, listens for `/` keydown (but not when an input is focused)
+- Uses `useRouter()` for commands that navigate
+- Store open/closed state in a context or simple useState in layout
+- Theme-aware: cyberpunk gets green phosphor glow, luxury gets amber, paper gets typewriter feel
+
+---
+
+## #25, Fix /animals GIF content (quick)
+
+**Labels:** `bug`, `content`
+
+**Body:**
+
+The Giphy URLs on `/animals` all return HTTP 200 but the GIF IDs were never verified to match their titles. "Happy Guinea Pig Munching Lettuce" probably shows something random. Fix:
+
+1. Go to giphy.com, search for real guinea pig / hamster / bunny eating GIFs
+2. Replace the 5 URLs with verified, correct ones
+3. Or better: self-host 5-8 short `.webm` clips in `public/animals/` for reliability (no Giphy dependency, no hotlink breakage)
+4. Consider adding more variety (10-15 clips) and a "favorites" localStorage feature
+
+---
+
+## #26, Comprehensive Simulator Upgrades
+
+**Labels:** `feature`, `3d`
+
+**Body:**
+
+The `/experience` 3D scene is polished but could go deeper. Ideas for a "v2" pass:
+
+**Scene presets:**
+- Named presets on MainMenu: "Aurora" (greens/purples, slow drift), "Minimal" (white, few stars, no bloom), "Chaos" (max particles, fast rotation, strobing), "Deep Space" (dark blue, dense stars, no model)
+- Save/load custom presets to localStorage
+- Share presets via URL params (`/experience?preset=aurora`)
+
+**New elements:**
+- Audio-reactive mode: connects to mic or plays a built-in ambient track, particles pulse to frequency
+- Environment options: nebula backdrop, grid floor, fog
+- More models: allow switching between spectre.glb and 2-3 other models (geometric shapes, user's own upload via drag-and-drop)
+- Particle behaviors: flocking, orbiting, exploding on click, trailing the cursor in 3D
+
+**Controls polish:**
+- Keyboard shortcuts (R = randomize, Space = pause rotation, 1-4 = presets)
+- Screenshot button (exports canvas to PNG)
+- Fullscreen toggle
+- FPS counter (toggleable)
+
+**Performance:**
+- Auto-detect GPU tier and default to appropriate preset
+- Progressive enhancement: start minimal, add bloom/particles as frame budget allows
+
+---
+
+## #27, GitHub Profile Page (wchen17.github.io)
+
+**Labels:** `new-project`, `nice-to-have`
+
+**Body:**
+
+A personal GitHub Pages site at `wchen17.github.io` that serves as a landing/portfolio page. Could be:
+
+1. **Minimal redirect** -- just points to mythcorp.org with a cool loading animation
+2. **Standalone portfolio** -- separate from mythcorp, more professional/resume-oriented
+3. **Project showcase** -- cards linking to repos (mythcorp, chomik, papers, etc.) with live previews
+
+**If standalone:**
+- Static HTML/CSS or a tiny Astro/Vite build
+- Dark theme, terminal-inspired aesthetic
+- Sections: intro, projects (with screenshots/demos), papers, contact
+- GitHub contribution graph pulled via API
+- Links to mythcorp.org for the full experience
+
+**Repo:** `wchen17/wchen17.github.io` (or `wchen17/wchen17` for the profile README that shows on your GitHub profile page)
+
+---
+
+## #28, Site-wide Command Palette (Cmd+K / Ctrl+K)
+
+**Labels:** `feature`, `nice-to-have`
+
+**Body:**
+
+In addition to (or instead of) the `/` terminal, a modern command palette like VS Code / Linear / Raycast:
+
+- `Cmd+K` or `Ctrl+K` opens a search modal
+- Fuzzy-matches all routes, actions, and theme options
+- Items: "Go to /fmhy", "Go to /experience", "Switch to cyberpunk theme", "Open terminal", "Randomize simulation"
+- Recent items shown by default
+- Keyboard navigable (arrow keys + Enter)
+
+Lighter than the terminal overlay, more "productivity tool" than "easter egg."

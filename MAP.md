@@ -15,7 +15,8 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list (placeholder) |
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
-| `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup: category links + live iframe with fallback |
+| `/fmhy` | `src/app/fmhy/page.tsx` | FMHY mirror: searchable category index from build-time markdown snapshot |
+| `/fmhy/[category]` | `src/app/fmhy/[category]/page.tsx` | Per-category deep dive, all entries grouped by section |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
@@ -41,6 +42,11 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
 | `src/app/components/NewLandingPage.tsx` | The luxury reveal (page.tsx) |
 | `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers for `/wc/learn/*` pages |
+| `src/app/fmhy/_components/SearchBox.tsx`, `CategoryNav.tsx`, `EntryRow.tsx` | FMHY mirror UI primitives |
+| `src/app/fmhy/_data/categories.ts` | FMHY category metadata (slug, upstream filename, blurb) |
+| `src/app/fmhy/_data/index.json` | Slim FMHY index (counts + highlights) for `/fmhy` |
+| `src/app/fmhy/_data/categories/<slug>.json` | Per-category snapshot, read at SSG time |
+| `scripts/fetch-fmhy.ts` | Build-time fetch from `github.com/fmhy/edit`, runs via `npm run fetch:fmhy` |
 
 ## 3D scene
 

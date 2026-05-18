@@ -33,6 +33,7 @@
     "eslint": "9.27.0",
     "eslint-config-next": "15.3.3",
     "tailwindcss": "4.1.1",
+    "tsx": "^4.21.0",
     "typescript": "5.8.3",
     "wrangler": "4.21.x"
   },
@@ -46,6 +47,8 @@
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
-    "prod": "next build --no-lint && next start"
+    "prod": "next build --no-lint && next start",
+    "fetch:fmhy": "tsx scripts/fetch-fmhy.ts",
+    "post:backlog": "node tools/post-backlog-to-issues.mjs"
   }
 }
