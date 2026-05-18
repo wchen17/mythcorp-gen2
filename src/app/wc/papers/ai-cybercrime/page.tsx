@@ -3,16 +3,29 @@
 import Link from 'next/link';
 import { SiteHeader } from '../../../components/SiteHeader';
 import { BarrierToEntry } from './_components/BarrierToEntry';
-import { CapabilityRamp } from './_components/CapabilityRamp';
+import { CapabilityScrolly } from './_components/CapabilityScrolly';
+import { ReadingProgressBar } from '../_components/ReadingProgressBar';
+import { SectionNav } from '../_components/SectionNav';
+import { RevealOnView } from '../_components/RevealOnView';
 
 // Walkthrough source: Pioneer Scholars 2025 final paper by Weibao Chen.
 // This page is the living web version, paraphrased and annotated.
 // Original PDF + reviewer eval kept locally; do not include verbatim text.
 
+const SECTIONS = [
+  { id: 'barrier-collapses',  eyebrow: '[ FIGURE 1 ]',  title: 'The barrier collapses' },
+  { id: 'capability-ramp',    eyebrow: '[ FIGURE 2 ]',  title: 'Agent capability ramp' },
+  { id: 'why-this-matters',   eyebrow: '[ THE SHAPE ]', title: 'Why this matters' },
+  { id: 'reviewer-feedback',  eyebrow: '[ HONEST NOTE ]', title: 'What the reviewer flagged' },
+  { id: 'where-this-goes',    eyebrow: '[ STATUS ]',    title: 'Where this goes next' },
+];
+
 export default function AiCybercrimePaper() {
   return (
     <div className="relative min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
       <SiteHeader />
+      <ReadingProgressBar />
+      <SectionNav sections={SECTIONS} />
 
       <article className="mx-auto max-w-3xl px-6 pt-24 pb-24">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
@@ -57,27 +70,27 @@ export default function AiCybercrimePaper() {
           </p>
         </div>
 
-        <Section eyebrow="[ FIGURE 1 ]" title="The barrier collapses">
+        <Section id="barrier-collapses" eyebrow="[ FIGURE 1 ]" title="The barrier collapses">
           <p>
             Pre-AI, a layperson trying to mount a serious offensive campaign needed
             elite skill, four-figure budgets, and weeks of work. Post-AI, the
             same layperson can lean on conversational models that handle the
             technical translation. Toggle below to see what changes.
           </p>
-          <BarrierToEntry />
+          <RevealOnView><BarrierToEntry /></RevealOnView>
         </Section>
 
-        <Section eyebrow="[ FIGURE 2 ]" title="Agent capability ramp">
+        <Section id="capability-ramp" eyebrow="[ FIGURE 2 ]" title="Agent capability ramp">
           <p>
             The four-stage taxonomy maps observed capability today onto expert
-            forecasts for the rest of the decade. Drag the year slider to step
-            through each stage&rsquo;s technical requirements and what an attacker
-            could realistically do at that level.
+            forecasts for the rest of the decade. Scroll down through each stage
+            below; the figure on the right tracks your position. The slider inside
+            the figure stays usable as a manual override.
           </p>
-          <CapabilityRamp />
+          <CapabilityScrolly />
         </Section>
 
-        <Section eyebrow="[ THE SHAPE ]" title="Why this matters">
+        <Section id="why-this-matters" eyebrow="[ THE SHAPE ]" title="Why this matters">
           <p>
             Two structural points the paper keeps coming back to:
           </p>
@@ -97,7 +110,7 @@ export default function AiCybercrimePaper() {
           </ul>
         </Section>
 
-        <Section eyebrow="[ HONEST NOTE ]" title="What the reviewer flagged">
+        <Section id="reviewer-feedback" eyebrow="[ HONEST NOTE ]" title="What the reviewer flagged">
           <p>
             The original paper was a first-time research project graded B+. The
             reviewer (Prof. Suleyman Uludag, U. Michigan-Flint CS) liked the
@@ -124,7 +137,7 @@ export default function AiCybercrimePaper() {
           </ul>
         </Section>
 
-        <Section eyebrow="[ STATUS ]" title="Where this goes next">
+        <Section id="where-this-goes" eyebrow="[ STATUS ]" title="Where this goes next">
           <p>
             This page is the scaffold. Each section of the original paper will
             land here in turn, with the dense passages compressed and the
@@ -147,16 +160,18 @@ export default function AiCybercrimePaper() {
 }
 
 function Section({
+  id,
   eyebrow,
   title,
   children,
 }: {
+  id: string;
   eyebrow: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-14">
+    <section id={id} className="mt-14 scroll-mt-24">
       <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
         {eyebrow}
       </p>

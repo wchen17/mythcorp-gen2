@@ -3,7 +3,30 @@
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
-2026-05-05, planning pass on branch `claude/vigilant-golick-c8ff8d`. Refreshed `BACKLOG.md` with 22 categorized items + a script to post them all to GitHub Issues with one command.
+2026-05-06, FMHY mirror + /experience continuity polish landed on branch `claude/vigilant-golick-c8ff8d`. Closes Issue #18 (FMHY) and Issue #13 (Simulation theming).
+
+Previous: 2026-05-05, planning pass. Refreshed `BACKLOG.md` with 22 categorized items + a script to post them all to GitHub Issues with one command.
+
+## What just shipped (PR 2: /experience continuity)
+
+- `SiteHeader` is now mounted once at `src/app/experience/page.tsx` and stays visible across the menu/simulation crossfade. Previously it vanished the moment Simulation mounted, breaking site continuity.
+- `MainMenu.tsx` no longer mounts its own SiteHeader.
+- 420ms opacity crossfade between MainMenu and Simulation. Only one Canvas alive at a time (StrictMode constraint preserved).
+- `Simulation.tsx` control panel migrated from hand-rolled `bg-black/70 text-white border-white/20 accent-cyan-400` to `themed-surface`, `themed-button`, `themed-pill`, `var(--accent)`, `var(--border)`, etc. The panel now respects all three themes.
+- Number/text inputs use `var(--bg)` + `var(--border)` and focus to `var(--accent)`.
+- Range sliders use `accent-[color:var(--accent)]`.
+- Canvas backdrop is theme-aware via `BACKDROP_BY_THEME`. Paper theme no longer flashes black behind the scene.
+- Stars density was added as a top-level (non-advanced) control since it was buried in randomize-only territory.
+- Theme switcher (in SiteHeader) is now reachable from inside Simulation.
+
+## What just shipped (PR 1: FMHY mirror)
+
+- `scripts/fetch-fmhy.ts` pulls each category from `github.com/fmhy/edit/main/docs/<file>.md`, parses to structured JSON via hand-rolled regex (badges, name/url, blurb, resourceLinks). Run via `npm run fetch:fmhy`.
+- 24 category metadata entries in `src/app/fmhy/_data/categories.ts` map local slugs to upstream filenames (which diverge: `video` -> `video.md`, `adblockvpnguide` -> `privacy.md`, etc).
+- Snapshot committed as one slim 18KB `index.json` (highlights + counts) plus 24 per-category JSON files in `_data/categories/`. Largest category file is ~480KB; total ~5MB stays out of the worker bundle because per-category routes load via `fs.readFile` at SSG time.
+- `/fmhy` rewritten: hero + client-side search + theme-aware category chip filter + 22 themed cards each linking to `/fmhy/<slug>`. Iframe and 5s timeout fallback both gone.
+- `/fmhy/[category]` pre-renders all 22 non-empty categories. Sections grouped, badges + resource links rendered, breadcrumb back to `/fmhy`, footer pointing at the upstream markdown file.
+- `tsx` added as devDependency to run the fetch script.
 
 ## Hard rules (saved to memory at ~/.claude/projects/<this-project>/memory/)
 
