@@ -1,32 +1,22 @@
 /* eslint-disable no-console */
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { marked } from 'marked';
 
 import {
   OTHER_OVERRIDES,
   ROOT_OVERRIDES,
 } from '../src/app/fmhy/_data/categories';
 import type {
-  Catalog,
-  CatalogCategory,
-  CatalogEntry,
-  CatalogProse,
-  CatalogSection,
   IndexCategory,
   IndexFile,
+  IndexHighlight,
   Namespace,
-  ProseDoc,
 } from '../src/app/fmhy/_lib/types';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(HERE, '..');
 const DATA_DIR = join(REPO_ROOT, 'src/app/fmhy/_data');
-const CATEGORIES_DIR = join(DATA_DIR, 'categories');
-const OTHER_DIR = join(CATEGORIES_DIR, 'other');
-const POSTS_DIR = join(CATEGORIES_DIR, 'posts');
 const INDEX_PATH = join(DATA_DIR, 'index.json');
 
 const RAW_BASE = 'https://raw.githubusercontent.com/fmhy/edit/main/docs';
@@ -67,16 +57,18 @@ function stripIntro(md: string): string {
   return idx >= 0 ? md.slice(idx) : md;
 }
 
-function parseEntry(line: string): CatalogEntry | null {
+type ParsedEntry = { name: string; url: string; blurb: string; starred: boolean };
+
+function parseEntry(line: string): ParsedEntry | null {
   let rest = line.replace(/^[*\-+]\s+/, '').trim();
-  const badges: string[] = [];
+  let starred = false;
 
   while (rest.length > 0) {
     const firstChar = rest[0];
     if (firstChar === '*' || firstChar === '[' || firstChar === ' ') break;
     const token = rest.split(/\s+/, 1)[0];
     if (!looksLikeBadge(token)) break;
-    badges.push(token);
+    if (token === '⭐') starred = true;
     rest = rest.slice(token.length).trimStart();
   }
 
@@ -86,127 +78,50 @@ function parseEntry(line: string): CatalogEntry | null {
   const url = linkMatch[3].trim();
   rest = rest.slice(linkMatch[0].length).trim();
 
-  if (rest.startsWith('-') || rest.startsWith(':')) {
-    rest = rest.slice(1).trim();
-  }
+  if (rest.startsWith('-') || rest.startsWith(':')) rest = rest.slice(1).trim();
 
-  const resourceLinks: { text: string; url: string }[] = [];
-  const blurb = rest.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => {
-    resourceLinks.push({ text: text.trim(), url: href.trim() });
-    return text.trim();
-  }).replace(/\s{2,}/g, ' ').trim();
+  const blurb = rest.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text: string) => text.trim())
+    .replace(/\s{2,}/g, ' ').trim();
 
-  return { name, url, blurb, badges, resourceLinks };
+  return { name, url, blurb, starred };
 }
 
-function parseCatalog(slug: string, namespace: Namespace, sourceFile: string, md: string): CatalogCategory {
+type CatalogStats = {
+  sectionCount: number;
+  entryCount: number;
+  highlights: IndexHighlight[];
+};
+
+function statsFromCatalog(md: string, n: number): CatalogStats {
   const stripped = stripIntro(md);
   const lines = stripped.split(/\r?\n/);
-  const sections: CatalogSection[] = [];
-  let current: CatalogSection | null = null;
-  let subheading: string | undefined;
+  let sectionCount = 0;
+  let entryCount = 0;
+  const starred: ParsedEntry[] = [];
+  const rest: ParsedEntry[] = [];
 
   for (const raw of lines) {
     const line = raw.trimEnd();
-    if (line.startsWith('## ')) {
-      const heading = line.slice(3).replace(/[#`]/g, '').trim();
-      current = { heading, entries: [] };
-      sections.push(current);
-      subheading = undefined;
-      continue;
-    }
-    if (line.startsWith('### ')) {
-      subheading = line.slice(4).replace(/[#`]/g, '').trim();
-      continue;
-    }
-    if (!current) continue;
+    if (line.startsWith('## ')) { sectionCount++; continue; }
     if (!/^[*\-+]\s/.test(line)) continue;
-
     const entry = parseEntry(line);
     if (!entry) continue;
-
-    if (subheading) {
-      const lastSection = sections[sections.length - 1];
-      if (lastSection.subheading !== subheading) {
-        const split: CatalogSection = { heading: current.heading, subheading, entries: [] };
-        sections.push(split);
-        current = split;
-      }
-    }
-
-    current.entries.push(entry);
+    entryCount++;
+    if (entry.starred) starred.push(entry);
+    else rest.push(entry);
   }
 
-  return {
-    slug,
-    namespace,
-    sourceFile,
-    sections: sections.filter((s) => s.entries.length > 0),
-  };
-}
-
-type Frontmatter = { title?: string; description?: string; body: string };
-
-function stripFrontmatter(md: string): Frontmatter {
-  const match = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
-  if (!match) return { body: md };
-  const fm = match[1];
-  const body = match[2];
-  const out: Frontmatter = { body };
-  for (const line of fm.split(/\r?\n/)) {
-    const m = line.match(/^(\w+):\s*(.*)$/);
-    if (!m) continue;
-    const v = m[2].trim().replace(/^['"]|['"]$/g, '');
-    if (m[1] === 'title') out.title = v;
-    if (m[1] === 'description') out.description = v;
-  }
-  return out;
-}
-
-function stripVitepressContainers(md: string): string {
-  // VitePress :::warning / :::tip / :::info blocks → plain blockquotes.
-  return md.replace(/^:::\s*(\w+)\s*\n([\s\S]*?)^:::\s*$/gm, (_m, kind: string, body: string) => {
-    const label = kind.toUpperCase();
-    const quoted = body.trim().split(/\r?\n/).map((l) => `> ${l}`).join('\n');
-    return `> **${label}**\n${quoted}\n`;
-  });
-}
-
-function deriveTitle(slug: string): string {
-  return slug
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-function parseProse(slug: string, namespace: Namespace, sourceFile: string, md: string): CatalogProse {
-  const fm = stripFrontmatter(md);
-  const cleaned = stripVitepressContainers(fm.body);
-  const html = marked.parse(cleaned, { async: false }) as string;
-  return {
-    slug,
-    namespace,
-    sourceFile,
-    title: fm.title ?? deriveTitle(slug),
-    description: fm.description,
-    html,
-  };
-}
-
-function topHighlights(category: CatalogCategory, n: number): IndexCategory['highlights'] {
-  const starred: CatalogEntry[] = [];
-  const rest: CatalogEntry[] = [];
-  for (const s of category.sections) {
-    for (const e of s.entries) {
-      if (e.badges.includes('⭐')) starred.push(e);
-      else rest.push(e);
-    }
-  }
-  const pool = [...starred, ...rest].slice(0, n);
-  return pool.map((e) => ({
+  const highlights = [...starred, ...rest].slice(0, n).map((e) => ({
     name: e.name,
     url: e.url,
     blurb: e.blurb.length > 120 ? e.blurb.slice(0, 117) + '...' : e.blurb,
   }));
+
+  return { sectionCount, entryCount, highlights };
+}
+
+function deriveTitle(slug: string): string {
+  return slug.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 function rootMeta(slug: string): { name: string; emoji: string; blurb: string } {
@@ -221,77 +136,44 @@ function postMeta(slug: string): { name: string; emoji: string; blurb: string } 
   return { name: deriveTitle(slug), emoji: '◷', blurb: 'FMHY changelog / post.' };
 }
 
-async function processCatalog(
-  meta: { slug: string; namespace: 'root'; sourceFile: string; display: { name: string; emoji: string; blurb: string } },
-  fetchedAt: string,
-): Promise<IndexCategory | null> {
-  process.stdout.write(`  [root]   ${meta.slug.padEnd(22)} ← ${meta.sourceFile.padEnd(28)} `);
-  try {
-    const md = await fetchMarkdown(meta.sourceFile);
-    const category = parseCatalog(meta.slug, 'root', meta.sourceFile, md);
-    const entryCount = category.sections.reduce((n, s) => n + s.entries.length, 0);
-    if (entryCount === 0) {
-      // Prose-style root doc (beginners-guide, sandbox, startpage, unsafe, ...).
-      // Render the markdown directly so it still appears in the mirror.
-      const doc = parseProse(meta.slug, 'root', meta.sourceFile, md);
-      const file: ProseDoc = { fetchedAt, doc };
-      await writeFile(join(CATEGORIES_DIR, `${meta.slug}.json`), JSON.stringify(file, null, 2) + '\n', 'utf8');
-      console.log(`ok prose (${(doc.html.length / 1024).toFixed(1)}kb html)`);
-      return {
-        slug: meta.slug,
-        namespace: 'root',
-        sourceFile: meta.sourceFile,
-        kind: 'prose',
-        name: meta.display.name || doc.title,
-        emoji: meta.display.emoji,
-        blurb: meta.display.blurb || (doc.description ?? ''),
-        sectionCount: 1,
-        entryCount: 0,
-        highlights: [],
-      };
-    }
-    const file: Catalog = { fetchedAt, categories: [category] };
-    await writeFile(join(CATEGORIES_DIR, `${meta.slug}.json`), JSON.stringify(file, null, 2) + '\n', 'utf8');
-    console.log(`ok (${category.sections.length} sections, ${entryCount} entries)`);
-    return {
-      slug: meta.slug,
-      namespace: 'root',
-      sourceFile: meta.sourceFile,
-      kind: 'catalog',
-      ...meta.display,
-      sectionCount: category.sections.length,
-      entryCount,
-      highlights: topHighlights(category, 4),
-    };
-  } catch (err) {
-    console.log(`FAIL: ${(err as Error).message}`);
-    return null;
-  }
-}
+type Discovery = {
+  slug: string;
+  namespace: Namespace;
+  sourceFile: string;
+  display: { name: string; emoji: string; blurb: string };
+};
 
-async function processProse(
-  meta: { slug: string; namespace: 'other' | 'posts'; sourceFile: string; display: { name: string; emoji: string; blurb: string }; outDir: string },
-  fetchedAt: string,
-): Promise<IndexCategory | null> {
-  process.stdout.write(`  [${meta.namespace.padEnd(5)}] ${meta.slug.padEnd(22)} ← ${meta.sourceFile.padEnd(28)} `);
+async function entryFor(meta: Discovery): Promise<IndexCategory | null> {
+  process.stdout.write(`  [${meta.namespace.padEnd(5)}] ${meta.slug.padEnd(22)} `);
   try {
-    const md = await fetchMarkdown(meta.sourceFile);
-    const doc = parseProse(meta.slug, meta.namespace, meta.sourceFile, md);
-    const file: ProseDoc = { fetchedAt, doc };
-    await writeFile(join(meta.outDir, `${meta.slug}.json`), JSON.stringify(file, null, 2) + '\n', 'utf8');
-    const blurb = meta.display.blurb || (doc.description ?? '');
-    console.log(`ok (${(doc.html.length / 1024).toFixed(1)}kb html)`);
+    let kind: 'catalog' | 'prose' = 'prose';
+    let sectionCount = 1;
+    let entryCount = 0;
+    let highlights: IndexHighlight[] = [];
+
+    if (meta.namespace === 'root') {
+      const md = await fetchMarkdown(meta.sourceFile);
+      const stats = statsFromCatalog(md, 4);
+      if (stats.entryCount > 0) {
+        kind = 'catalog';
+        sectionCount = stats.sectionCount;
+        entryCount = stats.entryCount;
+        highlights = stats.highlights;
+      }
+    }
+
+    console.log(`ok (${kind}, ${entryCount} entries)`);
     return {
       slug: meta.slug,
       namespace: meta.namespace,
       sourceFile: meta.sourceFile,
-      kind: 'prose',
-      name: meta.display.name || doc.title,
+      kind,
+      name: meta.display.name,
       emoji: meta.display.emoji,
-      blurb,
-      sectionCount: 1,
-      entryCount: 0,
-      highlights: [],
+      blurb: meta.display.blurb,
+      sectionCount,
+      entryCount,
+      highlights,
     };
   } catch (err) {
     console.log(`FAIL: ${(err as Error).message}`);
@@ -307,55 +189,30 @@ async function main(): Promise<void> {
   const other = await listDir('other');
   const posts = await listDir('posts');
 
-  const rootFiles = root
-    .filter((f) => f.type === 'file' && f.name.endsWith('.md') && f.name !== 'index.md' && f.name !== 'feedback.md' && f.name !== 'posts.md')
-    .map((f) => ({
-      slug: f.name.replace(/\.md$/, ''),
-      namespace: 'root' as const,
-      sourceFile: f.name,
-      display: rootMeta(f.name.replace(/\.md$/, '')),
-    }));
+  const discoveries: Discovery[] = [];
 
-  const otherFiles = other
-    .filter((f) => f.type === 'file' && f.name.endsWith('.md'))
-    .map((f) => ({
-      slug: f.name.replace(/\.md$/, ''),
-      namespace: 'other' as const,
-      sourceFile: `other/${f.name}`,
-      display: otherMeta(f.name.replace(/\.md$/, '')),
-      outDir: OTHER_DIR,
-    }));
+  for (const f of root) {
+    if (f.type !== 'file' || !f.name.endsWith('.md')) continue;
+    if (f.name === 'index.md' || f.name === 'feedback.md' || f.name === 'posts.md') continue;
+    const slug = f.name.replace(/\.md$/, '');
+    discoveries.push({ slug, namespace: 'root', sourceFile: f.name, display: rootMeta(slug) });
+  }
+  for (const f of other) {
+    if (f.type !== 'file' || !f.name.endsWith('.md')) continue;
+    const slug = f.name.replace(/\.md$/, '');
+    discoveries.push({ slug, namespace: 'other', sourceFile: `other/${f.name}`, display: otherMeta(slug) });
+  }
+  for (const f of posts) {
+    if (f.type !== 'file' || !f.name.endsWith('.md')) continue;
+    const slug = f.name.replace(/\.md$/, '');
+    discoveries.push({ slug, namespace: 'posts', sourceFile: `posts/${f.name}`, display: postMeta(slug) });
+  }
 
-  const postFiles = posts
-    .filter((f) => f.type === 'file' && f.name.endsWith('.md'))
-    .map((f) => ({
-      slug: f.name.replace(/\.md$/, ''),
-      namespace: 'posts' as const,
-      sourceFile: `posts/${f.name}`,
-      display: postMeta(f.name.replace(/\.md$/, '')),
-      outDir: POSTS_DIR,
-    }));
-
-  console.log(`  root: ${rootFiles.length} files, other: ${otherFiles.length} files, posts: ${postFiles.length} files`);
-
-  // Clean output dirs so removed upstream files disappear from mirror.
-  await rm(CATEGORIES_DIR, { recursive: true, force: true });
-  await mkdir(CATEGORIES_DIR, { recursive: true });
-  await mkdir(OTHER_DIR, { recursive: true });
-  await mkdir(POSTS_DIR, { recursive: true });
+  console.log(`  root: ${root.length} files, other: ${other.length} files, posts: ${posts.length} files`);
 
   const entries: IndexCategory[] = [];
-
-  for (const meta of rootFiles) {
-    const e = await processCatalog(meta, fetchedAt);
-    if (e) entries.push(e);
-  }
-  for (const meta of otherFiles) {
-    const e = await processProse(meta, fetchedAt);
-    if (e) entries.push(e);
-  }
-  for (const meta of postFiles) {
-    const e = await processProse(meta, fetchedAt);
+  for (const meta of discoveries) {
+    const e = await entryFor(meta);
     if (e) entries.push(e);
   }
 
@@ -366,8 +223,8 @@ async function main(): Promise<void> {
   const roots = entries.filter((e) => e.namespace === 'root').length;
   const others = entries.filter((e) => e.namespace === 'other').length;
   const postCount = entries.filter((e) => e.namespace === 'posts').length;
-  console.log(`\nWrote ${entries.length} docs (root ${roots} / other ${others} / posts ${postCount})`);
-  console.log(`Total catalog entries: ${totalEntries.toLocaleString()}.`);
+  console.log(`\nWrote index with ${entries.length} docs (root ${roots} / other ${others} / posts ${postCount})`);
+  console.log(`Total catalog entries indexed: ${totalEntries.toLocaleString()}.`);
 }
 
 main().catch((err) => {
