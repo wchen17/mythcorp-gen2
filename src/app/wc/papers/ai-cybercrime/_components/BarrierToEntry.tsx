@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Data lifted from Tables 1, 3, 5 of the source paper. Each metric is
 // scored 0-10 where 10 = trivially accessible to a layperson, 0 = needs
@@ -19,6 +19,12 @@ const ROWS: ReadonlyArray<Row> = [
 
 export function BarrierToEntry() {
   const [mode, setMode] = useState<'pre' | 'post'>('pre');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="themed-surface mt-6 p-5">
@@ -75,11 +81,11 @@ export function BarrierToEntry() {
                 <div
                   className="h-full rounded-full"
                   style={{
-                    width: `${widthPct}%`,
+                    width: mounted ? `${widthPct}%` : '0%',
                     background: mode === 'pre'
                       ? 'var(--fg-muted)'
                       : 'linear-gradient(90deg, var(--accent), var(--accent-warm))',
-                    transition: 'width 600ms cubic-bezier(0.34, 1.2, 0.4, 1), background 400ms ease',
+                    transition: 'width 700ms cubic-bezier(0.34, 1.2, 0.4, 1), background 400ms ease',
                   }}
                 />
               </div>

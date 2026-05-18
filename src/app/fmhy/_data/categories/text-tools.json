@@ -1,0 +1,4594 @@
+{
+  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "categories": [
+    {
+      "slug": "text-tools",
+      "sourceFile": "text-tools.md",
+      "sections": [
+        {
+          "heading": "▷ Pastebins",
+          "entries": [
+            {
+              "name": "GitHub Gists",
+              "url": "https://gist.github.com/",
+              "blurb": "or GitLab Snippets - Multi-Syntax / Requires Sign-Up",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitLab Snippets",
+                  "url": "https://docs.gitlab.com/user/snippets/"
+                }
+              ]
+            },
+            {
+              "name": "pastes.dev",
+              "url": "https://pastes.dev/",
+              "blurb": "Multi-Syntax / Markdown Support / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lucko/paste"
+                }
+              ]
+            },
+            {
+              "name": "PrivateBin",
+              "url": "https://privatebin.net/",
+              "blurb": ", NoteBin or ⁠ZeroBin - Markdown Support / Syntax Highlighting / Instances / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "NoteBin",
+                  "url": "https://notebin.de/"
+                },
+                {
+                  "text": "⁠ZeroBin",
+                  "url": "https://www.zerobin.net/"
+                },
+                {
+                  "text": "Instances",
+                  "url": "https://privatebin.info/directory"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/PrivateBin/PrivateBin"
+                }
+              ]
+            },
+            {
+              "name": "Rentry",
+              "url": "https://rentry.co/",
+              "blurb": ", 2 - Markdown Support / Custom URLs / CLI / Styling",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://rentry.org/"
+                },
+                {
+                  "text": "CLI",
+                  "url": "https://github.com/radude/rentry"
+                },
+                {
+                  "text": "Styling",
+                  "url": "https://rentry.co/rentryarchived"
+                }
+              ]
+            },
+            {
+              "name": "Markbox",
+              "url": "https://markbox.cc/",
+              "blurb": ", 2 - Markdown Support / Custom URLs / Source Code",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://fluffle.cc/"
+                },
+                {
+                  "text": "Source Code",
+                  "url": "https://git.0x8e.net/t/fluffle"
+                }
+              ]
+            },
+            {
+              "name": "Katbin",
+              "url": "https://katb.in/",
+              "blurb": "Plain Text / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/sphericalkat/katbin"
+                }
+              ]
+            },
+            {
+              "name": "Text.is",
+              "url": "https://text.is/",
+              "blurb": "Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Yasosu",
+              "url": "https://yaso.su/",
+              "blurb": "Multi-Syntax / Markdown Support / Telegram",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/yaso_updates"
+                }
+              ]
+            },
+            {
+              "name": "bpa.st",
+              "url": "https://bpa.st/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "snowbin",
+              "url": "https://pastes.fmhy.net/",
+              "blurb": ", 2 - Markdown Support / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://paste.fmhy.net/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/fmhy/snowbin"
+                }
+              ]
+            },
+            {
+              "name": "⁠Ghostbin",
+              "url": "https://ghostbin.co/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "cryptgeon",
+              "url": "https://cryptgeon.org/",
+              "blurb": "Single View / Plain Text / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/cupcakearmy/cryptgeon"
+                }
+              ]
+            },
+            {
+              "name": "pst.moe",
+              "url": "https://pst.moe/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pastee",
+              "url": "https://pastee.dev/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Paste.to",
+              "url": "https://paste.to/",
+              "blurb": "Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TxtBin",
+              "url": "https://txtbin.org/",
+              "blurb": "Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "dpaste.com",
+              "url": "https://dpaste.com/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Paste",
+              "url": "https://paste.boxlabs.uk/",
+              "blurb": "Multi-Syntax / Markdown Support / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/boxlabss/PASTE"
+                }
+              ]
+            },
+            {
+              "name": "⁠Codepasta",
+              "url": "https://codepasta.app/",
+              "blurb": "Multi-Syntax / Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "lesma",
+              "url": "https://lesma.eu/",
+              "blurb": "Multi-Syntax / GitLab",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitLab",
+                  "url": "https://gitlab.com/ogarcia/lesma"
+                }
+              ]
+            },
+            {
+              "name": "NoPaste",
+              "url": "https://nopaste.boris.sh/",
+              "blurb": "Multi-Syntax / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/bokub/nopaste"
+                }
+              ]
+            },
+            {
+              "name": "Pastebin.com",
+              "url": "https://pastebin.com/",
+              "blurb": "Multi-Syntax",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "pastemyst",
+              "url": "https://paste.myst.rs/",
+              "blurb": "Multi-Syntax / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/codemyst/pastemyst"
+                }
+              ]
+            },
+            {
+              "name": "CentOS Pastebin",
+              "url": "https://paste.centos.org/",
+              "blurb": "Multi-Syntax",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "snippet.host",
+              "url": "https://snippet.host/",
+              "blurb": "Multi-Syntax",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ProtectedText",
+              "url": "https://www.protectedtext.com/",
+              "blurb": "Multi-Tab",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Memochō",
+              "url": "https://bin.kv2.dev/",
+              "blurb": "/ GitHub or bin - Minimal Pastebins",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/SitiSchu/memocho"
+                },
+                {
+                  "text": "bin",
+                  "url": "https://basedbin.fly.dev/"
+                }
+              ]
+            },
+            {
+              "name": "txt.fyi",
+              "url": "https://txt.fyi/",
+              "blurb": "Markdown Pastebin",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MarkdownPastebin",
+              "url": "https://markdownpastebin.com/",
+              "blurb": "Markdown Support",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sparked Paste",
+              "url": "https://paste.sparked.host/",
+              "blurb": "Plain Text / Syntax Highlighting",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Riseup Pad",
+              "url": "https://pad.riseup.net/",
+              "blurb": "WYSIWYG Pastebin",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "itty.bitty",
+              "url": "https://itty.bitty.site/",
+              "blurb": "Site / Pastebin",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Opengist",
+              "url": "https://opengist.io/",
+              "blurb": "Self-Hosted Pastebin / GitHub Gists Alt / Demo / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Demo",
+                  "url": "https://demo.opengist.io/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/9Pm3X5scZT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Translators",
+          "entries": [
+            {
+              "name": "DeepL",
+              "url": "https://www.deepl.com/translator",
+              "blurb": "Online AI-Based Translation",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google Translate",
+              "url": "https://translate.google.com/",
+              "blurb": "/ Chrome Extension / .onion - Online",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Chrome Extension",
+                  "url": "https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb"
+                },
+                {
+                  "text": ".onion",
+                  "url": "http://st.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/"
+                }
+              ]
+            },
+            {
+              "name": "Kagi Translate",
+              "url": "https://translate.kagi.com/",
+              "blurb": "Online",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Translate Web Pages",
+              "url": "https://github.com/FilipePS/Traduzir-paginas-web",
+              "blurb": "(firefox), Kagi Extension or Linguist Translator - Browser Extensions",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Kagi Extension",
+                  "url": "https://translate.kagi.com/extension"
+                },
+                {
+                  "text": "Linguist Translator",
+                  "url": "https://github.com/translate-tools/linguist"
+                }
+              ]
+            },
+            {
+              "name": "r/Translator",
+              "url": "https://www.reddit.com/r/translator/",
+              "blurb": "Translation Request Community",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Mozhi",
+              "url": "https://codeberg.org/aryak/mozhi#instances",
+              "blurb": "Multi Translation Engine Frontend",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LibreTranslate",
+              "url": "https://libretranslate.com/",
+              "blurb": "FOSS Translator / Self-Hosted / Offline / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/LibreTranslate/LibreTranslate"
+                }
+              ]
+            },
+            {
+              "name": "Translate Shell",
+              "url": "https://www.soimort.org/translate-shell/",
+              "blurb": "Translation CLI / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/soimort/translate-shell"
+                }
+              ]
+            },
+            {
+              "name": "Bing Translator",
+              "url": "https://www.bing.com/translator",
+              "blurb": "Online",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Yandex Translator",
+              "url": "https://translate.yandex.com/",
+              "blurb": "Online",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Reverso",
+              "url": "https://context.reverso.net/translation/",
+              "blurb": "Online In-Context Translations",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Nice Translator",
+              "url": "https://nicetranslator.com/",
+              "blurb": "Batch Multi-Language Translation",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Translator++",
+              "url": "https://dreamsavior.net/",
+              "blurb": "or Renpy Translator - CAT For Games",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Renpy Translator",
+                  "url": "https://github.com/anonymousException/renpy-translator"
+                }
+              ]
+            },
+            {
+              "name": "⁠Translumo",
+              "url": "https://github.com/ramjke/Translumo",
+              "blurb": "Real-Time Translation Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Poedit",
+              "url": "https://poedit.net/",
+              "blurb": "Software Translation / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/vslavik/poedit"
+                }
+              ]
+            },
+            {
+              "name": "Morsecode World",
+              "url": "https://morsecode.world/",
+              "blurb": "Morse Code Translation Tools",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sign Translate",
+              "url": "https://sign.mt/",
+              "blurb": "Text to Sign-Language Video Translator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Text to Sign",
+              "url": "https://wecapable.com/tools/text-to-sign-language-converter/",
+              "blurb": "Sign Language Translator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Braille Tanslator",
+              "url": "https://wecapable.com/braille-translator/",
+              "blurb": "Braille Translator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LingoJam",
+              "url": "https://lingojam.com/",
+              "blurb": "Translator Creator",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Audio Transcription",
+          "entries": [
+            {
+              "name": "ASR Leaderboard",
+              "url": "https://huggingface.co/spaces/hf-audio/open_asr_leaderboard",
+              "blurb": "Speech to Text Leaderboard",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Whisper",
+              "url": "https://github.com/openai/whisper",
+              "blurb": "Audio Transcription / WebUI, 2",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WebUI",
+                  "url": "https://huggingface.co/spaces/hf-audio/whisper-large-v3"
+                },
+                {
+                  "text": "2",
+                  "url": "https://ggml.ai/whisper.cpp/"
+                }
+              ]
+            },
+            {
+              "name": "SpeechTexter",
+              "url": "https://www.speechtexter.com/",
+              "blurb": ", VoiceToText, ⁠Transcrisper, Dictation, oTranscribe or TalkTyper - Browser-Based Audio Transcription Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "VoiceToText",
+                  "url": "https://voicetotext.org/"
+                },
+                {
+                  "text": "⁠Transcrisper",
+                  "url": "https://transcrisper.com/"
+                },
+                {
+                  "text": "Dictation",
+                  "url": "https://dictation.io/speech"
+                },
+                {
+                  "text": "oTranscribe",
+                  "url": "https://otranscribe.com/"
+                },
+                {
+                  "text": "TalkTyper",
+                  "url": "https://talktyper.com/"
+                }
+              ]
+            },
+            {
+              "name": "Revoldiv",
+              "url": "https://revoldiv.com/",
+              "blurb": "or Turboscribe - AI-Based Transcriptions",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Turboscribe",
+                  "url": "https://turboscribe.ai/"
+                }
+              ]
+            },
+            {
+              "name": "Vibe",
+              "url": "https://thewh1teagle.github.io/vibe/",
+              "blurb": "Audio Transcription Software",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Buzz",
+              "url": "https://github.com/chidiwilliams/buzz",
+              "blurb": "Audio Transcription Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Handy",
+              "url": "https://handy.computer/",
+              "blurb": "Audio Transcription Tool / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/WVBeWsNXK4"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/cjpais/Handy"
+                }
+              ]
+            },
+            {
+              "name": "⁠TransPocket",
+              "url": "https://transpocket.com/",
+              "blurb": "Audio Transcription Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WhisperX",
+              "url": "https://github.com/m-bain/whisperX",
+              "blurb": "Audio Transcription Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Parakeet",
+              "url": "https://huggingface.co/spaces/nvidia/parakeet-tdt-0.6b-v2",
+              "blurb": "Audio Transcription / HuggingFace",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SpeechNotes",
+              "url": "https://speechnotes.co/",
+              "blurb": "Speech Recognition Notes App",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LilySpeech",
+              "url": "https://lilyspeech.com/",
+              "blurb": "Fast Voice-To-Text Software",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "VoiceNotebook",
+              "url": "https://voicenotebook.com/",
+              "blurb": "Speech Transcription Notebook",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Encode / Decode",
+          "entries": [
+            {
+              "name": "CyberChef",
+              "url": "https://gchq.github.io/CyberChef/",
+              "blurb": "Encode / Decode Text / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/gchq/CyberChef"
+                }
+              ]
+            },
+            {
+              "name": "Base64 Decode",
+              "url": "https://www.base64decode.org/",
+              "blurb": "or base64.run - Encode / Decode Base64",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "base64.run",
+                  "url": "https://base64.run/"
+                }
+              ]
+            },
+            {
+              "name": "Auto Decoder",
+              "url": "https://greasyfork.org/en/scripts/485772-fmhy-base64-auto-decoder",
+              "blurb": "Auto-Decode B64 Links on Pastebins",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Online Tools",
+              "url": "https://emn178.github.io/online-tools/index.html",
+              "blurb": "Text / URL Encoding and Decoding",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Ciphey",
+              "url": "https://github.com/Ciphey/Ciphey",
+              "blurb": "Automated Decryption Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Universal Encoding Tool",
+              "url": "https://unenc.com/",
+              "blurb": "Encode / Convert Text",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "cryptii",
+              "url": "https://cryptii.com/",
+              "blurb": "or DenCode - Text / URL Encoding",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "DenCode",
+                  "url": "https://dencode.com/"
+                }
+              ]
+            },
+            {
+              "name": "Coder",
+              "url": "https://www.den4b.com/tools/coder",
+              "blurb": "Text / File / URL Encoding",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "URLDecode",
+              "url": "https://www.urldecode.org/",
+              "blurb": "or URL-Decode - URL Encoding / Decoding",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "URL-Decode",
+                  "url": "https://url-decode.com/"
+                }
+              ]
+            },
+            {
+              "name": "quipqiup",
+              "url": "https://www.quipqiup.com/",
+              "blurb": "or dCode - Cryptogram Solvers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "dCode",
+                  "url": "https://www.dcode.fr/en"
+                }
+              ]
+            },
+            {
+              "name": "StegCloak",
+              "url": "https://stegcloak.surge.sh/",
+              "blurb": "Hide Messages in Text",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Base64 Repair",
+              "url": "https://base64.guru/tools/repair",
+              "blurb": "Fix Broken Base64",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Grammar Check",
+          "entries": [
+            {
+              "name": "LanguageTool",
+              "url": "https://languagetool.org/",
+              "blurb": "Web App / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/languagetool-org/languagetool"
+                }
+              ]
+            },
+            {
+              "name": "QuillBot",
+              "url": "https://quillbot.com/grammar-check",
+              "blurb": "Web App / Extension / Features",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extension",
+                  "url": "https://chromewebstore.google.com/detail/quillbot-ai-writing-and-g/iidnbdjijdkbmajdffnidomddglmieko"
+                },
+                {
+                  "text": "Features",
+                  "url": "https://rentry.co/FMHYB64#quill"
+                }
+              ]
+            },
+            {
+              "name": "Grammarly",
+              "url": "https://www.grammarly.com/grammar-check",
+              "blurb": "Web App / Extension",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extension",
+                  "url": "https://www.grammarly.com/browser"
+                }
+              ]
+            },
+            {
+              "name": "Writing Tools",
+              "url": "https://github.com/theJayTea/WritingTools",
+              "blurb": "Desktop App - Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Harper",
+              "url": "https://writewithharper.com/",
+              "blurb": "Web App / Extension / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/JBqcAaKrzQ"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/automattic/harper"
+                }
+              ]
+            },
+            {
+              "name": "DeepL Write",
+              "url": "https://www.deepl.com/write",
+              "blurb": "Web App",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Kagi Proofread",
+              "url": "https://translate.kagi.com/proofread",
+              "blurb": "Web App",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Scribens",
+              "url": "https://www.scribens.com/",
+              "blurb": "Web App",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "EditGPT",
+              "url": "https://www.editgpt.app/",
+              "blurb": "Web App / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ProWritingAid",
+              "url": "https://prowritingaid.com/grammar-checker",
+              "blurb": "Web App / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Outwrite",
+              "url": "https://www.outwrite.com/",
+              "blurb": "Web App / Requires Sign-Up",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Emoji Indexes",
+          "entries": [
+            {
+              "name": "Emojipedia",
+              "url": "https://emojipedia.org/",
+              "blurb": ", List of Emojis, EmojiDB, Slackmojis, Emoji Picker or ⁠Emoji Guide - Emoji Indexes",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "List of Emojis",
+                  "url": "https://en.wikipedia.org/wiki/List_of_emojis#Unicode_single_emoji"
+                },
+                {
+                  "text": "EmojiDB",
+                  "url": "https://emojidb.org/"
+                },
+                {
+                  "text": "Slackmojis",
+                  "url": "https://slackmojis.com/"
+                },
+                {
+                  "text": "Emoji Picker",
+                  "url": "https://github-emoji-picker.vercel.app/"
+                },
+                {
+                  "text": "⁠Emoji Guide",
+                  "url": "https://emojiguide.org/"
+                }
+              ]
+            },
+            {
+              "name": "Emoji Engine",
+              "url": "https://www.emojiengine.com/",
+              "blurb": "Multilingual Emoji Search",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "winMoji",
+              "url": "https://www.winmoji.com/",
+              "blurb": "Emoji Managers",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "EmojiRequests",
+              "url": "https://emojirequest.com/",
+              "blurb": "Custom User-Made Emojis",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cult of the Party Parrot",
+              "url": "https://cultofthepartyparrot.com/",
+              "blurb": "Party Parrot Emojis",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pepe Server Archive",
+              "url": "https://github.com/Overimagine1/pepe-server-archive",
+              "blurb": "Pepe Emojis",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Emojify",
+              "url": "https://madelinemiller.dev/apps/emojify/",
+              "blurb": "Emojify Text",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Unicode Characters",
+          "entries": [
+            {
+              "name": "Amp What",
+              "url": "https://www.amp-what.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "CopyChar",
+              "url": "https://copychar.cc/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Unicode Table",
+              "url": "https://symbl.cc/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Symbol.so",
+              "url": "https://symbol.so/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Graphemica",
+              "url": "https://graphemica.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SymbolSelect",
+              "url": "https://www.symbolselect.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Character Map",
+              "url": "https://github.com/character-map-uwp/Character-Map-UWP",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Unifoundry",
+              "url": "https://unifoundry.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cool Symbol",
+              "url": "https://coolsymbol.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "emotes.io",
+              "url": "https://emotes.io/",
+              "blurb": ", CuteSymbols, 2 or GetSymbol / 2 - Copy Unicode Emotes",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "CuteSymbols",
+                  "url": "https://www.cutesymbols.net/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://www.textemoji.org/"
+                },
+                {
+                  "text": "GetSymbol",
+                  "url": "https://www.getsymbol.net/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://www.cute-kaomoji.com/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Typing Lessons",
+          "entries": [
+            {
+              "name": "Monkeytype",
+              "url": "https://monkeytype.com/",
+              "blurb": "Custom Touch Typing Tests / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/monkeytype"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/monkeytypegame/monkeytype"
+                }
+              ]
+            },
+            {
+              "name": "keybr",
+              "url": "https://www.keybr.com/",
+              "blurb": "Custom Touch Typing Practice / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/aradzie/keybr.com"
+                }
+              ]
+            },
+            {
+              "name": "⁠Layouts Wiki",
+              "url": "https://layouts.wiki/",
+              "blurb": "Alt Typing Layouts Wiki",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Typing Guide",
+              "url": "https://docs.google.com/document/d/1W0jhfqJI2ueJ2FNseR4YAFpNfsUM-_FlREHbpNGmC2o",
+              "blurb": "In-Depth Typing Guide",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Typ.ing",
+              "url": "https://typ.ing/",
+              "blurb": ", Typings, ⁠TypeGG / Discord or typing.works - Typing Tests",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Typings",
+                  "url": "https://typings.gg/"
+                },
+                {
+                  "text": "⁠TypeGG",
+                  "url": "https://typegg.io/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/64v955z"
+                },
+                {
+                  "text": "typing.works",
+                  "url": "https://typing.works/"
+                }
+              ]
+            },
+            {
+              "name": "Typing.com",
+              "url": "https://www.typing.com/",
+              "blurb": "Touch Typing Lessons",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Typing Club",
+              "url": "https://www.typingclub.com/",
+              "blurb": "Touch Typing Lessons",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "typing.academy",
+              "url": "https://www.typing.academy/",
+              "blurb": "Typing Lessons / Requires JavaScript Enabled",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TypeRacer",
+              "url": "https://play.typeracer.com/",
+              "blurb": ", ZType, TypeRush or ARRRType - Typing Games",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "ZType",
+                  "url": "https://zty.pe/"
+                },
+                {
+                  "text": "TypeRush",
+                  "url": "https://www.typerush.com/"
+                },
+                {
+                  "text": "ARRRType",
+                  "url": "https://www.arrrtype.com/"
+                }
+              ]
+            },
+            {
+              "name": "NGram Type",
+              "url": "https://ranelpadon.github.io/ngram-type/",
+              "blurb": ", KeyZen MAB or Keyzen Colmak - Touch Typing Tests",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "KeyZen MAB",
+                  "url": "https://adamgradzki.com/keyzen-mab/"
+                },
+                {
+                  "text": "Keyzen Colmak",
+                  "url": "https://ranelpadon.github.io/keyzen-colemak-dh/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Typersguild",
+              "url": "https://typersguild.com/",
+              "blurb": ", TypeLit.io or Entertrained - Book Typing Tests",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "TypeLit.io",
+                  "url": "https://www.typelit.io/"
+                },
+                {
+                  "text": "Entertrained",
+                  "url": "https://entertrained.app/"
+                }
+              ]
+            },
+            {
+              "name": "TypingStudy",
+              "url": "https://www.typingstudy.com/",
+              "blurb": "or TypeFast - Multilingual Touch Typing Tests",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "TypeFast",
+                  "url": "https://typefast.io/"
+                }
+              ]
+            },
+            {
+              "name": "10fastfingers",
+              "url": "https://10fastfingers.com/",
+              "blurb": "Typing Competitions",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "List of Text Editors",
+              "url": "https://wikipedia.org/wiki/List_of_text_editors",
+              "blurb": "Text Editor / Notepad Index",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠TextEditors",
+              "url": "http://texteditors.org/",
+              "blurb": "Text Editor Index + Reviews",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Android Text Editor",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/android#wiki_.25B7_android_text_tools",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Code Editors / IDEs",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/dev-tools#wiki_.25B7_ides_.2F_code_editors",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Notepad++",
+              "url": "https://notepad-plus-plus.org/",
+              "blurb": "Notepad & Code Editor / Windows / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/notepad-plus-plus/notepad-plus-plus"
+                }
+              ]
+            },
+            {
+              "name": "NotepadNext",
+              "url": "https://github.com/dail8859/NotepadNext",
+              "blurb": "Notepad & Code Editor / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "EncryptPad",
+              "url": "https://evpo.net/encryptpad/",
+              "blurb": "Encrypted Text Editor / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/evpo/EncryptPad"
+                }
+              ]
+            },
+            {
+              "name": "Notepads",
+              "url": "https://www.notepadsapp.com/",
+              "blurb": "Text Editor / Windows / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/0x7c13/Notepads"
+                }
+              ]
+            },
+            {
+              "name": "FastNotes",
+              "url": "https://fastedit.frozenassassine.de/",
+              "blurb": "Text Editor / Windows / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/FrozenAssassine/Fastedit"
+                }
+              ]
+            },
+            {
+              "name": "Kompad",
+              "url": "https://github.com/hudy9x/kompad",
+              "blurb": "Text Editor / Web Based",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Sublime Text",
+              "url": "https://www.sublimetext.com/",
+              "blurb": "Text Editor / Windows, Mac, Linux / Package Manager",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Package Manager",
+                  "url": "https://packagecontrol.io/"
+                }
+              ]
+            },
+            {
+              "name": "Zim Wiki",
+              "url": "https://zim-wiki.org/",
+              "blurb": "Wiki Text Editor / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "tomboy-ng",
+              "url": "https://github.com/tomboy-notes/tomboy-ng",
+              "blurb": "TomBoy-Based Text Editor / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SciTE",
+              "url": "https://www.scintilla.org/SciTE.html",
+              "blurb": "Text Editor / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Note-Taking",
+          "entries": [
+            {
+              "name": "Android Note-Taking",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/android/#wiki_.25B7_android_text_tools",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Obsidian",
+              "url": "https://obsidian.md/",
+              "blurb": "Markdown Note-Taking / All Platforms / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/obsidianmd"
+                }
+              ]
+            },
+            {
+              "name": "AnyType",
+              "url": "https://anytype.io/",
+              "blurb": "Note-Taking / E2EE / All Platforms / Telegram / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Telegram",
+                  "url": "https://t.me/anytype"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/anyproto/anytype-ts"
+                }
+              ]
+            },
+            {
+              "name": "AppFlowy",
+              "url": "https://appflowy.com/",
+              "blurb": "Note-Taking / All Platforms + Web / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/appflowy-903549834160635914"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/AppFlowy-IO"
+                }
+              ]
+            },
+            {
+              "name": "Logseq",
+              "url": "https://logseq.com/",
+              "blurb": "Outlining / All Platforms / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/VNfUaTtdFb"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/logseq/logseq"
+                }
+              ]
+            },
+            {
+              "name": "Notesnook",
+              "url": "https://notesnook.com/",
+              "blurb": "Note-Taking / E2EE / All Platforms + Web / Discord / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/zQBK97EE22"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/streetwriters/notesnook"
+                }
+              ]
+            },
+            {
+              "name": "Simplenote",
+              "url": "https://simplenote.com/",
+              "blurb": "Note-Taking / All Platforms / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Automattic/simplenote-electron"
+                }
+              ]
+            },
+            {
+              "name": "AFFiNE",
+              "url": "https://affine.pro/",
+              "blurb": "Note-Taking / All Platforms + Web / GitHub / Note",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/toeverything/AFFiNE"
+                },
+                {
+                  "text": "Note",
+                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/affine-note.md"
+                }
+              ]
+            },
+            {
+              "name": "Notion",
+              "url": "https://www.notion.com/",
+              "blurb": "Note-Taking / All Platforms + Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Lokus",
+              "url": "https://www.lokusmd.com/",
+              "blurb": "Markdown Note-Taking / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lokus-ai/lokus"
+                }
+              ]
+            },
+            {
+              "name": "Trilium",
+              "url": "https://github.com/TriliumNext/Trilium",
+              "blurb": "Info Manager / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mochi Cards",
+              "url": "https://mochi.cards/",
+              "blurb": "Note-Taking / Study Tools / All Platforms",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Silicon",
+              "url": "https://github.com/cu/silicon",
+              "blurb": "Note-Taking / Self-Hosted",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Flotes",
+              "url": "https://flotes.app/",
+              "blurb": "Markdown Note-Taking / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "QOwnNotes",
+              "url": "https://www.qownnotes.org/",
+              "blurb": "Markdown Note-Taking / Windows, Mac, Linux",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "vNote",
+              "url": "https://app.vnote.fun/en_us/",
+              "blurb": "Markdown Note-Taking / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/vnotex/vnote"
+                }
+              ]
+            },
+            {
+              "name": "Tiddly",
+              "url": "https://tiddlywiki.com/",
+              "blurb": "Info Manager / Windows, Mac, Linux / Desktop",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Desktop",
+                  "url": "https://github.com/tiddly-gittly/TidGi-Desktop"
+                }
+              ]
+            },
+            {
+              "name": "Org-roam",
+              "url": "https://www.orgroam.com/",
+              "blurb": "Info Manager / Self-Hosted / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/org-roam/org-roam"
+                }
+              ]
+            },
+            {
+              "name": "Desklamp",
+              "url": "https://desklamp.io/",
+              "blurb": "Reading / Note-Taking / Highlighting Tool / Windows / Guide",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Guide",
+                  "url": "https://app.desklamp.io/read?id=46b203c6-d8df-453d-b546-95a8fa7a44b9&mode=explore"
+                }
+              ]
+            },
+            {
+              "name": "Memos",
+              "url": "https://usememos.com/",
+              "blurb": "Note-Taking / Self-Hosted / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/tfPJa4UmAv"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/usememos/memos"
+                }
+              ]
+            },
+            {
+              "name": "Papers.IM",
+              "url": "https://papers.im/",
+              "blurb": "Note-Taking / Web",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Joplin",
+              "url": "https://joplinapp.org/",
+              "blurb": "Note-Taking / All Platforms / Firefox / Chrome / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Firefox",
+                  "url": "https://addons.mozilla.org/en-US/firefox/addon/joplin-web-clipper/"
+                },
+                {
+                  "text": "Chrome",
+                  "url": "https://chrome.google.com/webstore/detail/joplin-web-clipper/alofnhikmmkdbbbgpnglcpdollgjjfek?hl=en-GB"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/d2HMPwE"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/laurent22/joplin"
+                }
+              ]
+            },
+            {
+              "name": "MicroPad",
+              "url": "https://getmicropad.com/",
+              "blurb": "Note-Taking / Windows, Mac, Linux / Web",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Web",
+                  "url": "https://web.getmicropad.com/"
+                }
+              ]
+            },
+            {
+              "name": "WriteDown",
+              "url": "https://writedown.app/",
+              "blurb": "Note-Taking / Web / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/NayamAmarshe/writedown"
+                }
+              ]
+            },
+            {
+              "name": "DocMost",
+              "url": "https://docmost.com/",
+              "blurb": "Note-Taking / Self-Hosted / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/docmost/docmost"
+                }
+              ]
+            },
+            {
+              "name": "KeyNote NF",
+              "url": "https://github.com/dpradov/keynote-nf",
+              "blurb": "Note-Taking / E2EE / Windows",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SilentNotes",
+              "url": "https://www.martinstoeckli.ch/silentnotes/",
+              "blurb": "Note-Taking / E2EE / Windows, Android / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/martinstoeckli/SilentNotes"
+                }
+              ]
+            },
+            {
+              "name": "Google Keep",
+              "url": "https://keep.google.com/",
+              "blurb": "Simple Notes / Android, iOS / Chrome",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Chrome",
+                  "url": "https://chromewebstore.google.com/detail/google-keep-chrome-extens/lpcaedmchfhocbbapmcbpinfpgnhiddi"
+                }
+              ]
+            },
+            {
+              "name": "⁠Crypt.ee",
+              "url": "https://crypt.ee/",
+              "blurb": "Encrypted Notes / E2EE / All Platforms",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Standard Notes",
+              "url": "https://standardnotes.com/",
+              "blurb": "Encrypted Notes / E2EE / All Platforms / Web / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Web",
+                  "url": "https://app.standardnotes.com/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/9VNW3kK554"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/standardnotes/app"
+                }
+              ]
+            },
+            {
+              "name": "Saber",
+              "url": "https://saber.adil.hanney.org/",
+              "blurb": "Handwritten Notes / All Platforms / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/saber-notes/saber"
+                }
+              ]
+            },
+            {
+              "name": "Butterfly",
+              "url": "https://butterfly.linwood.dev/",
+              "blurb": "Handwritten Notes / All Platforms / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/97zFtYN"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/LinwoodDev/Butterfly"
+                }
+              ]
+            },
+            {
+              "name": "Xournal++",
+              "url": "https://xournalpp.github.io/",
+              "blurb": "Handwritten Notes / Windows, Mac, Linux / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/xournalpp/xournalpp"
+                }
+              ]
+            },
+            {
+              "name": "BookStack",
+              "url": "https://www.bookstackapp.com/",
+              "blurb": "/ GitHub, NoteDiscovery / GitHub or Siyuan / GitHub - Self-Hosted Info Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/BookStackApp/BookStack"
+                },
+                {
+                  "text": "NoteDiscovery",
+                  "url": "https://www.notediscovery.com/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/gamosoft/NoteDiscovery/"
+                },
+                {
+                  "text": "Siyuan",
+                  "url": "https://b3log.org/siyuan/en"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/siyuan-note/siyuan"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Office Suites",
+          "entries": [
+            {
+              "name": "Office Activation",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/system-tools#wiki_.25B7_windows_activation",
+              "blurb": "/ Custom Install Guide",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Custom Install Guide",
+                  "url": "https://massgrave.dev/office_c2r_custom"
+                }
+              ]
+            },
+            {
+              "name": "LibreOffice",
+              "url": "https://www.libreoffice.org/",
+              "blurb": "FOSS Office Suite",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "OnlyOffice",
+              "url": "https://www.onlyoffice.com/",
+              "blurb": "Office Suite",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Microsoft Office",
+              "url": "https://massgrave.dev/office_c2r_links",
+              "blurb": "/ Linux - Office Suite / Hotkeys / Removal Tool, 2, 3",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Linux",
+                  "url": "https://gist.github.com/eylenburg/38e5da371b7fedc0662198efc66be57b"
+                },
+                {
+                  "text": "Hotkeys",
+                  "url": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-microsoft-365-e765366f-24fc-4054-870d-39b214f223fd"
+                },
+                {
+                  "text": "Removal Tool",
+                  "url": "https://github.com/abbodi1406/WHD/blob/master/scripts/OfficeScrubber_14.zip"
+                },
+                {
+                  "text": "2",
+                  "url": "https://gitlab.com/stdout12/batutil/-/tree/master/OfficeScrubber"
+                },
+                {
+                  "text": "3",
+                  "url": "https://codeberg.org/stdout12/BatUtil/src/branch/master/OfficeScrubber"
+                }
+              ]
+            },
+            {
+              "name": "Calligra",
+              "url": "https://calligra.org/",
+              "blurb": "FOSS Office Suite",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Ziziyi",
+              "url": "https://office.ziziyi.com/",
+              "blurb": "Online Office Suite / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/baotlake/office-website"
+                }
+              ]
+            },
+            {
+              "name": "Office365Version",
+              "url": "https://www.office365versions.com/",
+              "blurb": "Office 365 Version History",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Online Editors",
+          "entries": [
+            {
+              "name": "Proton Docs",
+              "url": "https://proton.me/drive/docs",
+              "blurb": "Local / Cloud Saves / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/proton"
+                }
+              ]
+            },
+            {
+              "name": "Zen",
+              "url": "https://zen.unit.ms/",
+              "blurb": "Local Saves",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Leaflet",
+              "url": "https://leaflet.pub/",
+              "blurb": "Cloud Saves / Customizable / Examples",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Examples",
+                  "url": "https://leaflet.pub/bfed2569-f9c0-4c2a-a281-9f57bc372082"
+                }
+              ]
+            },
+            {
+              "name": "Browserpad",
+              "url": "https://browserpad.org/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Online Notepad",
+              "url": "https://onlinenotep.ad",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Notepad",
+              "url": "https://notepad.js.org/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "onlinenotepad",
+              "url": "https://onlinenotepad.org/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "notepad-online.net",
+              "url": "https://notepad-online.net/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ssavr",
+              "url": "https://www.ssavr.com/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "notepad-online.com",
+              "url": "https://notepad-online.com/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "JustNotePad",
+              "url": "https://justnotepad.com/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NotesOnline",
+              "url": "https://notesonline.org/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PasteePad",
+              "url": "https://pasteepad.com/",
+              "blurb": "Local Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Notes",
+              "url": "https://notes.xtra.wtf/",
+              "blurb": "Local / Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Shrib",
+              "url": "https://shrib.com/",
+              "blurb": "Local / Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MemOnNotepad",
+              "url": "https://www.memonotepad.com/",
+              "blurb": "Local / Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Write Box",
+              "url": "https://write-box.appspot.com/",
+              "blurb": "Local / Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "dDocs",
+              "url": "https://docs.fileverse.io/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NimbleText",
+              "url": "https://nimbletext.com/Live",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ZippyJot",
+              "url": "https://www.zippyjot.com/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "KiloDoc",
+              "url": "https://www.kilodoc.com/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TinyList",
+              "url": "https://tinylist.app/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TextSlave",
+              "url": "https://www.textslave.com/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GhostText",
+              "url": "https://ghosttext.fregante.com/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AnyTextEditor",
+              "url": "https://anytexteditor.com/",
+              "blurb": "Cloud Saves",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Mind Mapping",
+          "entries": [
+            {
+              "name": "Obsidian Canvas",
+              "url": "https://obsidian.md/canvas",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "FreeMind",
+              "url": "https://freemind.sourceforge.net/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Kinopio",
+              "url": "https://kinopio.club/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Freeplane",
+              "url": "https://github.com/freeplane/freeplane",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mindomo",
+              "url": "https://www.mindomo.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Yuque",
+              "url": "https://www.yuque.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MindMapp",
+              "url": "https://mindmapp.cedoor.dev/app",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "are.na",
+              "url": "https://www.are.na/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Domino",
+              "url": "https://kool.tools/domino",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GitMind",
+              "url": "https://gitmind.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "xTiles",
+              "url": "https://xtiles.app/en",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Capacities",
+              "url": "https://capacities.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "bubbl",
+              "url": "https://bubbl.us/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Heimer",
+              "url": "https://github.com/juzzlin/Heimer",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cubox",
+              "url": "https://cubox.cc/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "vym",
+              "url": "https://github.com/insilmaril/vym",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Tangent",
+              "url": "https://www.tangentnotes.com/",
+              "blurb": "Markdown Mind Mapping / Discord / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/6VpvhUnxFe"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/suchnsuch/Tangent"
+                }
+              ]
+            },
+            {
+              "name": "markmap",
+              "url": "https://markmap.js.org/",
+              "blurb": "Markdown Mind Mapping / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/markmap/markmap"
+                }
+              ]
+            },
+            {
+              "name": "Coggle",
+              "url": "https://coggle.it/",
+              "blurb": "Collaborative",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "CardSmith",
+              "url": "https://cardsmith.co/",
+              "blurb": "Collaborative Mind Mapping",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MindMeister",
+              "url": "https://www.mindmeister.com/",
+              "blurb": "Collaborative Mind Mapping",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Slatebox",
+              "url": "https://slatebox.com/",
+              "blurb": "Collaborative Mind Mapping",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Text / Code Collaboration",
+          "entries": [
+            {
+              "name": "Google Docs",
+              "url": "https://www.google.com/docs/about/",
+              "blurb": "/ HTML Converter / Templates",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "HTML Converter",
+                  "url": "https://github.com/evbacher/gd2md-html"
+                },
+                {
+                  "text": "Templates",
+                  "url": "https://gdoc.io/"
+                }
+              ]
+            },
+            {
+              "name": "CryptPad",
+              "url": "https://cryptpad.fr/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mattermost",
+              "url": "https://mattermost.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Codeshare",
+              "url": "https://codeshare.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "HackMD",
+              "url": "https://hackmd.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Taskade",
+              "url": "https://www.taskade.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Socket",
+              "url": "https://socket.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Whimsical",
+              "url": "https://whimsical.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Ellipsus",
+              "url": "https://ellipsus.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Etherpad",
+              "url": "https://etherpad.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SharePad",
+              "url": "https://sharepad.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Pixso",
+              "url": "https://pixso.net/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FidusWriter",
+              "url": "https://www.fiduswriter.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Overleaf",
+              "url": "https://www.overleaf.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Typst",
+              "url": "https://typst.app/home",
+              "blurb": "/ Resources / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Resources",
+                  "url": "https://github.com/qjcg/awesome-typst"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/typst/typst"
+                }
+              ]
+            },
+            {
+              "name": "Rustpad",
+              "url": "https://rustpad.io",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ekzhang/rustpad"
+                }
+              ]
+            },
+            {
+              "name": "OnlineInterview.io",
+              "url": "https://onlineinterview.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Spreadsheet Editors",
+          "entries": [
+            {
+              "name": "MTEB Leaderboard",
+              "url": "https://huggingface.co/spaces/mteb/leaderboard",
+              "blurb": "Text Embedding AI Leaderboard",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠QSV",
+              "url": "https://github.com/dathere/qsv",
+              "blurb": "or Xan - CSV CLI Toolkits",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Xan",
+                  "url": "https://github.com/medialab/xan"
+                }
+              ]
+            },
+            {
+              "name": "⁠Proton Sheets",
+              "url": "https://proton.me/drive/sheets",
+              "blurb": "/ Discord, ⁠dSheets or EditCSVOnline - Online Spreadsheet Viewers / CSV Editors",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/proton"
+                },
+                {
+                  "text": "⁠dSheets",
+                  "url": "https://sheets.fileverse.io/"
+                },
+                {
+                  "text": "EditCSVOnline",
+                  "url": "https://www.editcsvonline.com/"
+                }
+              ]
+            },
+            {
+              "name": "tad",
+              "url": "https://github.com/antonycourtney/tad",
+              "blurb": ", Tree Sheets, VisiData, Gnumeric or Quadratic - Spreadsheet Viewers / CSV Editors",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Tree Sheets",
+                  "url": "https://strlen.com/treesheets/"
+                },
+                {
+                  "text": "VisiData",
+                  "url": "https://www.visidata.org/"
+                },
+                {
+                  "text": "Gnumeric",
+                  "url": "https://gnome.pages.gitlab.gnome.org/gnumeric-web/"
+                },
+                {
+                  "text": "Quadratic",
+                  "url": "https://www.quadratichq.com/"
+                }
+              ]
+            },
+            {
+              "name": "Framacalc",
+              "url": "https://framacalc.org/",
+              "blurb": "or EtherCalc / GitHub - Collaborative Spreadsheets",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "EtherCalc",
+                  "url": "https://ethercalc.net/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/audreyt/ethercalc"
+                }
+              ]
+            },
+            {
+              "name": "Jamovi",
+              "url": "https://www.jamovi.org/",
+              "blurb": "Statistical Spreadsheets",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Excel Easy",
+              "url": "https://www.excel-easy.com/",
+              "blurb": "Excel / Spreadsheet Guide",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Excel Macro Mastery",
+              "url": "https://excelmacromastery.com/vba-articles/",
+              "blurb": "Excel VBA Guides",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ExcelJet",
+              "url": "https://exceljet.net/formulas",
+              "blurb": "or Excel Functions - Excel Formulas",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Excel Functions",
+                  "url": "https://www.excelfunctions.net/"
+                }
+              ]
+            },
+            {
+              "name": "Vertex42",
+              "url": "https://www.vertex42.com/",
+              "blurb": "Excel Templates",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Plain Text Table",
+              "url": "https://plaintexttools.github.io/plain-text-table/",
+              "blurb": "Text Tables",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SubjectiveSort",
+              "url": "https://wiesenthal.github.io/SubjectiveSort/",
+              "blurb": "Create Ranked List from CSV",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Structifi",
+              "url": "https://structifi.com/",
+              "blurb": "Convert Files to Structured Data",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TadViewer",
+              "url": "https://www.tadviewer.com/",
+              "blurb": "View / Analyze Tabular Data",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Writing Tools",
+          "entries": [
+            {
+              "name": "AI Writing Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/ai#wiki_.25BA_ai_writing_tools",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "RPG / Fantasy Writing Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/game-tools/#wiki_.25B7_rpg_worldbuilding",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Writer",
+              "url": "https://www.gibney.org/writer",
+              "blurb": ", FocusWriter, Writemonkey, blank.page, Telegra.ph, Aurelius, ZenPen, Write.as, Owri, WriteSpace or WriteNext - Distraction-Free Writing",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "FocusWriter",
+                  "url": "https://gottcode.org/focuswriter/"
+                },
+                {
+                  "text": "Writemonkey",
+                  "url": "https://writemonkey.com/"
+                },
+                {
+                  "text": "blank.page",
+                  "url": "https://blank.page/"
+                },
+                {
+                  "text": "Telegra.ph",
+                  "url": "https://telegra.ph/"
+                },
+                {
+                  "text": "Aurelius",
+                  "url": "https://aurelius.ink"
+                },
+                {
+                  "text": "ZenPen",
+                  "url": "https://zenpen.io/"
+                },
+                {
+                  "text": "Write.as",
+                  "url": "https://write.as/"
+                },
+                {
+                  "text": "Owri",
+                  "url": "https://owri.netlify.app/"
+                },
+                {
+                  "text": "WriteSpace",
+                  "url": "https://www.writespace.app/"
+                },
+                {
+                  "text": "WriteNext",
+                  "url": "https://www.writenext.io/"
+                }
+              ]
+            },
+            {
+              "name": "Manuskript",
+              "url": "https://www.theologeek.ch/manuskript/",
+              "blurb": "Writing Organizer / Planner",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "NovelWriter",
+              "url": "https://novelwriter.io/",
+              "blurb": "or Bibisco - Novel Editors",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Bibisco",
+                  "url": "https://bibisco.com/"
+                }
+              ]
+            },
+            {
+              "name": "Linked",
+              "url": "https://uselinked.com/",
+              "blurb": ", journaltxt, Gekri, Microsoft Journal, Diarium or jrnl.sh - Journal Apps",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "journaltxt",
+                  "url": "https://journaltxt.github.io/"
+                },
+                {
+                  "text": "Gekri",
+                  "url": "https://gekri.com/"
+                },
+                {
+                  "text": "Microsoft Journal",
+                  "url": "https://www.microsoft.com/en-us/garage/profiles/journal/"
+                },
+                {
+                  "text": "Diarium",
+                  "url": "https://diariumapp.com/"
+                },
+                {
+                  "text": "jrnl.sh",
+                  "url": "https://jrnl.sh/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Heavyweight",
+              "url": "https://heavyweight.cc/",
+              "blurb": "Generate Important-Looking Letters",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Tuesday JS",
+              "url": "https://kirill-live.itch.io/tuesday-js",
+              "blurb": "Visual Novel Editor / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Kirilllive/tuesday-js"
+                }
+              ]
+            },
+            {
+              "name": "RenPy",
+              "url": "https://www.renpy.org/",
+              "blurb": "Visual Novel Editor / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/renpy/renpy"
+                }
+              ]
+            },
+            {
+              "name": "Fortelling",
+              "url": "https://www.fortelling.app/",
+              "blurb": "or Novelist - Novel Plotting / Editing Workspaces",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Novelist",
+                  "url": "https://beta.novelist.app"
+                }
+              ]
+            },
+            {
+              "name": "Infinite Story",
+              "url": "https://infinite-story.com/",
+              "blurb": ", Strand, Agora or WriteAlong - Collaborative Writing / Feedback",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Strand",
+                  "url": "https://strand.jinay.dev/"
+                },
+                {
+                  "text": "Agora",
+                  "url": "https://www.agorawriter.com/"
+                },
+                {
+                  "text": "WriteAlong",
+                  "url": "https://www.writealong.io/"
+                }
+              ]
+            },
+            {
+              "name": "Gateway Forge",
+              "url": "https://gatewayforge.com/",
+              "blurb": "/ Modules / Discord or Chronicler / Discord / GitHub - Worldbuilding / Story Writing Apps",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Modules",
+                  "url": "https://gatewayforge.com/resources"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/c3PEQxxKfn"
+                },
+                {
+                  "text": "Chronicler",
+                  "url": "https://chronicler.pro/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/cXJwcbe2b7"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mak-kirkland/chronicler"
+                }
+              ]
+            },
+            {
+              "name": "LanguageIsAVirus",
+              "url": "https://www.languageisavirus.com/",
+              "blurb": "or MDWA - Writing Prompts",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "MDWA",
+                  "url": "https://www.squibler.io/dangerous-writing-prompt-app"
+                }
+              ]
+            },
+            {
+              "name": "Twinery",
+              "url": "https://twinery.org/",
+              "blurb": "Interactive Non-Linear Story Creator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TextUSM",
+              "url": "https://textusm.com/",
+              "blurb": "User Story Map Generator / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/harehare/textusm"
+                }
+              ]
+            },
+            {
+              "name": "Idyll",
+              "url": "https://idyll-lang.org/editor",
+              "blurb": "Create Interactive Essays / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/idyll-lang/idyll"
+                }
+              ]
+            },
+            {
+              "name": "STARC",
+              "url": "https://starc.app/",
+              "blurb": ", WriteSolo or Celtx - Script / Screen Writing Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WriteSolo",
+                  "url": "https://www.writersolo.com/"
+                },
+                {
+                  "text": "Celtx",
+                  "url": "https://www.celtx.com/"
+                }
+              ]
+            },
+            {
+              "name": "Rarebit",
+              "url": "https://rarebit.neocities.org/",
+              "blurb": "Webcomics Template",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "PolyGlot",
+              "url": "https://draquet.github.io/PolyGlot/",
+              "blurb": "or VulgarLang - Spoken Language Construction Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "VulgarLang",
+                  "url": "https://www.vulgarlang.com/"
+                }
+              ]
+            },
+            {
+              "name": "How to annotate literally everything",
+              "url": "https://beepb00p.xyz/annotating.html",
+              "blurb": "Annotation Tools / Resources",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Label Buddy",
+              "url": "https://jeromedockes.github.io/labelbuddy/labelbuddy/current/",
+              "blurb": "Annotation Tool / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/jeromedockes/labelbuddy"
+                }
+              ]
+            },
+            {
+              "name": "rNote",
+              "url": "https://rnote.flxzt.net/",
+              "blurb": "Annotation Tool / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/flxzt/rnote"
+                }
+              ]
+            },
+            {
+              "name": "MonsterWriter",
+              "url": "https://www.monsterwriter.com/",
+              "blurb": "Thesis Writing / Note-Taking",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ To Do Lists",
+          "entries": [
+            {
+              "name": "Android To-Do Apps",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/android#wiki_.25B7_to-do_apps",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Goblin.tools",
+              "url": "https://goblin.tools/ToDo",
+              "blurb": "Automatic Task Breakdown",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "TickTick",
+              "url": "https://www.ticktick.com/",
+              "blurb": "/ Features (search)",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Features",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/linux#wiki_.25B7_software_sites2"
+                }
+              ]
+            },
+            {
+              "name": "Super Productivity",
+              "url": "https://super-productivity.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Columns",
+              "url": "https://columns.app/",
+              "blurb": "Checklists",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "YearCompass",
+              "url": "https://yearcompass.com/",
+              "blurb": "New Years Resolution Booklet",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "daily.place",
+              "url": "https://www.daily.place/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "SuperList",
+              "url": "https://www.superlist.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "dooit",
+              "url": "https://github.com/dooit-org/dooit",
+              "blurb": "/ Extras",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Extras",
+                  "url": "https://github.com/dooit-org/dooit-extras"
+                }
+              ]
+            },
+            {
+              "name": "ToDo List",
+              "url": "https://www.abstractspoon.com/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/abstractspoon"
+                }
+              ]
+            },
+            {
+              "name": "Diry AI",
+              "url": "https://www.diry.ai/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fokus",
+              "url": "https://fokus-website.netlify.app/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenToDoList",
+              "url": "https://gitlab.com/rpdev/opentodolist",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Microsoft To Do",
+              "url": "https://to-do.office.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NullBoard",
+              "url": "https://github.com/apankrat/nullboard",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LunaTask",
+              "url": "https://lunatask.app/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "ToDoZero",
+              "url": "https://todozero.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LifeAt",
+              "url": "https://lifeat.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Tasks",
+              "url": "https://github.com/BaldissaraMatheus/Tasks.md",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Taskwarrior",
+              "url": "https://taskwarrior.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Vikunja",
+              "url": "https://vikunja.io/",
+              "blurb": "Self-Hosted",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ ASCII Art",
+          "entries": [
+            {
+              "name": "TAAG",
+              "url": "https://patorjk.com/software/taag/",
+              "blurb": ", DeepAA, Kammerl, ASCII Art Studio or ASCII Today - ASCII Art / Text Generators",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "DeepAA",
+                  "url": "https://github.com/OsciiArt/DeepAA"
+                },
+                {
+                  "text": "Kammerl",
+                  "url": "https://www.kammerl.de/ascii/AsciiSignature.php"
+                },
+                {
+                  "text": "ASCII Art Studio",
+                  "url": "https://www.majorgeeks.com/files/details/ascii_art_studio.html"
+                },
+                {
+                  "text": "ASCII Today",
+                  "url": "https://ascii.today/"
+                }
+              ]
+            },
+            {
+              "name": "REXPaint",
+              "url": "https://www.gridsagegames.com/rexpaint/",
+              "blurb": ", Asciistrator, ASCII Sketch, Playscii, ⁠Monosketch or PabloDraw - ASCII Editors / Drawing",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Asciistrator",
+                  "url": "https://wieslawsoltes.github.io/Asciistrator/"
+                },
+                {
+                  "text": "ASCII Sketch",
+                  "url": "https://files.littlebird.com.au/ascii-sketch.html"
+                },
+                {
+                  "text": "Playscii",
+                  "url": "https://jp.itch.io/playscii"
+                },
+                {
+                  "text": "⁠Monosketch",
+                  "url": "https://monosketch.io/"
+                },
+                {
+                  "text": "PabloDraw",
+                  "url": "https://picoe.ca/products/pablodraw/"
+                }
+              ]
+            },
+            {
+              "name": "ASCII Paint",
+              "url": "https://ascii.alienmelon.com/",
+              "blurb": ", ⁠TextPaint or ⁠ASCII Blaster, 2 / GitHub - ASCII Paint Tools",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "⁠TextPaint",
+                  "url": "https://textpaint.com/"
+                },
+                {
+                  "text": "⁠ASCII Blaster",
+                  "url": "https://asdf.us/asciiblaster/"
+                },
+                {
+                  "text": "2",
+                  "url": "https://ircart.github.io/asciiblaster/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ircart/asciiblaster"
+                }
+              ]
+            },
+            {
+              "name": "⁠shabzefilters",
+              "url": "https://shabzefilters.netlify.app/",
+              "blurb": ", ascii-art-generator, asciiart, ascii-image-converter, Monospace, ITOA, text-image or ASCII-art-creator - Image to ASCII Art",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "ascii-art-generator",
+                  "url": "https://www.ascii-art-generator.org/"
+                },
+                {
+                  "text": "asciiart",
+                  "url": "https://asciiart.club/"
+                },
+                {
+                  "text": "ascii-image-converter",
+                  "url": "https://github.com/TheZoraiz/ascii-image-converter"
+                },
+                {
+                  "text": "Monospace",
+                  "url": "https://codepen.io/Mikhail-Bespalov/pen/JoPqYrz"
+                },
+                {
+                  "text": "ITOA",
+                  "url": "https://itoa.hex.dance/"
+                },
+                {
+                  "text": "text-image",
+                  "url": "https://www.text-image.com/"
+                },
+                {
+                  "text": "ASCII-art-creator",
+                  "url": "https://github.com/CherryPill/ASCII-art-creator"
+                }
+              ]
+            },
+            {
+              "name": "Love ASCII",
+              "url": "http://loveascii.com/",
+              "blurb": ", asciiart.eu, EmojiCombos, 16colors, ascii.co or RoySAC - Browse / Copy ASCII Art",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "asciiart.eu",
+                  "url": "https://www.asciiart.eu/"
+                },
+                {
+                  "text": "EmojiCombos",
+                  "url": "https://emojicombos.com/"
+                },
+                {
+                  "text": "16colors",
+                  "url": "https://16colo.rs/"
+                },
+                {
+                  "text": "ascii.co",
+                  "url": "https://ascii.co.uk/art"
+                },
+                {
+                  "text": "RoySAC",
+                  "url": "https://www.roysac.com/sitemap.html"
+                }
+              ]
+            },
+            {
+              "name": "Image to Braille",
+              "url": "https://505e06b2.github.io/Image-to-Braille/",
+              "blurb": "Convert Images to Braille",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AnsiLove",
+              "url": "https://www.ansilove.org/downloads.html",
+              "blurb": "or convert-ascii-to-image - ANSI / ASCII Art to PNG Converters",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "convert-ascii-to-image",
+                  "url": "https://onlinetools.com/ascii/convert-ascii-to-image"
+                }
+              ]
+            },
+            {
+              "name": "lvllvl",
+              "url": "https://lvllvl.com/",
+              "blurb": "or Petmate - C64 PETSCII Image Editor",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Petmate",
+                  "url": "https://nurpax.github.io/petmate/"
+                }
+              ]
+            },
+            {
+              "name": "HTML Tools",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/dev-tools#wiki_.25B7_html",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Markdown Guide",
+              "url": "https://www.markdownguide.org/",
+              "blurb": "Guide for Markdown (.md)",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "generatedata.com",
+              "url": "https://generatedata.com/",
+              "blurb": "Generate Test Data in Markup Formats",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "markup.rocks",
+              "url": "https://markup.rocks/",
+              "blurb": "Online Markup Editor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Markup Validation Service",
+              "url": "https://validator.w3.org/",
+              "blurb": "Validate Your Markup Language Structure",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "YAMLine",
+              "url": "https://yamline.com/",
+              "blurb": "Online YAML Tools / Converters",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "yq",
+              "url": "https://mikefarah.gitbook.io/yq/",
+              "blurb": "Portable YAML Processor / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/mikefarah/yq"
+                }
+              ]
+            },
+            {
+              "name": "readme.so",
+              "url": "https://readme.so/",
+              "blurb": "Create README.md Files",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Tableconvert",
+              "url": "https://tableconvert.com/",
+              "blurb": "Markdown / Code Converter",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Linkspector",
+              "url": "https://github.com/UmbrellaDocs/action-linkspector",
+              "blurb": "Check Markdown Files for Dead Links",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Table Magic",
+              "url": "https://stevecat.net/table-magic/",
+              "blurb": "Table to Markdown Converters",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Clipboard2Markdown",
+              "url": "https://euangoddard.github.io/clipboard2markdown/",
+              "blurb": "Text to Markdown Converter",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "gd2md-html",
+              "url": "https://github.com/evbacher/gd2md-html",
+              "blurb": "Convert Google Doc to Markdown",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MarkItDown",
+              "url": "https://github.com/microsoft/markitdown",
+              "blurb": "or GetMarkdown - File to Markdown Converter",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GetMarkdown",
+                  "url": "https://www.getmarkdown.com/"
+                }
+              ]
+            },
+            {
+              "name": "Quartz",
+              "url": "https://quartz.jzhao.xyz/",
+              "blurb": ", Perlite or FlowerShow - Publish Markdown",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Perlite",
+                  "url": "https://perlite.secure77.de/"
+                },
+                {
+                  "text": "FlowerShow",
+                  "url": "https://flowershow.app/"
+                }
+              ]
+            },
+            {
+              "name": "Markdown Tutorial",
+              "url": "https://www.markdowntutorial.com/",
+              "blurb": "Interactive Markdown Tutorial",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "emoji-cheat-sheet",
+              "url": "https://github.com/ikatyang/emoji-cheat-sheet",
+              "blurb": "Emoji Markdown Cheatsheet",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Markdown Editors",
+          "entries": [
+            {
+              "name": "MarkD",
+              "url": "https://markd.it/",
+              "blurb": "/ GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/itzcozi/markd/"
+                }
+              ]
+            },
+            {
+              "name": "HedgeDoc",
+              "url": "https://hedgedoc.org/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Markdown Monster",
+              "url": "https://markdownmonster.west-wind.com/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/RickStrahl/MarkdownMonster"
+                }
+              ]
+            },
+            {
+              "name": "Zettlr",
+              "url": "https://www.zettlr.com/",
+              "blurb": "/ GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/Zettlr/Zettlr"
+                }
+              ]
+            },
+            {
+              "name": "Dillinger",
+              "url": "https://dillinger.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MarkdownTools",
+              "url": "https://www.markdowntools.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MarkLiveEdit",
+              "url": "https://markdownlivepreview.dev/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Glow",
+              "url": "https://github.com/charmbracelet/glow",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MarkdownLivePreview",
+              "url": "https://markdownlivepreview.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Vrite",
+              "url": "https://editor.vrite.io/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MindForger",
+              "url": "https://www.mindforger.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Markpad",
+              "url": "https://markpad.sftwr.dev/",
+              "blurb": "Lightweight / Minimal / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/alecdotdev/Markpad"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ LaTeX Tools",
+          "entries": [
+            {
+              "name": "Typst",
+              "url": "https://typst.app/home",
+              "blurb": "LaTeX Alternative / Resources / GitHub",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Resources",
+                  "url": "https://github.com/qjcg/awesome-typst"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/typst/typst"
+                }
+              ]
+            },
+            {
+              "name": "Overleaf",
+              "url": "https://www.overleaf.com/",
+              "blurb": ", LyX or TeXStudio - LaTeX Editors",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "LyX",
+                  "url": "https://www.lyx.org/"
+                },
+                {
+                  "text": "TeXStudio",
+                  "url": "https://texstudio.org/"
+                }
+              ]
+            },
+            {
+              "name": "⁠MathCheap",
+              "url": "https://mathcheap.xyz/",
+              "blurb": "/ Discord or ⁠Prism / Discord - AI-Powered LaTeX Editors",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/Q4chBVDFvK"
+                },
+                {
+                  "text": "⁠Prism",
+                  "url": "https://prism.openai.com/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/ffMZrSxUQa"
+                }
+              ]
+            },
+            {
+              "name": "⁠SimpleTex",
+              "url": "https://simpletex.cn/",
+              "blurb": "Convert Images to LaTeX / Markdown",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Learn LaTeX",
+              "url": "https://www.learnlatex.org/",
+              "blurb": "LaTeX Guide",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Tables Generator",
+              "url": "https://www.tablesgenerator.com/",
+              "blurb": "Create LaTeX Tables",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "LaTeX-OCR",
+              "url": "https://lukas-blecher.github.io/LaTeX-OCR/",
+              "blurb": "Extract Mathematical Expressions",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Detexify",
+              "url": "https://detexify.kirelabs.org/classify.html",
+              "blurb": "Character Recognition",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Nerd Fonts",
+              "url": "https://www.nerdfonts.com/",
+              "blurb": "Icon-Rich Developer / Terminal Fonts",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenDyslexic",
+              "url": "https://opendyslexic.org/",
+              "blurb": "Typeface for Dyslexia",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Typewolf",
+              "url": "https://www.typewolf.com/",
+              "blurb": "or Typ.io - Trending Website Fonts",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Typ.io",
+                  "url": "https://typ.io/"
+                }
+              ]
+            },
+            {
+              "name": "Cava's Pixel Resources",
+              "url": "https://caveras.net/",
+              "blurb": "Pixel Fonts",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Oldschool PC Fonts",
+              "url": "https://int10h.org/oldschool-pc-fonts/",
+              "blurb": "Oldschool PC Fonts",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FiraCode",
+              "url": "https://github.com/tonsky/FiraCode",
+              "blurb": ", Cascadia Code or Maple Font - Monospace Fonts",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Cascadia Code",
+                  "url": "https://github.com/microsoft/cascadia-code"
+                },
+                {
+                  "text": "Maple Font",
+                  "url": "https://github.com/subframe7536/Maple-font"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Open Source / Freeware",
+          "entries": [
+            {
+              "name": "FontSource",
+              "url": "https://fontsource.org/",
+              "blurb": "Open Source",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Squirrel",
+              "url": "https://www.fontsquirrel.com/",
+              "blurb": "Commercial Use",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "DaFont",
+              "url": "https://www.dafont.com/",
+              "blurb": "Freeware",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "1001 Fonts",
+              "url": "https://www.1001fonts.com/",
+              "blurb": "Freeware",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Modern Fonts Stacks",
+              "url": "https://modernfontstacks.com/",
+              "blurb": "Collection of CSS System Font Stacks",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Velvetyne",
+              "url": "https://velvetyne.fr/",
+              "blurb": "Open Source",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "uncut.wtf",
+              "url": "https://uncut.wtf/",
+              "blurb": "Open Source",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Beautiful Web Type",
+              "url": "https://beautifulwebtype.com/",
+              "blurb": "Open Source",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontRepo",
+              "url": "https://www.fontrepo.com/",
+              "blurb": "Open Source",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Bunny Fonts",
+              "url": "https://fonts.bunny.net/",
+              "blurb": "Open Source",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Google Fonts",
+              "url": "https://fonts.google.com/",
+              "blurb": "Commercial Use / Self-Host / Privacy-Friendly API",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Self-Host",
+                  "url": "https://gwfh.mranftl.com/fonts"
+                },
+                {
+                  "text": "Privacy-Friendly API",
+                  "url": "https://fonts.coollabs.io/"
+                }
+              ]
+            },
+            {
+              "name": "FontShare",
+              "url": "https://fontshare.com/",
+              "blurb": "Commercial Use",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OnlineWebFonts",
+              "url": "https://www.onlinewebfonts.com/",
+              "blurb": "Commercial Use",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fontlot",
+              "url": "https://fontlot.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fontsly",
+              "url": "https://fontsly.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FOSSFonts",
+              "url": "https://fossfonts.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fonts4Free",
+              "url": "https://www.fonts4free.net/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontSpace",
+              "url": "https://www.fontspace.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Online Fonts",
+              "url": "https://online-fonts.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "CDNFonts",
+              "url": "https://www.cdnfonts.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fontesk",
+              "url": "https://fontesk.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontStruct",
+              "url": "https://fontstruct.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "iFonts",
+              "url": "https://ifonts.xyz/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DownloadFonts",
+              "url": "https://www.downloadfonts.io/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AbstractFonts",
+              "url": "https://www.abstractfonts.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontGet",
+              "url": "https://www.fontget.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FreeFontsDownload",
+              "url": "https://freefontsdownload.net/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fonts2u",
+              "url": "https://fonts2u.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Awwwards",
+              "url": "https://www.awwwards.com/awwwards/collections/free-fonts/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GlukFonts",
+              "url": "https://www.glukfonts.pl/fonts.php",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Iconian",
+              "url": "https://www.iconian.com/",
+              "blurb": "Freeware",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Free Fonts",
+          "entries": [
+            {
+              "name": "Fonts CSE",
+              "url": "https://cse.google.com/cse?cx=82154ebab193e493d",
+              "blurb": "Multi-Site Font Search",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Piracy 101",
+              "url": "https://gist.github.com/Overimagine1/9f32e11b4c770fcd33374ad936a57d90",
+              "blurb": "Font Download Guide",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "wFonts",
+              "url": "https://wfonts.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "BeFonts",
+              "url": "https://befonts.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Free Fonts Family",
+              "url": "https://freefontsfamily.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cufon Fonts",
+              "url": "https://www.cufonfonts.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontsFree",
+              "url": "https://fontsfree.net",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DFonts",
+              "url": "https://www.dfonts.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠dafont.style",
+              "url": "https://dafont.style/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Spring",
+              "url": "https://www.fontspring.com/free",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠FontBolt",
+              "url": "https://www.fontbolt.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FFonts",
+              "url": "https://www.ffonts.net/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠DaFontFree",
+              "url": "https://www.dafontfree.co/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontsHub",
+              "url": "https://fontshub.pro/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Meme",
+              "url": "https://fontmeme.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FONToMASS",
+              "url": "https://m.vk.com/topic-178186634_39300099?offset=0",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mr.E-Fonts",
+              "url": "https://archive.org/details/Mr.E-Fonts",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "psd_fonts",
+              "url": "https://vk.com/psd_fonts",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "1001 Free Fonts",
+              "url": "https://www.1001freefonts.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Interceptor",
+              "url": "https://fontinterceptor.mschfmag.com/",
+              "blurb": "Download Fonts from Websites",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontDrop",
+              "url": "https://fontdrop.info/",
+              "blurb": "Analyze Font Files",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Analyzer",
+              "url": "https://font-analyzer-six.vercel.app/",
+              "blurb": ", Adobe Fonts, Font Finder, WhatTheFont, Identifont - Find Similar Fonts",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Adobe Fonts",
+                  "url": "https://fonts.adobe.com/fonts/vs/upload"
+                },
+                {
+                  "text": "Font Finder",
+                  "url": "https://www.whatfontis.com/"
+                },
+                {
+                  "text": "WhatTheFont",
+                  "url": "https://www.myfonts.com/pages/whatthefont"
+                },
+                {
+                  "text": "Identifont",
+                  "url": "http://www.identifont.com/"
+                }
+              ]
+            },
+            {
+              "name": "Transfonter",
+              "url": "https://transfonter.org/",
+              "blurb": "Create CSS @font-face Kits",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontBase",
+              "url": "https://fontba.se/",
+              "blurb": ", NexusFont or Linux Font Manager - Font Managers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "NexusFont",
+                  "url": "https://www.xiles.app/"
+                },
+                {
+                  "text": "Linux Font Manager",
+                  "url": "https://github.com/FontManager/font-manager"
+                }
+              ]
+            },
+            {
+              "name": "Fonts Ninja",
+              "url": "https://fonts.ninja/tools",
+              "blurb": "or WhatFont - Find Similar Fonts / Extensions",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "WhatFont",
+                  "url": "https://whatfonttool.com/"
+                }
+              ]
+            },
+            {
+              "name": "Unicode Explorer",
+              "url": "https://unicode-explorer.com/",
+              "blurb": "or Compart - Unicode Character Identification",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Compart",
+                  "url": "https://www.compart.com/en/unicode"
+                }
+              ]
+            },
+            {
+              "name": "Colors & Fonts",
+              "url": "https://www.colorsandfonts.com/",
+              "blurb": "Typography Tools",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "DS-Fusion",
+              "url": "https://ds-fusion.github.io/",
+              "blurb": "AI Typography Generator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Formito",
+              "url": "https://formito.com/tools/logo",
+              "blurb": "Typography Logo Maker",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Type Terms",
+              "url": "https://avark.agency/typeterms/",
+              "blurb": "Typography Cheat Sheet",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "The Good Line-Height",
+              "url": "https://thegoodlineheight.com/",
+              "blurb": "Typography Scaling Editor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font List",
+              "url": "https://wavian.com/font-list.html",
+              "blurb": "or So You Need A Typeface 2.0 - Examples of Font Styles",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "So You Need A Typeface 2.0",
+                  "url": "https://ianli.github.io/so-you-need-a-typeface/"
+                }
+              ]
+            },
+            {
+              "name": "Type Design Resources",
+              "url": "https://typedesignresources.com/",
+              "blurb": "or Free Faces - Typeface Resources",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Free Faces",
+                  "url": "https://www.freefaces.gallery/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Font / Text Generators",
+          "entries": [
+            {
+              "name": "FontoGen",
+              "url": "https://github.com/SerCeMan/fontogen",
+              "blurb": "or ⁠Refont - Custom AI Font Generators",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "⁠Refont",
+                  "url": "https://refont.ai/"
+                }
+              ]
+            },
+            {
+              "name": "Make WordArt",
+              "url": "https://www.makewordart.com/",
+              "blurb": ", FlameText, MakeText, TextGiraffe, Text Pro or CoolText - WordArt Generators / 3D Text",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "FlameText",
+                  "url": "https://www.flamingtext.com/"
+                },
+                {
+                  "text": "MakeText",
+                  "url": "https://maketext.io/"
+                },
+                {
+                  "text": "TextGiraffe",
+                  "url": "https://www.textgiraffe.com/"
+                },
+                {
+                  "text": "Text Pro",
+                  "url": "https://textpro.me/"
+                },
+                {
+                  "text": "CoolText",
+                  "url": "https://cooltext.com/"
+                }
+              ]
+            },
+            {
+              "name": "Polona Typo",
+              "url": "https://typo.polona.pl/en/",
+              "blurb": "Generate WordArt from Book, Poster, & Map Letters",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Text Color Fader",
+              "url": "https://patorjk.com/text-color-fader/",
+              "blurb": "Rainbow Text Generator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fast3DText",
+              "url": "https://fast3dtext.com/",
+              "blurb": ", TextDrom, 3DText2GIF or TextStudio - Animated / 3D Text Generators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "TextDrom",
+                  "url": "https://en.textdrom.com/"
+                },
+                {
+                  "text": "3DText2GIF",
+                  "url": "https://3dtext2gif.com/"
+                },
+                {
+                  "text": "TextStudio",
+                  "url": "https://www.textstudio.com/"
+                }
+              ]
+            },
+            {
+              "name": "Textanim",
+              "url": "https://textanim.com/",
+              "blurb": "or Space Type Generator - Animated Text Generators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Space Type Generator",
+                  "url": "https://spacetypegenerator.com/"
+                }
+              ]
+            },
+            {
+              "name": "Batname",
+              "url": "https://batname.vercel.app/",
+              "blurb": "Batman (2022) Text Generator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "NFG's Arcade Font Maker",
+              "url": "https://nfggames.com/games/fontmaker/",
+              "blurb": "or Arcade Font Writer - Arcade Text Generators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Arcade Font Writer",
+                  "url": "https://arcade.photonstorm.com/"
+                }
+              ]
+            },
+            {
+              "name": "The Ransomizer",
+              "url": "https://www.ransomizer.com/",
+              "blurb": "Ransom Note Style Text",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Glitch",
+              "url": "https://glitchtextgenerator.com/",
+              "blurb": "Zalgo Text Generator",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
+          "heading": "▷ Font Customization",
+          "entries": [
+            {
+              "name": "TypeTrials",
+              "url": "https://typetrials.com/",
+              "blurb": "Variable Font Playground",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "V-Fonts",
+              "url": "https://v-fonts.com/",
+              "blurb": "or Phase - Variable Fonts Testers",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Phase",
+                  "url": "https://www.eliashanzer.com/phase/"
+                }
+              ]
+            },
+            {
+              "name": "enFont",
+              "url": "https://enfont.javierarce.com/",
+              "blurb": "or Calligraphr - Custom Font Creators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Calligraphr",
+                  "url": "https://www.calligraphr.com/en/"
+                }
+              ]
+            },
+            {
+              "name": "Fontjoy",
+              "url": "https://fontjoy.com/",
+              "blurb": "Generate Font Combinations",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontSprite",
+              "url": "https://adamstrange.itch.io/fontsprite",
+              "blurb": "FontSprite Editor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "BitFontMaker2",
+              "url": "https://pentacom.jp/pentacom/bitfontmaker2/",
+              "blurb": "BitMap Font Editor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontEdit",
+              "url": "https://github.com/ayoy/fontedit",
+              "blurb": ", metaflop, MFEKglif, Glyphr Studio, Birdfont, Universal Sans or FontForge / GitHub - Font / Typeface Editors",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "metaflop",
+                  "url": "https://www.metaflop.com/"
+                },
+                {
+                  "text": "MFEKglif",
+                  "url": "https://github.com/MFEK/glif"
+                },
+                {
+                  "text": "Glyphr Studio",
+                  "url": "https://www.glyphrstudio.com/"
+                },
+                {
+                  "text": "Birdfont",
+                  "url": "https://birdfont.org/"
+                },
+                {
+                  "text": "Universal Sans",
+                  "url": "https://universalsans.com/"
+                },
+                {
+                  "text": "FontForge",
+                  "url": "https://fontforge.org/en-US/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/fontforge/fontforge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "▷ Unicode Text Generators",
+          "entries": [
+            {
+              "name": "YayText",
+              "url": "https://yaytext.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Messletters",
+              "url": "https://www.messletters.com/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "FSymbols",
+              "url": "https://fsymbols.com/generators/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fancy Text",
+              "url": "https://fancy-text.net/",
+              "blurb": "",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cool Fonts Online",
+              "url": "https://coolfont.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Discord Fonts",
+              "url": "https://discord-fonts.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Aesthetic Font Generator",
+              "url": "https://www.tesms.net/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Text-Generator",
+              "url": "https://text-generator.app/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "BoldTextGenerator",
+              "url": "https://boldtextgenerator.org/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "TextEditor",
+              "url": "https://texteditor.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontGenerator.design",
+              "url": "https://fontgenerator.design/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Font Generator Online",
+              "url": "https://www.fontgeneratoronline.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontGenerator.cc",
+              "url": "https://fontgenerator.cc/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontGen",
+              "url": "https://fontgen.cool/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "FontGenerator.cool",
+              "url": "https://fontgenerator.cool/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fancy Text Decorator",
+              "url": "https://fancytextdecorator.com/",
+              "blurb": "",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

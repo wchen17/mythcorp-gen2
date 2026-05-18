@@ -92,6 +92,28 @@ Run `git log --oneline main..HEAD` to see the full series. Highlights in chronol
 - `npm run preview` simulates the Cloudflare Workers build locally without deploying.
 - From `claude.ai/code` on a phone: open the repo, point at the `claude/vigilant-golick-c8ff8d` branch, and read `STATUS.md` then this file.
 
+## Cloud / mobile pickup
+
+If you're an agent with no local checkout (just `claude.ai/code`, the GitHub
+UI, and a Codespace), this works:
+
+1. Open the repo at https://github.com/wchen17/mythcorp-gen2 and switch the
+   branch picker to `claude/vigilant-golick-c8ff8d`. Every doc and script is
+   at the repo root.
+2. Either start a Codespace (preinstalls Node + gh) or use `claude.ai/code`'s
+   built-in environment.
+3. `npm ci && npm run check` to confirm the build is green from your end.
+4. To refresh the FMHY snapshot: `npm run fetch:fmhy && git add -p src/app/fmhy/_data && git commit -m "chore: refresh fmhy snapshot"`. Or trigger the
+   `refresh-fmhy` GitHub Action manually from the Actions tab.
+5. To bulk-post BACKLOG entries as new GitHub Issues: `npm run post:backlog`
+   (cross-platform Node script; `gh auth login` once).
+6. Push to `claude/vigilant-golick-c8ff8d` (or a sub-branch off it). Open a
+   PR against `main` via `gh pr create --base main`. The PR template walks
+   through the rules.
+
+The `check` GitHub Actions workflow runs `npm run check` on every push and PR,
+so you'll see green / red in the GitHub UI without having to build locally.
+
 ## Decisions you might be tempted to re-litigate (don't)
 
 - **No `next-themes`** — the theme system is intentionally four files of plain CSS + React. See `/wc/learn/theme-system`.
