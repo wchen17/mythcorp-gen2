@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "linux-macos",
+      "namespace": "root",
       "sourceFile": "linux-macos.md",
       "sections": [
         {
@@ -920,7 +921,7 @@
             },
             {
               "name": "emplace",
-              "url": "https://github.com/tversteeg/emplace",
+              "url": "https://codeberg.org/fosk/emplace",
               "blurb": "System Package Sync",
               "badges": [],
               "resourceLinks": []
@@ -1334,6 +1335,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠LACT",
+              "url": "https://github.com/ilya-zlobintsev/LACT/",
+              "blurb": "GPU Config + Monitor",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "open-gpu-kernel-modules",
               "url": "https://github.com/NVIDIA/open-gpu-kernel-modules",
               "blurb": "NVIDIA Linux Open GPU Kernel Module",
@@ -1415,7 +1423,7 @@
             {
               "name": "Kdenlive",
               "url": "https://apps.kde.org/kdenlive/",
-              "blurb": "/ GitHub, ⁠davincibox or Flowblade / GitHub - Video Editors",
+              "blurb": "/ GitHub, Pitivi, ⁠davincibox or Flowblade / GitHub - Video Editors",
               "badges": [
                 "⭐"
               ],
@@ -1423,6 +1431,10 @@
                 {
                   "text": "GitHub",
                   "url": "https://github.com/KDE/kdenlive"
+                },
+                {
+                  "text": "Pitivi",
+                  "url": "https://www.pitivi.org/"
                 },
                 {
                   "text": "⁠davincibox",
@@ -1581,11 +1593,15 @@
             {
               "name": "Spicetify",
               "url": "https://spicetify.app/",
-              "blurb": "Spotify Themes & Plugins / Discord / GitHub / Note",
+              "blurb": "Spotify Themes & Plugins/ / Improved Lyrics / Discord / GitHub / Note",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Improved Lyrics",
+                  "url": "https://spicylyrics.org/"
+                },
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/VnevqPp2Rr"
@@ -1654,7 +1670,7 @@
             {
               "name": "⁠tuifi",
               "url": "https://git.sr.ht/~matf/tuifi",
-              "blurb": "Audio Player + Hi-Fi Tidal",
+              "blurb": "Terminal Audio Player for Hi-Fi Tidal",
               "badges": [],
               "resourceLinks": []
             },
@@ -2306,9 +2322,14 @@
             {
               "name": "SLSsteam",
               "url": "https://cs.rin.ru/forum/search.php?st=0&sk=t&sd=d&sr=topics&keywords=SLSsteam",
-              "blurb": "Steamclient Mod w/ DLC Unlocker and Emulated Achievements",
+              "blurb": "Steamclient Mod w/ DLC Unlocker and Emulated Achievements / Generate Achievements",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Generate Achievements",
+                  "url": "https://github.com/xamionex/SLScheevo"
+                }
+              ]
             },
             {
               "name": "⁠SteamTinkerLaunch",
@@ -2374,6 +2395,18 @@
               "resourceLinks": []
             },
             {
+              "name": "Vice",
+              "url": "https://viceclipper.framer.website/",
+              "blurb": "Game Clipping App / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/eklonofficial/Vice"
+                }
+              ]
+            },
+            {
               "name": "Sober",
               "url": "https://sober.vinegarhq.org/",
               "blurb": "Roblox Linux Port / Vinegar (Studio Only)",
@@ -2403,6 +2436,13 @@
                   "url": "https://gitlab.com/corectrl/corectrl"
                 }
               ]
+            },
+            {
+              "name": "⁠LeShade",
+              "url": "https://github.com/Ishidawg/LeShade",
+              "blurb": "ReShade Manager",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "DXVK",
@@ -2851,9 +2891,18 @@
             {
               "name": "⁠OpenWRT",
               "url": "https://openwrt.org/",
-              "blurb": "Linux Router Firmware",
+              "blurb": ", DD-WRT or FreshTomato - Linux Router Firmware",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "DD-WRT",
+                  "url": "https://wiki.dd-wrt.com/"
+                },
+                {
+                  "text": "FreshTomato",
+                  "url": "https://www.freshtomato.org/"
+                }
+              ]
             },
             {
               "name": "⁠dae",
@@ -3377,6 +3426,18 @@
                 {
                   "text": "Linux Server",
                   "url": "https://github.com/ZizzyDizzyMC/linx-server/"
+                }
+              ]
+            },
+            {
+              "name": "Tube Archivist",
+              "url": "https://www.tubearchivist.com/",
+              "blurb": "Self-Hosted YouTube Media Server / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/tubearchivist/tubearchivist"
                 }
               ]
             },
@@ -4923,26 +4984,41 @@
             {
               "name": "CloverBootloader",
               "url": "https://github.com/CloverHackyColor/CloverBootloader/",
-              "blurb": "Windows, Mac & Linux Bootloader / Config",
+              "blurb": "/ Config, Boot Camp / DL Script or OpenCore / Config / Guide - Bootloaders",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Config",
                   "url": "https://mackie100projects.altervista.org/"
+                },
+                {
+                  "text": "Boot Camp",
+                  "url": "https://support.apple.com/boot-camp"
+                },
+                {
+                  "text": "DL Script",
+                  "url": "https://github.com/timsutton/brigadier"
+                },
+                {
+                  "text": "OpenCore",
+                  "url": "https://github.com/acidanthera/OpenCorePkg"
+                },
+                {
+                  "text": "Config",
+                  "url": "https://mackie100projects.altervista.org/opencore-configurator/"
+                },
+                {
+                  "text": "Guide",
+                  "url": "https://dortania.github.io/OpenCore-Install-Guide/"
                 }
               ]
             },
             {
-              "name": "Boot Camp",
-              "url": "https://support.apple.com/boot-camp",
-              "blurb": "Windows Bootloader / DL Script",
+              "name": "rEFind",
+              "url": "https://www.rodsbooks.com/refind/",
+              "blurb": "Boot Manager",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "DL Script",
-                  "url": "https://github.com/timsutton/brigadier"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "Tart",
@@ -4959,9 +5035,13 @@
             {
               "name": "UTM",
               "url": "https://mac.getutm.app/",
-              "blurb": "or VMware - Virtual Machines / Run Linux or Windows on macOS",
+              "blurb": ", LimaVM or VMware - Virtual Machines / Run Linux or Windows on macOS",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "LimaVM",
+                  "url": "https://lima-vm.io/"
+                },
                 {
                   "text": "VMware",
                   "url": "https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion"
@@ -4983,32 +5063,16 @@
               "resourceLinks": []
             },
             {
-              "name": "SwiftUI Win11",
-              "url": "https://jinxiansen.github.io/Windows11/",
-              "blurb": "Windows 11 Desktop Client for macOS",
+              "name": "Linux for T2",
+              "url": "https://t2linux.org/",
+              "blurb": "Install Linux on Apple T2 Devices / GitHub",
               "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "OrbStack",
-              "url": "https://orbstack.dev/",
-              "blurb": "Docker Client",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Bookshelf",
-              "url": "https://apps.apple.com/us/app/bookshelf-reading-tracker/id1469372414",
-              "blurb": "Book Tracker",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "LimaVM",
-              "url": "https://lima-vm.io/",
-              "blurb": "Linux VM",
-              "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/t2linux"
+                }
+              ]
             },
             {
               "name": "CrossOver",
@@ -5030,22 +5094,6 @@
               ]
             },
             {
-              "name": "OpenCore",
-              "url": "https://github.com/acidanthera/OpenCorePkg",
-              "blurb": "Mac Bootloader / Config / Guide",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Config",
-                  "url": "https://mackie100projects.altervista.org/opencore-configurator/"
-                },
-                {
-                  "text": "Guide",
-                  "url": "https://dortania.github.io/OpenCore-Install-Guide/"
-                }
-              ]
-            },
-            {
               "name": "PlayCover",
               "url": "https://playcover.io/",
               "blurb": "Run iOS Apps on Apple Silicon Macs / GitHub",
@@ -5058,9 +5106,23 @@
               ]
             },
             {
-              "name": "rEFind",
-              "url": "https://www.rodsbooks.com/refind/",
-              "blurb": "Boot Manager",
+              "name": "SwiftUI Win11",
+              "url": "https://jinxiansen.github.io/Windows11/",
+              "blurb": "Windows 11 Desktop Client for macOS",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OrbStack",
+              "url": "https://orbstack.dev/",
+              "blurb": "Docker Client",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Bookshelf",
+              "url": "https://apps.apple.com/us/app/bookshelf-reading-tracker/id1469372414",
+              "blurb": "Book Tracker",
               "badges": [],
               "resourceLinks": []
             },
@@ -5609,11 +5671,32 @@
           "heading": "▷ Mac Video",
           "entries": [
             {
+              "name": "Editing Software",
+              "url": "https://rentry.co/FMHYB64#quick-guide",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "IINA",
               "url": "https://iina.io/",
               "blurb": "Video Player",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "Fusion",
+              "url": "https://fusionapp.dev/",
+              "blurb": "Streaming App w/ Stremio Addon Support / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/frkaK2B2Y9"
+                }
+              ]
             },
             {
               "name": "Hayase",
@@ -5714,11 +5797,15 @@
             {
               "name": "Spicetify",
               "url": "https://spicetify.app/",
-              "blurb": "Spotify Themes & Plugins / Discord / GitHub / Note",
+              "blurb": "Spotify Themes & Plugins / Improved Lyrics / Discord / GitHub / Note",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Improved Lyrics",
+                  "url": "https://spicylyrics.org/"
+                },
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/VnevqPp2Rr"
@@ -5881,6 +5968,15 @@
         {
           "heading": "▷ Mac Image",
           "entries": [
+            {
+              "name": "Editing Software",
+              "url": "https://rentry.co/FMHYB64#quick-guide",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
             {
               "name": "Gifski",
               "url": "https://sindresorhus.com/gifski",
@@ -6197,6 +6293,13 @@
               "resourceLinks": []
             },
             {
+              "name": "MuMuPlayer",
+              "url": "https://www.mumuplayer.com/",
+              "blurb": "Android Emulator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "LuLu",
               "url": "https://objective-see.org/products/lulu.html",
               "blurb": "Mac Firewall",
@@ -6323,7 +6426,7 @@
             {
               "name": "KeePassXC",
               "url": "https://keepassxc.org/download/#macos",
-              "blurb": "or Strongbox - Password Managers",
+              "blurb": "(local) or Strongbox - Password Managers",
               "badges": [],
               "resourceLinks": [
                 {
@@ -6665,6 +6768,18 @@
               "blurb": "Fan Controller",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "WhatCable",
+              "url": "https://whatcable.uk/",
+              "blurb": "Cable Capability Identifier / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/darrylmorley/whatcable"
+                }
+              ]
             },
             {
               "name": "Touché",

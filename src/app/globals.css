@@ -303,3 +303,95 @@ html:not(.theme-ready) body {
 [data-theme="paper"] .themed-heading {
   text-shadow: none;
 }
+
+/* FMHY prose pages (other/, posts/). Pre-rendered HTML from marked. */
+.fmhy-prose {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--fg);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+.fmhy-prose h1,
+.fmhy-prose h2,
+.fmhy-prose h3,
+.fmhy-prose h4 {
+  font-family: var(--font-display), serif;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  line-height: 1.25;
+}
+.fmhy-prose h1 { font-size: 1.75rem; font-weight: 600; }
+.fmhy-prose h2 { font-size: 1.4rem;  font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.fmhy-prose h3 { font-size: 1.15rem; font-weight: 600; }
+.fmhy-prose h4 { font-size: 1rem;    font-weight: 600; color: var(--fg-muted); }
+.fmhy-prose p { margin: 0.9em 0; }
+.fmhy-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.fmhy-prose a:hover { color: var(--accent-soft); text-decoration-color: var(--accent-soft); }
+.fmhy-prose ul,
+.fmhy-prose ol { margin: 0.8em 0; padding-left: 1.4em; }
+.fmhy-prose li { margin: 0.25em 0; }
+.fmhy-prose ul li { list-style: disc; }
+.fmhy-prose ol li { list-style: decimal; }
+.fmhy-prose blockquote {
+  margin: 1.2em 0;
+  padding: 0.6em 1em;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-elevated);
+  color: var(--fg-muted);
+  border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
+}
+.fmhy-prose blockquote p { margin: 0.3em 0; }
+.fmhy-prose code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.fmhy-prose pre {
+  margin: 1.2em 0;
+  padding: 1em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 6px);
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+.fmhy-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+.fmhy-prose hr {
+  margin: 2em 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+.fmhy-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius, 6px);
+}
+.fmhy-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9em;
+}
+.fmhy-prose th,
+.fmhy-prose td {
+  border: 1px solid var(--border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.fmhy-prose th { background: var(--bg-elevated); font-weight: 600; }
+.fmhy-prose strong { color: var(--fg); font-weight: 600; }

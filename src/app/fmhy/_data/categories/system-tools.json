@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "system-tools",
+      "namespace": "root",
       "sourceFile": "system-tools.md",
       "sections": [
         {
@@ -335,7 +336,7 @@
             },
             {
               "name": "UniGetUI",
-              "url": "https://devolutions.net/unigetui/",
+              "url": "https://github.com/Devolutions/UniGetUI",
               "blurb": "GUI for Popular Package Managers / GitHub",
               "badges": [
                 "⭐"
@@ -350,11 +351,16 @@
             {
               "name": "Scoop",
               "url": "https://scoop.sh/",
-              "blurb": "Portable Package Manager",
+              "blurb": "Portable Package Manager / GitHub",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/ScoopInstaller/Scoop"
+                }
+              ]
             },
             {
               "name": "sfsu",
@@ -1607,9 +1613,13 @@
             {
               "name": "Task Manager DeLuxe",
               "url": "https://www.mitec.cz/tmx.html",
-              "blurb": ", ⁠AppControl / Discord or System Informer / GitHub - Task Manager Alts / Windows",
+              "blurb": ", ⁠TaskSlinger, ⁠AppControl / Discord or System Informer / GitHub - Task Manager Alts / Windows",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "⁠TaskSlinger",
+                  "url": "https://taskslinger.net/"
+                },
                 {
                   "text": "⁠AppControl",
                   "url": "https://www.appcontrol.com/"
@@ -2439,7 +2449,7 @@
             {
               "name": "Equalizer APO",
               "url": "https://sourceforge.net/projects/equalizerapo/",
-              "blurb": ", 2 / GUI, Dolby Access / Note or FXSound - Audio Equalizers",
+              "blurb": ", 2 / GUI / 7.1 Surround / Dolby Access / Note or FXSound - Audio Equalizers",
               "badges": [
                 "⭐"
               ],
@@ -2451,6 +2461,10 @@
                 {
                   "text": "GUI",
                   "url": "https://sourceforge.net/projects/peace-equalizer-apo-extension/"
+                },
+                {
+                  "text": "7.1 Surround",
+                  "url": "https://hesuvi.net/"
                 },
                 {
                   "text": "Dolby Access",
@@ -2483,6 +2497,13 @@
                   "url": "https://discord.gg/B7e8cM76PM"
                 }
               ]
+            },
+            {
+              "name": "⁠IEM EQ Guide",
+              "url": "https://iem-eq-guide.pages.dev/",
+              "blurb": "In-Ear Monitor Equalizer Guide",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "VoiceMeeter",
@@ -3001,15 +3022,11 @@
             {
               "name": "OpenRGB",
               "url": "https://openrgb.org/",
-              "blurb": "/ Beta, **WLED**, Aurora, LiquidCTL, Artemis or FireLight - RGB Lighting Control",
+              "blurb": ", **WLED**, Aurora, LiquidCTL, Artemis or FireLight - RGB Lighting Control",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
-                {
-                  "text": "Beta",
-                  "url": "https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/openrgb-beta.md"
-                },
                 {
                   "text": "WLED",
                   "url": "https://kno.wled.ge/"
@@ -3293,21 +3310,13 @@
           "heading": "▷ App Themes",
           "entries": [
             {
-              "name": "Dracula",
-              "url": "https://draculatheme.com/",
-              "blurb": "/ Discord or **Catppuccin** / Discord - Custom App Themes",
+              "name": "Catppuccin",
+              "url": "https://catppuccin.com/",
+              "blurb": "Custom App Theme / Discord",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
-                {
-                  "text": "Discord",
-                  "url": "https://discord.com/invite/yDcFsrYuq9"
-                },
-                {
-                  "text": "Catppuccin",
-                  "url": "https://catppuccin.com/"
-                },
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/r6Mdz5dpFc"
@@ -3315,22 +3324,78 @@
               ]
             },
             {
+              "name": "Dracula",
+              "url": "https://draculatheme.com/",
+              "blurb": "Custom App Theme / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/yDcFsrYuq9"
+                }
+              ]
+            },
+            {
               "name": "Rosé Pine",
               "url": "https://rosepinetheme.com/",
-              "blurb": "/ Discord, Aura Theme or theme.park - Custom App Themes",
+              "blurb": "Custom App Theme / Discord",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/r6wf35KVJW"
-                },
+                }
+              ]
+            },
+            {
+              "name": "Aura Theme",
+              "url": "https://github.com/daltonmenezes/aura-theme",
+              "blurb": "Custom App Theme",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "theme.park",
+              "url": "https://theme-park.dev/",
+              "blurb": "Custom App Theme",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Solarized",
+              "url": "https://ethanschoonover.com/solarized/",
+              "blurb": "Custom App Theme / GitHub",
+              "badges": [],
+              "resourceLinks": [
                 {
-                  "text": "Aura Theme",
-                  "url": "https://github.com/daltonmenezes/aura-theme"
-                },
+                  "text": "GitHub",
+                  "url": "https://github.com/altercation/solarized"
+                }
+              ]
+            },
+            {
+              "name": "gruvbox",
+              "url": "https://github.com/morhetz/gruvbox",
+              "blurb": "Custom App Theme / GitHub",
+              "badges": [],
+              "resourceLinks": [
                 {
-                  "text": "theme.park",
-                  "url": "https://theme-park.dev/"
+                  "text": "GitHub",
+                  "url": "https://github.com/morhetz/gruvbox-contrib"
+                }
+              ]
+            },
+            {
+              "name": "⁠Flexoki",
+              "url": "https://stephango.com/flexoki/",
+              "blurb": "Custom App Theme / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/kepano/flexoki"
                 }
               ]
             },
@@ -3358,16 +3423,12 @@
             {
               "name": "terminal.sexy",
               "url": "https://terminal.sexy/",
-              "blurb": ", TerminalSplash, Solarized or WindowsTerminalThemes - Terminal Themes",
+              "blurb": ", TerminalSplash or WindowsTerminalThemes - Terminal Themes",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "TerminalSplash",
                   "url": "https://terminalsplash.com/"
-                },
-                {
-                  "text": "Solarized",
-                  "url": "https://ethanschoonover.com/solarized"
                 },
                 {
                   "text": "WindowsTerminalThemes",
@@ -3444,20 +3505,6 @@
                 {
                   "text": "Minimalistic Wallpaper",
                   "url": "https://minimalistic-wallpaper.demolab.com/"
-                }
-              ]
-            },
-            {
-              "name": "Rev Wallpaper",
-              "url": "https://weris.ordinall.dev/",
-              "blurb": "or r/WallpaperRequests - Reverse Wallpaper Search",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "r/WallpaperRequests",
-                  "url": "https://www.reddit.com/r/WallpaperRequests/"
                 }
               ]
             },
@@ -3545,7 +3592,14 @@
             {
               "name": "r/Wallpaper",
               "url": "https://www.reddit.com/r/wallpaper/",
-              "blurb": "Wallpapers Community",
+              "blurb": "Wallpapers Subreddit",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "r/WallpaperRequests",
+              "url": "https://www.reddit.com/r/WallpaperRequests/",
+              "blurb": "Wallpaper Request Subreddit",
               "badges": [],
               "resourceLinks": []
             },
@@ -3555,6 +3609,18 @@
               "blurb": "2000s Style Wallpapers",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "Basic Apple Guy",
+              "url": "https://basicappleguy.com/basicappleblog/category/Wallpaper",
+              "blurb": "/ 2 - Apple Wallpaper Interpretations",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://basicappleguy.com/haberdashery/category/Wallpaper"
+                }
+              ]
             },
             {
               "name": "⁠Kawaii Hoshi",

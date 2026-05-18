@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "storage",
+      "namespace": "root",
       "sourceFile": "storage.md",
       "sections": [
         {
@@ -26,58 +27,6 @@
               "name": "Screen from Traction",
               "url": "https://screen.traction.one/",
               "blurb": "Create App Screenshots",
-              "badges": [],
-              "resourceLinks": []
-            }
-          ]
-        },
-        {
-          "heading": "Chemistry Lessons",
-          "entries": [
-            {
-              "name": "Video-Tutor",
-              "url": "https://www.video-tutor.net/",
-              "blurb": "/ YT",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "YT",
-                  "url": "https://youtube.com/@theorganicchemistrytutor"
-                }
-              ]
-            },
-            {
-              "name": "Tyler DeWitt",
-              "url": "https://www.youtube.com/user/tdewitt451",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Allery Chemistry",
-              "url": "https://www.youtube.com/channel/UCPtWS4fCi25YHw5SPGdPz0g",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Khan Academy AP Chemistry",
-              "url": "https://www.khanacademy.org/science/ap-chemistry-beta",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Organic Chemistry etext",
-              "url": "https://www.chem.ucalgary.ca/courses/351/Carey5th/Carey.html",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "PeriodicVideos",
-              "url": "http://www.periodicvideos.com/",
-              "blurb": "",
               "badges": [],
               "resourceLinks": []
             }
@@ -853,7 +802,7 @@
             {
               "name": "Pointercrate",
               "url": "https://pointercrate.com/demonlist/",
-              "blurb": "Original Demon List / Stats Viewer",
+              "blurb": "Original Demon List / Stats Viewer / GitHub",
               "badges": [
                 "⭐"
               ],
@@ -861,6 +810,10 @@
                 {
                   "text": "Stats Viewer",
                   "url": "https://pointercrate.com/demonlist/statsviewer/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/stadust/pointercrate"
                 }
               ]
             },
@@ -1253,7 +1206,7 @@
               "resourceLinks": [
                 {
                   "text": "CurseForge Downloads",
-                  "url": "https://rentry.co/FMHYB64#curseforge-dl"
+                  "url": "https://rentry.co/FMHYB64#curseforge-overwolf"
                 },
                 {
                   "text": "Discord",
@@ -1290,14 +1243,26 @@
               ]
             },
             {
-              "name": "Bedrock Launcher",
-              "url": "https://bedrocklauncher.github.io/",
-              "blurb": "Bedrock Edition Launcher / Version Warning / GitHub",
+              "name": "⁠LeviLauncher",
+              "url": "https://levilauncher.levimc.org/",
+              "blurb": "Bedrock Launcher w/ GDK Support / Windows / GitHub",
               "badges": [],
               "resourceLinks": [
                 {
-                  "text": "Version Warning",
-                  "url": "https://ibb.co/7NXBJXX5"
+                  "text": "GitHub",
+                  "url": "https://github.com/LiteLDev/LeviLauncher"
+                }
+              ]
+            },
+            {
+              "name": "Bedrock Launcher",
+              "url": "https://bedrocklauncher.github.io/",
+              "blurb": "Bedrock Launcher / UWP Only / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "UWP Only",
+                  "url": "https://i.ibb.co/20gP91qf/image.png"
                 },
                 {
                   "text": "GitHub",

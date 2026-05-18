@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "misc",
+      "namespace": "root",
       "sourceFile": "misc.md",
       "sections": [
         {
@@ -11,11 +12,16 @@
             {
               "name": "Ripped",
               "url": "https://ripped.guide/",
-              "blurb": "Piracy Index",
+              "blurb": "Piracy Index / Discord",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/6qVr2aR"
+                }
+              ]
             },
             {
               "name": "r/PiratedGames Megathread",
@@ -47,7 +53,7 @@
             },
             {
               "name": "privateersclub",
-              "url": "https://megathread.pages.dev/",
+              "url": "https://privateers.wiki/",
               "blurb": "Game Piracy Index / Discord",
               "badges": [
                 "⭐"
@@ -372,15 +378,11 @@
               "resourceLinks": []
             },
             {
-              "name": "SteamGifts",
-              "url": "https://www.steamgifts.com/",
-              "blurb": ", Free250, r/FreeGamesOnSteam or SteamDB - Steam Games",
+              "name": "Free250",
+              "url": "https://steam250.com/price/free",
+              "blurb": ", r/FreeGamesOnSteam or SteamDB - Steam Games",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "Free250",
-                  "url": "https://steam250.com/price/free"
-                },
                 {
                   "text": "r/FreeGamesOnSteam",
                   "url": "https://reddit.com/r/FreeGamesOnSteam"
@@ -392,11 +394,19 @@
               ]
             },
             {
-              "name": "Key Hub",
-              "url": "https://key-hub.eu/",
-              "blurb": "Steam Key Giveaways / Discord",
+              "name": "SteamGifts",
+              "url": "https://www.steamgifts.com/",
+              "blurb": ", SteamDrops or Key Hub - Steam Key Giveaways / Discord",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "SteamDrops",
+                  "url": "https://steamdrops.net/"
+                },
+                {
+                  "text": "Key Hub",
+                  "url": "https://key-hub.eu/"
+                },
                 {
                   "text": "Discord",
                   "url": "https://discord.gg/RbWahNY"
@@ -686,6 +696,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Folding@home",
+              "url": "https://foldingathome.org/",
+              "blurb": "Donate Idle PC to Disease Research",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "⁠e-NABLE",
               "url": "https://enablingthefuture.org/",
               "blurb": "Volunteer Own 3D Printer for use in Prosthetic Limb Printing",
@@ -920,6 +937,13 @@
               "name": "⁠Slave Free Chocolate",
               "url": "https://www.slavefreechocolate.org/",
               "blurb": "Chocolatiers that use Ethically Sourced (child slavery free) Cocoa",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠The Food Historian",
+              "url": "https://www.thefoodhistorian.com/",
+              "blurb": "Food History Blog",
               "badges": [],
               "resourceLinks": []
             }
@@ -1163,7 +1187,19 @@
             {
               "name": "Historical Recipes",
               "url": "https://l-lists.com/en/lists/55cbww.html",
-              "blurb": "Historical Recipes",
+              "blurb": "or Tasting History - Historical Recipes",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Tasting History",
+                  "url": "https://www.tastinghistory.com/"
+                }
+              ]
+            },
+            {
+              "name": "⁠Gode Cookery",
+              "url": "http://www.godecookery.com/godeboke/godeboke.htm",
+              "blurb": "Authentic Medieval Recipes & Historical Info",
               "badges": [],
               "resourceLinks": []
             },
@@ -1291,6 +1327,99 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠firstVIEW",
+              "url": "https://firstview.com/",
+              "blurb": "Archive of Fashion Runway Show Images + Videos",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Archive Fashion for the World",
+              "url": "https://www.archivepdf.net/",
+              "blurb": "Fashion Magazines",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Fashion History Timeline",
+              "url": "https://fashionhistory.fitnyc.edu/",
+              "blurb": "or Historical Fashion - Historical Fashion Resources / History",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Historical Fashion",
+                  "url": "https://docs.google.com/document/d/1R8eulTsb9Zlc7h2H917dNJZS9s0rIq9OAu7LpSS9F2k/"
+                }
+              ]
+            },
+            {
+              "name": "r/MaleFashionAdvice Spreadsheet",
+              "url": "https://docs.google.com/spreadsheets/d/1mhOIpjUUibBf3QueJs8iRJy5gBKCILq82ekJkiC5uqQ/",
+              "blurb": "Male Clothing Brand / Price Spreadsheet",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "r/FashionReps",
+              "url": "https://www.reddit.com/r/FashionReps/",
+              "blurb": "Replica Clothing Community",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "GoodOnYou",
+              "url": "https://directory.goodonyou.eco/",
+              "blurb": "Clothing Brand Sustainability Ratings",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Run Repeat",
+              "url": "https://runrepeat.com/",
+              "blurb": "Shoe Shopping Guide / Reviews",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "A Bra That Fits",
+              "url": "https://www.abrathatfits.org/calculator.php",
+              "blurb": "or BraMetric - Bra Size Calculators",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "BraMetric",
+                  "url": "https://brametric.com/"
+                }
+              ]
+            },
+            {
+              "name": "cholyknight",
+              "url": "https://cholyknight.com/",
+              "blurb": ", PinDIY or FreeSewing / Forum - Free Clothing Sewing Patterns",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "PinDIY",
+                  "url": "https://www.pindiy.com/"
+                },
+                {
+                  "text": "FreeSewing",
+                  "url": "https://freesewing.eu/"
+                },
+                {
+                  "text": "Forum",
+                  "url": "https://forum.freesewing.eu/"
+                }
+              ]
+            },
+            {
+              "name": "TMHunt",
+              "url": "http://www.tmhunt.com/",
+              "blurb": "Clothing Trademark Search",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Raspberry Pi Tools",
               "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/linux#wiki_.25B7_raspberry_pi",
               "blurb": "",
@@ -1366,9 +1495,18 @@
             {
               "name": "Esphome",
               "url": "https://esphome.io/",
-              "blurb": "Home Assistant / IoT",
+              "blurb": "Home Assistant / IoT / Discord / GitHub",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/KhAMKrd"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/esphome/esphome"
+                }
+              ]
             },
             {
               "name": "ioBroker",
@@ -1403,11 +1541,23 @@
               ]
             },
             {
-              "name": "BudgetDuo",
-              "url": "https://budgetduo.com/",
-              "blurb": "Split Household Expenses",
+              "name": "⁠Tasmota",
+              "url": "https://github.com/arendst/Tasmota",
+              "blurb": "Local Smart Home Firmware",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "BudgetDuo",
+              "url": "https://budgetduo.com/",
+              "blurb": "Split Household Expenses / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/hursey013/budget-duo"
+                }
+              ]
             },
             {
               "name": "OpenVoiceOS",
@@ -1704,9 +1854,13 @@
             {
               "name": "JDMFSM",
               "url": "https://jdmfsm.info/Auto/",
-              "blurb": ", Charm, CarPDFManual, iFitIt Vehicle or ProCarManuals - Auto Repair Manuals",
+              "blurb": ", LEMON Manuals, Charm, CarPDFManual, iFitIt Vehicle or ProCarManuals - Auto Repair Manuals",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "LEMON Manuals",
+                  "url": "https://lemon-manuals.la/"
+                },
                 {
                   "text": "Charm",
                   "url": "https://charm.li/"
@@ -1743,6 +1897,13 @@
                   "url": "https://www.auto-manual.com/"
                 }
               ]
+            },
+            {
+              "name": "⁠Auto Catalog Archive",
+              "url": "https://autocatalogarchive.com/",
+              "blurb": "Vehicle Brochures",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Cars.com",
@@ -1851,6 +2012,87 @@
               ]
             },
             {
+              "name": "/sport calendars/",
+              "url": "https://rentry.co/sportcalendars",
+              "blurb": "or ⁠EntertainMe - Sports Calendars",
+              "badges": [
+                "🌐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "⁠EntertainMe",
+                  "url": "https://www.entertainme.fun/"
+                }
+              ]
+            },
+            {
+              "name": "Live Sports",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video#wiki_.25B7_live_sports",
+              "blurb": "/ **Replays**",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Replays",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/video#wiki_.25B7_sports_replays"
+                }
+              ]
+            },
+            {
+              "name": "The Athletic",
+              "url": "https://www.nytimes.com/athletic/",
+              "blurb": "Sports News / Bypass Paywall / Mobile (search)",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Bypass Paywall",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/internet-tools/#wiki_.25B7_paywall_bypass"
+                },
+                {
+                  "text": "Mobile",
+                  "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/android#wiki_.25B7_modded_apks"
+                }
+              ]
+            },
+            {
+              "name": "The Number Wall",
+              "url": "https://thenumberwall.com/",
+              "blurb": "Jersey Number Database",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Tapology",
+              "url": "https://www.tapology.com/",
+              "blurb": "Combat Sports Predictions",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Formula Timer",
+              "url": "https://formula-timer.com/livetiming",
+              "blurb": "or F1 Dash / GitHub - F1 Live Stats Dashboards",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "F1 Dash",
+                  "url": "https://f1-dash.com/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/slowlydev/f1-dash"
+                }
+              ]
+            },
+            {
+              "name": "⁠Futez",
+              "url": "https://www.futez.com.br/",
+              "blurb": "Rate / Review Football Matches",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Concerts / Live Shows",
               "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/audio/#wiki_.25B7_concerts_.2F_live_shows",
               "blurb": "",
@@ -1885,6 +2127,13 @@
               "name": "⁠CozyCozy",
               "url": "https://www.cozycozy.com/",
               "blurb": "Compares 100+ Travel Accommodation Sites",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Cultural Atlas",
+              "url": "https://culturalatlas.sbs.com.au/",
+              "blurb": "World Culture / Religion Guides",
               "badges": [],
               "resourceLinks": []
             },
@@ -2159,6 +2408,13 @@
               ]
             },
             {
+              "name": "nakarte",
+              "url": "https://nakarte.me/",
+              "blurb": "Multi-Map Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "World Monitor",
               "url": "https://worldmonitor.app/",
               "blurb": "Real-Time News Map / Tech Version / GitHub",
@@ -2315,6 +2571,13 @@
               "name": "There to Where",
               "url": "https://theretowhere.com/",
               "blurb": "Find Apartments Near Important Things",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠WikiMapped",
+              "url": "https://wikimapped.mukul-mehta.in/",
+              "blurb": "1.3M Wikipedia Articles Geolocated on Map",
               "badges": [],
               "resourceLinks": []
             },
@@ -2550,6 +2813,13 @@
               "name": "CubeTrek",
               "url": "https://cubetrek.com/",
               "blurb": "GPS Track Manager",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠GPS Visualizer",
+              "url": "https://www.gpsvisualizer.com/",
+              "blurb": "Create Maps + Profiles from GPS Data",
               "badges": [],
               "resourceLinks": []
             },
@@ -2954,9 +3224,9 @@
               "resourceLinks": []
             },
             {
-              "name": "HungerMap",
-              "url": "https://hungermap.wfp.org/",
-              "blurb": "Global Hunger Map",
+              "name": "⁠Tangram Heightmapper",
+              "url": "https://tangrams.github.io/heightmapper",
+              "blurb": "World Terrain Height Map",
               "badges": [],
               "resourceLinks": []
             },
@@ -3015,20 +3285,6 @@
               "name": "Aporee",
               "url": "https://aporee.org/maps/",
               "blurb": "World Map of Sounds",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Cost of Living",
-              "url": "https://www.numbeo.com/cost-of-living/",
-              "blurb": "Cost of Living Map",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "MoveMap",
-              "url": "https://www.movemap.io/",
-              "blurb": "North America Property Costs Map",
               "badges": [],
               "resourceLinks": []
             },
@@ -3509,6 +3765,13 @@
               "resourceLinks": []
             },
             {
+              "name": "Copernicus Browser",
+              "url": "https://browser.dataspace.copernicus.eu/",
+              "blurb": "Copernicus Satellite Image Map / Database",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "glifwc",
               "url": "https://maps.glifwc.org/",
               "blurb": "Map with Data",
@@ -3922,6 +4185,34 @@
               "resourceLinks": []
             },
             {
+              "name": "Upstract",
+              "url": "https://upstract.com/",
+              "blurb": "Single Page News Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "newstel",
+              "url": "https://newstel.vercel.app/",
+              "blurb": "Telegram Channel News Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "AllSides",
+              "url": "https://www.allsides.com/",
+              "blurb": "Political New Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠100.news",
+              "url": "https://100.news/",
+              "blurb": "Political New Aggregator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "AlDaily",
               "url": "https://www.aldaily.com/",
               "blurb": "Art / Philosophy / Literature News",
@@ -3932,34 +4223,6 @@
               "name": "Ground.news",
               "url": "https://ground.news/",
               "blurb": "Requires Sign-Up",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Upstract",
-              "url": "https://upstract.com/",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "newstel",
-              "url": "https://newstel.vercel.app/",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "⁠100.news",
-              "url": "https://100.news/",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "AllSides",
-              "url": "https://www.allsides.com/",
-              "blurb": "",
               "badges": [],
               "resourceLinks": []
             },
@@ -4239,12 +4502,17 @@
             },
             {
               "name": "Modern HN",
-              "url": "https://www.modernhn.com/",
-              "blurb": "Modern UI Extension",
+              "url": "https://greasyfork.org/scripts/578540",
+              "blurb": "/ 2 - Modern UI Extension",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://www.modernhn.com/"
+                }
+              ]
             },
             {
               "name": "Hacki",
@@ -4446,16 +4714,11 @@
             {
               "name": "Medito",
               "url": "https://github.com/meditohq/medito-app",
-              "blurb": "or Heartfulness - Meditation App",
+              "blurb": "Meditation App",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": [
-                {
-                  "text": "Heartfulness",
-                  "url": "https://www.heartfulnessapp.org/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "Health Assessment Tools",
@@ -4539,6 +4802,13 @@
               "name": "IIB Mindfulness",
               "url": "https://informationisbeautiful.net/visualizations/what-is-meditation-mindfulness-good-for/",
               "blurb": "Meditation Techniques / Infographic",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Pause Point",
+              "url": "https://greasyfork.org/scripts/578391",
+              "blurb": "Add Breathing / Activity Pause Before Site Entrances",
               "badges": [],
               "resourceLinks": []
             },
@@ -4639,13 +4909,6 @@
               "name": "The Fitness Wiki",
               "url": "https://thefitness.wiki/",
               "blurb": "Fitness Information Wiki",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Arete Codex",
-              "url": "https://aretecodex.pages.dev/",
-              "blurb": "Physical Health / Bodybuilding Guide",
               "badges": [],
               "resourceLinks": []
             },
@@ -5188,7 +5451,7 @@
             {
               "name": "NutritionFacts.org",
               "url": "https://nutritionfacts.org/",
-              "blurb": "Video Library for Latest Health-Based Research",
+              "blurb": "Video Library for Latest Health-Based Research / Vegan-Focused",
               "badges": [],
               "resourceLinks": []
             },
@@ -5300,27 +5563,6 @@
               "blurb": "Food Encyclopedia & Comparison",
               "badges": [],
               "resourceLinks": []
-            },
-            {
-              "name": "Tellspecopedia",
-              "url": "http://www.tellspecopedia.com/",
-              "blurb": "Find Healthy Food",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Yuka",
-              "url": "https://play.google.com/store/apps/details?id=io.yuka.android",
-              "blurb": "Scan Ingredient Lists",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "ORAC Values",
-              "url": "https://superfoodly.com/orac-values/",
-              "blurb": "ORAC Value Database / Information",
-              "badges": [],
-              "resourceLinks": []
             }
           ]
         },
@@ -5373,16 +5615,11 @@
               "resourceLinks": []
             },
             {
-              "name": "DoItRight",
-              "url": "https://trust.ph/",
-              "blurb": "or Scarleteen - Sex Education Resources",
+              "name": "Scarleteen",
+              "url": "https://www.scarleteen.com/",
+              "blurb": "Sex Education Resources",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Scarleteen",
-                  "url": "https://www.scarleteen.com/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "Euki",
@@ -5557,22 +5794,6 @@
               ]
             },
             {
-              "name": "The Freedom Model",
-              "url": "https://www.thefreedommodel.org/ebooks/",
-              "blurb": "Addiction-Help Model / Books / Lessons",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Books",
-                  "url": "https://www.youtube.com/playlist?list=PLd6KCmnSpHuE29G2f9JXHMcZKbvzSdInw"
-                },
-                {
-                  "text": "Lessons",
-                  "url": "https://www.youtube.com/playlist?list=PLd6KCmnSpHuFBFw-ei2eTYJPrSoLuwBFL"
-                }
-              ]
-            },
-            {
               "name": "Sobriety",
               "url": "https://github.com/KiARC/Sobriety",
               "blurb": "Sobriety Tracker",
@@ -5660,7 +5881,7 @@
             {
               "name": "cringeMDb",
               "url": "https://cringemdb.com/",
-              "blurb": ", Age Rating JuJu, CommonSenseMedia or Unconsenting Media - Find SFW Movies",
+              "blurb": ", Age Rating JuJu, Common Sense Media or Unconsenting Media - Find SFW Movies",
               "badges": [],
               "resourceLinks": [
                 {
@@ -5668,7 +5889,7 @@
                   "url": "https://www.ageratingjuju.com/"
                 },
                 {
-                  "text": "CommonSenseMedia",
+                  "text": "Common Sense Media",
                   "url": "https://www.commonsensemedia.org/"
                 },
                 {
@@ -7634,15 +7855,6 @@
               "resourceLinks": []
             },
             {
-              "name": "ThisIsWhyImBroke",
-              "url": "https://www.thisiswhyimbroke.com/",
-              "blurb": "Find Interesting Things to Buy",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": []
-            },
-            {
               "name": "Consumer Rights Wiki",
               "url": "https://consumerrights.wiki/",
               "blurb": "Documents Practices That Impact Consumer Rights / Extension / Discord",
@@ -7743,6 +7955,13 @@
                   "url": "https://redditrecs.com/"
                 }
               ]
+            },
+            {
+              "name": "ThisIsWhyImBroke",
+              "url": "https://www.thisiswhyimbroke.com/",
+              "blurb": "Find Interesting Things to Buy",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "⁠BuyItForLife",
@@ -8034,6 +8253,13 @@
               ]
             },
             {
+              "name": "AI Leaks",
+              "url": "https://discord.gg/MFCU6sKSNs",
+              "blurb": "AI Leaks / Feature News Server",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Build List",
               "url": "https://buildlist.org/",
               "blurb": "or USA Parts Made Fast / X - On-Demand Online Manufacturers",
@@ -8048,6 +8274,13 @@
                   "url": "https://x.com/mattfreed"
                 }
               ]
+            },
+            {
+              "name": "⁠Slave Free Chocolate",
+              "url": "https://www.slavefreechocolate.org/",
+              "blurb": "Chocolatiers that use Ethically Sourced (child slavery free) Cocoa",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Boycott Buddy",
@@ -8237,6 +8470,22 @@
               ]
             },
             {
+              "name": "SuggestALaptop Guide",
+              "url": "https://docs.google.com/document/d/1_Oh9M4zrBB1hx3B0Yw32-evH4bqTmwNM5DJ12lWvA0w/",
+              "blurb": "Laptop Suggestions / Subreddit / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/SuggestALaptop/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/pes68JM"
+                }
+              ]
+            },
+            {
               "name": "Dumbphone Finder",
               "url": "https://joyful-bienenstitch-cb6242.netlify.app/",
               "blurb": "Compare Dumbphones (Non-Smartphones) / Prices / Quiz",
@@ -8360,18 +8609,6 @@
                 {
                   "text": "⁠TerabyteDeals",
                   "url": "https://terabytedeals.com/"
-                }
-              ]
-            },
-            {
-              "name": "SuggestALaptop",
-              "url": "https://discord.gg/pes68JM",
-              "blurb": "(discord) - Laptop Suggestions / Guide",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Guide",
-                  "url": "https://docs.google.com/document/d/1_Oh9M4zrBB1hx3B0Yw32-evH4bqTmwNM5DJ12lWvA0w/"
                 }
               ]
             },
@@ -9293,13 +9530,9 @@
             {
               "name": "Wheel Decide",
               "url": "https://wheeldecide.com/",
-              "blurb": ", Spinn a Wheel, Ultimate Wheel, PickerWheel, SWG, SpinTheWheel, HeySpinner, TheSpinnerWheel or Wheel of Names - Wheel Randomizers",
+              "blurb": ", Ultimate Wheel, PickerWheel, SWG, SpinWheelify, SpinTheWheel, HeySpinner, TheSpinnerWheel or Wheel of Names - Wheel Randomizers",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "Spinn a Wheel",
-                  "url": "https://spinnawheel.com/"
-                },
                 {
                   "text": "Ultimate Wheel",
                   "url": "https://ultimatewheelspin.com/"
@@ -9311,6 +9544,10 @@
                 {
                   "text": "SWG",
                   "url": "https://spinthewheelgenerator.com/"
+                },
+                {
+                  "text": "SpinWheelify",
+                  "url": "https://spinwheelify.com/"
                 },
                 {
                   "text": "SpinTheWheel",
@@ -9427,9 +9664,13 @@
             {
               "name": "⁠Family Chart",
               "url": "https://github.com/donatso/family-chart",
-              "blurb": "or FamilyEcho - Create Custom Family Tree",
+              "blurb": ", Family Tree Builder or FamilyEcho - Create Custom Family Tree",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "Family Tree Builder",
+                  "url": "https://family-tree-builder.com/"
+                },
                 {
                   "text": "FamilyEcho",
                   "url": "https://www.familyecho.com/"
@@ -9442,18 +9683,6 @@
               "blurb": "How to Glue Anything to Anything",
               "badges": [],
               "resourceLinks": []
-            },
-            {
-              "name": "A Bra That Fits",
-              "url": "https://www.abrathatfits.org/calculator.php",
-              "blurb": "or BraMetric - Bra Size Calculators",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "BraMetric",
-                  "url": "https://brametric.com/"
-                }
-              ]
             },
             {
               "name": "r/CurlyHair Guide",
@@ -9654,7 +9883,7 @@
               "resourceLinks": []
             },
             {
-              "name": "onlinetools",
+              "name": "Online Tools",
               "url": "https://onlinetools.com/",
               "blurb": "File-Specific Tools",
               "badges": [],
@@ -10032,6 +10261,15 @@
         {
           "heading": "▷ Calendars / Events",
           "entries": [
+            {
+              "name": "To-Do Apps",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/android/#wiki_.25B7_to-do_apps",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
             {
               "name": "Cal.com",
               "url": "https://cal.com/",
@@ -10796,12 +11034,16 @@
             {
               "name": "THE 88×31 ARCHIVE",
               "url": "https://hellnet.work/8831/",
-              "blurb": ", Babamos 88x31, 88x31 Buttons or Web Badges World - Oldschool 88x31 Web Badges",
+              "blurb": ", Babamos 88x31, matdoes, 88x31 Buttons or Web Badges World - Oldschool 88x31 Web Badges",
               "badges": [],
               "resourceLinks": [
                 {
                   "text": "Babamos 88x31",
                   "url": "https://cyber.dabamos.de/88x31/index.html"
+                },
+                {
+                  "text": "matdoes",
+                  "url": "https://matdoes.dev/buttons"
                 },
                 {
                   "text": "88x31 Buttons",
@@ -10872,7 +11114,7 @@
             {
               "name": "Magic Sketchpad",
               "url": "https://magic-sketchpad.glitch.me/",
-              "blurb": "",
+              "blurb": "Magical Sketchpad",
               "badges": [],
               "resourceLinks": []
             },
@@ -11889,6 +12131,18 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Beat Battle",
+              "url": "https://beat-battle.net/",
+              "blurb": "Browser Beat Battle Game / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.com/invite/beatbattle"
+                }
+              ]
+            },
+            {
               "name": "Pianos.pub",
               "url": "https://pianos.pub/",
               "blurb": "Find Public Pianos",
@@ -12640,18 +12894,6 @@
               "resourceLinks": []
             },
             {
-              "name": "Face Shape AI",
-              "url": "https://www.detect-face-shape.com",
-              "blurb": "or Face Shape Detectors - Face Shape Detectors",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Face Shape Detectors",
-                  "url": "https://www.faceshapedetectors.org/"
-                }
-              ]
-            },
-            {
               "name": "You're Getting Old",
               "url": "https://you.regettingold.com/",
               "blurb": "Age Perspective",
@@ -12826,7 +13068,7 @@
               "resourceLinks": []
             },
             {
-              "name": "webcamhopper",
+              "name": "Webcam Hopper",
               "url": "https://www.webcamhopper.com/",
               "blurb": "",
               "badges": [],
@@ -12840,7 +13082,7 @@
               "resourceLinks": []
             },
             {
-              "name": "mangolinkworld",
+              "name": "Mangolink World",
               "url": "https://www.mangolinkworld.com/",
               "blurb": "",
               "badges": [],
@@ -12875,7 +13117,7 @@
               "resourceLinks": []
             },
             {
-              "name": "livecamcroatia",
+              "name": "LiveCam Croatia",
               "url": "https://www.livecamcroatia.com/en",
               "blurb": "",
               "badges": [],
@@ -13334,6 +13576,13 @@
             {
               "name": "BoredButton",
               "url": "https://www.boredbutton.com/",
+              "blurb": "Find Random Sites",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Mx Tynehorne’s Cabinet",
+              "url": "https://satyrs.eu/linkroll",
               "blurb": "Find Random Sites",
               "badges": [],
               "resourceLinks": []

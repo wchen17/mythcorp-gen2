@@ -1,0 +1,11 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "doc": {
+    "slug": "contributing",
+    "namespace": "other",
+    "sourceFile": "other/contributing.md",
+    "title": "Contributing",
+    "description": "How to contribute to the project.",
+    "html": "<!-- @include: ../../.github/CONTRIBUTING.md -->\n"
+  }
+}

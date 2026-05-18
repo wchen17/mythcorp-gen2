@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
-      "slug": "edu",
+      "slug": "educational",
+      "namespace": "root",
       "sourceFile": "educational.md",
       "sections": [
         {
@@ -20,15 +21,6 @@
             {
               "name": "Udemy Tools / Coupons",
               "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/storage#wiki_udemy_coupons",
-              "blurb": "",
-              "badges": [
-                "↪️"
-              ],
-              "resourceLinks": []
-            },
-            {
-              "name": "Chemistry Lessons",
-              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/storage#wiki_chemistry_lessons",
               "blurb": "",
               "badges": [
                 "↪️"
@@ -779,9 +771,17 @@
             {
               "name": "360Cities",
               "url": "https://www.360cities.net/",
-              "blurb": "or Airpano - 360 Images / Videos",
+              "blurb": ", Zhijianshang, ⁠Tas360 or Airpano - 360 Images / Videos",
               "badges": [],
               "resourceLinks": [
+                {
+                  "text": "Zhijianshang",
+                  "url": "https://www.zhijianshang.com/"
+                },
+                {
+                  "text": "⁠Tas360",
+                  "url": "https://tas360.au/explore"
+                },
                 {
                   "text": "Airpano",
                   "url": "https://www.airpano.com/"
@@ -1730,6 +1730,15 @@
               "resourceLinks": []
             },
             {
+              "name": "Vehicle Resources",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/misc#wiki_.25BA_vehicle",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "3D Modeling",
               "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/image-tools#wiki_.25BA_3d_models",
               "blurb": "/ CAD Apps**",
@@ -1871,6 +1880,22 @@
                 {
                   "text": "⁠VittaScience",
                   "url": "https://en.vittascience.com/code"
+                }
+              ]
+            },
+            {
+              "name": "⁠Humanity's Last Machine",
+              "url": "https://www.humanityslastmachine.com/",
+              "blurb": "or Humanoid Atlas / GitHub - Humanoid Robotics Hardware & Supply Chain Analysis",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Humanoid Atlas",
+                  "url": "https://www.humanoids.fyi/"
+                },
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/kingjulio8238/humanoid-atlas"
                 }
               ]
             },
@@ -2425,6 +2450,18 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠UAVs FYI",
+              "url": "https://www.uavs.fyi/",
+              "blurb": "Drone Information, Resources, Hardware & Supply Chain Analysis / X",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "X",
+                  "url": "https://x.com/osoraku_1997"
+                }
+              ]
+            },
+            {
               "name": "⁠OscarLiang.com",
               "url": "https://oscarliang.com/",
               "blurb": "FPV Drone Tutorials / Reviews",
@@ -2488,15 +2525,6 @@
               "blurb": "Chemistry Calculators / Tools",
               "badges": [
                 "🌐"
-              ],
-              "resourceLinks": []
-            },
-            {
-              "name": "Chemistry Lessons",
-              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/storage#wiki_chemistry_lessons",
-              "blurb": "",
-              "badges": [
-                "↪️"
               ],
               "resourceLinks": []
             },
@@ -2587,6 +2615,38 @@
               ]
             },
             {
+              "name": "Video-Tutor",
+              "url": "https://www.video-tutor.net/",
+              "blurb": "/ YT, Tyler DeWitt, Allery Chemistry, Khan Academy AP Chemistry, Organic Chemistry etext or PeriodicVideos - Chemistry Lessons",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "YT",
+                  "url": "https://youtube.com/@theorganicchemistrytutor"
+                },
+                {
+                  "text": "Tyler DeWitt",
+                  "url": "https://www.youtube.com/user/tdewitt451"
+                },
+                {
+                  "text": "Allery Chemistry",
+                  "url": "https://www.youtube.com/channel/UCPtWS4fCi25YHw5SPGdPz0g"
+                },
+                {
+                  "text": "Khan Academy AP Chemistry",
+                  "url": "https://www.khanacademy.org/science/ap-chemistry-beta"
+                },
+                {
+                  "text": "Organic Chemistry etext",
+                  "url": "https://www.chem.ucalgary.ca/courses/351/Carey5th/Carey.html"
+                },
+                {
+                  "text": "PeriodicVideos",
+                  "url": "http://www.periodicvideos.com/"
+                }
+              ]
+            },
+            {
               "name": "ChemistrySteps",
               "url": "https://www.chemistrysteps.com/",
               "blurb": ", ⁠ChemQuiz, Science Geek or DocBrown - Chemistry Practice / Guides",
@@ -2609,7 +2669,7 @@
             {
               "name": "Cliffnotes Chemistry",
               "url": "https://www.cliffsnotes.com/study-guides/chemistry/chemistry/elements/discovery-and-similarity",
-              "blurb": "/ Organic Chemistry I / Organic Chemistry II, Chem Wiki or chemguide - Study Guides",
+              "blurb": "/ Organic Chemistry I / Organic Chemistry II, Chem Wiki or chemguide - Study Guides* ReactionFlash / iOS - Chemical Reaction Flashcards",
               "badges": [],
               "resourceLinks": [
                 {
@@ -2627,15 +2687,11 @@
                 {
                   "text": "chemguide",
                   "url": "https://www.chemguide.co.uk"
-                }
-              ]
-            },
-            {
-              "name": "ReactionFlash",
-              "url": "https://play.google.com/store/apps/details?id=ch.reaxys.reactionflash&hl=en-US",
-              "blurb": "/ iOS - Chemical Reaction Flashcards",
-              "badges": [],
-              "resourceLinks": [
+                },
+                {
+                  "text": "ReactionFlash",
+                  "url": "https://play.google.com/store/apps/details?id=ch.reaxys.reactionflash&hl=en-US"
+                },
                 {
                   "text": "iOS",
                   "url": "https://apps.apple.com/us/app/reactionflash/id432080813"
@@ -3444,6 +3500,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Folding@home",
+              "url": "https://foldingathome.org/",
+              "blurb": "Donate Idle PC to Disease Research",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Epidemic Calculator",
               "url": "https://gabgoh.github.io/COVID/index.html",
               "blurb": "COVID Data",
@@ -4148,6 +4211,15 @@
               "resourceLinks": []
             },
             {
+              "name": "Satellite / Earth Data",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/misc#wiki_.25B7_satellite_.2F_earth_data",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
               "name": "EarthData",
               "url": "https://worldview.earthdata.nasa.gov/",
               "blurb": "Daily Satellite Replays",
@@ -4159,11 +4231,15 @@
             {
               "name": "Visible Earth",
               "url": "https://visibleearth.nasa.gov/",
-              "blurb": ", SpaceFromSpace, GOES-16 Satellite Imagery or Sentinel Hub - Satellite Imagery",
+              "blurb": ", Copernicus Browser, SpaceFromSpace, GOES-16 Satellite Imagery or Sentinel Hub - Satellite Imagery",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Copernicus Browser",
+                  "url": "https://browser.dataspace.copernicus.eu/"
+                },
                 {
                   "text": "SpaceFromSpace",
                   "url": "https://spacefromspace.com/"
@@ -4623,14 +4699,26 @@
             {
               "name": "Historical Recipes",
               "url": "https://l-lists.com/en/lists/55cbww.html",
-              "blurb": "Historical Recipes Collection",
+              "blurb": "or Tasting History - Historical Recipes",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "Tasting History",
+                  "url": "https://www.tastinghistory.com/"
+                }
+              ]
             },
             {
               "name": "⁠Gode Cookery",
               "url": "http://www.godecookery.com/godeboke/godeboke.htm",
               "blurb": "Authentic Medieval Recipes & Historical Info",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠The Food Historian",
+              "url": "https://www.thefoodhistorian.com/",
+              "blurb": "Food History Blog",
               "badges": [],
               "resourceLinks": []
             },
@@ -5074,33 +5162,6 @@
               "resourceLinks": []
             },
             {
-              "name": "The Atlas of Economic Complexity",
-              "url": "https://atlas.hks.harvard.edu/",
-              "blurb": "Global Economic Growth Data",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": []
-            },
-            {
-              "name": "⁠Integrity Index",
-              "url": "https://integrityindex.us/",
-              "blurb": "US Political Finance Integrity Database / Subreddit / Discord",
-              "badges": [
-                "⭐"
-              ],
-              "resourceLinks": [
-                {
-                  "text": "Subreddit",
-                  "url": "https://www.reddit.com/r/politicalintegrity/"
-                },
-                {
-                  "text": "Discord",
-                  "url": "https://discord.gg/bvrwaDJveC"
-                }
-              ]
-            },
-            {
               "name": "Ekvis",
               "url": "https://ekvis.com/",
               "blurb": "/ Subreddit / Discord, JetPunk Geography, LizardPoint or Seterra - Geography Quiz Sites",
@@ -5185,9 +5246,23 @@
               ]
             },
             {
+              "name": "⁠WikiMapped",
+              "url": "https://wikimapped.mukul-mehta.in/",
+              "blurb": "1.3M Wikipedia Articles Geolocated on Map",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "NationsEncyclopedia",
               "url": "https://www.nationsencyclopedia.com/",
               "blurb": "Location / Population Data",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Cultural Atlas",
+              "url": "https://culturalatlas.sbs.com.au/",
+              "blurb": "World Culture / Religion Guides",
               "badges": [],
               "resourceLinks": []
             },
@@ -5225,20 +5300,6 @@
               "resourceLinks": []
             },
             {
-              "name": "OpenSecrets",
-              "url": "https://www.opensecrets.org/",
-              "blurb": "Government Money Tracking",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "BLS",
-              "url": "https://www.bls.gov/",
-              "blurb": "U.S. Bureau of Labor Statistics",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "If It Were My Home",
               "url": "https://www.ifitweremyhome.com/",
               "blurb": ", GlobalEdge or MyLifeElsewhere - Country Data Comparisons",
@@ -5255,75 +5316,9 @@
               ]
             },
             {
-              "name": "WorldPoverty",
-              "url": "https://worldpoverty.io/",
-              "blurb": "World Poverty Data",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Wealth, Shown to Scale",
-              "url": "https://wealth.ronnycoste.com/",
-              "blurb": "Wealth Inequality Visualization / Facts / GitHub",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "GitHub",
-                  "url": "https://github.com/lertsoft/1-pixel-wealth"
-                }
-              ]
-            },
-            {
-              "name": "Unequal Scenes",
-              "url": "https://unequalscenes.com/",
-              "blurb": "Scenes of Inequality Around the World",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Dollar Street",
-              "url": "https://www.gapminder.org/dollar-street",
-              "blurb": "Compare Homes by Country / Income",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "⁠Opportunity Atlas",
-              "url": "https://www.opportunityatlas.org/",
-              "blurb": "Interactive Future Success Impact Map",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "EverySecond",
               "url": "https://everysecond.io/",
               "blurb": "Visualize Per Second Data",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "OEC",
-              "url": "https://oec.world/en",
-              "blurb": "or UN Comtrade - Global Trade Data",
-              "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "UN Comtrade",
-                  "url": "https://comtradeplus.un.org/"
-                }
-              ]
-            },
-            {
-              "name": "Statista",
-              "url": "https://www.statista.com/",
-              "blurb": "Market Statistics",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Netblocks",
-              "url": "https://netblocks.org/cost/",
-              "blurb": "Find Impact of Internet Shutdown on Economy",
               "badges": [],
               "resourceLinks": []
             },
@@ -5359,13 +5354,6 @@
               "name": "Incarceration in Real Numbers",
               "url": "https://mkorostoff.github.io/incarceration-in-real-numbers/",
               "blurb": "Incarceration Visualization / Facts",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Expatistan",
-              "url": "https://www.expatistan.com/",
-              "blurb": "Cost of Living Calculator",
               "badges": [],
               "resourceLinks": []
             },
@@ -5468,6 +5456,155 @@
           ]
         },
         {
+          "heading": "▷ Economics",
+          "entries": [
+            {
+              "name": "Finance / Market Resources",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/misc#wiki_.25B7_finance_.2F_savings",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "The Atlas of Economic Complexity",
+              "url": "https://atlas.hks.harvard.edu/",
+              "blurb": "Global Economic Growth Data",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Integrity Index",
+              "url": "https://integrityindex.us/",
+              "blurb": "US Political Finance Integrity Database / Subreddit / Discord",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": [
+                {
+                  "text": "Subreddit",
+                  "url": "https://www.reddit.com/r/politicalintegrity/"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/bvrwaDJveC"
+                }
+              ]
+            },
+            {
+              "name": "OEC",
+              "url": "https://oec.world/en",
+              "blurb": "or UN Comtrade - Global Trade Data",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "UN Comtrade",
+                  "url": "https://comtradeplus.un.org/"
+                }
+              ]
+            },
+            {
+              "name": "Statista",
+              "url": "https://www.statista.com/",
+              "blurb": "Market Statistics",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "BLS",
+              "url": "https://www.bls.gov/",
+              "blurb": "U.S. Bureau of Labor Statistics",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "OpenSecrets",
+              "url": "https://www.opensecrets.org/",
+              "blurb": "Government Money Tracking",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "WorldPoverty",
+              "url": "https://worldpoverty.io/",
+              "blurb": "World Poverty Data",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Expatistan",
+              "url": "https://www.expatistan.com/",
+              "blurb": "Cost of Living Calculator",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Cost of Living",
+              "url": "https://www.numbeo.com/cost-of-living/",
+              "blurb": "Cost of Living Map",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "MoveMap",
+              "url": "https://www.movemap.io/",
+              "blurb": "North America Property Costs Map",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Opportunity Atlas",
+              "url": "https://www.opportunityatlas.org/",
+              "blurb": "Interactive Future Success Impact Map",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "HungerMap",
+              "url": "https://hungermap.wfp.org/",
+              "blurb": "Global Hunger Map",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Wealth, Shown to Scale",
+              "url": "https://wealth.ronnycoste.com/",
+              "blurb": "Wealth Inequality Visualization / Facts / GitHub",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "GitHub",
+                  "url": "https://github.com/lertsoft/1-pixel-wealth"
+                }
+              ]
+            },
+            {
+              "name": "Unequal Scenes",
+              "url": "https://unequalscenes.com/",
+              "blurb": "Scenes of Inequality Around the World",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Dollar Street",
+              "url": "https://www.gapminder.org/dollar-street",
+              "blurb": "Compare Homes by Country / Income",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "Netblocks",
+              "url": "https://netblocks.org/cost/",
+              "blurb": "Find Impact of Internet Shutdown on Economy",
+              "badges": [],
+              "resourceLinks": []
+            }
+          ]
+        },
+        {
           "heading": "▷ Philosophy",
           "entries": [
             {
@@ -5491,6 +5628,15 @@
                   "url": "https://www.visualizingsep.com/"
                 }
               ]
+            },
+            {
+              "name": "Early Modern Texts",
+              "url": "https://www.earlymoderntexts.com",
+              "blurb": "Early Modern Philosophy",
+              "badges": [
+                "⭐"
+              ],
+              "resourceLinks": []
             },
             {
               "name": "Philosophy Bro",
@@ -5619,6 +5765,13 @@
               ]
             },
             {
+              "name": "Open Logic Project",
+              "url": "https://openlogicproject.org/",
+              "blurb": "Math Logic Teaching Materials",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Umsu",
               "url": "https://www.umsu.de/trees/",
               "blurb": "Analytic Tableaux Generator",
@@ -5677,6 +5830,15 @@
             {
               "name": "Photography / Cameras",
               "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/image-tools#wiki_.25BA_photography_.2F_cameras",
+              "blurb": "",
+              "badges": [
+                "↪️"
+              ],
+              "resourceLinks": []
+            },
+            {
+              "name": "Fashion / Clothing",
+              "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/misc#wiki_.25BA_fashion_.2F_clothing",
               "blurb": "",
               "badges": [
                 "↪️"
@@ -5759,28 +5921,11 @@
               "resourceLinks": []
             },
             {
-              "name": "cholyknight",
-              "url": "https://cholyknight.com/",
-              "blurb": ", PinDIY, Antique Pattern Library or FreeSewing / Forum - Free Sewing Patterns",
+              "name": "Antique Pattern Library",
+              "url": "https://www.antiquepatternlibrary.org/",
+              "blurb": "Antique Pattern Library",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "PinDIY",
-                  "url": "https://www.pindiy.com/"
-                },
-                {
-                  "text": "Antique Pattern Library",
-                  "url": "https://www.antiquepatternlibrary.org/"
-                },
-                {
-                  "text": "FreeSewing",
-                  "url": "https://freesewing.eu/"
-                },
-                {
-                  "text": "Forum",
-                  "url": "https://forum.freesewing.eu/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "⁠RSN Stitch Bank",
@@ -6040,6 +6185,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Z-Tonnetz",
+              "url": "https://ztonnetz.com/",
+              "blurb": "Music Visualization Tool",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "AudioZ",
               "url": "https://audioz.download/tutorials/",
               "blurb": "Audio Courses / Forum",
@@ -6050,6 +6202,13 @@
                   "url": "https://audiosex.pro/"
                 }
               ]
+            },
+            {
+              "name": "ProducerLibrary",
+              "url": "https://producerlibrary.carrd.co/",
+              "blurb": "Audio Production Tutorials",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Helio",
@@ -6355,13 +6514,6 @@
               "name": "Sight Singing Factory",
               "url": "https://www.sightreadingfactory.com/",
               "blurb": "Sight Singing Practice",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "A-Complete-UTAU-Tutorial-For-Beginners",
-              "url": "https://www.quotev.com/story/9299060/A-Complete-UTAU-Tutorial-For-Beginners",
-              "blurb": "UTAU Tutorial",
               "badges": [],
               "resourceLinks": []
             },
@@ -6742,13 +6894,6 @@
               "resourceLinks": []
             },
             {
-              "name": "Reference Angle",
-              "url": "http://referenceangle.com/",
-              "blurb": "Human Photo Reference Search",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "x6ud",
               "url": "https://x6ud.github.io/#/",
               "blurb": "Animal Photo Reference Search",
@@ -7123,13 +7268,6 @@
             {
               "name": "TheChessWebsite",
               "url": "https://www.thechesswebsite.com/",
-              "blurb": "Learn / Practice Chess",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "HerculesChess",
-              "url": "https://herculeschess.com/",
               "blurb": "Learn / Practice Chess",
               "badges": [],
               "resourceLinks": []
@@ -8267,13 +8405,6 @@
                   "url": "https://www.oxfordlearnersdictionaries.com/"
                 }
               ]
-            },
-            {
-              "name": "CEFR Lookup",
-              "url": "https://cefrlookup.com/",
-              "blurb": "CEFR Word Level Lookup",
-              "badges": [],
-              "resourceLinks": []
             },
             {
               "name": "Podcasts in English",
@@ -9893,16 +10024,11 @@
             {
               "name": "OpenVim",
               "url": "https://openvim.com/",
-              "blurb": "or Vim Hero - Interactive Vim Tutorials",
+              "blurb": "Interactive Vim Tutorials",
               "badges": [
                 "⭐"
               ],
-              "resourceLinks": [
-                {
-                  "text": "Vim Hero",
-                  "url": "https://www.vim-hero.com/"
-                }
-              ]
+              "resourceLinks": []
             },
             {
               "name": "StarSQL",
@@ -10055,7 +10181,7 @@
             {
               "name": "Scratch",
               "url": "https://scratch.mit.edu/",
-              "blurb": "/ Firefox Extension / Chrome Extension / Package Projects / Javascript Converter, 2 / Wiki / Guides / GitHub or ⁠MIT App Inventor - Beginner Programming Learning",
+              "blurb": "/ Firefox Extension / Chrome Extension / Package Projects / Increase Speed, 2 / Wiki / Guides / GitHub or ⁠MIT App Inventor - Beginner Programming Learning",
               "badges": [],
               "resourceLinks": [
                 {
@@ -10071,7 +10197,7 @@
                   "url": "https://packager.turbowarp.org/"
                 },
                 {
-                  "text": "Javascript Converter",
+                  "text": "Increase Speed",
                   "url": "https://turbowarp.org/"
                 },
                 {
@@ -11034,13 +11160,6 @@
               ]
             },
             {
-              "name": "ReactStudyKit",
-              "url": "https://reactstudykit.com/",
-              "blurb": "React Study Tools / Flashcards",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
               "name": "You Don't Know JS",
               "url": "https://github.com/getify/You-Dont-Know-JS",
               "blurb": "or EloquentJavaScript - JavaScript Learning Books",
@@ -11756,7 +11875,7 @@
             {
               "name": "Algorithm Visualizer",
               "url": "https://algorithm-visualizer.org/",
-              "blurb": ", ⁠Staying or Sorting Algorithms Visuallizer / GitHub - Visualize Code Algorithms",
+              "blurb": ", ⁠Staying or Sorting Algorithms Visualizer / GitHub - Visualize Code Algorithms",
               "badges": [],
               "resourceLinks": [
                 {
@@ -11764,7 +11883,7 @@
                   "url": "https://staying.fun/en"
                 },
                 {
-                  "text": "Sorting Algorithms Visuallizer",
+                  "text": "Sorting Algorithms Visualizer",
                   "url": "https://sadanandpai.github.io/algo-visualizers/#/sorting-visualizer/bubble"
                 },
                 {
@@ -12625,6 +12744,13 @@
                   "url": "https://www.physicsandmathstutor.com/"
                 }
               ]
+            },
+            {
+              "name": "⁠ISC.exe",
+              "url": "https://class-12-isc.vercel.app/",
+              "blurb": "Indian School Certificate Examinations (ISC) Resources / Study Material",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "anthropology",
@@ -14246,14 +14372,16 @@
             {
               "name": "Simple Wiki",
               "url": "https://simple.wikipedia.org/wiki/Main_Page",
-              "blurb": "Simplified Wikipedia / Auto-Redirect",
+              "blurb": "Simplified Wikipedia",
               "badges": [],
-              "resourceLinks": [
-                {
-                  "text": "Auto-Redirect",
-                  "url": "https://rentry.co/simplewikifirefox"
-                }
-              ]
+              "resourceLinks": []
+            },
+            {
+              "name": "namuwiki",
+              "url": "https://en.namu.wiki/",
+              "blurb": "Korean Encyclopedia",
+              "badges": [],
+              "resourceLinks": []
             },
             {
               "name": "Britannica",

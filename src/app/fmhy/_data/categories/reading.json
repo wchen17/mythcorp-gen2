@@ -1,8 +1,9 @@
 {
-  "fetchedAt": "2026-05-06T05:50:00.629Z",
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
   "categories": [
     {
       "slug": "reading",
+      "namespace": "root",
       "sourceFile": "reading.md",
       "sections": [
         {
@@ -130,13 +131,6 @@
             {
               "name": "Loyal Books",
               "url": "https://www.loyalbooks.com/",
-              "blurb": "",
-              "badges": [],
-              "resourceLinks": []
-            },
-            {
-              "name": "Lit2Go",
-              "url": "https://etc.usf.edu/lit2go/",
               "blurb": "",
               "badges": [],
               "resourceLinks": []
@@ -1044,13 +1038,6 @@
                   "url": "https://www.epub.pub/"
                 }
               ]
-            },
-            {
-              "name": "HourWolf",
-              "url": "https://www.hourwolf.com/sfbooks/",
-              "blurb": "Fantasy",
-              "badges": [],
-              "resourceLinks": []
             },
             {
               "name": "byGosh",
@@ -2430,8 +2417,8 @@
           "heading": "▷ Comics",
           "entries": [
             {
-              "name": "ReadComicsOnline",
-              "url": "https://readcomiconline.li/",
+              "name": "ReadComicOnline",
+              "url": "https://rcostation.xyz/",
               "blurb": "",
               "badges": [
                 "⭐"
@@ -2658,6 +2645,13 @@
               "resourceLinks": []
             },
             {
+              "name": "⁠Comic Studio",
+              "url": "https://comic.studio/browse",
+              "blurb": "Webcomics",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Comic Book Library",
               "url": "http://nv3x2jozywh63fkohn5mwp2d73vasusjixn3im3ueof52fmbjsigw6ad.onion/",
               "blurb": "Requires Tor",
@@ -2813,11 +2807,16 @@
             {
               "name": "Rawmangaz",
               "url": "https://claraiscute.neocities.org/Guides/rawmangaz/",
-              "blurb": "List of Raw Manga Sites",
+              "blurb": ", 2 - List of Raw Manga Sites",
               "badges": [
                 "🌐"
               ],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://claraiscute.pages.dev/Guides/rawmangaz/"
+                }
+              ]
             },
             {
               "name": "Manga Readers / Managers",
@@ -3073,10 +3072,27 @@
             },
             {
               "name": "Rive Manga",
-              "url": "https://rivestream.org/manga",
-              "blurb": "",
+              "url": "https://www.rivestream.app/manga",
+              "blurb": ", 2, 3 / Status / Discord",
               "badges": [],
-              "resourceLinks": []
+              "resourceLinks": [
+                {
+                  "text": "2",
+                  "url": "https://rivestream.ru/manga"
+                },
+                {
+                  "text": "3",
+                  "url": "https://rivestream.top/manga"
+                },
+                {
+                  "text": "Status",
+                  "url": "https://rentry.co/rivestream"
+                },
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/6xJmJja8fV"
+                }
+              ]
             },
             {
               "name": "MangaTown",
@@ -3117,6 +3133,18 @@
               "blurb": "",
               "badges": [],
               "resourceLinks": []
+            },
+            {
+              "name": "Scans.gg",
+              "url": "https://scans.gg/changelog",
+              "blurb": "/ Some NSFW / Discord",
+              "badges": [],
+              "resourceLinks": [
+                {
+                  "text": "Discord",
+                  "url": "https://discord.gg/cYFgYu66rx"
+                }
+              ]
             },
             {
               "name": "Cubari Proxy",
@@ -4138,9 +4166,9 @@
               "resourceLinks": []
             },
             {
-              "name": "EarlyModernTexts",
+              "name": "Early Modern Texts",
               "url": "https://www.earlymoderntexts.com",
-              "blurb": "Historical Texts",
+              "blurb": "Early Modern Philosophy",
               "badges": [
                 "⭐"
               ],
@@ -4762,13 +4790,17 @@
               "resourceLinks": []
             },
             {
-              "name": "Mendeley",
-              "url": "https://www.mendeley.com/",
-              "blurb": "Research Papers / Data / Reference Manager",
+              "name": "Zotero",
+              "url": "https://www.zotero.org/",
+              "blurb": "or **Mendeley** / Data / Reference Manager - Research Managers",
               "badges": [
                 "⭐"
               ],
               "resourceLinks": [
+                {
+                  "text": "Mendeley",
+                  "url": "https://www.mendeley.com/"
+                },
                 {
                   "text": "Data",
                   "url": "https://data.mendeley.com/"
@@ -5717,6 +5749,13 @@
               ]
             },
             {
+              "name": "Oyez",
+              "url": "https://www.oyez.org/",
+              "blurb": "Supreme Court Case Summaries / Transcripts",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
               "name": "Parliament Archives",
               "url": "https://archives.parliament.uk/",
               "blurb": "UK Parliamentary Documents",
@@ -5768,7 +5807,7 @@
             {
               "name": "Epstein Exposed",
               "url": "https://www.epsteinexposed.com/",
-              "blurb": "/ GitHub, **JMail** / 2 / Wiki, Epstein Secrets, Epstein Library, Epstein Visualizer or ⁠Epstein Index - Declassified Epstein Files / Viewer Discretion Advised / Contains Censored NSFW Images",
+              "blurb": "/ GitHub, **JMail** / 2 / Wiki, Epstein Secrets, ExposingEpstein, Epstein Library, Epstein Visualizer or ⁠Epstein Index - Declassified Epstein Files / Viewer Discretion Advised / Contains Censored NSFW Images",
               "badges": [
                 "⭐"
               ],
@@ -5792,6 +5831,10 @@
                 {
                   "text": "Epstein Secrets",
                   "url": "https://epsteinsecrets.com/"
+                },
+                {
+                  "text": "ExposingEpstein",
+                  "url": "https://exposingepstein.com/"
                 },
                 {
                   "text": "Epstein Library",
@@ -5879,6 +5922,13 @@
               "name": "Snowden Archive",
               "url": "https://github.com/iamcryptoki/snowden-archive",
               "blurb": "Leaked Snowden Documents",
+              "badges": [],
+              "resourceLinks": []
+            },
+            {
+              "name": "⁠Climate Files",
+              "url": "https://www.climatefiles.com/",
+              "blurb": "Climate Change Document Database / Exposes Climate Change Denying Companies",
               "badges": [],
               "resourceLinks": []
             },
@@ -6819,13 +6869,9 @@
             {
               "name": "BookStash",
               "url": "https://bookstash.io/",
-              "blurb": ", Littler Books, Sobrief, Summrize or Glimbay - Book Summaries",
+              "blurb": ", Sobrief, Summrize or Glimbay - Book Summaries",
               "badges": [],
               "resourceLinks": [
-                {
-                  "text": "Littler Books",
-                  "url": "https://littlerbooks.com/"
-                },
                 {
                   "text": "Sobrief",
                   "url": "https://sobrief.com/"

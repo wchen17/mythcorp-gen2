@@ -3,38 +3,45 @@ import path from 'node:path';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '../../components/SiteHeader';
-import { CATEGORIES, categoryBySlug } from '../_data/categories';
-import indexData from '../_data/index.json';
+import { ROOT_CATEGORIES, categoryBySlug } from '../_data/categories';
 import { EntryRow } from '../_components/EntryRow';
-import type { Catalog, CatalogCategory } from '../_lib/types';
+import type { Catalog, CatalogCategory, ProseDoc } from '../_lib/types';
 
 export const dynamic = 'force-static';
 
-const NON_EMPTY_SLUGS = new Set(
-  (indexData as { categories: { slug: string; entryCount: number }[] })
-    .categories.filter((c) => c.entryCount > 0).map((c) => c.slug),
-);
-
 export function generateStaticParams() {
-  return CATEGORIES.filter((c) => NON_EMPTY_SLUGS.has(c.slug)).map((c) => ({ category: c.slug }));
+  return ROOT_CATEGORIES.map((c) => ({ category: c.slug }));
 }
 
-async function loadCategory(slug: string): Promise<{ category: CatalogCategory; fetchedAt: string } | null> {
+async function loadRaw(slug: string): Promise<unknown | null> {
   try {
     const file = path.join(process.cwd(), 'src/app/fmhy/_data/categories', `${slug}.json`);
     const raw = await fs.readFile(file, 'utf8');
-    const json = JSON.parse(raw) as Catalog;
-    const category = json.categories[0];
-    if (!category) return null;
-    return { category, fetchedAt: json.fetchedAt };
+    return JSON.parse(raw);
   } catch {
     return null;
   }
 }
 
+function asCatalog(raw: unknown): { category: CatalogCategory; fetchedAt: string } | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const obj = raw as { categories?: CatalogCategory[]; fetchedAt?: string };
+  if (!Array.isArray(obj.categories) || !obj.fetchedAt) return null;
+  const category = obj.categories[0];
+  if (!category) return null;
+  return { category, fetchedAt: obj.fetchedAt };
+}
+
+function asProse(raw: unknown): ProseDoc | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const obj = raw as Partial<ProseDoc>;
+  if (!obj.doc || !obj.fetchedAt) return null;
+  return obj as ProseDoc;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
   const { category: slug } = await params;
-  const meta = categoryBySlug(slug);
+  const meta = categoryBySlug(slug, 'root');
   if (!meta) return { title: 'Not found' };
   return {
     title: `${meta.name} (FMHY mirror), MYTHCORP`,
@@ -44,9 +51,61 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category: slug } = await params;
-  const meta = categoryBySlug(slug);
+  const meta = categoryBySlug(slug, 'root');
   if (!meta) notFound();
-  const data = await loadCategory(slug);
+  const raw = await loadRaw(slug);
+  if (!raw) notFound();
+
+  if (meta.kind === 'prose') {
+    const file = asProse(raw);
+    if (!file) notFound();
+    const { doc, fetchedAt } = file;
+    const fetchedDate = new Date(fetchedAt).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'short', day: 'numeric',
+    });
+    return (
+      <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
+        <SiteHeader tagline="FMHY MIRROR" />
+        <main className="mx-auto max-w-3xl px-4 pt-24 pb-16 sm:px-6">
+          <nav className="text-xs text-[color:var(--fg-subtle)]">
+            <Link href="/fmhy" className="hover:text-[color:var(--accent)]">/fmhy</Link>
+            <span className="mx-2">›</span>
+            <span className="text-[color:var(--fg-muted)]">{meta.name}</span>
+          </nav>
+          <div className="mt-6">
+            <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
+              [ /FMHY/{meta.slug.toUpperCase()} ]
+            </p>
+            <h1 className="themed-heading mt-3 flex items-baseline gap-3 text-3xl font-semibold sm:text-4xl">
+              <span aria-hidden>{meta.emoji}</span>
+              <span>{doc.title}</span>
+            </h1>
+            {meta.blurb && (
+              <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{meta.blurb}</p>
+            )}
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
+              snapshot {fetchedDate}
+            </p>
+          </div>
+          <article className="fmhy-prose mt-10" dangerouslySetInnerHTML={{ __html: doc.html }} />
+          <footer className="mt-16 border-t border-[color:var(--border)] pt-6 text-xs text-[color:var(--fg-subtle)]">
+            Source:{' '}
+            <a href={`https://github.com/fmhy/edit/blob/main/docs/${meta.sourceFile}`}
+               target="_blank" rel="noreferrer"
+               className="text-[color:var(--accent-soft)] underline underline-offset-4">
+              docs/{meta.sourceFile}
+            </a>
+            {' '}on the FMHY edit repo.{' '}
+            <Link href="/fmhy" className="ml-2 text-[color:var(--accent)] underline underline-offset-4">
+              ← back to /fmhy
+            </Link>
+          </footer>
+        </main>
+      </div>
+    );
+  }
+
+  const data = asCatalog(raw);
   if (!data || data.category.sections.length === 0) notFound();
 
   const { category, fetchedAt } = data;
@@ -84,10 +143,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
         <footer className="mt-16 border-t border-[color:var(--border)] pt-6 text-xs text-[color:var(--fg-subtle)]">
           Source:{' '}
-          <a href={`https://github.com/fmhy/edit/blob/main/docs/${meta.upstreamFile}`}
+          <a href={`https://github.com/fmhy/edit/blob/main/docs/${meta.sourceFile}`}
              target="_blank" rel="noreferrer"
              className="text-[color:var(--accent-soft)] underline underline-offset-4">
-            docs/{meta.upstreamFile}
+            docs/{meta.sourceFile}
           </a>
           {' '}on the FMHY edit repo.{' '}
           <Link href="/fmhy" className="ml-2 text-[color:var(--accent)] underline underline-offset-4">
