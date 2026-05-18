@@ -140,12 +140,7 @@ export default function FmhyPage() {
           docs={OTHER_DOCS}
         />
 
-        <DocGroup
-          title="Posts"
-          subtitle="Monthly changelogs and announcements from docs/posts/"
-          namespace="posts"
-          docs={POSTS}
-        />
+        <PostsByYear posts={POSTS} />
 
         <p className="mt-12 text-center text-xs text-[color:var(--fg-subtle)]">
           FMHY is community-maintained. This mirror auto-discovers the upstream tree on every refresh,
@@ -153,6 +148,92 @@ export default function FmhyPage() {
         </p>
       </main>
     </div>
+  );
+}
+
+const MONTH_ORDER: Record<string, number> = {
+  jan: 0, feb: 1, mar: 2, march: 2, apr: 3, april: 3, may: 4, jun: 5, june: 5,
+  jul: 6, july: 6, aug: 7, sep: 8, sept: 9, oct: 9, nov: 10, dec: 11,
+};
+
+function parsePostDate(slug: string): { year: number; month: number } | null {
+  const m = slug.toLowerCase().match(/^([a-z]+)-(\d{4})$/);
+  if (!m) return null;
+  const month = MONTH_ORDER[m[1]];
+  if (month === undefined) return null;
+  return { year: parseInt(m[2], 10), month };
+}
+
+function PostsByYear({ posts }: { posts: ReadonlyArray<IndexCategory> }) {
+  if (posts.length === 0) return null;
+
+  const dated: { post: IndexCategory; year: number; month: number }[] = [];
+  const undated: IndexCategory[] = [];
+  for (const p of posts) {
+    const d = parsePostDate(p.slug);
+    if (d) dated.push({ post: p, ...d });
+    else undated.push(p);
+  }
+
+  const byYear = new Map<number, IndexCategory[]>();
+  for (const { post, year, month } of dated.sort((a, b) => b.month - a.month)) {
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year)!.push(post);
+  }
+  const years = Array.from(byYear.keys()).sort((a, b) => b - a);
+
+  return (
+    <section className="mt-16">
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="themed-heading text-2xl font-semibold">Posts</h2>
+        <span className="font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]">
+          {posts.length} docs
+        </span>
+      </div>
+      <p className="mt-1 text-sm text-[color:var(--fg-muted)]">
+        Monthly changelogs and announcements from docs/posts/.
+      </p>
+
+      {undated.length > 0 && (
+        <div className="mt-6">
+          <h3 className="font-mono text-xs uppercase tracking-widest text-[color:var(--accent-soft)]">
+            Notable
+          </h3>
+          <ul className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {undated.map((d) => (
+              <PostLink key={d.slug} doc={d} />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {years.map((year) => (
+        <div key={year} className="mt-6">
+          <h3 className="font-mono text-xs uppercase tracking-widest text-[color:var(--accent-soft)]">
+            {year}
+          </h3>
+          <ul className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {byYear.get(year)!.map((d) => (
+              <PostLink key={d.slug} doc={d} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function PostLink({ doc }: { doc: IndexCategory }) {
+  return (
+    <li>
+      <Link
+        href={`/fmhy/posts/${doc.slug}`}
+        className="themed-surface themed-surface-interactive flex items-center gap-2 p-2.5"
+      >
+        <span aria-hidden className="text-base">{doc.emoji}</span>
+        <span className="truncate text-xs font-medium text-[color:var(--fg)]">{doc.name}</span>
+      </Link>
+    </li>
   );
 }
 
