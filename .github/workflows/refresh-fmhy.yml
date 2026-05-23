@@ -24,24 +24,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch FMHY snapshot
+      - name: Fetch FMHY backup sites
         run: npm run fetch:fmhy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Open PR if snapshot changed
         uses: peter-evans/create-pull-request@v6
         with:
           branch: chore/refresh-fmhy
           delete-branch: true
-          title: 'chore: refresh FMHY snapshot'
-          commit-message: 'chore: refresh FMHY snapshot'
+          title: 'chore: refresh FMHY backup sites'
+          commit-message: 'chore: refresh FMHY backup sites'
           body: |
-            Automated weekly refresh of `src/app/fmhy/_data/`.
+            Automated weekly refresh of `src/app/fmhy/_data/backup-sites.json`.
 
-            If this PR is empty, the upstream catalog has not changed since the
-            last snapshot.
-
-            Review the diff to spot upstream renames, dead links, or category
-            additions worth promoting in `categories.ts`.
+            Pulls the backup/mirror site list from `docs/other/backups.md` on the FMHY
+            edit repo. If this PR is empty, no backup sites changed since the last snapshot.
           add-paths: |
-            src/app/fmhy/_data/index.json
-            src/app/fmhy/_data/categories/*.json
+            src/app/fmhy/_data/backup-sites.json
