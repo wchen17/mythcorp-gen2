@@ -12,9 +12,10 @@ import { LandingModals } from './landing/LandingModals';
 interface NewLandingPageProps {
   onEnterExperience: () => void;
   onEnterInteractive: () => void;
+  onReplayIntro?: () => void;
 }
 
-export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLandingPageProps) {
+export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplayIntro }: NewLandingPageProps) {
   const [showBanner, setShowBanner] = useState(false);
   const [showMisalignedNote, setShowMisalignedNote] = useState(false);
   const [showAlignmentLine, setShowAlignmentLine] = useState(false);
@@ -68,6 +69,18 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive }: NewLan
           >
             press ⌘/ctrl + G to peek the alignment grid
           </button>
+
+          {onReplayIntro && (
+            <button
+              type="button"
+              onClick={onReplayIntro}
+              className="font-mono text-[10px] uppercase tracking-[0.3em]
+                         text-[color:var(--fg-subtle)] transition-colors
+                         hover:text-[color:var(--accent-soft)]"
+            >
+              ↻ replay the boot sequence
+            </button>
+          )}
         </div>
       </main>
 
