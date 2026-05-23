@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   refresh:
@@ -27,21 +26,20 @@ jobs:
       - name: Fetch FMHY snapshot
         run: npm run fetch:fmhy
 
-      - name: Open PR if snapshot changed
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: chore/refresh-fmhy
-          delete-branch: true
-          title: 'chore: refresh FMHY snapshot'
-          commit-message: 'chore: refresh FMHY snapshot'
-          body: |
-            Automated weekly refresh of `src/app/fmhy/_data/`.
+      - name: Push branch if snapshot changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-            If this PR is empty, the upstream catalog has not changed since the
-            last snapshot.
+          git add src/app/fmhy/_data/index.json
+          if git diff --cached --quiet; then
+            echo 'Snapshot unchanged, nothing to push.'
+            exit 0
+          fi
 
-            Review the diff to spot upstream renames, dead links, or category
-            additions worth promoting in `categories.ts`.
-          add-paths: |
-            src/app/fmhy/_data/index.json
-            src/app/fmhy/_data/categories/*.json
+          git checkout -B chore/refresh-fmhy
+          git commit -m 'chore: refresh FMHY snapshot'
+          git push --force origin chore/refresh-fmhy
+
+          echo "Snapshot changed. Open a PR here:" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://github.com/${GITHUB_REPOSITORY}/compare/main...chore/refresh-fmhy?expand=1" >> "$GITHUB_STEP_SUMMARY"

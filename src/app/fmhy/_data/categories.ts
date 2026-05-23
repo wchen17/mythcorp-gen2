@@ -1,4 +1,4 @@
-import type { IndexCategory, IndexFile, Namespace } from '../_lib/types';
+import type { IndexCategory, IndexFile } from '../_lib/types';
 import indexData from './index.json';
 
 export type CategoryMeta = IndexCategory;
@@ -12,13 +12,6 @@ export const OTHER_DOCS = CATEGORIES.filter((c) => c.namespace === 'other');
 export const POSTS = CATEGORIES.filter((c) => c.namespace === 'posts');
 
 export const FETCHED_AT = INDEX.fetchedAt;
-
-export function categoryBySlug(
-  slug: string,
-  namespace: Namespace = 'root',
-): CategoryMeta | undefined {
-  return CATEGORIES.find((c) => c.slug === slug && c.namespace === namespace);
-}
 
 // Display overrides for root catalog pages. Anything missing here gets a derived
 // title-case name, the default emoji, and an empty blurb. This is the only
