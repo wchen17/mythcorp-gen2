@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -13,17 +13,17 @@ const WALKTHROUGHS = [
   },
   {
     slug: 'landing-flow',
-    title: 'The cinematic boot → reveal',
+    title: 'The cinematic boot flow',
     blurb:
-      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a color flash, and why the GLB is preloaded.',
-    status: 'soon',
+      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a canvas flash, and why the GLB is preloaded.',
+    status: 'ready',
   },
   {
     slug: '3d-scene',
     title: 'Anatomy of the 3D experience',
     blurb:
       'Particle field via BufferGeometry, post-processing bloom, and a randomizable settings object, what every piece does.',
-    status: 'soon',
+    status: 'ready',
   },
 ];
 
@@ -86,7 +86,7 @@ export default function LearnIndex() {
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">
-          ← Back to <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4">/wc</Link>
+          Back to <Link href="/wc" className="text-[color:var(--accent)] underline underline-offset-4">/wc</Link>
         </p>
       </main>
     </div>
