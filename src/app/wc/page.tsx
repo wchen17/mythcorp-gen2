@@ -20,7 +20,7 @@ const sections = [
     href: '/wc/about',
     label: 'ABOUT',
     title: 'Who, why',
-    blurb: 'Coming soon.',
+    blurb: 'The person behind MYTHCORP, and why this exists.',
   },
 ];
 

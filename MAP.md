@@ -12,6 +12,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/about` | `src/app/about/page.tsx` | Short "what is this" page |
 | `/contact` | `src/app/contact/page.tsx` | ComingSoon stub (no real form yet) |
 | `/wc` | `src/app/wc/page.tsx` | Personal section index |
+| `/wc/about` | `src/app/wc/about/page.tsx` | Bio + why the site exists |
 | `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list (placeholder) |
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
@@ -20,6 +21,10 @@ Single-screen index of where things live. Read this first; grep second.
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
+| error | `src/app/error.tsx` | Themed route error boundary (reset button) |
+| fatal | `src/app/global-error.tsx` | Layout-level fallback (own html/body, inline styles, no theme tokens) |
+| `/sitemap.xml` | `src/app/sitemap.ts` | Generated sitemap. Route list is hand-maintained, add new pages here. |
+| `/robots.txt` | `src/app/robots.ts` | Allow-all, points at the sitemap. Base URL via `NEXT_PUBLIC_SITE_URL` (default `mythcorp.dev`). |
 
 `/og/*` houses unfinished ideas kept on purpose, labelled with `<DraftBanner />`. The `/og` index also lists graduated sketches (e.g. `/fmhy` used to live at `/og/fmhy` before getting a real implementation).
 
