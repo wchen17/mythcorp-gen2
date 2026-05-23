@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -13,46 +13,54 @@ type AnimalGif = {
 
 const ANIMAL_GIFS: ReadonlyArray<AnimalGif> = [
   {
-    url: 'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif',
-    title: 'Happy Guinea Pig Munching Lettuce',
+    url: 'https://media.giphy.com/media/lhekVSXhExiYo/giphy.gif',
+    title: 'Guinea Pig Munching Veggies',
     emoji: '🐹🥬',
-    description: 'Watch this adorable guinea pig enjoy some fresh lettuce!',
+    description: 'Working through a pile of fresh greens, one nibble at a time.',
   },
   {
-    url: 'https://media.giphy.com/media/l3q2zbskZp2j8wniE/giphy.gif',
-    title: 'Hamster Eating Carrot',
+    url: 'https://media.giphy.com/media/9FXP14IY0KIYjwS92m/giphy.gif',
+    title: 'Guinea Pig Eating Spinach',
+    emoji: '🐹🥗',
+    description: 'Spinach: the snack of champions. (via The Dodo)',
+  },
+  {
+    url: 'https://media.giphy.com/media/nZpqJDxUW9tMBYUUZ8/giphy.gif',
+    title: 'Hamster Munching Dinner',
     emoji: '🐹🥕',
-    description: 'Tiny hamster, big carrot dreams!',
+    description: 'Tiny paws, enormous appetite.',
   },
   {
-    url: 'https://media.giphy.com/media/3o7TKMjfvT3qvUNqzC/giphy.gif',
-    title: 'Bunny Enjoying Fresh Greens',
-    emoji: '🐰🥗',
-    description: 'This bunny knows how to appreciate a good salad!',
+    url: 'https://media.giphy.com/media/xTiTnymLkyJtVXzc2s/giphy.gif',
+    title: 'Bunny Eating Greens',
+    emoji: '🐰🥬',
+    description: 'This bunny takes its salad very seriously.',
   },
   {
-    url: 'https://media.giphy.com/media/l0IylSajlbPRFxH8Y/giphy.gif',
-    title: 'Guinea Pig Veggie Party',
-    emoji: '🐹🌶️',
-    description: 'Veggie time is the best time!',
-  },
-  {
-    url: 'https://media.giphy.com/media/3o6Zt0hNCfak3QCqsw/giphy.gif',
-    title: 'Rabbit Chomping Vegetables',
+    url: 'https://media.giphy.com/media/HzKsrt22tjTtC/giphy.gif',
+    title: 'Rabbit Munch Munch',
     emoji: '🐇🥦',
-    description: 'Nom nom nom, broccoli is delicious!',
+    description: 'Munch, munch, munch. A rabbit at work.',
   },
 ];
 
 export default function AnimalsPage() {
-  const [currentGif, setCurrentGif] = useState<AnimalGif | null>(null);
+  const [index, setIndex] = useState(0);
+  const [failed, setFailed] = useState<Record<string, boolean>>({});
+
+  const current = ANIMAL_GIFS[index];
 
   const pickRandomGif = () => {
-    setCurrentGif(ANIMAL_GIFS[Math.floor(Math.random() * ANIMAL_GIFS.length)]);
+    if (ANIMAL_GIFS.length < 2) return;
+    let next = index;
+    while (next === index) {
+      next = Math.floor(Math.random() * ANIMAL_GIFS.length);
+    }
+    setIndex(next);
   };
 
   useEffect(() => {
-    pickRandomGif();
+    setIndex(Math.floor(Math.random() * ANIMAL_GIFS.length));
   }, []);
 
   return (
@@ -64,7 +72,7 @@ export default function AnimalsPage() {
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
             [ INTERMISSION ]
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="themed-heading mt-3 text-3xl font-semibold sm:text-4xl">
             🐹 Animal Break Time 🥕
           </h1>
           <p className="mt-3 text-sm text-[color:var(--fg-muted)]">
@@ -72,62 +80,75 @@ export default function AnimalsPage() {
           </p>
         </div>
 
-        <div className="mt-8 rounded-xl border border-[color:var(--border)]
-                        bg-[color:var(--bg-elevated)] p-6 transition-colors
-                        hover:border-[color:var(--border-strong)]">
-          {currentGif ? (
-            <div className="text-center">
-              <div className="mb-4 animate-bounce text-7xl sm:text-8xl">
-                {currentGif.emoji}
-              </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={currentGif.url}
-                alt={currentGif.title}
-                className="mx-auto w-full max-w-xl rounded-lg"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-              <p className="mt-4 text-lg font-semibold text-[color:var(--accent-soft)]">
-                {currentGif.title}
-              </p>
-              <p className="mt-1 text-sm text-[color:var(--fg-muted)]">
-                {currentGif.description}
-              </p>
+        <div className="themed-surface mt-8 p-6">
+          <div className="text-center">
+            <div className="mb-4 text-7xl motion-safe:animate-bounce sm:text-8xl">
+              {current.emoji}
             </div>
-          ) : (
-            <p className="py-16 text-center text-[color:var(--fg-subtle)]">
-              loading adorable content…
+            {failed[current.url] ? (
+              <div className="mx-auto flex aspect-video w-full max-w-xl flex-col items-center
+                              justify-center gap-2 rounded-lg border border-dashed
+                              border-[color:var(--border)] bg-[color:var(--bg)] p-6">
+                <p className="text-sm font-semibold text-[color:var(--fg-muted)]">
+                  This clip wandered off.
+                </p>
+                <p className="text-xs text-[color:var(--fg-subtle)]">
+                  Try another one, the rest are still grazing.
+                </p>
+              </div>
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={current.url}
+                alt={current.title}
+                className="mx-auto w-full max-w-xl rounded-lg"
+                onError={() => setFailed((f) => ({ ...f, [current.url]: true }))}
+              />
+            )}
+            <p className="mt-4 text-lg font-semibold text-[color:var(--accent-soft)]">
+              {current.title}
             </p>
-          )}
+            <p className="mt-1 text-sm text-[color:var(--fg-muted)]">
+              {current.description}
+            </p>
+          </div>
+
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            {ANIMAL_GIFS.map((g, i) => (
+              <button
+                key={g.url}
+                onClick={() => setIndex(i)}
+                aria-label={g.title}
+                aria-pressed={i === index}
+                className={`themed-pill px-3 py-1.5 text-lg transition-opacity ${
+                  i === index
+                    ? 'opacity-100 ring-1 ring-[color:var(--accent)]'
+                    : 'opacity-50 hover:opacity-100'
+                }`}
+              >
+                {g.emoji}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={pickRandomGif}
-            className="rounded-md bg-[color:var(--accent)] px-6 py-2.5
-                       font-bold text-sm tracking-wide text-[color:var(--bg)]
-                       transition-all hover:scale-[1.03]
-                       hover:shadow-[0_0_24px_var(--accent-glow-strong)]"
+            className="themed-button px-6 py-2.5 text-sm uppercase tracking-wide"
           >
-            🎲 SHOW ME ANOTHER
+            🎲 Show me another
           </button>
           <Link
             href="/"
-            className="rounded-md border border-[color:var(--border)]
-                       bg-[color:var(--bg-overlay)] px-6 py-2.5
-                       font-mono text-xs uppercase tracking-widest
-                       text-[color:var(--fg)] transition-all
-                       hover:border-[color:var(--border-strong)]
-                       hover:text-[color:var(--accent)]"
+            className="themed-pill px-6 py-2.5 font-mono text-xs uppercase tracking-widest
+                       text-[color:var(--fg)] transition-colors hover:text-[color:var(--accent)]"
           >
-            ← BACK HOME
+            ← Back home
           </Link>
         </div>
 
-        <div className="mt-10 rounded-lg border border-[color:var(--accent-warm)]/40
-                        bg-[color:var(--accent-warm)]/5 p-5">
+        <div className="themed-surface mt-10 p-5">
           <h3 className="mb-2 font-serif text-base font-semibold text-[color:var(--accent-warm)]">
             🌟 Did you know?
           </h3>
