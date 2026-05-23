@@ -6,6 +6,7 @@ import { SiteHeader } from '../components/SiteHeader';
 
 type AnimalGif = {
   url: string;
+  source: string;
   title: string;
   emoji: string;
   description: string;
@@ -14,30 +15,35 @@ type AnimalGif = {
 const ANIMAL_GIFS: ReadonlyArray<AnimalGif> = [
   {
     url: 'https://media.giphy.com/media/lhekVSXhExiYo/giphy.gif',
+    source: 'https://giphy.com/gifs/lhekVSXhExiYo',
     title: 'Guinea Pig Munching Veggies',
     emoji: '🐹🥬',
     description: 'Working through a pile of fresh greens, one nibble at a time.',
   },
   {
     url: 'https://media.giphy.com/media/9FXP14IY0KIYjwS92m/giphy.gif',
+    source: 'https://giphy.com/gifs/9FXP14IY0KIYjwS92m',
     title: 'Guinea Pig Eating Spinach',
     emoji: '🐹🥗',
     description: 'Spinach: the snack of champions. (via The Dodo)',
   },
   {
     url: 'https://media.giphy.com/media/nZpqJDxUW9tMBYUUZ8/giphy.gif',
+    source: 'https://giphy.com/gifs/nZpqJDxUW9tMBYUUZ8',
     title: 'Hamster Munching Dinner',
     emoji: '🐹🥕',
     description: 'Tiny paws, enormous appetite.',
   },
   {
     url: 'https://media.giphy.com/media/xTiTnymLkyJtVXzc2s/giphy.gif',
+    source: 'https://giphy.com/gifs/xTiTnymLkyJtVXzc2s',
     title: 'Bunny Eating Greens',
     emoji: '🐰🥬',
     description: 'This bunny takes its salad very seriously.',
   },
   {
     url: 'https://media.giphy.com/media/HzKsrt22tjTtC/giphy.gif',
+    source: 'https://giphy.com/gifs/HzKsrt22tjTtC',
     title: 'Rabbit Munch Munch',
     emoji: '🐇🥦',
     description: 'Munch, munch, munch. A rabbit at work.',
@@ -111,6 +117,16 @@ export default function AnimalsPage() {
             <p className="mt-1 text-sm text-[color:var(--fg-muted)]">
               {current.description}
             </p>
+            <a
+              href={current.source}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-block font-mono text-[10px] uppercase tracking-widest
+                         text-[color:var(--fg-subtle)] underline underline-offset-4
+                         transition-colors hover:text-[color:var(--accent)]"
+            >
+              View on GIPHY ↗
+            </a>
           </div>
 
           <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -163,7 +179,16 @@ export default function AnimalsPage() {
         <p className="mt-8 text-center text-xs text-[color:var(--fg-subtle)]">
           This page exists because sometimes you just need to watch a cute animal eat a carrot.
           <br />
-          GIFs courtesy of GIPHY.
+          Powered by{' '}
+          <a
+            href="https://giphy.com"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4 transition-colors hover:text-[color:var(--accent)]"
+          >
+            GIPHY
+          </a>
+          .
         </p>
       </main>
     </div>
