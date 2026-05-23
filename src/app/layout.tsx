@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { HelpDot } from "./components/HelpDot";
 import { KonamiEgg } from "./components/KonamiEgg";
+import { TerminalOverlay } from "./components/TerminalOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,7 @@ export default function RootLayout({
           {children}
           <HelpDot />
           <KonamiEgg />
+          <TerminalOverlay />
         </ThemeProvider>
       </body>
     </html>

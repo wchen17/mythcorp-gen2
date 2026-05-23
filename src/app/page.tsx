@@ -30,13 +30,24 @@ function AppLoader({ children }: { children: React.ReactNode }) {
   const [showChildren, setShowChildren] = useState(false);
   const [skipBoot, setSkipBoot] = useState<boolean | null>(null);
 
-  // First mount: check sessionStorage for the booted flag.
+  // First mount: check sessionStorage for the booted flag. `?boot` (or a
+  // replay, which remounts this component with the flag cleared) forces the
+  // boot sequence to run again so the LoadingScreen can be appreciated past
+  // the first visit.
   useEffect(() => {
-    let alreadyBooted = false;
+    let forceBoot = false;
     try {
-      alreadyBooted = sessionStorage.getItem(SESSION_BOOTED_KEY) === '1';
+      forceBoot = new URLSearchParams(window.location.search).has('boot');
     } catch {
-      // sessionStorage may be unavailable (private mode, etc.); fall through.
+      /* ignore */
+    }
+    let alreadyBooted = false;
+    if (!forceBoot) {
+      try {
+        alreadyBooted = sessionStorage.getItem(SESSION_BOOTED_KEY) === '1';
+      } catch {
+        // sessionStorage may be unavailable (private mode, etc.); fall through.
+      }
     }
     setSkipBoot(alreadyBooted);
     if (alreadyBooted) {
@@ -95,11 +106,24 @@ function AppLoader({ children }: { children: React.ReactNode }) {
 export default function HomePage() {
   const router = useRouter();
   const [appState, setAppState] = useState<'landing' | 'homepage'>('landing');
+  // Bumping this remounts AppLoader; paired with clearing the session flag it
+  // re-runs the full boot sequence in place.
+  const [bootNonce, setBootNonce] = useState(0);
+
+  const replayIntro = () => {
+    try {
+      sessionStorage.removeItem(SESSION_BOOTED_KEY);
+    } catch {
+      /* ignore */
+    }
+    setAppState('landing');
+    setBootNonce((n) => n + 1);
+  };
 
   return (
     <main className="h-screen w-screen bg-[color:var(--bg)]">
       <Suspense fallback={<LoadingScreen onFinished={() => {}} />}>
-        <AppLoader>
+        <AppLoader key={bootNonce}>
           {appState === 'landing' && (
             <LandingPage onTransitionComplete={() => setAppState('homepage')} />
           )}
@@ -107,6 +131,7 @@ export default function HomePage() {
             <NewLandingPage
               onEnterExperience={() => router.push('/experience')}
               onEnterInteractive={() => setAppState('landing')}
+              onReplayIntro={replayIntro}
             />
           )}
         </AppLoader>
