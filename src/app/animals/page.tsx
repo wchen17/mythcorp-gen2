@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -72,9 +72,7 @@ export default function AnimalsPage() {
           </p>
         </div>
 
-        <div className="mt-8 rounded-xl border border-[color:var(--border)]
-                        bg-[color:var(--bg-elevated)] p-6 transition-colors
-                        hover:border-[color:var(--border-strong)]">
+        <div className="themed-surface themed-surface-interactive mt-8 p-6">
           {currentGif ? (
             <div className="text-center">
               <div className="mb-4 animate-bounce text-7xl sm:text-8xl">
@@ -98,7 +96,7 @@ export default function AnimalsPage() {
             </div>
           ) : (
             <p className="py-16 text-center text-[color:var(--fg-subtle)]">
-              loading adorable content…
+              loading adorable content...
             </p>
           )}
         </div>
@@ -106,21 +104,13 @@ export default function AnimalsPage() {
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={pickRandomGif}
-            className="rounded-md bg-[color:var(--accent)] px-6 py-2.5
-                       font-bold text-sm tracking-wide text-[color:var(--bg)]
-                       transition-all hover:scale-[1.03]
-                       hover:shadow-[0_0_24px_var(--accent-glow-strong)]"
+            className="themed-button px-6 py-2.5 text-sm font-bold tracking-wide"
           >
             🎲 SHOW ME ANOTHER
           </button>
           <Link
             href="/"
-            className="rounded-md border border-[color:var(--border)]
-                       bg-[color:var(--bg-overlay)] px-6 py-2.5
-                       font-mono text-xs uppercase tracking-widest
-                       text-[color:var(--fg)] transition-all
-                       hover:border-[color:var(--border-strong)]
-                       hover:text-[color:var(--accent)]"
+            className="themed-surface themed-surface-interactive px-6 py-2.5 font-mono text-xs uppercase tracking-widest"
           >
             ← BACK HOME
           </Link>

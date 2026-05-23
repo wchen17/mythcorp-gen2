@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from '../components/SiteHeader';
@@ -20,7 +20,7 @@ const sections = [
     href: '/wc/about',
     label: 'ABOUT',
     title: 'Who, why',
-    blurb: 'Coming soon.',
+    blurb: 'Background, timeline, and what comes next.',
   },
 ];
 
