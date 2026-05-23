@@ -1,5 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Backlog
-    url: https://github.com/wchen17/mythcorp-gen2/blob/main/BACKLOG.md
-    about: See queued items before filing a new one. Each BACKLOG entry maps to an open issue.
