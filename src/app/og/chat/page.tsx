@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { SiteHeader } from '../../components/SiteHeader';
@@ -28,7 +28,6 @@ export default function ChatSketch() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Keep scroll pinned to the bottom on new messages.
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -95,9 +94,7 @@ export default function ChatSketch() {
 
         <div
           ref={scrollRef}
-          className="mb-4 flex-1 overflow-y-auto rounded-lg border border-[color:var(--border)]
-                     bg-[color:var(--bg-elevated)] p-4
-                     min-h-[300px] max-h-[55vh]"
+          className="themed-surface mb-4 flex-1 overflow-y-auto min-h-[300px] max-h-[55vh] p-4"
         >
           <div className="space-y-3">
             {messages.map((m) => {
@@ -144,8 +141,7 @@ export default function ChatSketch() {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="rounded-lg border border-[color:var(--border)] bg-[color:var(--bg-overlay)]
-                       px-3 transition-all hover:border-[color:var(--border-strong)]"
+            className="themed-surface themed-surface-interactive px-3"
             title="Upload file"
           >
             📎
@@ -154,7 +150,7 @@ export default function ChatSketch() {
             type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            placeholder="say something into the void…"
+            placeholder="say something into the void..."
             className="flex-1 rounded-lg border border-[color:var(--border)] bg-[color:var(--bg-elevated)]
                        px-4 py-2.5 text-sm text-[color:var(--fg)]
                        placeholder:text-[color:var(--fg-subtle)]
@@ -162,9 +158,7 @@ export default function ChatSketch() {
           />
           <button
             type="submit"
-            className="rounded-lg bg-[color:var(--accent)] px-5 py-2.5 text-sm font-bold
-                       text-[color:var(--bg)] transition-all hover:scale-[1.03]
-                       hover:shadow-[0_0_20px_var(--accent-glow-strong)]"
+            className="themed-button px-5 py-2.5 text-sm font-bold"
           >
             send
           </button>
