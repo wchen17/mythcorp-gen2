@@ -1,4 +1,4 @@
-﻿# Repo Map
+# Repo Map
 
 Single-screen index of where things live. Read this first; grep second.
 
@@ -12,11 +12,12 @@ Single-screen index of where things live. Read this first; grep second.
 | `/about` | `src/app/about/page.tsx` | Short "what is this" page |
 | `/contact` | `src/app/contact/page.tsx` | ComingSoon stub (no real form yet) |
 | `/wc` | `src/app/wc/page.tsx` | Personal section index |
-| `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list (placeholder) |
+| `/wc/about` | `src/app/wc/about/page.tsx` | Bio, timeline, links |
+| `/wc/papers` | `src/app/wc/papers/page.tsx` | Long-form / paper list |
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
-| `/fmhy` | `src/app/fmhy/page.tsx` | FMHY mirror: searchable category index from build-time markdown snapshot |
-| `/fmhy/[category]` | `src/app/fmhy/[category]/page.tsx` | Per-category deep dive, all entries grouped by section |
+| `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup sites directory, sourced from fmhy/edit backups.md |
+| `/fmhy/[category]` | `src/app/fmhy/[category]/page.tsx` | Per-category deep dive (existing data, not refreshed by new script) |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
@@ -42,11 +43,12 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
 | `src/app/components/NewLandingPage.tsx` | The luxury reveal (page.tsx) |
 | `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers for `/wc/learn/*` pages |
-| `src/app/fmhy/_components/SearchBox.tsx`, `CategoryNav.tsx`, `EntryRow.tsx` | FMHY mirror UI primitives |
-| `src/app/fmhy/_data/categories.ts` | FMHY category metadata (slug, upstream filename, blurb) |
-| `src/app/fmhy/_data/index.json` | Slim FMHY index (counts + highlights) for `/fmhy` |
-| `src/app/fmhy/_data/categories/<slug>.json` | Per-category snapshot, read at SSG time |
-| `scripts/fetch-fmhy.ts` | Build-time fetch from `github.com/fmhy/edit`, runs via `npm run fetch:fmhy` |
+| `src/app/fmhy/_components/SearchBox.tsx`, `CategoryNav.tsx`, `EntryRow.tsx` | FMHY category-page UI primitives (used by `[category]` routes) |
+| `src/app/fmhy/_data/categories.ts` | FMHY category metadata loaded by `[category]` routes |
+| `src/app/fmhy/_data/backup-sites.json` | FMHY backup sites snapshot, used by `/fmhy` index |
+| `src/app/fmhy/_data/index.json` | Slim FMHY catalog index (counts + highlights), used by `[category]` routes |
+| `src/app/fmhy/_data/categories/<slug>.json` | Per-category snapshot, read at SSG time by `[category]` routes |
+| `scripts/fetch-fmhy.ts` | Fetches `docs/other/backups.md` from fmhy/edit and outputs `backup-sites.json` |
 
 ## 3D scene
 
@@ -86,7 +88,7 @@ Walkthrough: `/wc/learn/theme-system`.
 - **A new paper**: add to `PAPERS` array in `src/app/wc/papers/page.tsx`. Create `src/app/wc/papers/<slug>/page.tsx` for the body.
 - **A new stub page**: use `<ComingSoon>` from `src/app/components/ComingSoon.tsx`.
 - **A new back-room sketch** (rough idea you want to keep): create `src/app/og/<slug>/page.tsx`, mount `<SiteHeader />` and `<DraftBanner />`, then add it to `SKETCHES` in `src/app/og/page.tsx`.
-- **Promote a sketch out of `/og/`**: move the folder up (e.g. `src/app/og/chat` → `src/app/chat`), remove `<DraftBanner />`, drop it from `/og/page.tsx`'s `SKETCHES`, add to MAP.md routes table.
+- **Promote a sketch out of `/og/`**: move the folder up, remove `<DraftBanner />`, drop it from `/og/page.tsx` SKETCHES, add to MAP.md routes table.
 - **A new themed page**: add `<SiteHeader />` at top, use `bg-[color:var(--bg)]` and `text-[color:var(--fg)]`. Done.
 
 ## Build / dev
