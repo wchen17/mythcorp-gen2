@@ -109,11 +109,11 @@ function AppLoader({ children }) {
       <Section title="LoadingScreen: shapes from binary digits">
         <p>
           The loading screen is its own full-screen Canvas. It renders 500
-          binary-digit components (each a{' '}
+          binary-digit components, each a{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">&lt;Text&gt;</code>{' '}
           from{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">@react-three/drei</code>
-          ) that fly in from far away and converge on a target shape.
+          <code className="font-mono text-[color:var(--accent-soft)]">@react-three/drei</code>,
+          that fly in from far away and converge on a target shape.
         </p>
         <p>
           The shape type is chosen randomly at mount: sphere, cube, or torus.
@@ -186,8 +186,7 @@ useGLTF.preload('/spectre.glb');`}</Code>
           which flips{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">appState</code>{' '}
           to{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">'homepage'</code>
-          .
+          <code className="font-mono text-[color:var(--accent-soft)]">'homepage'</code>.
         </p>
         <Code>{`const tl = gsap.timeline({ onComplete: () => onTransitionComplete?.() });
 
@@ -218,14 +217,13 @@ contentRef.current.traverse((child) => {
           <code className="font-mono text-[color:var(--accent-soft)]">LandingPage</code>{' '}
           and mounts{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">NewLandingPage</code>.
-          There is no Canvas here at all: the background is a CSS-filtered Chicago
-          skyline image ({
-          <code className="font-mono text-[color:var(--accent-soft)]">SkylineBackdrop</code>
-          }), the hero heading is pure HTML ({'}'}
-          <code className="font-mono text-[color:var(--accent-soft)]">HeroTitle</code>
-          ), and a banner slides up from the bottom after 2.5 seconds ({'}'}
-          <code className="font-mono text-[color:var(--accent-soft)]">EnterBanner</code>
-          ).
+          There is no Canvas here: the background is a CSS-filtered Chicago
+          skyline image rendered by{' '}
+          <code className="font-mono text-[color:var(--accent-soft)]">SkylineBackdrop</code>,
+          the hero heading is pure HTML via{' '}
+          <code className="font-mono text-[color:var(--accent-soft)]">HeroTitle</code>,
+          and a banner slides up from the bottom after 2.5 seconds via{' '}
+          <code className="font-mono text-[color:var(--accent-soft)]">EnterBanner</code>.
         </p>
         <p>
           Two paths from here: "ENTER EXPERIENCE" pushes to{' '}
@@ -235,17 +233,17 @@ contentRef.current.traverse((child) => {
           back to{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">'landing'</code>,
           which replays the 3D title card. Pressing Ctrl+G (or Cmd+G) toggles a
-          glowing vertical line across the screen, a dev alignment aid and a
+          glowing vertical line across the screen: a dev alignment aid and a
           small Easter egg at the same time.
         </p>
       </Section>
 
       <Section title="Where to look">
         <ul className="list-inside list-disc space-y-1 font-mono text-sm">
-          <li><code>src/app/page.tsx</code>, AppLoader + state machine</li>
+          <li><code>src/app/page.tsx</code>, AppLoader and state machine</li>
           <li><code>src/app/components/LoadingScreen.tsx</code>, binary digit shapes</li>
-          <li><code>src/app/components/LandingPage.tsx</code>, 3D logo + GSAP fade</li>
-          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal + banner</li>
+          <li><code>src/app/components/LandingPage.tsx</code>, 3D logo and GSAP fade</li>
+          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal and banner</li>
           <li><code>src/app/components/landing/</code>, SkylineBackdrop, HeroTitle, EnterBanner, LandingModals</li>
         </ul>
       </Section>
