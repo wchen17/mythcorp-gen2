@@ -18,6 +18,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY directory: searchable category index from build-time snapshot, all links go to fmhy.net |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
+| `/og/calhoun` | `src/app/og/calhoun/page.tsx` | Ramble on Universe 25 + Merchant of Doubt. Links to `/experience?mode=calhoun` |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
@@ -55,7 +56,8 @@ Single-screen index of where things live. Read this first; grep second.
 
 | File | Notes |
 |---|---|
-| `src/app/experience/Simulation.tsx` | Main scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. |
+| `src/app/experience/Simulation.tsx` | Main scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. Accepts `initialMode`; `calhoun` swaps the model/particles for `BehavioralSink` + a phase readout. |
+| `src/app/experience/BehavioralSink.tsx` | Looping Universe 25 point cloud (phases A-D). Reported via `onState` to the readout. Reached by the `/og/calhoun` CTA or the in-panel toggle. |
 | `src/app/experience/MainMenu.tsx` | Entry card before Simulation |
 
 `spectre.glb` is preloaded in two places: `LandingPage.tsx` and `Simulation.tsx`. Both use the same drei cache, so the actual fetch only happens once per session.
