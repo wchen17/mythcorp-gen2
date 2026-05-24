@@ -115,6 +115,26 @@ export default function CalhounRambling() {
           </p>
         </Section>
 
+        <Section kicker="and for people?" title="Roles, not room">
+          <p>
+            It is hard to read this and not think about us. We have gotten good at
+            solving for room and calories, and we are much worse at manufacturing
+            roles, the sense that some specific corner of the world is yours to
+            tend and would notice if you left. When a society grows abundant
+            faster than it invents places for people to matter, you can get the
+            human echo of the beautiful ones: comfortable, well fed, groomed, and
+            quietly checked out.
+          </p>
+          <p>
+            The careful version of this thought resists the doomer reading.
+            Universe 25 was mice in a box, not a prophecy, and people are not
+            rodents with better grooming. The useful version keeps the question
+            instead of the panic: the hard problem was never how to house and feed
+            more people, which we are slowly learning to do, but how to keep
+            enough roles worth filling.
+          </p>
+        </Section>
+
         <Section kicker="why this keeps me up" title="Merchants of doubt, merchants of slogans">
           <p>
             Here is the uncomfortable bit. The true meaning above was never
@@ -140,6 +160,13 @@ export default function CalhounRambling() {
             overpopulation&rdquo;). Either way the original finding, nuance and
             all, stops traveling. What travels instead is the version that is easy
             to hold and convenient to believe.
+          </p>
+          <p>
+            I pulled on that thread in a companion ramble about{' '}
+            <Link href="/og/doubt" className="text-[color:var(--accent)] underline underline-offset-4 hover:text-[color:var(--accent-soft)]">
+              manufactured doubt
+            </Link>
+            , and the one honest reason for optimism it could not stop.
           </p>
         </Section>
 
