@@ -14,6 +14,13 @@ type Sketch = {
 
 const SKETCHES: ReadonlyArray<Sketch> = [
   {
+    href: '/og/calhoun',
+    label: 'CALHOUN',
+    title: 'The Calhoun Effect',
+    blurb: 'A ramble on Universe 25, what the mouse-utopia experiment is taken to mean vs. what it meant, and the doubt/slogan machinery in between. Links to a behavioral-sink mode in the lab.',
+    status: 'sketch',
+  },
+  {
     href: '/og/interactive',
     label: 'INTERACTIVE',
     title: '"W I P" sideways type',

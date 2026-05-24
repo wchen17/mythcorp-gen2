@@ -12,7 +12,18 @@ const FADE_MS = 420;
 export default function ExperiencePage() {
   const [view, setView] = useState<View>('menu');
   const [mounted, setMounted] = useState<View>('menu');
+  const [mode, setMode] = useState<'default' | 'calhoun'>('default');
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Deep link: /experience?mode=calhoun drops straight into the behavioral sink.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') === 'calhoun') {
+      setMode('calhoun');
+      setView('simulation');
+      setMounted('simulation');
+    }
+  }, []);
 
   useEffect(() => {
     if (mounted === view) return;
@@ -40,7 +51,7 @@ export default function ExperiencePage() {
           </FadeBox>
         ) : (
           <FadeBox visible={showSim}>
-            <Simulation onExit={() => setView('menu')} />
+            <Simulation onExit={() => setView('menu')} initialMode={mode} />
           </FadeBox>
         )}
       </div>

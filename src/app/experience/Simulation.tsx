@@ -8,6 +8,7 @@ import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Group, Vector3 } from 'three'
 import { useTheme, type ThemeName } from '../contexts/ThemeContext'
+import { BehavioralSink, type SinkState } from './BehavioralSink'
 
 // Preload once for the session, cached for both this scene and the
 // boot-time landing logo, so route changes don't refetch the model.
@@ -44,6 +45,7 @@ interface CombinedInputProps {
 }
 interface SimulationProps {
   onExit: () => void;
+  initialMode?: 'default' | 'calhoun';
 }
 
 const DEFAULTS = {
@@ -212,9 +214,11 @@ function CombinedInput({ label, value, onChange, min, max, step }: CombinedInput
 // ===================================================================
 // === MAIN SIMULATION COMPONENT ===
 // ===================================================================
-export function Simulation({ onExit }: SimulationProps) {
+export function Simulation({ onExit, initialMode = 'default' }: SimulationProps) {
   const { theme } = useTheme();
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [calhoun, setCalhoun] = useState(initialMode === 'calhoun');
+  const [sink, setSink] = useState<SinkState | null>(null);
   const [settings, setSettings] = useState(() => getRandomSettings());
 
   const randomizeAll = () => setSettings(getRandomSettings());
@@ -283,6 +287,15 @@ export function Simulation({ onExit }: SimulationProps) {
           />
 
           <div className="border-t border-[color:var(--border)] pt-4 mt-4 space-y-2">
+            <label className="flex items-center gap-3 text-[color:var(--accent-warm)] cursor-pointer">
+              <input
+                type="checkbox"
+                checked={calhoun}
+                onChange={(e) => setCalhoun(e.target.checked)}
+                className="w-4 h-4 accent-[color:var(--accent-warm)]"
+              />
+              Behavioral sink (Calhoun)
+            </label>
             <label className="flex items-center gap-3 text-[color:var(--fg-muted)] cursor-pointer">
               <input
                 type="checkbox"
@@ -356,6 +369,40 @@ export function Simulation({ onExit }: SimulationProps) {
         </div>
       </div>
 
+      {/* Behavioral-sink phase readout. Mirrors Calhoun's four phases. */}
+      {calhoun && sink && (
+        <div className="themed-surface absolute right-4 top-20 z-10 w-56 p-4
+                        text-[color:var(--fg)]">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--accent-warm)]">
+            [ UNIVERSE 25 ]
+          </p>
+          <div className="mt-3 flex items-baseline gap-2">
+            <span className="font-mono text-3xl font-semibold text-[color:var(--accent-soft)]">
+              {sink.phase}
+            </span>
+            <span className="font-serif text-lg text-[color:var(--fg)]">{sink.phaseName}</span>
+          </div>
+          <div className="mt-3 flex gap-1.5">
+            {(['A', 'B', 'C', 'D'] as const).map((p) => (
+              <span
+                key={p}
+                className="h-1.5 flex-1 rounded-full"
+                style={{
+                  background:
+                    p === sink.phase ? 'var(--accent-soft)' : 'var(--border)',
+                }}
+              />
+            ))}
+          </div>
+          <p className="mt-3 font-mono text-sm text-[color:var(--fg-muted)]">
+            pop. <span className="text-[color:var(--fg)]">{sink.population.toLocaleString()}</span>
+          </p>
+          <p className="mt-2 text-[11px] leading-snug text-[color:var(--fg-subtle)]">
+            Space and food never run out. Roles do.
+          </p>
+        </div>
+      )}
+
       {/* --- 3D Canvas --- */}
       <Canvas
         gl={{
@@ -375,12 +422,16 @@ export function Simulation({ onExit }: SimulationProps) {
           fade
           speed={1}
         />
-        <ParticleField />
+        {calhoun ? (
+          <BehavioralSink color={settings.color} onState={setSink} />
+        ) : (
+          <ParticleField />
+        )}
 
         <ambientLight intensity={0.3} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#00ffff" />
-        <Model rotationSpeed={settings.rotationSpeed} position={settings.position} color={settings.color} />
+        {!calhoun && <Model rotationSpeed={settings.rotationSpeed} position={settings.position} color={settings.color} />}
         {settings.showHelicopter && <Helicopter scale={settings.heliScale} lerpFactor={settings.heliSmoothness} />}
 
         {settings.showAxis && <axesHelper args={[5]} />}
