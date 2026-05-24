@@ -14,6 +14,13 @@ type Sketch = {
 
 const SKETCHES: ReadonlyArray<Sketch> = [
   {
+    href: '/og/doubt',
+    label: 'DOUBT',
+    title: 'Manufactured Doubt',
+    blurb: 'How doubt gets manufactured to delay action (tobacco to climate), and the one honest reason for optimism it could not stop. Interactive solar + EV curves. Companion to the Calhoun ramble.',
+    status: 'sketch',
+  },
+  {
     href: '/og/calhoun',
     label: 'CALHOUN',
     title: 'The Calhoun Effect',

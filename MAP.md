@@ -21,6 +21,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup-sites directory, sourced from fmhy/edit backups.md |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/calhoun` | `src/app/og/calhoun/page.tsx` | Ramble on Universe 25 + Merchant of Doubt. Links to `/experience?mode=calhoun` |
+| `/og/doubt` | `src/app/og/doubt/page.tsx` | Ramble on manufactured doubt + the solar/EV progress curves. Interactive figures in `_components/ProgressFigures.tsx` |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |

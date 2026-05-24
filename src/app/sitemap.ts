@@ -26,6 +26,7 @@ const ROUTES: Entry[] = [
   { path: '/animals', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/og', priority: 0.4, changeFrequency: 'monthly' },
   { path: '/og/calhoun', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/og/doubt', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/og/interactive', priority: 0.2, changeFrequency: 'yearly' },
   { path: '/og/chat', priority: 0.2, changeFrequency: 'yearly' },
 ];
