@@ -56,8 +56,9 @@ Single-screen index of where things live. Read this first; grep second.
 
 | File | Notes |
 |---|---|
-| `src/app/experience/Simulation.tsx` | Main scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. Accepts `initialMode`; `calhoun` swaps the model/particles for `BehavioralSink` + a phase readout. |
-| `src/app/experience/BehavioralSink.tsx` | Looping Universe 25 point cloud (phases A-D). Reported via `onState` to the readout. Reached by the `/og/calhoun` CTA or the in-panel toggle. |
+| `src/app/experience/Simulation.tsx` | Spectre scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. |
+| `src/app/experience/CalhounSimulation.tsx` | Separate Universe 25 scene (own Canvas, own controls + phase readout). Reached via `/experience?mode=calhoun` from the `/og/calhoun` CTA. Never co-mounts with `Simulation`. |
+| `src/app/experience/BehavioralSink.tsx` | Looping Universe 25 point cloud (phases A-D), reports phase + pop via `onState`. Used only by `CalhounSimulation`. |
 | `src/app/experience/MainMenu.tsx` | Entry card before Simulation |
 
 `spectre.glb` is preloaded in two places: `LandingPage.tsx` and `Simulation.tsx`. Both use the same drei cache, so the actual fetch only happens once per session.

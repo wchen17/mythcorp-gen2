@@ -4,24 +4,25 @@ import { useEffect, useRef, useState } from 'react';
 import { SiteHeader } from '../components/SiteHeader';
 import { MainMenu } from './MainMenu';
 import { Simulation } from './Simulation';
+import { CalhounSimulation } from './CalhounSimulation';
 
-type View = 'menu' | 'simulation';
+// Two distinct scenes share this route: the spectre 'simulation' and the
+// separate Universe 25 'calhoun' behavioral sink. They never co-mount.
+type View = 'menu' | 'simulation' | 'calhoun';
 
 const FADE_MS = 420;
 
 export default function ExperiencePage() {
   const [view, setView] = useState<View>('menu');
   const [mounted, setMounted] = useState<View>('menu');
-  const [mode, setMode] = useState<'default' | 'calhoun'>('default');
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Deep link: /experience?mode=calhoun drops straight into the behavioral sink.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('mode') === 'calhoun') {
-      setMode('calhoun');
-      setView('simulation');
-      setMounted('simulation');
+      setView('calhoun');
+      setMounted('calhoun');
     }
   }, []);
 
@@ -37,21 +38,26 @@ export default function ExperiencePage() {
     };
   }, [view, mounted]);
 
-  const showMenu = view === 'menu' && mounted === 'menu';
-  const showSim = view === 'simulation' && mounted === 'simulation';
+  const visible = view === mounted;
 
   return (
     <div className="relative min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
       <SiteHeader tagline="SIMULATION LAB" />
 
       <div className="relative">
-        {mounted === 'menu' ? (
-          <FadeBox visible={showMenu}>
+        {mounted === 'menu' && (
+          <FadeBox visible={visible}>
             <MainMenu onStart={() => setView('simulation')} />
           </FadeBox>
-        ) : (
-          <FadeBox visible={showSim}>
-            <Simulation onExit={() => setView('menu')} initialMode={mode} />
+        )}
+        {mounted === 'simulation' && (
+          <FadeBox visible={visible}>
+            <Simulation onExit={() => setView('menu')} />
+          </FadeBox>
+        )}
+        {mounted === 'calhoun' && (
+          <FadeBox visible={visible}>
+            <CalhounSimulation onExit={() => setView('menu')} />
           </FadeBox>
         )}
       </div>
