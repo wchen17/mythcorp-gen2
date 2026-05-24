@@ -1,0 +1,85 @@
+{
+  "fetchedAt": "2026-05-23T00:00:00.000Z",
+  "groups": [
+    {
+      "heading": "Backup Instances",
+      "sites": [
+        {
+          "name": "FMHY Archive",
+          "url": "https://ffmhy.pages.dev/",
+          "note": "Alternative style"
+        },
+        {
+          "name": "Retro FMHY",
+          "url": "https://retrofmhy.pages.dev/",
+          "note": "Alternative style with improved search"
+        },
+        {
+          "name": "fmhy.bid",
+          "url": "https://fmhy.bid/",
+          "note": ""
+        },
+        {
+          "name": "fmhy.samidy.com",
+          "url": "https://fmhy.samidy.com/",
+          "note": ""
+        },
+        {
+          "name": "fmhy.jbugel.xyz",
+          "url": "https://fmhy.jbugel.xyz/",
+          "note": ""
+        },
+        {
+          "name": "fmhy.ou0.cc",
+          "url": "https://fmhy.ou0.cc/",
+          "note": ""
+        },
+        {
+          "name": "A-FMHY",
+          "url": "https://a-fmhy.pages.dev/",
+          "note": ""
+        },
+        {
+          "name": "fmhy.artistgrid.cx",
+          "url": "https://fmhy.artistgrid.cx/",
+          "note": "Lists 12 additional mirrors"
+        },
+        {
+          "name": "fmhy.xyz",
+          "url": "https://fmhy.xyz/",
+          "note": "SFW version (no nsfw page)"
+        },
+        {
+          "name": "fmhy.vercel.app",
+          "url": "https://fmhy.vercel.app/",
+          "note": "Original style"
+        }
+      ]
+    },
+    {
+      "heading": "Official Mirrors",
+      "sites": [
+        {
+          "name": "Reddit",
+          "url": "https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index",
+          "note": ""
+        },
+        {
+          "name": "GitHub Wiki",
+          "url": "https://github.com/fmhy/FMHY/wiki",
+          "note": ""
+        },
+        {
+          "name": "Rentry",
+          "url": "https://rentry.co/FMHY",
+          "note": ""
+        },
+        {
+          "name": "Rentry SFW",
+          "url": "https://rentry.co/piracy",
+          "note": "Safe for work version"
+        }
+      ]
+    }
+  ]
+}
