@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Weeks, Five Strengths</title>
+
+  <!-- IMPORT 1: Google Fonts. Free typography. This <link> loads the font;
+       we just name it in the CSS below. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap"
+    rel="stylesheet">
+
+  <!-- IMPORT 2: AOS = Animate On Scroll. The CSS gives the animations, the
+       <script> gives the engine. This one library replaces all the scroll JS
+       you'd otherwise hand-write. -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0f0e0c;
+      color: #efe9dd;
+      font-family: "Fraunces", Georgia, serif;
+    }
+
+    /* Each section is one full screen, contents centered. */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 1.1;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 8vw, 5rem);
+      margin: 0 0 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .num {
+      letter-spacing: 0.25rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: #c98a3c;
+      margin-bottom: 1rem;
+    }
+
+    .sub {
+      margin-top: 1.5rem;
+      font-style: italic;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- data-aos="fade-up" on any element = "fade + rise into view when scrolled
+       to." That attribute is ALL the animation code. Change "fade-up" to
+       "zoom-in", "fade-right", "flip-up" etc. to try others. -->
+
+  <section>
+    <h1 data-aos="zoom-in">Five weeks.<br>Five themes.</h1>
+    <div class="sub" data-aos="fade-left" data-aos-delay="300">Relator &middot; Learner &middot; Focus &middot;
+      Responsibility &middot; Restorative</div>
+  </section>
+
+  <section>
+    <div class="num" data-aos="flip-left">One</div>
+    <h2 data-aos="fade-up">Relator</h2>
+    <p data-aos="zoom-in-up" data-aos-delay="150">I'm a team player who enjoys working closely with others and building
+      strong
+      relationships.</p>
+  </section>
+
+  <section>
+    <div class="num" data-aos="fade-right">Two</div>
+    <h2 data-aos="flip-up">Learner</h2>
+    <p data-aos="fade-up-left" data-aos-delay="150">I enjoy learning new things and the process of learning new things.
+    </p>
+  </section>
+
+  <section>
+    <div class="num" data-aos="zoom-in-right">Three</div>
+    <h2 data-aos="fade-down">Focus</h2>
+    <p data-aos="zoom-out" data-aos-delay="150">Focused on the end goal and on getting things done.</p>
+  </section>
+
+  <section>
+    <div class="num" data-aos="flip-right">Four</div>
+    <h2 data-aos="zoom-in-left">Responsibility</h2>
+    <p data-aos="fade-up-right" data-aos-delay="150">Responsible?</p>
+  </section>
+
+  <section>
+    <div class="num" data-aos="fade-down-left">Five</div>
+    <h2 data-aos="flip-down">Restorative</h2>
+    <p data-aos="zoom-out-up" data-aos-delay="150">Always willing to help and support others.</p>
+  </section>
+
+  <section>
+    <p data-aos="zoom-in" style="font-size:1.4rem;font-style:italic;">Five different strengths, same person.</p>
+  </section>
+
+  <section>
+    <div class="num" data-aos="fade-up">Coming Soon</div>
+    <h2 data-aos="flip-left">The Final Reflection</h2>
+    <p data-aos="zoom-out-down" data-aos-delay="150">Live &middot; July 17</p>
+  </section>
+
+  <!-- THE ONE LINE that turns the library on. Runs after the page loads and
+       activates every data-aos attribute above. -->
+  <script>
+    AOS.init({ duration: 800, once: false });
+  </script>
+</body>
+
+</html>
