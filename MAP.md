@@ -17,7 +17,8 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
 | `/wc/learn/landing-flow` | `src/app/wc/learn/landing-flow/page.tsx` | Landing boot-flow walkthrough |
-| `/wc/learn/3d-scene` | `src/app/wc/learn/3d-scene/page.tsx` | Simulation 3D-scene walkthrough |
+| `/wc/learn/3d-scene` | `src/app/wc/learn/3d-scene/page.tsx` | Simulation 3D-scene walkthrough (live mini star field + reset-bug diff) |
+| `/wc/learn/build-a-playground` | `src/app/wc/learn/build-a-playground/page.tsx` | How the live demos are built: DemoPanel, TokenPlayground, the ssr:false canvas pattern, each embedded as its own example |
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup-sites directory, sourced from fmhy/edit backups.md |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/calhoun` | `src/app/og/calhoun/page.tsx` | Ramble on Universe 25 + Merchant of Doubt. Links to `/experience?mode=calhoun` |
@@ -49,15 +50,29 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/LoadingScreen.tsx` | Boot sequence (page.tsx) |
 | `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
 | `src/app/components/NewLandingPage.tsx` | The luxury reveal (page.tsx) |
-| `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers for `/wc/learn/*` pages |
+| `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers (`Walkthrough`, `Section`, `Code`, `Aside`) for `/wc/learn/*` pages. `Code` takes optional `filename` + `highlight?: number[]` |
 | `src/app/fmhy/_data/backup-sites.json` | FMHY backup-sites snapshot, the only data `/fmhy` reads |
 | `scripts/fetch-fmhy.ts` | Fetches `docs/other/backups.md` from fmhy/edit and outputs `backup-sites.json`. Runs via `npm run fetch:fmhy` |
+
+## Learn primitives
+
+The interactive figures embedded in `/wc/learn/*`. All `'use client'`, theme-token only, each carries a `// Walkthrough: /wc/learn/build-a-playground` pointer.
+
+| File | Role |
+|---|---|
+| `src/app/wc/learn/_components/DemoPanel.tsx` | Layout shell: code left, live demo right at md+, stacked on mobile. Breaks out of the article's `max-w-2xl` into a centered band. Renders the "LIVE" pill |
+| `src/app/wc/learn/_components/TokenPlayground.tsx` | Live-edits `--accent`/`--accent-soft`/`--fg`/`--bg` via inline `setProperty`. Tracks its overrides and clears them on reset/unmount/theme change. Never touches localStorage or `dataset.theme` |
+| `src/app/wc/learn/_components/MiniStarField.tsx` | Self-contained R3F star field, `MINI_MAX_STARS = 3000`, theme-matched backdrop, no GLB/bloom |
+| `src/app/wc/learn/_components/MiniStarFieldDemo.tsx` | Controls + `next/dynamic` `ssr:false` loader (height-matched skeleton) for MiniStarField. Reset uses the clone pattern |
+| `src/app/wc/learn/_components/FlowStepper.tsx` | Interactive `loading -> landing -> entered` boot stepper (prev/next/auto-play), highlights matching snippet lines per step |
+| `src/app/wc/learn/3d-scene/_snippets.ts` | Extracted snippet strings for the 3d-scene walkthrough (keeps the page under the line ceiling) |
+| `src/app/wc/learn/landing-flow/_snippets.ts` | Extracted snippet strings for the landing-flow walkthrough |
 
 ## 3D scene
 
 | File | Notes |
 |---|---|
-| `src/app/experience/Simulation.tsx` | Spectre scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. |
+| `src/app/experience/Simulation.tsx` | Spectre scene. `useGLTF.preload('/spectre.glb')` at top. Stars capped at `MAX_STARS = 12000`. `getDefaultSettings()` clones `DEFAULTS.position` so reset never aliases the module-level array. |
 | `src/app/experience/CalhounSimulation.tsx` | Separate Universe 25 scene (own Canvas, own controls + phase readout). Reached via `/experience?mode=calhoun` from the `/og/calhoun` CTA. Never co-mounts with `Simulation`. |
 | `src/app/experience/BehavioralSink.tsx` | Looping Universe 25 point cloud (phases A-D), reports phase + pop via `onState`. Used only by `CalhounSimulation`. |
 | `src/app/experience/MainMenu.tsx` | Entry card before Simulation |

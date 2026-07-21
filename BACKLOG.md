@@ -626,6 +626,8 @@ One block, scoped to `/wc/papers/*` via a body class added in that route's layou
 
 ## #39, Interactive code blocks via Sandpack
 
+**Status: DEFERRED BY DECISION (batch 7, 2026-07-21).** `/wc/learn` went the other way: hand-built playground primitives (DemoPanel, TokenPlayground, MiniStarField, FlowStepper) that drive the real components instead of a bundled sandbox. A demo wired to the actual component can't drift from it, weighs almost nothing, and needs no edge bundler. See STATUS "custom playgrounds over Sandpack." Not closed, since a true edit-arbitrary-code sandbox is still a distinct capability; but it is parked on purpose, not merely un-started.
+
 **Labels:** `walkthrough`, `feature`, `teaching`
 
 **Body:**
@@ -660,6 +662,8 @@ Render both tracks on `/wc/learn` with a tab or filter. Different shape (shorter
 
 ## #41, Diff-driven walkthrough format
 
+**Partial (batch 7, 2026-07-21).** The new `Code` `highlight?: number[]` prop covers the cheap 80%: before/after code shown in one block with the changed lines tinted (used for the reset-bug diff in the 3d-scene walkthrough). The full `<DiffSlider before after />` with a scrub-wipe and pinned `<DiffNote>` line commentary is still open; the line-tint gets most of the teaching value without the build.
+
 **Labels:** `walkthrough`, `feature`
 
 **Body:**
@@ -676,6 +680,8 @@ First use: `/wc/learn/landing-refactor`. Pulls double-duty as portfolio (here is
 ---
 
 ## #42, Mini 3D demos embedded in walkthroughs
+
+**Status: DONE (batch 7, 2026-07-21).** `MiniStarField` + `MiniStarFieldDemo` ship in `src/app/wc/learn/_components/`, embedded in the 3d-scene walkthrough via a `DemoPanel`. Self-contained R3F, `MINI_MAX_STARS = 3000`, no bloom, lazy-loaded with `dynamic(..., { ssr: false })` behind a height-matched skeleton, exactly the shape this item asked for. The other two sketches (`<MiniBloom />`, `<MiniStarsClamp />`) are still open if wanted, but the pattern is proven.
 
 **Labels:** `walkthrough`, `3d`
 
@@ -704,6 +710,8 @@ Bonus: a "next up" link at the bottom of each walkthrough that recommends a down
 ---
 
 ## #44, Show-the-bug walkthrough pattern
+
+**Status: DONE (batch 7, 2026-07-21).** First instance shipped in the 3d-scene walkthrough: the "Show the bug: reset that shares an array" section walks the `setSettings(DEFAULTS)` aliasing (edit a Position slider, mutate the module-level defaults; reset twice, React bails out) and its clone-pattern fix, using the new `Code` `highlight` prop for the before/after diff. Bug was fixed in `Simulation.tsx` the same session, so the walkthrough teaches a real one this repo shipped. The heavier live-crash variant (a `<BugDemo />` that mounts a second Canvas and throws into an error boundary) is still open if a fuller version is wanted.
 
 **Labels:** `walkthrough`, `content`
 
@@ -739,6 +747,8 @@ Biggest win for the FMHY mirror: currently you can filter by category, but canno
 ---
 
 ## #46, Shiki + twoslash for typed code blocks
+
+**Partial (batch 7, 2026-07-21).** The `Code` upgrade added a `filename` label strip and `highlight` line tinting with zero deps, the cheap slice of this item's value. Full syntax highlighting and twoslash type-on-hover still want `shiki`/`@shikijs/twoslash` (do after MDX #7, per the note below).
 
 **Labels:** `walkthrough`, `polish`
 
