@@ -1,6 +1,17 @@
 'use client';
 
 import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
+import { DemoPanel } from '../_components/DemoPanel';
+import { MiniStarFieldDemo } from '../_components/MiniStarFieldDemo';
+import {
+  CANVAS_SNIPPET,
+  PARTICLE_SNIPPET,
+  STARS_SNIPPET,
+  BLOOM_SNIPPET,
+  DEFAULTS_SNIPPET,
+  BACKDROP_SNIPPET,
+  RESET_BUG_SNIPPET,
+} from './_snippets';
 
 export default function ThreeDSceneWalkthrough() {
   return (
@@ -22,22 +33,12 @@ export default function ThreeDSceneWalkthrough() {
     >
       <Section title="Canvas and R3F basics">
         <p>
-          React Three Fiber wraps Three.js inside React's reconciler. You write
+          React Three Fiber wraps Three.js inside React&rsquo;s reconciler. You write
           JSX and R3F translates it into Three.js objects: each JSX element maps
           to a Three.js class, and props map to properties on that class.
         </p>
-        <Code>{`<Canvas
-  gl={{ alpha: false, antialias: true, powerPreference: 'high-performance' }}
-  dpr={[1, 2]}
->
-  {/* All R3F components live inside <Canvas> */}
-  <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={55} />
-  <Model ... />
-  <Stars ... />
-</Canvas>`}</Code>
-        <p>
-          Two hooks do most of the work in child components:
-        </p>
+        <Code>{CANVAS_SNIPPET}</Code>
+        <p>Two hooks do most of the work in child components:</p>
         <ul className="list-inside list-disc space-y-1 text-sm">
           <li>
             <code className="font-mono text-[color:var(--accent-soft)]">useFrame(callback)</code>
@@ -55,6 +56,36 @@ export default function ThreeDSceneWalkthrough() {
         </Aside>
       </Section>
 
+      <Section title="Try it: a pocket star field">
+        <p>
+          Here is the same idea shrunk to fit an article: a real R3F canvas with
+          a star field, a spinning wireframe, and the same clamp the full scene
+          uses. Drag the density up and the count still stops well short of the
+          ceiling. The canvas background matches your current theme, switch
+          themes and it follows.
+        </p>
+        <DemoPanel
+          label="R3F"
+          code={
+            <Code filename="MiniStarField.tsx" highlight={[3, 4]}>{`const count = Math.min(
+  Math.round(MINI_STARS_PER_UNIT * settings.stars),
+  MINI_MAX_STARS,          // 3000 here, 12000 in the real scene
+);
+<Stars count={count} factor={3 * settings.stars} speed={settings.speed} fade />
+<color attach="background" args={[backdropForTheme]} />`}</Code>
+          }
+          demo={<MiniStarFieldDemo />}
+        />
+        <Aside>
+          The canvas is loaded with{' '}
+          <code className="font-mono">next/dynamic</code> and{' '}
+          <code className="font-mono">ssr: false</code>, behind a
+          height-matched skeleton. R3F reaches for WebGL at import time, so it
+          cannot render on the server, and the skeleton keeps the article from
+          jumping when the canvas swaps in.
+        </Aside>
+      </Section>
+
       <Section title="ParticleField: BufferGeometry and Float32Array">
         <p>
           The swirling blue cloud behind the model is{' '}
@@ -64,32 +95,7 @@ export default function ThreeDSceneWalkthrough() {
           Rather than creating 1 000 separate mesh objects, all positions and
           colors are packed into typed arrays and uploaded to the GPU once.
         </p>
-        <Code>{`const particles = useMemo(() => {
-  const positions = new Float32Array(particleCount * 3); // [x,y,z, x,y,z, ...]
-  const colors    = new Float32Array(particleCount * 3); // [r,g,b, r,g,b, ...]
-
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-    colors[i * 3]        = Math.random() * 0.5 + 0.5; // r
-    colors[i * 3 + 1]    = Math.random() * 0.5 + 0.5; // g
-    colors[i * 3 + 2]    = 1;                           // b (always full)
-  }
-  return { positions, colors };
-}, []);
-
-return (
-  <points ref={meshRef}>
-    <bufferGeometry>
-      <bufferAttribute attach="attributes-position" count={particleCount}
-        args={[particles.positions, 3]} />
-      <bufferAttribute attach="attributes-color" count={particleCount}
-        args={[particles.colors, 3]} />
-    </bufferGeometry>
-    <pointsMaterial size={0.05} vertexColors transparent opacity={0.6} />
-  </points>
-);`}</Code>
+        <Code>{PARTICLE_SNIPPET}</Code>
         <p>
           The field rotates slowly each frame via{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">useFrame</code>,
@@ -99,33 +105,19 @@ return (
 
       <Section title="Stars: clamping the count">
         <p>
-          The settings panel exposes a "Star Density" slider that multiplies the
+          The settings panel exposes a &ldquo;Star Density&rdquo; slider that multiplies the
           star count. The naive formula would be{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">5000 * settings.stars</code>,
           but at the maximum slider value that evaluates to 25 000 stars and
           tanks the frame rate on mid-range GPUs.
         </p>
-        <p>
-          Two constants enforce a ceiling:
-        </p>
-        <Code>{`const MAX_STARS = 12000;
-const STARS_PER_UNIT = 1200;
-
-// Inside <Canvas>:
-<Stars
-  radius={100}
-  depth={50}
-  count={Math.min(Math.round(STARS_PER_UNIT * settings.stars), MAX_STARS)}
-  factor={4 * settings.stars}
-  saturation={0}
-  fade
-  speed={1}
-/>`}</Code>
+        <p>Two constants enforce a ceiling:</p>
+        <Code>{STARS_SNIPPET}</Code>
         <p>
           At the default density (1 unit), the count is 1 200. At the slider
-          maximum (5 units), it would be 6 000, well below the 12 000 cap.
-          The cap exists so a user who hand-edits the number input can never
-          accidentally input a value that exceeds it.
+          maximum (5 units), it would be 6 000, well below the 12 000 cap. The
+          cap exists so a user who hand-edits the number input can never
+          accidentally exceed it.
         </p>
         <Aside>
           <code className="font-mono">factor={'{4 * settings.stars}'}</code> scales
@@ -141,24 +133,16 @@ const STARS_PER_UNIT = 1200;
           <code className="font-mono text-[color:var(--accent-soft)]">Bloom</code>{' '}
           pass in{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">@react-three/postprocessing</code>.
-          It works by extracting pixels above a luminance threshold, blurring
-          them into a glow texture, then blending that back over the scene.
+          It extracts pixels above a luminance threshold, blurs them into a glow
+          texture, then blends that back over the scene.
         </p>
-        <Code>{`<EffectComposer>
-  <Bloom
-    intensity={settings.glowIntensity}  // slider: 0 to 3
-    luminanceThreshold={0.1}            // pixels brighter than 10% trigger glow
-    luminanceSmoothing={0.2}            // soft edge around the threshold
-    mipmapBlur                          // cheaper, smoother multi-scale blur
-    radius={0.85}                       // how far the glow bleeds outward
-  />
-</EffectComposer>`}</Code>
+        <Code>{BLOOM_SNIPPET}</Code>
         <p>
           <code className="font-mono text-[color:var(--accent-soft)]">mipmapBlur</code>{' '}
           is the key performance flag. Without it, Bloom uses a series of
           full-resolution ping-pong passes that are expensive on large viewports.
           The mipmap variant downsamples first, blurs, then upsamples, cutting
-          GPU cost significantly with almost no visual difference.
+          GPU cost with almost no visual difference.
         </p>
       </Section>
 
@@ -168,76 +152,75 @@ const STARS_PER_UNIT = 1200;
           mounts. This is intentional: the experience should feel different each
           visit. Two objects define the parameter space:
         </p>
-        <Code>{`const DEFAULTS = {
-  rotationSpeed: 0.2,
-  position: [0, 0, 0],
-  color: '#00ffff',
-  glowIntensity: 0.5,
-  stars: 1,
-  showHelicopter: false,
-  heliScale: 1.5,
-  heliSmoothness: 0.1,
-  showAxis: true,
-};
-
-const getRandomSettings = () => ({
-  rotationSpeed: Math.random() * 2,
-  position: [(Math.random()-0.5)*10, (Math.random()-0.5)*10, (Math.random()-0.5)*10],
-  color: '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0'),
-  glowIntensity: Math.random() * 2,
-  stars: Math.random() * 5,
-  showHelicopter: Math.random() > 0.5,
-  heliScale: Math.random() * 4.5 + 0.5,
-  heliSmoothness: Math.random() * 0.19 + 0.01,
-  showAxis: Math.random() > 0.5,
-});
-
-// State is seeded with a random config, not DEFAULTS:
-const [settings, setSettings] = useState(() => getRandomSettings());`}</Code>
+        <Code>{DEFAULTS_SNIPPET}</Code>
         <Aside>
           Passing a function to{' '}
-          <code className="font-mono">useState</code> is called lazy initialization.
-          React calls it once on the first render instead of on every render. This
+          <code className="font-mono">useState</code> is lazy initialization.
+          React calls it once on the first render instead of on every render. That
           matters here because{' '}
           <code className="font-mono">getRandomSettings()</code> calls{' '}
-          <code className="font-mono">Math.random()</code> and you only want those
+          <code className="font-mono">Math.random()</code>, and you want those
           numbers locked in once, not re-rolled each render.
         </Aside>
       </Section>
 
+      <Section title="Show the bug: reset that shares an array">
+        <p>
+          That innocent <code className="font-mono">DEFAULTS</code> object hid a
+          real bug this site shipped. Reset used to hand{' '}
+          <code className="font-mono">setState</code> the module-level object
+          directly, so its <code className="font-mono">position</code> array was
+          shared by reference. Edit a Position slider (which copies the object
+          but not the array) and you silently mutated the defaults. Worse, reset
+          twice in a row was a no-op: React saw the same object reference and
+          bailed out of the render.
+        </p>
+        <DemoPanel
+          label="DIFF"
+          code={
+            <Code filename="Simulation.tsx" highlight={[2, 8, 9]}>{RESET_BUG_SNIPPET}</Code>
+          }
+          demo={
+            <div className="flex h-full flex-col justify-center gap-3 text-sm text-[color:var(--fg-muted)]">
+              <p>
+                The fix is one line of hygiene: rebuild a fresh object <em>and</em>
+                {' '}a fresh array on every reset.
+              </p>
+              <p>
+                The pocket demo above uses the same discipline. Its reset calls{' '}
+                <code className="font-mono">getMiniDefaults()</code>, which spreads
+                a new object each time, so hitting reset twice always works.
+              </p>
+              <p className="text-[color:var(--fg-subtle)]">
+                A shared reference is invisible until someone mutates through it.
+                Clone at the boundary and it stays invisible for the right reason.
+              </p>
+            </div>
+          }
+        />
+      </Section>
+
       <Section title="BACKDROP_BY_THEME: per-theme canvas background">
         <p>
-          The Three.js canvas has its own background color that is separate from
-          the page's CSS background. Without explicit control, the canvas always
+          The Three.js canvas has its own background color, separate from the
+          page&rsquo;s CSS background. Without explicit control, the canvas always
           shows pure black, which looks out of place on the warm{' '}
-          <em>paper</em>{' '}or muted{' '}
-          <em>luxury</em>{' '}themes.
+          <em>paper</em> or muted <em>luxury</em> themes.
         </p>
-        <Code>{`const BACKDROP_BY_THEME: Record<ThemeName, string> = {
-  cyberpunk: '#000008', // near-black with a faint blue cast
-  luxury:    '#0c0a14', // dark purple-grey
-  paper:     '#f3ebdb', // warm off-white matching the CSS background
-};
-
-// Inside Simulation, consumed by the active theme from context:
-const { theme } = useTheme();
-const backdrop = BACKDROP_BY_THEME[theme];
-
-// Then inside <Canvas>:
-<color attach="background" args={[backdrop]} />`}</Code>
+        <Code>{BACKDROP_SNIPPET}</Code>
         <p>
           The{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">&lt;color&gt;</code>{' '}
-          element is an R3F shorthand for setting{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">scene.background</code>
-          . When the user switches themes, the context updates, the component
-          re-renders with the new backdrop value, and R3F patches the Three.js
-          scene object in place.
+          element is R3F shorthand for setting{' '}
+          <code className="font-mono text-[color:var(--accent-soft)]">scene.background</code>.
+          When the user switches themes, the context updates, the component
+          re-renders with the new backdrop, and R3F patches the Three.js scene
+          object in place.
         </p>
       </Section>
 
       <Section title="Where to look">
-        <ul className="list-inside list-disc space-y-1 font-mono text-sm">
+        <ul className="list-inside list-disc space-y-1 break-all font-mono text-sm">
           <li><code>src/app/experience/Simulation.tsx</code>, the full scene + settings panel</li>
           <li><code>src/app/experience/page.tsx</code>, the route shell that mounts Simulation</li>
           <li><code>src/app/contexts/ThemeContext.tsx</code>, useTheme and ThemeName</li>

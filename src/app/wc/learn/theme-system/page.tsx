@@ -2,6 +2,8 @@
 
 import { ThemeSwitcher } from '../../../components/ThemeSwitcher';
 import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
+import { DemoPanel } from '../_components/DemoPanel';
+import { TokenPlayground } from '../_components/TokenPlayground';
 
 export default function ThemeSystemWalkthrough() {
   return (
@@ -117,9 +119,38 @@ export default function ThemeSystemWalkthrough() {
         </p>
       </Section>
 
+      <Section title="Now break it (safely)">
+        <p>
+          Tokens are just custom properties on <code className="font-mono">&lt;html&gt;</code>,
+          so you can overwrite them live. The pickers on the right call{' '}
+          <code className="font-mono">setProperty</code> on the root element. An
+          inline style outranks the <code className="font-mono">[data-theme]</code>{' '}
+          block on specificity, so the page recolors the instant you drag a
+          swatch, this very article included.
+        </p>
+        <DemoPanel
+          code={
+            <Code filename="the whole trick" highlight={[5, 6]}>{`/* globals.css: one value per theme block */
+[data-theme="paper"] { --accent: #b85c38; }
+
+/* an inline style on <html> outranks that block */
+document.documentElement.style
+  .setProperty('--accent', pickedColor);`}</Code>
+          }
+          demo={<TokenPlayground />}
+        />
+        <Aside>
+          The playground never writes <code className="font-mono">localStorage</code>{' '}
+          and never touches <code className="font-mono">dataset.theme</code>. It
+          remembers every token it overrides and removes exactly those on reset,
+          on unmount, and whenever you switch themes from the header, so it can
+          repaint the page without ever corrupting your saved theme.
+        </Aside>
+      </Section>
+
       <Section title="Where to look">
         <p>The whole system is four files:</p>
-        <ul className="list-inside list-disc space-y-1 font-mono text-sm">
+        <ul className="list-inside list-disc space-y-1 break-all font-mono text-sm">
           <li><code>src/app/globals.css</code>, token definitions</li>
           <li><code>src/app/contexts/ThemeContext.tsx</code>, provider + hook</li>
           <li><code>src/app/components/ThemeSwitcher.tsx</code>, UI</li>
