@@ -58,6 +58,12 @@ const DEFAULTS = {
     showAxis: true,
 };
 
+// Fresh clone every call. `setSettings(DEFAULTS)` used to share the
+// module-level `DEFAULTS.position` array by reference, so editing a position
+// slider mutated the defaults, and a second reset was a no-op (React bailed
+// out on the same object). Cloning the array fixes both.
+const getDefaultSettings = () => ({ ...DEFAULTS, position: [...DEFAULTS.position] });
+
 const getRandomSettings = () => ({
   rotationSpeed: Math.random() * 2,
   position: [(Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10],
@@ -218,7 +224,7 @@ export function Simulation({ onExit }: SimulationProps) {
   const [settings, setSettings] = useState(() => getRandomSettings());
 
   const randomizeAll = () => setSettings(getRandomSettings());
-  const resetToDefaults = () => setSettings(DEFAULTS);
+  const resetToDefaults = () => setSettings(getDefaultSettings());
 
   const handleSettingChange = (key: keyof typeof DEFAULTS, value: string | number | boolean) => {
     setSettings(prev => ({ ...prev, [key]: value }));
