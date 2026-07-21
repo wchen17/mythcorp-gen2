@@ -45,7 +45,7 @@ const SKETCHES: ReadonlyArray<Sketch> = [
     href: '/fmhy',
     label: 'FMHY',
     title: 'FMHY backup (graduated)',
-    blurb: 'Used to live here as a placeholder shell. Now a real backup mirror at /fmhy with category links and a live embed when it loads.',
+    blurb: 'Started here as a placeholder shell. Now a real backup-sites directory at /fmhy: mirrors pulled from the fmhy/edit backups list, for the days fmhy.net is down.',
     status: 'graduated',
   },
 ];
