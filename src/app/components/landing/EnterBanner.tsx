@@ -6,9 +6,8 @@ interface EnterBannerProps {
 }
 
 /**
- * The bottom "Ready to see more?" CTA bar. Originally a flat fragment;
- * now styled as an intentional element of the system: serif typography,
- * accent glow that matches the theme, spring entrance.
+ * The bottom "Ready to see more?" CTA bar. Quiet on purpose: a plain
+ * bordered bar, no glow and no pulse. The button carries the only emphasis.
  */
 export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
   if (!show) return null;
@@ -20,30 +19,22 @@ export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
                  flex flex-col items-center gap-3
                  sm:flex-row sm:gap-5
                  px-5 py-4 sm:px-6
-                 rounded-xl border border-[color:var(--border-strong)]
-                 bg-[color:var(--bg-overlay)] backdrop-blur-md
-                 shadow-[0_0_60px_-15px_var(--accent-glow-strong)]"
+                 rounded-xl border border-[color:var(--border)]
+                 bg-[color:var(--bg-overlay)] backdrop-blur-md"
       style={{ transform: 'translateX(-50%)' }}
     >
       <style>{`
         @keyframes bannerIn {
-          from { opacity: 0; transform: translate(-50%, 24px) scale(0.96); }
-          to   { opacity: 1; transform: translate(-50%, 0) scale(1); }
+          from { opacity: 0; transform: translate(-50%, 12px); }
+          to   { opacity: 1; transform: translate(-50%, 0); }
         }
-        .banner-enter {
-          animation: bannerIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .banner-enter { animation: bannerIn 0.4s ease-out; }
+        @media (prefers-reduced-motion: reduce) {
+          .banner-enter { animation: none; }
         }
-        @keyframes bannerGlow {
-          0%, 100% { text-shadow: 0 0 8px var(--accent-glow); }
-          50%      { text-shadow: 0 0 16px var(--accent-glow-strong); }
-        }
-        .banner-headline { animation: bannerGlow 3.5s ease-in-out infinite; }
       `}</style>
 
-      <span
-        className="banner-headline font-serif text-base font-semibold
-                   tracking-wide text-[color:var(--fg)]"
-      >
+      <span className="font-serif text-base font-semibold tracking-wide text-[color:var(--fg)]">
         Ready to see more?
       </span>
 
@@ -53,8 +44,7 @@ export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
           onClick={onEnterExperience}
           className="flex-1 sm:flex-initial rounded-md bg-[color:var(--accent)]
                      px-5 py-2 text-sm font-bold tracking-wide text-[color:var(--bg)]
-                     transition-all hover:scale-[1.04]
-                     hover:shadow-[0_0_24px_var(--accent-glow-strong)]"
+                     transition-opacity hover:opacity-90"
         >
           Enter 3D Experience
         </button>
@@ -62,5 +52,3 @@ export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
     </div>
   );
 }
-
-

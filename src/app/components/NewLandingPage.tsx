@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { SiteHeader } from './SiteHeader';
 import { SkylineBackdrop } from './landing/SkylineBackdrop';
 import { HeroTitle } from './landing/HeroTitle';
-import { EnterBanner } from './landing/EnterBanner';
 import { LandingModals } from './landing/LandingModals';
 
 interface NewLandingPageProps {
@@ -15,16 +14,9 @@ interface NewLandingPageProps {
 }
 
 export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingPageProps) {
-  const [showBanner, setShowBanner] = useState(false);
   const [showMisalignedNote, setShowMisalignedNote] = useState(false);
   const [showAlignmentLine, setShowAlignmentLine] = useState(false);
   const [showSecretHint, setShowSecretHint] = useState(false);
-
-  // Banner reveals after the entrance settles.
-  useEffect(() => {
-    const timer = setTimeout(() => setShowBanner(true), 2500);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Toggle the playful "see the misalignment" overlay via keyboard for power users.
   useEffect(() => {
@@ -52,6 +44,17 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
           <p className="self-start font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--fg-subtle)]">
             Signal acquired: Chicago / 2024
           </p>
+
+          {/* Primary way into the 3D experience. Quiet inline link, no floating CTA. */}
+          <button
+            type="button"
+            onClick={onEnterExperience}
+            className="font-mono text-xs uppercase tracking-[0.3em]
+                       text-[color:var(--accent)] transition-colors
+                       hover:text-[color:var(--accent-soft)]"
+          >
+            enter the 3D experience
+          </button>
 
           {/* Inline keyboard hint, replacing the snarky dropdown egg. */}
           <button
@@ -96,11 +99,6 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
           />
         </div>
       )}
-
-      <EnterBanner
-        show={showBanner}
-        onEnterExperience={onEnterExperience}
-      />
 
       <LandingModals
         showMisalignedNote={showMisalignedNote}

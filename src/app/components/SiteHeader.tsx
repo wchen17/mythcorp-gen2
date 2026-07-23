@@ -70,7 +70,7 @@ export function SiteHeader({
     <header className="fixed top-0 left-0 right-0 z-30
                        border-b border-[color:var(--border)]
                        bg-[color:var(--bg-overlay)] backdrop-blur-md">
-      <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-3 sm:px-6 sm:py-4">
         {/* Left: real hamburger menu (now a working dropdown) */}
         <div ref={menuRef} className="relative">
           <button
@@ -153,7 +153,7 @@ export function SiteHeader({
         </div>
 
         {/* Right: nav links + theme switcher */}
-        <nav className="flex items-center gap-2 sm:gap-4">
+        <nav className="flex items-center justify-self-end gap-2 sm:gap-4">
           <ul className="hidden items-center gap-4 sm:flex">
             {nav.map((item) => {
               const active = pathname === item.href || pathname?.startsWith(item.href + '/');

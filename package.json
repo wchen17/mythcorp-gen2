@@ -18,6 +18,7 @@
     "@react-three/drei": "^10.6.0",
     "@react-three/fiber": "^9.2.0",
     "@react-three/postprocessing": "^3.0.4",
+    "aws4fetch": "^1.0.20",
     "gsap": "^3.13.0",
     "next": "15.3.3",
     "react": "19.0.0",
@@ -35,7 +36,7 @@
     "tailwindcss": "4.1.1",
     "tsx": "^4.21.0",
     "typescript": "5.8.3",
-    "wrangler": "^4.92.0"
+    "wrangler": "^4.113.0"
   },
   "private": true,
   "scripts": {

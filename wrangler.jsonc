@@ -11,6 +11,12 @@
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
+  "vars": {
+    "R2_PUBLIC_BASE_URL": "https://pub-feb896eab49f4b27ae2323cf8607514e.r2.dev"
+  },
+  "kv_namespaces": [
+    { "binding": "UPLOADS_KV", "id": "210daca69ab54e4a9b723d257d73de38" }
+  ],
   "observability": {
     "enabled": true
   },
