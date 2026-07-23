@@ -23,11 +23,6 @@ const ROUTES: Entry[] = [
   { path: '/wc/learn/theme-system', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.5, changeFrequency: 'yearly' },
   { path: '/contact', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og', priority: 0.4, changeFrequency: 'monthly' },
-  { path: '/og/calhoun', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og/doubt', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og/interactive', priority: 0.2, changeFrequency: 'yearly' },
-  { path: '/og/chat', priority: 0.2, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -39,3 +34,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: r.priority,
   }));
 }
+
