@@ -1,14 +1,15 @@
 'use client';
 
+// ARCHIVED 2026-07-23. The landing's floating "Ready to see more?" banner was
+// replaced by a quiet inline "enter the 3D experience" link in NewLandingPage,
+// to feel more down to earth (no floating glow CTA). Kept here rather than
+// deleted in case the CTA-bar pattern is wanted again. Currently unused.
+
 interface EnterBannerProps {
   show: boolean;
   onEnterExperience: () => void;
 }
 
-/**
- * The bottom "Ready to see more?" CTA bar. Quiet on purpose: a plain
- * bordered bar, no glow and no pulse. The button carries the only emphasis.
- */
 export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
   if (!show) return null;
   return (
