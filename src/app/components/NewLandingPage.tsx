@@ -49,14 +49,9 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
       <main className="relative z-10 flex min-h-screen items-center justify-center px-4">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 text-center">
           <HeroTitle onClick={() => setShowMisalignedNote(true)} />
-
-          <div className="flex items-center gap-4 text-[color:var(--fg-muted)]">
-            <span className="block h-px w-16 bg-[color:var(--border-strong)] sm:w-24" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] sm:text-xs">
-              EST. 2024
-            </span>
-            <span className="block h-px w-16 bg-[color:var(--border-strong)] sm:w-24" />
-          </div>
+          <p className="self-start font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--fg-subtle)]">
+            Signal acquired: Chicago / 2024
+          </p>
 
           {/* Inline keyboard hint, replacing the snarky dropdown egg. */}
           <button
@@ -116,5 +111,7 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
     </div>
   );
 }
+
+
 
 
