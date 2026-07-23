@@ -92,3 +92,5 @@ The full backlog is in `BACKLOG.md` (24+ items). High-leverage next steps:
 - **Fourth walkthrough is self-referential (batch 7)**: `/wc/learn/build-a-playground` documents the playground primitives by embedding each as its own live example (the playground that explains playgrounds is itself a playground).
 - **`STARS_PER_UNIT = 1200`, `MAX_STARS = 12000`** in Simulation. Don't lift without benchmarking.
 - **`HelpDot` lives in `layout.tsx`**, not per page.
+
+2026-07-23: Codex brief pass in progress. /about and /contact are slim WIP stubs. /animals is parked at /og/animals for a rebuild using licensed or clearly attributed cute anime or animal art instead of GIPHY embeds. /og is being soft-hidden from search while remaining reachable by URL.

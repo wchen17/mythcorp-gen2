@@ -48,8 +48,7 @@ export default function NotFound() {
           <span className="flicker-text">404</span>
         </h1>
         <p className="mt-6 max-w-sm text-base text-[color:var(--fg-muted)]">
-          The spectre wandered off looking for this page and didn&rsquo;t find it.
-          Probably for the best.
+          The spectre checked every corridor. This page is not on the map.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -78,3 +77,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+
