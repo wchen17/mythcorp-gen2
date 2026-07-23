@@ -8,11 +8,17 @@ type Sketch = {
   label: string;
   title: string;
   blurb: string;
-  status: 'sketch' | 'graduated';
-  external?: boolean;
+  status: 'sketch' | 'graduated' | 'parked';
 };
 
 const SKETCHES: ReadonlyArray<Sketch> = [
+  {
+    href: '/og/animals',
+    label: 'INTERMISSION',
+    title: 'Animal Break Time',
+    blurb: 'A live GIPHY intermission, pulled back to rebuild with licensed cute anime or animal art instead.',
+    status: 'parked',
+  },
   {
     href: '/og/doubt',
     label: 'DOUBT',
@@ -50,6 +56,12 @@ const SKETCHES: ReadonlyArray<Sketch> = [
   },
 ];
 
+const STATUS_CLASS: Record<Sketch['status'], string> = {
+  sketch: 'border-[color:var(--border)] bg-[color:var(--bg-overlay)] text-[color:var(--fg-subtle)]',
+  graduated: 'border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10 text-[color:var(--accent-soft)]',
+  parked: 'border-[color:var(--accent-warm)]/40 bg-[color:var(--accent-warm)]/10 text-[color:var(--accent-warm)]',
+};
+
 export default function OgIndex() {
   return (
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
@@ -63,48 +75,36 @@ export default function OgIndex() {
           Back-room sketches
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-          Pages that started as ideas and aren&rsquo;t finished. They live here
-          on purpose, so they don&rsquo;t clutter the main map but don&rsquo;t
-          get lost either. A sketch graduates by getting a real implementation
-          and moving up out of <code className="font-mono text-[color:var(--accent-soft)]">/og</code>.
+          Pages that started as ideas and aren&rsquo;t finished. They live here on purpose,
+          so they don&rsquo;t clutter the main map but don&rsquo;t get lost either.
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-          {SKETCHES.map((s) => {
-            const graduated = s.status === 'graduated';
-            return (
-              <li key={s.href}>
-                <Link
-                  href={s.href}
-                  className="themed-surface themed-surface-interactive group block p-5"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
-                      {s.label}
-                    </p>
-                    <span
-                      className={
-                        graduated
-                          ? 'rounded-full border border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]'
-                          : 'rounded-full border border-[color:var(--border)] bg-[color:var(--bg-overlay)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]'
-                      }
-                    >
-                      {s.status}
-                    </span>
-                  </div>
-                  <h2 className="mt-2 font-serif text-lg font-semibold transition-colors
-                                 group-hover:text-[color:var(--accent-soft)]">
-                    {s.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{s.blurb}</p>
-                </Link>
-              </li>
-            );
-          })}
+          {SKETCHES.map((sketch) => (
+            <li key={sketch.href}>
+              <Link
+                href={sketch.href}
+                className="themed-surface themed-surface-interactive group block p-5"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
+                    {sketch.label}
+                  </p>
+                  <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${STATUS_CLASS[sketch.status]}`}>
+                    {sketch.status}
+                  </span>
+                </div>
+                <h2 className="mt-2 font-serif text-lg font-semibold transition-colors group-hover:text-[color:var(--accent-soft)]">
+                  {sketch.title}
+                </h2>
+                <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{sketch.blurb}</p>
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">
-          ← Back <Link href="/" className="text-[color:var(--accent)] underline underline-offset-4">home</Link>
+          Back <Link href="/" className="text-[color:var(--accent)] underline underline-offset-4">home</Link>
         </p>
       </main>
     </div>

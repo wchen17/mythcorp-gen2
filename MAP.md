@@ -8,7 +8,7 @@ Single-screen index of where things live. Read this first; grep second.
 |---|---|---|
 | `/` | `src/app/page.tsx` | Cinematic boot: LoadingScreen → LandingPage → NewLandingPage |
 | `/experience` | `src/app/experience/page.tsx` | 3D simulation lab (menu + Simulation) |
-| `/animals` | `src/app/animals/page.tsx` | Random animal GIFs (palate cleanser) |
+| `/og/animals` | `src/app/og/animals/page.tsx` | Parked animal intermission, queued for a licensed-art rebuild |
 | `/about` | `src/app/about/page.tsx` | Short "what is this" page |
 | `/contact` | `src/app/contact/page.tsx` | ComingSoon stub (no real form yet) |
 | `/wc` | `src/app/wc/page.tsx` | Personal section index |

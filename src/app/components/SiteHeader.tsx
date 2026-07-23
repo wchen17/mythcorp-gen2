@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -19,7 +19,6 @@ const MENU_LINKS: ReadonlyArray<NavItem> = [
   { href: '/wc', label: 'The back room' },
   { href: '/wc/learn', label: 'Walkthroughs' },
   { href: '/wc/papers', label: 'Papers' },
-  { href: '/animals', label: 'Animals (intermission)' },
   { href: '/og', label: 'Sketches' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
