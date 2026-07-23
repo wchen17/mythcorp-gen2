@@ -190,8 +190,8 @@ export default function LandingFlowWalkthrough() {
           <code className="font-mono text-[color:var(--accent-soft)]">SkylineBackdrop</code>,
           the hero heading is pure HTML via{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">HeroTitle</code>,
-          and a banner slides up from the bottom after 2.5 seconds via{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">EnterBanner</code>.
+          and a quiet inline &ldquo;enter the 3D experience&rdquo; link sits with
+          the other hero hints (no floating banner).
         </p>
         <p>
           Two paths from here: &ldquo;ENTER EXPERIENCE&rdquo; pushes to{' '}
@@ -211,8 +211,8 @@ export default function LandingFlowWalkthrough() {
           <li><code>src/app/page.tsx</code>, AppLoader and state machine</li>
           <li><code>src/app/components/LoadingScreen.tsx</code>, binary digit shapes</li>
           <li><code>src/app/components/LandingPage.tsx</code>, 3D logo and GSAP fade</li>
-          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal and banner</li>
-          <li><code>src/app/components/landing/</code>, SkylineBackdrop, HeroTitle, EnterBanner, LandingModals</li>
+          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal and inline enter link</li>
+          <li><code>src/app/components/landing/</code>, SkylineBackdrop, HeroTitle, LandingModals</li>
         </ul>
       </Section>
     </Walkthrough>
