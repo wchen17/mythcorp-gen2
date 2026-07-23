@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 // Walkthrough: /wc/learn/landing-flow
 
@@ -76,13 +76,13 @@ function InteractiveLogo({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-export function LandingPage({ onTransitionComplete }: { onTransitionComplete: () => void }) {
+export function HeroLab({ onTransitionComplete }: { onTransitionComplete: () => void }) {
   const [isExiting, setIsExiting] = useState(false);
   const contentRef = useRef<Group>(null!);
   const backgroundRef = useRef<HTMLDivElement>(null!);
   const promptRef = useRef<HTMLDivElement>(null!);
 
-  // Single transition path: GSAP fade-out → onTransitionComplete swaps state.
+  // Single transition path: GSAP fade-out ? onTransitionComplete swaps state.
   // (Previously this also called router.push('/newlandingpage'), which
   // duplicated the in-page transition and navigated to a redundant route.)
   const handleEnter = () => setIsExiting(true);
@@ -167,3 +167,4 @@ export function LandingPage({ onTransitionComplete }: { onTransitionComplete: ()
     </div>
   );
 }
+

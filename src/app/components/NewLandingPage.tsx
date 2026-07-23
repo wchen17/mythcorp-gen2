@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 // Walkthrough: /wc/learn/landing-flow
 
@@ -11,11 +11,10 @@ import { LandingModals } from './landing/LandingModals';
 
 interface NewLandingPageProps {
   onEnterExperience: () => void;
-  onEnterInteractive: () => void;
   onReplayIntro?: () => void;
 }
 
-export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplayIntro }: NewLandingPageProps) {
+export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingPageProps) {
   const [showBanner, setShowBanner] = useState(false);
   const [showMisalignedNote, setShowMisalignedNote] = useState(false);
   const [showAlignmentLine, setShowAlignmentLine] = useState(false);
@@ -67,7 +66,7 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplay
                        text-[color:var(--fg-subtle)] transition-colors
                        hover:text-[color:var(--accent-soft)]"
           >
-            press ⌘/ctrl + G to peek the alignment grid
+            press ?/ctrl + G to peek the alignment grid
           </button>
 
           {onReplayIntro && (
@@ -78,7 +77,7 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplay
                          text-[color:var(--fg-subtle)] transition-colors
                          hover:text-[color:var(--accent-soft)]"
             >
-              ↻ replay the boot sequence
+              ? replay the boot sequence
             </button>
           )}
         </div>
@@ -106,7 +105,6 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplay
       <EnterBanner
         show={showBanner}
         onEnterExperience={onEnterExperience}
-        onEnterInteractive={onEnterInteractive}
       />
 
       <LandingModals
@@ -118,3 +116,5 @@ export function NewLandingPage({ onEnterExperience, onEnterInteractive, onReplay
     </div>
   );
 }
+
+

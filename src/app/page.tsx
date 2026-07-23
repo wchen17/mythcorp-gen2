@@ -5,7 +5,6 @@
 import { useState, Suspense, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { LoadingScreen } from './components/LoadingScreen';
-import { LandingPage } from './components/LandingPage';
 import { NewLandingPage } from './components/NewLandingPage';
 
 const LOADING_DURATION_MS = 3500;
@@ -105,7 +104,7 @@ function AppLoader({ children }: { children: React.ReactNode }) {
  */
 export default function HomePage() {
   const router = useRouter();
-  const [appState, setAppState] = useState<'landing' | 'homepage'>('landing');
+  
   // Bumping this remounts AppLoader; paired with clearing the session flag it
   // re-runs the full boot sequence in place.
   const [bootNonce, setBootNonce] = useState(0);
@@ -116,7 +115,6 @@ export default function HomePage() {
     } catch {
       /* ignore */
     }
-    setAppState('landing');
     setBootNonce((n) => n + 1);
   };
 
@@ -124,18 +122,15 @@ export default function HomePage() {
     <main className="h-screen w-screen bg-[color:var(--bg)]">
       <Suspense fallback={<LoadingScreen onFinished={() => {}} />}>
         <AppLoader key={bootNonce}>
-          {appState === 'landing' && (
-            <LandingPage onTransitionComplete={() => setAppState('homepage')} />
-          )}
-          {appState === 'homepage' && (
-            <NewLandingPage
-              onEnterExperience={() => router.push('/experience')}
-              onEnterInteractive={() => setAppState('landing')}
-              onReplayIntro={replayIntro}
-            />
-          )}
+          <NewLandingPage
+            onEnterExperience={() => router.push('/experience')}
+            onReplayIntro={replayIntro}
+          />
         </AppLoader>
       </Suspense>
     </main>
   );
 }
+
+
+

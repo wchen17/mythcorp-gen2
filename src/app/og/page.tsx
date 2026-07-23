@@ -13,6 +13,14 @@ type Sketch = {
 
 const SKETCHES: ReadonlyArray<Sketch> = [
   {
+    href: '/og/hero-lab',
+    label: 'HERO LAB',
+    title: 'Title + Model Study',
+    blurb: 'An experimental hero composition with a wavy 3D title and spectre model.',
+    status: 'sketch',
+  },
+
+  {
     href: '/og/animals',
     label: 'INTERMISSION',
     title: 'Animal Break Time',
@@ -110,3 +118,5 @@ export default function OgIndex() {
     </div>
   );
 }
+
+

@@ -3,7 +3,6 @@
 interface EnterBannerProps {
   show: boolean;
   onEnterExperience: () => void;
-  onEnterInteractive: () => void;
 }
 
 /**
@@ -11,7 +10,7 @@ interface EnterBannerProps {
  * now styled as an intentional element of the system: serif typography,
  * accent glow that matches the theme, spring entrance.
  */
-export function EnterBanner({ show, onEnterExperience, onEnterInteractive }: EnterBannerProps) {
+export function EnterBanner({ show, onEnterExperience }: EnterBannerProps) {
   if (!show) return null;
   return (
     <div
@@ -59,18 +58,9 @@ export function EnterBanner({ show, onEnterExperience, onEnterInteractive }: Ent
         >
           Enter 3D Experience
         </button>
-        <button
-          type="button"
-          onClick={onEnterInteractive}
-          className="flex-1 sm:flex-initial rounded-md border
-                     border-[color:var(--border-strong)] bg-transparent
-                     px-5 py-2 text-sm font-medium text-[color:var(--fg)]
-                     transition-all hover:bg-[color:var(--bg-elevated)]
-                     hover:text-[color:var(--accent-soft)]"
-        >
-          View 3D Logo
-        </button>
       </div>
     </div>
   );
 }
+
+
