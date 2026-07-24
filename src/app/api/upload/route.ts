@@ -1,9 +1,9 @@
 import { verifyKey } from "@/lib/upload/keys";
 import { validateUpload } from "@/lib/upload/validate";
 import { checkCaps, commitUsage } from "@/lib/upload/caps";
-import { randomObjectKey } from "@/lib/upload/ids";
+import { newDeleteToken, objectId, randomObjectKey } from "@/lib/upload/ids";
 import { putObject, publicUrl } from "@/lib/upload/r2";
-import { recordObject } from "@/lib/upload/objects";
+import { recordDeleteToken, recordObject } from "@/lib/upload/objects";
 
 function bearer(request: Request): string {
   return (request.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
@@ -21,9 +21,17 @@ export async function POST(request: Request): Promise<Response> {
   if (!cap.ok) return json({ error: cap.message }, cap.status);
   const objectKey = randomObjectKey(check.type);
   await putObject(objectKey, body, check.type);
-  await recordObject({ key: objectKey, uploader: key.label, size: body.byteLength, type: check.type, uploadedAt: new Date().toISOString() });
+  // Mint the delete token before recording, so the hash is part of the record
+  // from the start and no object exists that a token cannot reach.
+  const token = newDeleteToken();
+  const deleteHash = await recordDeleteToken(token, objectKey);
+  await recordObject({ key: objectKey, uploader: key.label, size: body.byteLength, type: check.type, uploadedAt: new Date().toISOString(), deleteHash });
   await commitUsage(key.label, body.byteLength);
-  const url = publicUrl(objectKey);
-  const viewUrl = `${new URL(request.url).origin}/i/${objectKey}`;
-  return json({ url, viewUrl, key: objectKey }, 201);
+  const origin = new URL(request.url).origin;
+  return json({
+    url: publicUrl(objectKey),
+    viewUrl: `${origin}/a/${objectId(objectKey)}`,
+    deleteUrl: `${origin}/d/${token}`,
+    key: objectKey,
+  }, 201);
 }

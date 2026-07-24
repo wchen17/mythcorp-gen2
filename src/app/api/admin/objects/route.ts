@@ -1,7 +1,6 @@
 import { verifyAdmin } from "@/lib/upload/admin";
-import { isEmbedAccent, listObjects, deleteObjectRecord, type ObjectRecord, updateObjectEmbed } from "@/lib/upload/objects";
-import { deleteObject } from "@/lib/upload/r2";
-import { releaseBytes } from "@/lib/upload/caps";
+import { isEmbedAccent, listObjects, type ObjectRecord, updateObjectEmbed } from "@/lib/upload/objects";
+import { destroyObject } from "@/lib/upload/destroy";
 import { uploadEnv, LIMITS } from "@/lib/upload/env";
 
 function json(body: unknown, status = 200): Response {
@@ -28,11 +27,11 @@ export async function DELETE(request: Request): Promise<Response> {
   const { key } = (await request.json().catch(() => ({}))) as { key?: string };
   if (!key) return json({ error: "An object key is required." }, 400);
 
-  // Look up the record first so we know how many bytes to release.
+  // Look up the record first: destroyObject needs the size to release and the
+  // delete-token hash to retire alongside the blob.
   const record = (await listObjects()).find((o: ObjectRecord) => o.key === key);
-  await deleteObject(key); // R2 blob
-  await deleteObjectRecord(key); // KV metadata
-  if (record) await releaseBytes(record.size); // usage counter
+  if (!record) return json({ error: "Object not found." }, 404);
+  await destroyObject(record);
   return json({ ok: true });
 }
 
