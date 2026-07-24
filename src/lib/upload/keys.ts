@@ -1,5 +1,6 @@
 import { uploadEnv } from "./env";
 import { newApiKey } from "./ids";
+import { sha256Hex as hashKey } from "./hash";
 
 // What we keep about each key. The raw key is NEVER stored; only its hash is,
 // as the KV key name. `label` is who the key belongs to.
@@ -7,17 +8,6 @@ export interface KeyRecord {
   label: string;
   admin: boolean;
   createdAt: string;
-}
-
-// SHA-256 -> hex. Same input always yields the same hash, so we can look up a
-// presented key by hashing it and checking KV. One-way: the hash cannot be
-// turned back into the key.
-async function hashKey(raw: string): Promise<string> {
-  const data = new TextEncoder().encode(raw);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  return [...new Uint8Array(digest)]
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
 }
 
 const KEY_PREFIX = "key:";
