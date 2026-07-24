@@ -28,7 +28,10 @@ Single-screen index of where things live. Read this first; grep second.
 | `/upload` | `src/app/upload/page.tsx` | Drag-drop image/GIF uploader. POSTs to `/api/upload` with a Bearer key, shows the returned public link |
 | `/upload/admin` | `src/app/upload/admin/page.tsx` | Password-gated dashboard: create/revoke keys (`KeysPanel`), list/delete uploads + usage bar (`ObjectsPanel`), copy ShareX config (`sharex.ts`) |
 | `POST /api/upload` | `src/app/api/upload/route.ts` | Auth -> validate -> caps -> store. Returns `{ url, viewUrl }`. Bytes go to R2 (account B) via S3 |
-| `/i/[key]` | `src/app/i/[key]/page.tsx` | Public image view with safe OpenGraph metadata and direct link |
+| `/a/[id]` | `src/app/a/[id]/page.tsx` | Public image view with safe OpenGraph metadata and direct link. Extensionless id, noindex, embeds still unfurl |
+| `/i/[key]` | `src/app/i/[key]/page.tsx` | Legacy view route, 308s to `/a/[id]`. Kept so already-shared links survive |
+| `/d/[token]` | `src/app/d/[token]/page.tsx` | Delete-token confirm page. Renders read-only, the delete is a POST from `DeleteConfirm.tsx` |
+| `POST /api/delete` | `src/app/api/delete/route.ts` | Redeems a delete token. POST only, so unfurlers and prefetch cannot destroy an image |
 | `/api/admin/keys` | `src/app/api/admin/keys/route.ts` | GET list / POST create / DELETE revoke keys. Admin-password gated |
 | `/api/admin/objects` | `src/app/api/admin/objects/route.ts` | GET list + usage / PATCH embed / DELETE object. Admin-password gated |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
@@ -81,7 +84,9 @@ The "brains" live in `src/lib/upload/` (framework-agnostic). The `route.ts` file
 | File | Role |
 |---|---|
 | `src/lib/upload/env.ts` | `uploadEnv()` (Cloudflare bindings via `getCloudflareContext`), `LIMITS`, `ALLOWED` type map |
-| `src/lib/upload/ids.ts` | 128-bit random object keys, 192-bit API keys (`mc_` prefix) |
+| `src/lib/upload/ids.ts` | 128-bit random object keys, 192-bit API keys (`mc_`), 128-bit delete tokens (`mcd_`), plus `objectId` / `isObjectId` for the extensionless public id |
+| `src/lib/upload/hash.ts` | `sha256Hex`, shared by API keys and delete tokens. Both store the hash, never the raw secret |
+| `src/lib/upload/destroy.ts` | The single teardown path (blob, KV record, token pointer, quota). Used by the admin and by a delete token |
 | `src/lib/upload/r2.ts` | PUT/DELETE bytes to R2 account B over S3 (`aws4fetch`), `publicUrl()` |
 | `src/lib/upload/keys.ts` | Per-person keys stored as SHA-256 hashes in KV. `verifyKey` / `createKey` / `listKeys` / `revokeKey` |
 | `src/lib/upload/objects.ts` | Upload metadata index (who/when/size) as KV list-metadata |

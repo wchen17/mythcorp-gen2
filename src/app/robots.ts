@@ -7,7 +7,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/og'],
+      // `/a` is deliberately NOT here. Uploaded assets are kept out of search
+      // by a noindex meta tag instead, because Discordbot and Twitterbot obey
+      // robots.txt but ignore noindex: disallowing /a would kill rich embeds,
+      // which is the entire point of that route.
+      disallow: ['/og', '/d', '/upload'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

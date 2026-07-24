@@ -1,5 +1,14 @@
 # STATUS
 
+## Upload conventions pass, 2026-07-24
+Aligned the image host with what long-standing hosts do. Three decisions worth not re-litigating:
+
+1. **The view page is `/a/<id>`, not `/i/<key>.png`.** An `i` host plus a file extension means raw bytes everywhere else on the internet, and `i.mythcorp.dev` is the planned R2 custom domain, so serving HTML from `/i/` was training people to expect the wrong thing. `/i/[key]` now 308s to the new route. The id is the object key minus its extension, looked up by KV prefix, and `isObjectId` hard-validates the 22-character shape first because an unvalidated prefix scan is an enumeration hole.
+2. **Uploads return a delete token** (`mcd_`, hashed in KV, raw value shown once) alongside the direct and embed links, so a keyholder can remove their own image without an admin. Redeeming it is `POST /api/delete`; the `/d/<token>` page only renders. A GET must never delete, because link unfurlers and browser prefetch issue GETs and the first Discord preview would destroy the image. `.sxcu` now carries `DeletionURL` and `ThumbnailURL`.
+3. **Assets are noindex, not robots-disallowed.** Discordbot and Twitterbot obey robots.txt but ignore the noindex meta tag, so a `Disallow: /a` would have killed rich embeds while doing nothing search engines would not do anyway. `/d` and `/upload` ARE disallowed. Delete pages should never be crawled at all.
+
+Still open from the earlier review: `/api/upload` takes raw binary only, so the universal `curl -F 'file=@x.png'` idiom does not work, and nothing expires under the 9 GB ceiling.
+
 ## Upload Phase 3b and 3c, 2026-07-24
 Added admin rich-embed editing for image views. Embed title and description are trimmed and length-limited, accent colors require a six-digit hex value on write and before metadata emission, and the gallery editor saves through the admin-gated PATCH endpoint. Updated the public view to use the saved title, description, and theme color.
 
