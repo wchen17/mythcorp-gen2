@@ -1,0 +1,1448 @@
+{
+  "fetchedAt": "2026-05-18T04:48:35.614Z",
+  "categories": [
+    {
+      "slug": "ai",
+      "namespace": "root",
+      "sourceFile": "ai.md",
+      "kind": "catalog",
+      "name": "AI Tools",
+      "emoji": "✦",
+      "blurb": "Free / open-source AI services.",
+      "sectionCount": 16,
+      "entryCount": 352,
+      "highlights": [
+        {
+          "name": "DeepSeek",
+          "url": "https://chat.deepseek.com/",
+          "blurb": "V4-Pro (Expert) / V4-Flash (Instant) / Sign-Up / Unlimited / Subreddit / Discord / GitHub"
+        },
+        {
+          "name": "Google AI Studio",
+          "url": "https://aistudio.google.com/app/prompts/new_chat",
+          "blurb": "Gemini 3.1 Pro / Google Sign-Up / Add Features / Subreddit / Discord"
+        },
+        {
+          "name": "⁠Z.ai",
+          "url": "https://chat.z.ai/",
+          "blurb": "GLM-5.1 / GLM-5-Turbo / Slides / Sign-Up / Discord"
+        },
+        {
+          "name": "Qwen",
+          "url": "https://chat.qwen.ai/",
+          "blurb": "Qwen3.6-Plus / Qwen3.5-Plus / Sign-Up / Subreddit / Discord / GitHub"
+        }
+      ]
+    },
+    {
+      "slug": "audio",
+      "namespace": "root",
+      "sourceFile": "audio.md",
+      "kind": "catalog",
+      "name": "Audio / Music",
+      "emoji": "🎧",
+      "blurb": "Streaming, downloads, podcasts.",
+      "sectionCount": 36,
+      "entryCount": 794,
+      "highlights": [
+        {
+          "name": "Pear Desktop",
+          "url": "https://github.com/pear-devs/pear-desktop",
+          "blurb": "YouTube Music Client w/ Adblock"
+        },
+        {
+          "name": "YouTube Music",
+          "url": "https://music.youtube.com/",
+          "blurb": "YouTube Music WebUIs / Tools"
+        },
+        {
+          "name": "Monochrome",
+          "url": "https://monochrome.tf/",
+          "blurb": ", 2, 3, 4 - Browser Music / Discord / GitHub"
+        },
+        {
+          "name": "SoundCloud",
+          "url": "https://soundcloud.com/",
+          "blurb": "User-Made & User-Uploaded Songs"
+        }
+      ]
+    },
+    {
+      "slug": "beginners-guide",
+      "namespace": "root",
+      "sourceFile": "beginners-guide.md",
+      "kind": "prose",
+      "name": "Beginners Guide",
+      "emoji": "◎",
+      "blurb": "Start here if you're new.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "developer-tools",
+      "namespace": "root",
+      "sourceFile": "developer-tools.md",
+      "kind": "catalog",
+      "name": "Developer Tools",
+      "emoji": "⌬",
+      "blurb": "IDEs, APIs, dev resources.",
+      "sectionCount": 43,
+      "entryCount": 884,
+      "highlights": [
+        {
+          "name": "AppDevTools",
+          "url": "https://appdevtools.com/",
+          "blurb": ""
+        },
+        {
+          "name": "Every-programmer-should-know",
+          "url": "https://github.com/mtdvio/every-programmer-should-know",
+          "blurb": "or bookmarks - Software Development Tools"
+        },
+        {
+          "name": "Android Developer Roadmap",
+          "url": "https://github.com/skydoves/android-developer-roadmap",
+          "blurb": ""
+        },
+        {
+          "name": "DB Browser",
+          "url": "https://sqlitebrowser.org/",
+          "blurb": ", SQLook or SQL Lite Studio - SQLite Browsers"
+        }
+      ]
+    },
+    {
+      "slug": "downloading",
+      "namespace": "root",
+      "sourceFile": "downloading.md",
+      "kind": "catalog",
+      "name": "Downloads",
+      "emoji": "⬇",
+      "blurb": "Direct downloads, torrent guides.",
+      "sectionCount": 8,
+      "entryCount": 107,
+      "highlights": [
+        {
+          "name": "Download CSE",
+          "url": "https://cse.google.com/cse?cx=006516753008110874046:1ugcdt3vo7z",
+          "blurb": "/ CSE 2 - Multi-Site Search"
+        },
+        {
+          "name": "4Shared",
+          "url": "https://www.4shared.com/",
+          "blurb": ""
+        },
+        {
+          "name": "Virgil Software Search",
+          "url": "https://virgil.samidy.com/Software/",
+          "blurb": ", 2 / GitHub or Software CSE - Multi-Site Software Search"
+        },
+        {
+          "name": "CracksURL",
+          "url": "https://cracksurl.com/",
+          "blurb": "/ Download Guide"
+        }
+      ]
+    },
+    {
+      "slug": "educational",
+      "namespace": "root",
+      "sourceFile": "educational.md",
+      "kind": "catalog",
+      "name": "Reading / Education",
+      "emoji": "📚",
+      "blurb": "Books, courses, learning resources.",
+      "sectionCount": 53,
+      "entryCount": 1414,
+      "highlights": [
+        {
+          "name": "edX",
+          "url": "https://www.edx.org/",
+          "blurb": "Courses / Downloader"
+        },
+        {
+          "name": "MitOpenCourseWare",
+          "url": "https://ocw.mit.edu/",
+          "blurb": "Courses"
+        },
+        {
+          "name": "Khan Academy",
+          "url": "https://www.khanacademy.org/",
+          "blurb": "Courses / Downloader"
+        },
+        {
+          "name": "Class Central",
+          "url": "https://www.classcentral.com/",
+          "blurb": "Search for Courses"
+        }
+      ]
+    },
+    {
+      "slug": "file-tools",
+      "namespace": "root",
+      "sourceFile": "file-tools.md",
+      "kind": "catalog",
+      "name": "File Tools",
+      "emoji": "🗂",
+      "blurb": "Compression, conversion, recovery.",
+      "sectionCount": 20,
+      "entryCount": 330,
+      "highlights": [
+        {
+          "name": "AB Download Manager",
+          "url": "https://abdownloadmanager.com/",
+          "blurb": "Download Manager / Windows, Mac, Linux, Android / Telegram / GitHub"
+        },
+        {
+          "name": "JDownloader",
+          "url": "https://jdownloader.org/jdownloader2",
+          "blurb": "Download Manager / Windows, Mac, Linux / **Warning**"
+        },
+        {
+          "name": "IDM",
+          "url": "https://rentry.co/FMHYB64#idm",
+          "blurb": ", 2, 3 (search) - Download Manager / Firefox / Chrome / Windows"
+        },
+        {
+          "name": "NanaZip",
+          "url": "https://github.com/M2Team/NanaZip",
+          "blurb": "or **7-Zip** - File Archiver"
+        }
+      ]
+    },
+    {
+      "slug": "gaming-tools",
+      "namespace": "root",
+      "sourceFile": "gaming-tools.md",
+      "kind": "catalog",
+      "name": "Gaming Tools",
+      "emoji": "🕹",
+      "blurb": "Modding, cheats, performance utilities.",
+      "sectionCount": 45,
+      "entryCount": 834,
+      "highlights": [
+        {
+          "name": "Playnite",
+          "url": "https://playnite.link/",
+          "blurb": "Game Library / Launcher / Extensions, 2 / Windows / Subreddit / Discord / GitHub"
+        },
+        {
+          "name": "Hydra",
+          "url": "https://hydralauncher.gg/",
+          "blurb": "Game Launcher / Torrent Client / Achievement Support / Plugins / Themes / Windows, Linux / Telegram / GitHub"
+        },
+        {
+          "name": "Ascendara",
+          "url": "https://ascendara.app/",
+          "blurb": "Game Library / Launcher / Downloader / Windows, Linux / Discord / GitHub"
+        },
+        {
+          "name": "Project GLD",
+          "url": "https://y0urd34th.github.io/Project-GLD/",
+          "blurb": "/ Windows / GitHub or **GOG Galaxy** (closed source) - Game Libraries / Launchers"
+        }
+      ]
+    },
+    {
+      "slug": "gaming",
+      "namespace": "root",
+      "sourceFile": "gaming.md",
+      "kind": "catalog",
+      "name": "Gaming",
+      "emoji": "🎮",
+      "blurb": "Game tools, ROMs, emulation.",
+      "sectionCount": 36,
+      "entryCount": 840,
+      "highlights": [
+        {
+          "name": "FitGirl Repacks",
+          "url": "https://fitgirl-repacks.site/",
+          "blurb": "Download / Torrent / ROM Repacks / Unofficial Launcher"
+        },
+        {
+          "name": "KaOsKrew",
+          "url": "https://kaoskrew.org/",
+          "blurb": "Download / Redirect Bypass / Discord"
+        },
+        {
+          "name": "ARMGDDN Browser",
+          "url": "https://github.com/KaladinDMP/AGBrowser",
+          "blurb": ", 2 - Download / Avoid Software / Telegram / Discord"
+        },
+        {
+          "name": "Gnarly Repacks",
+          "url": "https://rentry.co/FMHYB64#gnarly",
+          "blurb": "Download / PW: `gnarly`"
+        }
+      ]
+    },
+    {
+      "slug": "image-tools",
+      "namespace": "root",
+      "sourceFile": "image-tools.md",
+      "kind": "catalog",
+      "name": "Image Tools",
+      "emoji": "🖼",
+      "blurb": "Editing, compression, search.",
+      "sectionCount": 37,
+      "entryCount": 677,
+      "highlights": [
+        {
+          "name": "GIMP",
+          "url": "https://www.gimp.org/",
+          "blurb": "/ Windows, Mac, Linux / Photoshop UI / Texture Synthesizer / Discord / Subreddit / GitLab"
+        },
+        {
+          "name": "ImageMagick",
+          "url": "https://imagemagick.org/index.php",
+          "blurb": "/ Windows, Mac, Linux, iOS / Scripts / GitHub"
+        },
+        {
+          "name": "Pixlr",
+          "url": "https://pixlr.com/",
+          "blurb": "Simple Editor / Hide Premium / Unlimited Saves, 2"
+        },
+        {
+          "name": "Lunapic",
+          "url": "https://lunapic.com/",
+          "blurb": "Multi-Tool"
+        }
+      ]
+    },
+    {
+      "slug": "internet-tools",
+      "namespace": "root",
+      "sourceFile": "internet-tools.md",
+      "kind": "catalog",
+      "name": "Internet Tools",
+      "emoji": "🌐",
+      "blurb": "Search, scraping, proxies.",
+      "sectionCount": 31,
+      "entryCount": 698,
+      "highlights": [
+        {
+          "name": "fast",
+          "url": "https://fast.com/",
+          "blurb": "/ Blur Info / CLI, **Cloudflare Speed Test** / CLI, **OpenSpeedTest** / GitHub or **LibreSpeed** / GitHub - Speed Tests"
+        },
+        {
+          "name": "Safing Portmaster",
+          "url": "https://safing.io/",
+          "blurb": "Network Monitor / DNS Resolver / Firewall / Discord / GitHub"
+        },
+        {
+          "name": "KeePassXC",
+          "url": "https://keepassxc.org/",
+          "blurb": "or **KeePass** / Forks / Plugins / Resources / Read-Only - Local Manager"
+        },
+        {
+          "name": "Bitwarden",
+          "url": "https://bitwarden.com/",
+          "blurb": "/ Alt Client / X / Subreddit / GitHub"
+        }
+      ]
+    },
+    {
+      "slug": "linux-macos",
+      "namespace": "root",
+      "sourceFile": "linux-macos.md",
+      "kind": "catalog",
+      "name": "Linux / macOS",
+      "emoji": "🐧",
+      "blurb": "OS-specific utilities and guides.",
+      "sectionCount": 27,
+      "entryCount": 667,
+      "highlights": [
+        {
+          "name": "Linux Command Library",
+          "url": "https://linuxcommandlibrary.com/",
+          "blurb": "Searchable Linux Command Index / GitHub"
+        },
+        {
+          "name": "DistroChooser",
+          "url": "https://distrochooser.de/",
+          "blurb": "/ Beta - Quiz-Based Distro Selector / Discord / GitHub"
+        },
+        {
+          "name": "Bottles",
+          "url": "https://usebottles.com/",
+          "blurb": "Manage Wine containers / Discord / GitHub"
+        },
+        {
+          "name": "WineHQ",
+          "url": "https://appdb.winehq.org/",
+          "blurb": "Wine Compatibility Database"
+        }
+      ]
+    },
+    {
+      "slug": "misc",
+      "namespace": "root",
+      "sourceFile": "misc.md",
+      "kind": "catalog",
+      "name": "Miscellaneous",
+      "emoji": "✱",
+      "blurb": "Things that fit nowhere else.",
+      "sectionCount": 48,
+      "entryCount": 1421,
+      "highlights": [
+        {
+          "name": "Ripped",
+          "url": "https://ripped.guide/",
+          "blurb": "Piracy Index / Discord"
+        },
+        {
+          "name": "r/PiratedGames Megathread",
+          "url": "https://rentry.org/pgames",
+          "blurb": "Game Piracy Index / Discord"
+        },
+        {
+          "name": "CS.RIN Mega",
+          "url": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=95461",
+          "blurb": ", 2 - Game Piracy Index"
+        },
+        {
+          "name": "privateersclub",
+          "url": "https://privateers.wiki/",
+          "blurb": "Game Piracy Index / Discord"
+        }
+      ]
+    },
+    {
+      "slug": "mobile",
+      "namespace": "root",
+      "sourceFile": "mobile.md",
+      "kind": "catalog",
+      "name": "Android / iOS",
+      "emoji": "📱",
+      "blurb": "Mobile tweaks, modded apps.",
+      "sectionCount": 56,
+      "entryCount": 1048,
+      "highlights": [
+        {
+          "name": "Mobilism",
+          "url": "https://forum.mobilism.org/viewforum.php?f=398",
+          "blurb": ", 2 - Requires Sign-Up / User Ranks"
+        },
+        {
+          "name": "4PDA",
+          "url": "https://4pda.to/forum/",
+          "blurb": "Use Translator / App / Telegram / Captcha Note"
+        },
+        {
+          "name": "RockMods",
+          "url": "https://www.rockmods.net/",
+          "blurb": "/ Telegram"
+        },
+        {
+          "name": "PlatinMods",
+          "url": "https://platinmods.com/",
+          "blurb": "/ Requires Sign-Up"
+        }
+      ]
+    },
+    {
+      "slug": "non-english",
+      "namespace": "root",
+      "sourceFile": "non-english.md",
+      "kind": "catalog",
+      "name": "Non-English",
+      "emoji": "◐",
+      "blurb": "Resources in other languages.",
+      "sectionCount": 93,
+      "entryCount": 1431,
+      "highlights": [
+        {
+          "name": "Cimaleek",
+          "url": "https://cimaleek.ws/",
+          "blurb": "Movies / TV"
+        },
+        {
+          "name": "FaselHD",
+          "url": "https://www.faselhds.biz/",
+          "blurb": "Movies / TV / Anime / Sub / 1080p / Use Adblock"
+        },
+        {
+          "name": "Anime3rb",
+          "url": "https://anime3rb.com/",
+          "blurb": "Anime / Sub / 1080p / Use Adblock"
+        },
+        {
+          "name": "Avro Keyboard",
+          "url": "https://www.omicronlab.com/avro-keyboard.html",
+          "blurb": "Bangla Typing Tool / Spellcheck / WebUI"
+        }
+      ]
+    },
+    {
+      "slug": "privacy",
+      "namespace": "root",
+      "sourceFile": "privacy.md",
+      "kind": "catalog",
+      "name": "Adblockers / Privacy",
+      "emoji": "🛡",
+      "blurb": "Adblockers, anti-tracking, VPN guides.",
+      "sectionCount": 22,
+      "entryCount": 324,
+      "highlights": [
+        {
+          "name": "LegitimateURLShortener",
+          "url": "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt",
+          "blurb": "Query Parameter Cleaning Rules / Use w/ AdGuard URL Tracking Protection"
+        },
+        {
+          "name": "Hagezi Blocklists",
+          "url": "https://github.com/hagezi/dns-blocklists",
+          "blurb": "Blocklist Collection / Use Mini Edition / Note"
+        },
+        {
+          "name": "Pi-Hole",
+          "url": "https://pi-hole.net/",
+          "blurb": "Self-Hosted DNS Adblocking / X / Subreddit / GitHub"
+        },
+        {
+          "name": "AdGuard Home",
+          "url": "https://adguard.com/en/adguard-home/overview.html",
+          "blurb": "Self-Hosted DNS Adblocking / Balena-AdGuard / X / Subreddit / Telegram / GitHub"
+        }
+      ]
+    },
+    {
+      "slug": "reading",
+      "namespace": "root",
+      "sourceFile": "reading.md",
+      "kind": "catalog",
+      "name": "Reading",
+      "emoji": "📖",
+      "blurb": "Books, comics, manga, news.",
+      "sectionCount": 26,
+      "entryCount": 797,
+      "highlights": [
+        {
+          "name": "Project Gutenberg",
+          "url": "https://www.gutenberg.org/",
+          "blurb": "or Lex - Historical Fiction / Nonfiction / Australia / Canada / Nordic"
+        },
+        {
+          "name": "Unglue.it",
+          "url": "https://unglue.it/",
+          "blurb": ""
+        },
+        {
+          "name": "OceanOfPDF",
+          "url": "https://oceanofpdf.com/",
+          "blurb": "Books / Comics"
+        },
+        {
+          "name": "Ebook-Translator",
+          "url": "https://translator.bookfere.com",
+          "blurb": "Calibre Translators"
+        }
+      ]
+    },
+    {
+      "slug": "sandbox",
+      "namespace": "root",
+      "sourceFile": "sandbox.md",
+      "kind": "prose",
+      "name": "Sandbox",
+      "emoji": "⊞",
+      "blurb": "Test environments, throwaways.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "social-media-tools",
+      "namespace": "root",
+      "sourceFile": "social-media-tools.md",
+      "kind": "catalog",
+      "name": "Social Media Tools",
+      "emoji": "💬",
+      "blurb": "Twitter, Reddit, Discord helpers.",
+      "sectionCount": 30,
+      "entryCount": 498,
+      "highlights": [
+        {
+          "name": "Vencord",
+          "url": "https://vencord.dev/",
+          "blurb": "/ Discord / GitHub or Vesktop / GitHub - Discord Client Mod"
+        },
+        {
+          "name": "WebCord",
+          "url": "https://github.com/SpacingBat3/WebCord",
+          "blurb": "Privacy-Hardened Client / Discord"
+        },
+        {
+          "name": "Discohook",
+          "url": "https://discohook.app/",
+          "blurb": ", Embed Creator or Embed Generator - Embed Generators"
+        },
+        {
+          "name": "CustomRP",
+          "url": "https://www.customrp.xyz/",
+          "blurb": "/ GitHub or geetRPCS / GitHub - Customizable Rich Presence"
+        }
+      ]
+    },
+    {
+      "slug": "startpage",
+      "namespace": "root",
+      "sourceFile": "startpage.md",
+      "kind": "prose",
+      "name": "Startpage",
+      "emoji": "⌂",
+      "blurb": "Custom browser homepage layouts.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "storage",
+      "namespace": "root",
+      "sourceFile": "storage.md",
+      "kind": "catalog",
+      "name": "Storage",
+      "emoji": "📦",
+      "blurb": "Hosting, file storage, transfer.",
+      "sectionCount": 30,
+      "entryCount": 205,
+      "highlights": [
+        {
+          "name": "Tailwind CSS",
+          "url": "https://tailwindcss.com/",
+          "blurb": ", ⁠Panda CSS / GitHub, Bulma or UnoCSS - CSS Frameworks"
+        },
+        {
+          "name": "RAWGraphs",
+          "url": "https://app.rawgraphs.io/",
+          "blurb": "/ GitHub"
+        },
+        {
+          "name": "draw.io",
+          "url": "https://www.drawio.com/",
+          "blurb": "/ GitHub"
+        },
+        {
+          "name": "Kroki",
+          "url": "https://kroki.io/#try",
+          "blurb": "Text to Diagrams / CLI"
+        }
+      ]
+    },
+    {
+      "slug": "system-tools",
+      "namespace": "root",
+      "sourceFile": "system-tools.md",
+      "kind": "catalog",
+      "name": "System Tools",
+      "emoji": "⚙",
+      "blurb": "Windows, Linux, macOS utilities.",
+      "sectionCount": 22,
+      "entryCount": 335,
+      "highlights": [
+        {
+          "name": "Windhawk",
+          "url": "https://windhawk.net/",
+          "blurb": "/ Discord / GitHub, MajorGeeks Windows Tweaks or Winaero / 2 - System Tweaking Tools / **Warning**"
+        },
+        {
+          "name": "StartAllBack",
+          "url": "https://www.startallback.com/",
+          "blurb": "Tweaked Start Menu & Taskbar / Windows 11 / Fix"
+        },
+        {
+          "name": "EverythingToolbar",
+          "url": "https://github.com/srwi/EverythingToolbar",
+          "blurb": "Everything Search in Taskbar"
+        },
+        {
+          "name": "Open Shell",
+          "url": "https://open-shell.github.io/Open-Shell-Menu/",
+          "blurb": "/ Customizable Skin or StartIsBack / Fix - Classic Start Menus"
+        }
+      ]
+    },
+    {
+      "slug": "text-tools",
+      "namespace": "root",
+      "sourceFile": "text-tools.md",
+      "kind": "catalog",
+      "name": "Text Tools",
+      "emoji": "📝",
+      "blurb": "Note apps, OCR, conversion.",
+      "sectionCount": 24,
+      "entryCount": 446,
+      "highlights": [
+        {
+          "name": "GitHub Gists",
+          "url": "https://gist.github.com/",
+          "blurb": "or GitLab Snippets - Multi-Syntax / Requires Sign-Up"
+        },
+        {
+          "name": "pastes.dev",
+          "url": "https://pastes.dev/",
+          "blurb": "Multi-Syntax / Markdown Support / GitHub"
+        },
+        {
+          "name": "PrivateBin",
+          "url": "https://privatebin.net/",
+          "blurb": ", NoteBin or ⁠ZeroBin - Markdown Support / Syntax Highlighting / Instances / GitHub"
+        },
+        {
+          "name": "Rentry",
+          "url": "https://rentry.co/",
+          "blurb": ", 2 - Markdown Support / Custom URLs / CLI / Styling"
+        }
+      ]
+    },
+    {
+      "slug": "torrenting",
+      "namespace": "root",
+      "sourceFile": "torrenting.md",
+      "kind": "catalog",
+      "name": "Torrenting",
+      "emoji": "🧲",
+      "blurb": "Trackers, clients, magnet helpers.",
+      "sectionCount": 5,
+      "entryCount": 88,
+      "highlights": [
+        {
+          "name": "ExT",
+          "url": "https://ext.to/",
+          "blurb": ", 2 / Proxy"
+        },
+        {
+          "name": "BTDigg",
+          "url": "https://btdig.com/",
+          "blurb": "DHT-Based / .onion"
+        },
+        {
+          "name": "Knaben",
+          "url": "https://knaben.org/",
+          "blurb": ""
+        },
+        {
+          "name": "qBittorrent",
+          "url": "https://www.qbittorrent.org/",
+          "blurb": "or qBittorrent Enhanced - Torrent Client / Windows, Mac, Linux / Tools"
+        }
+      ]
+    },
+    {
+      "slug": "unsafe",
+      "namespace": "root",
+      "sourceFile": "unsafe.md",
+      "kind": "prose",
+      "name": "Unsafe Sites",
+      "emoji": "⚠",
+      "blurb": "Risky links, kept for completeness.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "video-tools",
+      "namespace": "root",
+      "sourceFile": "video-tools.md",
+      "kind": "catalog",
+      "name": "Video Tools",
+      "emoji": "🎞",
+      "blurb": "Editors, players, downloaders.",
+      "sectionCount": 21,
+      "entryCount": 381,
+      "highlights": [
+        {
+          "name": "DoodStream",
+          "url": "https://doodstream.com/",
+          "blurb": "5GB / 60 Days / Requires Sign-Up"
+        },
+        {
+          "name": "Litterbox",
+          "url": "https://litterbox.catbox.moe/",
+          "blurb": "1GB / 3 Days"
+        },
+        {
+          "name": "Catbox",
+          "url": "https://catbox.moe/",
+          "blurb": "200MB / Forever / Allows Hotlinking"
+        },
+        {
+          "name": "Gofile",
+          "url": "https://gofile.io/",
+          "blurb": "100GB Monthly / 10 Days"
+        }
+      ]
+    },
+    {
+      "slug": "video",
+      "namespace": "root",
+      "sourceFile": "video.md",
+      "kind": "catalog",
+      "name": "Streaming",
+      "emoji": "🎬",
+      "blurb": "Movies, TV, anime, sports.",
+      "sectionCount": 27,
+      "entryCount": 844,
+      "highlights": [
+        {
+          "name": "NEPU",
+          "url": "https://nepu.to/",
+          "blurb": "Movies / TV / Anime / Auto-Next / 4K / Status / Discord"
+        },
+        {
+          "name": "EE3",
+          "url": "https://ee3.me/",
+          "blurb": "or RIPS - Movies / Invite Codes: `mpgh` or `1hack` / Requires Sign-Up"
+        },
+        {
+          "name": "PonTv",
+          "url": "https://pontv.to/",
+          "blurb": "Movies / TV / Auto-Next"
+        },
+        {
+          "name": "Flixer",
+          "url": "https://flixer.su",
+          "blurb": "or Hexa / Discord - Movies / TV / Anime / Auto-Next"
+        }
+      ]
+    },
+    {
+      "slug": "FAQ",
+      "namespace": "other",
+      "sourceFile": "other/FAQ.md",
+      "kind": "prose",
+      "name": "FAQ",
+      "emoji": "?",
+      "blurb": "Frequently asked questions.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "backups",
+      "namespace": "other",
+      "sourceFile": "other/backups.md",
+      "kind": "prose",
+      "name": "Backups",
+      "emoji": "💾",
+      "blurb": "Mirrors and archive snapshots.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "contributing",
+      "namespace": "other",
+      "sourceFile": "other/contributing.md",
+      "kind": "prose",
+      "name": "Contributing",
+      "emoji": "✎",
+      "blurb": "How to suggest edits to FMHY.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "selfhosting",
+      "namespace": "other",
+      "sourceFile": "other/selfhosting.md",
+      "kind": "prose",
+      "name": "Self-Hosting Guide",
+      "emoji": "🏠",
+      "blurb": "Run your own FMHY instance.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "wallpapers",
+      "namespace": "other",
+      "sourceFile": "other/wallpapers.md",
+      "kind": "prose",
+      "name": "Wallpapers",
+      "emoji": "🖼",
+      "blurb": "FMHY-themed desktop wallpapers.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "FCC",
+      "namespace": "posts",
+      "sourceFile": "posts/FCC.md",
+      "kind": "prose",
+      "name": "FCC",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "Internet-Archive",
+      "namespace": "posts",
+      "sourceFile": "posts/Internet-Archive.md",
+      "kind": "prose",
+      "name": "Internet Archive",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "KeepAndroidOpen",
+      "namespace": "posts",
+      "sourceFile": "posts/KeepAndroidOpen.md",
+      "kind": "prose",
+      "name": "KeepAndroidOpen",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "Nov-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/Nov-2025.md",
+      "kind": "prose",
+      "name": "Nov 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "WWH",
+      "namespace": "posts",
+      "sourceFile": "posts/WWH.md",
+      "kind": "prose",
+      "name": "WWH",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "anniversary",
+      "namespace": "posts",
+      "sourceFile": "posts/anniversary.md",
+      "kind": "prose",
+      "name": "Anniversary",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "april-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/april-2023.md",
+      "kind": "prose",
+      "name": "April 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "april-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/april-2024.md",
+      "kind": "prose",
+      "name": "April 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "april-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/april-2025.md",
+      "kind": "prose",
+      "name": "April 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "april-2026",
+      "namespace": "posts",
+      "sourceFile": "posts/april-2026.md",
+      "kind": "prose",
+      "name": "April 2026",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "aug-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/aug-2023.md",
+      "kind": "prose",
+      "name": "Aug 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "aug-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/aug-2024.md",
+      "kind": "prose",
+      "name": "Aug 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "aug-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/aug-2025.md",
+      "kind": "prose",
+      "name": "Aug 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "changelog-sites",
+      "namespace": "posts",
+      "sourceFile": "posts/changelog-sites.md",
+      "kind": "prose",
+      "name": "Changelog Sites",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "dec-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/dec-2023.md",
+      "kind": "prose",
+      "name": "Dec 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "dec-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/dec-2024.md",
+      "kind": "prose",
+      "name": "Dec 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "dec-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/dec-2025.md",
+      "kind": "prose",
+      "name": "Dec 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "discord",
+      "namespace": "posts",
+      "sourceFile": "posts/discord.md",
+      "kind": "prose",
+      "name": "Discord",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "feb-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/feb-2024.md",
+      "kind": "prose",
+      "name": "Feb 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "feb-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/feb-2025.md",
+      "kind": "prose",
+      "name": "Feb 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "feb-2026",
+      "namespace": "posts",
+      "sourceFile": "posts/feb-2026.md",
+      "kind": "prose",
+      "name": "Feb 2026",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "jan-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/jan-2024.md",
+      "kind": "prose",
+      "name": "Jan 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "jan-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/jan-2025.md",
+      "kind": "prose",
+      "name": "Jan 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "jan-2026",
+      "namespace": "posts",
+      "sourceFile": "posts/jan-2026.md",
+      "kind": "prose",
+      "name": "Jan 2026",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "july-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/july-2023.md",
+      "kind": "prose",
+      "name": "July 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "july-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/july-2024.md",
+      "kind": "prose",
+      "name": "July 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "july-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/july-2025.md",
+      "kind": "prose",
+      "name": "July 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "jun-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/jun-2023.md",
+      "kind": "prose",
+      "name": "Jun 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "june-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/june-2024.md",
+      "kind": "prose",
+      "name": "June 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "june-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/june-2025.md",
+      "kind": "prose",
+      "name": "June 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "mar-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/mar-2025.md",
+      "kind": "prose",
+      "name": "Mar 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "mar-2026",
+      "namespace": "posts",
+      "sourceFile": "posts/mar-2026.md",
+      "kind": "prose",
+      "name": "Mar 2026",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "march-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/march-2024.md",
+      "kind": "prose",
+      "name": "March 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "may-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/may-2023.md",
+      "kind": "prose",
+      "name": "May 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "may-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/may-2024.md",
+      "kind": "prose",
+      "name": "May 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "may-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/may-2025.md",
+      "kind": "prose",
+      "name": "May 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "may-2026",
+      "namespace": "posts",
+      "sourceFile": "posts/may-2026.md",
+      "kind": "prose",
+      "name": "May 2026",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "new-site",
+      "namespace": "posts",
+      "sourceFile": "posts/new-site.md",
+      "kind": "prose",
+      "name": "New Site",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "nov-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/nov-2023.md",
+      "kind": "prose",
+      "name": "Nov 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "nov-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/nov-2024.md",
+      "kind": "prose",
+      "name": "Nov 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "oct-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/oct-2023.md",
+      "kind": "prose",
+      "name": "Oct 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "oct-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/oct-2024.md",
+      "kind": "prose",
+      "name": "Oct 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "oct-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/oct-2025.md",
+      "kind": "prose",
+      "name": "Oct 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "search",
+      "namespace": "posts",
+      "sourceFile": "posts/search.md",
+      "kind": "prose",
+      "name": "Search",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "sept-2023",
+      "namespace": "posts",
+      "sourceFile": "posts/sept-2023.md",
+      "kind": "prose",
+      "name": "Sept 2023",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "sept-2024",
+      "namespace": "posts",
+      "sourceFile": "posts/sept-2024.md",
+      "kind": "prose",
+      "name": "Sept 2024",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "sept-2025",
+      "namespace": "posts",
+      "sourceFile": "posts/sept-2025.md",
+      "kind": "prose",
+      "name": "Sept 2025",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    },
+    {
+      "slug": "support-ia",
+      "namespace": "posts",
+      "sourceFile": "posts/support-ia.md",
+      "kind": "prose",
+      "name": "Support Ia",
+      "emoji": "◷",
+      "blurb": "FMHY changelog / post.",
+      "sectionCount": 1,
+      "entryCount": 0,
+      "highlights": []
+    }
+  ]
+}

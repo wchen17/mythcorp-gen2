@@ -57,8 +57,10 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/landing/HeroTitle.tsx` | NewLandingPage |
 | `src/app/components/landing/LandingModals.tsx` | NewLandingPage |
 | `src/app/components/LoadingScreen.tsx` | Boot sequence (page.tsx) |
-| `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
 | `src/app/components/NewLandingPage.tsx` | The luxury reveal (page.tsx) |
+| `src/app/components/_archive/` | Superseded components, imported by nothing. `LandingPage.tsx` (the old two-stage boot title card) lives here |
+| `src/app/components/landing/_archive/` | Same idea for landing pieces. Holds `EnterBanner.tsx` |
+| `src/app/fmhy/_archive/` | The pre-pivot full-mirror browse UI (`CategoryNav`, `SearchBox`, the category index). Imported by nothing |
 | `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers (`Walkthrough`, `Section`, `Code`, `Aside`) for `/wc/learn/*` pages. `Code` takes optional `filename` + `highlight?: number[]` |
 | `src/app/fmhy/_data/backup-sites.json` | FMHY backup-sites snapshot, the only data `/fmhy` reads |
 | `scripts/fetch-fmhy.ts` | Fetches `docs/other/backups.md` from fmhy/edit and outputs `backup-sites.json`. Runs via `npm run fetch:fmhy` |
@@ -107,7 +109,7 @@ Config: KV binding `UPLOADS_KV` + public var `R2_PUBLIC_BASE_URL` in `wrangler.j
 | `src/app/experience/BehavioralSink.tsx` | Looping Universe 25 point cloud (phases A-D), reports phase + pop via `onState`. Used only by `CalhounSimulation`. |
 | `src/app/experience/MainMenu.tsx` | Entry card before Simulation |
 
-`spectre.glb` is preloaded in two places: `LandingPage.tsx` and `Simulation.tsx`. Both use the same drei cache, so the actual fetch only happens once per session.
+`spectre.glb` is preloaded in `Simulation.tsx`. It used to be preloaded in `LandingPage.tsx` too, and the drei cache meant the fetch still happened once per session; that second call went away with the two-stage boot. `/wc/learn/landing-flow` still teaches the old arrangement.
 
 ## Theme system
 
