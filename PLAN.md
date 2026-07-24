@@ -44,7 +44,8 @@ The single biggest risk right now is not a missing feature, it is losing finishe
 Per the IDEABOARD's own rule: a flagship, not all of them. Recommended sequence:
 
 21. **Warm-up: ASCII / halftone post-process pass (#64).** Small-medium scope, best effort-to-wow ratio, slots into the existing postprocessing pipeline as a MainMenu toggle.
-22. **Flagship: scrollytelling cybercrime paper (#59).** It compounds: reuses GSAP (installed), elevates the strongest existing content, drives the figures from Phase 4, and doubles as a /wc/learn subject. GPGPU morph (#58) and the drivable portfolio (#55) are more spectacular but do not feed the content flywheel; keep them as the next arc if appetite remains.
+22. **Flagship SELECTED (2026-07-23): Author the fourth theme (#72).** A `/wc/learn/theme-lab` page where the visitor builds a full fourth theme live, the whole site restyles, and they save + share it. Chosen over the scrollytelling paper because it is the whole-page evolution of the batch-7 `TokenPlayground` work, ties deepest into the site's own architecture (the token system IS the design language), and ends in a shareable artifact. Full spec: `FLAGSHIP_FOURTH_THEME.md`. This is Weibao's hand-built lane, not a Codex task. Alternate flagships parked on the self-modifying ideaboard (#73 to #75).
+23. **Prior flagship candidate (not chosen): scrollytelling cybercrime paper (#59).** Still strong, kept as the next arc: reuses GSAP, elevates the strongest existing content, drives the Phase 4 figures. GPGPU morph (#58) and the drivable portfolio (#55) are more spectacular but do not feed the content flywheel.
 
 ## Explicitly deferred (do not pick up without a reason)
 

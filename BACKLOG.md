@@ -1094,3 +1094,51 @@ A `/wc/learn` page with an editable GLSL fragment shader and a live preview, so 
 How: a `<textarea>` (or CodeMirror) feeding a `shaderMaterial`, recompiling on change with error display. Lighter than the Sandpack idea (#39) because it only needs to compile a shader, not bundle JS. Pairs with #57 / #56 as their explainer pages.
 
 Scope: medium.
+
+---
+
+# SELF-MODIFYING PAGES, meta-playground flagships
+
+A sub-vein of the ideaboard: learning pages where changing something on the page changes the page itself. These are Weibao's hand-built lane (portfolio-voice + authorship), not Codex work. #72 is the selected Phase 5 flagship and has a full spec.
+
+---
+
+## #72, Author the fourth theme (SELECTED FLAGSHIP)
+
+**Labels:** `ideaboard`, `wow`, `flagship`, `walkthrough`, `teaching`
+
+**Body:**
+
+A `/wc/learn/theme-lab` page where the visitor builds a complete fourth theme live (color, surface style, radius, shadow, motion), watches the entire site restyle in real time, saves it into the ThemeSwitcher as "Yours," and shares it by URL. The whole-page evolution of `TokenPlayground`: you learn the token system by becoming an author in it.
+
+Full build spec (architecture, the pre-paint bootstrap change, save/share scheme, build order, DoD): `FLAGSHIP_FOURTH_THEME.md` at repo root. Scope: medium-large, sequenced as its own arc per PLAN Phase 5.
+
+---
+
+## #73, "This page is the playground"
+
+**Labels:** `ideaboard`, `wow`, `walkthrough`, `teaching`
+
+**Body:**
+
+One page whose own layout, type scale, motion, and particle density are all live knobs, and the article you are reading is the thing you are editing. Broader than #72 but with a fuzzier payoff (no saved artifact). Would reuse the `DemoPanel` + inline-override pattern. Keep as a future idea unless it earns a sharper hook than #72's shareable theme.
+
+---
+
+## #74, Fork-this-component live diff
+
+**Labels:** `ideaboard`, `walkthrough`, `teaching`
+
+**Body:**
+
+A page that shows a real component's source with a few parameters exposed as controls; editing a control rewrites the shown source AND the running demo in lockstep, so the code you read always matches the thing you see. A middle point between the current knob playgrounds and a full code editor (#39, parked), without a bundler. First subject: the `Simulation` `DEFAULTS` object.
+
+---
+
+## #75, Replay-the-bug interactive
+
+**Labels:** `ideaboard`, `walkthrough`, `teaching`
+
+**Body:**
+
+Extend the batch-7 "show the bug" pattern (the reset-aliasing diff in `3d-scene`) into a live one: a toggle that runs the buggy version and the fixed version side by side on real state, so the reader triggers the bug themselves before seeing the fix. The self-modifying version of BACKLOG #44.

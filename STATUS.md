@@ -1,5 +1,17 @@
 # STATUS
 
+## Upload Phase 3b and 3c, 2026-07-24
+Added admin rich-embed editing for image views. Embed title and description are trimmed and length-limited, accent colors require a six-digit hex value on write and before metadata emission, and the gallery editor saves through the admin-gated PATCH endpoint. Updated the public view to use the saved title, description, and theme color.
+
+## Upload Phase 3a, 2026-07-24
+Added the public `/i/[key]` image view. It reads the KV object record, returns a real 404 for unknown keys, and uses Next Metadata for escaped OpenGraph and Twitter image metadata pinned to the stored public URL. Upload responses now include a rich embed URL alongside the direct public link.
+
+## Upload Phase 2b, 2026-07-24
+Converted the admin object list into a responsive gallery. Added useObjects for loading and deletion, ObjectTile for thumbnails, public-link copy, and two-step inline deletion, plus a themed storage meter that switches to the warm accent at 80 percent. Production build and TypeScript checks pass.
+
+## Upload Phase 2a, 2026-07-24
+Split /upload into a thin page shell, DropConsole, UploadResult, and useUpload. Added fragment-only key prefill with URL stripping, paste-to-upload, accepted/rejected drag states, local object URL previews with cleanup, XHR byte progress and speed readout, and self-resetting public-link copy feedback. TypeScript passes. The Next build is currently blocked in this workspace because Wrangler cannot write its logs and registry under C:\Users\wayba\.wrangler, outside the writable workspace.
+
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
@@ -94,3 +106,7 @@ The full backlog is in `BACKLOG.md` (24+ items). High-leverage next steps:
 - **`HelpDot` lives in `layout.tsx`**, not per page.
 
 2026-07-23: Codex brief pass in progress. /about and /contact are slim WIP stubs. /animals is parked at /og/animals for a rebuild using licensed or clearly attributed cute anime or animal art instead of GIPHY embeds. /og is being soft-hidden from search while remaining reachable by URL.
+
+## Codex brief completion, 2026-07-24
+Completed the storefront/workshop cleanup: about and contact remain slim WIP pages, animals lives at `/og/animals` as a parked sketch, the hero experiment has its own `/og/hero-lab` route, and the landing keeps one reduced-motion-safe reactive title. The workshop is noindexed and disallowed in robots while remaining reachable through its single Sketches door. Repointed the experience palate-cleanser link and removed the stale EnterBanner map row.
+

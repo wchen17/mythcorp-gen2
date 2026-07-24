@@ -24,6 +24,13 @@ Single-screen index of where things live. Read this first; grep second.
 | `/og/calhoun` | `src/app/og/calhoun/page.tsx` | Ramble on Universe 25 + Merchant of Doubt. Links to `/experience?mode=calhoun` |
 | `/og/doubt` | `src/app/og/doubt/page.tsx` | Ramble on manufactured doubt + the solar/EV progress curves. Interactive figures in `_components/ProgressFigures.tsx` |
 | `/og/interactive` | `src/app/og/interactive/page.tsx` | CSS-only isometric WIP type |
+| `/og/hero-lab` | `src/app/og/hero-lab/page.tsx` | Experimental title and model composition |
+| `/upload` | `src/app/upload/page.tsx` | Drag-drop image/GIF uploader. POSTs to `/api/upload` with a Bearer key, shows the returned public link |
+| `/upload/admin` | `src/app/upload/admin/page.tsx` | Password-gated dashboard: create/revoke keys (`KeysPanel`), list/delete uploads + usage bar (`ObjectsPanel`), copy ShareX config (`sharex.ts`) |
+| `POST /api/upload` | `src/app/api/upload/route.ts` | Auth -> validate -> caps -> store. Returns `{ url, viewUrl }`. Bytes go to R2 (account B) via S3 |
+| `/i/[key]` | `src/app/i/[key]/page.tsx` | Public image view with safe OpenGraph metadata and direct link |
+| `/api/admin/keys` | `src/app/api/admin/keys/route.ts` | GET list / POST create / DELETE revoke keys. Admin-password gated |
+| `/api/admin/objects` | `src/app/api/admin/objects/route.ts` | GET list + usage / PATCH embed / DELETE object. Admin-password gated |
 | `/og/chat` | `src/app/og/chat/page.tsx` | Local-only chat sandbox |
 | 404 | `src/app/not-found.tsx` | Whimsical 404 |
 | error | `src/app/error.tsx` | Themed route error boundary (reset button) |
@@ -45,7 +52,6 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/components/DraftBanner.tsx` | Used by `/og/*` pages to flag "this is a sketch" |
 | `src/app/components/landing/SkylineBackdrop.tsx` | NewLandingPage + experience MainMenu |
 | `src/app/components/landing/HeroTitle.tsx` | NewLandingPage |
-| `src/app/components/landing/EnterBanner.tsx` | NewLandingPage |
 | `src/app/components/landing/LandingModals.tsx` | NewLandingPage |
 | `src/app/components/LoadingScreen.tsx` | Boot sequence (page.tsx) |
 | `src/app/components/LandingPage.tsx` | 3D MYTHCORP title card (page.tsx) |
@@ -67,6 +73,25 @@ The interactive figures embedded in `/wc/learn/*`. All `'use client'`, theme-tok
 | `src/app/wc/learn/_components/FlowStepper.tsx` | Interactive `loading -> landing -> entered` boot stepper (prev/next/auto-play), highlights matching snippet lines per step |
 | `src/app/wc/learn/3d-scene/_snippets.ts` | Extracted snippet strings for the 3d-scene walkthrough (keeps the page under the line ceiling) |
 | `src/app/wc/learn/landing-flow/_snippets.ts` | Extracted snippet strings for the landing-flow walkthrough |
+
+## Upload feature
+
+The "brains" live in `src/lib/upload/` (framework-agnostic). The `route.ts` files are thin wrappers that parse the request, call the lib, and format a response.
+
+| File | Role |
+|---|---|
+| `src/lib/upload/env.ts` | `uploadEnv()` (Cloudflare bindings via `getCloudflareContext`), `LIMITS`, `ALLOWED` type map |
+| `src/lib/upload/ids.ts` | 128-bit random object keys, 192-bit API keys (`mc_` prefix) |
+| `src/lib/upload/r2.ts` | PUT/DELETE bytes to R2 account B over S3 (`aws4fetch`), `publicUrl()` |
+| `src/lib/upload/keys.ts` | Per-person keys stored as SHA-256 hashes in KV. `verifyKey` / `createKey` / `listKeys` / `revokeKey` |
+| `src/lib/upload/objects.ts` | Upload metadata index (who/when/size) as KV list-metadata |
+| `src/app/upload/admin/useObjects.ts` | Admin object list loading, deletion, and display helpers |
+| `src/app/upload/admin/ObjectTile.tsx` | Themed admin gallery tile with copy and inline delete confirmation |
+| `src/lib/upload/validate.ts` | Size cap + magic-byte type sniff (ignores client Content-Type). No SVG (stored-XSS) |
+| `src/lib/upload/caps.ts` | Daily per-user counter (KV TTL) + total-bytes ceiling. NB: KV increment is not atomic |
+| `src/lib/upload/admin.ts` | Constant-time admin-password check from the Authorization header |
+
+Config: KV binding `UPLOADS_KV` + public var `R2_PUBLIC_BASE_URL` in `wrangler.jsonc`; secrets (`R2_*`, `ADMIN_PASSWORD`) in `.dev.vars` locally / `wrangler secret put` in prod (template: `.dev.vars.example`; types: `src/cloudflare-secrets.d.ts`).
 
 ## 3D scene
 
@@ -110,6 +135,9 @@ Walkthrough: `/wc/learn/theme-system`.
 - **A new back-room sketch** (rough idea you want to keep): create `src/app/og/<slug>/page.tsx`, mount `<SiteHeader />` and `<DraftBanner />`, then add it to `SKETCHES` in `src/app/og/page.tsx`.
 - **Promote a sketch out of `/og/`**: move the folder up, remove `<DraftBanner />`, drop it from `/og/page.tsx` SKETCHES, add to MAP.md routes table.
 - **A new themed page**: add `<SiteHeader />` at top, use `bg-[color:var(--bg)]` and `text-[color:var(--fg)]`. Done.
+- **A new upload validation rule / cap**: edit `src/lib/upload/validate.ts` (types, magic bytes) or `env.ts` `LIMITS` (sizes/quotas). The `route.ts` files stay untouched.
+- **A new allowed image type**: add it to `ALLOWED` in `env.ts` AND a magic-byte branch in `validate.ts`. Never add `image/svg+xml` (executable, stored-XSS risk).
+- **Give someone upload access**: sign in at `/upload/admin`, create a key with their name, hand them the raw key (shown once) or the ShareX config.
 
 ## Build / dev
 
