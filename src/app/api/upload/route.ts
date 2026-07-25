@@ -1,4 +1,5 @@
 import { verifyKey } from "@/lib/upload/keys";
+import { readUploadBody } from "@/lib/upload/body";
 import { validateUpload } from "@/lib/upload/validate";
 import { checkCaps, commitUsage } from "@/lib/upload/caps";
 import { newDeleteToken, objectId, randomObjectKey } from "@/lib/upload/ids";
@@ -14,7 +15,10 @@ function json(body: unknown, status: number): Response {
 export async function POST(request: Request): Promise<Response> {
   const key = await verifyKey(bearer(request));
   if (!key) return json({ error: "Unauthorized" }, 401);
-  const body = await request.arrayBuffer();
+  // Accepts raw binary (ShareX) or multipart/form-data (curl -F, HTML forms).
+  const read = await readUploadBody(request);
+  if (!read.ok) return json({ error: read.message }, read.status);
+  const body = read.body;
   const check = validateUpload(body);
   if (!check.ok) return json({ error: check.message }, check.status);
   const cap = await checkCaps(key.label, body.byteLength);

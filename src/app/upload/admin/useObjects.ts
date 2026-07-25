@@ -3,6 +3,11 @@ import { useCallback, useEffect, useState } from 'react';
 export interface ObjectRecord { key: string; uploader: string; size: number; type: string; uploadedAt: string; embed?: { title?: string; description?: string; accent?: string }; }
 export interface ObjectsPayload { objects: ObjectRecord[]; totalBytes: number; ceiling: number; publicBase: string; }
 export function formatMegabytes(bytes: number): string { return (bytes / 1048576).toFixed(1); }
+// Picks the unit so the storage meter reads like a number a person can hold.
+// "8.7 GB left" lands; "8912.4 MB left" does not.
+export function formatBytes(bytes: number): string {
+  return bytes >= 1073741824 ? `${(bytes / 1073741824).toFixed(2)} GB` : `${formatMegabytes(bytes)} MB`;
+}
 export function useObjects(password: string) {
   const [data, setData] = useState<ObjectsPayload | null>(null);
   const [error, setError] = useState<string | null>(null);

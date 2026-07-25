@@ -1,5 +1,15 @@
 # STATUS
 
+## Upload intake and storage pressure, 2026-07-24
+Closed both items the conventions pass left open, one by building it and one by deciding against it.
+
+1. **`/api/upload` now takes multipart/form-data as well as raw binary.** `curl -F 'file=@x.png'` is the universal idiom and every long-standing host accepts it, so it is a first-class input rather than a special case. `src/lib/upload/body.ts` picks the path off Content-Type and both ends at the same ArrayBuffer, so `validateUpload` still sniffs real magic bytes and nothing downstream trusts a filename or a declared type. The file part is looked up by name (`file`, `image`, `upload`, `files[]`) and then by "first File in the form", so a client using its own field name works instead of failing for a cosmetic reason. A Content-Length check rejects an oversized body before it is buffered, but it is a courtesy only: the real byte length is still checked after buffering, because Content-Length is client-claimed. ShareX is unaffected, `Body: "Binary"` still hits the raw path.
+2. **Nothing expires, and that is now the decision rather than the default.** Eviction, TTLs, and per-key quotas were all considered and rejected: a link shared in a group chat should still resolve a year later, which is the whole point of the host. The cost is that a full bucket is a manual chore, so the admin panel makes the chore visible early and easy to aim. The storage meter gained a warning band at 80 percent and a critical band at 95, each with the actual remaining space and what to do about it, and the object grid gained a newest/largest sort. Sorting by size is the part that makes clearing space targeted instead of a purge, since a handful of big objects is usually the entire problem. If this ever does need automatic reclamation, the object records already carry `size` and `uploadedAt`, so a sweep has what it needs.
+
+Verified: `npm run check` green, 33 pages, TypeScript and ESLint clean on the touched files. NOT yet verified at runtime: the multipart request paths have never been hit by an actual request. A script covering the six cases (named field, odd field name, no file part, raw binary regression, non-image bytes, no auth) is written and unrun; it needs a dev server and a throwaway key minted from `.dev.vars`. The meter bands were not visually confirmed either, since local storage sits far below 80 percent and the panel is password-gated.
+
+Pre-existing and untouched: `useObjects.ts` throws three `react-hooks/exhaustive-deps` warnings because the `auth` object is rebuilt every render. Harmless today, worth folding into a `useMemo` next time that file is open.
+
 ## Upload conventions pass, 2026-07-24
 Aligned the image host with what long-standing hosts do. Three decisions worth not re-litigating:
 
