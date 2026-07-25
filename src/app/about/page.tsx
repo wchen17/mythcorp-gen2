@@ -16,7 +16,6 @@ export default function AboutPage() {
 
         <aside className="border-t border-[color:var(--border)] pt-4 font-mono text-xs leading-relaxed text-[color:var(--fg-subtle)] md:mb-3">
           <p className="text-[color:var(--accent-warm)]">STATUS: IN PROGRESS</p>
-          <p className="mt-2">operator record awaiting a fuller entry</p>
         </aside>
       </main>
     </div>

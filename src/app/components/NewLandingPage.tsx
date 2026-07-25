@@ -2,7 +2,7 @@
 
 // Walkthrough: /wc/learn/landing-flow
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SiteHeader } from './SiteHeader';
 import { SkylineBackdrop } from './landing/SkylineBackdrop';
 import { HeroTitle } from './landing/HeroTitle';
@@ -14,9 +14,45 @@ interface NewLandingPageProps {
 }
 
 export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingPageProps) {
-  const [showMisalignedNote, setShowMisalignedNote] = useState(false);
   const [showAlignmentLine, setShowAlignmentLine] = useState(false);
   const [showSecretHint, setShowSecretHint] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  // Pointer parallax on the WHOLE hero column. Moving only the title made the
+  // headline drift against the fixed lines below it, which read as a centering
+  // bug rather than as depth. Same lerp and magnitude as before, one subject.
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let frame = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const update = () => {
+      currentX += (targetX - currentX) * 0.14;
+      currentY += (targetY - currentY) * 0.14;
+      hero.style.setProperty('--hero-x', `${currentX.toFixed(2)}px`);
+      hero.style.setProperty('--hero-y', `${currentY.toFixed(2)}px`);
+      frame =
+        Math.abs(targetX - currentX) + Math.abs(targetY - currentY) > 0.1
+          ? requestAnimationFrame(update)
+          : 0;
+    };
+    const onPointerMove = (event: PointerEvent) => {
+      targetX = (event.clientX / window.innerWidth - 0.5) * 8;
+      targetY = (event.clientY / window.innerHeight - 0.5) * 6;
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // Toggle the playful "see the misalignment" overlay via keyboard for power users.
   useEffect(() => {
@@ -37,49 +73,63 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
 
       <SiteHeader logoIsLink={false} />
 
-      {/* Hero */}
+      {/* Hero.
+          Three elements, not six, and one of them is loud. The previous version
+          stacked four uppercase mono lines at a uniform gap, so nothing read as
+          primary and two of them were keyboard instructions used as decoration.
+          DESIGN.md already calls this: "ALL-CAPS is a spice, not a system."
+          The hints moved to the corner rail below, where a hint belongs. */}
       <main className="relative z-10 flex min-h-screen items-center justify-center px-4">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 text-center">
-          <HeroTitle onClick={() => setShowMisalignedNote(true)} />
-          <p className="self-start font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--fg-subtle)]">
+        <div
+          ref={heroRef}
+          className="mx-auto flex max-w-4xl flex-col items-center gap-8 text-center
+                     motion-safe:transition-transform motion-safe:duration-[var(--motion-base)]
+                     motion-safe:ease-[var(--motion-ease)]"
+          style={{ transform: 'translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0)' }}
+        >
+          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[color:var(--fg-subtle)]">
             Signal acquired: Chicago / 2024
           </p>
 
-          {/* Primary way into the 3D experience. Quiet inline link, no floating CTA. */}
+          <HeroTitle />
+
+          {/* The one action. Reads as a control, not a fourth line of text. */}
           <button
             type="button"
             onClick={onEnterExperience}
-            className="font-mono text-xs uppercase tracking-[0.3em]
-                       text-[color:var(--accent)] transition-colors
-                       hover:text-[color:var(--accent-soft)]"
+            className="themed-button mt-2 px-7 py-3 font-mono text-xs uppercase tracking-[0.3em]"
           >
             enter the 3D experience
           </button>
+        </div>
+      </main>
 
-          {/* Inline keyboard hint, replacing the snarky dropdown egg. */}
-          <button
-            type="button"
-            onClick={() => setShowSecretHint(true)}
-            className="font-mono text-[10px] uppercase tracking-[0.3em]
-                       text-[color:var(--fg-subtle)] transition-colors
-                       hover:text-[color:var(--accent-soft)]"
-          >
-            press ?/ctrl + G to peek the alignment grid
-          </button>
-
-          {onReplayIntro && (
+      {/* Corner rail. Secondary affordances live here rather than in the hero
+          stack: discoverable if you look, silent if you do not.
+          Both sit bottom-LEFT on purpose. Splitting them left and right put
+          "replay boot" underneath the floating HelpDot, which is fixed to the
+          bottom-right on every page. */}
+      <div className="fixed bottom-5 left-5 z-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--fg-subtle)]">
+        <button
+          type="button"
+          onClick={() => setShowSecretHint(true)}
+          className="transition-colors hover:text-[color:var(--accent-soft)]"
+        >
+          ctrl + G
+        </button>
+        {onReplayIntro && (
+          <>
+            <span aria-hidden className="h-3 w-px bg-[color:var(--border)]" />
             <button
               type="button"
               onClick={onReplayIntro}
-              className="font-mono text-[10px] uppercase tracking-[0.3em]
-                         text-[color:var(--fg-subtle)] transition-colors
-                         hover:text-[color:var(--accent-soft)]"
+              className="transition-colors hover:text-[color:var(--accent-soft)]"
             >
-              ? replay the boot sequence
+              replay boot
             </button>
-          )}
-        </div>
-      </main>
+          </>
+        )}
+      </div>
 
       {/* Self-aware alignment guide. Pure visual joke that doubles as a dev aid. */}
       {showAlignmentLine && (
@@ -101,8 +151,6 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
       )}
 
       <LandingModals
-        showMisalignedNote={showMisalignedNote}
-        onCloseMisalignedNote={() => setShowMisalignedNote(false)}
         showSecretHint={showSecretHint}
         onCloseSecretHint={() => setShowSecretHint(false)}
       />

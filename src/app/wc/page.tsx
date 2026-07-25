@@ -31,7 +31,7 @@ export default function WillIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /wc ]
+          [ /wc / wip ]
         </p>
         <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
           A small back room
