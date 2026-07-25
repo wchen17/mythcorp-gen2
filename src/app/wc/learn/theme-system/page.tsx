@@ -8,7 +8,7 @@ import { TokenPlayground } from '../_components/TokenPlayground';
 export default function ThemeSystemWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /wc/learn/theme-system ]"
+      eyebrow="[ /wc/learn/theme-system / wip ]"
       title="A theme system from CSS variables"
       intro={
         <>

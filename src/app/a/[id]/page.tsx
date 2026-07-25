@@ -41,12 +41,19 @@ export default async function AssetViewPage({ params }: PageProps) {
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-6 pt-28 pb-16">
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">[ public / asset ]</p>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">[ public / asset / wip ]</p>
         <h1 className="themed-heading mb-3 text-3xl md:text-5xl">{heading}</h1>
         <p className="mb-8 font-mono text-xs text-[color:var(--fg-muted)]">
           {record.type.toUpperCase()} / {formatBytes(record.size)} / {new Date(record.uploadedAt).toLocaleDateString("en-US")}
         </p>
         <figure className="themed-surface overflow-hidden p-3">
+          {/* Plain <img> on purpose, here and in the three other places this
+              app renders an upload. next/image would route user-uploaded bytes
+              through the Next optimizer inside the worker, which for an image
+              host is backwards: serving them straight from R2's CDN is the
+              product. Optimizing arbitrary user content also costs money per
+              transform and buys nothing for files we already size-cap. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={image} alt={heading} className="max-h-[70vh] w-full object-contain" />
         </figure>
         <div className="mt-5 flex flex-wrap items-center gap-3 font-mono text-xs">

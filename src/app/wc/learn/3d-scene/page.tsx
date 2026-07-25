@@ -16,7 +16,7 @@ import {
 export default function ThreeDSceneWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /wc/learn/3d-scene ]"
+      eyebrow="[ /wc/learn/3d-scene / wip ]"
       title="Anatomy of the 3D experience"
       intro={
         <p>

@@ -63,8 +63,8 @@ export function SiteHeader({
     setMenuOpen(false);
   }, [pathname]);
 
-  const Logo = logoIsLink ? Link : 'span';
-  const logoProps = logoIsLink ? { href: '/' } : {};
+  const LOGO_CLASS =
+    'font-serif text-xl font-semibold tracking-wider text-[color:var(--fg)] drop-shadow-[0_0_12px_var(--accent-glow)] sm:text-2xl';
 
   return (
     <header className="fixed top-0 left-0 right-0 z-30
@@ -137,13 +137,18 @@ export function SiteHeader({
 
         {/* Center: logo */}
         <div className="flex flex-col items-center text-center">
-          <Logo
-            {...logoProps as any}
-            className="font-serif text-xl font-semibold tracking-wider text-[color:var(--fg)]
-                       drop-shadow-[0_0_12px_var(--accent-glow)] sm:text-2xl"
-          >
-            MYTHCORP
-          </Logo>
+          {/* Rendered as two explicit branches rather than one dynamic tag with
+              spread props. The old version aliased Link-or-'span' into a
+              variable, which TypeScript cannot narrow, so it needed an `as any`
+              to spread href onto something that might be a span. Writing both
+              cases out is longer and needs no cast. */}
+          {logoIsLink ? (
+            <Link href="/" className={LOGO_CLASS}>
+              MYTHCORP
+            </Link>
+          ) : (
+            <span className={LOGO_CLASS}>MYTHCORP</span>
+          )}
           {tagline && (
             <span className="mt-0.5 text-[10px] font-mono uppercase tracking-[0.25em]
                              text-[color:var(--fg-muted)] sm:text-xs">

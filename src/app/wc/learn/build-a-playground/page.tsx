@@ -8,7 +8,7 @@ import { MiniStarFieldDemo } from '../_components/MiniStarFieldDemo';
 export default function BuildAPlaygroundWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /wc/learn/build-a-playground ]"
+      eyebrow="[ /wc/learn/build-a-playground / wip ]"
       title="The playground that explains playgrounds"
       intro={
         <p>

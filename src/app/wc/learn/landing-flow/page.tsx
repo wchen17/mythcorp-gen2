@@ -13,7 +13,7 @@ import {
 export default function LandingFlowWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /wc/learn/landing-flow ]"
+      eyebrow="[ /wc/learn/landing-flow / wip ]"
       title="The cinematic boot flow"
       intro={
         <p>

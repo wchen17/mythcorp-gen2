@@ -77,7 +77,7 @@ export default function OgIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /OG ]
+          [ /OG / wip ]
         </p>
         <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
           Back-room sketches

@@ -14,6 +14,9 @@ export function ObjectTile({ object, publicBase, onDelete, onSaveEmbed }: { obje
   useEffect(() => { if (!confirming) return; const timer = window.setTimeout(() => setConfirming(false), 2200); return () => window.clearTimeout(timer); }, [confirming]);
   return <article className="themed-surface themed-surface-interactive group overflow-hidden">
     <a href={url} target="_blank" rel="noopener noreferrer" className="relative block aspect-square bg-[color:var(--bg-elevated)]">
+      {/* Plain <img>: see the note in /a/[id]. loading="lazy" is the part that
+          actually matters for a gallery of arbitrary size. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={url} alt={`${object.type} upload ${object.key}`} className="h-full w-full object-contain" loading="lazy" />
       <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-[color:var(--bg-overlay)] px-3 py-2 font-mono text-[10px] text-[color:var(--fg)] opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">{object.key}</span>
     </a>

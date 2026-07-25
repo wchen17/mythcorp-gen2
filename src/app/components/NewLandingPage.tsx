@@ -110,6 +110,11 @@ export function NewLandingPage({ onEnterExperience, onReplayIntro }: NewLandingP
           "replay boot" underneath the floating HelpDot, which is fixed to the
           bottom-right on every page. */}
       <div className="fixed bottom-5 left-5 z-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--fg-subtle)]">
+        {/* The site-wide WIP marker lives down here rather than in the hero,
+            which is the one composition that should not be carrying a status
+            label. Same [ name / wip ] convention as every other room. */}
+        <span className="text-[color:var(--accent-warm)]">[ mythcorp / wip ]</span>
+        <span aria-hidden className="h-3 w-px bg-[color:var(--border)]" />
         <button
           type="button"
           onClick={() => setShowSecretHint(true)}

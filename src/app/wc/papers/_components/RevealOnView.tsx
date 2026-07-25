@@ -49,10 +49,15 @@ export function RevealOnView({ children, delayMs = 0, className = '', as = 'div'
     return () => observer.disconnect();
   }, [delayMs, reduce]);
 
-  const Tag = as;
+  // Narrowed to one concrete tag for JSX's benefit. `as` is a union of three
+  // intrinsic elements, and TypeScript resolves the props of a union tag to
+  // their intersection, which is what forced the old `RefObject<any>`. All
+  // three are HTMLElements and only ref, className, and style are set, so
+  // picking one for typing is safe and keeps the cast off the ref itself.
+  const Tag = as as 'div';
   return (
     <Tag
-      ref={ref as React.RefObject<any>}
+      ref={ref}
       className={className}
       style={{
         opacity: revealed ? 1 : 0,

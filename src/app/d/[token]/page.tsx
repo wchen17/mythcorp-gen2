@@ -24,12 +24,14 @@ export default async function DeletePage({ params }: PageProps) {
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
       <SiteHeader />
       <main className="mx-auto max-w-xl px-6 pt-28 pb-16">
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent-warm)]">[ delete / asset ]</p>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent-warm)]">[ delete / asset / wip ]</p>
         <h1 className="themed-heading mb-3 text-3xl md:text-4xl">Remove this image?</h1>
         <p className="mb-6 max-w-md text-sm leading-relaxed text-[color:var(--fg-muted)]">
           This deletes the file and its links for good. Anything already embedded elsewhere will stop loading.
         </p>
         <figure className="themed-surface mb-6 overflow-hidden p-3">
+          {/* Plain <img>: see the note in /a/[id]. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={publicUrl(record.key)} alt="The image this link deletes" className="max-h-[40vh] w-full object-contain" />
         </figure>
         <DeleteConfirm token={token} />

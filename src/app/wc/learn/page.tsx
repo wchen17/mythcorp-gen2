@@ -41,7 +41,7 @@ export default function LearnIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /wc/learn ]
+          [ /wc/learn / wip ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
           Walkthroughs

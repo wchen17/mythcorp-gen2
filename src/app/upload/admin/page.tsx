@@ -27,7 +27,7 @@ export default function AdminPage() {
       <SiteHeader />
       <main className="mx-auto min-h-screen max-w-xl px-6 pt-24 pb-16">
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ UPLOAD ADMIN ]
+          [ UPLOAD ADMIN / WIP ]
         </p>
 
         {!password ? (

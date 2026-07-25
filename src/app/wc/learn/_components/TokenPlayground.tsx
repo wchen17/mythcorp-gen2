@@ -61,7 +61,6 @@ export function TokenPlayground() {
   useEffect(() => {
     reseed();
     return clearOverrides;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // When the shared theme changes, drop our overrides (the inline style would
@@ -70,7 +69,6 @@ export function TokenPlayground() {
   useEffect(() => {
     clearOverrides();
     reseed();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
   const setToken = (name: TokenName, hex: string) => {
