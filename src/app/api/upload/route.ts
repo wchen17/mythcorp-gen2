@@ -12,6 +12,21 @@ function bearer(request: Request): string {
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
 }
+// `?format=text` returns the bare URL, which is what 0x0.st and catbox do and
+// what makes `curl ... | clip` a one-liner instead of a jq pipeline. The delete
+// URL rides in a header, the way 0x0 uses X-Token and transfer.sh uses
+// X-Url-Delete, since a plain-text body can only carry one thing.
+//
+// JSON stays the DEFAULT and text is opt-in, which is the one place this
+// deliberately parts from those two hosts: they are curl-first, this is
+// ShareX-first, and every issued .sxcu reads {json:url}. Negotiating on Accept
+// instead would flip ShareX's output the moment it sent `Accept: */*`.
+function text(url: string, deleteUrl: string): Response {
+  return new Response(`${url}\n`, {
+    status: 201,
+    headers: { "content-type": "text/plain; charset=utf-8", "x-url-delete": deleteUrl },
+  });
+}
 export async function POST(request: Request): Promise<Response> {
   const key = await verifyKey(bearer(request));
   if (!key) return json({ error: "Unauthorized" }, 401);
@@ -31,11 +46,15 @@ export async function POST(request: Request): Promise<Response> {
   const deleteHash = await recordDeleteToken(token, objectKey);
   await recordObject({ key: objectKey, uploader: key.label, size: body.byteLength, type: check.type, uploadedAt: new Date().toISOString(), deleteHash });
   await commitUsage(key.label, body.byteLength);
-  const origin = new URL(request.url).origin;
+  const requestUrl = new URL(request.url);
+  const origin = requestUrl.origin;
+  const publicLink = publicUrl(objectKey);
+  const deleteLink = `${origin}/d/${token}`;
+  if (requestUrl.searchParams.get("format") === "text") return text(publicLink, deleteLink);
   return json({
-    url: publicUrl(objectKey),
+    url: publicLink,
     viewUrl: `${origin}/a/${objectId(objectKey)}`,
-    deleteUrl: `${origin}/d/${token}`,
+    deleteUrl: deleteLink,
     key: objectKey,
   }, 201);
 }

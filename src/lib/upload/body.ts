@@ -11,11 +11,6 @@ import { LIMITS } from "./env";
 // which sniffs the real magic bytes. Nothing below trusts a filename or a
 // client-declared Content-Type, because both are attacker-controlled.
 
-// Field names to look for, in order, before falling back to the first file in
-// the form. "file" is the curl and HTML-form default; the rest are what other
-// hosts and their client scripts have trained people to send.
-const FILE_FIELDS = ["file", "image", "upload", "files[]"] as const;
-
 // Multipart wraps the file in boundary lines and per-part headers, so a legal
 // request is slightly larger than the file it carries. 1 MB of slack is far
 // more than that overhead and keeps the early reject from firing on a valid
@@ -49,16 +44,12 @@ async function readMultipart(request: Request): Promise<BodyResult> {
     return { ok: false, status: 400, message: "Could not parse the multipart body." };
   }
 
-  let file: File | null = null;
-  for (const name of FILE_FIELDS) {
-    const value = form.get(name);
-    if (value instanceof File) {
-      file = value;
-      break;
-    }
-  }
-  // Fall back to the first file part under any name, so a client using its own
-  // field name still works instead of failing for a cosmetic reason.
+  // "file" is what curl and plain HTML forms send, so it wins when present.
+  // Otherwise take the first file part under any name: catbox calls it
+  // fileToUpload, the pomf clones call it files[], and a form carrying exactly
+  // one image should not 400 over what that part happens to be named.
+  const named = form.get("file");
+  let file: File | null = named instanceof File ? named : null;
   if (!file) {
     for (const value of form.values()) {
       if (value instanceof File) {
