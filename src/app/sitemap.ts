@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
 
-// Override with NEXT_PUBLIC_SITE_URL once the custom domain (BACKLOG #20) is
-// final. Until then this is the live workers.dev origin, because mythcorp.dev
-// does not resolve and a sitemap of dead URLs is worse than no sitemap. The
-// var is inlined at BUILD time, so it has to be set for the build, not the
-// worker.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp-gen2.7737w27qh.workers.dev').replace(/\/$/, '');
+// The canonical host is mythcorp.ORG. It has been live on Cloudflare the whole
+// time; the repo just said mythcorp.DEV in several places, which does not
+// resolve, so an earlier pass "corrected" this to the workers.dev origin. That
+// was worse: the real domain was then serving a sitemap and a robots Host that
+// both pointed somewhere else, splitting the site across two hostnames.
+// NEXT_PUBLIC_SITE_URL still overrides, and is inlined at BUILD time, so it has
+// to be set for the build rather than as a worker var.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp.org').replace(/\/$/, '');
 
 type Entry = {
   path: string;

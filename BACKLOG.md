@@ -276,9 +276,13 @@ After #2 (build the about page), add a tiny KV-backed comment/guestbook box at t
 
 **Body:**
 
-The site is currently on a `workers.dev` subdomain. Buy a custom domain (mythcorp.dev? mythcorp.app? wc.dev if available?) and point it at the Cloudflare Workers deployment. Configure in Cloudflare dashboard.
+**DONE, and it was done before anyone noticed (verified 2026-07-25).** The custom domain is **mythcorp.org**, live on Cloudflare and serving this worker. Every route, the upload API, and the WIP markers were confirmed against it. The confusion was that this repo said mythcorp**.dev** in README, MAP, and this item, and that domain is NXDOMAIN, so a pass in July "fixed" the sitemap and robots host to the workers.dev origin instead. Both now point at mythcorp.org.
 
-Bonus: set up `wc.<domain>` as an alias to `/wc/*` so the personal section has its own "subdomain" feel.
+Still open, split out of this item:
+
+- `www.mythcorp.org` does not resolve. Anyone typing the www form gets nothing. One CNAME.
+- The workers.dev origin still answers, so the same site is reachable on two hostnames. `robots.txt` now names mythcorp.org as `Host`, which is the cheap fix; setting `workers_dev: false` in `wrangler.jsonc` is the real one, at the cost of losing the fallback URL for testing.
+- Bonus, unchanged: `wc.mythcorp.org` as an alias to `/wc/*`.
 
 ---
 

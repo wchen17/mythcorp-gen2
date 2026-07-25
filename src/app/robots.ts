@@ -1,11 +1,9 @@
 import type { MetadataRoute } from 'next';
 
-// Falls back to the deployed workers.dev origin, not mythcorp.dev: that domain
-// does not resolve yet (BACKLOG #20), and pointing `host` and `sitemap` at a
-// non-existent hostname is worse than pointing them at an ugly one. Set
-// NEXT_PUBLIC_SITE_URL at BUILD time (it is inlined, not read at runtime) when
-// the custom domain lands.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp-gen2.7737w27qh.workers.dev').replace(/\/$/, '');
+// mythcorp.ORG, not .dev and not the workers.dev origin. See the note in
+// sitemap.ts: this is the live custom domain, and `host` here is what tells
+// crawlers which of the several hostnames serving this worker is canonical.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp.org').replace(/\/$/, '');
 
 export default function robots(): MetadataRoute.Robots {
   return {

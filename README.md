@@ -56,6 +56,6 @@ on every push and PR. A weekly cron opens a PR with the refreshed FMHY snapshot.
 
 ## License
 
-This repo is the source of [mythcorp.dev](https://mythcorp.dev) and is intentionally
+This repo is the source of [mythcorp.org](https://mythcorp.org) and is intentionally
 public so the build can be picked up from any device. Code is unlicensed for reuse;
 content (essays, paper text, designs) is the author's.
