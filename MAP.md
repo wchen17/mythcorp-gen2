@@ -39,6 +39,7 @@ Single-screen index of where things live. Read this first; grep second.
 | error | `src/app/error.tsx` | Themed route error boundary (reset button) |
 | fatal | `src/app/global-error.tsx` | Layout-level fallback (own html/body, inline styles, no theme tokens) |
 | `/sitemap.xml` | `src/app/sitemap.ts` | Generated sitemap. Route list is hand-maintained, add new pages here. |
+| `i.mythcorp.org/<key>` | `src/middleware.ts` + `src/app/api/img/[key]/route.ts` | Image host. Host-header rewrite to a route that streams the object out of R2 over S3. Not an R2 custom domain: the bucket is in another Cloudflare account. |
 | `/robots.txt` | `src/app/robots.ts` | Allow-all, points at the sitemap. Base URL via `NEXT_PUBLIC_SITE_URL` (default `mythcorp.org`, the live custom domain). |
 
 `/og/*` houses unfinished ideas kept on purpose, labelled with `<DraftBanner />`. The `/og` index also lists graduated sketches (e.g. `/fmhy` used to live at `/og/fmhy` before getting a real implementation).

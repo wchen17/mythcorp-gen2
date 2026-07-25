@@ -18,7 +18,13 @@
     "directory": ".open-next/assets"
   },
   "vars": {
-    "R2_PUBLIC_BASE_URL": "https://pub-feb896eab49f4b27ae2323cf8607514e.r2.dev"
+    // Our own hostname, served by this worker out of R2 (see src/middleware.ts
+    // and /api/img). It is NOT an R2 custom domain: the bucket lives in the
+    // other Cloudflare account, and R2 requires the zone and bucket to share
+    // one. The old pub-*.r2.dev origin still resolves, so links already shared
+    // keep working; this only changes what new uploads hand back, and what the
+    // view page and admin gallery render, since both compute publicUrl() live.
+    "R2_PUBLIC_BASE_URL": "https://i.mythcorp.org"
   },
   "kv_namespaces": [
     { "binding": "UPLOADS_KV", "id": "210daca69ab54e4a9b723d257d73de38" }

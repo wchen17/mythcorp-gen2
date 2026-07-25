@@ -33,6 +33,22 @@ export async function putObject(
   }
 }
 
+// Reads an object back out of R2 over the signed S3 endpoint.
+//
+// This exists because the bucket lives in a DIFFERENT Cloudflare account from
+// this worker and the mythcorp.org zone, so there is no R2 binding to bind and
+// no way to attach i.mythcorp.org to the bucket directly: R2 custom domains
+// require the zone and the bucket to share an account. Serving the bytes
+// through the worker is the way to put images on our own hostname without
+// moving the bucket between accounts.
+//
+// The response is streamed through rather than buffered, so a large GIF does
+// not have to sit in worker memory to be served.
+export async function getObject(key: string): Promise<Response> {
+  const env = uploadEnv();
+  return client(env).fetch(objectUrl(env, key), { method: "GET" });
+}
+
 export async function deleteObject(key: string): Promise<void> {
   const env = uploadEnv();
   const res = await client(env).fetch(objectUrl(env, key), { method: "DELETE" });

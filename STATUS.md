@@ -1,5 +1,24 @@
 # STATUS
 
+## i.mythcorp.org, and the account split that shaped it, 2026-07-25
+Uploads now hand back `https://i.mythcorp.org/<key>.png` instead of a `pub-*.r2.dev` URL. It is **not** an R2 custom domain, and that distinction is the whole story.
+
+**The constraint.** An R2 custom domain requires the DNS zone and the bucket to be in the SAME Cloudflare account. Verified via the API rather than assumed: the `mythcorp.org` zone (`8716e277…`) is on the **mozmail** account `ba6ba228…`, alongside the worker and `UPLOADS_KV`. The `real` bucket is on the **gmail** account `6f1987…`, which is also the only account with R2 enabled at all; the mozmail account answers `Please enable R2 through the Cloudflare Dashboard`. So attaching the hostname to the bucket was impossible without migrating one of them. (`UPLOAD_PHASE23_BRIEF.md` recorded this split with the accounts the other way round, and named the domain `.dev`.)
+
+**What was built instead.** `i.mythcorp.org` is a Workers Custom Domain on the existing worker, and the worker serves the bytes:
+
+1. `src/middleware.ts` keys off the Host header alone. A request to `i.mythcorp.org/<key>.png` rewrites to `/api/img/<key>`; everything else falls straight through. It is one string comparison because it runs on every request to the main site too, and a bug there takes down every route, not just images.
+2. `/api/img/[key]` validates the key shape with the same `isObjectId` guard `/a/<id>` uses, since the key is attacker-controlled and gets interpolated into an S3 object path. It streams the body rather than buffering, sets content type from OUR allowlist rather than whatever R2 echoes back, and adds `nosniff` plus `X-Robots-Tag: noindex` to match the `/a` view page.
+3. `getObject` in `lib/upload/r2.ts` reads over the signed S3 endpoint, the same cross-account mechanism `putObject` already used.
+
+**Cache-Control is one hour, deliberately.** Content-addressed keys would justify a year, but delete tokens are a real feature and an image that kept serving from cache for months after deletion would make deletion a lie.
+
+**The tradeoff accepted.** Image bytes pass through the Worker rather than R2's direct CDN path, so a cold view costs a Worker request plus an S3 fetch. Fine at present scale, and the reason to eventually enable R2 on the mozmail account and move the bucket: then the hostname attaches directly and the worker leaves the hot path. The old `pub-*.r2.dev` origin still resolves, so links already shared keep working.
+
+**Verified live end to end:** uploaded through `mythcorp.org`, got an `i.mythcorp.org` URL back, fetched it byte-identical with the right headers, confirmed `og:image` on `/a/<id>` now points at the new host, deleted by token, confirmed 404. Root of `i.mythcorp.org` 308s to the main site rather than serving a gallery. Bad keys and traversal attempts 404. Main site unaffected: 11 routes sampled, all correct.
+
+**One mess made and cleaned.** A test object uploaded through the LOCAL dev server wrote its bytes to the production bucket (`.dev.vars` points at the real R2) while its delete token went to LOCAL KV, so the production delete endpoint could not remove it. It was deleted directly with `wrangler r2 object delete`. Worth knowing: local dev writes real objects to the real bucket, and the production `stat:totalbytes` counter never saw them, so that counter can drift below actual usage by whatever local testing has uploaded.
+
 ## First deploy since May, 2026-07-25
 The site is live at **https://mythcorp-gen2.7737w27qh.workers.dev**. Before this, the last deployment was 2026-05-24, which means the entire upload system had never existed in production. Four things had to be fixed to get a deploy out at all, and each would have blocked the next attempt too.
 
