@@ -114,7 +114,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
               how the scene works
             </Link>
             <Link
-              href="/animals"
+              href="/og/animals"
               className="themed-pill px-4 py-1.5 font-mono text-xs
                          text-[color:var(--accent-warm)]
                          hover:text-[color:var(--accent)]"
