@@ -37,15 +37,6 @@ export async function getObjectRecordById(id: string): Promise<ObjectRecord | nu
   return res.keys[0]?.metadata ?? null;
 }
 
-export async function listObjects(): Promise<ObjectRecord[]> {
-  const out: ObjectRecord[] = [];
-  const res = await uploadEnv().UPLOADS_KV.list<ObjectRecord>({ prefix: OBJ_PREFIX });
-  for (const k of res.keys) {
-    if (k.metadata) out.push(k.metadata);
-  }
-  return out.sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt));
-}
-
 export async function deleteObjectRecord(key: string): Promise<void> {
   await uploadEnv().UPLOADS_KV.delete(OBJ_PREFIX + key);
 }
@@ -68,14 +59,15 @@ export async function forgetDeleteToken(hash: string | undefined): Promise<void>
   if (hash) await uploadEnv().UPLOADS_KV.delete(DEL_PREFIX + hash);
 }
 
+// Still used by /a/<id>, which validates a stored accent before emitting it as
+// theme-color metadata. Never drop this guard: the value reaches an HTML meta
+// tag, so anything other than a strict six-digit hex is an injection point.
 export function isEmbedAccent(value: string): boolean {
   return /^#[0-9a-fA-F]{6}$/.test(value);
 }
 
-export async function updateObjectEmbed(key: string, embed: ObjectRecord['embed']): Promise<ObjectRecord | null> {
-  const record = await getObjectRecord(key);
-  if (!record) return null;
-  const updated = { ...record, embed };
-  await recordObject(updated);
-  return updated;
-}
+// updateObjectEmbed lived here to serve the admin PATCH endpoint and went with
+// it on 2026-07-25. The `embed` field on ObjectRecord stays: /a/<id> still
+// renders a saved title, description, and accent if one is present, there is
+// just no longer a UI that writes them. Restoring the panel means restoring the
+// writer, not the reader.

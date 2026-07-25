@@ -1,5 +1,32 @@
 # STATUS
 
+## Admin panel removed, key management moved out of band, 2026-07-25
+`/upload/admin` and `/api/admin/*` are gone. Not hidden, not gated: deleted.
+
+**Why.** There was no rate limiting, lockout, attempt tracking, or challenge in front of the admin password. `verifyAdmin` was a constant-time compare and that was the entire gate, on six endpoints reachable directly with `curl`. Two consequences, and the second is the one that is easy to miss: a weak password was brute-forceable, AND every attempt costs a Worker request whether it succeeds or fails, so a sustained attack burns the 100k/day free tier and takes the site down regardless of whether it ever guesses right. Denial of wallet, not just credential risk.
+
+Gating the page behind another password would not have helped. The page was a client-side form; the boundary was always the API route, and an attacker never loads the page.
+
+**The model.** 0x0.st and catbox have no public admin panel: administration happens over SSH, out of band, on something that is not serving the website. The equivalent here is wrangler, authenticated by OAuth against the Cloudflare account. So the panel is gone and `scripts/manage-keys.mjs` replaces it:
+
+```
+node scripts/manage-keys.mjs mint <label>    mint a key, shown once
+node scripts/manage-keys.mjs list            hashes, labels, dates
+node scripts/manage-keys.mjs revoke <hash>   immediate, no redeploy
+```
+
+Objects are plain wrangler, no wrapper: `wrangler kv key list --binding UPLOADS_KV --remote` to see records, and `wrangler r2 object delete "real/<key>" --remote` to remove bytes. That one runs against the **gmail** account, not the worker's.
+
+The script calls wrangler's JS entry with `execFileSync` and an argv array rather than going through `npx`. On Windows `npx.cmd` cannot be spawned without a shell, and using a shell would interpolate the label and hash through a command line, which is an injection hole in a script that exists to handle credentials.
+
+**What went with it.** `createKey`, `listKeys`, `revokeKey` (keys.ts now only verifies, so the worker carries no key-minting capability at all), `listObjects` and `updateObjectEmbed` (objects.ts), `lib/upload/admin.ts`, and `ADMIN_PASSWORD` from the env type. `isEmbedAccent` was nearly deleted with them and is NOT dead: `/a/<id>` uses it to validate a stored accent before it reaches a meta tag, which is an injection guard. TypeScript caught that; the orphan-detection pass had missed it.
+
+**Still live and unchanged:** uploading, `/a/<id>`, delete tokens, `/d/<token>`, and `i.mythcorp.org`. Saved embed titles and colors still RENDER, there is just no longer a UI that writes them.
+
+**The secret is still set on the worker,** inert now that nothing reads it. `wrangler secret delete ADMIN_PASSWORD` clears it; leaving it costs nothing and makes restoring the panel easier.
+
+Verified live: `/upload/admin` and both admin API routes 404, the upload path still works, and a minted key authenticates then stops the moment it is revoked.
+
 ## i.mythcorp.org, and the account split that shaped it, 2026-07-25
 Uploads now hand back `https://i.mythcorp.org/<key>.png` instead of a `pub-*.r2.dev` URL. It is **not** an R2 custom domain, and that distinction is the whole story.
 

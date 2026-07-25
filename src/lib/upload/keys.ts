@@ -1,5 +1,4 @@
 import { uploadEnv } from "./env";
-import { newApiKey } from "./ids";
 import { sha256Hex as hashKey } from "./hash";
 
 // What we keep about each key. The raw key is NEVER stored; only its hash is,
@@ -23,42 +22,9 @@ export async function verifyKey(raw: string): Promise<KeyRecord | null> {
   return rec ?? null;
 }
 
-// Mints a new key, stores only its hash, and returns the raw key ONCE.
-// After this call the raw key is unrecoverable, exactly like a real API token.
-export async function createKey(label: string, admin = false): Promise<string> {
-  const raw = newApiKey();
-  const rec: KeyRecord = {
-    label,
-    admin,
-    createdAt: new Date().toISOString(),
-  };
-  await uploadEnv().UPLOADS_KV.put(KEY_PREFIX + (await hashKey(raw)), JSON.stringify(rec), {
-    metadata: rec,
-  });
-  return raw;
-}
-
-export interface KeyListing {
-  hash: string;
-  label: string;
-  admin: boolean;
-  createdAt: string;
-}
-
-// For the dashboard: every key's metadata (never the raw keys, which are gone).
-export async function listKeys(): Promise<KeyListing[]> {
-  const out: KeyListing[] = [];
-  const res = await uploadEnv().UPLOADS_KV.list<KeyRecord>({ prefix: KEY_PREFIX });
-  for (const k of res.keys) {
-    const m = k.metadata;
-    if (!m) continue;
-    out.push({ hash: k.name.slice(KEY_PREFIX.length), label: m.label, admin: m.admin, createdAt: m.createdAt });
-  }
-  return out;
-}
-
-// Revoke by the hash shown in the dashboard. The person's key stops working
-// immediately, with no redeploy and no effect on anyone else.
-export async function revokeKey(hash: string): Promise<void> {
-  await uploadEnv().UPLOADS_KV.delete(KEY_PREFIX + hash);
-}
+// createKey, listKeys, and revokeKey were removed on 2026-07-25 with the admin
+// panel. Key management now happens out of band via scripts/manage-keys.mjs,
+// which writes the same `key:<sha256hex>` records straight into KV through
+// wrangler. The worker only ever needs to VERIFY a key, so that is all it
+// carries now: less code in the request path, and no key-minting capability
+// exposed to the internet at all.
