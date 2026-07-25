@@ -12,7 +12,22 @@ Also killed the three `react-hooks/exhaustive-deps` warnings in `useObjects.ts` 
 
 Verified live: all 13 sampled routes return 200 and an unknown path correctly 404s, including `/upload` and `/upload/admin`. Note that both returned 404 for roughly a minute immediately after deploy and then resolved on their own, so a 404 in the first minute after a deploy is propagation, not a routing bug. `robots.txt` and `sitemap.xml` confirmed serving the corrected origin.
 
-NOT verified: the production upload path end to end. Secrets, KV, and the cross-account R2 credentials have never been exercised against the live worker. All five secrets (`ADMIN_PASSWORD`, `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`) are present on it, but present is not working. The remaining smoke test is: mint a key at `/upload/admin`, upload an image, confirm the public URL serves it, then delete it with its own token.
+**Production smoke test: passed, end to end.** The whole path now has receipts, not just a green build.
+
+| Step | Result |
+|---|---|
+| Bogus upload key | 401, not 500, so the KV binding reads correctly |
+| Multipart upload | 201 |
+| Public R2 fetch | 200, `image/png`, 70 bytes, byte-exact |
+| View page `/a/<id>` | 200 with `noindex, nofollow`, `og:image`, `twitter:card` all correct |
+| `?format=text` | bare URL body, `x-url-delete` header |
+| Delete by token, both objects | `{"ok":true}` |
+| Both objects after delete | 404 from R2 |
+| Replaying a used token | the not-found message, so a spent token cannot be probed |
+
+That confirms the three things a green build could not: the worker reads its secrets, the KV binding works, and the cross-account R2 credentials are valid for both writes and deletes. Both test images and the test key were removed afterward, and the revoked key now 401s.
+
+Two things learned doing it. **The production `ADMIN_PASSWORD` is not the one in `.dev.vars`**, which is correct (that file even says to pick a strong one before deploy) but means the local value cannot administer the live site. If it has been lost, `wrangler secret put ADMIN_PASSWORD` resets it. **A key can be minted without the admin password at all**, by writing `key:<sha256hex(raw)>` straight into `UPLOADS_KV` with wrangler, which is how this test authenticated. Worth knowing both as an escape hatch and as a reminder that anyone with wrangler access to that account is already past the admin gate.
 
 ## Upload intake and storage pressure, 2026-07-24
 Closed both items the conventions pass left open, one by building it and one by deciding against it.
