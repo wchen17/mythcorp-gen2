@@ -15,7 +15,7 @@ or locally via the CLI) are picking this up, read these in order:
 3. [MAP.md](./MAP.md), the file index.
 4. [CLAUDE.md](./CLAUDE.md), conventions. The headline rule: **no em-dashes anywhere**.
 5. [BACKLOG.md](./BACKLOG.md), queued issues. Same content lives at
-   [github.com/wchen17/mythcorp-gen2/issues](https://github.com/wchen17/mythcorp-gen2/issues).
+   [github.com/onionviolet/mythcorp-gen2/issues](https://github.com/onionviolet/mythcorp-gen2/issues).
 
 That's under five minutes to be fully oriented.
 

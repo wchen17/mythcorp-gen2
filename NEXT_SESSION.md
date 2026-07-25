@@ -11,7 +11,7 @@ A Next.js 15 personal site for Will (Weibao) Chen — themed cinematic landing, 
 1. **`STATUS.md`** (60 sec) — what shipped most recently and what's next.
 2. **`MAP.md`** (60 sec) — the file index. Where every route and component lives.
 3. **`CLAUDE.md`** (60 sec) — conventions. Most importantly: **no em-dashes anywhere** (saved to project memory under `~/.claude/projects/<this>/memory/feedback_no_emdashes.md`).
-4. **`BACKLOG.md`** (skim) — 22 Issues with full bodies. Same content lives at https://github.com/wchen17/mythcorp-gen2/issues now.
+4. **`BACKLOG.md`** (skim) — 22 Issues with full bodies. Same content lives at https://github.com/onionviolet/mythcorp-gen2/issues now.
 5. **This file** — for the inspiration + design ethos that the other docs don't capture.
 
 That's <5 minutes to be fully oriented.
@@ -63,7 +63,7 @@ Run `git log --oneline main..HEAD` to see the full series. Highlights in chronol
 4. **Theme Tier 2** — full design-language swap. New tokens (`--surface-style`, `--radius`, `--surface-shadow`, `--motion-ease`, `--button-bg`) + utility classes (`.themed-surface`, `.themed-button`, `.themed-pill`, `.themed-heading`). Migrated Modal, ComingSoon, /wc, /og, /fmhy, MainMenu.
 5. **`/wc/papers/ai-cybercrime`** — first interactive paper. Two figures (`<BarrierToEntry />` toggle, `<CapabilityRamp />` year scrubber). Honest reviewer-feedback section that names the B+ critique and explains how the web version answers each point.
 6. **Konami code** (↑↑↓↓←→←→ b a) cycles theme + confetti. Camera FOV unified at 55° between landing and experience scenes.
-7. **22 GitHub Issues + auto-post script** — every queued improvement is now an Issue (#13-#34 on https://github.com/wchen17/mythcorp-gen2/issues), labeled, with full bodies. Re-run `./tools/post-backlog-to-issues.ps1` is safe (skips dupes).
+7. **22 GitHub Issues + auto-post script** — every queued improvement is now an Issue (#13-#34 on https://github.com/onionviolet/mythcorp-gen2/issues), labeled, with full bodies. Re-run `./tools/post-backlog-to-issues.ps1` is safe (skips dupes).
 
 ## Where to start, by mood
 
@@ -97,7 +97,7 @@ Run `git log --oneline main..HEAD` to see the full series. Highlights in chronol
 If you're an agent with no local checkout (just `claude.ai/code`, the GitHub
 UI, and a Codespace), this works:
 
-1. Open the repo at https://github.com/wchen17/mythcorp-gen2 and switch the
+1. Open the repo at https://github.com/onionviolet/mythcorp-gen2 and switch the
    branch picker to `claude/vigilant-golick-c8ff8d`. Every doc and script is
    at the repo root.
 2. Either start a Codespace (preinstalls Node + gh) or use `claude.ai/code`'s

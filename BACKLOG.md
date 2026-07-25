@@ -9,7 +9,7 @@ gh auth login         # one time, opens a browser
 ./tools/post-backlog-to-issues.ps1
 ```
 
-That script reads every `## #N, ...` heading in this file and creates one Issue per heading on `wchen17/mythcorp-gen2`, applying the labels in the `**Labels:**` line.
+That script reads every `## #N, ...` heading in this file and creates one Issue per heading on `onionviolet/mythcorp-gen2`, applying the labels in the `**Labels:**` line.
 
 ---
 
