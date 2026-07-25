@@ -1,7 +1,11 @@
 import type { MetadataRoute } from 'next';
 
-// Override with NEXT_PUBLIC_SITE_URL once the custom domain (BACKLOG #20) is final.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp.dev').replace(/\/$/, '');
+// Override with NEXT_PUBLIC_SITE_URL once the custom domain (BACKLOG #20) is
+// final. Until then this is the live workers.dev origin, because mythcorp.dev
+// does not resolve and a sitemap of dead URLs is worse than no sitemap. The
+// var is inlined at BUILD time, so it has to be set for the build, not the
+// worker.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp-gen2.7737w27qh.workers.dev').replace(/\/$/, '');
 
 type Entry = {
   path: string;

@@ -1,5 +1,19 @@
 # STATUS
 
+## First deploy since May, 2026-07-25
+The site is live at **https://mythcorp-gen2.7737w27qh.workers.dev**. Before this, the last deployment was 2026-05-24, which means the entire upload system had never existed in production. Four things had to be fixed to get a deploy out at all, and each would have blocked the next attempt too.
+
+1. **`account_id` is now pinned in `wrangler.jsonc`.** Two Cloudflare accounts are authenticated on this machine, so wrangler refused to pick one in non-interactive mode and `npm run deploy` died before doing anything. Worth knowing which is which: the worker and `UPLOADS_KV` live on the `7737w27qh@mozmail.com` account, while the R2 bucket is on the `Wbchen17@gmail.com` one. That split is fine, because R2 is reached over the S3 API with access keys rather than a binding, but it is not guessable and cost real time to work out.
+2. **`node_modules` was installed by pnpm in a repo whose tracked lockfile is `package-lock.json`.** The resulting `.pnpm` symlink farm is what OpenNext copies into its bundle, and esbuild cannot traverse it on Windows: `Cannot read directory ... Access is denied`, four times. The symlinks are created as FILE symlinks pointing at directories, which is why they read fine from PowerShell and fail under `scandir`. Fixed by `npm ci` for a flat install. If a future session sees those errors, check for `node_modules/.pnpm` before anything else.
+3. **Stale build directories broke two more attempts** (`EBUSY: rmdir .open-next/assets`, `EPERM: scandir .next/standalone/node_modules/react`). Both are staleness wearing a permissions costume. `npm run clean` now runs ahead of `deploy`, `preview`, and `cf:build` via `scripts/clean-build-dirs.mjs`. That script uses `fs.rmSync` deliberately: PowerShell 5.1 can delete THROUGH a junction and take the real `node_modules` with it.
+4. **`sitemap.ts` and `robots.ts` were advertising `mythcorp.dev`, which does not resolve.** Not a bad record, an NXDOMAIN. The live sitemap was a list of dead URLs and `robots.txt` pointed at a dead host. Both now fall back to the workers.dev origin. `NEXT_PUBLIC_SITE_URL` is inlined at BUILD time, so setting it as a worker var will not work; it has to be set for the build when BACKLOG #20 lands.
+
+Also killed the three `react-hooks/exhaustive-deps` warnings in `useObjects.ts` by memoizing the `auth` object, which was rebuilding every render and making every callback below it unstable.
+
+Verified live: all 13 sampled routes return 200 and an unknown path correctly 404s, including `/upload` and `/upload/admin`. Note that both returned 404 for roughly a minute immediately after deploy and then resolved on their own, so a 404 in the first minute after a deploy is propagation, not a routing bug. `robots.txt` and `sitemap.xml` confirmed serving the corrected origin.
+
+NOT verified: the production upload path end to end. Secrets, KV, and the cross-account R2 credentials have never been exercised against the live worker. All five secrets (`ADMIN_PASSWORD`, `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`) are present on it, but present is not working. The remaining smoke test is: mint a key at `/upload/admin`, upload an image, confirm the public URL serves it, then delete it with its own token.
+
 ## Upload intake and storage pressure, 2026-07-24
 Closed both items the conventions pass left open, one by building it and one by deciding against it.
 

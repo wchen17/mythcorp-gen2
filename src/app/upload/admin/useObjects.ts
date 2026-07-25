@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 export interface ObjectRecord { key: string; uploader: string; size: number; type: string; uploadedAt: string; embed?: { title?: string; description?: string; accent?: string }; }
 export interface ObjectsPayload { objects: ObjectRecord[]; totalBytes: number; ceiling: number; publicBase: string; }
 export function formatMegabytes(bytes: number): string { return (bytes / 1048576).toFixed(1); }
@@ -11,25 +11,31 @@ export function formatBytes(bytes: number): string {
 export function useObjects(password: string) {
   const [data, setData] = useState<ObjectsPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const auth = { authorization: `Bearer ${password}`, 'content-type': 'application/json' };
+  // Memoized so it is a stable dependency. Rebuilt every render it made each
+  // callback below a new function every render too, which is what the three
+  // exhaustive-deps warnings were pointing at.
+  const auth = useMemo(
+    () => ({ authorization: `Bearer ${password}`, 'content-type': 'application/json' }),
+    [password],
+  );
   const load = useCallback(async () => {
     setError(null);
     const response = await fetch('/api/admin/objects', { headers: auth });
     if (!response.ok) { setError('The object index could not be read.'); return; }
     setData((await response.json()) as ObjectsPayload);
-  }, [password]);
+  }, [auth]);
   useEffect(() => { void load(); }, [load]);
   const remove = useCallback(async (key: string) => {
     const response = await fetch('/api/admin/objects', { method: 'DELETE', headers: auth, body: JSON.stringify({ key }) });
     if (!response.ok) { setError('The object could not be removed.'); return; }
     await load();
-  }, [load, password]);
+  }, [auth, load]);
   const saveEmbed = useCallback(async (key: string, embed: ObjectRecord["embed"]) => {
     const response = await fetch("/api/admin/objects", { method: "PATCH", headers: auth, body: JSON.stringify({ key, embed }) });
     if (!response.ok) return false;
     await load();
     return true;
-  }, [load, password]);
+  }, [auth, load]);
   return { data, error, load, remove, saveEmbed };
 }
 

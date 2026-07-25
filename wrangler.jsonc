@@ -4,6 +4,12 @@
  */ {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mythcorp-gen2",
+  // Pinned because two accounts are authenticated on this machine and wrangler
+  // refuses to guess in non-interactive mode, which blocks `npm run deploy`.
+  // This is the account holding the worker and UPLOADS_KV. The R2 bucket lives
+  // on the other one and is reached over the S3 API with access keys rather
+  // than a binding, so that split is fine and deliberate.
+  "account_id": "ba6ba228d896f1c1679a72cb679c61b4",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-04-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],

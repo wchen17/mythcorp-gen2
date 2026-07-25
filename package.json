@@ -43,14 +43,15 @@
     "build": "next build --no-lint",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "check": "npm run build && tsc",
-    "cf:build": "opennextjs-cloudflare build",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:build": "npm run clean && opennextjs-cloudflare build",
+    "deploy": "npm run clean && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "dev": "next dev",
     "lint": "next lint",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "preview": "npm run clean && opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
     "prod": "next build --no-lint && next start",
     "fetch:fmhy": "tsx scripts/fetch-fmhy.ts",
-    "post:backlog": "node tools/post-backlog-to-issues.mjs"
+    "post:backlog": "node tools/post-backlog-to-issues.mjs",
+    "clean": "node scripts/clean-build-dirs.mjs"
   }
 }
