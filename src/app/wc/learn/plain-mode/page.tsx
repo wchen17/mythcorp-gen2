@@ -1,6 +1,7 @@
 'use client';
 
 import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
+import { CanvasUiSections } from './CanvasUiSections';
 import { useTheme } from '../../../contexts/ThemeContext';
 
 export default function PlainModeWalkthrough() {
@@ -209,6 +210,8 @@ ctx.fillText(ramp[level], x * cell, y * cell * 1.6);`}</Code>
         </p>
       </Section>
 
+      <CanvasUiSections />
+
       <Section title="Files">
         <ul className="list-disc space-y-1 pl-5">
           <li><code className="font-mono">plain/asciiFluid.ts</code>, the solver, no React in it</li>
@@ -218,6 +221,9 @@ ctx.fillText(ramp[level], x * cell, y * cell * 1.6);`}</Code>
           <li><code className="font-mono">plain/PlainHold.tsx</code>, the holding screen chrome</li>
           <li><code className="font-mono">plain/holdState.ts</code>, the allowlist both React and the pre-paint script read</li>
           <li><code className="font-mono">plain/useScramble.ts</code>, ideaboard #65, the decode effect</li>
+          <li><code className="font-mono">plain/HoldStage.tsx</code>, the six effects and their monochrome options</li>
+          <li><code className="font-mono">plain/HoldStatus.tsx</code>, the readout, fed by <code className="font-mono">fieldMetrics.ts</code></li>
+          <li><code className="font-mono">components/canvasui/</code>, vendored Canvas UI source, see its README</li>
         </ul>
       </Section>
     </Walkthrough>

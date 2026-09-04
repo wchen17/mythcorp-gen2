@@ -19,6 +19,8 @@ export type AsciiFluidOptions = {
   source?: (cols: number, rows: number) => Float32Array | null;
   /** Per-frame gain on the source mask. Steady-state dye is gain / (1 - decay). */
   sourceGain?: number;
+  /** Called about five times a second with the grid size and mean dye. */
+  onMetrics?: (m: { cols: number; rows: number; ink: number }) => void;
 };
 
 type Field = Float32Array;
@@ -49,6 +51,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
   let raf = 0;
   let running = false;
   let clock = 0;
+  let sinceReport = 0;
 
   const pointer = { x: -1, y: -1, dx: 0, dy: 0, active: false };
   const idx = (x: number, y: number) => y * cols + x;
@@ -177,12 +180,24 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
 
   const target = (): RenderTarget => ({ ctx: ctx!, cols, rows, cell: opts.cell, ink: opts.ink, fontFamily });
 
+  function report() {
+    if (!opts.onMetrics) return;
+    // Every twelfth frame, so the panel updates about five times a second
+    // rather than provoking sixty React renders.
+    if (++sinceReport < 12) return;
+    sinceReport = 0;
+    let total = 0;
+    for (let i = 0; i < dye.length; i++) total += dye[i];
+    opts.onMetrics({ cols, rows, ink: dye.length ? total / dye.length : 0 });
+  }
+
   function frame() {
     if (!running) return;
     inject();
     ambient();
     step();
     renderField(dye, target(), canvas.clientWidth, canvas.clientHeight);
+    report();
     raf = requestAnimationFrame(frame);
   }
 

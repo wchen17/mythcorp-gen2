@@ -15,7 +15,7 @@ const WALKTHROUGHS = [
     slug: 'plain-mode',
     title: 'Plain mode, and the field underneath it',
     blurb:
-      'A theme that removes every ornament CSS can express, then puts back one canvas: a live ASCII fluid field the cursor stirs.',
+      'A theme that removes every ornament CSS can express, then puts back canvas: an ASCII fluid field carrying the wordmark, plus six Canvas UI shader effects over the live DOM.',
     status: 'ready',
   },
   {

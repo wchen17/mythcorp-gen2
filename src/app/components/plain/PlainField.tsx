@@ -8,6 +8,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { createAsciiFluid } from './asciiFluid';
 import { renderTextMask } from './textMask';
 import { isHeld } from './holdState';
+import { publishMetrics, resetMetrics } from './fieldMetrics';
 
 /**
  * The grid is wide and short on a desktop viewport, so two stacked lines end
@@ -44,6 +45,7 @@ export function PlainField() {
       ink,
       ambient: true,
       sourceGain: 0.016,
+      onMetrics: publishMetrics,
       source: held
         ? (cols, rows) =>
             renderTextMask(holdLines(cols, rows), cols, rows, {
@@ -60,6 +62,7 @@ export function PlainField() {
     return () => {
       window.removeEventListener('pointermove', onMove);
       field.destroy();
+      resetMetrics();
     };
   }, [active, held]);
 

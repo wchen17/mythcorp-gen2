@@ -82,6 +82,12 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
 | `src/app/components/plain/textMask.ts` | Text to a per-cell coverage mask, supersampled |
 | `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
+| `src/app/components/plain/HoldStage.tsx` | The six Canvas UI effects, dynamic-imported, monochrome options |
+| `src/app/components/plain/HoldStatus.tsx` | Live readout on the holding screen |
+| `src/app/components/plain/fieldMetrics.ts` | One-value store the field publishes to and the readout reads |
+| `src/app/components/plain/supportsHtmlInCanvas.ts` | The Chrome feature probe, used to star inert effects |
+| `src/app/components/canvasui/` | **Vendored** Canvas UI source. See its README; do not hand-edit |
+| `src/app/components/rect-cache.ts` | Helper three canvasui components import but the registry does not ship |
 
 Walkthrough: `/wc/learn/theme-system`.
 
