@@ -150,6 +150,51 @@
   --noise-opacity: 0.04;
 }
 
+[data-theme="plain"] {
+  --bg: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-overlay: rgba(255, 255, 255, 0.86);
+  --fg: #111111;
+  --fg-muted: rgba(17, 17, 17, 0.66);
+  --fg-subtle: rgba(17, 17, 17, 0.42);
+  --accent: #111111;
+  --accent-soft: #444444;
+  --accent-warm: #111111;
+  --accent-glow: rgba(17, 17, 17, 0.12);
+  --accent-glow-strong: rgba(17, 17, 17, 0.22);
+  --border: rgba(17, 17, 17, 0.22);
+  --border-strong: #111111;
+  --skyline-tint-a: rgba(255, 255, 255, 0.86);
+  --skyline-tint-b: rgba(255, 255, 255, 0.55);
+  --skyline-blur: 0px;
+  /* Mono everywhere. The type carries no personality so the field can. */
+  --font-display: var(--font-geist-mono);
+  --font-body: var(--font-geist-mono);
+  --font-mono: var(--font-geist-mono);
+  /* Read by PlainField to colour the glyphs. */
+  --plain-ink: #111111;
+  color-scheme: light;
+
+  /* Tier 2: no design language at all ================= */
+  --radius-sm: 0px;
+  --radius:    0px;
+  --radius-lg: 0px;
+  --surface-blur: 0px;
+  --surface-bg: transparent;
+  --surface-border: 1px solid var(--border);
+  --surface-shadow: none;
+  --surface-shadow-hover: none;
+  --motion-ease: linear;
+  --motion-fast: 0ms;
+  --motion-base: 0ms;
+  --button-bg: #111111;
+  --button-fg: #ffffff;
+  --button-shadow: none;
+  --button-radius: 0px;
+  --pill-radius: 0px;
+  --noise-opacity: 0;
+}
+
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--fg);
@@ -161,7 +206,10 @@
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
+  /* Not var(--font-mono): that is this same name, so it resolves to
+     nothing and every `font-mono` utility silently falls back to serif.
+     Every theme sets --font-mono to the Geist mono variable anyway. */
+  --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-display);
 }
 
@@ -302,4 +350,41 @@ html:not(.theme-ready) body {
 }
 [data-theme="paper"] .themed-heading {
   text-shadow: none;
+}
+
+/* ============================================================
+ * Plain mode. The theme itself is deliberately bare, so every
+ * surface has to sit above the ASCII field without hiding it.
+ * Walkthrough: /wc/learn/plain-mode
+ * ============================================================ */
+
+/* Lift page content above the field. The field canvas is the one direct
+   child of body that must stay underneath, hence the :not(canvas). */
+[data-theme="plain"] body > *:not(canvas) {
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="plain"] .themed-surface {
+  /* Opaque, otherwise the field reads straight through the text. */
+  background: var(--bg);
+}
+
+[data-theme="plain"] .themed-surface-interactive:hover {
+  border-color: var(--border-strong);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+[data-theme="plain"] .themed-button:hover {
+  transform: none;
+  filter: none;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: inset 0 0 0 1px #111111;
+}
+
+[data-theme="plain"] .themed-heading {
+  text-shadow: none;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }

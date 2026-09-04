@@ -22,6 +22,7 @@ const BACKDROP_BY_THEME: Record<ThemeName, string> = {
   cyberpunk: '#000008',
   luxury:    '#0c0a14',
   paper:     '#f3ebdb',
+  plain:     '#ffffff',
 };
 
 // --- Prop Interfaces ---

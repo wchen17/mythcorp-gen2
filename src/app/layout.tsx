@@ -5,6 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { HelpDot } from "./components/HelpDot";
 import { KonamiEgg } from "./components/KonamiEgg";
 import { TerminalOverlay } from "./components/TerminalOverlay";
+import { PlainField } from "./components/plain/PlainField";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 // Inline so it runs before paint and avoids a flash of the wrong theme.
-const themeBootstrap = `(function(){try{var t=localStorage.getItem('mythcorp-theme');if(t==='cyberpunk'||t==='luxury'||t==='paper'){document.documentElement.dataset.theme=t;}else{document.documentElement.dataset.theme='cyberpunk';}}catch(e){document.documentElement.dataset.theme='cyberpunk';}})();`;
+const themeBootstrap = `(function(){try{var t=localStorage.getItem('mythcorp-theme');if(t==='cyberpunk'||t==='luxury'||t==='paper'||t==='plain'){document.documentElement.dataset.theme=t;}else{document.documentElement.dataset.theme='cyberpunk';}}catch(e){document.documentElement.dataset.theme='cyberpunk';}})();`;
 
 export default function RootLayout({
   children,
@@ -49,6 +50,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
+          <PlainField />
           {children}
           <HelpDot />
           <KonamiEgg />

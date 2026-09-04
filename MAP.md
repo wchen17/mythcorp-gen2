@@ -17,6 +17,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/learn` | `src/app/wc/learn/page.tsx` | Walkthroughs index |
 | `/wc/learn/theme-system` | `src/app/wc/learn/theme-system/page.tsx` | First annotated walkthrough |
 | `/wc/learn/landing-flow` | `src/app/wc/learn/landing-flow/page.tsx` | Landing boot-flow walkthrough |
+| `/wc/learn/plain-mode` | `src/app/wc/learn/plain-mode/page.tsx` | Plain theme + ASCII fluid walkthrough |
 | `/wc/learn/3d-scene` | `src/app/wc/learn/3d-scene/page.tsx` | Simulation 3D-scene walkthrough |
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup-sites directory, sourced from fmhy/edit backups.md |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
@@ -70,10 +71,12 @@ Four files. All other components consume tokens via `var(--name)`.
 
 | File | Role |
 |---|---|
-| `src/app/globals.css` | Token definitions for `cyberpunk`, `luxury`, `paper` |
+| `src/app/globals.css` | Token definitions for `cyberpunk`, `luxury`, `paper`, `plain` |
 | `src/app/contexts/ThemeContext.tsx` | Provider, hook, localStorage |
 | `src/app/components/ThemeSwitcher.tsx` | UI |
-| `src/app/layout.tsx` | Pre-paint bootstrap script (no flash) |
+| `src/app/layout.tsx` | Pre-paint bootstrap script (no flash), mounts `PlainField` |
+| `src/app/components/plain/PlainField.tsx` | Plain-theme canvas mount, pointer wiring, teardown |
+| `src/app/components/plain/asciiFluid.ts` | The ASCII fluid solver and renderer, no React |
 
 Walkthrough: `/wc/learn/theme-system`.
 

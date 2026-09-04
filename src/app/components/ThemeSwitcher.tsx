@@ -7,6 +7,7 @@ const THEME_GLYPH: Record<ThemeName, string> = {
   cyberpunk: '◢',
   luxury: '◆',
   paper: '◯',
+  plain: '▚',
 };
 
 export function ThemeSwitcher({ compact = false }: { compact?: boolean }) {

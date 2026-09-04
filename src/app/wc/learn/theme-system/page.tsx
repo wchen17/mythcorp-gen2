@@ -10,8 +10,9 @@ export default function ThemeSystemWalkthrough() {
       title="A theme system from CSS variables"
       intro={
         <>
-          The site has three themes, <em>cyberpunk</em>, <em>luxury</em>, and{' '}
-          <em>paper</em>, and you can switch between them at any time. The
+          The site has four themes, <em>cyberpunk</em>, <em>luxury</em>,{' '}
+          <em>paper</em>, and <em>plain</em>, and you can switch between them
+          at any time. The
           switcher is built into the header, but here&rsquo;s a copy you can
           poke at while you read:
           <div className="mt-4 inline-block rounded-lg border border-[color:var(--border)]
@@ -93,7 +94,7 @@ export default function ThemeSystemWalkthrough() {
         </p>
         <Code>{`<script dangerouslySetInnerHTML={{ __html:
   "(function(){try{var t=localStorage.getItem('mythcorp-theme');" +
-  "if(t==='cyberpunk'||t==='luxury'||t==='paper')" +
+  "if(t==='cyberpunk'||t==='luxury'||t==='paper'||t==='plain')" +
   "{document.documentElement.dataset.theme=t;}" +
   "else{document.documentElement.dataset.theme='cyberpunk';}}" +
   "catch(e){document.documentElement.dataset.theme='cyberpunk';}})();"

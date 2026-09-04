@@ -13,7 +13,7 @@ import {
   type ReactNode,
 } from 'react';
 
-export type ThemeName = 'cyberpunk' | 'luxury' | 'paper';
+export type ThemeName = 'cyberpunk' | 'luxury' | 'paper' | 'plain';
 
 export const THEMES: ReadonlyArray<{
   name: ThemeName;
@@ -23,6 +23,7 @@ export const THEMES: ReadonlyArray<{
   { name: 'cyberpunk', label: 'Cyberpunk', blurb: 'Neon, glow, the boot sequence.' },
   { name: 'luxury',    label: 'Luxury',    blurb: 'Warm midnight, cream, gold.' },
   { name: 'paper',     label: 'Paper',     blurb: 'Reading-room cream, serif.' },
+  { name: 'plain',     label: 'Plain',     blurb: 'Black on white, and a live ASCII field.' },
 ];
 
 const STORAGE_KEY = 'mythcorp-theme';
@@ -39,7 +40,8 @@ type ThemeCtx = {
 const Ctx = createContext<ThemeCtx | null>(null);
 
 function isThemeName(value: unknown): value is ThemeName {
-  return value === 'cyberpunk' || value === 'luxury' || value === 'paper';
+  return value === 'cyberpunk' || value === 'luxury'
+    || value === 'paper' || value === 'plain';
 }
 
 export function ThemeProvider({

@@ -8,7 +8,14 @@ const WALKTHROUGHS = [
     slug: 'theme-system',
     title: 'A theme system from CSS variables',
     blurb:
-      'Three swappable themes (cyberpunk, luxury, paper) without a styling library, no flash on load, persisted to localStorage.',
+      'Four swappable themes (cyberpunk, luxury, paper, plain) without a styling library, no flash on load, persisted to localStorage.',
+    status: 'ready',
+  },
+  {
+    slug: 'plain-mode',
+    title: 'Plain mode, and the field underneath it',
+    blurb:
+      'A theme that removes every ornament CSS can express, then puts back one canvas: a live ASCII fluid field the cursor stirs.',
     status: 'ready',
   },
   {
