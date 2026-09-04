@@ -29,7 +29,7 @@ export default function AiCybercrimePaper() {
 
       <article className="mx-auto max-w-3xl px-6 pt-24 pb-24">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /wc/papers/ai-cybercrime ]
+          [ /wc/papers/ai-cybercrime / wip ]
         </p>
         <h1 className="themed-heading mt-3 text-3xl font-bold leading-[1.05] sm:text-5xl">
           The AI-driven democratization of cybercrime

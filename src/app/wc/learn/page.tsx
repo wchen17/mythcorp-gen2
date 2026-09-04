@@ -8,7 +8,7 @@ const WALKTHROUGHS = [
     slug: 'theme-system',
     title: 'A theme system from CSS variables',
     blurb:
-      'Four swappable themes (cyberpunk, luxury, paper, plain) without a styling library, no flash on load, persisted to localStorage.',
+      'Four swappable themes without a styling library. Then drag the swatches in the live token playground and recolor this page as you read.',
     status: 'ready',
   },
   {
@@ -22,14 +22,21 @@ const WALKTHROUGHS = [
     slug: 'landing-flow',
     title: 'The cinematic boot flow',
     blurb:
-      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a canvas flash, and why the GLB is preloaded.',
+      'How LoadingScreen, LandingPage, and NewLandingPage hand off without a canvas flash. Step the boot sequence yourself and watch the state machine fire.',
     status: 'ready',
   },
   {
     slug: '3d-scene',
     title: 'Anatomy of the 3D experience',
     blurb:
-      'Particle field via BufferGeometry, post-processing bloom, and a randomizable settings object, what every piece does.',
+      'BufferGeometry particles, bloom, and a randomizable settings object, with a pocket R3F canvas to drive and the reset-aliasing bug shown live.',
+    status: 'ready',
+  },
+  {
+    slug: 'build-a-playground',
+    title: 'The playground that explains playgrounds',
+    blurb:
+      'The three pieces behind every live demo here: the side-by-side shell, the CSS-variable editor, and the ssr:false canvas pattern, each embedded as its own example.',
     status: 'ready',
   },
 ];
@@ -41,7 +48,7 @@ export default function LearnIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /wc/learn ]
+          [ /wc/learn / wip ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
           Walkthroughs

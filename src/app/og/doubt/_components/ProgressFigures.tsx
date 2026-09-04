@@ -23,7 +23,9 @@ const PAD = { l: 52, r: 16, t: 16, b: 34 };
 function SolarCurve() {
   const [hover, setHover] = useState<number | null>(null);
 
-  const { pts, xOf, yOf } = useMemo(() => {
+  // xOf is not returned: it is only needed to build pts inside the memo, while
+  // yOf is also used outside for the gridlines.
+  const { pts, yOf } = useMemo(() => {
     const years = SOLAR.map((d) => d.year);
     const minY = Math.min(...years);
     const maxY = Math.max(...years);
@@ -37,7 +39,7 @@ function SolarCurve() {
       return PAD.t + (1 - t) * (H - PAD.t - PAD.b);
     };
     const pts = SOLAR.map((d) => ({ ...d, x: xOf(d.year), y: yOf(d.usd) }));
-    return { pts, xOf, yOf };
+    return { pts, yOf };
   }, []);
 
   const gridUsd = [100, 10, 1, 0.1];

@@ -6,7 +6,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useState, useRef, useMemo } from 'react'
 import { PerspectiveCamera, useGLTF, Image, Stars } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
-import { Group, Vector3 } from 'three'
+import { Group, Points, Vector3 } from 'three'
 import { useTheme, type ThemeName } from '../contexts/ThemeContext'
 
 // Preload once for the session, cached for both this scene and the
@@ -58,6 +58,12 @@ const DEFAULTS = {
     heliSmoothness: 0.1,
     showAxis: true,
 };
+
+// Fresh clone every call. `setSettings(DEFAULTS)` used to share the
+// module-level `DEFAULTS.position` array by reference, so editing a position
+// slider mutated the defaults, and a second reset was a no-op (React bailed
+// out on the same object). Cloning the array fixes both.
+const getDefaultSettings = () => ({ ...DEFAULTS, position: [...DEFAULTS.position] });
 
 const getRandomSettings = () => ({
   rotationSpeed: Math.random() * 2,
@@ -111,7 +117,7 @@ function Model({ position, rotationSpeed, color }: ModelProps) {
 }
 
 function ParticleField() {
-  const meshRef = useRef<any>(null!)
+  const meshRef = useRef<Points>(null)
   const particleCount = 1000
 
   const particles = useMemo(() => {
@@ -168,6 +174,10 @@ function Helicopter({ scale, lerpFactor }: HelicopterProps) {
 
   return (
     <group ref={ref}>
+      {/* This is drei's <Image>, a textured plane in the 3D scene, not an
+          <img>. jsx-a11y matches on the component name and cannot tell the
+          difference; there is no alt text on a WebGL mesh to give it. */}
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <Image url="/heli.jpg" scale={scale} transparent />
     </group>
   )
@@ -219,7 +229,7 @@ export function Simulation({ onExit }: SimulationProps) {
   const [settings, setSettings] = useState(() => getRandomSettings());
 
   const randomizeAll = () => setSettings(getRandomSettings());
-  const resetToDefaults = () => setSettings(DEFAULTS);
+  const resetToDefaults = () => setSettings(getDefaultSettings());
 
   const handleSettingChange = (key: keyof typeof DEFAULTS, value: string | number | boolean) => {
     setSettings(prev => ({ ...prev, [key]: value }));

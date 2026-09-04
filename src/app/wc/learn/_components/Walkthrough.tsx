@@ -55,14 +55,61 @@ export function Section({ title, children }: { title: string; children: ReactNod
   );
 }
 
-/** Inline code block. Tiny, no syntax highlighting yet, just monospace + theme-aware. */
-export function Code({ children }: { children: ReactNode }) {
+/**
+ * Code block, theme-aware monospace. Two optional extras when `children` is a
+ * plain string: a `filename` label strip across the top, and `highlight` (a
+ * list of 1-based line numbers) that tints those lines with an accent gutter.
+ * Anything richer than a string falls back to the plain rendering.
+ */
+export function Code({
+  children,
+  filename,
+  highlight,
+}: {
+  children: ReactNode;
+  filename?: string;
+  highlight?: number[];
+}) {
+  const canTint = typeof children === 'string' && !!highlight?.length;
   return (
-    <pre className="overflow-x-auto rounded-lg border border-[color:var(--border)]
-                    bg-[color:var(--bg-elevated)] p-4 font-mono text-[13px]
-                    leading-relaxed text-[color:var(--fg)]">
-      <code>{children}</code>
-    </pre>
+    <div className="overflow-hidden rounded-lg border border-[color:var(--border)]
+                    bg-[color:var(--bg-elevated)]">
+      {filename && (
+        <div className="border-b border-[color:var(--border)] px-4 py-2
+                        font-mono text-[11px] uppercase tracking-widest
+                        text-[color:var(--fg-subtle)]">
+          {filename}
+        </div>
+      )}
+      <pre className="overflow-x-auto p-4 font-mono text-[13px]
+                      leading-relaxed text-[color:var(--fg)]">
+        {canTint ? (
+          <code>
+            {(children as string).split('\n').map((line, i) => {
+              const lit = highlight!.includes(i + 1);
+              return (
+                <span
+                  key={i}
+                  className="-mx-4 block px-4"
+                  style={
+                    lit
+                      ? {
+                          background: 'color-mix(in srgb, var(--accent) 15%, transparent)',
+                          boxShadow: 'inset 3px 0 0 var(--accent)',
+                        }
+                      : undefined
+                  }
+                >
+                  {line || ' '}
+                </span>
+              );
+            })}
+          </code>
+        ) : (
+          <code>{children}</code>
+        )}
+      </pre>
+    </div>
   );
 }
 

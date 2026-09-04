@@ -8,11 +8,25 @@ type Sketch = {
   label: string;
   title: string;
   blurb: string;
-  status: 'sketch' | 'graduated';
-  external?: boolean;
+  status: 'sketch' | 'graduated' | 'parked';
 };
 
 const SKETCHES: ReadonlyArray<Sketch> = [
+  {
+    href: '/og/hero-lab',
+    label: 'HERO LAB',
+    title: 'Title + Model Study',
+    blurb: 'An experimental hero composition with a wavy 3D title and spectre model.',
+    status: 'sketch',
+  },
+
+  {
+    href: '/og/animals',
+    label: 'INTERMISSION',
+    title: 'Animal Break Time',
+    blurb: 'A live GIPHY intermission, pulled back to rebuild with licensed cute anime or animal art instead.',
+    status: 'parked',
+  },
   {
     href: '/og/doubt',
     label: 'DOUBT',
@@ -45,10 +59,16 @@ const SKETCHES: ReadonlyArray<Sketch> = [
     href: '/fmhy',
     label: 'FMHY',
     title: 'FMHY backup (graduated)',
-    blurb: 'Used to live here as a placeholder shell. Now a real backup mirror at /fmhy with category links and a live embed when it loads.',
+    blurb: 'Started here as a placeholder shell. Now a real backup-sites directory at /fmhy: mirrors pulled from the fmhy/edit backups list, for the days fmhy.net is down.',
     status: 'graduated',
   },
 ];
+
+const STATUS_CLASS: Record<Sketch['status'], string> = {
+  sketch: 'border-[color:var(--border)] bg-[color:var(--bg-overlay)] text-[color:var(--fg-subtle)]',
+  graduated: 'border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10 text-[color:var(--accent-soft)]',
+  parked: 'border-[color:var(--accent-warm)]/40 bg-[color:var(--accent-warm)]/10 text-[color:var(--accent-warm)]',
+};
 
 export default function OgIndex() {
   return (
@@ -57,56 +77,46 @@ export default function OgIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /OG ]
+          [ /OG / wip ]
         </p>
         <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
           Back-room sketches
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-          Pages that started as ideas and aren&rsquo;t finished. They live here
-          on purpose, so they don&rsquo;t clutter the main map but don&rsquo;t
-          get lost either. A sketch graduates by getting a real implementation
-          and moving up out of <code className="font-mono text-[color:var(--accent-soft)]">/og</code>.
+          Pages that started as ideas and aren&rsquo;t finished. They live here on purpose,
+          so they don&rsquo;t clutter the main map but don&rsquo;t get lost either.
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-          {SKETCHES.map((s) => {
-            const graduated = s.status === 'graduated';
-            return (
-              <li key={s.href}>
-                <Link
-                  href={s.href}
-                  className="themed-surface themed-surface-interactive group block p-5"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
-                      {s.label}
-                    </p>
-                    <span
-                      className={
-                        graduated
-                          ? 'rounded-full border border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--accent-soft)]'
-                          : 'rounded-full border border-[color:var(--border)] bg-[color:var(--bg-overlay)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-[color:var(--fg-subtle)]'
-                      }
-                    >
-                      {s.status}
-                    </span>
-                  </div>
-                  <h2 className="mt-2 font-serif text-lg font-semibold transition-colors
-                                 group-hover:text-[color:var(--accent-soft)]">
-                    {s.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{s.blurb}</p>
-                </Link>
-              </li>
-            );
-          })}
+          {SKETCHES.map((sketch) => (
+            <li key={sketch.href}>
+              <Link
+                href={sketch.href}
+                className="themed-surface themed-surface-interactive group block p-5"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
+                    {sketch.label}
+                  </p>
+                  <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${STATUS_CLASS[sketch.status]}`}>
+                    {sketch.status}
+                  </span>
+                </div>
+                <h2 className="mt-2 font-serif text-lg font-semibold transition-colors group-hover:text-[color:var(--accent-soft)]">
+                  {sketch.title}
+                </h2>
+                <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{sketch.blurb}</p>
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <p className="mt-10 text-xs text-[color:var(--fg-subtle)]">
-          ← Back <Link href="/" className="text-[color:var(--accent)] underline underline-offset-4">home</Link>
+          Back <Link href="/" className="text-[color:var(--accent)] underline underline-offset-4">home</Link>
         </p>
       </main>
     </div>
   );
 }
+
+

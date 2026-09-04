@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { SiteHeader } from './SiteHeader';
@@ -16,10 +16,10 @@ interface ComingSoonProps {
 
 export function ComingSoon({
   title,
-  blurb = "Not built yet, but it's on the list.",
+  blurb = "This room is still taking shape.",
   detail,
   backHref = '/',
-  backLabel = '← BACK HOME',
+  backLabel = '? BACK HOME',
 }: ComingSoonProps) {
   return (
     <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
@@ -59,3 +59,4 @@ export function ComingSoon({
     </div>
   );
 }
+

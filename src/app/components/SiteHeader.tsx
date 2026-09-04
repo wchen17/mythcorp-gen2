@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -19,7 +19,6 @@ const MENU_LINKS: ReadonlyArray<NavItem> = [
   { href: '/wc', label: 'The back room' },
   { href: '/wc/learn', label: 'Walkthroughs' },
   { href: '/wc/papers', label: 'Papers' },
-  { href: '/animals', label: 'Animals (intermission)' },
   { href: '/og', label: 'Sketches' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -64,14 +63,14 @@ export function SiteHeader({
     setMenuOpen(false);
   }, [pathname]);
 
-  const Logo = logoIsLink ? Link : 'span';
-  const logoProps = logoIsLink ? { href: '/' } : {};
+  const LOGO_CLASS =
+    'font-serif text-xl font-semibold tracking-wider text-[color:var(--fg)] drop-shadow-[0_0_12px_var(--accent-glow)] sm:text-2xl';
 
   return (
     <header className="fixed top-0 left-0 right-0 z-30
                        border-b border-[color:var(--border)]
                        bg-[color:var(--bg-overlay)] backdrop-blur-md">
-      <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-3 sm:px-6 sm:py-4">
         {/* Left: real hamburger menu (now a working dropdown) */}
         <div ref={menuRef} className="relative">
           <button
@@ -138,13 +137,18 @@ export function SiteHeader({
 
         {/* Center: logo */}
         <div className="flex flex-col items-center text-center">
-          <Logo
-            {...logoProps as any}
-            className="font-serif text-xl font-semibold tracking-wider text-[color:var(--fg)]
-                       drop-shadow-[0_0_12px_var(--accent-glow)] sm:text-2xl"
-          >
-            MYTHCORP
-          </Logo>
+          {/* Rendered as two explicit branches rather than one dynamic tag with
+              spread props. The old version aliased Link-or-'span' into a
+              variable, which TypeScript cannot narrow, so it needed an `as any`
+              to spread href onto something that might be a span. Writing both
+              cases out is longer and needs no cast. */}
+          {logoIsLink ? (
+            <Link href="/" className={LOGO_CLASS}>
+              MYTHCORP
+            </Link>
+          ) : (
+            <span className={LOGO_CLASS}>MYTHCORP</span>
+          )}
           {tagline && (
             <span className="mt-0.5 text-[10px] font-mono uppercase tracking-[0.25em]
                              text-[color:var(--fg-muted)] sm:text-xs">
@@ -154,7 +158,7 @@ export function SiteHeader({
         </div>
 
         {/* Right: nav links + theme switcher */}
-        <nav className="flex items-center gap-2 sm:gap-4">
+        <nav className="flex items-center justify-self-end gap-2 sm:gap-4">
           <ul className="hidden items-center gap-4 sm:flex">
             {nav.map((item) => {
               const active = pathname === item.href || pathname?.startsWith(item.href + '/');

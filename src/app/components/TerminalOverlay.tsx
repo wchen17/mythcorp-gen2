@@ -11,7 +11,7 @@ import { THEMES, useTheme, type ThemeName } from '../contexts/ThemeContext';
  */
 
 const ROUTES: ReadonlyArray<string> = [
-  '/', '/experience', '/fmhy', '/animals', '/about', '/contact',
+  '/', '/experience', '/fmhy', '/og/animals', '/about', '/contact',
   '/wc', '/wc/about', '/wc/papers', '/wc/papers/ai-cybercrime',
   '/wc/learn', '/wc/learn/theme-system', '/og', '/og/interactive', '/og/chat',
 ];
@@ -131,7 +131,7 @@ export function TerminalOverlay() {
   };
 
   const navigate = (path: string) => {
-    print([{ kind: 'sys', text: `→ ${path}` }]);
+    print([{ kind: 'sys', text: `â†’ ${path}` }]);
     setOpen(false);
     router.push(path);
   };

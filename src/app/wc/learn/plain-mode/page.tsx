@@ -47,7 +47,8 @@ export default function PlainModeWalkthrough() {
           <code className="font-mono">data-hold</code> to the root element
           before anything renders, and CSS does the rest.
         </p>
-        <Code>{`export const PLAIN_OPEN_ROUTES = ['/contact'];
+        <Code>{`export const PLAIN_OPEN_PREFIXES =
+  ['/contact', '/upload', '/a', '/d', '/i'];
 
 [data-hold="on"] #page-root { display: none !important; }`}</Code>
         <p>

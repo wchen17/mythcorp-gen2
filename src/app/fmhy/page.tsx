@@ -25,7 +25,7 @@ export default function FmhyPage() {
       <main className="mx-auto max-w-4xl px-4 pt-24 pb-16 sm:px-6">
         <div className="text-center">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-            [ /FMHY ]
+            [ /FMHY / wip ]
           </p>
           <h1 className="themed-heading mt-3 text-4xl font-semibold sm:text-5xl">
             FMHY backup sites

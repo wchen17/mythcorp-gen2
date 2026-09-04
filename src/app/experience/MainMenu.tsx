@@ -35,7 +35,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
         <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
 
           <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-[color:var(--accent)]">
-            [ ENTER ]
+            [ enter / wip ]
           </p>
 
           <h1 className="themed-heading mt-3 text-5xl font-extrabold leading-[0.95]
@@ -114,7 +114,7 @@ export function MainMenu({ onStart }: MainMenuProps) {
               how the scene works
             </Link>
             <Link
-              href="/animals"
+              href="/og/animals"
               className="themed-pill px-4 py-1.5 font-mono text-xs
                          text-[color:var(--accent-warm)]
                          hover:text-[color:var(--accent)]"

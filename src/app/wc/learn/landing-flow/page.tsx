@@ -1,11 +1,19 @@
 'use client';
 
 import { Walkthrough, Section, Code, Aside } from '../_components/Walkthrough';
+import { FlowStepper } from '../_components/FlowStepper';
+import {
+  APPLOADER_SNIPPET,
+  SESSION_SNIPPET,
+  BINARY_SNIPPET,
+  PRELOAD_SNIPPET,
+  GSAP_SNIPPET,
+} from './_snippets';
 
 export default function LandingFlowWalkthrough() {
   return (
     <Walkthrough
-      eyebrow="[ /wc/learn/landing-flow ]"
+      eyebrow="[ /wc/learn/landing-flow / wip ]"
       title="The cinematic boot flow"
       intro={
         <p>
@@ -42,32 +50,23 @@ export default function LandingFlowWalkthrough() {
           the children in a single state flip. React replaces the entire subtree,
           so the old Canvas is gone before the new one appears.
         </p>
-        <Code>{`// AppLoader: fixed-window boot gate in src/app/page.tsx
-const LOADING_DURATION_MS = 3500;
+        <Code>{APPLOADER_SNIPPET}</Code>
+      </Section>
 
-function AppLoader({ children }) {
-  const [isReady, setIsReady] = useState(false);
-  const [showChildren, setShowChildren] = useState(false);
-
-  useEffect(() => {
-    const fadeTimer = setTimeout(() => setIsReady(true), LOADING_DURATION_MS);
-    return () => clearTimeout(fadeTimer);
-  }, []);
-
-  useEffect(() => {
-    if (!isReady) return;
-    const swapTimer = setTimeout(() => setShowChildren(true), 600);
-    return () => clearTimeout(swapTimer);
-  }, [isReady]);
-
-  if (showChildren) return <>{children}</>;
-
-  return (
-    <div style={{ opacity: isReady ? 0 : 1, transition: 'opacity 600ms ease' }}>
-      <LoadingScreen onFinished={() => {}} />
-    </div>
-  );
-}`}</Code>
+      <Section title="Run the handoff yourself">
+        <p>
+          Three stages, one at a time. Step through them and watch which line of
+          the state machine fires each transition. Auto-play loops the whole boot
+          so you can see the shape of it, or click a stage to jump straight there.
+        </p>
+        <FlowStepper />
+        <Aside>
+          The real sequence adds a 600 ms fade between{' '}
+          <code className="font-mono">loading</code> and{' '}
+          <code className="font-mono">landing</code>, and a GSAP timeline on the way
+          into <code className="font-mono">entered</code>. The stepper strips the
+          timing so the state transitions themselves are easy to follow.
+        </Aside>
       </Section>
 
       <Section title="Session-storage skip">
@@ -84,21 +83,7 @@ function AppLoader({ children }) {
           <code className="font-mono text-[color:var(--accent-soft)]">sessionStorage</code>{' '}
           is per-tab, not per-origin.
         </p>
-        <Code>{`useEffect(() => {
-  let alreadyBooted = false;
-  try {
-    alreadyBooted = sessionStorage.getItem(SESSION_BOOTED_KEY) === '1';
-  } catch {
-    // sessionStorage is blocked in some private-browsing modes; fall through
-  }
-  setSkipBoot(alreadyBooted);
-  if (alreadyBooted) {
-    setIsReady(true);
-    setShowChildren(true);
-    return;
-  }
-  try { sessionStorage.setItem(SESSION_BOOTED_KEY, '1'); } catch { /* ignore */ }
-}, []);`}</Code>
+        <Code>{SESSION_SNIPPET}</Code>
         <Aside>
           Every sessionStorage call is wrapped in try/catch. iOS private-browsing
           and certain corporate proxies throw a SecurityError on access. Without
@@ -125,21 +110,13 @@ function AppLoader({ children }) {
         <p>
           Progress comes from{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">useProgress()</code>{' '}
-          from drei, which tracks R3F's internal asset loading queue. While the
-          root page's{' '}
+          from drei, which tracks R3F&rsquo;s internal asset loading queue. While the
+          root page&rsquo;s{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">&lt;Suspense&gt;</code>{' '}
           resolves the preloaded GLB, progress moves from 0 toward 100 and the
           digits fly into formation.
         </p>
-        <Code>{`// Inside BinaryDigit, position lerps from start to end each frame
-useFrame(() => {
-  if (textRef.current) {
-    textRef.current.position.lerpVectors(startPosition, endPosition, progress);
-  }
-});
-
-// Start position is end * 5: digits fly in from five times the distance
-const startPos = endPos.clone().multiplyScalar(5);`}</Code>
+        <Code>{BINARY_SNIPPET}</Code>
       </Section>
 
       <Section title="Preloading the GLB">
@@ -154,15 +131,14 @@ const startPos = endPos.clone().multiplyScalar(5);`}</Code>
           <code className="font-mono text-[color:var(--accent-soft)]">useGLTF.preload</code>{' '}
           at module scope, outside any component:
         </p>
-        <Code>{`// At the top of LandingPage.tsx, outside the component:
-useGLTF.preload('/spectre.glb');`}</Code>
+        <Code>{PRELOAD_SNIPPET}</Code>
         <p>
           Calling it at module scope means the browser starts the network
           request the moment the JS bundle evaluates, during the boot window,
           not when the component first mounts. By the time{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">LandingPage</code>{' '}
           actually renders, the GLB is already cached and{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">useGLTF('/spectre.glb')</code>{' '}
+          <code className="font-mono text-[color:var(--accent-soft)]">useGLTF(&apos;/spectre.glb&apos;)</code>{' '}
           resolves without waiting. No flash of empty scene.
         </p>
         <Aside>
@@ -186,17 +162,9 @@ useGLTF.preload('/spectre.glb');`}</Code>
           which flips{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">appState</code>{' '}
           to{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">'homepage'</code>.
+          <code className="font-mono text-[color:var(--accent-soft)]">&apos;homepage&apos;</code>.
         </p>
-        <Code>{`const tl = gsap.timeline({ onComplete: () => onTransitionComplete?.() });
-
-tl.to(backgroundRef.current, { opacity: 0, duration: 1.5, ease: 'power2.in' }, 0);
-tl.to(promptRef.current,    { opacity: 0, duration: 1.0, ease: 'power2.in' }, 0);
-
-contentRef.current.traverse((child) => {
-  const mat = child.material;
-  if (mat) tl.to(mat, { opacity: 0, duration: 1, ease: 'power2.in' }, 0.2);
-});`}</Code>
+        <Code>{GSAP_SNIPPET}</Code>
         <p>
           The camera FOV is{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">fov={'{'}55{'}'}</code>,
@@ -212,7 +180,7 @@ contentRef.current.traverse((child) => {
           Once{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">appState</code>{' '}
           becomes{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">'homepage'</code>,
+          <code className="font-mono text-[color:var(--accent-soft)]">&apos;homepage&apos;</code>,
           React unmounts{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">LandingPage</code>{' '}
           and mounts{' '}
@@ -222,16 +190,16 @@ contentRef.current.traverse((child) => {
           <code className="font-mono text-[color:var(--accent-soft)]">SkylineBackdrop</code>,
           the hero heading is pure HTML via{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">HeroTitle</code>,
-          and a banner slides up from the bottom after 2.5 seconds via{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">EnterBanner</code>.
+          and a quiet inline &ldquo;enter the 3D experience&rdquo; link sits with
+          the other hero hints (no floating banner).
         </p>
         <p>
-          Two paths from here: "ENTER EXPERIENCE" pushes to{' '}
+          Two paths from here: &ldquo;ENTER EXPERIENCE&rdquo; pushes to{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">/experience</code>{' '}
-          via the router, and "ENTER INTERACTIVE" resets{' '}
+          via the router, and &ldquo;ENTER INTERACTIVE&rdquo; resets{' '}
           <code className="font-mono text-[color:var(--accent-soft)]">appState</code>{' '}
           back to{' '}
-          <code className="font-mono text-[color:var(--accent-soft)]">'landing'</code>,
+          <code className="font-mono text-[color:var(--accent-soft)]">&apos;landing&apos;</code>,
           which replays the 3D title card. Pressing Ctrl+G (or Cmd+G) toggles a
           glowing vertical line across the screen: a dev alignment aid and a
           small Easter egg at the same time.
@@ -239,12 +207,12 @@ contentRef.current.traverse((child) => {
       </Section>
 
       <Section title="Where to look">
-        <ul className="list-inside list-disc space-y-1 font-mono text-sm">
+        <ul className="list-inside list-disc space-y-1 break-all font-mono text-sm">
           <li><code>src/app/page.tsx</code>, AppLoader and state machine</li>
           <li><code>src/app/components/LoadingScreen.tsx</code>, binary digit shapes</li>
           <li><code>src/app/components/LandingPage.tsx</code>, 3D logo and GSAP fade</li>
-          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal and banner</li>
-          <li><code>src/app/components/landing/</code>, SkylineBackdrop, HeroTitle, EnterBanner, LandingModals</li>
+          <li><code>src/app/components/NewLandingPage.tsx</code>, warm reveal and inline enter link</li>
+          <li><code>src/app/components/landing/</code>, SkylineBackdrop, HeroTitle, LandingModals</li>
         </ul>
       </Section>
     </Walkthrough>

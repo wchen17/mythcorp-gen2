@@ -45,12 +45,10 @@ export default function Error({
           [ ERR_RUNTIME ]
         </p>
         <h1 className="mt-3 font-serif text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Something glitched
+          A signal came loose
         </h1>
         <p className="mt-6 max-w-sm text-base text-[color:var(--fg-muted)]">
-          A piece of the scene tripped over itself. This sometimes happens when the
-          3D renderer asks more of a device than it can give. Nothing is broken on
-          your end.
+          A piece of the scene needs a moment. Try the signal again, or head back to familiar ground.
         </p>
 
         {error.digest && (

@@ -24,7 +24,9 @@ const loadingMessages = [
 
 // --- A single binary digit component ---
 function BinaryDigit({ startPosition, endPosition, progress }: { startPosition: THREE.Vector3, endPosition: THREE.Vector3, progress: number }) {
-  const textRef = useRef<any>(null);
+  // drei's <Text> renders a troika mesh, so Mesh is the real type. Only
+  // .position is touched below, which Object3D provides.
+  const textRef = useRef<THREE.Mesh>(null);
   const digit = useMemo(() => (Math.random() > 0.5 ? '1' : '0'), []);
 
   useFrame(() => {
@@ -76,7 +78,6 @@ function DataShape({ progress, shapeType }: { progress: number, shapeType: 'sphe
       } else if (shapeType === 'torus') {
         // Torus distribution - place points on a donut shape
         const angle = Math.random() * Math.PI * 2;
-        const radius = 1.5 + Math.random() * 0.7;
         const tubeAngle = Math.random() * Math.PI * 2;
         const tubeRadius = 0.6;
         endPos = new THREE.Vector3(

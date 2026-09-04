@@ -7,7 +7,7 @@ import { KonamiEgg } from "./components/KonamiEgg";
 import { TerminalOverlay } from "./components/TerminalOverlay";
 import { PlainField } from "./components/plain/PlainField";
 import { PlainHold } from "./components/plain/PlainHold";
-import { PLAIN_OPEN_ROUTES, HOLD_ATTR } from "./components/plain/holdState";
+import { PLAIN_OPEN_PREFIXES, HOLD_ATTR } from "./components/plain/holdState";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +31,12 @@ export const metadata: Metadata = {
 
 // Inline so it runs before paint: it avoids a flash of the wrong theme, and
 // in plain mode a flash of the real page before the holding screen covers it.
-const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_ROUTES)};var d=document.documentElement;var t='cyberpunk';try{var s=localStorage.getItem('mythcorp-theme');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';if(o.indexOf(p)===-1){d.setAttribute('${HOLD_ATTR}','on');}}})();`;
+//
+// The storage key carries a version. Bumping it to v2 when plain became the
+// default is what holds returning visitors too: an older `mythcorp-theme`
+// value is simply not read, so everyone starts on plain and anyone who leaves
+// writes their choice under the new key.
+const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_PREFIXES)};var d=document.documentElement;var t='plain';try{var s=localStorage.getItem('mythcorp-theme-v2');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';var open=false;for(var i=0;i<o.length;i++){if(p===o[i]||p.indexOf(o[i]+'/')===0){open=true;break;}}if(!open){d.setAttribute('${HOLD_ATTR}','on');}}})();`;
 
 export default function RootLayout({
   children,
@@ -46,7 +51,7 @@ export default function RootLayout({
     // invalid value and the whole site silently rendered in Times.
     <html
       lang="en"
-      data-theme="cyberpunk"
+      data-theme="plain"
       className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable}`}
       suppressHydrationWarning
     >

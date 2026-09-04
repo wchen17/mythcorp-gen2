@@ -1,6 +1,6 @@
 ﻿# CLAUDE.md, conventions for agents working on this repo
 
-Read **`MAP.md`** first for the file index. This file explains *how* to make changes once you know where to make them.
+Read **`MAP.md`** first for the file index. This file explains *how* to make changes once you know where to make them. For visual taste (what the site should feel like, what it never does), read **`DESIGN.md`** before any UI work.
 
 ## Stack quick-facts
 

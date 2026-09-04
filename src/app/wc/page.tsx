@@ -31,7 +31,7 @@ export default function WillIndex() {
 
       <main className="mx-auto max-w-3xl px-6 pt-24 pb-20">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-          [ /wc ]
+          [ /wc / wip ]
         </p>
         <h1 className="themed-heading mt-3 text-4xl font-semibold md:text-5xl">
           A small back room
@@ -49,8 +49,12 @@ export default function WillIndex() {
               href={s.href}
               className="themed-surface themed-surface-interactive group block p-5"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
+              {/* Each destination is itself WIP, so the card says so rather
+                  than letting the page-level marker imply the index alone is
+                  unfinished. */}
+              <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--accent)]">
                 {s.label}
+                <span className="tracking-[0.28em] text-[color:var(--accent-warm)]">/ wip</span>
               </p>
               <h2 className="mt-2 font-serif text-xl font-semibold transition-colors
                              group-hover:text-[color:var(--accent-soft)]">

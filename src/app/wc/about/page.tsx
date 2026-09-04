@@ -40,7 +40,7 @@ export default function AboutPage() {
 
         <div className="mt-6">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--accent)]">
-            [ /wc/about ]
+            [ /wc/about / wip ]
           </p>
           <h1 className="themed-heading mt-3 text-3xl font-semibold sm:text-4xl">Will Chen</h1>
           <p className="mt-1 font-mono text-sm text-[color:var(--fg-muted)]">Weibao Chen</p>

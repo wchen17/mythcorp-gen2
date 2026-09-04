@@ -1,8 +1,136 @@
 # STATUS
 
+## Admin panel removed, key management moved out of band, 2026-07-25
+`/upload/admin` and `/api/admin/*` are gone. Not hidden, not gated: deleted.
+
+**Why.** There was no rate limiting, lockout, attempt tracking, or challenge in front of the admin password. `verifyAdmin` was a constant-time compare and that was the entire gate, on six endpoints reachable directly with `curl`. Two consequences, and the second is the one that is easy to miss: a weak password was brute-forceable, AND every attempt costs a Worker request whether it succeeds or fails, so a sustained attack burns the 100k/day free tier and takes the site down regardless of whether it ever guesses right. Denial of wallet, not just credential risk.
+
+Gating the page behind another password would not have helped. The page was a client-side form; the boundary was always the API route, and an attacker never loads the page.
+
+**The model.** 0x0.st and catbox have no public admin panel: administration happens over SSH, out of band, on something that is not serving the website. The equivalent here is wrangler, authenticated by OAuth against the Cloudflare account. So the panel is gone and `scripts/manage-keys.mjs` replaces it:
+
+```
+node scripts/manage-keys.mjs mint <label>    mint a key, shown once
+node scripts/manage-keys.mjs list            hashes, labels, dates
+node scripts/manage-keys.mjs revoke <hash>   immediate, no redeploy
+```
+
+Objects are plain wrangler, no wrapper: `wrangler kv key list --binding UPLOADS_KV --remote` to see records, and `wrangler r2 object delete "real/<key>" --remote` to remove bytes. That one runs against the **gmail** account, not the worker's.
+
+The script calls wrangler's JS entry with `execFileSync` and an argv array rather than going through `npx`. On Windows `npx.cmd` cannot be spawned without a shell, and using a shell would interpolate the label and hash through a command line, which is an injection hole in a script that exists to handle credentials.
+
+**What went with it.** `createKey`, `listKeys`, `revokeKey` (keys.ts now only verifies, so the worker carries no key-minting capability at all), `listObjects` and `updateObjectEmbed` (objects.ts), `lib/upload/admin.ts`, and `ADMIN_PASSWORD` from the env type. `isEmbedAccent` was nearly deleted with them and is NOT dead: `/a/<id>` uses it to validate a stored accent before it reaches a meta tag, which is an injection guard. TypeScript caught that; the orphan-detection pass had missed it.
+
+**Still live and unchanged:** uploading, `/a/<id>`, delete tokens, `/d/<token>`, and `i.mythcorp.org`. Saved embed titles and colors still RENDER, there is just no longer a UI that writes them.
+
+**The secret is still set on the worker,** inert now that nothing reads it. `wrangler secret delete ADMIN_PASSWORD` clears it; leaving it costs nothing and makes restoring the panel easier.
+
+Verified live: `/upload/admin` and both admin API routes 404, the upload path still works, and a minted key authenticates then stops the moment it is revoked.
+
+## i.mythcorp.org, and the account split that shaped it, 2026-07-25
+Uploads now hand back `https://i.mythcorp.org/<key>.png` instead of a `pub-*.r2.dev` URL. It is **not** an R2 custom domain, and that distinction is the whole story.
+
+**The constraint.** An R2 custom domain requires the DNS zone and the bucket to be in the SAME Cloudflare account. Verified via the API rather than assumed: the `mythcorp.org` zone (`8716e277…`) is on the **mozmail** account `ba6ba228…`, alongside the worker and `UPLOADS_KV`. The `real` bucket is on the **gmail** account `6f1987…`, which is also the only account with R2 enabled at all; the mozmail account answers `Please enable R2 through the Cloudflare Dashboard`. So attaching the hostname to the bucket was impossible without migrating one of them. (`UPLOAD_PHASE23_BRIEF.md` recorded this split with the accounts the other way round, and named the domain `.dev`.)
+
+**What was built instead.** `i.mythcorp.org` is a Workers Custom Domain on the existing worker, and the worker serves the bytes:
+
+1. `src/middleware.ts` keys off the Host header alone. A request to `i.mythcorp.org/<key>.png` rewrites to `/api/img/<key>`; everything else falls straight through. It is one string comparison because it runs on every request to the main site too, and a bug there takes down every route, not just images.
+2. `/api/img/[key]` validates the key shape with the same `isObjectId` guard `/a/<id>` uses, since the key is attacker-controlled and gets interpolated into an S3 object path. It streams the body rather than buffering, sets content type from OUR allowlist rather than whatever R2 echoes back, and adds `nosniff` plus `X-Robots-Tag: noindex` to match the `/a` view page.
+3. `getObject` in `lib/upload/r2.ts` reads over the signed S3 endpoint, the same cross-account mechanism `putObject` already used.
+
+**Cache-Control is one hour, deliberately.** Content-addressed keys would justify a year, but delete tokens are a real feature and an image that kept serving from cache for months after deletion would make deletion a lie.
+
+**The tradeoff accepted.** Image bytes pass through the Worker rather than R2's direct CDN path, so a cold view costs a Worker request plus an S3 fetch. Fine at present scale, and the reason to eventually enable R2 on the mozmail account and move the bucket: then the hostname attaches directly and the worker leaves the hot path. The old `pub-*.r2.dev` origin still resolves, so links already shared keep working.
+
+**Verified live end to end:** uploaded through `mythcorp.org`, got an `i.mythcorp.org` URL back, fetched it byte-identical with the right headers, confirmed `og:image` on `/a/<id>` now points at the new host, deleted by token, confirmed 404. Root of `i.mythcorp.org` 308s to the main site rather than serving a gallery. Bad keys and traversal attempts 404. Main site unaffected: 11 routes sampled, all correct.
+
+**One mess made and cleaned.** A test object uploaded through the LOCAL dev server wrote its bytes to the production bucket (`.dev.vars` points at the real R2) while its delete token went to LOCAL KV, so the production delete endpoint could not remove it. It was deleted directly with `wrangler r2 object delete`. Worth knowing: local dev writes real objects to the real bucket, and the production `stat:totalbytes` counter never saw them, so that counter can drift below actual usage by whatever local testing has uploaded.
+
+## First deploy since May, 2026-07-25
+The site is live at **https://mythcorp-gen2.7737w27qh.workers.dev**. Before this, the last deployment was 2026-05-24, which means the entire upload system had never existed in production. Four things had to be fixed to get a deploy out at all, and each would have blocked the next attempt too.
+
+1. **`account_id` is now pinned in `wrangler.jsonc`.** Two Cloudflare accounts are authenticated on this machine, so wrangler refused to pick one in non-interactive mode and `npm run deploy` died before doing anything. Worth knowing which is which: the worker and `UPLOADS_KV` live on the `7737w27qh@mozmail.com` account, while the R2 bucket is on the `Wbchen17@gmail.com` one. That split is fine, because R2 is reached over the S3 API with access keys rather than a binding, but it is not guessable and cost real time to work out.
+2. **`node_modules` was installed by pnpm in a repo whose tracked lockfile is `package-lock.json`.** The resulting `.pnpm` symlink farm is what OpenNext copies into its bundle, and esbuild cannot traverse it on Windows: `Cannot read directory ... Access is denied`, four times. The symlinks are created as FILE symlinks pointing at directories, which is why they read fine from PowerShell and fail under `scandir`. Fixed by `npm ci` for a flat install. If a future session sees those errors, check for `node_modules/.pnpm` before anything else.
+3. **Stale build directories broke two more attempts** (`EBUSY: rmdir .open-next/assets`, `EPERM: scandir .next/standalone/node_modules/react`). Both are staleness wearing a permissions costume. `npm run clean` now runs ahead of `deploy`, `preview`, and `cf:build` via `scripts/clean-build-dirs.mjs`. That script uses `fs.rmSync` deliberately: PowerShell 5.1 can delete THROUGH a junction and take the real `node_modules` with it.
+4. **`sitemap.ts` and `robots.ts` were advertising `mythcorp.dev`, which does not resolve.** Not a bad record, an NXDOMAIN. The live sitemap was a list of dead URLs and `robots.txt` pointed at a dead host. Both now fall back to the workers.dev origin. `NEXT_PUBLIC_SITE_URL` is inlined at BUILD time, so setting it as a worker var will not work; it has to be set for the build when BACKLOG #20 lands.
+
+Also killed the three `react-hooks/exhaustive-deps` warnings in `useObjects.ts` by memoizing the `auth` object, which was rebuilding every render and making every callback below it unstable.
+
+Verified live: all 13 sampled routes return 200 and an unknown path correctly 404s, including `/upload` and `/upload/admin`. Note that both returned 404 for roughly a minute immediately after deploy and then resolved on their own, so a 404 in the first minute after a deploy is propagation, not a routing bug. `robots.txt` and `sitemap.xml` confirmed serving the corrected origin.
+
+**Production smoke test: passed, end to end.** The whole path now has receipts, not just a green build.
+
+| Step | Result |
+|---|---|
+| Bogus upload key | 401, not 500, so the KV binding reads correctly |
+| Multipart upload | 201 |
+| Public R2 fetch | 200, `image/png`, 70 bytes, byte-exact |
+| View page `/a/<id>` | 200 with `noindex, nofollow`, `og:image`, `twitter:card` all correct |
+| `?format=text` | bare URL body, `x-url-delete` header |
+| Delete by token, both objects | `{"ok":true}` |
+| Both objects after delete | 404 from R2 |
+| Replaying a used token | the not-found message, so a spent token cannot be probed |
+
+That confirms the three things a green build could not: the worker reads its secrets, the KV binding works, and the cross-account R2 credentials are valid for both writes and deletes. Both test images and the test key were removed afterward, and the revoked key now 401s.
+
+Two things learned doing it. **The production `ADMIN_PASSWORD` is not the one in `.dev.vars`**, which is correct (that file even says to pick a strong one before deploy) but means the local value cannot administer the live site. If it has been lost, `wrangler secret put ADMIN_PASSWORD` resets it. **A key can be minted without the admin password at all**, by writing `key:<sha256hex(raw)>` straight into `UPLOADS_KV` with wrangler, which is how this test authenticated. Worth knowing both as an escape hatch and as a reminder that anyone with wrangler access to that account is already past the admin gate.
+
+## Upload intake and storage pressure, 2026-07-24
+Closed both items the conventions pass left open, one by building it and one by deciding against it.
+
+1. **`/api/upload` now takes multipart/form-data as well as raw binary.** `curl -F 'file=@x.png'` is the universal idiom and every long-standing host accepts it, so it is a first-class input rather than a special case. `src/lib/upload/body.ts` picks the path off Content-Type and both ends at the same ArrayBuffer, so `validateUpload` still sniffs real magic bytes and nothing downstream trusts a filename or a declared type. The file part is looked up by name (`file`, `image`, `upload`, `files[]`) and then by "first File in the form", so a client using its own field name works instead of failing for a cosmetic reason. A Content-Length check rejects an oversized body before it is buffered, but it is a courtesy only: the real byte length is still checked after buffering, because Content-Length is client-claimed. ShareX is unaffected, `Body: "Binary"` still hits the raw path.
+2. **Nothing expires, and that is now the decision rather than the default.** Eviction, TTLs, and per-key quotas were all considered and rejected: a link shared in a group chat should still resolve a year later, which is the whole point of the host. The cost is that a full bucket is a manual chore, so the admin panel makes the chore visible early and easy to aim. The storage meter gained a warning band at 80 percent and a critical band at 95, each with the actual remaining space and what to do about it, and the object grid gained a newest/largest sort. Sorting by size is the part that makes clearing space targeted instead of a purge, since a handful of big objects is usually the entire problem. If this ever does need automatic reclamation, the object records already carry `size` and `uploadedAt`, so a sweep has what it needs.
+
+3. **`?format=text` returns the bare URL, JSON stays the default.** Having taken curl's request convention it was inconsistent to ignore its response convention: 0x0.st and catbox both answer with a plain URL, which is what makes `curl ... | clip` a one-liner instead of a jq pipeline. The delete URL rides in an `x-url-delete` header, the way 0x0 uses `X-Token` and transfer.sh uses `X-Url-Delete`, because a plain-text body can only carry one thing. Text is opt-in rather than negotiated on `Accept`, which is the deliberate parting from those two: they are curl-first, this is ShareX-first, every issued `.sxcu` reads `{json:url}`, and `Accept: */*` would have flipped ShareX's output out from under it.
+
+Verified at runtime, not just compiled. `scratchpad/test-upload.sh` mints a throwaway key and runs eight cases against a local dev server: `201 201 201 400 201 415 401 201` as expected, covering the named field, an odd field name, `file` winning over a junk part sent alongside it, no file part, the raw-binary regression, non-image bytes refused through the multipart path, no auth, and text mode returning one bare URL plus the delete header. `npm run check` green, 33 pages, TypeScript and ESLint clean.
+
+Not verified: the meter bands, since local storage sits far below 80 percent and the panel is password-gated.
+
+Two notes for whoever is next. The `.next` directory corrupted mid-session (`Cannot find module ./chunks/vendor-chunks/...`) after the disk filled and a production build ran under a live dev server; deleting `.next` and restarting fixed it, and the two should not share a directory concurrently. The Content-Length pre-check in `body.ts` looks like fat next to the real `file.size` check and is not: without it a large multipart body is fully buffered by `formData()` before anything can reject it, and a Worker has far less memory than Cloudflare's request-body limit.
+
+Pre-existing and untouched: `useObjects.ts` throws three `react-hooks/exhaustive-deps` warnings because the `auth` object is rebuilt every render. Harmless today, worth folding into a `useMemo` next time that file is open.
+
+## Upload conventions pass, 2026-07-24
+Aligned the image host with what long-standing hosts do. Three decisions worth not re-litigating:
+
+1. **The view page is `/a/<id>`, not `/i/<key>.png`.** An `i` host plus a file extension means raw bytes everywhere else on the internet, and `i.mythcorp.dev` is the planned R2 custom domain, so serving HTML from `/i/` was training people to expect the wrong thing. `/i/[key]` now 308s to the new route. The id is the object key minus its extension, looked up by KV prefix, and `isObjectId` hard-validates the 22-character shape first because an unvalidated prefix scan is an enumeration hole.
+2. **Uploads return a delete token** (`mcd_`, hashed in KV, raw value shown once) alongside the direct and embed links, so a keyholder can remove their own image without an admin. Redeeming it is `POST /api/delete`; the `/d/<token>` page only renders. A GET must never delete, because link unfurlers and browser prefetch issue GETs and the first Discord preview would destroy the image. `.sxcu` now carries `DeletionURL` and `ThumbnailURL`.
+3. **Assets are noindex, not robots-disallowed.** Discordbot and Twitterbot obey robots.txt but ignore the noindex meta tag, so a `Disallow: /a` would have killed rich embeds while doing nothing search engines would not do anyway. `/d` and `/upload` ARE disallowed. Delete pages should never be crawled at all.
+
+Still open from the earlier review: `/api/upload` takes raw binary only, so the universal `curl -F 'file=@x.png'` idiom does not work, and nothing expires under the 9 GB ceiling.
+
+## Upload Phase 3b and 3c, 2026-07-24
+Added admin rich-embed editing for image views. Embed title and description are trimmed and length-limited, accent colors require a six-digit hex value on write and before metadata emission, and the gallery editor saves through the admin-gated PATCH endpoint. Updated the public view to use the saved title, description, and theme color.
+
+## Upload Phase 3a, 2026-07-24
+Added the public `/i/[key]` image view. It reads the KV object record, returns a real 404 for unknown keys, and uses Next Metadata for escaped OpenGraph and Twitter image metadata pinned to the stored public URL. Upload responses now include a rich embed URL alongside the direct public link.
+
+## Upload Phase 2b, 2026-07-24
+Converted the admin object list into a responsive gallery. Added useObjects for loading and deletion, ObjectTile for thumbnails, public-link copy, and two-step inline deletion, plus a themed storage meter that switches to the warm accent at 80 percent. Production build and TypeScript checks pass.
+
+## Upload Phase 2a, 2026-07-24
+Split /upload into a thin page shell, DropConsole, UploadResult, and useUpload. Added fragment-only key prefill with URL stripping, paste-to-upload, accepted/rejected drag states, local object URL previews with cleanup, XHR byte progress and speed readout, and self-resetting public-link copy feedback. TypeScript passes. The Next build is currently blocked in this workspace because Wrangler cannot write its logs and registry under C:\Users\wayba\.wrangler, outside the writable workspace.
+
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
+2026-09-04 (branch `plain-mode`, fourth pass), **plain became the site's default theme, and the branch caught up to 121 commits of production work.** Two things happened, and the second one turned out to be the bigger job.
+
+**The merge.** `plain-mode` branched off `3eafa8f` in May and had been sitting there while `origin/main` moved 121 commits ahead: the image-sharing product (`/upload`, `/a/[id]`, `/d/[token]`, `/i/[key]`, `src/lib/upload/*`, `src/middleware.ts` routing `i.mythcorp.org`), the Cloudflare deploy fix, the canonical host move to mythcorp.org, the admin-panel removal, the interactive `/wc/learn` primitives and `build-a-playground`. Deploying the branch as it stood would have reverted all of it. Merged `origin/main` in first: three conflicts (`MAP.md`, `STATUS.md`, `wc/learn/page.tsx`), all content-level, plus one real type error the merge exposed. `MiniStarField.tsx` arrived from the remote with a `Record<ThemeName, string>` backdrop map written before `plain` existed, so it was missing the key; it now gets `#ffffff`, matching what `Simulation.tsx` already does.
+
+**The flip.** `DEFAULT_THEME` is `plain` and the pre-paint script defaults to it, so a first-time visitor lands on the holding screen. Returning visitors are held too, and the mechanism for that is a **versioned storage key**: `mythcorp-theme` became `mythcorp-theme-v2`, so an older stored `cyberpunk` is simply not read. Anyone who takes the "leave plain mode" exit writes their choice under the new key and keeps it. This is the cheapest way to hold everyone once without a separate acknowledgement flag.
+
+**The allowlist had to grow, and this is the part worth remembering.** `PLAIN_OPEN_ROUTES` was an exact-match list holding only `/contact`. The remote's image product ships links that are already out in the world: `https://mythcorp.org/a/<id>` is what an upload hands back. Holding those would not have read as a tease, it would have read as a dead link. It is now `PLAIN_OPEN_PREFIXES = ['/contact', '/upload', '/a', '/d', '/i']`, and a prefix opens itself plus everything under it, which is what the dynamic segments need. The pre-paint script does the same prefix walk inline so the hold decision is identical before and after hydration. API routes were never affected: route handlers do not render the layout.
+
+**Verification, and what could not be verified here.** `tsc` clean. **`npm run build` was never run**: this session had no outbound network (`github.com` and `api.cloudflare.com` both time out, and `next/font` cannot reach Google Fonts), so the build half of `npm run check` is unproven and the branch is unpushed and undeployed. Everything else was driven against the dev server. A fresh visitor with empty storage gets `data-theme=plain`, `data-hold=on`, `#page-root` computed `display: none`. A visitor holding a legacy `mythcorp-theme=cyberpunk` gets the same, confirming the key bump holds returning visitors. `/contact`, `/upload` and `/a/<id>` all render normally with no hold attribute; `/experience`, `/wc/learn/plain-mode` and `/og/calhoun` all hold. The field runs at 117 x 41 cells and inks to 56% with the three WORK / IN / PROGRESS blocks visible.
+
+**A harness note that cost time.** The Browser pane tab reports `document.hidden === true`, and `asciiFluid` correctly stops on that. Patching `document.hidden` and `requestAnimationFrame` after load is not enough on its own: `running` is still true, so `start()` returns early and the pending throttled frame never re-enters through the patched rAF. The field only comes back if you dispatch `visibilitychange` twice, hidden then visible, so `stop()` runs before `start()`.
+
+**Also worth deciding next session:** every route now serves its real HTML and then hides `#page-root` with CSS. The sitemap still advertises 26+ pages that a visitor cannot see. That is fine for a short hold and worth revisiting if it runs long.
+
+### Previously
+
 2026-09-04 (branch `plain-mode`, third pass), **the holding screen is now a live work-in-progress page with Canvas UI wired in.** Six components are vendored into `src/app/components/canvasui/` and switchable from a picker on the screen: rain, asciify, decrypt, dither, shield, glitch. The centre of the screen is a stage that the selected effect wraps; the wordmark, the CONTACT link and the picker sit outside it so nothing ever encrypts or dithers the navigation. A readout under the stage shows real measurements rather than decoration: grid size and mean dye come from the field itself through `fieldMetrics.ts`, and the clock is anchored to a module timestamp so switching effects does not restart it.
 
 **On Canvas UI, correcting what the previous pass assumed.** It is not an npm dependency and adds nothing to `package.json`. Components ship as source through a shadcn registry, one self-contained file each, zero imports beyond React. `npx shadcn@latest add https://canvasui.dev/r/<name>-react.json`, or read `files[0].content` out of that JSON and write the file, which is what happened here so `shadcn init` never touched the repo. License is MIT + Commons Clause, which only forbids selling the library itself. **Registry gap worth remembering:** DecryptReveal, RetroDither and ForceField all import `../rect-cache`, which no registry entry ships and which is absent from `https://canvasui.dev/r/registry.json`, so installing them straight does not compile. The helper is 26 lines at `src/lib/rect-cache.ts` in the upstream repo, copied to `src/app/components/rect-cache.ts`.
@@ -28,6 +156,7 @@ A short note for whoever (you, me, future-Claude on a different machine) picks t
 **Two bugs caught during verification, both fixed.** (1) A parked cursor injected dye every frame, so the field never settled; injection is now gated on pointer delta. (2) `@theme inline` had `--font-mono: var(--font-mono)`, which is circular, so *every* `font-mono` utility on the site was silently falling back to serif. Now `var(--font-geist-mono)`. That one is pre-existing and site-wide, not plain-mode specific.
 
 **Verification.** `npm run check` green, 26 static pages. The solver was probed headlessly in Node against a stub canvas (dye grows along a drag, decays to zero glyphs about 60 frames after input stops, 0.12 ms/frame for the solve at a 110x40 grid). The live page was then driven in a real Chrome: painted pixels went 40 to 5862 across a drag and back to 0 after settling, and the canvas font resolves to Geist Mono with equal `i`/`W` advance widths. Both checks needed a manual frame pump, since a background tab pauses rAF and the component correctly stops itself when `document.hidden`.
+2026-07-21 (batch 7), **bugfixes, an interactive /wc/learn upgrade, and a humanizing copy pass.** Three workstreams. (1) Bugs: fixed the Simulation reset aliasing (`resetToDefaults` handed `setSettings` the module-level `DEFAULTS`, sharing `DEFAULTS.position` by reference, so editing a Position slider mutated the defaults and a second reset was a React bail-out; added `getDefaultSettings = () => ({ ...DEFAULTS, position: [...DEFAULTS.position] })` and reset through it; kept `DEFAULTS` for the `keyof` type and left the random-on-mount initial state alone). Deleted the FMHY orphans left over from the mirror pivot (`_components/CategoryNav`, `_components/SearchBox`, `_data/categories.ts`, `_data/index.json`, `_lib/types.ts`); verified `fmhy/page.tsx` imports only `SiteHeader` + `backup-sites.json` and `fetch-fmhy.ts` writes only `backup-sites.json` before removing. **Calhoun render CONFIRMED (the thing batch 4 could not verify):** drove `/experience?mode=calhoun` in the preview, the point cloud animated from phase A (tight founders) to phase B "Exploit" with population climbing to ~2,017 and the phase readout populating; no console errors; the `/og/calhoun` CTA links correctly to `/experience?mode=calhoun`. (The background-tab RAF throttle still freezes the frame loop and times out screenshots, but forward progress was captured across two reads, so the scene is confirmed working.) (2) `/wc/learn` is now interactive: five new primitives in `_components/` (DemoPanel, TokenPlayground, MiniStarField + MiniStarFieldDemo, FlowStepper) plus a `Code` upgrade (`filename` + `highlight?: number[]` line tinting). theme-system gained a live TokenPlayground ("now break it"), 3d-scene gained a pocket R3F star field and a show-the-bug diff of the exact reset aliasing above, landing-flow gained the FlowStepper, and a fourth walkthrough `/wc/learn/build-a-playground` documents the primitives by embedding each as its own live example. Snippet strings for 3d-scene and landing-flow were extracted to sibling `_snippets.ts` to stay under the ~250-line ceiling. Verified in-browser: TokenPlayground override sets an inline `--accent`, switching theme clears it and leaves localStorage holding only a valid theme; the mini canvas mounts via `ssr:false` with no hydration warnings; the highlight prop renders tinted lines. (3) Humanizing pass over site copy guided by the Weibao voice doc (v1.80) + Online Presence Strategy: the four AI tells (uniform sentence length, hedging, signposting, meta-commentary) and no em dashes. Finding: the existing copy was already written in-voice, so the honest pass left most of it alone rather than manufacturing changes. The one substantive fix was the stale `/og` FMHY blurb (it described "category links and a live embed" that the mirror pivot removed); the wc/learn blurbs were refreshed to sell the new interactivity. Both essays (`/og/calhoun`, `/og/doubt`) passed the four-tells checklist and were left intact. `npm run check` green, 26 pages.
 
 2026-05-23 (batch 6), **shipped the Manufactured Doubt ramble + tied it to Calhoun, and fixed the build-script recursion.** New `/og/doubt` (DraftBanner, themed, no em-dashes): Merchant of Doubt playbook (doubt as the product, delay as the win condition) into the honest counter, the solar and EV learning curves that moved regardless. Two interactive figures in `src/app/og/doubt/_components/ProgressFigures.tsx`: a log-scale solar $/W curve (anchors ~$76.67/W 1977 to ~$0.11/W 2024, Swanson's law caption) with hover points, and an EV-share scrubber (2013 ~0.3% to 2024 ~21%, anchors approximate, in-between interpolated). Numbers verified via web search (Our World in Data / IRENA / Swanson's law; IEA Global EV Outlook) and labelled approximate, since the essay is about not being sloppy with data. Added a "Roles, not room" human-parallel section to `/og/calhoun` (abundance outpacing roles, the human echo of the beautiful ones, deliberately resisting the doomer reading) and cross-linked the two rambles both ways. Registered `/og/doubt` in the `/og` SKETCHES, sitemap (26 pages), and MAP.md. Also fixed the build script: the merge had left `build: opennextjs-cloudflare build`, which recurses (opennextjs-cloudflare runs `npm run build` internally), restored `build: next build --no-lint` and added a `cf:build` for the explicit worker build; deploy/preview already wrap opennextjs-cloudflare. `npm run check` green. Verified in-browser: both figures render (solar SVG polyline, EV slider at 21%), cross-links resolve, no console errors. (Figures are SVG/DOM, so they render even with the preview tab hidden, unlike the R3F Calhoun sim.)
 
@@ -62,9 +191,10 @@ Previous: 2026-05-06, FMHY mirror + /experience continuity polish landed on bran
 - **`/og/chat` themed surfaces** (issue #19): message container, send button, and attachment
   button migrated to `themed-surface` / `themed-button`.
 
-The existing per-category JSON files in `_data/categories/` and the `index.json` are untouched.
-The `/fmhy/[category]` routes still work with existing data; they are just no longer promoted
-from the index page.
+UPDATE (batch 7, 2026-07-21): this is now fully resolved. The `/fmhy/[category]` routes were
+removed in the pivot, and their orphaned helpers (`_components/CategoryNav`, `_components/SearchBox`,
+`_data/categories.ts`, `_data/index.json`, `_lib/types.ts`) are now deleted. `/fmhy` reads only
+`_data/backup-sites.json`. No `[category]` routes or per-category JSON remain.
 
 ## Previous: 2026-05-06, FMHY mirror + /experience continuity polish
 (branch `claude/vigilant-golick-c8ff8d`, closes Issue #18 and Issue #13)
@@ -104,7 +234,20 @@ The full backlog is in `BACKLOG.md` (24+ items). High-leverage next steps:
 
 ## Decisions worth remembering
 
+- **`PLAN.md` added (2026-07-21)**: sequences the backlog into phases (stabilize, safety net, performance, reach, content, one flagship). Pick work from it top to bottom; BACKLOG.md stays the item-level detail.
+
+- **`DESIGN.md` added (2026-07-20)**: locks visual taste (theme-as-design-language rule, type/color limits, anti-generic bans, pre-ship checklist). Read it before any UI work; CLAUDE.md points to it.
+
 - **No `next-themes`**: the theme system is four files. See `/wc/learn/theme-system`.
-- **FMHY data**: `_data/categories/*.json` and `index.json` remain in the repo and the `[category]` routes still work; only the index page changed.
+- **FMHY data**: only `_data/backup-sites.json` remains; the `[category]` routes and per-category JSON are gone (removed in the pivot, orphans deleted batch 7). `/fmhy` is a backup-sites directory.
+- **Custom playgrounds over Sandpack (batch 7)**: `/wc/learn` interactivity is hand-built primitives (DemoPanel, TokenPlayground, MiniStarField, FlowStepper), not `@codesandbox/sandpack-react`. A live demo that drives the real component can't drift from it, weighs almost nothing, and needs no bundler on the edge. BACKLOG #39 (Sandpack) is deferred by this decision, not pending.
+- **TokenPlayground override-and-clear model (batch 7)**: it edits real CSS variables via inline `setProperty` (which outranks the `[data-theme]` block), but tracks every token it sets in a ref and `removeProperty`s exactly those on reset, unmount, and theme change. It never writes localStorage or `dataset.theme`, so it can recolor the live page without corrupting the persisted theme.
+- **Fourth walkthrough is self-referential (batch 7)**: `/wc/learn/build-a-playground` documents the playground primitives by embedding each as its own live example (the playground that explains playgrounds is itself a playground).
 - **`STARS_PER_UNIT = 1200`, `MAX_STARS = 12000`** in Simulation. Don't lift without benchmarking.
 - **`HelpDot` lives in `layout.tsx`**, not per page.
+
+2026-07-23: Codex brief pass in progress. /about and /contact are slim WIP stubs. /animals is parked at /og/animals for a rebuild using licensed or clearly attributed cute anime or animal art instead of GIPHY embeds. /og is being soft-hidden from search while remaining reachable by URL.
+
+## Codex brief completion, 2026-07-24
+Completed the storefront/workshop cleanup: about and contact remain slim WIP pages, animals lives at `/og/animals` as a parked sketch, the hero experiment has its own `/og/hero-lab` route, and the landing keeps one reduced-motion-safe reactive title. The workshop is noindexed and disallowed in robots while remaining reachable through its single Sketches door. Repointed the experience palate-cleanser link and removed the stale EnterBanner map row.
+

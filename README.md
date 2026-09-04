@@ -15,7 +15,7 @@ or locally via the CLI) are picking this up, read these in order:
 3. [MAP.md](./MAP.md), the file index.
 4. [CLAUDE.md](./CLAUDE.md), conventions. The headline rule: **no em-dashes anywhere**.
 5. [BACKLOG.md](./BACKLOG.md), queued issues. Same content lives at
-   [github.com/wchen17/mythcorp-gen2/issues](https://github.com/wchen17/mythcorp-gen2/issues).
+   [github.com/onionviolet/mythcorp-gen2/issues](https://github.com/onionviolet/mythcorp-gen2/issues).
 
 That's under five minutes to be fully oriented.
 
@@ -56,6 +56,6 @@ on every push and PR. A weekly cron opens a PR with the refreshed FMHY snapshot.
 
 ## License
 
-This repo is the source of [mythcorp.dev](https://mythcorp.dev) and is intentionally
+This repo is the source of [mythcorp.org](https://mythcorp.org) and is intentionally
 public so the build can be picked up from any device. Code is unlicensed for reuse;
 content (essays, paper text, designs) is the author's.

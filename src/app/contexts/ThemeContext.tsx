@@ -26,8 +26,8 @@ export const THEMES: ReadonlyArray<{
   { name: 'plain',     label: 'Plain',     blurb: 'Black on white, and a live ASCII field.' },
 ];
 
-const STORAGE_KEY = 'mythcorp-theme';
-const DEFAULT_THEME: ThemeName = 'cyberpunk';
+const STORAGE_KEY = 'mythcorp-theme-v2';
+const DEFAULT_THEME: ThemeName = 'plain';
 // Total duration of the transition curtain (each half = 250ms).
 const TRANSITION_HALF_MS = 260;
 

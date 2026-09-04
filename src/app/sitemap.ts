@@ -1,7 +1,13 @@
 import type { MetadataRoute } from 'next';
 
-// Override with NEXT_PUBLIC_SITE_URL once the custom domain (BACKLOG #20) is final.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp.dev').replace(/\/$/, '');
+// The canonical host is mythcorp.ORG. It has been live on Cloudflare the whole
+// time; the repo just said mythcorp.DEV in several places, which does not
+// resolve, so an earlier pass "corrected" this to the workers.dev origin. That
+// was worse: the real domain was then serving a sitemap and a robots Host that
+// both pointed somewhere else, splitting the site across two hostnames.
+// NEXT_PUBLIC_SITE_URL still overrides, and is inlined at BUILD time, so it has
+// to be set for the build rather than as a worker var.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mythcorp.org').replace(/\/$/, '');
 
 type Entry = {
   path: string;
@@ -24,12 +30,6 @@ const ROUTES: Entry[] = [
   { path: '/wc/learn/plain-mode', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.5, changeFrequency: 'yearly' },
   { path: '/contact', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/animals', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og', priority: 0.4, changeFrequency: 'monthly' },
-  { path: '/og/calhoun', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og/doubt', priority: 0.3, changeFrequency: 'yearly' },
-  { path: '/og/interactive', priority: 0.2, changeFrequency: 'yearly' },
-  { path: '/og/chat', priority: 0.2, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -41,3 +41,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: r.priority,
   }));
 }
+

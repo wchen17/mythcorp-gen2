@@ -9,7 +9,7 @@ gh auth login         # one time, opens a browser
 ./tools/post-backlog-to-issues.ps1
 ```
 
-That script reads every `## #N, ...` heading in this file and creates one Issue per heading on `wchen17/mythcorp-gen2`, applying the labels in the `**Labels:**` line.
+That script reads every `## #N, ...` heading in this file and creates one Issue per heading on `onionviolet/mythcorp-gen2`, applying the labels in the `**Labels:**` line.
 
 ---
 
@@ -276,9 +276,13 @@ After #2 (build the about page), add a tiny KV-backed comment/guestbook box at t
 
 **Body:**
 
-The site is currently on a `workers.dev` subdomain. Buy a custom domain (mythcorp.dev? mythcorp.app? wc.dev if available?) and point it at the Cloudflare Workers deployment. Configure in Cloudflare dashboard.
+**DONE, and it was done before anyone noticed (verified 2026-07-25).** The custom domain is **mythcorp.org**, live on Cloudflare and serving this worker. Every route, the upload API, and the WIP markers were confirmed against it. The confusion was that this repo said mythcorp**.dev** in README, MAP, and this item, and that domain is NXDOMAIN, so a pass in July "fixed" the sitemap and robots host to the workers.dev origin instead. Both now point at mythcorp.org.
 
-Bonus: set up `wc.<domain>` as an alias to `/wc/*` so the personal section has its own "subdomain" feel.
+Still open, split out of this item:
+
+- `www.mythcorp.org` does not resolve. Anyone typing the www form gets nothing. One CNAME.
+- The workers.dev origin still answers, so the same site is reachable on two hostnames. `robots.txt` now names mythcorp.org as `Host`, which is the cheap fix; setting `workers_dev: false` in `wrangler.jsonc` is the real one, at the cost of losing the fallback URL for testing.
+- Bonus, unchanged: `wc.mythcorp.org` as an alias to `/wc/*`.
 
 ---
 
@@ -626,6 +630,8 @@ One block, scoped to `/wc/papers/*` via a body class added in that route's layou
 
 ## #39, Interactive code blocks via Sandpack
 
+**Status: DEFERRED BY DECISION (batch 7, 2026-07-21).** `/wc/learn` went the other way: hand-built playground primitives (DemoPanel, TokenPlayground, MiniStarField, FlowStepper) that drive the real components instead of a bundled sandbox. A demo wired to the actual component can't drift from it, weighs almost nothing, and needs no edge bundler. See STATUS "custom playgrounds over Sandpack." Not closed, since a true edit-arbitrary-code sandbox is still a distinct capability; but it is parked on purpose, not merely un-started.
+
 **Labels:** `walkthrough`, `feature`, `teaching`
 
 **Body:**
@@ -660,6 +666,8 @@ Render both tracks on `/wc/learn` with a tab or filter. Different shape (shorter
 
 ## #41, Diff-driven walkthrough format
 
+**Partial (batch 7, 2026-07-21).** The new `Code` `highlight?: number[]` prop covers the cheap 80%: before/after code shown in one block with the changed lines tinted (used for the reset-bug diff in the 3d-scene walkthrough). The full `<DiffSlider before after />` with a scrub-wipe and pinned `<DiffNote>` line commentary is still open; the line-tint gets most of the teaching value without the build.
+
 **Labels:** `walkthrough`, `feature`
 
 **Body:**
@@ -676,6 +684,8 @@ First use: `/wc/learn/landing-refactor`. Pulls double-duty as portfolio (here is
 ---
 
 ## #42, Mini 3D demos embedded in walkthroughs
+
+**Status: DONE (batch 7, 2026-07-21).** `MiniStarField` + `MiniStarFieldDemo` ship in `src/app/wc/learn/_components/`, embedded in the 3d-scene walkthrough via a `DemoPanel`. Self-contained R3F, `MINI_MAX_STARS = 3000`, no bloom, lazy-loaded with `dynamic(..., { ssr: false })` behind a height-matched skeleton, exactly the shape this item asked for. The other two sketches (`<MiniBloom />`, `<MiniStarsClamp />`) are still open if wanted, but the pattern is proven.
 
 **Labels:** `walkthrough`, `3d`
 
@@ -704,6 +714,8 @@ Bonus: a "next up" link at the bottom of each walkthrough that recommends a down
 ---
 
 ## #44, Show-the-bug walkthrough pattern
+
+**Status: DONE (batch 7, 2026-07-21).** First instance shipped in the 3d-scene walkthrough: the "Show the bug: reset that shares an array" section walks the `setSettings(DEFAULTS)` aliasing (edit a Position slider, mutate the module-level defaults; reset twice, React bails out) and its clone-pattern fix, using the new `Code` `highlight` prop for the before/after diff. Bug was fixed in `Simulation.tsx` the same session, so the walkthrough teaches a real one this repo shipped. The heavier live-crash variant (a `<BugDemo />` that mounts a second Canvas and throws into an error boundary) is still open if a fuller version is wanted.
 
 **Labels:** `walkthrough`, `content`
 
@@ -739,6 +751,8 @@ Biggest win for the FMHY mirror: currently you can filter by category, but canno
 ---
 
 ## #46, Shiki + twoslash for typed code blocks
+
+**Partial (batch 7, 2026-07-21).** The `Code` upgrade added a `filename` label strip and `highlight` line tinting with zero deps, the cheap slice of this item's value. Full syntax highlighting and twoslash type-on-hover still want `shiki`/`@shikijs/twoslash` (do after MDX #7, per the note below).
 
 **Labels:** `walkthrough`, `polish`
 
@@ -1084,3 +1098,51 @@ A `/wc/learn` page with an editable GLSL fragment shader and a live preview, so 
 How: a `<textarea>` (or CodeMirror) feeding a `shaderMaterial`, recompiling on change with error display. Lighter than the Sandpack idea (#39) because it only needs to compile a shader, not bundle JS. Pairs with #57 / #56 as their explainer pages.
 
 Scope: medium.
+
+---
+
+# SELF-MODIFYING PAGES, meta-playground flagships
+
+A sub-vein of the ideaboard: learning pages where changing something on the page changes the page itself. These are Weibao's hand-built lane (portfolio-voice + authorship), not Codex work. #72 is the selected Phase 5 flagship and has a full spec.
+
+---
+
+## #72, Author the fourth theme (SELECTED FLAGSHIP)
+
+**Labels:** `ideaboard`, `wow`, `flagship`, `walkthrough`, `teaching`
+
+**Body:**
+
+A `/wc/learn/theme-lab` page where the visitor builds a complete fourth theme live (color, surface style, radius, shadow, motion), watches the entire site restyle in real time, saves it into the ThemeSwitcher as "Yours," and shares it by URL. The whole-page evolution of `TokenPlayground`: you learn the token system by becoming an author in it.
+
+Full build spec (architecture, the pre-paint bootstrap change, save/share scheme, build order, DoD): `FLAGSHIP_FOURTH_THEME.md` at repo root. Scope: medium-large, sequenced as its own arc per PLAN Phase 5.
+
+---
+
+## #73, "This page is the playground"
+
+**Labels:** `ideaboard`, `wow`, `walkthrough`, `teaching`
+
+**Body:**
+
+One page whose own layout, type scale, motion, and particle density are all live knobs, and the article you are reading is the thing you are editing. Broader than #72 but with a fuzzier payoff (no saved artifact). Would reuse the `DemoPanel` + inline-override pattern. Keep as a future idea unless it earns a sharper hook than #72's shareable theme.
+
+---
+
+## #74, Fork-this-component live diff
+
+**Labels:** `ideaboard`, `walkthrough`, `teaching`
+
+**Body:**
+
+A page that shows a real component's source with a few parameters exposed as controls; editing a control rewrites the shown source AND the running demo in lockstep, so the code you read always matches the thing you see. A middle point between the current knob playgrounds and a full code editor (#39, parked), without a bundler. First subject: the `Simulation` `DEFAULTS` object.
+
+---
+
+## #75, Replay-the-bug interactive
+
+**Labels:** `ideaboard`, `walkthrough`, `teaching`
+
+**Body:**
+
+Extend the batch-7 "show the bug" pattern (the reset-aliasing diff in `3d-scene`) into a live one: a toggle that runs the buggy version and the fixed version side by side on real state, so the reader triggers the bug themselves before seeing the fix. The self-modifying version of BACKLOG #44.
