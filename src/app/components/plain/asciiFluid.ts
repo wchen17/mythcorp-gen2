@@ -1,35 +1,40 @@
 // Walkthrough: /wc/learn/plain-mode
 
+import { CELL_ASPECT, renderField, type RenderTarget } from './asciiRender';
+
 export type AsciiFluidOptions = {
   /** Pixel size of one character cell at CSS scale. Smaller = denser, costlier. */
   cell?: number;
-  /** Luminance ramp, sparse to dense. Index 0 is drawn as nothing. */
-  ramp?: string;
   /** Ink colour for the glyphs. Read from a CSS variable by the caller. */
   ink?: string;
   /** Per-frame multiplier on dye and velocity. Below 1, so the field settles. */
   decay?: number;
+  /** Low-amplitude wandering vortices, so an untouched field is still alive. */
+  ambient?: boolean;
+  /**
+   * Called after every resize with the new grid. Return a per-cell mask to
+   * re-ink every frame (this is how the wordmark survives being smeared),
+   * or null for a field that only responds to the pointer.
+   */
+  source?: (cols: number, rows: number) => Float32Array | null;
+  /** Per-frame gain on the source mask. Steady-state dye is gain / (1 - decay). */
+  sourceGain?: number;
 };
 
 type Field = Float32Array;
 
 const DEFAULTS = {
   cell: 11,
-  ramp: ' .:-=+*#%@',
   ink: '#111111',
   decay: 0.985,
+  ambient: false,
+  sourceGain: 0.014,
 };
 
-/**
- * A semi-Lagrangian advection field rendered as text. Not a full
- * Navier-Stokes solve: no pressure projection, which is the expensive
- * half. Advection plus a diffusion blur plus decay already produces the
- * smearing, curling motion people read as fluid, at a fraction of the cost.
- */
 export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidOptions = {}) {
   const opts = { ...DEFAULTS, ...options };
   const ctx = canvas.getContext('2d', { alpha: true });
-  if (!ctx) return { destroy() {}, setInk() {}, pointer() {} };
+  if (!ctx) return { destroy() {}, pointer() {}, restamp() {} };
 
   let cols = 0;
   let rows = 0;
@@ -39,14 +44,13 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
   let vy: Field = new Float32Array(0);
   let vxNext: Field = new Float32Array(0);
   let vyNext: Field = new Float32Array(0);
-  let ink = opts.ink;
+  let source: Field | null = null;
   let fontFamily = 'ui-monospace, monospace';
   let raf = 0;
   let running = false;
+  let clock = 0;
 
-  // Pointer state in grid coordinates, plus the delta that becomes force.
   const pointer = { x: -1, y: -1, dx: 0, dy: 0, active: false };
-
   const idx = (x: number, y: number) => y * cols + x;
 
   function resize() {
@@ -58,7 +62,6 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     // ctx.font does not resolve CSS custom properties, so read the family
     // the element actually computed to and hand the canvas a real stack.
     const computed = window.getComputedStyle(canvas).fontFamily;
-    // A serif fallback here would be very obvious, so keep a mono tail.
     fontFamily = computed ? `${computed}, ui-monospace, monospace` : fontFamily;
 
     canvas.width = Math.floor(w * dpr);
@@ -66,7 +69,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     cols = Math.max(2, Math.ceil(w / opts.cell));
-    rows = Math.max(2, Math.ceil(h / (opts.cell * 1.6)));
+    rows = Math.max(2, Math.ceil(h / (opts.cell * CELL_ASPECT)));
     const n = cols * rows;
     dye = new Float32Array(n);
     dyeNext = new Float32Array(n);
@@ -74,6 +77,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     vy = new Float32Array(n);
     vxNext = new Float32Array(n);
     vyNext = new Float32Array(n);
+    source = opts.source ? opts.source(cols, rows) : null;
   }
 
   /** Bilinear sample of a field at fractional grid coordinates. */
@@ -91,6 +95,20 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     return a * (1 - fy) + b * fy;
   }
 
+  function splat(px: number, py: number, radius: number, dyeAdd: number, fx: number, fy: number) {
+    for (let y = Math.max(0, Math.floor(py - radius)); y <= Math.min(rows - 1, py + radius); y++) {
+      for (let x = Math.max(0, Math.floor(px - radius)); x <= Math.min(cols - 1, px + radius); x++) {
+        const d = Math.hypot(x - px, y - py);
+        if (d > radius) continue;
+        const falloff = 1 - d / radius;
+        const i = idx(x, y);
+        if (dyeAdd) dye[i] = Math.min(1.4, dye[i] + falloff * dyeAdd);
+        vx[i] += fx * falloff;
+        vy[i] += fy * falloff;
+      }
+    }
+  }
+
   function inject() {
     if (!pointer.active) return;
     const force = Math.min(6, Math.hypot(pointer.dx, pointer.dy));
@@ -100,29 +118,32 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
       pointer.dy = 0;
       return;
     }
-    const px = pointer.x;
-    const py = pointer.y;
-    const radius = 3;
-    for (let y = Math.max(0, Math.floor(py - radius)); y <= Math.min(rows - 1, py + radius); y++) {
-      for (let x = Math.max(0, Math.floor(px - radius)); x <= Math.min(cols - 1, px + radius); x++) {
-        const d = Math.hypot(x - px, y - py);
-        if (d > radius) continue;
-        const falloff = 1 - d / radius;
-        const i = idx(x, y);
-        dye[i] = Math.min(1.4, dye[i] + falloff * (0.06 + force * 0.16));
-        vx[i] += pointer.dx * falloff * 0.55;
-        vy[i] += pointer.dy * falloff * 0.55;
-      }
-    }
-    // Consume the delta so a parked cursor stops pushing.
+    splat(pointer.x, pointer.y, 3, 0.06 + force * 0.16, pointer.dx * 0.55, pointer.dy * 0.55);
+    // Consume the delta so one move is one push, not a held one.
     pointer.dx *= 0.55;
     pointer.dy *= 0.55;
   }
 
+  /**
+   * Two vortices wandering on incommensurable Lissajous paths. Their periods
+   * do not share a common multiple, so the pattern never actually repeats.
+   */
+  function ambient() {
+    if (!opts.ambient) return;
+    clock += 0.006;
+    for (let k = 0; k < 2; k++) {
+      const p = clock * (k ? 0.73 : 1);
+      const cx = (0.5 + 0.34 * Math.sin(p * 1.0 + k * 2.1)) * cols;
+      const cy = (0.5 + 0.30 * Math.sin(p * 1.37 + k * 0.7)) * rows;
+      const a = p * (k ? -1.9 : 1.3);
+      splat(cx, cy, 7, 0, Math.cos(a) * 0.05, Math.sin(a) * 0.05);
+    }
+  }
+
   function step() {
     // Advect every field backwards along its own velocity, then blur the
-    // result slightly. The blur stands in for viscosity and keeps the
-    // grid from turning into per-cell noise.
+    // result slightly. Tracing backwards can only read values that already
+    // exist, which is what makes this unconditionally stable.
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
         const i = idx(x, y);
@@ -136,45 +157,32 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     for (let y = 1; y < rows - 1; y++) {
       for (let x = 1; x < cols - 1; x++) {
         const i = idx(x, y);
-        const neighbours =
-          dyeNext[i - 1] + dyeNext[i + 1] + dyeNext[i - cols] + dyeNext[i + cols];
-        dyeNext[i] = dyeNext[i] * 0.72 + neighbours * 0.07;
+        const n = dyeNext[i - 1] + dyeNext[i + 1] + dyeNext[i - cols] + dyeNext[i + cols];
+        dyeNext[i] = dyeNext[i] * 0.72 + n * 0.07;
       }
     }
     [dye, dyeNext] = [dyeNext, dye];
     [vx, vxNext] = [vxNext, vx];
     [vy, vyNext] = [vyNext, vy];
-  }
 
-  function draw() {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
-    ctx!.clearRect(0, 0, w, h);
-    ctx!.fillStyle = ink;
-    ctx!.font = `${opts.cell}px ${fontFamily}`;
-    ctx!.textBaseline = 'top';
-
-    const ramp = opts.ramp;
-    const last = ramp.length - 1;
-    const cellH = opts.cell * 1.6;
-
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const v = dye[idx(x, y)];
-        if (v < 0.045) continue;
-        const level = Math.min(last, Math.floor(v * last) + 1);
-        ctx!.globalAlpha = Math.min(0.85, 0.18 + v * 0.7);
-        ctx!.fillText(ramp[level], x * opts.cell, y * cellH);
+    // Re-ink the source last. Constant addition against constant decay
+    // settles at gain / (1 - decay), so the mark heals after every smear
+    // instead of blinking back all at once.
+    if (source) {
+      for (let i = 0; i < dye.length; i++) {
+        if (source[i] > 0) dye[i] = Math.min(1.4, dye[i] + source[i] * opts.sourceGain);
       }
     }
-    ctx!.globalAlpha = 1;
   }
+
+  const target = (): RenderTarget => ({ ctx: ctx!, cols, rows, cell: opts.cell, ink: opts.ink, fontFamily });
 
   function frame() {
     if (!running) return;
     inject();
+    ambient();
     step();
-    draw();
+    renderField(dye, target(), canvas.clientWidth, canvas.clientHeight);
     raf = requestAnimationFrame(frame);
   }
 
@@ -190,15 +198,13 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
   }
 
   function onVisibility() {
-    // A hidden tab throttles rAF to a crawl anyway; stopping outright
-    // means the field is not integrating garbage timesteps on return.
+    // A hidden tab throttles rAF to a crawl anyway; stopping outright means
+    // the field is not integrating garbage timesteps on return.
     if (document.hidden) stop();
     else start();
   }
 
-  const onResize = () => {
-    resize();
-  };
+  const onResize = () => resize();
 
   resize();
   window.addEventListener('resize', onResize);
@@ -210,7 +216,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     pointer(clientX: number, clientY: number) {
       const rect = canvas.getBoundingClientRect();
       const gx = (clientX - rect.left) / opts.cell;
-      const gy = (clientY - rect.top) / (opts.cell * 1.6);
+      const gy = (clientY - rect.top) / (opts.cell * CELL_ASPECT);
       if (pointer.active) {
         pointer.dx = gx - pointer.x;
         pointer.dy = gy - pointer.y;
@@ -219,8 +225,9 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
       pointer.y = gy;
       pointer.active = true;
     },
-    setInk(next: string) {
-      ink = next;
+    /** Rebuild the source mask, e.g. after the text it renders changes. */
+    restamp() {
+      source = opts.source ? opts.source(cols, rows) : null;
     },
     destroy() {
       stop();

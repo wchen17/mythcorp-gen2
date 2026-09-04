@@ -358,9 +358,10 @@ html:not(.theme-ready) body {
  * Walkthrough: /wc/learn/plain-mode
  * ============================================================ */
 
-/* Lift page content above the field. The field canvas is the one direct
-   child of body that must stay underneath, hence the :not(canvas). */
-[data-theme="plain"] body > *:not(canvas) {
+/* Lift page content above the field. Scoped to #page-root rather than every
+   body child: a blanket rule here also hit the holding screen and replaced
+   its `fixed` with `relative`, collapsing it to a strip at the top. */
+[data-theme="plain"] #page-root {
   position: relative;
   z-index: 1;
 }
@@ -387,4 +388,18 @@ html:not(.theme-ready) body {
   text-shadow: none;
   letter-spacing: -0.04em;
   text-transform: uppercase;
+}
+
+/* Holding mode. Plain collapses every route except the open ones to a
+   work-in-progress screen, so the page content is hidden outright rather
+   than merely covered: nothing to tab into, nothing for a reader to read. */
+[data-hold="on"] #page-root {
+  display: none !important;
+}
+
+/* Every page wraps itself in an opaque `bg-[color:var(--bg)]` shell (see
+   CLAUDE.md, Adding a page). In plain mode that shell would sit on top of
+   the field and hide it, so let the body background show through instead. */
+[data-theme="plain"] #page-root > * {
+  background-color: transparent;
 }

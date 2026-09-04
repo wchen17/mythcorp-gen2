@@ -33,6 +33,12 @@ const TRANSITION_HALF_MS = 260;
 
 type ThemeCtx = {
   theme: ThemeName;
+  /**
+   * False until the stored theme has been read back on the client. Anything
+   * that would otherwise act on the default theme for one frame (the plain
+   * holding screen, for instance) must wait for this.
+   */
+  ready: boolean;
   setTheme: (next: ThemeName) => void;
   cycleTheme: () => void;
 };
@@ -52,6 +58,7 @@ export function ThemeProvider({
   children: ReactNode;
 }) {
   const [theme, setThemeState] = useState<ThemeName>(initialTheme);
+  const [ready, setReady] = useState(false);
   // 'idle' | 'cover' (curtain at full opacity, theme swap moment) | 'reveal' (curtain fading away)
   const [phase, setPhase] = useState<'idle' | 'cover' | 'reveal'>('idle');
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -68,6 +75,7 @@ export function ThemeProvider({
     } catch {
       document.documentElement.dataset.theme = initialTheme;
     }
+    setReady(true);
     requestAnimationFrame(() => {
       document.documentElement.classList.add('theme-ready');
     });
@@ -120,8 +128,8 @@ export function ThemeProvider({
   }, [theme, swapWithCurtain]);
 
   const value = useMemo<ThemeCtx>(
-    () => ({ theme, setTheme, cycleTheme }),
-    [theme, setTheme, cycleTheme],
+    () => ({ theme, ready, setTheme, cycleTheme }),
+    [theme, ready, setTheme, cycleTheme],
   );
 
   return (

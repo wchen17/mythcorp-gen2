@@ -76,7 +76,12 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/ThemeSwitcher.tsx` | UI |
 | `src/app/layout.tsx` | Pre-paint bootstrap script (no flash), mounts `PlainField` |
 | `src/app/components/plain/PlainField.tsx` | Plain-theme canvas mount, pointer wiring, teardown |
-| `src/app/components/plain/asciiFluid.ts` | The ASCII fluid solver and renderer, no React |
+| `src/app/components/plain/PlainHold.tsx` | The holding screen: wordmark, two links, sr-only heading |
+| `src/app/components/plain/holdState.ts` | `PLAIN_OPEN_ROUTES` allowlist, read by React and the pre-paint script |
+| `src/app/components/plain/asciiFluid.ts` | The ASCII fluid solver, no React |
+| `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
+| `src/app/components/plain/textMask.ts` | Text to a per-cell coverage mask, supersampled |
+| `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
 
 Walkthrough: `/wc/learn/theme-system`.
 

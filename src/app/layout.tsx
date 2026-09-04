@@ -6,6 +6,8 @@ import { HelpDot } from "./components/HelpDot";
 import { KonamiEgg } from "./components/KonamiEgg";
 import { TerminalOverlay } from "./components/TerminalOverlay";
 import { PlainField } from "./components/plain/PlainField";
+import { PlainHold } from "./components/plain/PlainHold";
+import { PLAIN_OPEN_ROUTES, HOLD_ATTR } from "./components/plain/holdState";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +29,9 @@ export const metadata: Metadata = {
   description: "Founded in Chicago - Discover Your Potential with MYTHCORP",
 };
 
-// Inline so it runs before paint and avoids a flash of the wrong theme.
-const themeBootstrap = `(function(){try{var t=localStorage.getItem('mythcorp-theme');if(t==='cyberpunk'||t==='luxury'||t==='paper'||t==='plain'){document.documentElement.dataset.theme=t;}else{document.documentElement.dataset.theme='cyberpunk';}}catch(e){document.documentElement.dataset.theme='cyberpunk';}})();`;
+// Inline so it runs before paint: it avoids a flash of the wrong theme, and
+// in plain mode a flash of the real page before the holding screen covers it.
+const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_ROUTES)};var d=document.documentElement;var t='cyberpunk';try{var s=localStorage.getItem('mythcorp-theme');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';if(o.indexOf(p)===-1){d.setAttribute('${HOLD_ATTR}','on');}}})();`;
 
 export default function RootLayout({
   children,
@@ -36,7 +39,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="cyberpunk" suppressHydrationWarning>
+    // The font variables must live on <html>, not <body>: the theme tokens
+    // that reference them (--font-display and friends) are declared on
+    // <html>, and a custom property resolves where it is DECLARED. On <body>
+    // they were undefined at that point, so every token computed to an
+    // invalid value and the whole site silently rendered in Times.
+    <html
+      lang="en"
+      data-theme="cyberpunk"
+      className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Preload the heavy assets the boot sequence depends on so the
             crossfade into the landing has no waterfall. */}
@@ -45,15 +58,17 @@ export default function RootLayout({
         <link rel="preload" href="/chicagoskyline.jpg" as="image" />
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased`}
-        suppressHydrationWarning
-      >
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <PlainField />
-          {children}
-          <HelpDot />
-          <KonamiEgg />
+          <PlainHold />
+          {/* Everything the holding screen hides lives inside #page-root.
+              The field, the hold chrome and the terminal stay outside it. */}
+          <div id="page-root">
+            {children}
+            <HelpDot />
+            <KonamiEgg />
+          </div>
           <TerminalOverlay />
         </ThemeProvider>
       </body>

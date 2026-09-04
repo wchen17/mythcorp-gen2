@@ -12,20 +12,23 @@ export default function PlainModeWalkthrough() {
       title="Plain mode, and the field underneath it"
       intro={
         <>
-          The fourth theme takes everything away. No colour, no radius, no
-          shadow, no transition, one typeface and it is the monospace one.
-          Then it puts back exactly one thing: a field of characters that
-          the cursor pushes around, simulated live in a 2D canvas. Plain
-          everywhere the browser can style it, and computed everywhere it
-          cannot.
+          The fourth theme takes everything away, and then keeps going. No
+          colour, no radius, no shadow, no transition, one typeface and it is
+          the monospace one. Then it removes the site: every route collapses
+          to a holding screen, and only <code className="font-mono">/contact</code>{' '}
+          survives. What is left is one canvas. The words{' '}
+          <em>work in progress</em> are not text on that screen, they are dye
+          in a fluid simulation, so you can push them around and watch them
+          re-form.
         </>
       }
     >
       <Section title="Try it here">
         <p>
-          Switch to plain and move the cursor across this page. The glyphs
-          behind the text are not a video and not a loop, they are the
-          current state of a fluid field that your pointer is stirring.
+          Fair warning: this page is one of the ones plain mode hides. The
+          button hands the whole screen over to the holding mode, and the way
+          back is the small link in its bottom right. Move the cursor through
+          the letters while you are there.
         </p>
         <button
           type="button"
@@ -34,6 +37,33 @@ export default function PlainModeWalkthrough() {
         >
           {theme === 'plain' ? 'Back to cyberpunk' : 'Switch to plain'}
         </button>
+      </Section>
+
+      <Section title="A theme that hides the site">
+        <p>
+          Holding mode is one rule and one attribute. A route is held unless
+          it is on a short allowlist, the pre-paint script writes{' '}
+          <code className="font-mono">data-hold</code> to the root element
+          before anything renders, and CSS does the rest.
+        </p>
+        <Code>{`export const PLAIN_OPEN_ROUTES = ['/contact'];
+
+[data-hold="on"] #page-root { display: none !important; }`}</Code>
+        <p>
+          Display, not opacity. A cover you can still tab into and still read
+          with a screen reader is a curtain, not a holding page. The content
+          is out of the tree; the only DOM left is a wordmark, two links, and
+          an <code className="font-mono">h1</code> that exists so crawlers and
+          readers get the message the canvas is drawing.
+        </p>
+        <Aside>
+          The pre-paint script matters more than it looks. React does not know
+          the stored theme until an effect runs, so for one frame it would
+          think the theme is the default and clear the attribute, flashing the
+          real page. The provider now exposes a{' '}
+          <code className="font-mono">ready</code> flag, and the holding screen
+          refuses to touch the attribute until it flips.
+        </Aside>
       </Section>
 
       <Section title="Why a theme can carry a simulation">
@@ -133,11 +163,61 @@ ctx.fillText(ramp[level], x * cell, y * cell * 1.6);`}</Code>
         </p>
       </Section>
 
+      <Section title="The wordmark is dye, not text">
+        <p>
+          The message is rendered to an offscreen canvas at four times the
+          grid resolution, then box-averaged down to one value per cell. That
+          downsample is the whole trick: it turns hard glyph edges into the
+          grey levels the character ramp needs, so the letters arrive already
+          anti-aliased into ASCII.
+        </p>
+        <p>
+          The mask is then added to the dye field <em>every frame</em> rather
+          than stamped once. Constant addition against constant decay settles
+          at a fixed level:
+        </p>
+        <Code>{`steady state = gain / (1 - decay)
+             = 0.016 / 0.015
+             ~ 1.07   // just about full ink`}</Code>
+        <p>
+          So when you smear the letters, they heal back toward that level
+          instead of blinking on again all at once. Two vortices drift on
+          Lissajous paths whose periods share no common multiple, which keeps
+          the field moving without ever repeating.
+        </p>
+      </Section>
+
+      <Section title="Two bugs the fonts were hiding">
+        <p>
+          Building this surfaced two pre-existing faults, both about where a
+          CSS custom property is <em>declared</em> rather than where it is
+          used. A property resolves at its declaration site, and if a variable
+          it references is undefined there, it computes to a value that is
+          invalid and then inherits that invalidity downward.
+        </p>
+        <p>
+          The theme tokens live on <code className="font-mono">:root</code>,
+          but the Next font variables were on{' '}
+          <code className="font-mono">&lt;body&gt;</code>. So{' '}
+          <code className="font-mono">--font-display: var(--font-cinzel)</code>{' '}
+          was invalid at the root, and every theme on this site was silently
+          rendering in Times. Moving the font classes to{' '}
+          <code className="font-mono">&lt;html&gt;</code> fixed all four at
+          once. Separately, <code className="font-mono">@theme inline</code>{' '}
+          had <code className="font-mono">--font-mono: var(--font-mono)</code>,
+          which is circular, so every mono utility fell back too.
+        </p>
+      </Section>
+
       <Section title="Files">
         <ul className="list-disc space-y-1 pl-5">
-          <li><code className="font-mono">src/app/components/plain/asciiFluid.ts</code>, the solver and renderer, no React in it</li>
-          <li><code className="font-mono">src/app/components/plain/PlainField.tsx</code>, mount, pointer wiring, teardown</li>
-          <li><code className="font-mono">src/app/globals.css</code>, the plain token block and its surface overrides</li>
+          <li><code className="font-mono">plain/asciiFluid.ts</code>, the solver, no React in it</li>
+          <li><code className="font-mono">plain/asciiRender.ts</code>, the ramp quantizer</li>
+          <li><code className="font-mono">plain/textMask.ts</code>, text to a per-cell coverage mask</li>
+          <li><code className="font-mono">plain/PlainField.tsx</code>, mount, pointer wiring, teardown</li>
+          <li><code className="font-mono">plain/PlainHold.tsx</code>, the holding screen chrome</li>
+          <li><code className="font-mono">plain/holdState.ts</code>, the allowlist both React and the pre-paint script read</li>
+          <li><code className="font-mono">plain/useScramble.ts</code>, ideaboard #65, the decode effect</li>
         </ul>
       </Section>
     </Walkthrough>
