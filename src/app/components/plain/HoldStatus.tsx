@@ -20,7 +20,11 @@ const OPENED_AT = Date.now();
  * really is that size, the meter really is the field's mean dye, and the clock
  * really is how long you have been on the page.
  */
-export function HoldStatus({ style, scheme, message }: { style: string; scheme: string; message: string }) {
+export function HoldStatus({
+  style, scheme, message, overlay,
+}: {
+  style: string; scheme: string; message: string; overlay: string;
+}) {
   const metrics = useSyncExternalStore(subscribeMetrics, getMetrics, getServerMetrics);
   const elapsed = useElapsed();
 
@@ -39,6 +43,7 @@ export function HoldStatus({ style, scheme, message }: { style: string; scheme: 
       <Row label="render" value={style} />
       <Row label="scheme" value={scheme} />
       <Row label="words" value={message} />
+      <Row label="over" value={overlay} />
       <Row
         label="ink"
         value={

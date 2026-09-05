@@ -124,7 +124,9 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
 | `src/app/components/plain/textMask.ts` | Text to a per-cell coverage mask, supersampled |
 | `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
-| `src/app/components/plain/HoldStage.tsx` | One model, four Canvas UI styles, dynamic-imported, monochrome options |
+| `src/app/components/plain/HoldStage.tsx` | One model, five Canvas UI styles, dynamic-imported, monochrome options |
+| `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`. The two that need no Chrome flag |
+| `src/app/components/plain/HoldPickers.tsx` | The four control rows, split out of PlainHold at the file cap |
 | `src/app/components/plain/HoldStatus.tsx` | Live readout on the holding screen |
 | `src/app/components/plain/fieldMetrics.ts` | One-value store the field publishes to and the readout reads |
 | `src/app/components/plain/holdScheme.ts` | Plain mode's own light/dark switch: key, attribute, ink colours |
@@ -133,7 +135,7 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/messageStore.ts` | Which rendering of the message is showing. Named to dodge a case clash with `HoldMessage.tsx` |
 | `src/app/components/plain/HoldMessage.tsx` | The message renderings that are not the field: `solid`, `decode`, `dust` |
 | `src/app/components/plain/messageImage.ts` | The message as a PNG data URL, so it can feed the object pipeline |
-| `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. **Unused** since the page-resampling effects went |
+| `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. **Unused**: nothing on the screen needs the flag any more |
 | `src/app/components/canvasui/` | **Vendored** Canvas UI source. See its README; do not hand-edit |
 | `src/app/components/rect-cache.ts` | Helper several canvasui components import but the registry does not ship |
 

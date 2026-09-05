@@ -6,7 +6,6 @@ import { useEffect, useState, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '../../contexts/ThemeContext';
 import { HOLD_ATTR, isHeld } from './holdState';
-import { SCHEME_CHOICES, type SchemeChoice } from './holdScheme';
 import { usePlainScheme } from './usePlainScheme';
 import { useScramble } from './useScramble';
 import { HoldStatus } from './HoldStatus';
@@ -14,11 +13,18 @@ import { HoldContact, HoldContactLinks } from './HoldContact';
 import { HoldMessage } from './HoldMessage';
 import {
   MESSAGE_STYLES, getMessageStyle, getServerMessageStyle, setMessageStyle,
-  subscribeMessageStyle, type MessageStyle,
+  subscribeMessageStyle,
 } from './messageStore';
 import { HoldStage, HOLD_STYLES, type HoldStyle } from './HoldStage';
+import { HoldOverlay, OVERLAY_STYLES, type OverlayStyle } from './HoldOverlay';
+import { StylePicker, MessagePicker, OverlayPicker, SchemePicker } from './HoldPickers';
 
 const DEFAULT_STYLE: HoldStyle = 'ascii';
+const DEFAULT_OVERLAY: OverlayStyle = 'none';
+
+function pick<T>(items: readonly T[]): T {
+  return items[Math.floor(Math.random() * items.length)];
+}
 
 /**
  * The holding screen. There is no way out of it on purpose: no link back into
@@ -32,6 +38,7 @@ export function PlainHold() {
   const held = isHeld(theme, pathname);
   const [mounted, setMounted] = useState(false);
   const [style, setStyle] = useState<HoldStyle>(DEFAULT_STYLE);
+  const [overlay, setOverlay] = useState<OverlayStyle>(DEFAULT_OVERLAY);
   const { choice, scheme, setChoice } = usePlainScheme();
   const message = useSyncExternalStore(
     subscribeMessageStyle, getMessageStyle, getServerMessageStyle,
@@ -52,6 +59,16 @@ export function PlainHold() {
     };
   }, [held, ready]);
 
+  // Every visit opens on a different combination. It has to happen in an
+  // effect: rolling it during render would give the server one answer and the
+  // client another, and the page would flicker through the mismatch.
+  useEffect(() => {
+    if (!held) return;
+    setStyle(pick(HOLD_STYLES));
+    setOverlay(pick(OVERLAY_STYLES));
+    setMessageStyle(pick(MESSAGE_STYLES));
+  }, [held]);
+
   const wordmark = useScramble('MYTHCORP', { active: held && mounted });
 
   if (!held) return null;
@@ -60,6 +77,7 @@ export function PlainHold() {
     <div className="fixed inset-0 z-10 flex flex-col justify-between p-5 sm:p-8">
       <h1 className="sr-only">Mythcorp, work in progress</h1>
 
+      <HoldOverlay overlay={overlay} scheme={scheme} />
       <HoldMessage style={message} scheme={scheme} />
       <HoldContact />
 
@@ -74,7 +92,12 @@ export function PlainHold() {
         <HoldStage style={style} scheme={scheme} />
         <div className="absolute inset-0 flex items-end justify-center pb-8">
           <div className="pointer-events-auto">
-            <HoldStatus style={style} scheme={scheme} message={message} />
+            <HoldStatus
+              style={style}
+              scheme={scheme}
+              message={message}
+              overlay={overlay}
+            />
           </div>
         </div>
       </div>
@@ -84,100 +107,10 @@ export function PlainHold() {
         <div className="flex flex-col gap-1.5">
           <StylePicker style={style} onPick={setStyle} />
           <MessagePicker message={message} onPick={setMessageStyle} />
+          <OverlayPicker overlay={overlay} onPick={setOverlay} />
         </div>
         <HoldContactLinks />
       </div>
     </div>
-  );
-}
-
-function StylePicker({
-  style,
-  onPick,
-}: {
-  style: HoldStyle;
-  onPick: (s: HoldStyle) => void;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-      {HOLD_STYLES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === style}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
-function MessagePicker({
-  message,
-  onPick,
-}: {
-  message: MessageStyle;
-  onPick: (m: MessageStyle) => void;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
-                    text-[color:var(--fg-subtle)]">
-      <span className="tracking-[0.16em] opacity-70">words</span>
-      {MESSAGE_STYLES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === message}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
-function SchemePicker({
-  choice,
-  onPick,
-}: {
-  choice: SchemeChoice;
-  onPick: (c: SchemeChoice) => void;
-}) {
-  return (
-    <div className="flex items-center gap-x-3">
-      {SCHEME_CHOICES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === choice}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
-function PickerButton({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={[
-        'tracking-[0.16em] transition-colors',
-        active
-          ? 'text-[color:var(--fg)] underline underline-offset-4'
-          : 'text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)]',
-      ].join(' ')}
-    >
-      {label}
-    </button>
   );
 }

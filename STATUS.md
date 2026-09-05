@@ -115,6 +115,22 @@ Split /upload into a thin page shell, DropConsole, UploadResult, and useUpload. 
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
+2026-09-05 (fourth pass), **every visit now opens on a different combination, and the two flag-free Canvas UI effects came back as a layer.**
+
+**Random opening combination.** On mount the screen rolls a spectre style, a message rendering and an overlay. It has to be an effect, not a render: rolling during render gives the server one answer and the client another, and the page flickers through the mismatch on its way to agreeing.
+
+**The overlay, and why those two.** `GlyphRain` and `ForceField` were dropped when the screen stopped resampling the page, but they are the two components in that half of the library that draw their own geometry, so they need no Chrome flag and look the same for everyone. They are back in `HoldOverlay.tsx` as a full-screen layer over the field and under the chrome, which means they **compose** with whatever the spectre and the message are doing rather than replacing either. `over: none / rain / shield`.
+
+**Five spectre styles.** `swarm` joins the four: the same particle cloud thinned from 26,000 to 3,200 and slowed until it only suggests a shape instead of holding one.
+
+**Two variants were built and cut, which is now a pattern worth naming.** `matrix` (AsciiObject on a two-character ramp) never resolved into a figure at any exposure or cell size, and `etch` (InkObject opened right up) drew nothing at all, exactly the silent failure that killed the ink treatment of the message last pass. Both were parameter sets on components that demonstrably work here, so the lesson is not "that component is broken", it is that these components have narrow bands where they produce an image, and finding the edge costs more than the variant is worth. That is five cuts now on the same principle.
+
+**PlainHold hit the file cap** at 230 lines, so the four control rows moved to `HoldPickers.tsx`. 116 and 126 lines now.
+
+**Verification.** `npm run check` green, 31 pages, shared JS still 101 kB, since every heavy component is still a dynamic import. Driven in a real Chrome at 800x500: a fresh load opened on `swarm` + `shield` + `field` unprompted, four canvases live at once (field, spectre, words, overlay) with a clean console; `rain` and `shield` both draw and compose with `solid` words; dark mode inverts the overlay ink correctly rather than sinking it into the page.
+
+### Previously
+
 2026-09-05 (third pass), **the words can now be a particle cloud, because the object pipeline takes an image.**
 
 **The trick worth remembering.** The `*-object` components do not only take a GLB. They `fetch(src)`, sniff the first bytes, and accept PNG, JPEG, WEBP, GIF and SVG as well, and a `data:` URI satisfies `fetch`. So `messageImage.ts` draws WORK IN PROGRESS to a canvas, hands over `toDataURL('image/png')`, and `ParticleObject` samples it into a cloud. The sampler keys on **alpha**, so the type is drawn solid white on transparent and the component tints it. No asset to ship, no second code path, and the words get the same cursor-scatter-and-spring the spectre has. This is the `dust` option under `words`.

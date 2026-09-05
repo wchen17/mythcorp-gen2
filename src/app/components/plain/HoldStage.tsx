@@ -7,7 +7,16 @@ import type { Scheme } from './holdScheme';
 import { SCHEME_INK } from './holdScheme';
 
 /**
- * Four ways to render one model, loaded one at a time. Each vendored
+ * Five ways to render one model, loaded one at a time. Four components, one of
+ * them twice: `particle` holds the shape, `swarm` is the same cloud thinned
+ * out and slowed down until it only suggests one.
+ *
+ * Two more variants were built and cut. `matrix` (AsciiObject on a two
+ * character ramp) never resolved into a figure at any exposure, and `etch`
+ * (InkObject opened right up) drew nothing at all, the same silent failure
+ * that killed the ink treatment of the message. Both are parameter sets on
+ * components that already work here, which is worth remembering before
+ * reaching for them again. Each vendored
  * component is a megabyte of WebGL and its own copy of the loader stack, so
  * they are dynamic imports: the holding screen ships none of them until a
  * style is picked, and switching fetches exactly that chunk. ssr:false because
@@ -31,7 +40,7 @@ const LiquidObject = dynamic(() => import('../canvasui/LiquidObject').then((m) =
  * inverted clear colour simply fills the canvas box and the spectre is still
  * not there.
  */
-export const HOLD_STYLES = ['ascii', 'ink', 'particle', 'liquid'] as const;
+export const HOLD_STYLES = ['ascii', 'ink', 'particle', 'swarm', 'liquid'] as const;
 
 export type HoldStyle = (typeof HOLD_STYLES)[number];
 
@@ -91,6 +100,26 @@ export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme 
           size={1.4}
           swirl={0.5}
           drift={0.3}
+        />
+      );
+
+    // Fewer, larger, looser particles that take much longer to come home, so
+    // the model reads as a swarm holding a shape rather than a solid.
+    case 'swarm':
+      return (
+        <ParticleObject
+          {...FRAME}
+          className={FILL}
+          color={ink}
+          count={3200}
+          size={5}
+          sizeVariance={0.9}
+          radius={0.35}
+          strength={2.4}
+          swirl={1.4}
+          spring={0.012}
+          damping={0.94}
+          drift={0.8}
         />
       );
 
