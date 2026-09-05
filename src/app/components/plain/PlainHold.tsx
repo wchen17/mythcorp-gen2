@@ -2,7 +2,7 @@
 
 // Walkthrough: /wc/learn/plain-mode
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '../../contexts/ThemeContext';
 import { HOLD_ATTR, isHeld } from './holdState';
@@ -11,6 +11,11 @@ import { usePlainScheme } from './usePlainScheme';
 import { useScramble } from './useScramble';
 import { HoldStatus } from './HoldStatus';
 import { HoldContact, HoldContactLinks } from './HoldContact';
+import { HoldMessage } from './HoldMessage';
+import {
+  MESSAGE_STYLES, getMessageStyle, getServerMessageStyle, setMessageStyle,
+  subscribeMessageStyle, type MessageStyle,
+} from './messageStore';
 import { HoldStage, HOLD_STYLES, type HoldStyle } from './HoldStage';
 
 const DEFAULT_STYLE: HoldStyle = 'ascii';
@@ -28,6 +33,9 @@ export function PlainHold() {
   const [mounted, setMounted] = useState(false);
   const [style, setStyle] = useState<HoldStyle>(DEFAULT_STYLE);
   const { choice, scheme, setChoice } = usePlainScheme();
+  const message = useSyncExternalStore(
+    subscribeMessageStyle, getMessageStyle, getServerMessageStyle,
+  );
 
   // The pre-paint script sets this attribute so the page never flashes its
   // real content. React only takes ownership once the stored theme has been
@@ -52,6 +60,7 @@ export function PlainHold() {
     <div className="fixed inset-0 z-10 flex flex-col justify-between p-5 sm:p-8">
       <h1 className="sr-only">Mythcorp, work in progress</h1>
 
+      <HoldMessage style={message} />
       <HoldContact />
 
       <div className="relative flex items-start justify-between gap-4 font-mono text-xs">
@@ -65,14 +74,17 @@ export function PlainHold() {
         <HoldStage style={style} scheme={scheme} />
         <div className="absolute inset-0 flex items-end justify-center pb-8">
           <div className="pointer-events-auto">
-            <HoldStatus style={style} scheme={scheme} />
+            <HoldStatus style={style} scheme={scheme} message={message} />
           </div>
         </div>
       </div>
 
       <div className="relative flex flex-col gap-4 font-mono text-xs sm:flex-row
                       sm:items-end sm:justify-between">
-        <StylePicker style={style} onPick={setStyle} />
+        <div className="flex flex-col gap-1.5">
+          <StylePicker style={style} onPick={setStyle} />
+          <MessagePicker message={message} onPick={setMessageStyle} />
+        </div>
         <HoldContactLinks />
       </div>
     </div>
@@ -93,6 +105,29 @@ function StylePicker({
           key={name}
           label={name}
           active={name === style}
+          onClick={() => onPick(name)}
+        />
+      ))}
+    </div>
+  );
+}
+
+function MessagePicker({
+  message,
+  onPick,
+}: {
+  message: MessageStyle;
+  onPick: (m: MessageStyle) => void;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
+                    text-[color:var(--fg-subtle)]">
+      <span className="tracking-[0.16em] opacity-70">words</span>
+      {MESSAGE_STYLES.map((name) => (
+        <PickerButton
+          key={name}
+          label={name}
+          active={name === message}
           onClick={() => onPick(name)}
         />
       ))}

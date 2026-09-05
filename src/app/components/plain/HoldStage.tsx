@@ -24,9 +24,12 @@ const LiquidObject = dynamic(() => import('../canvasui/LiquidObject').then((m) =
  * Four, not the seven the registry offers. The dither and glass variants were
  * tried and cut: both quantize or refract whatever is behind the model, and
  * here that is transparency, so the spectre simply vanished. Giving them an
- * opaque backdrop would have worked and would also have painted a rectangle
- * over the middle of the field, which is the one thing this screen cannot
- * afford.
+ * opaque backdrop is the only thing that fixes them, and it paints a
+ * rectangle over the middle of the field, which is the one thing this screen
+ * cannot afford. Retried with the lighting turned up and the dither inverted,
+ * on the theory that the model just needed more light: it does not, the
+ * inverted clear colour simply fills the canvas box and the spectre is still
+ * not there.
  */
 export const HOLD_STYLES = ['ascii', 'ink', 'particle', 'liquid'] as const;
 

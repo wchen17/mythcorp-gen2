@@ -7,7 +7,12 @@ export type AsciiFluidOptions = {
   cell?: number;
   /** Ink colour for the glyphs. Read from a CSS variable by the caller. */
   ink?: string;
-  /** Per-frame multiplier on dye and velocity. Below 1, so the field settles. */
+  /**
+   * Per-frame multiplier on dye and velocity. Below 1, so the field settles.
+   * It also decides how far the message is allowed to bleed: the mask is a
+   * strong constant source, so a slow decay lets advection carry letter dye
+   * across the whole grid until nothing reads.
+   */
   decay?: number;
   /** Low-amplitude wandering vortices, so an untouched field is still alive. */
   ambient?: boolean;
@@ -17,8 +22,13 @@ export type AsciiFluidOptions = {
    * or null for a field that only responds to the pointer.
    */
   source?: (cols: number, rows: number) => Float32Array | null;
-  /** Per-frame gain on the source mask. Steady-state dye is gain / (1 - decay). */
-  sourceGain?: number;
+  /**
+   * How hard the source mask is held, 0 to 1. Every masked cell is pinned to
+   * its own coverage value times this, so the ramp draws real letterforms
+   * rather than a saturated block, and the pointer can still push extra dye
+   * on top of them.
+   */
+  sourceHold?: number;
   /** Called about five times a second with the grid size and mean dye. */
   onMetrics?: (m: { cols: number; rows: number; ink: number }) => void;
 };
@@ -28,9 +38,9 @@ type Field = Float32Array;
 const DEFAULTS = {
   cell: 11,
   ink: '#111111',
-  decay: 0.985,
+  decay: 0.9,
   ambient: false,
-  sourceGain: 0.045,
+  sourceHold: 0.3,
 };
 
 export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidOptions = {}) {
@@ -139,7 +149,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
       const cx = (0.5 + 0.34 * Math.sin(p * 1.0 + k * 2.1)) * cols;
       const cy = (0.5 + 0.30 * Math.sin(p * 1.37 + k * 0.7)) * rows;
       const a = p * (k ? -1.9 : 1.3);
-      splat(cx, cy, 7, 0, Math.cos(a) * 0.032, Math.sin(a) * 0.032);
+      splat(cx, cy, 7, 0, Math.cos(a) * 0.018, Math.sin(a) * 0.018);
     }
   }
 
@@ -168,12 +178,17 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     [vx, vxNext] = [vxNext, vx];
     [vy, vyNext] = [vyNext, vy];
 
-    // Re-ink the source last. Constant addition against constant decay
-    // settles at gain / (1 - decay), so the mark heals after every smear
-    // instead of blinking back all at once.
+    // Re-ink the source last, as a floor rather than an addition. Adding a
+    // constant every frame was what tore the message apart: the dye climbed to
+    // the ceiling, advection carried it into neighbouring cells, and the
+    // counters inside O, R and P filled in until every letter was one solid
+    // block. Pinning each cell to its own coverage keeps the shapes, edges
+    // included, while the pointer can still push dye above the floor.
     if (source) {
       for (let i = 0; i < dye.length; i++) {
-        if (source[i] > 0) dye[i] = Math.min(1.4, dye[i] + source[i] * opts.sourceGain);
+        const floor = source[i] * opts.sourceHold;
+        if (floor > dye[i]) dye[i] = floor;
+        else if (dye[i] > 1.4) dye[i] = 1.4;
       }
     }
   }
@@ -196,7 +211,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     inject();
     ambient();
     step();
-    renderField(dye, target(), canvas.clientWidth, canvas.clientHeight);
+    renderField(dye, target(), canvas.clientWidth, canvas.clientHeight, source);
     report();
     raf = requestAnimationFrame(frame);
   }

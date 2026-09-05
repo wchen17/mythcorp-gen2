@@ -2,7 +2,7 @@
 
 // Walkthrough: /wc/learn/plain-mode
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '../../contexts/ThemeContext';
 import { createAsciiFluid } from './asciiFluid';
@@ -10,14 +10,24 @@ import { renderTextMask } from './textMask';
 import { isHeld } from './holdState';
 import { publishMetrics, resetMetrics } from './fieldMetrics';
 import { useResolvedScheme } from './usePlainScheme';
+import {
+  MESSAGE_LINES, getMessageStyle, getServerMessageStyle, subscribeMessageStyle,
+} from './messageStore';
 
 /**
- * The grid is wide and short on a desktop viewport, so two stacked lines end
- * up height-constrained and small. One line fills it; stack only when the
- * viewport is narrow enough that a single line would be squeezed instead.
+ * What decides the line break is not the grid's aspect, it is how many cells
+ * each character gets. A letter drawn in ASCII needs roughly eight cells
+ * across before it reads as a letter rather than a smudge, and one 16-glyph
+ * line only clears that on a very wide grid. Breaking to two lines halves the
+ * longest run and doubles the cells per character.
  */
+const MIN_CELLS_PER_CHAR = 8;
+
 function holdLines(cols: number, rows: number): string[] {
-  return cols / rows > 2.2 ? ['WORK IN PROGRESS'] : ['WORK', 'IN', 'PROGRESS'];
+  const usable = cols * 0.46;
+  const oneLine = usable / 'WORK IN PROGRESS'.length;
+  if (oneLine >= MIN_CELLS_PER_CHAR && rows > 26) return ['WORK IN PROGRESS'];
+  return [...MESSAGE_LINES];
 }
 
 /**
@@ -30,6 +40,9 @@ export function PlainField() {
   const pathname = usePathname() ?? '/';
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scheme = useResolvedScheme();
+  const messageStyle = useSyncExternalStore(
+    subscribeMessageStyle, getMessageStyle, getServerMessageStyle,
+  );
   const active = theme === 'plain';
   const held = isHeld(theme, pathname);
 
@@ -46,14 +59,15 @@ export function PlainField() {
     const field = createAsciiFluid(canvas, {
       ink,
       ambient: true,
-      sourceGain: 0.05,
+      cell: 6,
+      sourceHold: 0.95,
       onMetrics: publishMetrics,
-      source: held
+      source: held && messageStyle === 'field'
         ? (cols, rows) =>
             renderTextMask(holdLines(cols, rows), cols, rows, {
               fontFamily,
-              centre: 0.27,
-              fill: 0.92,
+              centre: 0.24,
+              fill: 0.46,
             })
         : undefined,
     });
@@ -69,7 +83,7 @@ export function PlainField() {
     // scheme is in here because the ink colour is read once, off the CSS
     // variable, when the field is built. Without it a light/dark switch leaves
     // the glyphs the previous scheme's colour, which on white is invisible.
-  }, [active, held, scheme]);
+  }, [active, held, scheme, messageStyle]);
 
   if (!active) return null;
 
