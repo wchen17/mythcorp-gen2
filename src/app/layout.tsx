@@ -39,6 +39,33 @@ export const metadata: Metadata = {
 // writes their choice under the new key.
 const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_PREFIXES)};var d=document.documentElement;var t='plain';try{var s=localStorage.getItem('mythcorp-theme-v2');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';var open=false;for(var i=0;i<o.length;i++){if(p===o[i]||p.indexOf(o[i]+'/')===0){open=true;break;}}if(!open){d.setAttribute('${HOLD_ATTR}','on');}var c='system';try{var q=localStorage.getItem('${SCHEME_KEY}');if(q==='light'||q==='dark'||q==='system'){c=q;}}catch(e){}var dark=c==='dark'||(c==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);d.setAttribute('${SCHEME_ATTR}',dark?'dark':'light');}})();`;
 
+// Chrome origin trial tokens, served so the html-in-canvas API is live for
+// ordinary visitors rather than only for whoever has flipped
+// chrome://flags/#canvas-draw-element. DecryptReveal, RetroDither and Glitch
+// in canvasui/ sample the live DOM through ctx.drawElementImage and
+// canvas.requestPaint, and without those they render nothing but their
+// untouched children; Asciify degrades to a stale snapshot instead. The rest
+// of that folder draws its own geometry and never needed this.
+//
+// Two things about this that will bite a future session:
+//
+// 1. A token is issued per origin, so mythcorp.org, i.mythcorp.org and the
+//    *.workers.dev preview host each need their own unless the registration
+//    was made with subdomain matching. That is why this reads a LIST, comma
+//    or whitespace separated. Chrome ignores tokens that do not match the
+//    page origin, so shipping all of them on every page is harmless.
+// 2. Origin trial tokens EXPIRE, and they expire silently. Nothing throws,
+//    nothing logs, the effects simply go inert again and look like a
+//    regression in the components. If those four go quiet, check the token's
+//    expiry before you go spelunking in canvasui/.
+//
+// NEXT_PUBLIC_* is inlined at build time, matching NEXT_PUBLIC_SITE_URL in
+// sitemap.ts, so changing a token means a rebuild and redeploy, not just a
+// worker var edit. With nothing configured this renders no tags at all.
+const originTrialTokens = (process.env.NEXT_PUBLIC_ORIGIN_TRIAL_TOKEN ?? '')
+  .split(/[\s,]+/)
+  .filter(Boolean);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,6 +89,9 @@ export default function RootLayout({
         <link rel="preload" href="/spectre.glb" as="fetch" type="model/gltf-binary" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/Inter_Bold.json" as="fetch" crossOrigin="anonymous" />
         <link rel="preload" href="/chicagoskyline.jpg" as="image" />
+        {originTrialTokens.map((token) => (
+          <meta key={token} httpEquiv="origin-trial" content={token} />
+        ))}
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
       <body className="antialiased" suppressHydrationWarning>
