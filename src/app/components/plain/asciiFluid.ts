@@ -30,7 +30,7 @@ const DEFAULTS = {
   ink: '#111111',
   decay: 0.985,
   ambient: false,
-  sourceGain: 0.014,
+  sourceGain: 0.045,
 };
 
 export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidOptions = {}) {
@@ -139,7 +139,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
       const cx = (0.5 + 0.34 * Math.sin(p * 1.0 + k * 2.1)) * cols;
       const cy = (0.5 + 0.30 * Math.sin(p * 1.37 + k * 0.7)) * rows;
       const a = p * (k ? -1.9 : 1.3);
-      splat(cx, cy, 7, 0, Math.cos(a) * 0.05, Math.sin(a) * 0.05);
+      splat(cx, cy, 7, 0, Math.cos(a) * 0.032, Math.sin(a) * 0.032);
     }
   }
 

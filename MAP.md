@@ -118,18 +118,21 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/ThemeSwitcher.tsx` | UI |
 | `src/app/layout.tsx` | Pre-paint bootstrap script (no flash), mounts `PlainField` |
 | `src/app/components/plain/PlainField.tsx` | Plain-theme canvas mount, pointer wiring, teardown |
-| `src/app/components/plain/PlainHold.tsx` | The holding screen: wordmark, two links, sr-only heading |
-| `src/app/components/plain/holdState.ts` | `PLAIN_OPEN_ROUTES` allowlist, read by React and the pre-paint script |
+| `src/app/components/plain/PlainHold.tsx` | The holding screen: wordmark, both pickers, contacts, sr-only heading. No exits |
+| `src/app/components/plain/holdState.ts` | `PLAIN_OPEN_PREFIXES` allowlist, read by React and the pre-paint script |
 | `src/app/components/plain/asciiFluid.ts` | The ASCII fluid solver, no React |
 | `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
 | `src/app/components/plain/textMask.ts` | Text to a per-cell coverage mask, supersampled |
 | `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
-| `src/app/components/plain/HoldStage.tsx` | The six Canvas UI effects, dynamic-imported, monochrome options |
+| `src/app/components/plain/HoldStage.tsx` | One model, four Canvas UI styles, dynamic-imported, monochrome options |
 | `src/app/components/plain/HoldStatus.tsx` | Live readout on the holding screen |
 | `src/app/components/plain/fieldMetrics.ts` | One-value store the field publishes to and the readout reads |
-| `src/app/components/plain/supportsHtmlInCanvas.ts` | The Chrome feature probe, used to star inert effects |
+| `src/app/components/plain/holdScheme.ts` | Plain mode's own light/dark switch: key, attribute, ink colours |
+| `src/app/components/plain/usePlainScheme.ts` | Owns the scheme (`usePlainScheme`) and follows it (`useResolvedScheme`) |
+| `src/app/components/plain/HoldContact.tsx` | Contact details: the backdrop copy and the reachable copy |
+| `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. **Unused** since the page-resampling effects went |
 | `src/app/components/canvasui/` | **Vendored** Canvas UI source. See its README; do not hand-edit |
-| `src/app/components/rect-cache.ts` | Helper three canvasui components import but the registry does not ship |
+| `src/app/components/rect-cache.ts` | Helper several canvasui components import but the registry does not ship |
 
 Walkthrough: `/wc/learn/theme-system`.
 

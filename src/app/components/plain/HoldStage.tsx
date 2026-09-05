@@ -3,174 +3,122 @@
 // Walkthrough: /wc/learn/plain-mode
 
 import dynamic from 'next/dynamic';
-import type { ReactNode } from 'react';
+import type { Scheme } from './holdScheme';
+import { SCHEME_INK } from './holdScheme';
 
 /**
- * The Canvas UI effects, loaded one at a time. Each vendored component is tens
- * of kilobytes of WebGL, so they are dynamic imports: the holding screen ships
- * none of them until you pick one, and switching fetches exactly that chunk.
- * ssr:false because every one of them reaches for a canvas on mount. The
- * options object has to be an inline literal: next/dynamic reads it at compile
- * time, so hoisting it to a shared const fails the build.
+ * Four ways to render one model, loaded one at a time. Each vendored
+ * component is a megabyte of WebGL and its own copy of the loader stack, so
+ * they are dynamic imports: the holding screen ships none of them until a
+ * style is picked, and switching fetches exactly that chunk. ssr:false because
+ * every one of them reaches for a canvas on mount. The options object has to
+ * be an inline literal: next/dynamic reads it at compile time, so hoisting it
+ * to a shared const fails the build.
  */
-const GlyphRain = dynamic(() => import('../canvasui/GlyphRain').then((m) => m.GlyphRain), { ssr: false });
-const Asciify = dynamic(() => import('../canvasui/Asciify').then((m) => m.Asciify), { ssr: false });
-const DecryptReveal = dynamic(() => import('../canvasui/DecryptReveal').then((m) => m.DecryptReveal), { ssr: false });
-const RetroDither = dynamic(() => import('../canvasui/RetroDither').then((m) => m.RetroDither), { ssr: false });
-const ForceField = dynamic(() => import('../canvasui/ForceField').then((m) => m.ForceField), { ssr: false });
-const Glitch = dynamic(() => import('../canvasui/Glitch').then((m) => m.Glitch), { ssr: false });
-
-export const HOLD_EFFECTS = [
-  'rain',
-  'asciify',
-  'decrypt',
-  'dither',
-  'shield',
-  'glitch',
-  'none',
-] as const;
-
-export type HoldEffect = (typeof HOLD_EFFECTS)[number];
-
-/** Effects that resample the page, so they do nothing without html-in-canvas. */
-export const NEEDS_HTML_IN_CANVAS: ReadonlySet<HoldEffect> = new Set([
-  'asciify',
-  'decrypt',
-  'dither',
-  'glitch',
-]);
-
-const FILL = 'h-full w-full';
+const AsciiObject = dynamic(() => import('../canvasui/AsciiObject').then((m) => m.AsciiObject), { ssr: false });
+const InkObject = dynamic(() => import('../canvasui/InkObject').then((m) => m.InkObject), { ssr: false });
+const ParticleObject = dynamic(() => import('../canvasui/ParticleObject').then((m) => m.ParticleObject), { ssr: false });
+const LiquidObject = dynamic(() => import('../canvasui/LiquidObject').then((m) => m.LiquidObject), { ssr: false });
 
 /**
- * Every option below drags the component back to monochrome. The library ships
- * blue and neon by default, which is the one thing plain mode cannot have.
+ * Four, not the seven the registry offers. The dither and glass variants were
+ * tried and cut: both quantize or refract whatever is behind the model, and
+ * here that is transparency, so the spectre simply vanished. Giving them an
+ * opaque backdrop would have worked and would also have painted a rectangle
+ * over the middle of the field, which is the one thing this screen cannot
+ * afford.
  */
-export function HoldStage({ effect, children }: { effect: HoldEffect; children: ReactNode }) {
-  switch (effect) {
-    case 'rain':
+export const HOLD_STYLES = ['ascii', 'ink', 'particle', 'liquid'] as const;
+
+export type HoldStyle = (typeof HOLD_STYLES)[number];
+
+const MODEL = '/spectre.glb';
+const FILL = 'absolute inset-0 h-full w-full';
+
+/** Shared framing, so switching style does not also move the model. */
+const FRAME = {
+  src: MODEL,
+  scale: 2.6,
+  floatIntensity: 1.4,
+  rotationIntensity: 0.8,
+  floatSpeed: 1.6,
+  orbit: false,
+  zoom: false,
+  autoRotate: true,
+  autoRotateSpeed: 0.6,
+  environmentIntensity: 1.2,
+} as const;
+
+/**
+ * The model never leaves. Background stays unset on every one of these, which
+ * the components read as transparent, so the fluid field keeps showing through
+ * and the words go on inking behind it.
+ *
+ * Every colour below drags the component back to monochrome: the library ships
+ * blue, neon and iridescence by default, which is the one thing plain mode
+ * cannot have.
+ */
+export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme }) {
+  const { ink, highlight } = SCHEME_INK[scheme];
+
+  switch (style) {
+    case 'ink':
       return (
-        <GlyphRain
+        <InkObject
+          {...FRAME}
           className={FILL}
-          charset="01<>[]{}/\\=+*#%@ANDBUILDINGPROGRESS"
-          cell={14}
-          color={[0.1, 0.1, 0.1]}
-          headColor={[0, 0, 0]}
-          speed={0.2}
-          density={0.18}
-          trail={0.8}
-          glow={0.35}
-          mutate={0.6}
-          flicker={0.12}
-          layers={2}
-          dim={0.06}
-          light={0.5}
-          lightRadius={200}
-          relief={0.02}
-          stir={0.8}
-        >
-          {children}
-        </GlyphRain>
+          inkColor={ink}
+          lineSpacing={5}
+          strokeWeight={0.8}
+          bleed={0.25}
+          grain={0.3}
+          contrast={1.2}
+          invert={scheme === 'dark'}
+          highlight={highlight}
+        />
       );
 
-    case 'asciify':
+    case 'particle':
       return (
-        <Asciify
+        <ParticleObject
+          {...FRAME}
           className={FILL}
-          charset="ascii"
-          scale={3}
-          spacing={1}
-          radius={0.45}
-          softness={0.9}
-          background="auto"
-          backgroundOpacity={1}
-          contrast={1.15}
-          glow={0}
+          color={ink}
+          count={26000}
+          size={1.4}
+          swirl={0.5}
+          drift={0.3}
+        />
+      );
+
+    case 'liquid':
+      return (
+        <LiquidObject
+          {...FRAME}
+          className={FILL}
+          tint={ink}
+          saturation={0}
+          iridescence={0}
           aberration={0}
-          baseStrength={0.12}
-        >
-          {children}
-        </Asciify>
+          sheen={0.4}
+          grain={0.2}
+          highlight={highlight}
+        />
       );
 
-    case 'decrypt':
-      return (
-        <DecryptReveal
-          className={FILL}
-          cell={12}
-          aspect={0.62}
-          charset="01<>[]{}/\\=+*#%@$&"
-          colored={0}
-          color="#111111"
-          background="#ffffff"
-          brightness={1.1}
-          legibility={0.35}
-          scramble={0.45}
-          scrambleSpeed={12}
-          radius={190}
-          edgeGlow={1.2}
-          aberration={0}
-          passthrough={0.15}
-        >
-          {children}
-        </DecryptReveal>
-      );
-
-    case 'dither':
-      return (
-        <RetroDither
-          className={FILL}
-          pixelSize={3}
-          levels={3}
-          darkColor={[0, 0, 0]}
-          lightColor={[1, 1, 1]}
-          colorize={0}
-          contrast={0.7}
-          scanlines={0.12}
-          radius={0.55}
-          strength={0.85}
-          baseStrength={0.1}
-        >
-          {children}
-        </RetroDither>
-      );
-
-    case 'shield':
-      return (
-        <ForceField
-          className={FILL}
-          shape="hexagon"
-          color={[0.07, 0.07, 0.07]}
-          edgeColor={[0.25, 0.25, 0.25]}
-          opacity={0.8}
-          cellScale={18}
-          gridOpacity={0.18}
-          gridReveal="hover"
-          edgeGlow={0.15}
-        >
-          {children}
-        </ForceField>
-      );
-
-    case 'glitch':
-      return (
-        <Glitch
-          className={FILL}
-          intensity={0.85}
-          interval={4}
-          duration={0.35}
-          slices={20}
-          shift={24}
-          rgbShift={0}
-          blocks={0.4}
-          noise={0.25}
-        >
-          {children}
-        </Glitch>
-      );
-
-    case 'none':
+    case 'ascii':
     default:
-      return <div className={FILL}>{children}</div>;
+      return (
+        <AsciiObject
+          {...FRAME}
+          className={FILL}
+          cellSize={11}
+          colored={false}
+          color={ink}
+          contrast={1.35}
+          edgeContrast={3.2}
+          highlight={highlight}
+        />
+      );
   }
 }

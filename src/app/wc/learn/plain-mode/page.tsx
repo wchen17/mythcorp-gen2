@@ -222,7 +222,9 @@ ctx.fillText(ramp[level], x * cell, y * cell * 1.6);`}</Code>
           <li><code className="font-mono">plain/PlainHold.tsx</code>, the holding screen chrome</li>
           <li><code className="font-mono">plain/holdState.ts</code>, the allowlist both React and the pre-paint script read</li>
           <li><code className="font-mono">plain/useScramble.ts</code>, ideaboard #65, the decode effect</li>
-          <li><code className="font-mono">plain/HoldStage.tsx</code>, the six effects and their monochrome options</li>
+          <li><code className="font-mono">plain/HoldStage.tsx</code>, one model in four styles, and their monochrome options</li>
+          <li><code className="font-mono">plain/holdScheme.ts</code>, the light/dark switch plain mode owns itself</li>
+          <li><code className="font-mono">plain/HoldContact.tsx</code>, the contact details, backdrop and reachable copy</li>
           <li><code className="font-mono">plain/HoldStatus.tsx</code>, the readout, fed by <code className="font-mono">fieldMetrics.ts</code></li>
           <li><code className="font-mono">components/canvasui/</code>, vendored Canvas UI source, see its README</li>
         </ul>

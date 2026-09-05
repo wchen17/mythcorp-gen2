@@ -11,7 +11,7 @@ import {
 
 const BAR_CELLS = 28;
 
-/** Module scope, so switching effects (which remounts the panel) does not
+/** Module scope, so switching style (which remounts the panel) does not
  *  restart the clock. It is time on the page, not time since this mount. */
 const OPENED_AT = Date.now();
 
@@ -20,7 +20,7 @@ const OPENED_AT = Date.now();
  * really is that size, the meter really is the field's mean dye, and the clock
  * really is how long you have been on the page.
  */
-export function HoldStatus({ effect }: { effect: string }) {
+export function HoldStatus({ style, scheme }: { style: string; scheme: string }) {
   const metrics = useSyncExternalStore(subscribeMetrics, getMetrics, getServerMetrics);
   const elapsed = useElapsed();
 
@@ -36,7 +36,8 @@ export function HoldStatus({ effect }: { effect: string }) {
       <Row label="status" value="building" />
       <Row label="elapsed" value={elapsed} />
       <Row label="field" value={metrics.cols ? `${metrics.cols} x ${metrics.rows} cells` : 'idle'} />
-      <Row label="effect" value={effect} />
+      <Row label="render" value={style} />
+      <Row label="scheme" value={scheme} />
       <Row
         label="ink"
         value={
@@ -49,11 +50,16 @@ export function HoldStatus({ effect }: { effect: string }) {
   );
 }
 
+/**
+ * Every value in this panel is client state: the clock, the measured grid, the
+ * visitor's own colour scheme. The server cannot know any of it, so the text it
+ * renders is a placeholder by definition rather than a mismatch to fix.
+ */
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <>
       <dt className="text-[color:var(--fg-subtle)]">{label}</dt>
-      <dd className="whitespace-pre">{value}</dd>
+      <dd className="whitespace-pre" suppressHydrationWarning>{value}</dd>
     </>
   );
 }

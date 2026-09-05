@@ -6,8 +6,11 @@ export const RAMP = ' .:-=+*#%@';
 /** Cell height as a multiple of cell width, so glyphs are not squashed. */
 export const CELL_ASPECT = 1.6;
 
-/** Below this, a cell draws nothing, so an idle field costs almost no fills. */
-const FLOOR = 0.045;
+/** Below this, a cell draws nothing, so an idle field costs almost no fills.
+ *  It is also what makes the words readable: the vortices smear dye across the
+ *  whole grid, and at a low floor that drift draws as loudly as the message.
+ *  Cutting it here leaves the re-inked source cells standing alone. */
+const FLOOR = 0.3;
 
 export type RenderTarget = {
   ctx: CanvasRenderingContext2D;
@@ -38,7 +41,7 @@ export function renderField(dye: Float32Array, t: RenderTarget, width: number, h
       const v = dye[y * cols + x];
       if (v < FLOOR) continue;
       const level = Math.min(last, Math.floor(v * last) + 1);
-      ctx.globalAlpha = Math.min(0.85, 0.18 + v * 0.7);
+      ctx.globalAlpha = Math.min(0.96, 0.1 + v * 0.85);
       ctx.fillText(RAMP[level], x * cell, y * cellH);
     }
   }

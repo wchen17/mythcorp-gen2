@@ -11,7 +11,7 @@ export function CanvasUiSections() {
     <>
       <Section title="Borrowing someone else's shaders">
         <p>
-          The effect picker on the holding screen runs{' '}
+          The style picker on the holding screen runs{' '}
           <a
             href="https://canvasui.dev"
             className="text-[color:var(--accent)] underline underline-offset-4"
@@ -20,9 +20,11 @@ export function CanvasUiSections() {
           >
             Canvas UI
           </a>
-          , a library whose premise is worth stating plainly: it reads your live
-          DOM and redraws it inside a canvas, so a shader can run over real text
-          that is still selectable and real links that are still clickable.
+          , a library with two halves. Most of it reads your live DOM and
+          redraws it inside a canvas, so a shader can run over real text that is
+          still selectable. The half this screen uses does something simpler and
+          far more portable: it loads a model and renders it into a scene of its
+          own, touching the page not at all.
         </p>
         <p>
           It is not an npm dependency. Components ship as source through a
@@ -35,7 +37,8 @@ export function CanvasUiSections() {
 # or just read files[0].content out of that JSON
 # and write it yourself, which is what happened here`}</Code>
         <Aside>
-          Three of the six (DecryptReveal, RetroDither, ForceField) import a{' '}
+          Several components (DecryptReveal, RetroDither, ForceField,
+          ParticleObject, LiquidObject) import a{' '}
           <code className="font-mono">rect-cache</code> helper that no registry
           entry ships and that is not in the registry index, so installing them
           straight does not compile. It is 26 lines in the upstream repo at{' '}
@@ -44,43 +47,49 @@ export function CanvasUiSections() {
         </Aside>
       </Section>
 
-      <Section title="The caveat that shapes the design">
+      <Section title="The caveat that shaped the design, and the way out of it">
         <p>
-          The html-in-canvas API is an experimental Chrome feature behind{' '}
+          The half of the library that resamples the page depends on an
+          experimental Chrome feature behind{' '}
           <code className="font-mono">chrome://flags/#canvas-draw-element</code>.
-          Every component probes for it and degrades honestly: without it the
-          children render as ordinary HTML and whatever part of the effect does
-          not need to sample the page still runs.
+          Without the flag those components are inert: the children render as
+          ordinary HTML and the effect does nothing. An earlier pass of this
+          screen shipped six of them behind a picker that starred the four most
+          visitors could not see, which is an honest label on a bad deal.
         </p>
         <p>
-          So the effects split into two groups, and the design has to respect
-          the split rather than hope for the flag. <em>Rain</em> and{' '}
-          <em>shield</em> draw their own geometry and work for everyone. {' '}
-          <em>Asciify</em>, <em>decrypt</em>, <em>dither</em> and{' '}
-          <em>glitch</em> resample the page, so for most visitors they are
-          inert. The picker runs the same probe the components do and stars the
-          ones that will not do anything, instead of offering four dead
-          buttons.
+          The <code className="font-mono">*-object</code> family has no such
+          gate, because it never reads the page. It loads a GLB and renders it
+          into its own scene, which is ordinary WebGL, so it works in every
+          browser. That is the whole reason the screen now runs one model in
+          four styles rather than six effects over the DOM: every visitor sees
+          the same thing.
         </p>
         <p>
-          This is exactly why the wordmark is not one of them. The theme&rsquo;s
-          own ASCII field is plain 2D canvas with no feature gate, so{' '}
-          <em>work in progress</em> renders for every visitor on every browser,
-          and Canvas UI is the layer on top that gets better if your browser can
-          take it.
+          Three more were tried and cut. <em>Halftone</em>, <em>bayer</em> and{' '}
+          <em>glass</em> quantize or refract whatever sits behind the model, and
+          here that is transparency, so the spectre simply disappeared. Giving
+          them an opaque backdrop fixes them and paints a rectangle across the
+          middle of the field, which costs more than the styles are worth.
+        </p>
+        <p>
+          The wordmark was never one of these. The theme&rsquo;s own ASCII field
+          is plain 2D canvas with no feature gate, so <em>work in progress</em>{' '}
+          renders for every visitor on every browser.
         </p>
       </Section>
 
-      <Section title="Six effects, none of them in the bundle">
+      <Section title="Four styles, none of them in the bundle">
         <p>
-          Each component is tens of kilobytes of WebGL. Six of them imported
-          normally would land in the shared chunk and be paid for by every
-          visitor to every page, including the three themes that never show
-          them. They are dynamic imports instead, so the holding screen ships
-          none of them until you pick one.
+          Each component is a megabyte of WebGL carrying its own copy of the
+          loader stack. Imported normally they would land in the shared chunk
+          and be paid for by every visitor to every page, including the three
+          themes that never show them. They are dynamic imports instead, so the
+          holding screen ships none of them until a style is picked, and the
+          shared bundle stays at 101 kB.
         </p>
-        <Code>{`const GlyphRain = dynamic(
-  () => import('../canvasui/GlyphRain').then((m) => m.GlyphRain),
+        <Code>{`const AsciiObject = dynamic(
+  () => import('../canvasui/AsciiObject').then((m) => m.AsciiObject),
   { ssr: false },   // must be an inline literal
 );`}</Code>
         <p>
@@ -92,7 +101,7 @@ export function CanvasUiSections() {
             next/dynamic options must be an object literal
           </code>
           . <code className="font-mono">ssr: false</code> is not optional here:
-          all six reach for a canvas on mount.
+          every one of them reaches for a canvas on mount.
         </p>
         <p>
           Every option passed to them exists to drag the component back to

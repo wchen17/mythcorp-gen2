@@ -8,6 +8,7 @@ import { TerminalOverlay } from "./components/TerminalOverlay";
 import { PlainField } from "./components/plain/PlainField";
 import { PlainHold } from "./components/plain/PlainHold";
 import { PLAIN_OPEN_PREFIXES, HOLD_ATTR } from "./components/plain/holdState";
+import { SCHEME_ATTR, SCHEME_KEY } from "./components/plain/holdScheme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 // default is what holds returning visitors too: an older `mythcorp-theme`
 // value is simply not read, so everyone starts on plain and anyone who leaves
 // writes their choice under the new key.
-const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_PREFIXES)};var d=document.documentElement;var t='plain';try{var s=localStorage.getItem('mythcorp-theme-v2');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';var open=false;for(var i=0;i<o.length;i++){if(p===o[i]||p.indexOf(o[i]+'/')===0){open=true;break;}}if(!open){d.setAttribute('${HOLD_ATTR}','on');}}})();`;
+const themeBootstrap = `(function(){var o=${JSON.stringify(PLAIN_OPEN_PREFIXES)};var d=document.documentElement;var t='plain';try{var s=localStorage.getItem('mythcorp-theme-v2');if(s==='cyberpunk'||s==='luxury'||s==='paper'||s==='plain'){t=s;}}catch(e){}d.dataset.theme=t;if(t==='plain'){var p=location.pathname.replace(/\\/+$/,'')||'/';var open=false;for(var i=0;i<o.length;i++){if(p===o[i]||p.indexOf(o[i]+'/')===0){open=true;break;}}if(!open){d.setAttribute('${HOLD_ATTR}','on');}var c='system';try{var q=localStorage.getItem('${SCHEME_KEY}');if(q==='light'||q==='dark'||q==='system'){c=q;}}catch(e){}var dark=c==='dark'||(c==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);d.setAttribute('${SCHEME_ATTR}',dark?'dark':'light');}})();`;
 
 export default function RootLayout({
   children,

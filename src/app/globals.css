@@ -150,6 +150,29 @@
   --noise-opacity: 0.04;
 }
 
+/* Plain mode's own light/dark switch. The pre-paint script always writes a
+   resolved value, so this is a single override block rather than a media
+   query duplicated against an attribute. Walkthrough: /wc/learn/plain-mode */
+[data-theme="plain"][data-plain-scheme="dark"] {
+  --bg: #000000;
+  --bg-elevated: #000000;
+  --bg-overlay: rgba(0, 0, 0, 0.86);
+  --fg: #ededed;
+  --fg-muted: rgba(237, 237, 237, 0.66);
+  --fg-subtle: rgba(237, 237, 237, 0.42);
+  --accent: #ededed;
+  --accent-soft: #9a9a9a;
+  --accent-warm: #ededed;
+  --accent-glow: rgba(237, 237, 237, 0.12);
+  --accent-glow-strong: rgba(237, 237, 237, 0.22);
+  --border: rgba(237, 237, 237, 0.22);
+  --border-strong: #ededed;
+  --skyline-tint-a: rgba(0, 0, 0, 0.86);
+  --skyline-tint-b: rgba(0, 0, 0, 0.55);
+  --plain-ink: #ededed;
+  color-scheme: dark;
+}
+
 [data-theme="plain"] {
   --bg: #ffffff;
   --bg-elevated: #ffffff;

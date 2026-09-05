@@ -9,6 +9,7 @@ import { createAsciiFluid } from './asciiFluid';
 import { renderTextMask } from './textMask';
 import { isHeld } from './holdState';
 import { publishMetrics, resetMetrics } from './fieldMetrics';
+import { useResolvedScheme } from './usePlainScheme';
 
 /**
  * The grid is wide and short on a desktop viewport, so two stacked lines end
@@ -28,6 +29,7 @@ export function PlainField() {
   const { theme } = useTheme();
   const pathname = usePathname() ?? '/';
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const scheme = useResolvedScheme();
   const active = theme === 'plain';
   const held = isHeld(theme, pathname);
 
@@ -44,14 +46,14 @@ export function PlainField() {
     const field = createAsciiFluid(canvas, {
       ink,
       ambient: true,
-      sourceGain: 0.016,
+      sourceGain: 0.05,
       onMetrics: publishMetrics,
       source: held
         ? (cols, rows) =>
             renderTextMask(holdLines(cols, rows), cols, rows, {
               fontFamily,
-              centre: 0.46,
-              fill: 0.86,
+              centre: 0.27,
+              fill: 0.92,
             })
         : undefined,
     });
@@ -64,7 +66,10 @@ export function PlainField() {
       field.destroy();
       resetMetrics();
     };
-  }, [active, held]);
+    // scheme is in here because the ink colour is read once, off the CSS
+    // variable, when the field is built. Without it a light/dark switch leaves
+    // the glyphs the previous scheme's colour, which on white is invisible.
+  }, [active, held, scheme]);
 
   if (!active) return null;
 
