@@ -60,7 +60,7 @@ export function PlainHold() {
     <div className="fixed inset-0 z-10 flex flex-col justify-between p-5 sm:p-8">
       <h1 className="sr-only">Mythcorp, work in progress</h1>
 
-      <HoldMessage style={message} />
+      <HoldMessage style={message} scheme={scheme} />
       <HoldContact />
 
       <div className="relative flex items-start justify-between gap-4 font-mono text-xs">

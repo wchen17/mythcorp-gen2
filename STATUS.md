@@ -115,6 +115,20 @@ Split /upload into a thin page shell, DropConsole, UploadResult, and useUpload. 
 A short note for whoever (you, me, future-Claude on a different machine) picks this up next. Update at the end of each session.
 
 ## Last updated
+2026-09-05 (third pass), **the words can now be a particle cloud, because the object pipeline takes an image.**
+
+**The trick worth remembering.** The `*-object` components do not only take a GLB. They `fetch(src)`, sniff the first bytes, and accept PNG, JPEG, WEBP, GIF and SVG as well, and a `data:` URI satisfies `fetch`. So `messageImage.ts` draws WORK IN PROGRESS to a canvas, hands over `toDataURL('image/png')`, and `ParticleObject` samples it into a cloud. The sampler keys on **alpha**, so the type is drawn solid white on transparent and the component tints it. No asset to ship, no second code path, and the words get the same cursor-scatter-and-spring the spectre has. This is the `dust` option under `words`.
+
+The image has to be rasterized after `document.fonts.ready`, or the cloud is built from a fallback face rather than Geist Mono. It returns null until then, which is one empty frame instead of the wrong letterforms.
+
+**`press` was built and cut.** The same PNG through `InkObject`, which traces contours and extrudes them, so it should have worked. It mounts, reports no error and draws nothing, with `threshold` and `depth` tuned as well as at their defaults. Not worth more time against a vendored component when `dust` already covers "the words, but alive". That makes three cuts now on the same principle: a button that does nothing is worse than a shorter list.
+
+**Words options are now field, solid, decode, dust.**
+
+**Verification.** `npm run check` green, 31 pages, shared JS still 101 kB. `dust` renders the message as a readable cloud at 800x500 in a real Chrome, three canvases live at once (field, spectre, words). **Not verified:** the cursor scatter. The Browser pane reports `document.hidden === true` even while it is compositing screenshots, so the WebGL loop is frozen on its last frame and synthetic pointer events change nothing. Rendering is confirmed; the interaction is the library's own and was taken on trust.
+
+### Previously
+
 2026-09-05 (second pass), **the message is readable now, and there are three ways to draw it.** The words had been turning to mush, and the cause was three separate bugs stacked on each other rather than a tuning problem.
 
 **Why WORK IN PROGRESS fell apart.** (1) The mask was re-inked **additively** every frame, so dye climbed to the 1.4 ceiling, advection carried it into neighbouring cells, and the counters inside O, R and P filled until each letter was one solid block. It is a floor now: every masked cell is pinned to its own coverage, nothing accumulates. (2) A letter body still carried a range of dye values, so the ramp painted `.`, `-`, `=` and `@` inside a single stroke and the shape never resolved. The message is now its own pass in `asciiRender`, two levels only, body and edge, drawn over the field. (3) **A geometry bug that had been there since the beginning:** `renderTextMask` lays type out on square cells while the renderer draws cells at `CELL_ASPECT` 1.6, so every letter had been stretched 1.6x vertically. The mask now draws into a space `CELL_ASPECT` taller and squashes it back.

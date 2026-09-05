@@ -6,7 +6,7 @@
  * goes through a store rather than a prop. Same shape as fieldMetrics: one
  * value, a set of listeners, no context provider for a single enum.
  */
-export const MESSAGE_STYLES = ['field', 'solid', 'decode'] as const;
+export const MESSAGE_STYLES = ['field', 'solid', 'decode', 'dust'] as const;
 
 export type MessageStyle = (typeof MESSAGE_STYLES)[number];
 

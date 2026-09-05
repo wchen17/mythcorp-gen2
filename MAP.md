@@ -131,7 +131,8 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/usePlainScheme.ts` | Owns the scheme (`usePlainScheme`) and follows it (`useResolvedScheme`) |
 | `src/app/components/plain/HoldContact.tsx` | Contact details: the backdrop copy and the reachable copy |
 | `src/app/components/plain/messageStore.ts` | Which rendering of the message is showing. Named to dodge a case clash with `HoldMessage.tsx` |
-| `src/app/components/plain/HoldMessage.tsx` | The DOM renderings of the message: `solid` and `decode` |
+| `src/app/components/plain/HoldMessage.tsx` | The message renderings that are not the field: `solid`, `decode`, `dust` |
+| `src/app/components/plain/messageImage.ts` | The message as a PNG data URL, so it can feed the object pipeline |
 | `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. **Unused** since the page-resampling effects went |
 | `src/app/components/canvasui/` | **Vendored** Canvas UI source. See its README; do not hand-edit |
 | `src/app/components/rect-cache.ts` | Helper several canvasui components import but the registry does not ship |
