@@ -20,26 +20,58 @@ in `files[0].content` here. The registry entry names the target path itself.
 
 ## What is vendored
 
-| File | Registry entry | Effect |
-|---|---|---|
-| `Asciify.tsx` | `asciify-react` | ASCII lens that follows the cursor |
-| `DecryptReveal.tsx` | `decrypt-reveal-react` | Page as cipher text, decodes around the cursor |
-| `GlyphRain.tsx` | `glyph-rain-react` | Falling glyph streams that light the page |
-| `RetroDither.tsx` | `retro-dither-react` | Pixelate and quantize lens |
-| `ForceField.tsx` | `force-field-react` | Charged lattice over the content |
-| `Glitch.tsx` | `glitch-react` | Periodic tear and RGB split bursts |
+Every file exports both a named and a default symbol of the same name, e.g.
+`export function Frost` plus `export default Frost`. The **Needs** column is the
+browser story, explained under "The browser caveat" below: *none* means the
+effect draws its own geometry and every visitor sees it, *partial* means the
+core runs everywhere but the good part wants the flag, *flag* means the thing is
+inert without it.
 
-The full catalogue is ~40 components. Adding another is one command.
+| File | Registry entry | Needs | Effect |
+|---|---|---|---|
+| `Asciify.tsx` | `asciify-react` | partial | ASCII lens that follows the cursor |
+| `AsciiObject.tsx` | `ascii-object-react` | none | A three.js object rendered as ASCII |
+| `Clouds.tsx` | `clouds-react` | none | Drifting cloud deck with cast shadows |
+| `DecryptReveal.tsx` | `decrypt-reveal-react` | flag | Page as cipher text, decodes around the cursor |
+| `Droplets.tsx` | `droplets-react` | none | Rain on glass, with a wiper |
+| `FlameWrap.tsx` | `flame-wrap-react` | none | Flames that lick around the content box |
+| `ForceField.tsx` | `force-field-react` | none | Charged lattice over the content |
+| `Frost.tsx` | `frost-react` | none | Ice creeping across the surface |
+| `Glitch.tsx` | `glitch-react` | flag | Periodic tear and RGB split bursts |
+| `GlyphRain.tsx` | `glyph-rain-react` | none | Falling glyph streams that light the page |
+| `Grid.tsx` | `grid-react` | none | Content diced into tiles that lift and shade |
+| `HexFloat.tsx` | `hex-float-react` | none | Raytraced hex tiles floating over the page |
+| `InkObject.tsx` | `ink-object-react` | none | A three.js object in wet ink |
+| `Laser.tsx` | `laser-react` | none | A scanning beam with heat and smoke |
+| `Liquid.tsx` | `liquid-react` | none | Fluid simulation smeared over the page |
+| `LiquidObject.tsx` | `liquid-object-react` | none | A three.js object as refracting liquid |
+| `ParticleObject.tsx` | `particle-object-react` | none | A three.js object as a particle cloud |
+| `RetroDither.tsx` | `retro-dither-react` | flag | Pixelate and quantize lens |
+
+The registry has 35 React entries. The 17 not here, by the same column:
+
+- **none**: `blaze` (fire, near enough to `FlameWrap` that we skipped it),
+  `dithered-object` and `glass-object` (both pull `three` and its addon loaders,
+  and the object family is already four deep here).
+- **partial**: `ascii-sweep`, `bubble`, `glass`, `magnify`. All four fall back to
+  a rim or an outline, which is the shape of the effect without the substance.
+- **flag**: `bend`, `canvas`, `cloth`, `displacement`, `particle-reveal`,
+  `particle-scroll`, `peel`, `shatter`, `vhs`. Each samples the page texture
+  unconditionally, so without the flag they draw nothing at all.
+
+Adding another is one command.
 
 ## One registry gap, patched by hand
 
-`DecryptReveal`, `RetroDither` and `ForceField` all `import { createRectCache }
-from "../rect-cache"`, but no registry entry ships that file and there is no
-`rect-cache` item in `https://canvasui.dev/r/registry.json`. Installing any of
-the three straight from the registry therefore does not compile. The helper is
-26 lines of cached `getBoundingClientRect`, taken from the upstream repo at
-`src/lib/rect-cache.ts` and written to `../rect-cache.ts` to match the import.
-Re-check whether the registry ships it before updating those three.
+`DecryptReveal`, `RetroDither`, `ForceField`, `Clouds`, `Droplets`, `Frost`,
+`Grid` and `Liquid` all `import { createRectCache } from "../rect-cache"`, but
+no registry entry ships that file and there is no `rect-cache` item in
+`https://canvasui.dev/r/registry.json`. Installing any of them straight from the
+registry therefore does not compile. The helper is 26 lines of cached
+`getBoundingClientRect`, taken from the upstream repo at `src/lib/rect-cache.ts`
+and written to `../rect-cache.ts` to match the import. Re-check whether the
+registry ships it before updating those files. Nothing else vendored here
+imports anything the registry does not ship.
 
 ## The browser caveat, which matters
 
@@ -49,18 +81,50 @@ shader runs over them. That API is an experimental Chrome feature behind
 `chrome://flags/#canvas-draw-element`, or an origin trial token.
 
 Every component detects support at runtime via its own `supportsHtmlInCanvas()`
-and degrades: the children render as ordinary HTML and whatever part of the
-effect does not need to sample the page still runs. In practice:
+and degrades. What survives the degrade is what the Needs column records:
 
-- **GlyphRain** works for everyone. The rain is its own WebGL canvas; only the
-  light it casts *onto* the page needs the API.
-- **Asciify, DecryptReveal, RetroDither** need the API for their real effect,
-  because all three resample the page itself. Without it they are inert and the
-  content shows through unchanged.
+- **none.** The shader takes a `uHasContent` uniform with a full branch for the
+  zero case, so the clouds still drift, the flames still burn, the beam still
+  scans. `GlyphRain` and `ForceField` are the originals here. The `*Object`
+  files never touch the API at all, they render three.js into their own canvas.
+- **partial.** `Asciify` keeps a hand-rolled DOM rasterizer and snapshots the
+  subtree whenever it mutates, so the ASCII still forms, just from a stale still
+  rather than a live frame.
+- **flag.** `DecryptReveal`, `RetroDither` and `Glitch` sample the page texture
+  unconditionally. Without the API they are inert and the content shows through
+  unchanged.
 
 So do not build a layout that only reads correctly with the flag on. The plain
 theme's own ASCII field (`../plain/asciiFluid.ts`) is plain 2D canvas and runs
 everywhere, which is why it carries the wordmark rather than one of these.
+
+## Turning the flag-gated components on for everyone
+
+The flag is not the only way in. `html-in-canvas` has a live Chrome origin
+trial, which opts our own origins in for every Chrome visitor without asking
+anyone to touch `chrome://flags`. Verified against the Chrome Platform Status
+origin trials API on 2026-09-05: trial `html-in-canvas`, feature name
+`HTMLInCanvas`, status ACTIVE, Chrome 148 through 154.
+
+**A token is installed.** The committed `.env` carries one for
+`https://mythcorp.org` with subdomain matching, so `i.mythcorp.org` is covered
+too, and `src/app/layout.tsx` renders it as a `<meta http-equiv="origin-trial">`
+on every page. In production these components are on for every Chrome visitor.
+
+Three things to keep in mind.
+
+1. **It expires 2026-10-20, and expiry is silent.** Nothing throws and nothing
+   logs, the effects simply go inert again and read like a component
+   regression. A one-time reminder is scheduled for 2026-10-06; renewal is at
+   <https://developer.chrome.com/origintrials>. `NEXT_PUBLIC_*` is inlined at
+   build time, so a new token needs a rebuild and redeploy, not just an edit.
+2. **Two origins are still uncovered**, each needing its own registration: the
+   `*.workers.dev` preview host, and `http://localhost:3000`. That second one
+   is why these components are still inert on a dev server, so the degraded
+   paths above are what you actually develop against.
+3. **A trial is not a promise.** It has already been extended once, and when it
+   ends the graceful degradation is load-bearing again. Non-Chrome visitors
+   never get this at all.
 
 ## Repo conventions
 
