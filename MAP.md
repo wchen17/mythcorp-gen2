@@ -20,6 +20,7 @@ Single-screen index of where things live. Read this first; grep second.
 | `/wc/learn/plain-mode` | `src/app/wc/learn/plain-mode/page.tsx` | Plain theme + ASCII fluid walkthrough |
 | `/wc/learn/3d-scene` | `src/app/wc/learn/3d-scene/page.tsx` | Simulation 3D-scene walkthrough (live mini star field + reset-bug diff) |
 | `/wc/learn/build-a-playground` | `src/app/wc/learn/build-a-playground/page.tsx` | How the live demos are built: DemoPanel, TokenPlayground, the ssr:false canvas pattern, each embedded as its own example |
+| `/wc/lab/canvas` | `src/app/wc/lab/canvas/page.tsx` | The canvas bench: every vendored Canvas UI component, live, with its props on sliders |
 | `/fmhy` | `src/app/fmhy/page.tsx` | FMHY backup-sites directory, sourced from fmhy/edit backups.md |
 | `/og` | `src/app/og/page.tsx` | "Back-room sketches" index |
 | `/og/calhoun` | `src/app/og/calhoun/page.tsx` | Ramble on Universe 25 + Merchant of Doubt. Links to `/experience?mode=calhoun` |
@@ -63,6 +64,22 @@ Single-screen index of where things live. Read this first; grep second.
 | `src/app/wc/learn/_components/Walkthrough.tsx` | Layout + helpers (`Walkthrough`, `Section`, `Code`, `Aside`) for `/wc/learn/*` pages. `Code` takes optional `filename` + `highlight?: number[]` |
 | `src/app/fmhy/_data/backup-sites.json` | FMHY backup-sites snapshot, the only data `/fmhy` reads |
 | `scripts/fetch-fmhy.ts` | Fetches `docs/other/backups.md` from fmhy/edit and outputs `backup-sites.json`. Runs via `npm run fetch:fmhy` |
+
+## Canvas bench
+
+| File | Purpose |
+|---|---|
+| `src/app/wc/lab/canvas/page.tsx` | Route shell, header and intro |
+| `src/app/wc/lab/canvas/_components/manifest.ts` | **The only list of component names in the lab.** One entry per vendored component: loader, blurb, flag answer, prop schema, reduced-motion set. Over the file cap on purpose, so adding a component is one edit in one place |
+| `src/app/wc/lab/canvas/_components/CanvasLab.tsx` | Orchestrator: selection, per-entry prop state, probes |
+| `src/app/wc/lab/canvas/_components/Roster.tsx` | The component list, marks entries inert in this browser |
+| `src/app/wc/lab/canvas/_components/Stage.tsx` | Mounts exactly one component, resolves colour tokens |
+| `src/app/wc/lab/canvas/_components/SampleSubject.tsx` | The live DOM the page effects resample |
+| `src/app/wc/lab/canvas/_components/ControlPanel.tsx` | Schema-driven inputs |
+| `src/app/wc/lab/canvas/_components/PropSnippet.tsx` | The current props as copyable JSX |
+| `src/app/wc/lab/canvas/_components/StageReadout.tsx` | Mounted / subject / api / motion / chunk readout |
+| `src/app/wc/lab/canvas/_components/tokenInk.ts` | Theme token to hex or `[r, g, b]`, re-resolved on every theme change |
+| `src/app/wc/lab/canvas/_components/browserProbes.ts` | Reduced-motion hook, and the flag probe re-exported from `plain/` |
 
 ## Learn primitives
 
@@ -135,9 +152,13 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/messageStore.ts` | Which rendering of the message is showing. Named to dodge a case clash with `HoldMessage.tsx` |
 | `src/app/components/plain/HoldMessage.tsx` | The message renderings that are not the field: `solid`, `decode`, `dust` |
 | `src/app/components/plain/messageImage.ts` | The message as a PNG data URL, so it can feed the object pipeline |
-| `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. **Unused**: nothing on the screen needs the flag any more |
-| `src/app/components/canvasui/` | **Vendored** Canvas UI source. See its README; do not hand-edit |
-| `src/app/components/rect-cache.ts` | Helper several canvasui components import but the registry does not ship |
+| `src/app/components/plain/supportsHtmlInCanvas.ts` | Chrome feature probe. The holding screen no longer needs it; `/wc/lab/canvas` imports it to label inert components |
+| `src/app/components/canvasui/` | **Vendored** Canvas UI source, 18 components. See its README for the per-component flag classification; do not hand-edit |
+| `src/app/components/rect-cache.ts` | Helper eight canvasui components import but the registry does not ship |
+| `src/app/components/plain/asciiFluidOptions.ts` | The solver's public option type plus every press and vorticity tuning constant |
+| `src/app/components/plain/asciiPointer.ts` | Pointer bookkeeping: id claiming, re-entry gating, press cooldown |
+| `src/app/components/plain/asciiVortexRing.ts` | The pointer-down impulse, a hollow ring with an aspect-corrected radius |
+| `src/app/components/plain/asciiVorticity.ts` | Vorticity confinement, with the quiet-cell early-out that makes it affordable |
 
 Walkthrough: `/wc/learn/theme-system`.
 

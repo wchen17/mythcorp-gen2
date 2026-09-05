@@ -1,5 +1,102 @@
 # STATUS
 
+## Canvas UI, four fronts at once, 2026-09-05
+
+The vendored Canvas UI library had one consumer (the holding screen's style
+picker) and no other way to see any of it. Four things landed together.
+
+**The bench, `/wc/lab/canvas`.** Every vendored component, live, one at a time,
+with its real props on sliders and the current props printed as copyable JSX.
+The whole lab has exactly one list of component names in it,
+`_components/manifest.ts`, so adding a component is one entry and nothing else.
+That file is deliberately over the 250 line cap: it is one flat list, and
+splitting it would mean two places to edit per component. Bundle discipline
+held, `/wc/lab/canvas` is 12.5 kB and 117 kB first load with 20,800 lines of
+WebGL behind it, because every component is a `next/dynamic` import with an
+inline `{ ssr: false }` literal and the stage mounts exactly one at a time.
+
+**Eight more components vendored**, chosen by reading each shader's fallback
+branch rather than trusting the registry descriptions: Clouds, Droplets,
+FlameWrap, Frost, Grid, HexFloat, Laser, Liquid. All eight are the kind that
+draw their own geometry and so need no Chrome flag. Two corrections to what the
+README used to claim, both verified in the source: **Asciify is not flag-gated
+any more**, upstream added a DOM rasterizer fallback, and the four `*Object`
+renderers never touched the API at all. The README now carries the
+classification for all 18 plus the 17 still unvendored, so nobody re-derives it.
+
+**The origin trial is live.** `layout.tsx` renders one
+`<meta http-equiv="origin-trial">` per token in
+`NEXT_PUBLIC_ORIGIN_TRIAL_TOKEN`, and a real token is now installed in a
+committed `.env`. Decoded, it is `HTMLInCanvas` for `https://mythcorp.org:443`
+with `isSubdomain: true`, so it covers `i.mythcorp.org` as well. Confirmed
+end to end: the tag renders into all 50 prerendered pages.
+
+`.env` is committed deliberately. An origin trial token is not a secret, it is
+served to every visitor in the page source and is worthless off the origin it
+names, and `NEXT_PUBLIC_*` is inlined at BUILD time, so a token living only in
+a gitignored `.env.local` is a token the deployed site does not have.
+
+**It expires 2026-10-20 and it will fail silently**, so a one-time reminder is
+scheduled for 2026-10-06 (`mythcorp-origin-trial-renewal` under
+`~/.claude/scheduled-tasks/`) carrying the full renewal procedure. Two origins
+are still uncovered and each needs its own registration: the `*.workers.dev`
+preview host, and `http://localhost:3000`, which is why the flag-gated
+components still cannot be exercised on a dev server.
+
+**The ASCII fluid got a press, and a real touch bug got fixed.** Pointer-down
+now stamps a hollow vortex ring whose spin flips each press, so a second tap
+unwinds the first instead of stacking. The bug underneath was worse than the
+feature: `pointer()` turned every sample into a delta unconditionally, and
+touch is discontinuous, so on a phone *every* gesture began by dumping a
+full-screen shove into the field at a place the finger had never been. Desktop
+hover hid it almost completely. Samples now only become deltas within 120 ms,
+and a pointer that is down claims the field so a second finger cannot fight it.
+
+### Decisions, so the next session does not re-litigate them
+
+- **The bench is not in `PLAIN_OPEN_PREFIXES`.** It is held like every other
+  `/wc/*` route and is viewed by switching off the plain theme. Opening it
+  would make it one of a handful of publicly visible routes on a site that is
+  otherwise holding, which is a product decision, not a lab one.
+- **Vorticity confinement is kept, at `0.6`, and it is cheap only because of
+  one line.** The `QUIET = 2e-4` early-out in `asciiVorticity.ts` skips the
+  square root on cells whose curl is rounding error. Measured: 0.68 ms without
+  it at 1080p against 0.095 ms with it on a quiet field, next to 0.83 ms for
+  the existing advect pass. Caching `|curl|` into a second array was tried and
+  was *slower*, so do not reach for it again. Set `vorticity: 0` in
+  `PlainField.tsx` to A/B it at zero cost.
+- **Colours in the bench are token pickers, not colour pickers.** The vendored
+  defaults are blue (`[0.31, 0.54, 1]` and friends), which DESIGN.md forbids,
+  and a literal would freeze the effect at whatever the theme was on mount. So
+  a colour control holds a token name and `Stage` resolves it live.
+- **`Grid.tsx` exports a symbol called `Grid`**, exactly the generic name
+  CLAUDE.md warns against. It is vendored so it stays verbatim; the manifest
+  aliases it to `TileGrid` at the import site instead.
+- **The bench imports the flag probe from `plain/supportsHtmlInCanvas.ts`**
+  rather than keeping its own copy. That file had gone unused when the holding
+  screen stopped needing the flag; it has a consumer again.
+
+### Verified, and not
+
+`npm run check` green. Driven in the browser: the bench renders in cyberpunk
+and paper, GlyphRain runs live over the sample subject with its text still
+selectable, Laser renders in the theme accent rather than the vendored blue,
+ParticleObject loads `spectre.glb`, and Glitch correctly shows the "running
+inert" banner because this browser has no flag and no token. The press impulse
+was confirmed firing by temporarily raising `PRESS_INK` and `PRESS_RADIUS`,
+which made the disc obvious, then restoring both.
+
+**Not verified, and worth an eye.** At the shipped `PRESS_INK = 0.34` a press
+is close to invisible in a still frame; whether it reads well in motion is a
+judgement a screenshot cannot make, and `PRESS_SWIRL` is the constant to raise
+if it feels weak. Whether vorticity visibly earns its cost at `cell: 6` is the
+same kind of call. Touch behaviour and the two-finger claim were reasoned
+through and typechecked but never run on a real phone. Luxury theme was not
+opened. And every click anywhere now fires a burst, including clicks on the
+pickers and contact links, which reads as the field being alive but is a taste
+call: the fix is a `e.target` check in `PlainField.tsx`.
+
+
 ## Admin panel removed, key management moved out of band, 2026-07-25
 `/upload/admin` and `/api/admin/*` are gone. Not hidden, not gated: deleted.
 
