@@ -1,52 +1,22 @@
 // Walkthrough: /wc/learn/plain-mode
 
 import { CELL_ASPECT, renderField, type RenderTarget } from './asciiRender';
+import { createPointerTracker } from './asciiPointer';
+import { createVorticityPass } from './asciiVorticity';
+import { stampVortexRing } from './asciiVortexRing';
+import {
+  FLUID_DEFAULTS, DYE_CEILING, PRESS_RADIUS, PRESS_SWIRL, PRESS_PUSH, PRESS_INK,
+  VORTICITY_CAP, type AsciiFluidOptions,
+} from './asciiFluidOptions';
 
-export type AsciiFluidOptions = {
-  /** Pixel size of one character cell at CSS scale. Smaller = denser, costlier. */
-  cell?: number;
-  /** Ink colour for the glyphs. Read from a CSS variable by the caller. */
-  ink?: string;
-  /**
-   * Per-frame multiplier on dye and velocity. Below 1, so the field settles.
-   * It also decides how far the message is allowed to bleed: the mask is a
-   * strong constant source, so a slow decay lets advection carry letter dye
-   * across the whole grid until nothing reads.
-   */
-  decay?: number;
-  /** Low-amplitude wandering vortices, so an untouched field is still alive. */
-  ambient?: boolean;
-  /**
-   * Called after every resize with the new grid. Return a per-cell mask to
-   * re-ink every frame (this is how the wordmark survives being smeared),
-   * or null for a field that only responds to the pointer.
-   */
-  source?: (cols: number, rows: number) => Float32Array | null;
-  /**
-   * How hard the source mask is held, 0 to 1. Every masked cell is pinned to
-   * its own coverage value times this, so the ramp draws real letterforms
-   * rather than a saturated block, and the pointer can still push extra dye
-   * on top of them.
-   */
-  sourceHold?: number;
-  /** Called about five times a second with the grid size and mean dye. */
-  onMetrics?: (m: { cols: number; rows: number; ink: number }) => void;
-};
+export type { AsciiFluidOptions } from './asciiFluidOptions';
 
 type Field = Float32Array;
 
-const DEFAULTS = {
-  cell: 11,
-  ink: '#111111',
-  decay: 0.9,
-  ambient: false,
-  sourceHold: 0.3,
-};
-
 export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidOptions = {}) {
-  const opts = { ...DEFAULTS, ...options };
+  const opts = { ...FLUID_DEFAULTS, ...options };
   const ctx = canvas.getContext('2d', { alpha: true });
-  if (!ctx) return { destroy() {}, pointer() {}, restamp() {} };
+  if (!ctx) return { destroy() {}, pointer() {}, press() {}, release() {}, restamp() {} };
 
   let cols = 0;
   let rows = 0;
@@ -63,8 +33,20 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
   let clock = 0;
   let sinceReport = 0;
 
-  const pointer = { x: -1, y: -1, dx: 0, dy: 0, active: false };
+  const tracker = createPointerTracker();
+  const pointer = tracker.state;
+  const confine = createVorticityPass();
+  let spin = 1;
   const idx = (x: number, y: number) => y * cols + x;
+
+  /** Client space to grid cells. Cells are CELL_ASPECT taller than they are wide. */
+  function toGrid(clientX: number, clientY: number) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (clientX - rect.left) / opts.cell,
+      y: (clientY - rect.top) / (opts.cell * CELL_ASPECT),
+    };
+  }
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -115,7 +97,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
         if (d > radius) continue;
         const falloff = 1 - d / radius;
         const i = idx(x, y);
-        if (dyeAdd) dye[i] = Math.min(1.4, dye[i] + falloff * dyeAdd);
+        if (dyeAdd) dye[i] = Math.min(DYE_CEILING, dye[i] + falloff * dyeAdd);
         vx[i] += fx * falloff;
         vy[i] += fy * falloff;
       }
@@ -153,6 +135,25 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     }
   }
 
+  /**
+   * One press, one ring. The spin flips every time so a second tap in the same
+   * place unwinds the first rather than stacking on it, which is the difference
+   * between a field that answers you and a field that just gets louder.
+   */
+  function burst(gx: number, gy: number) {
+    if (opts.press <= 0) return;
+    const radius = Math.max(4, Math.min(cols, rows * CELL_ASPECT) * PRESS_RADIUS);
+    spin = -spin;
+    stampVortexRing({
+      dye, vx, vy, cols, rows,
+      x: gx, y: gy, radius, spin,
+      swirl: PRESS_SWIRL * opts.press,
+      push: PRESS_PUSH * opts.press,
+      ink: PRESS_INK * opts.press,
+      ceiling: DYE_CEILING,
+    });
+  }
+
   function step() {
     // Advect every field backwards along its own velocity, then blur the
     // result slightly. Tracing backwards can only read values that already
@@ -178,6 +179,9 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
     [vx, vxNext] = [vxNext, vx];
     [vy, vyNext] = [vyNext, vy];
 
+    // After the swap, so it acts on the velocity the next advection will read.
+    confine(vx, vy, cols, rows, opts.vorticity, VORTICITY_CAP);
+
     // Re-ink the source last, as a floor rather than an addition. Adding a
     // constant every frame was what tore the message apart: the dye climbed to
     // the ceiling, advection carried it into neighbouring cells, and the
@@ -188,7 +192,7 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
       for (let i = 0; i < dye.length; i++) {
         const floor = source[i] * opts.sourceHold;
         if (floor > dye[i]) dye[i] = floor;
-        else if (dye[i] > 1.4) dye[i] = 1.4;
+        else if (dye[i] > DYE_CEILING) dye[i] = DYE_CEILING;
       }
     }
   }
@@ -242,18 +246,23 @@ export function createAsciiFluid(canvas: HTMLCanvasElement, options: AsciiFluidO
   start();
 
   return {
-    /** Feed a client-space pointer position. Deltas become force. */
-    pointer(clientX: number, clientY: number) {
-      const rect = canvas.getBoundingClientRect();
-      const gx = (clientX - rect.left) / opts.cell;
-      const gy = (clientY - rect.top) / (opts.cell * CELL_ASPECT);
-      if (pointer.active) {
-        pointer.dx = gx - pointer.x;
-        pointer.dy = gy - pointer.y;
-      }
-      pointer.x = gx;
-      pointer.y = gy;
-      pointer.active = true;
+    /**
+     * Feed a client-space pointer position. Deltas become force. Pass the
+     * PointerEvent's id if you have one: without it a finger lifting here and
+     * landing there reads as one enormous drag.
+     */
+    pointer(clientX: number, clientY: number, pointerId?: number) {
+      const g = toGrid(clientX, clientY);
+      tracker.move(g.x, g.y, pointerId);
+    },
+    /** A press. Puts one rotating burst into the field and claims the pointer. */
+    press(clientX: number, clientY: number, pointerId?: number) {
+      const g = toGrid(clientX, clientY);
+      if (tracker.press(g.x, g.y, pointerId)) burst(g.x, g.y);
+    },
+    /** Pointer up or cancelled. Drops the claim so the next touch starts clean. */
+    release(pointerId?: number) {
+      tracker.release(pointerId);
     },
     /** Rebuild the source mask, e.g. after the text it renders changes. */
     restamp() {

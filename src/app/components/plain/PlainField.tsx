@@ -61,6 +61,7 @@ export function PlainField() {
       ambient: true,
       cell: 6,
       sourceHold: 0.95,
+      vorticity: 0.6,
       onMetrics: publishMetrics,
       source: held && messageStyle === 'field'
         ? (cols, rows) =>
@@ -72,11 +73,23 @@ export function PlainField() {
         : undefined,
     });
 
-    const onMove = (e: PointerEvent) => field.pointer(e.clientX, e.clientY);
+    // All four go on window, because the canvas is pointer-events-none and so
+    // never receives anything itself. The id is forwarded on every one of them:
+    // it is what lets the field tell a drag apart from a finger landing in a
+    // new place, and what stops a second finger fighting the first.
+    const onMove = (e: PointerEvent) => field.pointer(e.clientX, e.clientY, e.pointerId);
+    const onDown = (e: PointerEvent) => field.press(e.clientX, e.clientY, e.pointerId);
+    const onUp = (e: PointerEvent) => field.release(e.pointerId);
     window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('pointerdown', onDown, { passive: true });
+    window.addEventListener('pointerup', onUp, { passive: true });
+    window.addEventListener('pointercancel', onUp, { passive: true });
 
     return () => {
       window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
       field.destroy();
       resetMetrics();
     };
