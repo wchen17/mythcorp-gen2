@@ -28,6 +28,7 @@ const ROUTES: Entry[] = [
   { path: '/wc/learn', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/wc/learn/theme-system', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/wc/learn/plain-mode', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/wc/lab/canvas', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.5, changeFrequency: 'yearly' },
   { path: '/contact', priority: 0.3, changeFrequency: 'yearly' },
 ];

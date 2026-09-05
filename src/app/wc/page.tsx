@@ -17,6 +17,12 @@ const sections = [
     blurb: 'Living papers and essays. The first one is on AI + cybercrime capability.',
   },
   {
+    href: '/wc/lab/canvas',
+    label: 'LAB',
+    title: 'The canvas bench',
+    blurb: 'Every vendored Canvas UI component, live, with its props on sliders.',
+  },
+  {
     href: '/wc/about',
     label: 'ABOUT',
     title: 'Who, why',
