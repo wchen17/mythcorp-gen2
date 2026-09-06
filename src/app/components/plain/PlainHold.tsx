@@ -19,13 +19,10 @@ import {
 import { HoldStage, HOLD_STYLES, type HoldStyle } from './HoldStage';
 import { HoldOverlay, OVERLAY_STYLES, type OverlayStyle } from './HoldOverlay';
 import { StylePicker, MessagePicker, OverlayPicker, SchemePicker } from './HoldPickers';
+import { rollHold } from './holdRoll';
 
 const DEFAULT_STYLE: HoldStyle = 'ascii';
 const DEFAULT_OVERLAY: OverlayStyle = 'none';
-
-function pick<T>(items: readonly T[]): T {
-  return items[Math.floor(Math.random() * items.length)];
-}
 
 /**
  * The holding screen. There is no way out of it on purpose: no link back into
@@ -60,14 +57,19 @@ export function PlainHold() {
     };
   }, [held, ready]);
 
-  // Every visit opens on a different combination. It has to happen in an
-  // effect: rolling it during render would give the server one answer and the
-  // client another, and the page would flicker through the mismatch.
+  // Every visit opens on a different combination, but a budgeted one: rolling
+  // the three independently used to stack a full-screen overlay on top of two
+  // particle systems, and the message lost. See holdRoll for the policy.
+  //
+  // It has to happen in an effect: rolling it during render would give the
+  // server one answer and the client another, and the page would flicker
+  // through the mismatch.
   useEffect(() => {
     if (!held) return;
-    setStyle(pick(HOLD_STYLES));
-    setOverlay(pick(OVERLAY_STYLES));
-    setMessageStyle(pick(MESSAGE_STYLES));
+    const roll = rollHold(HOLD_STYLES, MESSAGE_STYLES, OVERLAY_STYLES);
+    setStyle(roll.style);
+    setOverlay(roll.overlay);
+    setMessageStyle(roll.message);
   }, [held]);
 
   const wordmark = useScramble('MYTHCORP', { active: held && mounted });

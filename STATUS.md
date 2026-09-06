@@ -1,5 +1,32 @@
 # STATUS
 
+## The roll gets a noise budget, 2026-09-05
+
+The per-visit combination was three independent dice, and nothing stopped them
+landing on `rain` over `dust` over `swarm`: a full-screen glyph layer on top of
+two separate particle systems, with the message somewhere underneath. Each is
+good alone and the pile was noise.
+
+`holdRoll.ts` now prices every option in visual noise, caps the total at 4, and
+rolls in order of what the screen is for: the message first because it is the
+only thing this page has to say, then the model, then the overlay, which is
+decoration and gets whatever is left. The message is never quietened to afford
+an overlay. `dust` (3) can now only appear with the cheapest model and no
+overlay at all.
+
+The cursor erosion is deliberately not in the budget: it is local to the
+pointer and only happens while a hand is actively moving it.
+
+**The first calibration was wrong, and reading it would not have told you.**
+Pricing shield and rain a point higher each left the rain on two combinations
+out of sixty, about a three percent chance, which is not a rarer effect but an
+effect nobody would ever see. Budgets fail quietly in both directions, so
+`scripts/check-hold-roll.ts` samples 20,000 rolls and fails the run if anything
+exceeds the budget OR if any option drops below a 2% share. Current spread:
+none 55%, shield 30%, rain 15%, the four messages about 25% each. Run it with
+`npm run check:roll` after touching a weight.
+
+
 ## The type erodes under the cursor, 2026-09-05
 
 The holding screen had one interactive surface, the fluid field, and everything

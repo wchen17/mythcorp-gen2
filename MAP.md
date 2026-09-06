@@ -136,6 +136,7 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/layout.tsx` | Pre-paint bootstrap script (no flash), mounts `PlainField` |
 | `src/app/components/plain/PlainField.tsx` | Plain-theme canvas mount, pointer wiring, teardown |
 | `src/app/components/plain/PlainHold.tsx` | The holding screen: wordmark, both pickers, contacts, sr-only heading. No exits |
+| `src/app/components/plain/holdRoll.ts` | The per-visit combination, rolled inside a noise budget so effects cannot pile up. Checked by `npm run check:roll` |
 | `src/app/components/plain/holdState.ts` | `PLAIN_OPEN_PREFIXES` allowlist, read by React and the pre-paint script |
 | `src/app/components/plain/asciiFluid.ts` | The ASCII fluid solver, no React |
 | `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
