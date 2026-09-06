@@ -106,10 +106,23 @@ anyone to touch `chrome://flags`. Verified against the Chrome Platform Status
 origin trials API on 2026-09-05: trial `html-in-canvas`, feature name
 `HTMLInCanvas`, status ACTIVE, Chrome 148 through 154.
 
-**A token is installed.** The committed `.env` carries one for
-`https://mythcorp.org` with subdomain matching, so `i.mythcorp.org` is covered
-too, and `src/app/layout.tsx` renders it as a `<meta http-equiv="origin-trial">`
-on every page. In production these components are on for every Chrome visitor.
+**A token is installed, and it is not yet known to work.** The committed `.env`
+carries one for `https://mythcorp.org` with subdomain matching, so
+`i.mythcorp.org` is covered too, and `src/app/layout.tsx` renders it as a
+`<meta http-equiv="origin-trial">` on every page. That much is confirmed
+against the deployed site.
+
+What is NOT confirmed is that it turns the API on. Checked on the live site on
+Chrome 148.0.7778.280 with the tag served: `ctx.drawElementImage` and
+`canvas.requestPaint` do not exist, and nothing resembling them exists under
+any other name. One of three things is true, and it is worth finding out which
+before trusting the token: the trial is not honoured in that browser context,
+that Chrome build predates the shipped API despite sitting inside the 148 to
+154 window, or the API was renamed when it changed in response to feedback (the
+trial was extended for exactly that reason) and `supportsHtmlInCanvas()` is
+probing for names that no longer exist. The last one is the expensive one to
+miss: the probe would return false forever and these components would look
+permanently broken rather than merely switched off.
 
 Three things to keep in mind.
 

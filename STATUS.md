@@ -1,5 +1,44 @@
 # STATUS
 
+## Shipped, 2026-09-05
+
+Deployed to Cloudflare. Version `527f5e3e-ed50-4600-81d4-5238dd0ce561`, live on
+**https://mythcorp.org** and the workers.dev host. Verified live: 200 on both,
+the origin trial meta tag present and matching `.env`, the pre-paint hold
+script intact, and the holding screen rendering a budgeted roll.
+
+**The origin trial token does not appear to do anything yet, and this is the
+one thing to chase.** The tag ships correctly, but on the live site in Chrome
+148.0.7778.280 `ctx.drawElementImage` and `canvas.requestPaint` still do not
+exist, and neither does anything resembling them under another name. Three
+candidate explanations are written up in `src/app/components/canvasui/
+README.md`. The expensive one, and the one worth ruling out first, is that the
+API was renamed when it changed in response to feedback (the trial was extended
+for exactly that reason), which would mean `supportsHtmlInCanvas()` is probing
+for names that no longer exist and will return false forever. Nothing is broken
+either way: every affected component degrades, and nothing on the holding
+screen needs the API.
+
+### Dependencies, assessed but not touched
+
+Deliberately not bundled into this deploy. The blocking fact is a coupling:
+`@opennextjs/cloudflare@1.20.6` requires `next >=15.5.24 <16 || >=16.3.3` and
+`wrangler ^4.125.0`, and we are on next 15.3.3, adapter 1.3.0 (seventeen minors
+behind) and wrangler 4.92. So the adapter cannot be updated on its own, and
+Next cannot be updated without it. Two coherent routes:
+
+- **Stay on 15.** next 15.3.3 to 15.5.25, adapter to 1.20.6, wrangler to
+  4.129. No framework majors, and it clears the adapter debt, which is the
+  part that actually deploys this site.
+- **Go to 16.** next 16.3.4 plus the same adapter and wrangler bumps, plus
+  eslint-config-next 16. A framework major on a site that just shipped.
+
+Checked and safe whenever they are done: three 0.178 to 0.185 (drei wants
+>=0.159, fiber >=0.156), react 19.0.0 to 19.2.8 (fiber wants >=19 <19.3),
+tailwind 4.1.1 to 4.3.3. Left out of any near-term batch: typescript 5.8 to 7.0
+and eslint 9 to 10, both majors with nothing forcing them.
+
+
 ## The roll gets a noise budget, 2026-09-05
 
 The per-visit combination was three independent dice, and nothing stopped them
@@ -111,7 +150,7 @@ any more**, upstream added a DOM rasterizer fallback, and the four `*Object`
 renderers never touched the API at all. The README now carries the
 classification for all 18 plus the 17 still unvendored, so nobody re-derives it.
 
-**The origin trial is live.** `layout.tsx` renders one
+**The origin trial is live but unproven**, see the deploy note above. `layout.tsx` renders one
 `<meta http-equiv="origin-trial">` per token in
 `NEXT_PUBLIC_ORIGIN_TRIAL_TOKEN`, and a real token is now installed in a
 committed `.env`. Decoded, it is `HTMLInCanvas` for `https://mythcorp.org:443`
