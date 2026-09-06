@@ -141,6 +141,8 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/asciiRender.ts` | Ramp quantizer, dye field to characters |
 | `src/app/components/plain/textMask.ts` | Text to a per-cell coverage mask, supersampled |
 | `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
+| `src/app/components/plain/DisturbedText.tsx` | Type the cursor erodes into the field's ramp, so what is behind shows through the holes |
+| `src/app/components/plain/holdPointer.ts` | One `pointermove` listener, published on a frame, read by every piece of disturbed type |
 | `src/app/components/plain/HoldStage.tsx` | One model, five Canvas UI styles, dynamic-imported, monochrome options |
 | `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`. The two that need no Chrome flag |
 | `src/app/components/plain/HoldPickers.tsx` | The four control rows, split out of PlainHold at the file cap |

@@ -1,5 +1,65 @@
 # STATUS
 
+## The type erodes under the cursor, 2026-09-05
+
+The holding screen had one interactive surface, the fluid field, and everything
+in front of it was inert type. Now the cursor disturbs the words too.
+
+**One mechanism, three places.** `DisturbedText` takes a line of monospace and
+erodes the characters near the pointer into the field's own ramp, fading them
+as it goes so the field and the backdrop show through the holes. It is on the
+wordmark, on the message when it is rendered as plain type, and on the large
+contact backdrop. Deliberately NOT on the readout, whose whole claim is that
+every number in it is measured, and not on the contact links, because
+scrambling a phone number you are trying to click is a prank rather than a
+feature.
+
+**The ramp is the point.** It quantizes with `RAMP` from `asciiRender`, the
+same table the fluid uses, rather than the noise charset in `useScramble`.
+Those two effects say different things: the scramble is a word arriving, this
+is a word being disturbed by the same fluid drawing the message behind it.
+Sharing the ramp is what makes the second reading available. Index 0 of that
+ramp is a space, which is what lets the hottest cells punch a real hole.
+
+**Reach is measured in characters, not pixels.** The first version used a flat
+110px radius, which took a bite out of the 8.5vw message but swallowed the
+entire 12px wordmark: the big type read as disturbed and the small type read as
+broken. Scaling the radius with the character advance gives both the same
+cursor-sized bite and keeps the words legible either side of it, which matters
+because one of them is the only thing this screen has to say.
+
+**One listener, not seven.** `holdPointer.ts` is a small store: a single
+`pointermove` listener, published on an animation frame rather than on the
+event, since a fast mouse fires far more often than the screen refreshes. It
+also publishes the pointer as GONE on `pointerleave` and `blur`, because a
+merely stale position leaves the type eroded around wherever the cursor was
+when it left, which reads as a rendering bug.
+
+Monospace is load-bearing: one character's advance is the element's width over
+its length, which holds at any tracking but breaks immediately on proportional
+type. Every consumer is `font-mono`. Under prefers-reduced-motion, and on the
+server, the text is returned untouched, so nothing moves for anyone who asked
+for less and hydration is never at risk.
+
+Also cleared the repo's one lint error while in the file: `document.fonts?.
+ready.then(done) ?? done()` in `HoldMessage.tsx` was an unused expression, now
+said out loud as an if/else. `src/app/components/plain/` is lint clean.
+
+### Verified
+
+Driven with real hovers at 800px. Cursor away leaves WORK IN / PROGRESS clean;
+cursor on WORK gives `=:+% IN` and `@#%GRESS`, with IN and GRESS still legible.
+The wordmark erodes about five characters around the pointer and settles back.
+The contact backdrop erodes and recovers. `npm run check` green.
+
+**A note for whoever verifies this next.** The Browser pane freezes
+requestAnimationFrame whenever it is hidden, which stops this effect, the
+scramble and the fluid field all at once, and makes a DOM read taken between
+two forced frames look like a stuck or dead component. Two apparent bugs here
+were that and nothing else. Force a frame (a screenshot or a real hover) in the
+same batch as the read, or front the pane first.
+
+
 ## Canvas UI, four fronts at once, 2026-09-05
 
 The vendored Canvas UI library had one consumer (the holding screen's style

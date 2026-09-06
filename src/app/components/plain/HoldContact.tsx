@@ -14,6 +14,8 @@
  * as real mailto/tel links in the corner, and a screen reader should be given
  * the usable copy rather than this one.
  */
+import { DisturbedText } from './DisturbedText';
+
 const LINES = ['info@mythcorp.com', '(676) 767-7676', 'CHICAGO, IL'] as const;
 
 export function HoldContact() {
@@ -25,12 +27,11 @@ export function HoldContact() {
                  text-[color:var(--fg)] opacity-[0.055]"
     >
       {LINES.map((line) => (
-        <span
+        <DisturbedText
           key={line}
+          text={line}
           className="whitespace-nowrap text-[4.4vw] leading-none tracking-[0.08em]"
-        >
-          {line}
-        </span>
+        />
       ))}
     </div>
   );

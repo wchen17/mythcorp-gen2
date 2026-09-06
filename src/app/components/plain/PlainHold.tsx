@@ -11,6 +11,7 @@ import { useScramble } from './useScramble';
 import { HoldStatus } from './HoldStatus';
 import { HoldContact, HoldContactLinks } from './HoldContact';
 import { HoldMessage } from './HoldMessage';
+import { DisturbedText } from './DisturbedText';
 import {
   MESSAGE_STYLES, getMessageStyle, getServerMessageStyle, setMessageStyle,
   subscribeMessageStyle,
@@ -82,7 +83,10 @@ export function PlainHold() {
       <HoldContact />
 
       <div className="relative flex items-start justify-between gap-4 font-mono text-xs">
-        <span className="tracking-[0.45em] text-[color:var(--fg)]">{wordmark}</span>
+        <DisturbedText
+          text={wordmark}
+          className="tracking-[0.45em] text-[color:var(--fg)]"
+        />
         <SchemePicker choice={choice} onPick={setChoice} />
       </div>
 

@@ -8,6 +8,7 @@ import { MESSAGE_LINES, type MessageStyle } from './messageStore';
 import { SCHEME_INK, type Scheme } from './holdScheme';
 import { renderMessageImage } from './messageImage';
 import { useScramble } from './useScramble';
+import { DisturbedText } from './DisturbedText';
 
 const ParticleObject = dynamic(
   () => import('../canvasui/ParticleObject').then((m) => m.ParticleObject),
@@ -66,11 +67,17 @@ export function HoldMessage({ style, scheme }: { style: MessageStyle; scheme: Sc
                  text-[color:var(--fg)]"
     >
       {MESSAGE_LINES.map((line) => (
-        <span key={line} className="text-[8.5vw] tracking-[0.02em]">
-          {style === 'decode'
-            ? <DecodingLine key={run} text={line} />
-            : line}
-        </span>
+        style === 'decode' ? (
+          <span key={line} className="text-[8.5vw] tracking-[0.02em]">
+            <DecodingLine key={run} text={line} />
+          </span>
+        ) : (
+          <DisturbedText
+            key={line}
+            text={line}
+            className="text-[8.5vw] tracking-[0.02em]"
+          />
+        )
       ))}
     </div>
   );
@@ -88,7 +95,10 @@ function useMessageImage(active: boolean): string | null {
     if (!active) return;
     let live = true;
     const done = () => { if (live) setReady(true); };
-    document.fonts?.ready.then(done) ?? done();
+    // Not `document.fonts?.ready.then(done) ?? done()`, which lints as an
+    // unused expression and reads as one too. Same behaviour, said out loud.
+    if (document.fonts) document.fonts.ready.then(done);
+    else done();
     return () => { live = false; };
   }, [active]);
 
