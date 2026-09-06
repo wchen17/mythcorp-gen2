@@ -14,7 +14,7 @@
  * as real mailto/tel links in the corner, and a screen reader should be given
  * the usable copy rather than this one.
  */
-import { DisturbedText } from './DisturbedText';
+import { DisturbedText, GENTLE } from './DisturbedText';
 
 const LINES = ['info@mythcorp.com', '(676) 767-7676', 'CHICAGO, IL'] as const;
 
@@ -46,15 +46,15 @@ export function HoldContactLinks() {
         href="mailto:info@mythcorp.com"
         className="w-fit transition-colors hover:text-[color:var(--fg)]"
       >
-        info@mythcorp.com
+        <DisturbedText text="info@mythcorp.com" strength={GENTLE} />
       </a>
       <a
         href="tel:+16767677676"
         className="w-fit transition-colors hover:text-[color:var(--fg)]"
       >
-        (676) 767-7676
+        <DisturbedText text="(676) 767-7676" strength={GENTLE} />
       </a>
-      <span>Chicago, IL</span>
+      <DisturbedText text="Chicago, IL" strength={GENTLE} />
     </address>
   );
 }

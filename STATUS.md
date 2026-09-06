@@ -1,5 +1,51 @@
 # STATUS
 
+## Erosion on every piece of text, and all 100 combinations tested, 2026-09-05
+
+**The cursor now disturbs every string on the holding screen**, not just the
+decorative three: the readout's labels and values, all four picker rows, and
+the reachable contact links in the corner. The ink meter is passed through
+untouched, because it is already glyphs rather than text.
+
+Two things that had to be right before this was safe to turn on:
+
+- **The real string is always in the DOM.** `DisturbedText` renders an
+  `sr-only` copy and marks the eroded one `aria-hidden`. Without that, turning
+  this on for the readout and the pickers would have handed a screen reader a
+  mouthful of ramp glyphs, and `aria-pressed` on the picker buttons would have
+  had nothing honest to name.
+- **`strength` governs how far text may FADE, not whether it erodes.** The
+  first version held the true character back until a cell was almost fully
+  heated, which at the readout's 11px meant roughly one character in a line
+  ever changed. It looked like it was working in code and did nothing on
+  screen. Interactive text now erodes fully but barely fades, so a label is
+  still readable with the cursor sitting on it. `MIN_REACH` also went to 32 so
+  small text gets a bite about four characters wide instead of one.
+
+**Every combination was tested, not sampled.** An in-page harness drove all
+5 x 4 x 5 = 100 style, message and overlay combinations, clicking through the
+real pickers and recording error-boundary state, mounted canvas count, and any
+window error or `console.error`. Result: **100 tested, 0 failures, 0 errors
+captured**, every combination mounting at least one canvas. Note for whoever
+repeats this: a hidden Browser pane throttles `setTimeout` to about six seconds
+per iteration, so front the tab first, which takes the whole sweep to about 18
+seconds.
+
+### Still open, and deliberately not done
+
+Two requests were raised that fight `DESIGN.md` rather than fitting it, so they
+are written down instead of shipped:
+
+- **Colour after the first visit.** Plain mode is monochrome by definition and
+  DESIGN.md forbids adding a hue. An in-keeping version exists (one accent, in
+  exactly one place, on repeat visits only) but it is a deliberate change to
+  the theme's identity and should be a decision, not a side effect.
+- **Glow.** DESIGN.md bans glow outside cyberpunk and luxury. Worth knowing
+  there is already a precedent: the rain overlay runs with `glow: 0.35` and a
+  lit drop head, so the rule is already bent where a component draws its own
+  light.
+
+
 ## Two more overlays, because ascii and ink can never answer the cursor, 2026-09-05
 
 `AsciiObject` and `InkObject` contain **zero** references to the pointer. Not a

@@ -32,7 +32,10 @@ const ERODE = RAMP;
  * thing this screen has to say.
  */
 const REACH_IN_CHARS = 2.4;
-const MIN_REACH = 24;
+// Small text needs a floor or the bite is a single character wide. At the
+// readout's 11px this is about four characters, which reads as a disturbance
+// rather than as a typo.
+const MIN_REACH = 32;
 const MAX_REACH = 130;
 
 /**
@@ -90,11 +93,39 @@ function erode(text: string, rect: DOMRect | null, x: number, y: number, tick: n
 }
 
 /**
+ * How far a piece of text is allowed to FADE, not whether it erodes. Every
+ * consumer erodes: that is the effect, and holding the true character back
+ * until a cell was almost fully heated made the small text barely move at all,
+ * because at 11px with a 24px reach that is about one character in the whole
+ * line. So the glyph always changes inside the reach, and `strength` only
+ * governs how far the character is allowed to fade out.
+ *
+ * Decoration fades most of the way, which is what lets the field show through.
+ * Anything you are meant to read while the cursor is on it fades much less,
+ * because the cursor sits on a control exactly when its label is needed, and
+ * the real string is in the DOM for assistive technology either way.
+ */
+export const FULL = 1;
+export const GENTLE = 0.4;
+
+/**
  * Returns the target text untouched under prefers-reduced-motion and on the
  * server, so it never breaks hydration and never moves for anyone who asked
  * for less movement.
+ *
+ * The real string is always in the DOM for assistive technology, and only the
+ * eroded copy is shown. Without that, turning this on for the readout and the
+ * pickers would have handed a screen reader a mouthful of ramp glyphs.
  */
-export function DisturbedText({ text, className }: { text: string; className?: string }) {
+export function DisturbedText({
+  text,
+  className,
+  strength = FULL,
+}: {
+  text: string;
+  className?: string;
+  strength?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const tick = useRef(0);
   const pointer = useSyncExternalStore(subscribePointer, getPointer, getServerPointer);
@@ -109,15 +140,18 @@ export function DisturbedText({ text, className }: { text: string; className?: s
     : erode(text, ref.current?.getBoundingClientRect() ?? null, pointer.x, pointer.y, tick.current);
 
   return (
-    <span ref={ref} className={className}>
-      {cells.map((cell, i) => (
-        <span
-          key={i}
-          style={cell.heat ? { opacity: 1 - cell.heat * 0.55 } : undefined}
-        >
-          {cell.ch}
-        </span>
-      ))}
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <span ref={ref} aria-hidden>
+        {cells.map((cell, i) => (
+          <span
+            key={i}
+            style={cell.heat ? { opacity: 1 - cell.heat * 0.55 * strength } : undefined}
+          >
+            {cell.ch}
+          </span>
+        ))}
+      </span>
     </span>
   );
 }

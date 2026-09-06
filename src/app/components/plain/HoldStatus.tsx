@@ -3,6 +3,7 @@
 // Walkthrough: /wc/learn/plain-mode
 
 import { useEffect, useState, useSyncExternalStore } from 'react';
+import { DisturbedText, GENTLE } from './DisturbedText';
 import {
   getMetrics,
   getServerMetrics,
@@ -86,8 +87,17 @@ export function HoldStatus({
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <>
-      <dt className="text-[color:var(--fg-subtle)]">{label}</dt>
-      <dd className="whitespace-pre" suppressHydrationWarning>{value}</dd>
+      <dt className="text-[color:var(--fg-subtle)]">
+        <DisturbedText text={label} strength={GENTLE} />
+      </dt>
+      {/* The meter is already glyphs and is not a string, so it is passed
+          through untouched. Everything else in the readout is text and erodes
+          like the rest of the screen. */}
+      <dd className="whitespace-pre" suppressHydrationWarning>
+        {typeof value === 'string'
+          ? <DisturbedText text={value} strength={GENTLE} />
+          : value}
+      </dd>
     </>
   );
 }

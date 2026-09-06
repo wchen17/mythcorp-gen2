@@ -2,6 +2,7 @@
 
 // Walkthrough: /wc/learn/plain-mode
 
+import { DisturbedText, GENTLE } from './DisturbedText';
 import { SCHEME_CHOICES, type SchemeChoice } from './holdScheme';
 import { HOLD_STYLES, type HoldStyle } from './HoldStage';
 import { OVERLAY_STYLES, type OverlayStyle } from './HoldOverlay';
@@ -42,7 +43,7 @@ export function MessagePicker({
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
                     text-[color:var(--fg-subtle)]">
-      <span className="tracking-[0.16em] opacity-70">words</span>
+      <DisturbedText text="words" strength={GENTLE} className="tracking-[0.16em] opacity-70" />
       {MESSAGE_STYLES.map((name) => (
         <PickerButton
           key={name}
@@ -65,7 +66,7 @@ export function OverlayPicker({
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
                     text-[color:var(--fg-subtle)]">
-      <span className="tracking-[0.16em] opacity-70">over</span>
+      <DisturbedText text="over" strength={GENTLE} className="tracking-[0.16em] opacity-70" />
       {OVERLAY_STYLES.map((name) => (
         <PickerButton
           key={name}
@@ -120,7 +121,10 @@ function PickerButton({
           : 'text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)]',
       ].join(' ')}
     >
-      {label}
+      {/* GENTLE, not FULL: the cursor is on this control precisely when its
+          label matters, and DisturbedText keeps the real string in the DOM so
+          `aria-pressed` still has something honest to name. */}
+      <DisturbedText text={label} strength={GENTLE} />
     </button>
   );
 }
