@@ -9,7 +9,24 @@ import {
   subscribeMetrics,
 } from './fieldMetrics';
 
-const BAR_CELLS = 28;
+/**
+ * The meter is by far the widest row: 28 cells plus the brackets and the
+ * percentage is 36 mono characters, and at this tracking that alone is wider
+ * than a phone. It used to push the whole grid past the viewport, and because
+ * the readout is centred, both ends hung off: every label lost its first
+ * letter and the percentage lost its last. Fewer cells is the honest fix. The
+ * meter is measured, so its resolution can follow the room it has, where the
+ * labels cannot lose letters and still read.
+ *
+ * Both widths are rendered and CSS picks one, rather than a matchMedia hook
+ * choosing in JS. The hook version was written first and was wrong: the query
+ * matched at desktop width while the DOM still held the narrow bar, because
+ * the state only updates if a change event actually arrives. CSS has no such
+ * gap, needs no listener, and cannot disagree with the tracking and gap rules
+ * beside it, which are at the same breakpoint.
+ */
+const BAR_CELLS_WIDE = 28;
+const BAR_CELLS_NARROW = 14;
 
 /** Module scope, so switching style (which remounts the panel) does not
  *  restart the clock. It is time on the page, not time since this mount. */
@@ -31,12 +48,15 @@ export function HoldStatus({
   // The meter reads low even when the screen looks busy, so give it a curve
   // that spends its range where the values actually live.
   const level = Math.min(1, Math.sqrt(metrics.ink * 6));
-  const filled = Math.round(level * BAR_CELLS);
-  const bar = '#'.repeat(filled) + '.'.repeat(BAR_CELLS - filled);
+  const bar = (cells: number) => {
+    const filled = Math.round(level * cells);
+    return '#'.repeat(filled) + '.'.repeat(cells - filled);
+  };
 
   return (
-    <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 font-mono text-[11px]
-                   uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
+    <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 font-mono text-[11px]
+                   uppercase tracking-[0.12em] text-[color:var(--fg-muted)]
+                   sm:gap-x-6 sm:tracking-[0.18em]">
       <Row label="status" value="building" />
       <Row label="elapsed" value={elapsed} />
       <Row label="field" value={metrics.cols ? `${metrics.cols} x ${metrics.rows} cells` : 'idle'} />
@@ -48,7 +68,9 @@ export function HoldStatus({
         label="ink"
         value={
           <span className="text-[color:var(--fg)]">
-            [{bar}] {String(Math.round(level * 100)).padStart(3, ' ')}%
+            <span className="sm:hidden" aria-hidden>[{bar(BAR_CELLS_NARROW)}]</span>
+            <span className="hidden sm:inline" aria-hidden>[{bar(BAR_CELLS_WIDE)}]</span>
+            {' '}{String(Math.round(level * 100)).padStart(3, ' ')}%
           </span>
         }
       />
