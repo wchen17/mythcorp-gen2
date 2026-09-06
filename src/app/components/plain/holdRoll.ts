@@ -46,6 +46,10 @@ const OVERLAY_NOISE: Record<OverlayStyle, number> = {
   // crosses it, so it costs far less than the rain, which is a screen of
   // falling glyphs casting light on everything.
   shield: 1,
+  // Its own drifting geometry, so it survives a transparent backdrop, and it
+  // is quiet enough to sit under a moving model.
+  fog: 1,
+  drops: 2,
   rain: 2,
 };
 

@@ -13,7 +13,7 @@ import { rollHold, HOLD_NOISE } from '../src/app/components/plain/holdRoll';
 
 const STYLES = ['ascii', 'ink', 'particle', 'swarm', 'liquid'] as const;
 const MESSAGES = ['field', 'solid', 'decode', 'dust'] as const;
-const OVERLAYS = ['none', 'rain', 'shield'] as const;
+const OVERLAYS = ['none', 'rain', 'shield', 'fog', 'drops'] as const;
 const TOTAL = STYLES.length * MESSAGES.length * OVERLAYS.length;
 
 /** Below this share of the space, an option is effectively unreachable. */

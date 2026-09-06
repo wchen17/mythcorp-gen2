@@ -1,5 +1,39 @@
 # STATUS
 
+## Two more overlays, because ascii and ink can never answer the cursor, 2026-09-05
+
+`AsciiObject` and `InkObject` contain **zero** references to the pointer. Not a
+prop turned off, not a listener blocked by the fix above: the code does not
+exist. So two of the five model styles can never respond to you, and no amount
+of configuration changes that. Counted across the folder: ParticleObject 36,
+LiquidObject 43, Frost 77, GlyphRain 23, ForceField 16, AsciiObject 0,
+InkObject 0.
+
+The fix is not to make the model react, it is to make sure something else on
+screen does. Eight vendored components were sitting unused, offered only in the
+lab and never on the holding screen. Three were auditioned as overlays:
+
+- **fog** (`Clouds`), kept. Its own drifting geometry, monochrome, and the
+  message and readout stay readable underneath.
+- **drops** (`Droplets`), kept. Rain running down the screen, subtle, and the
+  cursor clears a path through it.
+- **frost** (`Frost`), cut, and this is the useful failure. It answers the
+  cursor harder than anything else in the library and its whole mechanic is
+  hovering to melt a hole through the ice. But it refracts what is behind it,
+  and behind it here is transparency, so it rendered as a murky dark blob
+  sitting on top of the spectre. That is the same failure that killed the
+  dither and glass models earlier, which makes it three times. The rule now
+  written into `HoldOverlay.tsx`: on this screen only components that draw
+  their OWN geometry survive, because anything that samples or refracts its
+  backdrop has no backdrop to work with.
+
+Weights and the roll updated: 100 combinations, 65 reachable, budget never
+exceeded, nothing starved. `none` fell from 55% to 44%, so a majority of visits
+now carry an overlay, and every overlay is cursor-reactive. Between that, the
+fluid field and the text erosion, an ascii or ink visit still has three things
+that answer the pointer even though the model itself cannot.
+
+
 ## The cursor was never reaching the effects, 2026-09-05
 
 Every vendored component on the holding screen binds its pointer listeners

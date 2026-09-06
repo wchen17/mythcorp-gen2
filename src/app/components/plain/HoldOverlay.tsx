@@ -15,13 +15,26 @@ import type { Scheme } from './holdScheme';
  */
 const GlyphRain = dynamic(() => import('../canvasui/GlyphRain').then((m) => m.GlyphRain), { ssr: false });
 const ForceField = dynamic(() => import('../canvasui/ForceField').then((m) => m.ForceField), { ssr: false });
+const Clouds = dynamic(() => import('../canvasui/Clouds').then((m) => m.Clouds), { ssr: false });
+const Droplets = dynamic(() => import('../canvasui/Droplets').then((m) => m.Droplets), { ssr: false });
 
-export const OVERLAY_STYLES = ['none', 'rain', 'shield'] as const;
+export const OVERLAY_STYLES = ['none', 'rain', 'shield', 'fog', 'drops'] as const;
 
 export type OverlayStyle = (typeof OVERLAY_STYLES)[number];
 
 /**
- * Both of these bind pointer listeners inside their own subtree, so the
+ * Frost was built here and cut, which is worth writing down because it is the
+ * third time this exact trap has been walked into. It answers the cursor
+ * harder than anything else in the library, 77 references to the pointer, and
+ * hovering melts a hole through the ice that refreezes behind you. But it
+ * refracts what is BEHIND it, and behind it here is transparency, so with
+ * nothing to bend it renders as a murky dark blob sitting on top of the
+ * spectre. Same failure as the dither and glass models in HoldStage. The rule
+ * this keeps teaching: on this screen, only components that draw their own
+ * geometry survive. Anything that samples or refracts its backdrop has no
+ * backdrop to work with.
+ *
+ * All of these bind pointer listeners inside their own subtree, so the
  * `pointer-events-none` layer below was disabling the half of each effect that
  * responds to you: the rain's `stir`, and, more embarrassingly, the shield's
  * `gridReveal="hover"`, which means the lattice only lights where the cursor
@@ -75,6 +88,40 @@ export function HoldOverlay({
         >
           <></>
         </GlyphRain>
+      ) : overlay === 'fog' ? (
+        <Clouds
+          className={FILL}
+          scale={1.4}
+          speed={0.25}
+          cover={0.35}
+          density={2}
+          shading={0.2}
+          color={ink}
+          opacity={0.3}
+          shadow={0}
+          wind={1.2}
+          windRadius={420}
+        >
+          <></>
+        </Clouds>
+      ) : overlay === 'drops' ? (
+        <Droplets
+          className={FILL}
+          intensity={0.35}
+          speed={0.7}
+          scale={0.5}
+          refraction={0.35}
+          fallSpeed={0.8}
+          wiggle={1}
+          staticDrops={0.3}
+          interactive
+          interactionRadius={0.3}
+          interactionStrength={0.7}
+          tint={ink}
+          tintStrength={0.4}
+        >
+          <></>
+        </Droplets>
       ) : (
         <ForceField
           className={FILL}

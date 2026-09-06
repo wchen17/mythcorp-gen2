@@ -145,7 +145,7 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/DisturbedText.tsx` | Type the cursor erodes into the field's ramp, so what is behind shows through the holes |
 | `src/app/components/plain/holdPointer.ts` | One `pointermove` listener, published on a frame, read by every piece of disturbed type |
 | `src/app/components/plain/HoldStage.tsx` | One model, five Canvas UI styles, dynamic-imported, monochrome options |
-| `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`. The two that need no Chrome flag |
+| `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`, `fog`, `drops`. All draw their own geometry, all answer the cursor. Frost was tried and cut, see the file |
 | `src/app/components/plain/HoldPickers.tsx` | The four control rows, split out of PlainHold at the file cap |
 | `src/app/components/plain/HoldStatus.tsx` | Live readout on the holding screen |
 | `src/app/components/plain/fieldMetrics.ts` | One-value store the field publishes to and the readout reads |
