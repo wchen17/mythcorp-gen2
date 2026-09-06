@@ -20,7 +20,18 @@ export const OVERLAY_STYLES = ['none', 'rain', 'shield'] as const;
 
 export type OverlayStyle = (typeof OVERLAY_STYLES)[number];
 
-const FILL = 'h-full w-full';
+/**
+ * Both of these bind pointer listeners inside their own subtree, so the
+ * `pointer-events-none` layer below was disabling the half of each effect that
+ * responds to you: the rain's `stir`, and, more embarrassingly, the shield's
+ * `gridReveal="hover"`, which means the lattice only lights where the cursor
+ * crosses it. That one was not a missing flourish, it was the entire mechanic.
+ *
+ * Re-enabling hit testing here is safe because the layer sits at `-z-10`.
+ * Anything painted above it, which is every picker and every link, is hit
+ * first, and the overlay only picks up pointers over otherwise empty screen.
+ */
+const FILL = 'h-full w-full pointer-events-auto';
 
 export function HoldOverlay({
   overlay,

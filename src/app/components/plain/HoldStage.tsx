@@ -47,6 +47,21 @@ export type HoldStyle = (typeof HOLD_STYLES)[number];
 const MODEL = '/spectre.glb';
 const FILL = 'absolute inset-0 h-full w-full';
 
+/**
+ * The particle and liquid renderers bind their pointer listeners to their own
+ * canvas, and this whole box is `pointer-events-none` so it does not sit on
+ * top of the readout. A canvas inside a non-interactive parent never receives
+ * a pointermove, so the cursor push those components are built around was
+ * silently doing nothing: the cloud that is supposed to scatter under your
+ * hand just floated. `pointer-events: auto` on a child of a `none` parent is
+ * hit-tested again, which buys back the interaction without making the box
+ * itself swallow anything.
+ *
+ * The ascii and ink renderers register no pointer listeners, so they stay
+ * inert on purpose rather than by accident.
+ */
+const REACTIVE = `${FILL} pointer-events-auto`;
+
 /** Shared framing, so switching style does not also move the model. */
 const FRAME = {
   src: MODEL,
@@ -94,7 +109,7 @@ export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme 
       return (
         <ParticleObject
           {...FRAME}
-          className={FILL}
+          className={REACTIVE}
           color={ink}
           count={26000}
           size={1.4}
@@ -109,7 +124,7 @@ export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme 
       return (
         <ParticleObject
           {...FRAME}
-          className={FILL}
+          className={REACTIVE}
           color={ink}
           count={3200}
           size={5}
@@ -127,7 +142,7 @@ export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme 
       return (
         <LiquidObject
           {...FRAME}
-          className={FILL}
+          className={REACTIVE}
           tint={ink}
           saturation={0}
           iridescence={0}

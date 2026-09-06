@@ -1,5 +1,43 @@
 # STATUS
 
+## The cursor was never reaching the effects, 2026-09-05
+
+Every vendored component on the holding screen binds its pointer listeners
+inside its own subtree, and every one of them was mounted inside a
+`pointer-events-none` wrapper. A canvas under a non-interactive parent never
+receives a pointermove, so the half of each effect that responds to you had
+been silently switched off since the day it was wired in.
+
+What was dead, and where each one listens:
+
+| Component | Listens on | What was lost |
+|---|---|---|
+| `ParticleObject` (spectre, and the `dust` message) | its own canvas | The cursor push. The cloud that is supposed to scatter under your hand just floated |
+| `LiquidObject` | its own canvas | The drag through the fluid |
+| `GlyphRain` | its own wrapper | `stir`, and the light it casts where you are |
+| `ForceField` | its content div | `gridReveal="hover"`. Not a flourish: the lattice only lights where the cursor crosses it, so that was the entire mechanic |
+
+`AsciiObject` and `InkObject` register no pointer listeners at all, so they stay
+inert on purpose rather than by accident, and were left alone.
+
+The fix is `pointer-events: auto` on the components themselves. A child of a
+`none` parent is hit-tested again, so the interaction comes back without the
+wrapper starting to swallow anything. Safe for the full-screen overlay too,
+because it sits at `-z-10`: every picker and link is painted above it and is
+hit first, so the overlay only picks up pointers over otherwise empty screen.
+
+Worth noticing why this hid for so long. Nothing errored, nothing logged, and
+each component still rendered and animated its idle state beautifully. The only
+symptom was an absence, and the comments in `HoldStage` and `HoldMessage`
+described the interaction as though it were working, which is the sort of thing
+that reads as documentation and functions as a lie.
+
+**Verified in the browser.** With `particle` selected, the cursor punches a
+clean void through the cloud and it springs back over the following frames. The
+shield's lattice now reads across the screen and responds. Both were confirmed
+against a before shot with the pointer parked far away.
+
+
 ## Shipped, 2026-09-05
 
 Deployed to Cloudflare. Version `527f5e3e-ed50-4600-81d4-5238dd0ce561`, live on

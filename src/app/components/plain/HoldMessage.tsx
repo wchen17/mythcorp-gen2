@@ -34,8 +34,12 @@ export function HoldMessage({ style, scheme }: { style: MessageStyle; scheme: Sc
     if (!printable) return null;
     return (
       <div className="pointer-events-none absolute inset-x-0 top-[6%] h-[34%]">
+        {/* pointer-events-auto on the canvas itself: the comment above promises
+            you can put your hand through the words, and the component listens
+            on its own canvas, which a non-interactive parent had been keeping
+            events away from. */}
         <ParticleObject
-          className="absolute inset-0 h-full w-full"
+          className="pointer-events-auto absolute inset-0 h-full w-full"
           src={printable}
           color={SCHEME_INK[scheme].ink}
           count={40000}
