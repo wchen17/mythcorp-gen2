@@ -11,6 +11,18 @@ import { SCHEME_INK } from './holdScheme';
  * them twice: `particle` holds the shape, `swarm` is the same cloud thinned
  * out and slowed down until it only suggests one.
  *
+ * `ink` was cut on 2026-09-05 after it started drawing nothing at all. Not a
+ * prop problem: it renders blank in `/wc/lab/canvas` too, under a completely
+ * different prop set, in both schemes, at both viewport aspects, and on both
+ * three 0.178 and 0.185, with the GLB fetching 200 and no error logged. It did
+ * render earlier the same day, so it is intermittent rather than dead, and it
+ * is the same silent failure this comment already blamed for killing the ink
+ * treatment of the message and the `etch` variant. Three strikes for one
+ * component. A one in five chance of an empty stage on the only page visitors
+ * can see is worse than four styles that always work, so it is out of the
+ * roster. `InkObject.tsx` stays vendored and stays in the lab, which is where
+ * to debug it. Put the string back in HOLD_STYLES to restore it.
+ *
  * Two more variants were built and cut. `matrix` (AsciiObject on a two
  * character ramp) never resolved into a figure at any exposure, and `etch`
  * (InkObject opened right up) drew nothing at all, the same silent failure
@@ -25,7 +37,6 @@ import { SCHEME_INK } from './holdScheme';
  * to a shared const fails the build.
  */
 const AsciiObject = dynamic(() => import('../canvasui/AsciiObject').then((m) => m.AsciiObject), { ssr: false });
-const InkObject = dynamic(() => import('../canvasui/InkObject').then((m) => m.InkObject), { ssr: false });
 const ParticleObject = dynamic(() => import('../canvasui/ParticleObject').then((m) => m.ParticleObject), { ssr: false });
 const LiquidObject = dynamic(() => import('../canvasui/LiquidObject').then((m) => m.LiquidObject), { ssr: false });
 
@@ -40,7 +51,7 @@ const LiquidObject = dynamic(() => import('../canvasui/LiquidObject').then((m) =
  * inverted clear colour simply fills the canvas box and the spectre is still
  * not there.
  */
-export const HOLD_STYLES = ['ascii', 'ink', 'particle', 'swarm', 'liquid'] as const;
+export const HOLD_STYLES = ['ascii', 'particle', 'swarm', 'liquid'] as const;
 
 export type HoldStyle = (typeof HOLD_STYLES)[number];
 
@@ -89,22 +100,6 @@ export function HoldStage({ style, scheme }: { style: HoldStyle; scheme: Scheme 
   const { ink, highlight } = SCHEME_INK[scheme];
 
   switch (style) {
-    case 'ink':
-      return (
-        <InkObject
-          {...FRAME}
-          className={FILL}
-          inkColor={ink}
-          lineSpacing={5}
-          strokeWeight={0.8}
-          bleed={0.25}
-          grain={0.3}
-          contrast={1.2}
-          invert={scheme === 'dark'}
-          highlight={highlight}
-        />
-      );
-
     case 'particle':
       return (
         <ParticleObject

@@ -1,5 +1,64 @@
 # STATUS
 
+## Dependency upgrade, and `ink` cut for drawing nothing, 2026-09-05
+
+**The stay-on-15 upgrade is done.** The binding constraint was that
+`@opennextjs/cloudflare@1.20.6` needs `next >=15.5.24` and `wrangler
+^4.125.0`, so the adapter could not move alone and Next could not move without
+it. All three went together:
+
+| | from | to |
+|---|---|---|
+| next | 15.3.3 | 15.5.25 |
+| @opennextjs/cloudflare | 1.3.0 | 1.20.6 |
+| wrangler | 4.92 | 4.129 |
+| react, react-dom | 19.0.0 | 19.2.8 |
+| three | 0.178 | 0.185.1 |
+| @react-three/fiber, drei, postprocessing | | latest |
+| tailwindcss, @tailwindcss/postcss | 4.1.x | 4.3.3 |
+| gsap, tsx, @eslint/eslintrc, @types/react(-dom) | | latest |
+
+Deliberately held, all majors with nothing forcing them: **typescript 5.8 (7.0
+is the rewrite), eslint 9 (10), next 16, @types/node 24 (26)**. The repo's
+pinning convention was preserved: exact for framework and toolchain, caret for
+libraries.
+
+Two notes for next time. npm now blocks install scripts, so `workerd` and
+`esbuild` postinstalls did not run; that turned out not to matter because the
+platform packages ship their binaries, and `wrangler --version` was checked
+before trusting the deploy. And `npm run check` overwrites `.next` under a
+running dev server, which is documented above and bit again here: the page went
+blank and the fix is to restart dev, not to debug the page.
+
+### `ink` is cut from the holding screen
+
+It draws nothing. Ruled out one at a time: not the `three` upgrade (blank on
+0.178 as well as 0.185, tested by pinning back), not the scheme (blank in light
+and dark), not the viewport aspect (blank tall and wide), not screenshot scale,
+and not `HoldStage`'s props, because it renders blank in `/wc/lab/canvas` too
+under a completely different prop set. The GLB fetches 200 and nothing is
+logged. It did render earlier the same day, so it is intermittent rather than
+dead.
+
+This is the **third** time this component has failed this way here: the file's
+own comment already blamed the same silent failure for killing the ink
+treatment of the message and the `etch` variant. A one in five chance of an
+empty stage on the only page visitors can see is worse than four styles that
+always work, so `ink` is out of `HOLD_STYLES`. `InkObject.tsx` stays vendored
+and stays in the lab, which is where to debug it, and putting the string back
+in `HOLD_STYLES` restores it.
+
+Roll re-checked: 96 combinations, 61 reachable, budget never exceeded, nothing
+starved. Cycling verified as particle, swarm, liquid, ascii.
+
+### A gap in the earlier sweeps, worth naming
+
+The 120-combination sweeps checked for thrown errors, error boundaries and
+canvas count. `ink` passed all three while rendering a blank canvas, which is
+exactly how it survived. Mounting is not rendering, and a sweep that cannot
+see pixels cannot tell the difference.
+
+
 ## The catalogue is closed, and the readout is the console, 2026-09-05
 
 **Fire, both of it, auditioned and cut.** `blaze` was vendored from the

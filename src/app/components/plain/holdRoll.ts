@@ -34,7 +34,6 @@ const MESSAGE_NOISE: Record<MessageStyle, number> = {
 
 const STYLE_NOISE: Record<HoldStyle, number> = {
   ascii: 1,
-  ink: 1,
   liquid: 2,
   particle: 2,
   swarm: 2,

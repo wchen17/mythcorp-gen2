@@ -144,7 +144,7 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/useScramble.ts` | Ideaboard #65, the decode effect |
 | `src/app/components/plain/DisturbedText.tsx` | Type the cursor erodes into the field's ramp, so what is behind shows through the holes |
 | `src/app/components/plain/holdPointer.ts` | One `pointermove` listener, published on a frame, read by every piece of disturbed type |
-| `src/app/components/plain/HoldStage.tsx` | One model, five Canvas UI styles, dynamic-imported, monochrome options |
+| `src/app/components/plain/HoldStage.tsx` | One model, four Canvas UI styles, dynamic-imported, monochrome options. `ink` was cut for drawing nothing, see the file |
 | `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`, `fog`, `drops`, `scan`. All draw their own geometry. Five more were auditioned and cut, each for a recorded reason, see the file |
 | `src/app/components/plain/HoldPickers.tsx` | Just the scheme picker now. The style, message and overlay rows moved into the readout |
 | `src/app/components/plain/HoldStatus.tsx` | Live readout, and the controls: render, words and over cycle when clicked |

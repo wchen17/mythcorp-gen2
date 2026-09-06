@@ -22,7 +22,7 @@ export default function CanvasLabPage() {
             The canvas bench
           </h1>
           <p className="mt-5 text-base leading-relaxed text-[color:var(--fg-muted)] md:text-lg">
-            Eighteen vendored components sit in this repo, roughly twenty thousand lines
+            Nineteen vendored components sit in this repo, roughly twenty-one thousand lines
             of them, and until now exactly one screen showed any of it. This is the
             bench: pick one off the roster, it loads on demand, and the panel under
             the stage turns its real props. Nothing here is a screenshot.
