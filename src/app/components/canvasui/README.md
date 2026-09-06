@@ -35,6 +35,7 @@ inert without it.
 | `DecryptReveal.tsx` | `decrypt-reveal-react` | flag | Page as cipher text, decodes around the cursor |
 | `Droplets.tsx` | `droplets-react` | none | Rain on glass, with a wiper |
 | `FlameWrap.tsx` | `flame-wrap-react` | none | Flames that lick around the content box |
+| `Blaze.tsx` | `blaze-react` | Fire, sparks and smoke rising from the bottom edge | none |
 | `ForceField.tsx` | `force-field-react` | none | Charged lattice over the content |
 | `Frost.tsx` | `frost-react` | none | Ice creeping across the surface |
 | `Glitch.tsx` | `glitch-react` | flag | Periodic tear and RGB split bursts |

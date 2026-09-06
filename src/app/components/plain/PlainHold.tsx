@@ -18,8 +18,15 @@ import {
 } from './messageStore';
 import { HoldStage, HOLD_STYLES, type HoldStyle } from './HoldStage';
 import { HoldOverlay, OVERLAY_STYLES, type OverlayStyle } from './HoldOverlay';
-import { StylePicker, MessagePicker, OverlayPicker, SchemePicker } from './HoldPickers';
+import { SchemePicker } from './HoldPickers';
 import { rollHold } from './holdRoll';
+
+/** Advance to the next option, wrapping. The readout rows cycle rather than
+ *  listing, which is what let fifteen buttons come off the screen. */
+function next<T>(items: readonly T[], current: T): T {
+  const i = items.indexOf(current);
+  return items[(i + 1) % items.length];
+}
 
 const DEFAULT_STYLE: HoldStyle = 'ascii';
 const DEFAULT_OVERLAY: OverlayStyle = 'none';
@@ -103,18 +110,21 @@ export function PlainHold() {
               scheme={scheme}
               message={message}
               overlay={overlay}
+              onCycle={{
+                render: () => setStyle(next(HOLD_STYLES, style)),
+                words: () => setMessageStyle(next(MESSAGE_STYLES, message)),
+                over: () => setOverlay(next(OVERLAY_STYLES, overlay)),
+              }}
             />
           </div>
         </div>
       </div>
 
-      <div className="relative flex flex-col gap-4 font-mono text-xs sm:flex-row
-                      sm:items-end sm:justify-between">
-        <div className="flex flex-col gap-1.5">
-          <StylePicker style={style} onPick={setStyle} />
-          <MessagePicker message={message} onPick={setMessageStyle} />
-          <OverlayPicker overlay={overlay} onPick={setOverlay} />
-        </div>
+      {/* The three picker rows that used to live here are gone. They listed
+          fifteen buttons and every one of them duplicated a line the readout
+          was already printing, which on a phone wrapped into a block taller
+          than the model. The readout rows are the controls now. */}
+      <div className="relative flex justify-end font-mono text-xs">
         <HoldContactLinks />
       </div>
     </div>

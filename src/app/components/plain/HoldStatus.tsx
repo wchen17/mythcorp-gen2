@@ -39,9 +39,11 @@ const OPENED_AT = Date.now();
  * really is how long you have been on the page.
  */
 export function HoldStatus({
-  style, scheme, message, overlay,
+  style, scheme, message, overlay, onCycle,
 }: {
   style: string; scheme: string; message: string; overlay: string;
+  /** Given a row, advance it to the next option. Rows without one stay read-only. */
+  onCycle?: { render: () => void; words: () => void; over: () => void };
 }) {
   const metrics = useSyncExternalStore(subscribeMetrics, getMetrics, getServerMetrics);
   const elapsed = useElapsed();
@@ -55,16 +57,17 @@ export function HoldStatus({
   };
 
   return (
+    <div className="flex flex-col gap-2">
     <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 font-mono text-[11px]
                    uppercase tracking-[0.12em] text-[color:var(--fg-muted)]
                    sm:gap-x-6 sm:tracking-[0.18em]">
       <Row label="status" value="building" />
       <Row label="elapsed" value={elapsed} />
       <Row label="field" value={metrics.cols ? `${metrics.cols} x ${metrics.rows} cells` : 'idle'} />
-      <Row label="render" value={style} />
+      <Row label="render" value={style} onCycle={onCycle?.render} />
       <Row label="scheme" value={scheme} />
-      <Row label="words" value={message} />
-      <Row label="over" value={overlay} />
+      <Row label="words" value={message} onCycle={onCycle?.words} />
+      <Row label="over" value={overlay} onCycle={onCycle?.over} />
       <Row
         label="ink"
         value={
@@ -76,6 +79,16 @@ export function HoldStatus({
         }
       />
     </dl>
+    {/* Three of these rows are the controls now. Without a line saying so the
+        only affordance is a hover underline, which nobody finds on a page they
+        expect to be inert. */}
+    {onCycle && (
+      <p className="font-mono text-[10px] uppercase tracking-[0.18em]
+                    text-[color:var(--fg-subtle)] opacity-70">
+        <DisturbedText text="click a value to change it" strength={GENTLE} />
+      </p>
+    )}
+    </div>
   );
 }
 
@@ -84,7 +97,11 @@ export function HoldStatus({
  * visitor's own colour scheme. The server cannot know any of it, so the text it
  * renders is a placeholder by definition rather than a mismatch to fix.
  */
-function Row({ label, value }: { label: string; value: React.ReactNode }) {
+function Row({
+  label, value, onCycle,
+}: {
+  label: string; value: React.ReactNode; onCycle?: () => void;
+}) {
   return (
     <>
       <dt className="text-[color:var(--fg-subtle)]">
@@ -94,9 +111,25 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
           through untouched. Everything else in the readout is text and erodes
           like the rest of the screen. */}
       <dd className="whitespace-pre" suppressHydrationWarning>
-        {typeof value === 'string'
-          ? <DisturbedText text={value} strength={GENTLE} />
-          : value}
+        {onCycle && typeof value === 'string' ? (
+          <button
+            type="button"
+            onClick={onCycle}
+            aria-label={`${label}, ${value}, activate to change`}
+            /* `uppercase` is repeated here on purpose: the browser's own
+               stylesheet sets `text-transform: none` on form controls, so
+               without it these three values render lowercase while every
+               read-only value around them is caps, which reads as a bug
+               rather than as an affordance. */
+            className="-mx-1 px-1 text-left uppercase underline-offset-4 transition-colors
+                       hover:text-[color:var(--fg)] hover:underline
+                       focus-visible:text-[color:var(--fg)] focus-visible:underline"
+          >
+            <DisturbedText text={value} strength={GENTLE} />
+          </button>
+        ) : typeof value === 'string' ? (
+          <DisturbedText text={value} strength={GENTLE} />
+        ) : value}
       </dd>
     </>
   );

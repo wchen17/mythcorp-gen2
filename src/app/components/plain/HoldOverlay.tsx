@@ -37,6 +37,13 @@ export type OverlayStyle = (typeof OVERLAY_STYLES)[number];
  * - `tiles` (HexFloat) rendered fine but dark and mostly at the edges, and it
  *   is hexagons, which `shield` already does and does better because its
  *   lattice actually lights under the cursor. Cut for redundancy, not failure.
+ * - `blaze` (Blaze) and `edge` (FlameWrap), the two fire effects, close the
+ *   catalogue out. `edge` drew literally nothing: FlameWrap outlines an
+ *   ELEMENT, and with no children there is no element to trace, so it is a
+ *   border effect rather than a layer. `blaze` worked but monochrome fire is
+ *   just moving grey specks, which this screen already has a better name for:
+ *   the `dust` message. It is the strongest argument for ever allowing one
+ *   hue in plain mode, and until that is decided it stays out.
  * - `frost` (Frost) is below, and is the third time this exact trap has been
  *   walked into.
  *

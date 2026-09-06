@@ -1,5 +1,60 @@
 # STATUS
 
+## The catalogue is closed, and the readout is the console, 2026-09-05
+
+**Fire, both of it, auditioned and cut.** `blaze` was vendored from the
+registry for this and `flame-wrap` was already here.
+
+- `edge` (`FlameWrap`) drew literally nothing, for a structural reason worth
+  keeping: FlameWrap outlines an ELEMENT, and with no children there is no
+  element to trace. It is a border effect, not a layer, and it was never going
+  to work as one.
+- `blaze` (`Blaze`) rendered, but monochrome fire is just moving grey specks,
+  and this screen already has a better name for those: the `dust` message. It
+  is the single strongest argument for ever allowing one hue into plain mode.
+  Until that is a decision, it stays out. `Blaze.tsx` stays vendored and is
+  recorded in the canvasui README so it is not a mystery later.
+
+That closes the catalogue. Everything left in the registry either resamples the
+page (`bend`, `cloth`, `peel`, `shatter`, `vhs`, `displacement`, `canvas`,
+`particle-reveal`, `particle-scroll`) and so cannot work over a transparent
+backdrop, or has already been tried.
+
+**The pickers are gone and the readout is the console.** Fifteen buttons in
+three rows sat under the model, and every one of them duplicated a line the
+readout was already printing. On a phone they wrapped into a block taller than
+the model itself. Now `render`, `words` and `over` are rows in the readout that
+cycle when clicked, with a hint line underneath, and the whole bottom-left
+block is empty space. The scheme picker stays where it was: light and dark is
+the one control a visitor may actually go looking for.
+
+One detail that would have shipped looking like a bug: browsers set
+`text-transform: none` on form controls, so the three clickable values rendered
+lowercase while every read-only value around them was caps. `uppercase` is
+repeated on the button for that reason.
+
+### A real hydration error, found and fixed
+
+Wrapping the readout in `DisturbedText` broke hydration on every load, and the
+cause is worth writing down because it is not obvious. One span per character
+means that when text differs between server and client, the CHILD COUNT
+differs, and `suppressHydrationWarning` covers text content but not structure.
+The elapsed clock counts from module load, which on the server is process
+start, so it routinely rendered a different number of characters. Adding the
+attribute to the spans did nothing. The fix is that `DisturbedText` renders a
+single plain text node until after hydration and only then splits into
+characters, which makes the server and the first client pass identical by
+construction.
+
+### Verified
+
+All **120** combinations, driven through the new cycling controls: 133
+observations, 0 failures, 0 errors captured, every combination mounting at
+least one canvas. A fresh tab loads with an empty console, which is how the
+hydration fix was confirmed: console history survives same-tab navigation, so
+a stale error there is not evidence of a live one.
+
+
 ## Four more auditioned, one kept, 2026-09-05
 
 `HexFloat`, `Grid`, `Liquid` and `Laser` were wired as overlays and judged on

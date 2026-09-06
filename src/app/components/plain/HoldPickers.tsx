@@ -4,81 +4,18 @@
 
 import { DisturbedText, GENTLE } from './DisturbedText';
 import { SCHEME_CHOICES, type SchemeChoice } from './holdScheme';
-import { HOLD_STYLES, type HoldStyle } from './HoldStage';
-import { OVERLAY_STYLES, type OverlayStyle } from './HoldOverlay';
-import { MESSAGE_STYLES, type MessageStyle } from './messageStore';
 
 /**
- * The four rows of controls. Split out of PlainHold, which was climbing past
- * the file cap, and they are all the same button wearing different labels.
+ * What is left of the control rows. The style, message and overlay pickers
+ * lived here and are gone: fifteen buttons, every one of them duplicating a
+ * line the readout was already printing, and on a phone they wrapped into a
+ * block taller than the model. Those three are rows in `HoldStatus` now, which
+ * cycle when you click them.
+ *
+ * The scheme picker stays visible and stays a list. Light and dark is the one
+ * control a visitor may actually go looking for, and three short words in the
+ * corner cost nothing.
  */
-export function StylePicker({
-  style,
-  onPick,
-}: {
-  style: HoldStyle;
-  onPick: (s: HoldStyle) => void;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-      {HOLD_STYLES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === style}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
-export function MessagePicker({
-  message,
-  onPick,
-}: {
-  message: MessageStyle;
-  onPick: (m: MessageStyle) => void;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
-                    text-[color:var(--fg-subtle)]">
-      <DisturbedText text="words" strength={GENTLE} className="tracking-[0.16em] opacity-70" />
-      {MESSAGE_STYLES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === message}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
-export function OverlayPicker({
-  overlay,
-  onPick,
-}: {
-  overlay: OverlayStyle;
-  onPick: (o: OverlayStyle) => void;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5
-                    text-[color:var(--fg-subtle)]">
-      <DisturbedText text="over" strength={GENTLE} className="tracking-[0.16em] opacity-70" />
-      {OVERLAY_STYLES.map((name) => (
-        <PickerButton
-          key={name}
-          label={name}
-          active={name === overlay}
-          onClick={() => onPick(name)}
-        />
-      ))}
-    </div>
-  );
-}
-
 export function SchemePicker({
   choice,
   onPick,

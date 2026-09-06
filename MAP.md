@@ -146,8 +146,8 @@ Four files. All other components consume tokens via `var(--name)`.
 | `src/app/components/plain/holdPointer.ts` | One `pointermove` listener, published on a frame, read by every piece of disturbed type |
 | `src/app/components/plain/HoldStage.tsx` | One model, five Canvas UI styles, dynamic-imported, monochrome options |
 | `src/app/components/plain/HoldOverlay.tsx` | Full-screen Canvas UI layer: `rain`, `shield`, `fog`, `drops`, `scan`. All draw their own geometry. Five more were auditioned and cut, each for a recorded reason, see the file |
-| `src/app/components/plain/HoldPickers.tsx` | The four control rows, split out of PlainHold at the file cap |
-| `src/app/components/plain/HoldStatus.tsx` | Live readout on the holding screen |
+| `src/app/components/plain/HoldPickers.tsx` | Just the scheme picker now. The style, message and overlay rows moved into the readout |
+| `src/app/components/plain/HoldStatus.tsx` | Live readout, and the controls: render, words and over cycle when clicked |
 | `src/app/components/plain/fieldMetrics.ts` | One-value store the field publishes to and the readout reads |
 | `src/app/components/plain/holdScheme.ts` | Plain mode's own light/dark switch: key, attribute, ink colours |
 | `src/app/components/plain/usePlainScheme.ts` | Owns the scheme (`usePlainScheme`) and follows it (`useResolvedScheme`) |

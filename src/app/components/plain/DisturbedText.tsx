@@ -2,7 +2,7 @@
 
 // Walkthrough: /wc/learn/plain-mode
 
-import { useRef, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { RAMP } from './asciiRender';
 import { getPointer, getServerPointer, subscribePointer } from './holdPointer';
 
@@ -129,6 +129,8 @@ export function DisturbedText({
   const ref = useRef<HTMLSpanElement>(null);
   const tick = useRef(0);
   const pointer = useSyncExternalStore(subscribePointer, getPointer, getServerPointer);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   tick.current += 1;
 
@@ -139,10 +141,25 @@ export function DisturbedText({
     ? [...text].map((ch) => ({ ch, heat: 0 }))
     : erode(text, ref.current?.getBoundingClientRect() ?? null, pointer.x, pointer.y, tick.current);
 
+  /**
+   * Plain text until after hydration, and this is not belt and braces, it is
+   * the fix for a real error. One span per character means that when the text
+   * differs between server and client the CHILD COUNT differs too, and
+   * `suppressHydrationWarning` covers text content, not structure. The elapsed
+   * clock counts from module load, which on the server is process start, so it
+   * routinely renders a different number of characters and the readout threw a
+   * hydration error on every single load. Rendering one text node first makes
+   * the server and the first client pass identical by construction, and the
+   * per-character version arrives on the next tick where nothing is comparing.
+   */
+  if (!hydrated) {
+    return <span className={className} suppressHydrationWarning>{text}</span>;
+  }
+
   return (
-    <span className={className}>
-      <span className="sr-only">{text}</span>
-      <span ref={ref} aria-hidden>
+    <span className={className} suppressHydrationWarning>
+      <span className="sr-only" suppressHydrationWarning>{text}</span>
+      <span ref={ref} aria-hidden suppressHydrationWarning>
         {cells.map((cell, i) => (
           <span
             key={i}
