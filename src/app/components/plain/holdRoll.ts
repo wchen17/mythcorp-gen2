@@ -51,6 +51,8 @@ const OVERLAY_NOISE: Record<OverlayStyle, number> = {
   fog: 1,
   drops: 2,
   rain: 2,
+  // A single beam with a bloom. Quiet enough to sit under anything.
+  scan: 1,
 };
 
 /**

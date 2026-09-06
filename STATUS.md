@@ -1,5 +1,41 @@
 # STATUS
 
+## Four more auditioned, one kept, 2026-09-05
+
+`HexFloat`, `Grid`, `Liquid` and `Laser` were wired as overlays and judged on
+the real screen, same method as frost. One survived.
+
+- **scan** (`Laser`), **kept**. A single beam with a soft bloom sweeping the
+  lower third. Diegetic, quiet, and it reads as the screen measuring something,
+  which is the register this page is already in.
+- **grid** (`Grid`), cut. It maps the page onto 3D tiles, and with no page to
+  map it fills them with flat tint: opaque grey rectangles sitting on the
+  spectre and half the readout. The backdrop trap, a fourth time.
+- **fluid** (`Liquid`), cut. It works and it is strongly cursor-driven, but it
+  paints a milky smear over the readout at any strength worth having, and more
+  importantly it competes with this theme's own ASCII fluid. We already have a
+  fluid, it is ours, and it is the one with the story. Tunable if that changes.
+- **tiles** (`HexFloat`), cut for redundancy rather than failure. It rendered
+  fine, but dark and mostly at the edges, and it is hexagons, which `shield`
+  already does better because its lattice actually lights under the cursor.
+
+Six overlays now, all of which draw their own geometry. The roll re-checked:
+120 combinations, 80 reachable, budget never exceeded, nothing starved, `none`
+down to 40%.
+
+**The whole matrix was swept again**, 5 styles x 4 messages x 6 overlays = 120,
+every one driven through the real pickers: 120 tested, 0 failures, 0 errors
+captured, every combination mounting at least one canvas. The sweep loses one
+combination to a race if a timed-out call keeps running in the background, so
+diff the tested set against the full list and retest the remainder, which is
+what caught `particle/dust/drops` here.
+
+The rule these auditions keep confirming, now written into `HoldOverlay.tsx`
+with all five cut components named: on this screen only components that draw
+their OWN geometry survive, because anything that samples or refracts its
+backdrop has no backdrop to work with.
+
+
 ## Erosion on every piece of text, and all 100 combinations tested, 2026-09-05
 
 **The cursor now disturbs every string on the holding screen**, not just the

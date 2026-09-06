@@ -17,14 +17,30 @@ const GlyphRain = dynamic(() => import('../canvasui/GlyphRain').then((m) => m.Gl
 const ForceField = dynamic(() => import('../canvasui/ForceField').then((m) => m.ForceField), { ssr: false });
 const Clouds = dynamic(() => import('../canvasui/Clouds').then((m) => m.Clouds), { ssr: false });
 const Droplets = dynamic(() => import('../canvasui/Droplets').then((m) => m.Droplets), { ssr: false });
+const Laser = dynamic(() => import('../canvasui/Laser').then((m) => m.Laser), { ssr: false });
 
-export const OVERLAY_STYLES = ['none', 'rain', 'shield', 'fog', 'drops'] as const;
+export const OVERLAY_STYLES = ['none', 'rain', 'shield', 'fog', 'drops', 'scan'] as const;
 
 export type OverlayStyle = (typeof OVERLAY_STYLES)[number];
 
 /**
- * Frost was built here and cut, which is worth writing down because it is the
- * third time this exact trap has been walked into. It answers the cursor
+ * Four more were auditioned the same way and cut, each for its own reason,
+ * which is worth writing down so nobody spends the afternoon again:
+ *
+ * - `grid` (Grid) maps the page onto 3D tiles, and with no page to map it
+ *   fills them with flat tint, so it rendered as opaque grey rectangles
+ *   sitting on the spectre and half the readout. The backdrop trap again.
+ * - `fluid` (Liquid) is a GPU fluid and works, but it paints a milky smear
+ *   over the readout at any strength worth having, and more to the point it
+ *   competes with this theme's own ASCII fluid. We already have a fluid, it is
+ *   ours, and it is the one with the story. Tunable if that ever changes.
+ * - `tiles` (HexFloat) rendered fine but dark and mostly at the edges, and it
+ *   is hexagons, which `shield` already does and does better because its
+ *   lattice actually lights under the cursor. Cut for redundancy, not failure.
+ * - `frost` (Frost) is below, and is the third time this exact trap has been
+ *   walked into.
+ *
+ * Frost is worth writing down at length because it is the clearest case. It answers the cursor
  * harder than anything else in the library, 77 references to the pointer, and
  * hovering melts a hole through the ice that refreezes behind you. But it
  * refracts what is BEHIND it, and behind it here is transparency, so with
@@ -88,6 +104,24 @@ export function HoldOverlay({
         >
           <></>
         </GlyphRain>
+      ) : overlay === 'scan' ? (
+        <Laser
+          className={FILL}
+          speed={0.25}
+          offset={160}
+          color={ink}
+          thickness={4}
+          core={0.8}
+          radius={16}
+          glow={1.2}
+          wave={8}
+          width={0.6}
+          flicker={0.15}
+          heat={1}
+          sparkle={0.2}
+        >
+          <></>
+        </Laser>
       ) : overlay === 'fog' ? (
         <Clouds
           className={FILL}
